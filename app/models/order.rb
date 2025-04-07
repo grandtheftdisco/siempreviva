@@ -1,3 +1,3 @@
 class Order < ApplicationRecord
-  # has one cart/cart_id
+  belongs_to :cart
 end
