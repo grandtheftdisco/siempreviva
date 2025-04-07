@@ -13,7 +13,7 @@ Rails.application.routes.draw do
   get "/learn", to: "marketing#learn"
   get "/gallery", to: "marketing#gallery"
   get "/our-farms", to: "marketing#our_farms"
-  get "/products", to: "products#index", as: :products_path
+  get "/products", to: "products#index"
   get "products/show"
   get "cart/create"
   get "cart/new"

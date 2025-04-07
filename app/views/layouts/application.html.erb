@@ -23,6 +23,18 @@
   </head>
 
   <body>
+    <header>
+      <%= link_to 'Siempreviva', root_path,
+        class: 'text-4xl' %>
+      <nav>
+        <ul>
+          <li><%= link_to 'Products', products_path %></li>
+          <li><%= link_to 'Our Farms', our_farms_path %></li> 
+          <li><%= link_to 'Learn', learn_path %></li>
+          <li><%= link_to 'Contact', contact_path %></li>
+        </ul>
+      </nav>
+    </header>
     <main class="container mx-auto mt-28 px-5 flex">
       <%= yield %>
     </main>
