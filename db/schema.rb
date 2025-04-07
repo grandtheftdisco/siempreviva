@@ -15,24 +15,24 @@ ActiveRecord::Schema[8.0].define(version: 2025_04_07_211015) do
   enable_extension "pg_catalog.plpgsql"
 
   create_table "cart_items", force: :cascade do |t|
-    t.integer "price"
-    t.integer "product_id"
-    t.integer "cart_id"
+    t.integer "price", null: false
+    t.integer "product_id", null: false
+    t.integer "cart_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "carts", force: :cascade do |t|
-    t.integer "total_amount"
+    t.integer "total_amount". null: false 
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "orders", force: :cascade do |t|
-    t.text "payment_intent_id"
-    t.integer "cart_id"
-    t.text "status"
-    t.text "stripe_customer_id"
+    t.text "payment_intent_id", null: false
+    t.integer "cart_id", null: false
+    t.text "status", null: false
+    t.text "stripe_customer_id" # can be null if guest
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -44,9 +44,9 @@ ActiveRecord::Schema[8.0].define(version: 2025_04_07_211015) do
   end
 
   create_table "products", force: :cascade do |t|
-    t.text "name"
-    t.integer "price"
-    t.integer "category_id"
+    t.text "name", null: false
+    t.integer "price", null: false
+    t.integer "category_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
