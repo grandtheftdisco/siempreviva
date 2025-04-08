@@ -36,4 +36,7 @@ class PaymentsController < ApplicationController
 
   def stripe_payment
   end
+
+  def payment_success
+  end
 end
