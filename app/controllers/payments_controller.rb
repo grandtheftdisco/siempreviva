@@ -39,4 +39,7 @@ class PaymentsController < ApplicationController
 
   def payment_success
   end
+
+  def payment_cancelled
+  end
 end

@@ -23,4 +23,5 @@ Rails.application.routes.draw do
   post "create_checkout_session", to: "payments#create_checkout_session"
   get "checkout", to: "payments#stripe_payment"
   get "payment_success", to: "payments#payment_success"
+  get "payment_cancelled", to: "payments#payment_cancelled"
 end
