@@ -1,0 +1,29 @@
+<button id="checkout-button">Checkout</button>
+<script>
+  var stripe = Stripe('<%= ENV['STRIPE_PUBLISH_KEY'] %>');
+</script>
+<script>
+  document.getElementById('checkout-button').addEventListener('click', function() {
+    fetch('/create_checkout_session', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'X-CSRF-Token': document.querySelector('meta[name="csrf-token"]').content
+      }
+    })
+    .then(function(response) {
+      return response.json();
+    })
+    .then(function(session) {
+      return stripe.redirectToCheckout({ sessionId: session.id });
+    })
+    .then(function(result) {
+      if (result.error) {
+        alert(result.error.message);
+      }
+    })
+    .catch(function(error) {
+      console.error('Error:', error);
+    });
+  });
+</script>

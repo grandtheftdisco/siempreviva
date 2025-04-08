@@ -352,6 +352,7 @@ DEPENDENCIES
   brakeman
   capybara
   debug
+  dotenv
   foreman (~> 0.88.1)
   importmap-rails
   jbuilder

@@ -19,4 +19,7 @@ Rails.application.routes.draw do
   get "cart/new"
   get "cart/show"
   get "cart/update"
+
+  post "create_checkout_session", to: "payments#create_checkout_session"
+  get "checkout", to: "payments#stripe_payment"
 end
