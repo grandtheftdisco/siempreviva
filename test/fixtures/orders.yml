@@ -1,13 +1,13 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  payment_intent_id: MyText
+  payment_intent_id: pi_12345
   cart_id: 1
-  status: MyText
+  status: fulfilled
   stripe_customer_id: MyText
 
 two:
-  payment_intent_id: MyText
+  payment_intent_id: pi_34567
   cart_id: 1
-  status: MyText
+  status: requires_payment_method
   stripe_customer_id: MyText
