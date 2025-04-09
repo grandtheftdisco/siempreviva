@@ -7,3 +7,17 @@
 #   ["Action", "Comedy", "Drama", "Horror"].each do |genre_name|
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
+
+Product.delete_all
+ProductCategory.delete_all
+puts "products deleted"
+puts "product categories deleted"
+
+product_category = ProductCategory.create!(name: "Essential Oils Test Category")
+
+product = Product.create(name: 'lavender', price: 15, product_category_id: product_category.id)
+product.save!
+
+puts "#{Product.count} products created"
+puts product.name
+puts product_category.name
