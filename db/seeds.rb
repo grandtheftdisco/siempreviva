@@ -16,6 +16,21 @@ Product.create!(
   price: 95,
   product_category_id: product_category.id
 )
+Product.create!(
+  name: 'Spike Lavender',
+  price: 20,
+  product_category_id: product_category.id
+)
+Product.create!(
+  name: 'Birch',
+  price: 15,
+  product_category_id: product_category.id
+)
+Product.create!(
+  name: 'Orange',
+  price: 15,
+  product_category_id: product_category.id
+)
 puts "#{Product.count} products created"
 
 Product.all.each do |product|
