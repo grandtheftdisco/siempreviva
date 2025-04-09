@@ -1,4 +1,7 @@
 <div>
   <h1 class="font-bold text-4xl">Products#show</h1>
   <p>Find me in app/views/products/show.html.erb</p>
+  <% @products.each do |product| %>
+    <%= render product %>
+  <% end %>
 </div>

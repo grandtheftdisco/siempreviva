@@ -20,4 +20,5 @@ product.save!
 
 puts "#{Product.count} products created"
 puts product.name
+puts product.id
 puts product_category.name
