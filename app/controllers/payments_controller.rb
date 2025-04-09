@@ -25,12 +25,10 @@ class PaymentsController < ApplicationController
   private
 
   def success_url
-    # replace with your actual success url
     "#{request.base_url}/payment_success"
   end
 
   def cancel_url
-    # replace with your actual cancel URL
     "#{request.base_url}/payment_cancelled"
   end
 
