@@ -24,14 +24,16 @@
 
   <body>
     <header>
-      <%= link_to 'Siempreviva', root_path,
-        class: 'text-4xl' %>
-      <nav>
-        <ul>
+      <nav class="flex justify-between p-5">
+        <ul class="inline-flex gap-5">
+          <li><%= link_to '[[logo]]', root_path %></li>
           <li><%= link_to 'Products', products_path %></li>
           <li><%= link_to 'Our Farms', our_farms_path %></li> 
           <li><%= link_to 'Learn', learn_path %></li>
           <li><%= link_to 'Contact', contact_path %></li>
+        </ul>
+        <ul class="inline-flex">
+          <li><%= link_to 'Bag', cart_path %></li>
         </ul>
       </nav>
     </header>

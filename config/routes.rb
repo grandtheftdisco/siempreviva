@@ -16,7 +16,7 @@ Rails.application.routes.draw do
   resources :products, only: [ :index, :show ]
   get "cart/create"
   get "cart/new"
-  get "cart/show"
+  get "cart/show", as: :cart
   get "cart/update"
 
   post "create_checkout_session", to: "payments#create_checkout_session"
