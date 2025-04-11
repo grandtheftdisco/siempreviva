@@ -14,10 +14,11 @@ Rails.application.routes.draw do
   get "/gallery", to: "marketing#gallery"
   get "/our-farms", to: "marketing#our_farms"
   resources :products, only: [ :index, :show ]
-  get "cart/create"
-  get "cart/new"
-  get "cart/show", as: :cart
-  get "cart/update"
+  get "carts/create"
+  get "carts/new"
+  get "carts/show/:id", to: "carts#show", as: :show_cart
+  get "carts/update"
+  resources :cart_items
 
   post "create_checkout_session", to: "payments#create_checkout_session"
   get "checkout", to: "payments#stripe_payment"
