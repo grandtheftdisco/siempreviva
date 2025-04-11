@@ -1,8 +1,5 @@
 class PaymentsController < ApplicationController
   def create_checkout_session
-    require 'stripe'
-    Stripe.api_key = ENV['STRIPE_SECRET_KEY']
-
     begin
       session = Stripe::Checkout::Session.create({
         payment_method_types: ['card'],
