@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get "checkouts/create"
   get "cart_items/create"
   get "cart_items/update"
   get "cart_items/new"
@@ -25,7 +26,10 @@ Rails.application.routes.draw do
   resources :cart_items
 
   post "create_checkout_session", to: "payments#create_checkout_session"
-  get "checkout", to: "payments#stripe_payment"
+  # get "checkout", to: "payments#stripe_payment"
   get "payment_success", to: "payments#payment_success"
   get "payment_cancelled", to: "payments#payment_cancelled"
+
+  post "create_checkout", to: "checkouts#create"
+  get "checkout", to: "checkouts#new", as: :checkout
 end
