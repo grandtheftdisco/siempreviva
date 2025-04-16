@@ -33,7 +33,7 @@
           <li><%= link_to 'Contact', contact_path %></li>
         </ul>
         <ul class="inline-flex">
-          <li><%= link_to 'Bag', show_cart_path(@cart.id) if @cart %></li>
+          <li><%= link_to 'Bag', show_cart_path(session[:cart_id]) if @cart %></li>
         </ul>
       </nav>
     </header>

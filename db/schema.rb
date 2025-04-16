@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_04_11_213734) do
+ActiveRecord::Schema[8.0].define(version: 2025_04_16_003016) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -26,6 +26,8 @@ ActiveRecord::Schema[8.0].define(version: 2025_04_11_213734) do
     t.integer "total_amount"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "session_id"
+    t.index ["session_id"], name: "index_carts_on_session_id", unique: true
   end
 
   create_table "orders", force: :cascade do |t|
