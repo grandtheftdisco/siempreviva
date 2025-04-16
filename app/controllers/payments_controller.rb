@@ -19,14 +19,14 @@ class PaymentsController < ApplicationController
   #   end
   # end
 
-  private
+  # private
 
-  def stripe_payment
-  end
+  # def stripe_payment
+  # end
 
-  def payment_success
-  end
+  # def payment_success
+  # end
 
-  def payment_cancelled
-  end
+  # def payment_cancelled
+  # end
 end

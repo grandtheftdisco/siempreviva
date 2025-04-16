@@ -4,24 +4,37 @@ class CheckoutsController < ApplicationController
   end
   
   def create
-    @session = Stripe::Checkout::Session.create({
-      payment_method_types: ['card'],
-      line_items: [{
-        price_data: {
-          currency: 'usd',
-          product_data: {
-            name: 'Your Product',
-          },
-          unit_amount: 2000,
-        },
-        quantity: 1,
-      }],
-      mode: 'payment',
-      success_url: success_url,
-      cancel_url: cancel_url,
+    # 1. Fetch the current cart and calculate the total amount of it
+    cart = current_user.cart
+    amount = cart.total_amount
+
+    # 2. Create a PaymentIntent
+      # CONSIDERATIONS:
+      # a. if the amount changes, be sure to update the PI's amount
+      # b. reuse the same PaymentIntent if the checkout process is interrupted and resumed later 
+      # c. Make sure that this PaymentIntent gets associated with the current Checkout session
+    payment_intent = Stripe::PaymentIntent.create({
+      amount: amount,
+      currency: 'usd',
+      automatic_payment_methods: { enabled: true },
+      metadata: { cart_id: cart.id }
     })
 
-    render json: { id: @session.id }
+    # 3. Create a record in your database to track this checkout
+    checkout = Checkout.create(
+      user: current_user,
+      cart: cart,
+      amount: amount,
+      payment_intent_id: payment_intent.id,
+      status: 'pending'
+    )
+    
+    # 4. Return the client secret to the frontend
+      # a. this will set up payment collection
+    render json: {
+      clientSecret: payment_intent.client_secret,
+      checkoutId: checkout.id
+    }
   end
 
   private
