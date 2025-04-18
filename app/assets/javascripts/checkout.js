@@ -22,6 +22,9 @@ document.addEventListener('DOMContentLoaded', function () {
       
       form.addEventListener('submit', function (event) {
         event.preventDefault();
+
+        const submitButton = form.querySelector('button[type="submit"]');
+        submitButton.disabled = true;
     
         stripe.confirmPayment({
           elements,
@@ -30,19 +33,23 @@ document.addEventListener('DOMContentLoaded', function () {
           },
         }).then(function (result) {
           if (result.error) {
-            // Handle error
+            submitButton.disabled = false; // allows user to retry form submission if an error has occured
+
+            if (result.error.type === 'card_error' || result.error.type === 'validation_error') {
+              alert("There was an error processing your card. Please try another payment method.")
+            }
             console.error(result.error.message);
-            alert(result.error.message);
           } else {
             // Handle successful payment
             console.log('Payment successful!');
             alert('Payment successful!');
           }
+        }).catch((error) => {
+          submitButton.disabled = false;
+          
+          alert('There was an error processing your payment. Please try again.');
+          console.error('Unexpected error:', error)
         });
       });
-    })
-    .catch((error) => {
-      console.error('Error fetching client secret:', error)
-      alert(error.message);
-    });
+    })  
 });
