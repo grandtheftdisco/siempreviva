@@ -1,7 +1,7 @@
 document.addEventListener('DOMContentLoaded', function () {
-  
   const form = document.getElementById('payment-form');
   const stripePublishableKey = form.dataset.stripePublishableKey;
+  const checkoutSuccessPath = form.dataset.checkoutSuccessPath;
 
   const stripe = Stripe(stripePublishableKey);
 
@@ -26,7 +26,7 @@ document.addEventListener('DOMContentLoaded', function () {
         stripe.confirmPayment({
           elements,
           confirmParams: {
-            return_url: 'http://localhost:3000/checkout_success',
+            return_url: checkoutSuccessPath,
           },
         }).then(function (result) {
           if (result.error) {

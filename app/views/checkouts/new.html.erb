@@ -3,7 +3,8 @@
 <form id="payment-form" 
   data-stripe-publishable-key="<%= Rails.application
                                         .credentials
-                                        .dig(:stripe, :publishable_key) %>">
+                                        .dig(:stripe, :publishable_key) %>"
+  data-checkout-success-path="<%= checkout_success_path %>">
   <div id="payment-element">
     <!--Stripe.js injects Payment Element Here-->
   </div>
