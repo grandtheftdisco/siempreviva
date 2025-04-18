@@ -17,6 +17,14 @@ class CartItemsController < ApplicationController
     @cart_item.price = product.price
     @cart_item.product_id = product.id
     Rails.logger.debug "Cart Item: #{@cart_item.inspect}"
+    @cart.total_amount += @cart_item.price
+    if @cart.save
+      Rails.logger.debug "Cart Total Amount (saved): #{@cart.total_amount}"
+    else
+      Rails.logger.error "Failed to save cart total amount: #{@cart.errors.full_messages}"
+    end
+    Rails.logger.debug "Cart Total Amount: #{@cart.total_amount}"
+
     respond_to do |format|
       if @cart_item.save
         format.html { redirect_to show_cart_url(@cart.id),
