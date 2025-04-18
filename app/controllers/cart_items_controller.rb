@@ -10,6 +10,7 @@ class CartItemsController < ApplicationController
   def create
     product = Product.find(params[:product_id])
     @cart_item = @cart.cart_items.build(product: product)
+    @cart_item.cart_id = @cart.id
     @cart_item.price = product.price
     @cart_item.product_id = product.id
     Rails.logger.debug "Cart: #{@cart.inspect}"
