@@ -30,7 +30,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_04_16_003016) do
     t.index ["session_id"], name: "index_carts_on_session_id", unique: true
   end
 
-  create_table "orders", force: :cascade do |t|
+  create_table "checkouts", force: :cascade do |t|
     t.text "payment_intent_id", null: false
     t.integer "cart_id", null: false
     t.text "status", null: false
