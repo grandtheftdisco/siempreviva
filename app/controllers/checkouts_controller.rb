@@ -5,7 +5,7 @@ class CheckoutsController < ApplicationController
   
   def create
     # 1. Fetch the current cart and calculate the total amount of it
-    cart = current_user.cart
+    cart = Current.session.cart
     amount = cart.total_amount
 
     # 2. Create a PaymentIntent

@@ -24,7 +24,6 @@ Rails.application.routes.draw do
   get "carts/show/:id", to: "carts#show", as: :show_cart
   get "carts/update"
   resources :cart_items
-
   post "create_checkout_session", to: "payments#create_checkout_session"
   # get "checkout", to: "payments#stripe_payment"
   get "payment_success", to: "payments#payment_success"

@@ -26,7 +26,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_04_16_003016) do
     t.integer "total_amount"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "session_id"
+    t.string "session_id", null: false
     t.index ["session_id"], name: "index_carts_on_session_id", unique: true
   end
 
