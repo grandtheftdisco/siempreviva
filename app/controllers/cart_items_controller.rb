@@ -8,22 +8,8 @@ class CartItemsController < ApplicationController
   end
 
   def create
-    Rails.logger.debug "Session Cart ID: #{session[:cart_id]}"
-    Rails.logger.debug "Cart: #{@cart.inspect}"
-    
     product = Product.find(params[:product_id])
     @cart_item = @cart.cart_items.build(product: product)
-    @cart_item.cart_id = @cart.id
-    @cart_item.price = product.price
-    @cart_item.product_id = product.id
-    Rails.logger.debug "Cart Item: #{@cart_item.inspect}"
-    @cart.total_amount += @cart_item.price
-    if @cart.save
-      Rails.logger.debug "Cart Total Amount (saved): #{@cart.total_amount}"
-    else
-      Rails.logger.error "Failed to save cart total amount: #{@cart.errors.full_messages}"
-    end
-    Rails.logger.debug "Cart Total Amount: #{@cart.total_amount}"
 
     respond_to do |format|
       if @cart_item.save
@@ -38,7 +24,6 @@ class CartItemsController < ApplicationController
   end
 
   def update
-
   end
 
   def destroy
