@@ -36,7 +36,6 @@ class CartsController < ApplicationController
   private
     def set_cart
       @cart = Cart.find(params[:id])
-      Rails.logger.debug "Params: #{params.inspect}"
     end
 
     def cart_params

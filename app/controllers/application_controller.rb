@@ -18,6 +18,5 @@ class ApplicationController < ActionController::Base
       id: session_id,
       cart: cart
     )
-    Rails.logger.debug "Current session: #{Current.session.inspect}"
   end
 end
