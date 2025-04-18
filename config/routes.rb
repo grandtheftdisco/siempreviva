@@ -1,9 +1,5 @@
 Rails.application.routes.draw do
-  get "checkouts/create"
-  get "cart_items/create"
-  get "cart_items/update"
-  get "cart_items/new"
-  get "cart_items/destroy"
+
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
   # Can be used by load balancers and uptime monitors to verify that the app is live.
   get "up" => "rails/health#show", as: :rails_health_check
@@ -14,21 +10,27 @@ Rails.application.routes.draw do
 
   root "marketing#home"
 
+
+
   get "/contact", to: "marketing#contact"
   get "/learn", to: "marketing#learn"
   get "/gallery", to: "marketing#gallery"
   get "/our-farms", to: "marketing#our_farms"
+
   resources :products, only: [ :index, :show ]
+  
   get "carts/create"
   get "carts/new"
   get "carts/show/:id", to: "carts#show", as: :show_cart
   get "carts/update"
-  resources :cart_items
-  post "create_checkout_session", to: "payments#create_checkout_session"
-  # get "checkout", to: "payments#stripe_payment"
-  get "payment_success", to: "payments#payment_success"
-  get "payment_cancelled", to: "payments#payment_cancelled"
 
+  post "cart_items/create", as: :cart_items
+  get "cart_items/update"
+  get "cart_items/new"
+  get "cart_items/destroy"
+  
   post "create_checkout", to: "checkouts#create"
   get "checkout", to: "checkouts#new", as: :checkout
+  get "checkout_success", to: "checkouts#checkout_success"
+  get "checkout_cancelled", to: "checkouts#checkout_cancelled"
 end

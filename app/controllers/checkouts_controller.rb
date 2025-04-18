@@ -39,10 +39,10 @@ class CheckoutsController < ApplicationController
   private
 
   def success_url
-    "#{request.base_url}/payment_success"
+    "#{request.base_url}/checkout_success"
   end
 
   def cancel_url
-    "#{request.base_url}/payment_cancelled"
+    "#{request.base_url}/checkout_cancelled"
   end
 end

@@ -26,7 +26,7 @@ document.addEventListener('DOMContentLoaded', function () {
         stripe.confirmPayment({
           elements,
           confirmParams: {
-            return_url: 'http://localhost:3000/payment_success',
+            return_url: 'http://localhost:3000/checkout_success',
           },
         }).then(function (result) {
           if (result.error) {
