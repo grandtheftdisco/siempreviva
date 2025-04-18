@@ -4,9 +4,11 @@ class Cart < ApplicationRecord
 
   def add_product(product)
     cart_item = cart_items.build(product: product)
-    cart_item.price = product.price
-    cart_item.product_id = product.id
-    self.total_amount += cart_item.price
+    if cart_item.price.present?
+      self.total_amount += cart_item.price
+    else
+      raise "CartItem price is not set"
+    end
     cart_item
   end
 end
