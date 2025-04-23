@@ -12,7 +12,28 @@ document.addEventListener('DOMContentLoaded', function () {
       'X-CSRF-Token': document.querySelector('meta[name="csrf-token"]').getAttribute('content'),
     },
   })
-    .then((response) => response.json())
+    .then(response => {
+      if (!response.ok) {
+        // Handle HTTP errors (e.g., 404, 500)
+        console.error('HTTP error:', response.status);
+        return response.text().then(text => { //Get the text of the error page.
+          console.error('Error details:', text);
+          throw new Error(`HTTP error! status: ${response.status}`);
+        });
+      }
+      // Check the content type
+      const contentType = response.headers.get('content-type');
+      if (!contentType || !contentType.includes('application/json')) {
+        // Handle non-JSON responses
+        console.error('Not a JSON response');
+        return response.text().then(text => { //Get the text of the error page.
+          console.error('Response details:', text);
+          throw new Error('Not a JSON response!');
+        });
+      }
+      //If everything is ok, parse to JSON
+      return response.json();
+    })
     .then((data) => {
       const clientSecret = data.clientSecret;
       
