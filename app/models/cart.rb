@@ -4,6 +4,7 @@ class Cart < ApplicationRecord
 
   def add_product(product)
     cart_item = cart_items.build(product: product)
+    cart_item.price = product.price # had to set this explicitly, not sure if cleaner way to write
     if cart_item.price.present?
       self.total_amount += cart_item.price
     else

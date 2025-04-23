@@ -9,8 +9,8 @@ class CartItemsController < ApplicationController
 
   def create
     product = Product.find(params[:product_id])
-    @cart_item = @cart.cart_items.build(product: product)
-
+    @cart_item = @cart.add_product(product)
+    @cart_item.save 
     respond_to do |format|
       if @cart_item.save
         format.html { redirect_to show_cart_url(@cart.id),
