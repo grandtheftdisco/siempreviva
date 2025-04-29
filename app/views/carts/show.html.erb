@@ -4,14 +4,14 @@
 
 <%= render @cart %>
 
-<p id="checkout-button"><%= link_to 'Check Out', checkout_path %></p>
+<p id="checkout-button"><%= link_to 'Check Out', new_checkout_path %></p>
 
 <script>
   var stripe = Stripe('<%= Rails.configuration.stripe[:publishable_key] %>')
   var checkoutButton = document.getElementById('checkout-button');
 
   checkoutButton.addEventListener('click', function() {
-    fetch('/checkout', {
+    fetch('/checkouts/new', {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',

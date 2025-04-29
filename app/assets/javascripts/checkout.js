@@ -4,8 +4,8 @@ document.addEventListener('DOMContentLoaded', function () {
   const checkoutSuccessPath = form.dataset.checkoutSuccessPath;
 
   const stripe = Stripe(stripePublishableKey);
-
-  fetch('/create_checkout', {
+  console.log(checkoutSuccessPath);
+  fetch('/checkouts', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -36,16 +36,12 @@ document.addEventListener('DOMContentLoaded', function () {
     })
     .then((data) => {
       const clientSecret = data.clientSecret;
-      
       const elements = stripe.elements( { clientSecret: clientSecret});
       const paymentElement = elements.create('payment');
       paymentElement.mount('#payment-element');
       
       form.addEventListener('submit', function (event) {
         event.preventDefault();
-
-        const submitButton = form.querySelector('button[type="submit"]');
-        submitButton.disabled = true;
     
         stripe.confirmPayment({
           elements,
@@ -54,8 +50,6 @@ document.addEventListener('DOMContentLoaded', function () {
           },
         }).then(function (result) {
           if (result.error) {
-            submitButton.disabled = false; // allows user to retry form submission if an error has occured
-
             if (result.error.type === 'card_error' || result.error.type === 'validation_error') {
               alert("There was an error processing your card. Please try another payment method.")
             }
@@ -66,8 +60,6 @@ document.addEventListener('DOMContentLoaded', function () {
             alert('Payment successful!');
           }
         }).catch((error) => {
-          submitButton.disabled = false;
-          
           alert('There was an error processing your payment. Please try again.');
           console.error('Unexpected error:', error)
         });

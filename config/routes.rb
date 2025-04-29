@@ -29,8 +29,7 @@ Rails.application.routes.draw do
   get "cart_items/new"
   get "cart_items/destroy"
   
-  post "create_checkout", to: "checkouts#create"
-  get "checkout", to: "checkouts#new", as: :checkout
+  resources :checkouts, only: [ :new, :create ]
   get "checkout_success", to: "checkouts#checkout_success", as: :checkout_success
   get "checkout_cancelled", to: "checkouts#checkout_cancelled", as: :checkout_cancelled
 end
