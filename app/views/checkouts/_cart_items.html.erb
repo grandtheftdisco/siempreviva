@@ -1,13 +1,13 @@
 <h1>Cart Items</h1>
 <div id="cart-items">
-  <% @cart.cart_items.each do |item| %>
+  <% @session.line_items.each do |item| %>
     <div class="line-item">
-      <span><%= item.product.name %></span>
-      <span><%= number_to_currency(item.price / 100.0) %></span>
+      <span><%= item.description %></span>
+      <span><%= number_to_currency(item.amount_total / 100.0) %></span>
     </div>
   <% end %>
 </div>
 <div>
   <p>Total:</p>
-  <%= number_to_currency(@cart.total_amount / 100.0) %>
+  <%= number_to_currency(@session.amount_total / 100.0) %>
 </div>
