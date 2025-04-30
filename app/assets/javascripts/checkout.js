@@ -36,8 +36,14 @@ document.addEventListener('DOMContentLoaded', function () {
     })
     .then((data) => {
       const clientSecret = data.clientSecret;
-      const elements = stripe.elements( { clientSecret: clientSecret});
+      const optionsShipping = { mode: 'shipping' };
+      const optionsBilling = { mode: 'billing' };
+      const elements = stripe.elements( { clientSecret: clientSecret});      
+      const shippingAddressElement = elements.create('address', optionsShipping);
+      const billingAddressElement = elements.create('address', optionsBilling);
       const paymentElement = elements.create('payment');
+      shippingAddressElement.mount('#address-element-shipping');
+      billingAddressElement.mount('#address-element-billing');
       paymentElement.mount('#payment-element');
       
       form.addEventListener('submit', function (event) {
