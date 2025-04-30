@@ -1,5 +1,5 @@
 <div class="inline-flex bg-yellow-200 p-5">
-  <div class="bg-green-100">
+  <div class="bg-green-100 p-5">
     <p>Payment Form Goes Here</p>
     <form id="payment-form" 
       data-stripe-publishable-key="<%= Rails.application
@@ -16,7 +16,7 @@
       </div>
     </form>
   </div>
-  <div class="bg-blue-200 flex flex-col gap-5">
+  <div class="bg-blue-200 flex flex-col gap-5 p-5">
     <%= render partial: 'cart_items', locals: { session: @session } %>
     <button id="submit" class="bg-green-200 rounded-xl p-3 mt-5">
       <div class="spinner hidden" id="spinner"></div>
