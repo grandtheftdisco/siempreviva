@@ -1,5 +1,6 @@
 <p>Here is where you'll embed your Stripe elements!</p>
 <p><%=@cart.total_amount %> due.</p>
+<%= render partial: 'cart_items' %>
 <form id="payment-form" 
   data-stripe-publishable-key="<%= Rails.application
                                         .credentials
