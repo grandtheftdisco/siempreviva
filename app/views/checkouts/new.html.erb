@@ -1,23 +1,28 @@
-<p>Here is where you'll embed your Stripe elements!</p>
-<p><%= number_to_currency(@session.amount_total / 100.0) %> due.</p>
-<%= render partial: 'cart_items', locals: { session: @session } %>
-<form id="payment-form" 
-  data-stripe-publishable-key="<%= Rails.application
-                                        .credentials
-                                        .dig(:stripe, :publishable_key) %>"
-  data-checkout-success-path="<%= checkout_success_url %>">
-  <div id="payment-element">
-    <!--Stripe.js injects Payment Element Here-->
+<div class="inline-flex bg-yellow-200 p-5">
+  <div class="bg-green-100">
+    <p>Payment Form Goes Here</p>
+    <form id="payment-form" 
+      data-stripe-publishable-key="<%= Rails.application
+                                            .credentials
+                                            .dig(:stripe, :publishable_key) %>"
+      data-checkout-success-path="<%= checkout_success_url %>
+      class="bg-orange-200">
+      <div id="payment-element">
+        <!--Stripe.js injects Payment Element Here-->
+      </div>
+      <div id="address-element-shipping">
+      </div>
+      <div id="address-element-billing">
+      </div>
+    </form>
   </div>
-  <div id="address-element-shipping">
+  <div class="bg-blue-200 flex flex-col gap-5">
+    <%= render partial: 'cart_items', locals: { session: @session } %>
+    <button id="submit" class="bg-green-200 rounded-xl p-3 mt-5">
+      <div class="spinner hidden" id="spinner"></div>
+      <span id="button-text">Submit Order</span>
+    </button>
+    <div id="payment-message" class="hidden"></div>
   </div>
-  <div id="address-element-billing">
-  </div>
-  <button id="submit">
-    <div class="spinner hidden" id="spinner"></div>
-    <span id="button-text">Pay now</span>
-  </button>
-  <div id="payment-message" class="hidden"></div>
-</form>
-
+</div>
 <script src="<%= asset_path 'checkout.js' %>"></script>
