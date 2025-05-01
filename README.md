@@ -3,6 +3,7 @@
 
 ## ⚒️ UNDER CONSTRUCTION 
 - I'm building this project as you read this, so watch the repo or check back often to see my progress!
+- As of 5/1/25, I'm working on setting up a rudimentary version of a custom checkout/payment flow. What I lack in pushed commits, I make up for in local 🙂
 
 ______________________________________
 ______________________________________
