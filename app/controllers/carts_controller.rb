@@ -1,5 +1,7 @@
 class CartsController < ApplicationController
+  include CurrentCart
   before_action :set_cart, only: %i[ show update ]
+  
   def new
     @cart = Cart.new
   end
@@ -34,10 +36,6 @@ class CartsController < ApplicationController
   end
 
   private
-    def set_cart
-      @cart = Cart.find(params[:id])
-    end
-
     def cart_params
       params.fetch(:cart, {})
     end
