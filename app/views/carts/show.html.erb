@@ -5,33 +5,3 @@
 <%= render @cart %>
 
 <p id="checkout-button"><%= link_to 'Check Out', new_checkout_path %></p>
-
-<script>
-  var stripe = Stripe('<%= Rails.configuration.stripe[:publishable_key] %>')
-  var checkoutButton = document.getElementById('checkout-button');
-
-  checkoutButton.addEventListener('click', function() {
-    fetch('/checkouts/new', {
-      method: 'GET',
-      headers: {
-        'Content-Type': 'application/json',
-        'X-CSRF-Token': document.querySelector('meta[name="csrf-token"]').content
-      },
-      credentials: 'same-origin'
-    })
-    .then(function(response) {
-      return response.json();
-    })
-    .then(function(session) {
-      return stripe.redirectToCheckout({ sessionId: session.id });
-    })
-    .then(function(result) {
-      if (result.error) {
-        alert(result.error.message);
-      }
-    })
-    .catch(function(error) {
-      console.error('Error:', error);
-    });
-  });
-</script>
