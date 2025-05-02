@@ -7,8 +7,6 @@ class Cart < ApplicationRecord
     cart_item.price = product.price # had to set this explicitly, not sure if cleaner way to write
     if cart_item.price.present?
       self.total_amount += cart_item.price
-    else
-      raise "CartItem price is not set"
     end
     cart_item
   end
