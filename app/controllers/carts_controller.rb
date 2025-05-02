@@ -1,24 +1,6 @@
 class CartsController < ApplicationController
   include CurrentCart
   before_action :set_cart, only: %i[ show update ]
-  
-  def new
-    @cart = Cart.new
-  end
-
-  def create
-    @cart = Cart.new(cart_params)
-
-    respond_to do |format|
-      if @cart.save
-        format.html { redirect_to @cart, notice: "Here's your bag!" }
-        format.json { render :show, status: :created, location: @cart }
-      else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @cart.errors, status: :unprocessable_entity }
-      end
-    end
-  end
 
   def show
   end
