@@ -6,7 +6,7 @@ class CheckoutsController < ApplicationController
   end
   
   def create
-    determine_if_payment_intent_already_exists(@cart)
+    @payment_intent = set_payment_intent(@cart)
     
     checkout = Checkout.create(
       payment_intent_id: @payment_intent.id,
@@ -23,7 +23,7 @@ class CheckoutsController < ApplicationController
 
   private
 
-  def determine_if_payment_intent_already_exists(cart)
+  def set_payment_intent(cart)
     @existing_intent = Checkout.find_by(
       cart_id: cart.id, 
     )
