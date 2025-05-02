@@ -3,11 +3,9 @@ class CheckoutsController < ApplicationController
   before_action :set_cart, only: %i[ new create ]
 
   def new
-    Rails.logger.info "$$$ CheckoutsCtrlr used CurrentCart in its #new action"
   end
   
   def create
-    Rails.logger.info "$$$ CheckoutsCtrlr used CurrentCart in its #new action"
     determine_if_payment_intent_already_exists(@cart)
     
     checkout = Checkout.create(
