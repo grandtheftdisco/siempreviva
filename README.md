@@ -3,7 +3,11 @@
 
 ## ⚒️ UNDER CONSTRUCTION 
 - I'm building this project as you read this, so watch the repo or check back often to see my progress!
-- As of 5/1/25, I'm working on setting up a rudimentary version of a custom checkout/payment flow. What I lack in pushed commits, I make up for in local 🙂
+- 📆 As of **5/2/25**
+  - I've got a bare-bones version of my checkout flow wired up. It's not pretty, but it works!
+  - What's next?
+    - I'm preparing to refactor some of my controller logic for cart updates into a service object.
+    - I've also got plans to implement a 2nd service object that will soft-delete a `Cart` & its associated `Checkout` object when a Stripe `PaymentIntent` is marked as `succeeded`
 
 ______________________________________
 ______________________________________
