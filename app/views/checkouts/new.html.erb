@@ -1,0 +1,21 @@
+<p><%=@cart.total_amount %> due.</p>
+<form id="payment-form" 
+  data-stripe-publishable-key="<%= Rails.application
+                                        .credentials
+                                        .dig(:stripe, :publishable_key) %>"
+  data-checkout-success-path="<%= checkout_success_url %>">
+  <div id="payment-element">
+    <!--Stripe.js injects Payment Element Here-->
+  </div>
+  <div id="address-element-shipping">
+  </div>
+  <div id="address-element-billing">
+  </div>
+  <button id="submit">
+    <div class="spinner hidden" id="spinner"></div>
+    <span id="button-text">Pay now</span>
+  </button>
+  <div id="payment-message" class="hidden"></div>
+</form>
+
+<script src="<%= asset_path 'checkout.js' %>"></script>

@@ -1,0 +1,7 @@
+<div>
+  <% @cart.cart_items.each do |item| %>
+    <%= item.product.name %>
+    <%= item.product.price %>
+    <p class="text-red-400">DELETE ITEM</p>
+  <% end %>
+</div>
