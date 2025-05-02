@@ -14,7 +14,7 @@ class CartItemsController < ApplicationController
     @cart.save
     respond_to do |format|
       if @cart_item.save
-        format.html { redirect_to show_cart_url(@cart.id),
+        format.html { redirect_to cart_path(@cart.id),
           notice: "Item added to bag!" }
         format.json { render :show, status: :created, location: @cart_item }
       else

@@ -21,7 +21,7 @@ Rails.application.routes.draw do
   
   get "carts/create"
   get "carts/new"
-  get "carts/show/:id", to: "carts#show", as: :show_cart
+  get "carts/show/:id", to: "carts#show", as: :cart
   get "carts/update"
 
   post "cart_items/create", as: :cart_items

@@ -34,7 +34,7 @@
           <li><%= link_to 'Contact', contact_path %></li>
         </ul>
         <ul class="inline-flex">
-          <li><%= link_to 'Bag', show_cart_path(session[:cart_id]) if session[:cart_id].present? && @cart %></li>
+          <li><%= link_to 'Bag', cart_path(session[:cart_id]) if session[:cart_id].present? && @cart %></li>
         </ul>
       </nav>
     </header>
