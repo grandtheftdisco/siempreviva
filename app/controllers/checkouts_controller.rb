@@ -1,11 +1,10 @@
 class CheckoutsController < ApplicationController
-  include CurrentCart
-  before_action :set_cart, only: %i[ new create ]
-
   def new
+    @cart = Current.cart
   end
   
   def create
+    @cart = Current.cart
     @payment_intent = set_payment_intent(@cart)
     
     checkout = Checkout.create(

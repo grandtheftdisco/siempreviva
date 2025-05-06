@@ -1,11 +1,10 @@
 class CartsController < ApplicationController
-  include CurrentCart
-  before_action :set_cart, only: %i[ show update ]
-
   def show
+    @cart = Current.cart
   end
 
   def update
+    @cart = Current.cart
     respond_to do |format|
       if @cart.update(cart_params)
         format.html { redirect_to @cart, notice: "Bag was updated!" }

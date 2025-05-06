@@ -1,6 +1,4 @@
 class CartItemsController < ApplicationController
-  include CurrentCart
-  before_action :set_cart, only: %i[ create ]
   before_action :set_cart_item, only: %i[ update destroy ]
 
   def new
@@ -8,6 +6,7 @@ class CartItemsController < ApplicationController
   end
 
   def create
+    @cart = Current.cart
     product = Product.find(params[:product_id])
     @cart_item = @cart.add_product(product)
     @cart_item.save
