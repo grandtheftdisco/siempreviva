@@ -2,6 +2,8 @@
 
 one:
   total_amount: 100
+  session_id: test_session_id123
 
 two:
   total_amount: 200
+  session_id: test_session_id234
