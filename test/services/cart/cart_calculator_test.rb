@@ -4,7 +4,7 @@ class CartCalculatorTest < ActiveSupport::TestCase
   test "given an empty cart, total should be $0" do
     #  step 1: make new cart
     cart = Cart.new(total_amount: 0)
-    cart_item = CartItem.new
+    cart_item = CartItem.new(cart_id: cart.id)
     # step 2: do the thing you're testing
     total = Cart::CartCalculator.call(cart: cart, cart_item: cart_item)
     
@@ -14,7 +14,7 @@ class CartCalculatorTest < ActiveSupport::TestCase
 
   test "given a non-empty cart, return total of the cart" do
     cart = Cart.new
-    cart_item = CartItem.new(price: 13)
+    cart_item = CartItem.new(price: 13, cart_id: cart.id)
     total = Cart::CartCalculator.call(cart:, cart_item:)
 
     assert_equal(13, total)
