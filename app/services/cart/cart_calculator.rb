@@ -2,11 +2,13 @@ class Cart #module that CartCalculator needs to inherit from - may need to renam
   class CartCalculator
 
     def self.call(cart:)
-      return 0
-      #passed test 1, but now fails test 2
       # rewrite so that it passes BOTH tests.
       # then once you pass all tests, add another test.
       # never change your tests once they pass. add another one.
+
+      return cart.total_amount
+
+
 
       # you'll also want to read through the articles he sent over. the 3rd one will talk about strategies for structuring a service object.
       # once you decide whether to lean OO or func, you'll jknow how to handle each of the methods you've laid out below. some of these might need to be service objects themselves. others could be private methods that get called within self.call. 

@@ -2,13 +2,13 @@ require "test_helper"
 
 class CartCalculatorTest < ActiveSupport::TestCase
   test "given an empty cart, total should be $0" do
-    # make new cart
+    #  step 1: make new cart
     cart = Cart.new(total_amount: 0)
 
-    # do the thing you're testing
+    # step 2: do the thing you're testing
     total = Cart::CartCalculator.call(cart: cart)
     
-    # assertion - expected first, actual second
+    # step 3: assertion - expected first, actual second
     assert_equal(0, total)
   end
 
