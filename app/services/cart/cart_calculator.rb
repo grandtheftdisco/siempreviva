@@ -1,18 +1,15 @@
 class Cart #module that CartCalculator needs to inherit from - may need to rename 
   class CartCalculator
 
-    def self.call(cart:)
-      # rewrite so that it passes BOTH tests.
-      # then once you pass all tests, add another test.
-      # never change your tests once they pass. add another one.
-
+    def self.call(cart:, cart_item:)
+      # check to see what cart items you have.
+      # for each cart item in this group, sum the totals of their prices
+      # FUTURE - use the quantity as a multiplier
+      if cart_item
+        cart.total_amount += cart_item.price.to_i
+      end
       return cart.total_amount
 
-
-
-      # you'll also want to read through the articles he sent over. the 3rd one will talk about strategies for structuring a service object.
-      # once you decide whether to lean OO or func, you'll jknow how to handle each of the methods you've laid out below. some of these might need to be service objects themselves. others could be private methods that get called within self.call. 
-      # this class may take you next week, too. be patient. don't rush just because you think you need to push some code.
     end
 
     #----------------------------------------------------------
