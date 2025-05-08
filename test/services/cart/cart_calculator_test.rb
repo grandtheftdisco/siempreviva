@@ -1,29 +1,43 @@
 require "test_helper"
 
 class CartCalculatorTest < ActiveSupport::TestCase
+
+  ############################################################
+  # DO NOT TOUCH THIS TEST
+  ############################################################
   test "given an empty cart, total should be $0" do
     #  step 1: make new cart
-    cart = Cart.new(total_amount: 0)
-    cart_item = CartItem.new(cart_id: cart.id)
+    cart = Cart.create!(session_id: "123fdsdsfd")
+
     # step 2: do the thing you're testing
-    total = Cart::CartCalculator.call(cart: cart, cart_item: cart_item)
+    total = Cart::CartCalculator.call(cart: cart)
     
     # step 3: assertion - expected first, actual second
     assert_equal(0, total)
   end
+  ############################################################
+  # DO NOT TOUCH THIS TEST ^^^^^^^^^^^^^^^^^^
+  ############################################################
+
+
+
+
+
+
+
 
   test "given a non-empty cart, return total of the cart" do
-    cart = Cart.new
-    cart_item = CartItem.new(price: 13, cart_id: cart.id)
-    total = Cart::CartCalculator.call(cart:, cart_item:)
+    cart = Cart.create!(session_id: "sdfhsdl")
+    cart_item = CartItem.create!(price: 13, cart_id: cart.id, product_id: products(:two).id)
+    total = Cart::CartCalculator.call(cart:)
 
     assert_equal(13, total)
   end
 
   test "when an item is added to the cart, the cart's total_amount is updated" do
-    cart = Cart.new
-    cart_item = CartItem.new(price: 6)
-    total = Cart::CartCalculator.call(cart:, cart_item:)
+    cart = Cart.create(session_id: "adjfhsdkf")
+    cart_item = CartItem.create!(price: 6, cart_id: cart.id, product_id: products(:one).id)
+    total = Cart::CartCalculator.call(cart:)
 
     assert_equal(6, total)
   end

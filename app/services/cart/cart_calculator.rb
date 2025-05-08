@@ -1,18 +1,17 @@
-class Cart #module that CartCalculator needs to inherit from - may need to rename 
+class Cart
   class CartCalculator
 
-    def self.call(cart:, cart_item:)
-      # check to see what cart items you have.
-      # for each cart item in this group, sum the totals of their prices
-      # FUTURE - use the quantity as a multiplier
-      cart.total_amount += cart_item.price.to_i
+    def self.call(cart:)
+      sum_cart_items(cart) if cart.cart_items
+    end
+
+    private
+
+    def self.sum_cart_items(cart)
+      cart.cart_items.each do |item|
+        cart.total_amount += item.price
+      end
       return cart.total_amount
-
-      # PROBLEM - I can't pass in an infinite number of cart items.
-      # There has to be a better way to grab all of these.
-      # apparently trying to use the * operator to sponge up multiple arguments into an array isn't behaving the way I expect it to. A hash of all the arguments gets created.
-      # Is there a way to use a private method to identify all the cart items?
-
     end
 
     #----------------------------------------------------------
