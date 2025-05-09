@@ -3,7 +3,13 @@
 
 ## ⚒️ UNDER CONSTRUCTION 
 - I'm building this project as you read this, so watch the repo or check back often to see my progress!
-- 📆 As of **5/2/25**
+- 📆 **5/9/25**
+  - No code review this week: this feature is taking longer than I thought!
+  - I'm still working on implementing my first service object, which will itemize a cart's contents, as well as any discounts/shipping/taxes, and then calculate a total
+  - I've been writing this class with TDD, which has been a great experience so far.
+  - It's been a challenge to estimate how much time it will take to build features.
+    - This one is certainly taking longer than I anticipated, but I'm learning a lot and seeing just how much work goes into the back-end of an app.
+- 📆 **5/2/25**
   - I've got a bare-bones version of my checkout flow wired up. It's not pretty, but it works!
   - What's next?
     - I'm preparing to refactor some of my controller logic for cart updates into a service object.
