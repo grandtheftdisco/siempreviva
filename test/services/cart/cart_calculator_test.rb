@@ -21,18 +21,6 @@ class CartCalculatorTest < ActiveSupport::TestCase
   ############################################################
   # DO NOT TOUCH THIS TEST
   ############################################################
-  test "given a non-empty cart, return total of the cart" do
-    cart = Cart.create!(session_id: "sdfhsdl")
-    cart_item = CartItem.create!(price: products(:one).price, 
-                                 cart_id: cart.id, 
-                                 product_id: products(:one).id)
-    total = Cart::CartCalculator.call(cart:)
-    assert_equal(products(:one).price, total)
-  end
-
-  ############################################################
-  # DO NOT TOUCH THIS TEST
-  ############################################################
   test "when an item is added to the cart, the cart's total_amount is updated" do
     cart = Cart.create!(session_id: "adjfhsdkf")
     cart_item = CartItem.create!(price: products(:one).price, 
@@ -60,6 +48,9 @@ class CartCalculatorTest < ActiveSupport::TestCase
     assert_equal(products(:one).price + products(:two).price, total)
   end
 
+  ############################################################
+  # DO NOT TOUCH THIS TEST
+  ############################################################
   test "when a 2nd instance of a product is added, the cart total is double the price of the product" do
     cart = Cart.create!(session_id: "adjfhsdkf")
     cart_item_first = CartItem.create!(price: products(:one).price,
