@@ -4,7 +4,7 @@ class Cart
     def self.call(cart:)
       return if !cart.cart_items
       check_for_duplicate_cart_items(cart)
-      total = cart.cart_items.inject(0){ |res, item| item.price + res }
+      calculate_cart_total(cart)
     end
 
     # private
@@ -21,6 +21,10 @@ class Cart
         items[1].destroy!
       end
     new_cart_item
+    end
+
+    def self.calculate_cart_total(cart)
+      total = cart.cart_items.inject(0){ |res, item| item.price + res }
     end
     #-------------------------------------------------
     # add_product (Cart) / set_price (CartItem model)
