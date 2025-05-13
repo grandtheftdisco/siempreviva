@@ -7,7 +7,7 @@ class Cart
       calculate_cart_total(cart)
     end
 
-    # private
+    private
 
     def self.check_for_duplicate_cart_items(cart)
       items = cart.cart_items.to_a
