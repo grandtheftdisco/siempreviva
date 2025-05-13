@@ -34,7 +34,7 @@ class CartCalculatorTest < ActiveSupport::TestCase
   ############################################################
   # DO NOT TOUCH THIS TEST
   ############################################################
-  test "when a 2nd item is added to a cart, the cart total should match the sum of the 2 cart items'" do
+  test "when a 2nd item is added to a cart, the cart total should match the sum of the 2 cart items" do
     cart = Cart.create!(session_id: "adjfhsdkf")
     cart_item_one = CartItem.create!(price: products(:one).price,
                                      cart_id: cart.id,
@@ -42,7 +42,6 @@ class CartCalculatorTest < ActiveSupport::TestCase
     cart_item_two = CartItem.create!(price: products(:two).price,
                                      cart_id: cart.id,
                                      product_id: products(:two).id)
-
     total = Cart::CartCalculator.call(cart:)
 
     assert_equal(products(:one).price + products(:two).price, total)
@@ -65,9 +64,22 @@ class CartCalculatorTest < ActiveSupport::TestCase
     assert_equal(products(:one).price * 2, total)
   end
 
-
-  # test "when a 2nd instance of a product is added to a cart, the cart item's quantity should increment by one" do
-    
-  # end
-  # use quantity col as a multiplier for the price when calculating
+  test "if two CartItems have the same product_id, a new CartItem is created with a quantity of 2" do
+    cart = Cart.create!(session_id: "adjfhsdkf")
+    cart_item_first = CartItem.create!(price: products(:one).price,
+                                       cart_id: cart.id,
+                                       product_id: products(:one).id,
+                                       quantity: 1)
+    cart_item_second = CartItem.create!(price: products(:one).price,
+                                        cart_id: cart.id,
+                                        product_id: products(:one).id,
+                                        quantity: 1)
+  
+    Cart::CartCalculator.call(cart: cart)
+  
+    new_cart_item = cart.cart_items.find_by(product_id: products(:one).id)
+  
+    assert(new_cart_item.present?)
+    assert_equal(2, new_cart_item.quantity)
+  end
 end

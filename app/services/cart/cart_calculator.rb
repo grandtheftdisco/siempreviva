@@ -3,12 +3,26 @@ class Cart
 
     def self.call(cart:)
       return if !cart.cart_items
+      check_for_duplicate_cart_items(cart)
       total = cart.cart_items.inject(0){ |res, item| item.price + res }
     end
 
-    private
+    # private
 
-    # -------------------------------------------------
+    def self.check_for_duplicate_cart_items(cart)
+      items = cart.cart_items.to_a
+      if items.size > 1
+        new_cart_item = CartItem.create!(price: items[0].price,
+                                         cart_id: cart.id,
+                                         product_id: items[0].product_id,
+                                         quantity: items.size)
+        # TODO - refactor this to be iterative
+        items[0].destroy!
+        items[1].destroy!
+      end
+    new_cart_item
+    end
+    #-------------------------------------------------
     # add_product (Cart) / set_price (CartItem model)
       # builds a cart_item instance with attrs of a passed-in product instance
         # price
