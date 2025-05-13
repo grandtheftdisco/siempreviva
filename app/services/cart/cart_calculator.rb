@@ -3,37 +3,10 @@ class Cart
 
     def self.call(cart:)
       return if !cart.cart_items
-      # check_quantity_of_each_product(cart)
-      sum_cart_items(cart)
+      total = cart.cart_items.inject(0){ |res, item| item.price + res }
     end
 
     private
-
-    # in first iteration whereby we're multiplying cart item price by quantity - NOT incrementing quantity
-    def self.sum_cart_items(cart)
-      items_hash = cart.cart_items.group_by { |item| item.product_id }
-      cart_items_array = items_hash.values.flatten
-
-      cart_total = cart_items_array.sum do |item|
-                     item.price
-                   end
-      return cart_total
-    end
-
-              # in v2- check quantity of each cart item - if there are two cart items with the same id, delete the newer one and increment the 'quantity' col of the first 
-
-    def self.check_quantity_of_each_product(cart)
-      # if there is more than 1 cart item with the same product_id, sum their quantities.
-
-      # then create a new cart item with that quantity, and all the same fields as the 'extras'.
-
-      # then, delete the extras.
-
-    end
-
-    # consider an AddToCart service object to handle incrementing your cart item quantity cols - outsource that work within CArtCalc to the AddToCart
-
-    # #reduce is an alternative to this "group_by then .sum" strategy you're using - it could do it all in one go. might be too hairy to get into with this method right now - save it for more complex tasks or larger data sets
 
     # -------------------------------------------------
     # add_product (Cart) / set_price (CartItem model)
