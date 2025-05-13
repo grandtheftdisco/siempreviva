@@ -16,11 +16,11 @@ class Cart
                                          cart_id: cart.id,
                                          product_id: items[0].product_id,
                                          quantity: items.size)
-        # TODO - refactor this to be iterative
-        items[0].destroy!
-        items[1].destroy!
+        items.each do |item|
+          item.destroy! unless item == new_cart_item
+        end
+        new_cart_item
       end
-    new_cart_item
     end
 
     def self.calculate_cart_total(cart)

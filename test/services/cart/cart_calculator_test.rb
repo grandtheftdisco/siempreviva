@@ -82,4 +82,26 @@ class CartCalculatorTest < ActiveSupport::TestCase
     assert(new_cart_item.present?)
     assert_equal(2, new_cart_item.quantity)
   end
+
+  test "if three CartItems have the same product_id, a new CartItem is created with a quantity of 3" do
+    cart = Cart.create!(session_id: "adjfhsdkf")
+    cart_item_first = CartItem.create!(price: products(:one).price,
+                                       cart_id: cart.id,
+                                       product_id: products(:one).id,
+                                       quantity: 1)
+    cart_item_second = CartItem.create!(price: products(:one).price,
+                                        cart_id: cart.id,
+                                        product_id: products(:one).id,
+                                        quantity: 1)
+    cart_item_third = CartItem.create!(price: products(:one).price,
+                                       cart_id: cart.id,
+                                       product_id: products(:one).id,
+                                       quantity: 1)
+    Cart::CartCalculator.call(cart: cart)
+
+    new_cart_item = cart.cart_items.find_by(product_id: products(:one).id)
+
+    assert(new_cart_item.present?)
+    assert_equal(3, new_cart_item.quantity)
+  end
 end
