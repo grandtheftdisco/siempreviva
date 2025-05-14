@@ -8,6 +8,6 @@ two:
   total_amount: 200
   session_id: test_session_id234
 
-test:
+empty:
   total_amount: 0
   session_id: test_session_id345
