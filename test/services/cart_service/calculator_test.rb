@@ -17,7 +17,7 @@ class CalculatorTest < ActiveSupport::TestCase
     cart_item_first = cart_items(:lavender)
     total = CartService::Calculator.call(cart:)
 
-    assert_equal(products(:one).price, total)
+    assert_equal(products(:lavender).price, total)
   end
 
   test "when a 2nd item is added to a cart, the cart total should match the sum of the 2 cart items" do
@@ -37,7 +37,7 @@ class CalculatorTest < ActiveSupport::TestCase
 
     total = CartService::Calculator.call(cart:)
 
-    assert_equal(products(:one).price * 2, total)
+    assert_equal(products(:lavender).price * 2, total)
   end
 
   test "if two CartItems have the same product_id, a new CartItem is created with a quantity of 2" do

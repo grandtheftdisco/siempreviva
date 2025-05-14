@@ -2,10 +2,10 @@
 
 lavender:
   price: 10
-  product: one
+  product: lavender
   cart: mary
 
 rose:
   price: 20
-  product: two
+  product: rose
   cart: bob
