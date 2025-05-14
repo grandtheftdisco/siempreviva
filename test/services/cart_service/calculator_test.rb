@@ -6,7 +6,7 @@ class CalculatorTest < ActiveSupport::TestCase
     cart = carts(:empty)
 
     # step 2: do the thing you're testing
-    total = Cart::CartCalculator.call(cart: cart)
+    total = CartService::Calculator.call(cart: cart)
     
     # step 3: assertion - expected first, actual second
     assert_equal(0, total)
@@ -14,38 +14,38 @@ class CalculatorTest < ActiveSupport::TestCase
 
   test "when an item is added to the cart, the cart's total_amount is updated" do
     cart = carts(:one)
-    cart_item_first = cart_items(:one)
-    total = Cart::CartCalculator.call(cart:)
+    cart_item_first = cart_items(:lavender)
+    total = CartService::Calculator.call(cart:)
 
     assert_equal(products(:one).price, total)
   end
 
   test "when a 2nd item is added to a cart, the cart total should match the sum of the 2 cart items" do
     cart = carts(:one)
-    cart_items(:one)
-    cart.cart_items << cart_items(:two)
-    total = Cart::CartCalculator.call(cart:)
+    cart_items(:lavender)
+    cart.cart_items << cart_items(:rose)
+    total = CartService::Calculator.call(cart:)
 
     assert_equal(30, total)
   end
 
   test "when a 2nd instance of a product is added, the cart total is double the price of the product" do
     cart = carts(:one)
-    cart_item_first = cart_items(:one)
+    cart_item_first = cart_items(:lavender)
     cart_item_second = cart_item_first.dup
     cart_item_second.save!
 
-    total = Cart::CartCalculator.call(cart:)
+    total = CartService::Calculator.call(cart:)
 
     assert_equal(products(:one).price * 2, total)
   end
 
   test "if two CartItems have the same product_id, a new CartItem is created with a quantity of 2" do
     cart = carts(:one)
-    cart_item_first = cart_items(:one)
+    cart_item_first = cart_items(:lavender)
     cart_item_second = cart_item_first.dup.tap(&:save!)
   
-    Cart::CartCalculator.call(cart: cart)
+    CartService::Calculator.call(cart: cart)
   
     new_cart_item = cart.cart_items.find_by(product_id: cart_item_first.product_id)
   
@@ -55,11 +55,11 @@ class CalculatorTest < ActiveSupport::TestCase
 
   test "if three CartItems have the same product_id, a new CartItem is created with a quantity of 3" do
     cart = carts(:one)
-    cart_item_first = cart_items(:one)
+    cart_item_first = cart_items(:lavender)
     cart_item_second = cart_item_first.dup.tap(&:save!)
     cart_item_third = cart_item_second.dup.tap(&:save!)
 
-    Cart::CartCalculator.call(cart: cart)
+    CartService::Calculator.call(cart: cart)
 
     new_cart_item = cart.cart_items.find_by(product_id: cart_item_first.product_id)
 
