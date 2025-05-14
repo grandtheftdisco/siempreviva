@@ -1,10 +1,10 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
+mary:
   total_amount: 100
   session_id: test_session_id123
 
-two:
+bob:
   total_amount: 200
   session_id: test_session_id234
 

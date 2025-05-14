@@ -13,7 +13,7 @@ class CalculatorTest < ActiveSupport::TestCase
   end
 
   test "when an item is added to the cart, the cart's total_amount is updated" do
-    cart = carts(:one)
+    cart = carts(:mary)
     cart_item_first = cart_items(:lavender)
     total = CartService::Calculator.call(cart:)
 
@@ -21,7 +21,7 @@ class CalculatorTest < ActiveSupport::TestCase
   end
 
   test "when a 2nd item is added to a cart, the cart total should match the sum of the 2 cart items" do
-    cart = carts(:one)
+    cart = carts(:mary)
     cart_items(:lavender)
     cart.cart_items << cart_items(:rose)
     total = CartService::Calculator.call(cart:)
@@ -30,7 +30,7 @@ class CalculatorTest < ActiveSupport::TestCase
   end
 
   test "when a 2nd instance of a product is added, the cart total is double the price of the product" do
-    cart = carts(:one)
+    cart = carts(:mary)
     cart_item_first = cart_items(:lavender)
     cart_item_second = cart_item_first.dup
     cart_item_second.save!
@@ -41,7 +41,7 @@ class CalculatorTest < ActiveSupport::TestCase
   end
 
   test "if two CartItems have the same product_id, a new CartItem is created with a quantity of 2" do
-    cart = carts(:one)
+    cart = carts(:mary)
     cart_item_first = cart_items(:lavender)
     cart_item_second = cart_item_first.dup.tap(&:save!)
   
@@ -54,7 +54,7 @@ class CalculatorTest < ActiveSupport::TestCase
   end
 
   test "if three CartItems have the same product_id, a new CartItem is created with a quantity of 3" do
-    cart = carts(:one)
+    cart = carts(:mary)
     cart_item_first = cart_items(:lavender)
     cart_item_second = cart_item_first.dup.tap(&:save!)
     cart_item_third = cart_item_second.dup.tap(&:save!)

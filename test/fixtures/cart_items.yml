@@ -3,9 +3,9 @@
 lavender:
   price: 10
   product: one
-  cart: one
+  cart: mary
 
 rose:
   price: 20
   product: two
-  cart: two
+  cart: bob
