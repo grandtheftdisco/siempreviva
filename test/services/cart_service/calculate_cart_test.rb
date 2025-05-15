@@ -6,7 +6,7 @@ class CalculateCartTest < ActiveSupport::TestCase
     cart = carts(:empty)
 
     # step 2: do the thing you're testing
-    total = CartService::Calculator.call(cart: cart)
+    total = CartService::CalculateCart.call(cart: cart)
     
     # step 3: assertion - expected first, actual second
     assert_equal(0, total)
@@ -15,7 +15,7 @@ class CalculateCartTest < ActiveSupport::TestCase
   test "when an item is added to the cart, the cart's total_amount is updated" do
     cart = carts(:mary)
     cart_item_first = cart_items(:lavender)
-    total = CartService::Calculator.call(cart:)
+    total = CartService::CalculateCart.call(cart:)
 
     assert_equal(products(:lavender).price, total)
   end
@@ -24,7 +24,7 @@ class CalculateCartTest < ActiveSupport::TestCase
     cart = carts(:mary)
     cart_items(:lavender)
     cart.cart_items << cart_items(:rose)
-    total = CartService::Calculator.call(cart:)
+    total = CartService::CalculateCart.call(cart:)
 
     assert_equal(30, total)
   end
@@ -35,7 +35,7 @@ class CalculateCartTest < ActiveSupport::TestCase
     cart_item_second = cart_item_first.dup
     cart_item_second.save!
 
-    total = CartService::Calculator.call(cart:)
+    total = CartService::CalculateCart.call(cart:)
 
     assert_equal(products(:lavender).price * 2, total)
   end
@@ -45,7 +45,7 @@ class CalculateCartTest < ActiveSupport::TestCase
     cart_item_first = cart_items(:lavender)
     cart_item_second = cart_item_first.dup.tap(&:save!)
   
-    CartService::Calculator.call(cart: cart)
+    CartService::CalculateCart.call(cart: cart)
   
     new_cart_item = cart.cart_items.find_by(product_id: cart_item_first.product_id)
   
@@ -59,7 +59,7 @@ class CalculateCartTest < ActiveSupport::TestCase
     cart_item_second = cart_item_first.dup.tap(&:save!)
     cart_item_third = cart_item_second.dup.tap(&:save!)
 
-    CartService::Calculator.call(cart: cart)
+    CartService::CalculateCart.call(cart: cart)
 
     new_cart_item = cart.cart_items.find_by(product_id: cart_item_first.product_id)
 
