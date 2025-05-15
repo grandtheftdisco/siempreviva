@@ -2,7 +2,6 @@ module CartService
   class AddToCart < ApplicationService
     def self.call(product:, cart:)
       check_for_duplicate_cart_items(product:, cart:)
-      
     end
 
     private
