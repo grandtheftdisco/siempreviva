@@ -3,25 +3,10 @@ module CartService
 
     def self.call(cart:)
       return if !cart.cart_items
-      check_for_duplicate_cart_items(cart)
       calculate_cart_total(cart)
     end
 
     private
-
-    def self.check_for_duplicate_cart_items(cart)
-      items = cart.cart_items.to_a
-      if items.size > 1
-        new_cart_item = CartItem.create!(price: items[0].price,
-                                         cart_id: cart.id,
-                                         product_id: items[0].product_id,
-                                         quantity: items.size)
-        items.each do |item|
-          item.destroy! unless item == new_cart_item
-        end
-        new_cart_item
-      end
-    end
 
     def self.calculate_cart_total(cart)
       total = cart.cart_items.inject(0){ |res, item| item.price + res }
