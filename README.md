@@ -3,7 +3,18 @@
 
 ## ⚒️ UNDER CONSTRUCTION 
 - I'm building this project as you read this, so watch the repo or check back often to see my progress!
-  
+
+- 📆 **5/16/25**
+  - No code review this week either: but I'm almost ready to submit a PR!
+    - I've pushed the code I've written so far - it's in the [amanda/cart-calculator](https://github.com/grandtheftdisco/siempreviva/tree/amanda/cart-calculator) branch.
+    - Feel free to check it out! I plan to push a few more commits to finalize my classes next week, and then submit for review.
+  - I have my first service object functioning at a basic level! 🎉
+    - I've written a handful of tests (TDD) and all are passing. Time to write more, right?
+  - Bookis and I isolated some code that constituted its own service object, so I also began writing that class, too.
+  - Now, I've got 1) a service object that calculates a cart's total, and 2) a service object that adds a product to a cart.
+  - I also made the decision to write the frontend of this app in React ⚛️
+    - I may write a Hotwire version, as well, to learn both libraries. Going with React for now to be as marketable as possible!
+
 - 📆 **5/9/25**
   - No code review this week: this feature is taking longer than I thought!
   - I'm still working on implementing my first service object, which will itemize a cart's contents, as well as any discounts/shipping/taxes, and then calculate a total
@@ -13,6 +24,7 @@
   - I've been strengthening my command of Ruby, too.
     - `dig` and `sum` came to the rescue today!
     - Nested collections are tricky, but I'm committed to understanding my way around them.
+
 - 📆 **5/2/25**
   - I've got a bare-bones version of my checkout flow wired up. It's not pretty, but it works!
   - What's next?
@@ -41,7 +53,7 @@ ______________________________________
 - Postgres
 - Stripe API
 - Stripe.js
-- _Stimulus.js_ (projected)
+- _React_ (projected)
 - Tailwind
 - _Render_ (projected deployment platform)
 
