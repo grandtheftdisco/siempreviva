@@ -1,4 +1,4 @@
-<p><%=@cart.total_amount %> due.</p>
+<p><%= @total %> due.</p>
 <form id="payment-form" 
   data-stripe-publishable-key="<%= Rails.application
                                         .credentials

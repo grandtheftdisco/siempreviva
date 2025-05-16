@@ -10,7 +10,9 @@ class CartItemsController < ApplicationController
     @product = Product.find(params[:cart_item][:product_id])
     @quantity = params[:cart_item][:quantity].to_i
 
-    @new_cart_item = CartService::AddToCart.call(product: @product, cart: @cart, quantity: @quantity)
+    @new_cart_item = CartService::AddToCart.call(product: @product, 
+                                                 cart: @cart, 
+                                                 quantity: @quantity)
 
     respond_to do |format|
       if @new_cart_item.save
