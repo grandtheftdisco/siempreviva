@@ -7,18 +7,16 @@ class CartItemsController < ApplicationController
 
   def create
     @cart = Current.cart
-    product = Product.find(params[:product_id])
-    @cart_item = @cart.add_product(product)
-    @cart_item.save
-    @cart.save
+    @product = Product.find(params[:product_id])
+    @new_cart_item = CartService::AddToCart.call(product: @product, cart: @cart)
     respond_to do |format|
-      if @cart_item.save
+      if @new_cart_item.save
         format.html { redirect_to cart_path(@cart.id),
           notice: "Item added to bag!" }
-        format.json { render :show, status: :created, location: @cart_item }
+        format.json { render :show, status: :created, location: @new_cart_item }
       else
         format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @cart_item.errors, status: :unprocessable_entity }
+        format.json { render json: @new_cart_item.errors, status: :unprocessable_entity }
       end
     end
   end
