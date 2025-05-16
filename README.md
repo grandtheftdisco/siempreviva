@@ -11,7 +11,9 @@
   - I have my first service object functioning at a basic level! 🎉
     - I've written a handful of tests (TDD) and all are passing. Time to write more, right?
   - Bookis and I isolated some code that constituted its own service object, so I also began writing that class, too.
-  - Now, I've got 1) a service object that calculates a cart's total, and 2) a service object that adds a product to a cart.
+  - Now, I've got:
+    - `AddToCart` ([code](https://github.com/grandtheftdisco/siempreviva/blob/amanda/cart-calculator/app/services/cart_service/add_to_cart.rb)) - a service object that adds a product to a cart, and 
+    - `CalculateCart` ([code](https://github.com/grandtheftdisco/siempreviva/blob/amanda/cart-calculator/app/services/cart_service/calculate_cart.rb)) - a service object that calculates a cart's total. 
   - I also made the decision to write the frontend of this app in React ⚛️
     - I may write a Hotwire version, as well, to learn both libraries. Going with React for now to be as marketable as possible!
 
