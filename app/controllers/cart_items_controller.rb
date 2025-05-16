@@ -7,8 +7,11 @@ class CartItemsController < ApplicationController
 
   def create
     @cart = Current.cart
-    @product = Product.find(params[:product_id])
-    @new_cart_item = CartService::AddToCart.call(product: @product, cart: @cart)
+    @product = Product.find(params[:cart_item][:product_id])
+    @quantity = params[:cart_item][:quantity].to_i
+
+    @new_cart_item = CartService::AddToCart.call(product: @product, cart: @cart, quantity: @quantity)
+
     respond_to do |format|
       if @new_cart_item.save
         format.html { redirect_to cart_path(@cart.id),
@@ -35,7 +38,7 @@ class CartItemsController < ApplicationController
     def cart_item_params 
       params.require(:cart_item)
         .permit(
-          :price, :product_id, :cart_id
+          :price, :product_id, :cart_id, :quantity
         )
     end
 end

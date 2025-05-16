@@ -9,7 +9,7 @@ module CartService
     private
 
     def self.calculate_cart_total(cart)
-      total = cart.cart_items.inject(0){ |res, item| item.price + res }
+      total = cart.cart_items.inject(0){ |res, item| (item.price * item.quantity) + res }
     end
   end
 end
