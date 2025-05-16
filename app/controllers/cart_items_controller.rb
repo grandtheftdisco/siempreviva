@@ -30,6 +30,14 @@ class CartItemsController < ApplicationController
   end
 
   def destroy
+    @cart_item.destroy!
+
+    respond_to do |format|
+      format.html { redirect_to cart_path, 
+                    status: :see_other,
+                    notice: "#{@cart_item.product.name} was removed from your cart."}
+      format.json { head :no_content }
+    end 
   end
 
   private

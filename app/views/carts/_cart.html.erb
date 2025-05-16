@@ -3,7 +3,10 @@
     <%= item.product.name %>
     <%= item.product.price %>
     <p>Quantity: <%= item.quantity %></p>
-    <p class="text-red-400">DELETE ITEM</p>
+    <%= button_to 'remove item', 
+        cart_item_path(item.id), 
+        method: :delete,
+        class: 'text-red-400 text-sm font-bold' %>
   <% end %>
 
   <p>Total: <%= @total %> </p>
