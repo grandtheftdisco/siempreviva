@@ -1,6 +1,7 @@
 class CartsController < ApplicationController
   def show
     @cart = Current.cart
+    @total = CartService::CalculateCart.call(cart: @cart)
   end
 
   def update
