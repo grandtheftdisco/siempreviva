@@ -2,12 +2,13 @@ require "test_helper"
 
 class AddToCartTest < ActiveSupport::TestCase
   test "when a product is added to the cart for the first time, a new cart item is created with that product's attributes" do
-    cart = carts(:mary) 
+    cart = carts(:empty) 
     product = products(:rose)
-    CartService::AddToCart.call(product:, cart:) 
+    quantity = 1
+    CartService::AddToCart.call(product:, cart:, quantity:) 
 
     new_cart_item = cart.cart_items.find_by(product_id: product.id)
-    assert_includes(cart.cart_items, new_cart_item)
+    assert_includes(cart.cart_items.reload, new_cart_item)
   end
 
   # test "when a product has already been added to a cart, adding it again increments the quantity of the existing cart item" do
