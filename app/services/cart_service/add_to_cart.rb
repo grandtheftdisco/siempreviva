@@ -8,10 +8,10 @@ module CartService
 
     def self.check_for_duplicate_cart_items(product:, cart:, quantity:)
       cart_items = cart.cart_items.to_a
-      existing_item = cart_items.find { |item| item.id == product.id }
+      existing_item = cart_items.find { |item| item.product_id == product.id }
       if existing_item
         existing_item.quantity += quantity
-        existing_item.save!
+        existing_item.tap(&:save!)
       else
         new_cart_item = CartItem.create!(price: product.price,
                                          cart_id: cart.id,
