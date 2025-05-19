@@ -4,8 +4,10 @@ lavender:
   price: 10
   product: lavender
   cart: mary
+  quantity: 1
 
 rose:
   price: 20
   product: rose
   cart: bob
+  quantity: 1
