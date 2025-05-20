@@ -7,28 +7,33 @@ ProductCategory.delete_all
 product_category = ProductCategory.create!(name: "Essential Oils Test Category")
 
 Product.create!(
-  name: 'Blue Tansy', 
-  price: 30, 
+  name: 'Melissa', 
+  price: 1800, 
   product_category_id: product_category.id
 )
 Product.create!(
-  name: 'Rose',
-  price: 95,
+  name: 'Sage',
+  price: 900,
   product_category_id: product_category.id
 )
 Product.create!(
-  name: 'Spike Lavender',
-  price: 20,
+  name: 'Immortelle',
+  price: 2000,
   product_category_id: product_category.id
 )
 Product.create!(
-  name: 'Birch',
-  price: 15,
+  name: 'Roman Chamomile',
+  price: 1500,
   product_category_id: product_category.id
 )
 Product.create!(
-  name: 'Orange',
-  price: 15,
+  name: 'Hyssop',
+  price: 1100,
+  product_category_id: product_category.id
+)
+Product.create!(
+  name: 'Lavender',
+  price: 1000,
   product_category_id: product_category.id
 )
 puts "#{Product.count} products created"
