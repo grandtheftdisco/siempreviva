@@ -7,7 +7,14 @@ class CheckoutsController < ApplicationController
   def create
     @cart = Current.cart
     @payment_intent = set_payment_intent(@cart)
-    
+
+    line_items = @cart.cart_items.map do |item|
+      {
+        price: item.product.stripe_price_id,
+        quantity: item.quantity
+      }
+    end
+
     checkout = Checkout.create(
       payment_intent_id: @payment_intent.id,
       cart_id: @cart.id,
@@ -51,6 +58,7 @@ class CheckoutsController < ApplicationController
         Stripe::PaymentIntent.update(
           @payment_intent.id, 
           amount: @total
+          line_items: line_items
         )
       end
 
@@ -65,7 +73,8 @@ class CheckoutsController < ApplicationController
       amount: @total,
       currency: 'usd',
       automatic_payment_methods: { enabled: true },
-      metadata: { cart_id: @cart.id }      
+      metadata: { cart_id: @cart.id },
+      line_items: line_items # for my reference; not used by Stripe directly  
     })
   end
 end
