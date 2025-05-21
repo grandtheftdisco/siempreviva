@@ -16,9 +16,15 @@ document.addEventListener('DOMContentLoaded', function () {
       if (!response.ok) {
         // Handle HTTP errors (e.g., 404, 500)
         console.error('HTTP error:', response.status);
-        return response.text().then(text => { //Get the text of the error page.
+        return response.text().then(text => { 
+          //Get the text of the error page.
           console.error('Error details:', text);
-          throw new Error(`HTTP error! status: ${response.status}`);
+          if (response.status === 500 ) {
+            console.error('Server encountered an internal error.');
+            alert('An unexpected server error occured. Please try again later.');
+          } else {
+            throw new Error(`HTTP error! status: ${response.status}`);
+          }
         });
       }
       // Check the content type
@@ -26,7 +32,8 @@ document.addEventListener('DOMContentLoaded', function () {
       if (!contentType || !contentType.includes('application/json')) {
         // Handle non-JSON responses
         console.error('Not a JSON response');
-        return response.text().then(text => { //Get the text of the error page.
+        return response.text().then(text => { 
+          //Get the text of the error page.
           console.error('Response details:', text);
           throw new Error('Not a JSON response!');
         });
@@ -45,7 +52,7 @@ document.addEventListener('DOMContentLoaded', function () {
       shippingAddressElement.mount('#address-element-shipping');
       billingAddressElement.mount('#address-element-billing');
       paymentElement.mount('#payment-element');
-      
+      // FIXME - add EL to a button...? step 7 of accept a payment docs 
       form.addEventListener('submit', function (event) {
         event.preventDefault();
     
