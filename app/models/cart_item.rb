@@ -1,7 +1,6 @@
 class CartItem < ApplicationRecord
   belongs_to :cart
-  belongs_to :product
-  validates :product_id, uniqueness: { scope: :cart_id }
+  validates :stripe_product_id, uniqueness: { scope: :cart_id }
   before_validation :set_quantity
   before_validation :set_price
 
@@ -13,6 +12,7 @@ class CartItem < ApplicationRecord
     end
   end
   def set_price
+    # FIXME - this method needs to be updated for Stripe paradigm
     self.price ||= product.price if product.present?
   end
 end
