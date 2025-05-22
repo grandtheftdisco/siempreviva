@@ -1,7 +1,9 @@
 <div class="bg-green-200 p-5">
   <p><%= link_to "#{product.name}", product_path(product.id) %></p>
-  <p>[image]</p>
-  <p><%= product.default_price %></p>
+  <% product.images.each do |i| %>
+    <%= image_tag("#{i}",
+                  width: 200) %>
+  <% end %>
   <%= number_to_currency(product.price) %>
   <%= form_for :cart_item, url: cart_items_path, method: :post do |f| %>
     <%= hidden_field_tag 'cart_item[product_id]', product.id %>
