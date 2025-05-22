@@ -5,7 +5,7 @@
   <!--[this will be where ProductCategory lives; may use param filter strategy a la Henventory]-->
   <div class="flex flex-col gap-10">
     <% @products.each do |product| %>
-      <%= render product %>
+      <%= render partial: "product", object: product %>
     <% end %>
   </div>
 </div>
