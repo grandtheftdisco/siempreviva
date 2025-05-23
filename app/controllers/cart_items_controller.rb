@@ -7,11 +7,11 @@ class CartItemsController < ApplicationController
     quantity = params[:cart_item][:quantity].to_i
 
     @new_cart_item = CartService::AddToCart.call(product: @product, 
-                                                 cart: @cart, 
+                                                 cart: cart, 
                                                  quantity: @quantity)
 
     respond_to do |format|
-      format.html { redirect_to cart_path(@cart.id),
+      format.html { redirect_to cart_path(cart.id),
         notice: "Item added to bag!" }
       format.json { render :show, 
         status: :created, 

@@ -4,7 +4,7 @@
     <p>Price: <%= to_dollars(item.price) %></p>
     <p>Quantity: <%= item.quantity %></p>
     <%= button_to 'remove item', 
-        cart_item_path(item.id), 
+        item, 
         method: :delete,
         class: 'text-red-400 text-sm font-bold' %>
   <% end %>
