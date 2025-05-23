@@ -1,4 +1,4 @@
-<p><%= number_to_currency(@transaction_total_in_dollars) %> due.</p>
+<p><%= to_dollars(@total) %> due.</p>
 <form id="payment-form" 
   data-stripe-publishable-key="<%= Rails.application
                                         .credentials

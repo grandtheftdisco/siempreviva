@@ -1,7 +1,6 @@
 class CheckoutsController < ApplicationController
   def new
     cart_and_total_setup
-    @transaction_total_in_dollars = @total / 100.00
   end
   
   def create
