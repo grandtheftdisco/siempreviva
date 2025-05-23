@@ -1,11 +1,10 @@
-<p><%=@cart.total_amount %> due.</p>
+<p><%= to_dollars(@total) %> due.</p>
 <form id="payment-form" 
   data-stripe-publishable-key="<%= Rails.application
                                         .credentials
                                         .dig(:stripe, :publishable_key) %>"
   data-checkout-success-path="<%= checkout_success_url %>">
   <div id="payment-element">
-    <!--Stripe.js injects Payment Element Here-->
   </div>
   <div id="address-element-shipping">
   </div>

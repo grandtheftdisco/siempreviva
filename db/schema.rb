@@ -10,16 +10,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_04_18_001627) do
+ActiveRecord::Schema[8.0].define(version: 2025_05_22_171527) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
   create_table "cart_items", force: :cascade do |t|
     t.integer "price", null: false
-    t.integer "product_id", null: false
     t.integer "cart_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "quantity", default: 1, null: false
+    t.text "stripe_product_id", null: false
+    t.text "name"
+    t.text "image", default: "https://www.blastone.com/wp-content/uploads/image-coming-soon-29.png"
+    t.index ["cart_id", "stripe_product_id"], name: "index_cart_items_on_cart_id_and_stripe_product_id", unique: true
   end
 
   create_table "carts", force: :cascade do |t|

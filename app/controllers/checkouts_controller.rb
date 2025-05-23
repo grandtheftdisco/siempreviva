@@ -1,13 +1,12 @@
 class CheckoutsController < ApplicationController
-  include CurrentCart
-  before_action :set_cart, only: %i[ new create ]
-
   def new
+    cart_and_total_setup
   end
   
   def create
+    cart_and_total_setup
     @payment_intent = set_payment_intent(@cart)
-    
+
     checkout = Checkout.create(
       payment_intent_id: @payment_intent.id,
       cart_id: @cart.id,
@@ -22,6 +21,11 @@ class CheckoutsController < ApplicationController
   end
 
   private
+
+  def cart_and_total_setup
+    @cart = Current.cart
+    @total = CartService::CalculateCart.call(cart: @cart)
+  end
 
   def set_payment_intent(cart)
     @existing_intent = Checkout.find_by(
@@ -46,10 +50,10 @@ class CheckoutsController < ApplicationController
         create_new_payment_intent
       end
 
-      unless @payment_intent.amount == @cart.total_amount
+      unless @payment_intent.amount == @total
         Stripe::PaymentIntent.update(
           @payment_intent.id, 
-          amount: @cart.total_amount
+          amount: @total,
         )
       end
 
@@ -60,10 +64,10 @@ class CheckoutsController < ApplicationController
 
   def create_new_payment_intent
     @payment_intent = Stripe::PaymentIntent.create({
-      amount: @cart.total_amount,
+      amount: @total,
       currency: 'usd',
       automatic_payment_methods: { enabled: true },
-      metadata: { cart_id: @cart.id }      
+      metadata: { cart_id: @cart.id },
     })
   end
 end

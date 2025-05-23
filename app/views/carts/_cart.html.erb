@@ -1,7 +1,13 @@
 <div>
   <% @cart.cart_items.each do |item| %>
-    <%= item.product.name %>
-    <%= item.product.price %>
-    <p class="text-red-400">DELETE ITEM</p>
+    <%= item.name.titleize %>
+    <p>Price: <%= to_dollars(item.price) %></p>
+    <p>Quantity: <%= item.quantity %></p>
+    <%= button_to 'remove item', 
+        item, 
+        method: :delete,
+        class: 'text-red-400 text-sm font-bold' %>
   <% end %>
+
+  <p>Total: <%= to_dollars(@cart.total) %> </p>
 </div>

@@ -1,11 +1,13 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  price: 1
-  product_id: 1
-  cart_id: 1
+lavender:
+  price: 10
+  product: lavender
+  cart: mary
+  quantity: 1
 
-two:
-  price: 1
-  product_id: 1
-  cart_id: 1
+rose:
+  price: 20
+  product: rose
+  cart: bob
+  quantity: 1
