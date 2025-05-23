@@ -1,32 +1,27 @@
 class CartItemsController < ApplicationController
-  before_action :set_cart_item, only: %i[ update destroy ]
-
-  def new
-    @cart_item = CartItem.new
-  end
+  before_action :set_cart_item, only: %i[ destroy ]
 
   def create
-    @cart = Current.cart
-    @product = Product.find(params[:cart_item][:product_id])
-    @quantity = params[:cart_item][:quantity].to_i
+    cart = Current.cart
+    product_setup
+    quantity = params[:cart_item][:quantity].to_i
 
     @new_cart_item = CartService::AddToCart.call(product: @product, 
                                                  cart: @cart, 
                                                  quantity: @quantity)
 
     respond_to do |format|
-      if @new_cart_item.save
-        format.html { redirect_to cart_path(@cart.id),
-          notice: "Item added to bag!" }
-        format.json { render :show, status: :created, location: @new_cart_item }
-      else
+      format.html { redirect_to cart_path(@cart.id),
+        notice: "Item added to bag!" }
+      format.json { render :show, 
+        status: :created, 
+        location: @new_cart_item }
+    end
+    rescue ActiveRecord::RecordInvalid
+      respond_to do |format|    
         format.html { render :new, status: :unprocessable_entity }
         format.json { render json: @new_cart_item.errors, status: :unprocessable_entity }
       end
-    end
-  end
-
-  def update
   end
 
   def destroy
