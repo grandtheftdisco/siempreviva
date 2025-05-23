@@ -7,29 +7,46 @@ ProductCategory.delete_all
 product_category = ProductCategory.create!(name: "Essential Oils Test Category")
 
 Product.create!(
-  name: 'Blue Tansy', 
-  price: 30, 
-  product_category_id: product_category.id
+  name: 'Melissa', 
+  price: 1800, 
+  product_category_id: product_category.id,
+  stripe_price_id: 'price_1RKACrC2evWDh2V2MlDwc5z7',
+  stripe_product_id: 'prod_SEdTk1bZbKa6a1'
 )
 Product.create!(
-  name: 'Rose',
-  price: 95,
-  product_category_id: product_category.id
+  name: 'Sage',
+  price: 900,
+  product_category_id: product_category.id,
+  stripe_price_id: 'price_1RKAB0C2evWDh2V2OVPut3p7',
+  stripe_product_id: 'prod_SEdRAILBQj1iOb'
 )
 Product.create!(
-  name: 'Spike Lavender',
-  price: 20,
-  product_category_id: product_category.id
+  name: 'Immortelle',
+  price: 2000,
+  product_category_id: product_category.id,
+  stripe_price_id: 'price_1RK5efC2evWDh2V2lkvdqQB2',
+  stripe_product_id: 'prod_SEYmDAzbEBHtC5'
 )
 Product.create!(
-  name: 'Birch',
-  price: 15,
-  product_category_id: product_category.id
+  name: 'Roman Chamomile',
+  price: 1500,
+  product_category_id: product_category.id,
+  stripe_price_id: 'price_1RK5cIC2evWDh2V2kvNl4dFV',
+  stripe_product_id: 'prod_SEYjnKbDeuvVQW'
 )
 Product.create!(
-  name: 'Orange',
-  price: 15,
-  product_category_id: product_category.id
+  name: 'Hyssop',
+  price: 1100,
+  product_category_id: product_category.id,
+  stripe_price_id: 'price_1RK5fSC2evWDh2V21BNqbarM',
+  stripe_product_id: 'prod_SEYinuRcBDegmN'
+)
+Product.create!(
+  name: 'Lavender',
+  price: 1000,
+  product_category_id: product_category.id,
+  stripe_price_id: 'price_1RJKDAC2evWDh2V2p8E2Uo8W',
+  stripe_product_id: 'prod_SDljakyHifZra3'
 )
 puts "#{Product.count} products created"
 
