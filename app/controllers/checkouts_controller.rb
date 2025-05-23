@@ -8,13 +8,6 @@ class CheckoutsController < ApplicationController
     cart_and_total_setup
     @payment_intent = set_payment_intent(@cart)
 
-    line_items = @cart.cart_items.map do |item|
-                 {
-                   price: item.price,
-                   quantity: item.quantity
-                 }
-    end
-
     checkout = Checkout.create(
       payment_intent_id: @payment_intent.id,
       cart_id: @cart.id,
