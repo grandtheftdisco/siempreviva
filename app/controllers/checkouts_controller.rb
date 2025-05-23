@@ -1,18 +1,18 @@
 class CheckoutsController < ApplicationController
   def new
-    @cart = Current.cart
-    @total = CartService::CalculateCart.call(cart: @cart)
+    cart_and_total_setup
+    @transaction_total_in_dollars = @total / 100.00
   end
   
   def create
-    @cart = Current.cart
+    cart_and_total_setup
     @payment_intent = set_payment_intent(@cart)
 
     line_items = @cart.cart_items.map do |item|
-      {
-        price: item.product.stripe_price_id,
-        quantity: item.quantity
-      }
+                 {
+                   price: item.price,
+                   quantity: item.quantity
+                 }
     end
 
     checkout = Checkout.create(
@@ -30,6 +30,20 @@ class CheckoutsController < ApplicationController
 
   private
 
+  def cart_and_total_setup
+    @cart = Current.cart
+    @total = CartService::CalculateCart.call(cart: @cart)
+  end
+
+  def line_items_setup
+    line_items = @cart.cart_items.map do |item|
+      {
+        price: item.price,
+        quantity: item.quantity
+      }
+    end
+  end
+
   def set_payment_intent(cart)
     @existing_intent = Checkout.find_by(
       cart_id: cart.id, 
@@ -43,7 +57,6 @@ class CheckoutsController < ApplicationController
   end
 
   def validate_intent(existing_intent_id)
-    @total = CartService::CalculateCart.call(cart: @cart)
     begin
       @payment_intent = Stripe::PaymentIntent.retrieve(
         existing_intent_id
@@ -55,10 +68,11 @@ class CheckoutsController < ApplicationController
       end
 
       unless @payment_intent.amount == @total
+        line_items_setup
         Stripe::PaymentIntent.update(
           @payment_intent.id, 
-          amount: @total
-          line_items: line_items
+          amount: @total,
+          line_items: line_items,
         )
       end
 
@@ -68,13 +82,11 @@ class CheckoutsController < ApplicationController
   end
 
   def create_new_payment_intent
-    @total = CartService::CalculateCart.call(cart: @cart)
     @payment_intent = Stripe::PaymentIntent.create({
       amount: @total,
       currency: 'usd',
       automatic_payment_methods: { enabled: true },
       metadata: { cart_id: @cart.id },
-      line_items: line_items # for my reference; not used by Stripe directly  
     })
   end
 end

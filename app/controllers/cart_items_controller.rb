@@ -7,7 +7,7 @@ class CartItemsController < ApplicationController
 
   def create
     @cart = Current.cart
-    @product = Product.find(params[:cart_item][:product_id])
+    @product = product_setup
     @quantity = params[:cart_item][:quantity].to_i
 
     @new_cart_item = CartService::AddToCart.call(product: @product, 
@@ -35,7 +35,7 @@ class CartItemsController < ApplicationController
     respond_to do |format|
       format.html { redirect_to cart_path, 
                     status: :see_other,
-                    notice: "#{@cart_item.product.name} was removed from your cart."}
+                    notice: "#{@cart_item.name} was removed from your cart."}
       format.json { head :no_content }
     end 
   end
@@ -45,10 +45,17 @@ class CartItemsController < ApplicationController
       @cart_item = CartItem.find(params[:id])
     end
 
+    def product_setup
+      @products = Stripe::Product.list(active: true, limit: 100).map do |product|
+                    ProductWrapper.new(product)
+                  end
+      @product = @products.find { |item| item.id === (params[:cart_item][:stripe_product_id]) }
+    end
+
     def cart_item_params 
       params.require(:cart_item)
         .permit(
-          :price, :product_id, :cart_id, :quantity
+          :price, :stripe_product_id, :cart_id, :quantity 
         )
     end
 end

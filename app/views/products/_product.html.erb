@@ -1,12 +1,13 @@
 <div class="bg-green-200 p-5">
-  <p><%= link_to "#{product.name}", product_path(product.id) %></p>
+  <p><%= link_to "#{product.name.titleize}", product_path(product.id) %></p>
   <% product.images.each do |i| %>
     <%= image_tag("#{i}",
                   width: 200) %>
   <% end %>
-  <%= number_to_currency(product.price) %>
+  <p>Price: <%= number_to_currency(product.price_in_dollars) %></p>
+
   <%= form_for :cart_item, url: cart_items_path, method: :post do |f| %>
-    <%= hidden_field_tag 'cart_item[product_id]', product.id %>
+    <%= hidden_field_tag 'cart_item[stripe_product_id]', product.id %>
     <%= f.label :quantity %>: 
     <%= f.number_field :quantity, 
       class:'bg-yellow-200',

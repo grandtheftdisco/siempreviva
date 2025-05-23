@@ -4,6 +4,10 @@ class CartItem < ApplicationRecord
   before_validation :set_quantity
   before_validation :set_price
 
+  def price_in_dollars
+    self.price / 100.00
+  end
+
   private
 
   def set_quantity
@@ -11,8 +15,15 @@ class CartItem < ApplicationRecord
       self.quantity = 1
     end
   end
+
+  # REVIEW - is there a way to do this without an API call?
   def set_price
-    # FIXME - this method needs to be updated for Stripe paradigm
-    self.price ||= product.price if product.present?
+    @products = Stripe::Product.list(active: true, limit: 100).map do |product|
+      ProductWrapper.new(product)
+    end
+
+    related_product = @products.find { |product| product.id === self.stripe_product_id }
+
+    self.price ||= related_product.price if related_product.present?
   end
 end

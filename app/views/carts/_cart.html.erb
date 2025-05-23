@@ -1,7 +1,7 @@
 <div>
   <% @cart.cart_items.each do |item| %>
-    <%= item.product.name %>
-    <%= item.product.price %>
+    <%= item.name.titleize %>
+    <p>Price: <%= number_to_currency(item.price_in_dollars) %></p>
     <p>Quantity: <%= item.quantity %></p>
     <%= button_to 'remove item', 
         cart_item_path(item.id), 
@@ -9,5 +9,5 @@
         class: 'text-red-400 text-sm font-bold' %>
   <% end %>
 
-  <p>Total: <%= @total %> </p>
+  <p>Total: <%= number_to_currency(@cart.total_in_dollars) %> </p>
 </div>
