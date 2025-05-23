@@ -16,6 +16,6 @@ class ProductsController < ApplicationController
     end
   
     def set_product
-      @product = @products.find { |product| product.id === params[:id] }
+      @product = @products.find { |product| product.id == params[:id] }
     end
 end
