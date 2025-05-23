@@ -27,15 +27,6 @@ class CheckoutsController < ApplicationController
     @total = CartService::CalculateCart.call(cart: @cart)
   end
 
-  def line_items_setup
-    line_items = @cart.cart_items.map do |item|
-      {
-        price: item.price,
-        quantity: item.quantity
-      }
-    end
-  end
-
   def set_payment_intent(cart)
     @existing_intent = Checkout.find_by(
       cart_id: cart.id, 
@@ -60,11 +51,9 @@ class CheckoutsController < ApplicationController
       end
 
       unless @payment_intent.amount == @total
-        line_items_setup
         Stripe::PaymentIntent.update(
           @payment_intent.id, 
           amount: @total,
-          line_items: line_items,
         )
       end
 
