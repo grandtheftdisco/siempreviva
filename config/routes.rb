@@ -21,7 +21,7 @@ Rails.application.routes.draw do
   
   get "carts/show/:id", to: "carts#show", as: :cart
 
-  resources :cart_items, only: [:create, :update, :new, :destroy ] 
+  resources :cart_items, only: [:create, :destroy ] 
     
   resources :checkouts, only: [ :new, :create ]
   get "checkout_success", to: "checkouts#checkout_success", as: :checkout_success

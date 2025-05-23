@@ -39,6 +39,4 @@ class CalculateCartTest < ActiveSupport::TestCase
 
     assert_equal(products(:lavender).price * 2, total)
   end
-
-  # LATER - read discount docs and write discount tests
 end
