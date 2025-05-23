@@ -27,18 +27,6 @@ document.addEventListener('DOMContentLoaded', function () {
           }
         });
       }
-      // Check the content type
-      const contentType = response.headers.get('content-type');
-      if (!contentType || !contentType.includes('application/json')) {
-        // Handle non-JSON responses
-        console.error('Not a JSON response');
-        return response.text().then(text => { 
-          //Get the text of the error page.
-          console.error('Response details:', text);
-          throw new Error('Not a JSON response!');
-        });
-      }
-      //If everything is ok, parse to JSON
       return response.json();
     })
     .then((data) => {
