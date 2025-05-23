@@ -52,7 +52,6 @@ document.addEventListener('DOMContentLoaded', function () {
       shippingAddressElement.mount('#address-element-shipping');
       billingAddressElement.mount('#address-element-billing');
       paymentElement.mount('#payment-element');
-      // FIXME - add EL to a button...? step 7 of accept a payment docs 
       form.addEventListener('submit', function (event) {
         event.preventDefault();
     
