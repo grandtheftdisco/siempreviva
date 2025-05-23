@@ -7,7 +7,7 @@ class CartItemsController < ApplicationController
 
   def create
     @cart = Current.cart
-    @product = product_setup
+    product_setup
     @quantity = params[:cart_item][:quantity].to_i
 
     @new_cart_item = CartService::AddToCart.call(product: @product, 
@@ -49,7 +49,7 @@ class CartItemsController < ApplicationController
       @products = Stripe::Product.list(active: true, limit: 100).map do |product|
                     ProductWrapper.new(product)
                   end
-      @product = @products.find { |item| item.id === (params[:cart_item][:stripe_product_id]) }
+      @product = @products.find { |item| item.id == params[:cart_item][:stripe_product_id] }
     end
 
     def cart_item_params 
