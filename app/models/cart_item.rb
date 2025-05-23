@@ -16,14 +16,12 @@ class CartItem < ApplicationRecord
     end
   end
 
-  # REVIEW - is there a way to do this without an API call?
   def set_price
     @products = Stripe::Product.list(active: true, limit: 100).map do |product|
       ProductWrapper.new(product)
     end
 
-    related_product = @products.find { |product| product.id === self.stripe_product_id }
-
+    related_product = Stripe::Product.retrieve(self.stripe_product_id)
     self.price ||= related_product.price if related_product.present?
   end
 end
