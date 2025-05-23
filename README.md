@@ -4,6 +4,12 @@
 ## ⚒️ UNDER CONSTRUCTION 
 - I'm building this project as you read this, so watch the repo or check back often to see my progress!
 
+- 📆 **5/23/25**
+  - Completed my `CartService` objects: `AddToCart` and `CartCalculator` are now functional and merged into `main` after code review!
+  - Also switched from using my own `products` table to using Stripe Products that were generated in the web dashboard; this will make it easy for the product owners to add, remove, and disable/enable products with ease.
+  - I wrote my first wrapper (inherited from `SimpleDelegator` with a `price` method to simply retrieval of a Stripe Product's price after retrieving the Product object via an API call
+  - There was a lot I did this week: check out my [service object PR](https://github.com/grandtheftdisco/siempreviva/pull/3) and my [Stripe Product switch PR](https://github.com/grandtheftdisco/siempreviva/pull/4) to see everything I wrote!
+
 - 📆 **5/16/25**
   - No code review this week either: but I'm almost ready to submit a PR!
     - I've pushed the code I've written so far - it's in the [amanda/cart-calculator](https://github.com/grandtheftdisco/siempreviva/tree/amanda/cart-calculator) branch.
