@@ -19,12 +19,11 @@ Rails.application.routes.draw do
 
   resources :products, only: [ :index, :show ]
   
-  get "carts/show/:id", to: "carts#show", as: :cart
+  get "my-bag", to: "carts#show", as: :cart
 
   resources :cart_items, only: [:create, :destroy ] 
     
   resources :checkouts, only: [ :new, :create, :show ]
-  
-  # TODO - fix the checkouts#show route to mask the session id/client secret
-  # TODO - remove that from the params in CheckoutsController
+  get "checkout_success", to: "checkouts#checkout_success", as: :checkout_success
+  get "checkout_cancelled", to: "checkouts#checkout_cancelled", as: :checkout_cancelled
 end

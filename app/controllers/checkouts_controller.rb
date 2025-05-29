@@ -19,7 +19,7 @@ class CheckoutsController < ApplicationController
       }
     end
 
-    # # so Rails will interpret the URL helper properly
+    # so Rails will interpret the URL helper properly
     return_url = checkout_url('CHECKOUT_SESSION_ID')
     return_url = return_url.gsub('CHECKOUT_SESSION_ID', '{CHECKOUT_SESSION_ID}')
     
@@ -39,7 +39,6 @@ class CheckoutsController < ApplicationController
     )
 
     render json: {
-    #  id: session.id,
       clientSecret: session.client_secret,
       checkoutId: checkout.id
     }
@@ -49,13 +48,12 @@ class CheckoutsController < ApplicationController
     @session = Stripe::Checkout::Session.retrieve(params[:id])
 
     if @session.status == 'complete'
+      redirect_to checkout_success_url
       # handle successful payment
       # update db
       # send confirmation email
-    elsif @session.status == 'open'
-      # payment still in progress
     elsif @session.status == 'expired'
-      # handle expired session / create new one
+      render :new
     end
   end
 end
