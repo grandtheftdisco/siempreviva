@@ -32,9 +32,9 @@ class CheckoutsController < ApplicationController
 
     # for my db
     checkout = Checkout.create(
-      payment_intent_id: 'test_paymentid12534',
+      stripe_checkout_session_id: session.id,
       cart_id: @cart.id,
-      status: 'pending',
+      status: 'open',
       stripe_customer_id: 'test_customerid123',
     )
 
