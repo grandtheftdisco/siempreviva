@@ -1,8 +1,6 @@
 <h1>Payment Status: <%= @session.status %></h1>
 
-<% if @session.status == 'complete' %>
-  <p>The payment was successful.</p>
-<% elsif @session.status == 'open' %>
+<% if @session.status == 'open' %>
   <p>The payment is being processed.</p>
 <% elsif @session.status == 'expired' %>
   <p>The session has expired.</p>
