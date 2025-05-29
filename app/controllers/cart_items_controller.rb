@@ -11,7 +11,7 @@ class CartItemsController < ApplicationController
                                                  quantity: @quantity)
 
     respond_to do |format|
-      format.html { redirect_to cart_path(cart.id),
+      format.html { redirect_to cart_path,
         notice: "Item added to bag!" }
       format.json { render :show, 
         status: :created, 
