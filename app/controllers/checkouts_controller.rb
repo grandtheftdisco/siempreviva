@@ -1,6 +1,5 @@
 class CheckoutsController < ApplicationController
   def new
-    Stripe.api_key = Rails.application.credentials.stripe[:secret_key]
     @cart = Current.cart
     @total = CartService::CalculateCart.call(cart: @cart)
   end
