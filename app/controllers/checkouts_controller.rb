@@ -1,11 +1,9 @@
 class CheckoutsController < ApplicationController
   def new
-    @cart = Current.cart
     @total = CartService::CalculateCart.call(cart: @cart)
   end
   
   def create
-    @cart = Current.cart
     line_items = @cart.cart_items.map do |item|
       product = Stripe::Product.retrieve(
         { id: item.stripe_product_id, expand: ['default_price'] }
@@ -47,6 +45,7 @@ class CheckoutsController < ApplicationController
 
     if @session.status == 'complete'
       redirect_to checkout_success_url
+      @cart.destroy!
       # handle successful payment
       # update db
       # send confirmation email
