@@ -47,6 +47,7 @@ class CheckoutsController < ApplicationController
 
     if @session.status == 'complete'
       redirect_to checkout_success_url
+      @cart.destroy!
       # handle successful payment
       # update db
       # send confirmation email
