@@ -41,15 +41,14 @@ class CheckoutsController < ApplicationController
   end
 
   def show
-    @session = Stripe::Checkout::Session.retrieve(params[:id])
+    session = Stripe::Checkout::Session.retrieve(params[:id])
+    checkout = Checkout.find_by(stripe_checkout_session_id: session.id)
 
-    if @session.status == 'complete'
+    if session.status == 'complete'
+      @cart.destroy! # will implement soft deletion in near future
+      checkout.update!(status: 'complete')
       redirect_to checkout_success_url
-      @cart.destroy!
-      # handle successful payment
-      # update db
-      # send confirmation email
-    elsif @session.status == 'expired'
+    elsif session.status == 'expired'
       render :new
     end
   end
