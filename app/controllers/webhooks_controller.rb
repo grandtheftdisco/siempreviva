@@ -2,7 +2,6 @@ class WebhooksController < ApplicationController
   skip_before_action :verify_authenticity_token
 
   def create
-    Rails.logger.info "~+~+~+~+~+~ Webhook received ~+~+~+~+~+~+~"
     payload = request.body.read
     sig_header = request.env['HTTP_STRIPE_SIGNATURE']
     event = nil
@@ -11,7 +10,6 @@ class WebhooksController < ApplicationController
       event = Stripe::Webhook.construct_event(
         payload, sig_header, Rails.application.credentials.dig(:stripe, :webhook_secret)
       )
-      Rails.logger.info "====EVENT===== #{event.inspect}"
     rescue JSON::ParserError => editing
       # invalid payload
       return head :bad_request
@@ -32,16 +30,6 @@ class WebhooksController < ApplicationController
     case event.type
     when 'checkout.session.completed'
       handle_checkout_session_completed(event.data.object)
-    when 'payment_intent.created'
-      Rails.logger.info "~+~+~+~+~+~ Payment Intent created ~+~+~+~+~+~+~"
-    when 'payment_intent.succeeded'
-      Rails.logger.info "~+~+~+~+~+~ Payment Intent succeeded ~+~+~+~+~+~+~"
-    when 'mandate.updated'
-      Rails.logger.info "~+~+~+~+~+~ Mandate updated ~+~+~+~+~+~+~"
-    when 'charge.updated'
-      Rails.logger.info "~+~+~+~+~+~ Charge updated ~+~+~+~+~+~+~"
-    when 'charge.succeeded'
-      Rails.logger.info "~+~+~+~+~+~ Charge suceeded ~+~+~+~+~+~+~"
     # add more event types in future: refunds, order shipped, etc
     else 
       puts "Unhandled event type: #{event.type}"
