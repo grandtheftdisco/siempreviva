@@ -7,5 +7,6 @@ class ApplicationController < ActionController::Base
 
   def set_current_cart
     Current.cart = Cart.find_or_create_by(session_id: session.id.to_s)
+    @cart = Current.cart
   end
 end

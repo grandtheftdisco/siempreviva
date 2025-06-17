@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_05_22_171527) do
+ActiveRecord::Schema[8.0].define(version: 2025_05_30_143954) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -35,28 +35,12 @@ ActiveRecord::Schema[8.0].define(version: 2025_05_22_171527) do
   end
 
   create_table "checkouts", force: :cascade do |t|
-    t.text "payment_intent_id", null: false
+    t.text "payment_intent_id"
     t.integer "cart_id", null: false
     t.text "status", null: false
     t.text "stripe_customer_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-  end
-
-  create_table "product_categories", force: :cascade do |t|
-    t.text "name", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "products", force: :cascade do |t|
-    t.text "name", null: false
-    t.integer "price", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.integer "product_category_id"
-    t.text "stripe_product_id"
-    t.text "stripe_price_id"
-    t.text "description"
+    t.text "stripe_checkout_session_id", null: false
   end
 end
