@@ -30,22 +30,31 @@ class WebhooksController < ApplicationController
   # Stripe event router
   def handle_stripe_event(event)
     case event.type
-    when 'checkout.session.completed'
+    # i changed to watching for payment intent success since a completed checkout session could have an unprocessed payment
+    when 'payment_intent.succeeded'
       handle_checkout_session_completed(event.data.object)
-    # add more event types in future: refunds, order shipped, etc
-    else 
+    when 'payment_intent.payment_failed'
+      Rails.logger.info "PAYMENT FAILED PAYMENT FAILED PAYMENT FAILED"
+    # for wednesday - refunds
+    when 'refund.created'
+      Rails.logger.info "---------------------REFUND CREATED"
+      # handle refund creation
+    else
       puts "Unhandled event type: #{event.type}"
     end
   end
 
-  def handle_checkout_session_completed(checkout_session)
+  def handle_checkout_session_completed(payment_intent)
+    Rails.logger.info "I'd create an Order if I could!"
+    Rails.logger.info "++++ #{payment_intent.inspect}"
     order = Order.create!(
-      payment_intent_id: checkout_session.payment_intent,
-      stripe_customer_id: checkout_session.customer,
-      customer_email_address: checkout_session.customer_email,
-      amount: checkout_session.amount_total,
-      status: checkout_session.status
+      payment_intent_id: payment_intent.id,
+      stripe_customer_id: payment_intent.customer,
+      # customer_email_address: ,
+      amount: payment_intent.amount,
+      status: payment_intent.status
     )
+    Rails.logger.info "I'd send mail if I could!"
     OrderMailer.received(order).deliver_later
   end
 end
