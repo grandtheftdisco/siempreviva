@@ -12,9 +12,11 @@ class WebhooksController < ApplicationController
       )
     rescue JSON::ParserError => editing
       # invalid payload
+      Rails.logger.debug "JSON Parser Error -- invalid payload"
       return head :bad_request
     rescue Stripe::SignatureVerificationError => e
       # invalid signature
+      Rails.logger.debug "Stripe Sig Verification Error - invalid signature"
       return head :bad_request
     end
 
