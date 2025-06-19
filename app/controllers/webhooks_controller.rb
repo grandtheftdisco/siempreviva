@@ -112,8 +112,14 @@ class WebhooksController < ApplicationController
   end
 
   def handle_async_payment(checkout_session)
-    Rails.logger.info ":-:-: TEST - handle_async_payment :-:-:"
-    Rails.logger.info ":-) feature-flagged (-:"
+    payment_intent = Stripe::PaymentIntent.retrieve(checkout_session.payment_intent)
+    checkout = Checkout.find_by(payment_intent_id: payment_intent.id)
+
+    checkout.update(status: payment_intent.status,
+                    payment_intent_id: payment_intent.id) 
+
+    # feature-flagged
+    CheckAsyncPaymentJob.set(wait: 1.hour).perform_later(checkout_session.id)
   end
 
   def handle_no_payment_required(checkout_session)
