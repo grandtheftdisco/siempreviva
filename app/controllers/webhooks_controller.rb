@@ -58,18 +58,7 @@ class WebhooksController < ApplicationController
       Rails.logger.info "-0-0-0- Refund: #{refund.inspect} -0-0-0-"
       
       if refund.status == 'succeeded'
-        Rails.logger.info "---Refund Succeeded!---"
-        
-        # update Order in pg db
-        order = Order.find_by(payment_intent_id: refund.payment_intent)
-        order.update(status: "refunded on #{Time.now}")
-        
-        # update Checkout record in pg db
-        checkout = Checkout.find_by(payment_intent_id: refund.payment_intent)
-        checkout.update(status: "refunded on #{Time.now}")
-
-        # inform customer of refund issuance
-        OrderMailer.refunded(order).deliver_later
+        handle_refunded_order(refund)
       end
     # -------------------------------------------
     ### THE EVENTS BELOW SHOULD BE HANDLED AD HOC BY DEV/PRODUCT OWNER ###
@@ -126,8 +115,24 @@ class WebhooksController < ApplicationController
     Rails.logger.info ":-) feature-flagged (-:"
   end
 
+  def handle_refunded_order
+    Rails.logger.info "---Refund Succeeded!---"
+        
+    # update Order in pg db
+    order = Order.find_by(payment_intent_id: refund.payment_intent)
+    order.update(status: "refunded on #{DateTime.now}")
+    
+    # update Checkout record in pg db
+    checkout = Checkout.find_by(payment_intent_id: refund.payment_intent)
+    checkout.update(status: "refunded on #{DateTime.now}")
+
+    # inform customer of refund issuance
+    OrderMailer.refunded(order).deliver_later
+  end
+
   def handle_unexpected_event(event)
-    Rails.logger.info "#{event.inspect}"
+    Rails.logger.warn "[!] ->->-> Unexpected Event:"
+    Rails.logger.warn "#{event.inspect}"
     AdminMailer.event_notification(event)
   end
 end
