@@ -68,3 +68,4 @@ gem "tailwindcss-ruby", "~> 4.1"
 gem "foreman", "~> 0.88.1"
 gem 'stripe'
 gem 'dotenv', groups: [:development, :test]
+gem 'redis', '~> 5.0'
