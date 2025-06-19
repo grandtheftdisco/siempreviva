@@ -71,11 +71,12 @@ class WebhooksController < ApplicationController
         OrderMailer.refunded(order).deliver_later
       end
     # -------------------------------------------
-    ### THESE EVENTS SHOULD BE HANDLED AD HOC BY DEV/PRODUCT OWNER ###
+    ### THE EVENTS BELOW SHOULD BE HANDLED AD HOC BY DEV/PRODUCT OWNER ###
     # -------------------------------------------
     # If any patterns emerge over time (ie, if you have a lot of failed 
     # refunds), it will be worth your time to develop a more sophisticated
     # solution to keep yourself from having to solve these problems ad hoc.
+
     # But otherwise, this section of the case statement should allow you to
     # monitor & handle these events as needed with a low-traffic site.
     # -------------------------------------------
@@ -122,13 +123,6 @@ class WebhooksController < ApplicationController
   def handle_async_payment(checkout_session)
     Rails.logger.info ":-:-: TEST - handle_async_payment :-:-:"
     Rails.logger.info ":-) feature-flagged (-:"
-    # check payment intent via api call for deets // through a background job
-          # listen for `checkout.session.async_payment_succeeded` & `checkout.session.async_payment_failed`
-        # if payment intent status == 'processing'
-          # consider it an async payment method
-          # store the payment intent id for later verification - in your Checkout table
-
-        # background job to process successful async payments when they clear?
   end
 
   def handle_no_payment_required(checkout_session)
