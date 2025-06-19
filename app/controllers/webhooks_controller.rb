@@ -103,6 +103,10 @@ class WebhooksController < ApplicationController
       status: checkout_session.status
     )
     OrderMailer.received(@order).deliver_later
+
+    # update Checkout record in pg db
+    checkout = Checkout.find_by(stripe_checkout_session_id: checkout_session.id)
+    checkout.update!(status: checkout_session.status)
   end
 
   def handle_async_payment(checkout_session)
