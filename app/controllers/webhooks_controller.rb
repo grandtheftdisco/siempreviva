@@ -51,10 +51,11 @@ class WebhooksController < ApplicationController
 
     when 'payment_intent.payment_failed'
       Rails.logger.info "---Payment Failed!---"
+      AdminMailer.event_notification(event)
     when 'refund.created', 'refund.updated'
       Rails.logger.info "---Refund Created and/or Updated---"
       refund = event.data.object
-      Rails.logger.info "-0-0-0- #{refund.inspect} -0-0-0-"
+      Rails.logger.info "-0-0-0- Refund: #{refund.inspect} -0-0-0-"
       
       if refund.status == 'succeeded'
         Rails.logger.info "---Refund Succeeded!---"
@@ -87,6 +88,7 @@ class WebhooksController < ApplicationController
     else
       Rails.logger.info "---Unhandled event type: #{event.type}---"
     end
+    # -------------------------------------------
   end
 
   def check_for_duplicate_events(event)
@@ -95,6 +97,7 @@ class WebhooksController < ApplicationController
     if event_already_in_cache
       Rails.logger.info "!=!=! This event has already been cached & routed !=!=!"
       Rails.logger.info "--- ignoring ---"
+      AdminMailer.event_notification(event)
     elsif !event_already_in_cache
       Rails.cache.write("stripe_event:#{event.id}", DateTime.now, expires_in: 7.days)
       Rails.logger.info "#-#-# Event #{event.id} has been cached. #-#-#"
@@ -102,6 +105,7 @@ class WebhooksController < ApplicationController
   end
 
   def handle_checkout_session_completed(checkout_session)
+    # add Order record to pg db
     @order = Order.create!(
       payment_intent_id: checkout_session.payment_intent,
       stripe_customer_id: checkout_session.customer,
