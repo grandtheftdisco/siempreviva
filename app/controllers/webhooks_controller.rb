@@ -38,20 +38,7 @@ class WebhooksController < ApplicationController
       checkout_session = event.data.object
       Rails.logger.debug "Checkout Session Completed: #{checkout_session.inspect}"
 
-      if checkout_session.payment_status == 'paid'
-        handle_checkout_session_completed(checkout_session)
-      elsif checkout_session.payment_status == 'unpaid'
-        handle_async_payment(checkout_session)
-      elsif checkout_session.payment_status == 'no_payment_required'
-        handle_no_payment_required(checkout_session)
-      else
-        Rails.logger.warn "Unknown payment status: #{checkout_session.payment_status.inspect}"
-        AdminMailer.event_notification(event)
-      end
-
-    when 'payment_intent.payment_failed'
-      Rails.logger.info "---Payment Failed!---"
-      AdminMailer.event_notification(event)
+      determine_and_handle_payment_status(checkout_session, event)
     when 'refund.created', 'refund.updated'
       Rails.logger.info "---Refund Created and/or Updated---"
       refund = event.data.object
@@ -87,13 +74,28 @@ class WebhooksController < ApplicationController
       Rails.logger.info "!=!=! This event has already been cached & routed !=!=!"
       Rails.logger.info "--- ignoring ---"
       AdminMailer.event_notification(event)
+      return
     elsif !event_already_in_cache
       Rails.cache.write("stripe_event:#{event.id}", DateTime.now, expires_in: 7.days)
       Rails.logger.info "#-#-# Event #{event.id} has been cached. #-#-#"
     end
   end
 
-  def handle_checkout_session_completed(checkout_session)
+  def determine_and_handle_payment_status(checkout_session, event)
+    case checkout_session.payment_status
+    when 'paid'
+      handle_successful_payment(checkout_session)
+    when 'unpaid'
+      handle_async_payment(checkout_session)
+    when 'no_payment_required'
+      handle_no_payment_required(checkout_session)
+    else
+      Rails.logger.warn "Unknown payment status: #{checkout_session.payment_status}"
+      AdminMailer.event_notification(event)
+    end
+  end
+
+  def handle_successful_payment(checkout_session)
     # add Order record to pg db
     @order = Order.create!(
       payment_intent_id: checkout_session.payment_intent,
