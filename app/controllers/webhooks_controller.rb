@@ -80,17 +80,9 @@ class WebhooksController < ApplicationController
     # But otherwise, this section of the case statement should allow you to
     # monitor & handle these events as needed with a low-traffic site.
     # -------------------------------------------
-    when 'refund.requires_action'
-      Rails.logger.info "---Refund Requires Action!---"
-      handle_unexpected_event(event)
-    when 'refund.failed'
-      Rails.logger.info "---Refund Failed!---"
-      handle_unexpected_event(event)
-    when 'refund.canceled'
-      Rails.logger.info "---Refund Canceled!---"
-      handle_unexpected_event(event)
-    when 'refund.pending'
-      Rails.logger.info "---Refund Pending...---"
+    # ie, "if refund status is requires_action, failed, canceled, or pending"
+    when /refund\.(?!created|updated).*/
+      Rails.logger.info "---Refund Event: #{event.type}---"
       handle_unexpected_event(event)
     else
       Rails.logger.info "---Unhandled event type: #{event.type}---"
