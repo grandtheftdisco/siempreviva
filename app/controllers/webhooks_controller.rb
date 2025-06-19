@@ -20,40 +20,124 @@ class WebhooksController < ApplicationController
       return head :bad_request
     end
 
+    head :ok
+
     handle_stripe_event(event)
 
-    head :ok
   end
 
   private
 
-  # Stripe event router
+  ### Stripe Event Router ###
   def handle_stripe_event(event)
+
+    check_for_duplicate_events(event)
+
     case event.type
-    # i changed to watching for payment intent success since a completed checkout session could have an unprocessed payment
     when 'checkout.session.completed'
-      handle_checkout_session_completed(event.data.object)
+      checkout_session = event.data.object
+      Rails.logger.debug "Checkout Session Completed: #{checkout_session.inspect}"
+
+      if checkout_session.payment_status == 'paid'
+        handle_checkout_session_completed(checkout_session)
+      elsif checkout_session.payment_status == 'unpaid'
+        handle_async_payment(checkout_session)
+      elsif checkout_session.payment_status == 'no_payment_required'
+        handle_no_payment_required(checkout_session)
+      else
+        Rails.logger.warn "Unknown payment status: #{checkout_session.payment_status.inspect}"
+        AdminMailer.event_notification(event)
+      end
+
     when 'payment_intent.payment_failed'
-      Rails.logger.info "PAYMENT FAILED PAYMENT FAILED PAYMENT FAILED"
-    # for wednesday - refunds
-    when 'refund.created'
-      Rails.logger.info "---------------------REFUND CREATED"
-      # handle refund creation
+      Rails.logger.info "---Payment Failed!---"
+    when 'refund.created', 'refund.updated'
+      Rails.logger.info "---Refund Created and/or Updated---"
+      refund = event.data.object
+      Rails.logger.info "-0-0-0- #{refund.inspect} -0-0-0-"
+      
+      if refund.status == 'succeeded'
+        Rails.logger.info "---Refund Succeeded!---"
+        
+        # update Order in pg db
+        order = Order.find_by(payment_intent_id: refund.payment_intent)
+        order.update(status: "refunded on #{Time.now}")
+        
+        # update Checkout record in pg db
+        checkout = Checkout.find_by(payment_intent_id: refund.payment_intent)
+        checkout.update(status: "refunded on #{Time.now}")
+
+        # inform customer of refund issuance
+        OrderMailer.refunded(order).deliver_later
+      end
+    # -------------------------------------------
+    ### THESE EVENTS SHOULD BE HANDLED AD HOC BY DEV/PRODUCT OWNER ###
+    # -------------------------------------------
+    # If any patterns emerge over time (ie, if you have a lot of failed 
+    # refunds), it will be worth your time to develop a more sophisticated
+    # solution to keep yourself from having to solve these problems ad hoc.
+    # But otherwise, this section of the case statement should allow you to
+    # monitor & handle these events as needed with a low-traffic site.
+    # -------------------------------------------
+    when 'refund.requires_action'
+      Rails.logger.info "---Refund Requires Action!---"
+      handle_unexpected_event(event)
+    when 'refund.failed'
+      Rails.logger.info "---Refund Failed!---"
+      handle_unexpected_event(event)
+    when 'refund.canceled'
+      Rails.logger.info "---Refund Canceled!---"
+      handle_unexpected_event(event)
+    when 'refund.pending'
+      Rails.logger.info "---Refund Pending...---"
+      handle_unexpected_event(event)
     else
-      puts "Unhandled event type: #{event.type}"
+      Rails.logger.info "---Unhandled event type: #{event.type}---"
+    end
+  end
+
+  def check_for_duplicate_events(event)
+    event_already_in_cache = Rails.cache.read("stripe_event:#{event.id}")
+    
+    if event_already_in_cache
+      Rails.logger.info "!=!=! This event has already been cached & routed !=!=!"
+      Rails.logger.info "--- ignoring ---"
+    elsif !event_already_in_cache
+      Rails.cache.write("stripe_event:#{event.id}", DateTime.now, expires_in: 7.days)
+      Rails.logger.info "#-#-# Event #{event.id} has been cached. #-#-#"
     end
   end
 
   def handle_checkout_session_completed(checkout_session)
-    Rails.logger.info "I'd create an Order if I could!"
-    order = Order.create!(
+    @order = Order.create!(
       payment_intent_id: checkout_session.payment_intent,
       stripe_customer_id: checkout_session.customer,
       customer_email_address: checkout_session.customer_email,
       amount: checkout_session.amount_total,
       status: checkout_session.status
     )
-    Rails.logger.info "I'd send mail if I could!"
-    OrderMailer.received(order).deliver_later
+    OrderMailer.received(@order).deliver_later
+  end
+
+  def handle_async_payment(checkout_session)
+    Rails.logger.info ":-:-: TEST - handle_async_payment :-:-:"
+    Rails.logger.info ":-) feature-flagged (-:"
+    # check payment intent via api call for deets // through a background job
+          # listen for `checkout.session.async_payment_succeeded` & `checkout.session.async_payment_failed`
+        # if payment intent status == 'processing'
+          # consider it an async payment method
+          # store the payment intent id for later verification - in your Checkout table
+
+        # background job to process successful async payments when they clear?
+  end
+
+  def handle_no_payment_required(checkout_session)
+    Rails.logger.info ":-:-: TEST - handle_no_payment_required :-:-:"
+    Rails.logger.info ":-) feature-flagged (-:"
+  end
+
+  def handle_unexpected_event(event)
+    Rails.logger.info "#{event.inspect}"
+    AdminMailer.event_notification(event)
   end
 end
