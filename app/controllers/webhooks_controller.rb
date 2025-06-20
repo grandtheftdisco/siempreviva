@@ -106,8 +106,15 @@ class WebhooksController < ApplicationController
   end
 
   def handle_no_payment_required(checkout_session)
-    Rails.logger.info ":-:-: TEST - handle_no_payment_required :-:-:"
-    Rails.logger.info ":-) feature-flagged (-:"
+    Rails.logger.info "---Order Complete - No Payment Required: Checkout Session #{checkout_session.id}"
+
+    order = Order.find_by(payment_intent_id: checkout_session.payment_intent)
+    order.update(status: "no payment required")
+
+    checkout = Checkout.find_by(payment_intent_id: checkout_session.payment_intent)
+    checkout.update(status: "no payment required")
+
+    OrderMailer.received(order).deliver_later
   end
 
   def handle_refunded_order(refund)
