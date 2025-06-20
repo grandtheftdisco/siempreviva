@@ -29,19 +29,20 @@ class WebhooksController < ApplicationController
 
   ### Stripe Event Router ###
   def handle_stripe_event(event)
-
     check_for_duplicate_events(event)
-
+    checkout_session = event.data.object
+    
     case event.type
     when 'checkout.session.completed'
-      checkout_session = event.data.object
-      Rails.logger.debug "Checkout Session Completed: #{checkout_session.inspect}"
-
-      determine_and_handle_payment_status(checkout_session, event)
+      handle_checkout_session_completed(checkout_session)
+    when 'checkout.session.async_payment_succeeded'
+      handle_async_payment_succeeded(checkout_session)
+    when 'checkout.session.async_payment_failed'
+      handle_async_payment_failed(checkout_session)
     when 'refund.created', 'refund.updated'
-      Rails.logger.info "---Refund Created and/or Updated---"
       refund = event.data.object
-      Rails.logger.info "-0-0-0- Refund: #{refund.inspect} -0-0-0-"
+      Rails.logger.info "---Refund Created and/or Updated---"
+      Rails.logger.info "-0-0-0- Refund: #{refund.id} -0-0-0-"
       
       if refund.status == 'succeeded'
         handle_refunded_order(refund)
@@ -80,50 +81,84 @@ class WebhooksController < ApplicationController
     end
   end
 
-  def determine_and_handle_payment_status(checkout_session, event)
-    case checkout_session.payment_status
-    when 'paid'
+  def handle_checkout_session_completed(checkout_session)
+    
+    if checkout_session.payment_status == 'paid' || 'no_payment_required'
+      Rails.logger.info "---Checkout Session #{checkout_session.id} complete!---"
+      
       PaymentHandlingService::HandleSuccessfulPayment.call(checkout_session:)
-    when 'unpaid'
-      handle_async_payment(checkout_session)
-    when 'no_payment_required'
-      handle_no_payment_required(checkout_session)
-    else
-      Rails.logger.warn "Unknown payment status: #{checkout_session.payment_status}"
-      AdminMailer.event_notification(event)
-    end
-  end
+    elsif checkout_session.payment_status == 'unpaid'
+      payment_intent = Stripe::PaymentIntent.retrieve(checkout_session.payment_intent)
 
-  def handle_async_payment(checkout_session)
-    payment_intent = Stripe::PaymentIntent.retrieve(checkout_session.payment_intent)
-    Rails.logger.info "---Handling Async Payment... Payment Intent #{payment_intent.id}---"
+      case payment_intent.status
+      when 'succeeded'
+        Rails.logger.info "---Payment Intent #{payment_intent.id} complete!---"
+      when 'processing'
+        Rails.logger.info "---Payment Intent #{payment_intent.id} for Checkout Session #{checkout_session.id} PROCESSING...---"
 
-    checkout = Checkout.find_by(payment_intent_id: payment_intent.id)
-    checkout.update(status: payment_intent.status,
-                    payment_intent_id: payment_intent.id) 
+        order.update(status: 'payment processing')
+        checkout.update(status: 'payment_processing')
+      when 'requires_payment_method', 'requires_action', 'requires_confirmation'
+        Rails.logger.warn "---Payment Issue! #{payment_intent.id}has status of #{payment_intent.status}---"
 
-    CheckAsyncPaymentJob.set(wait: 1.hour).perform_later(checkout_session)
+        order.update(status: payment_intent.status)
+        checkout.update(status: payment_intent.status)
+
+        AdminMailer.payment_issue_notification(checkout_session, payment_intent)
+      else
+        Rails.logger.warn "---Unexpected Payment Intent Status---"
+        Rails.logger.warn "---Payment Intent #{payment_intent.id} has a status of #{payment_intent.status}---"
+        
+        AdminMailer.payment_issue_notification(checkout_session, payment_intent)
   end
 
   def handle_no_payment_required(checkout_session)
     Rails.logger.info "---Order Complete - No Payment Required: Checkout Session #{checkout_session.id}"
 
-    order = Order.find_by(payment_intent_id: checkout_session.payment_intent)
-    order.update(status: "no payment required")
-
+    order = Order.find_by(payment_intent_id: checkout_session.payment_intent)  
     checkout = Checkout.find_by(payment_intent_id: checkout_session.payment_intent)
+    
+    order.update(status: "no payment required")
     checkout.update(status: "no payment required")
 
     OrderMailer.received(order).deliver_later
+  end
+
+  def handle_async_payment_succeeded(checkout_session)
+    payment_intent = Stripe::PaymentIntent.retrieve(checkout_session.payment_intent)
+
+    order = Order.find_by(payment_intent_id: payment_intent.id)
+    checkout = Checkout.find_by(payment_intent_id: payment_intent.id)
+
+    if payment_intent.status == 'succeeded'
+      order.update(status: 'paid')
+      checkout.update(status: 'paid')
+      OrderMailer.received(order).deliver_later
+    else
+      Rails.logger.warn "---Unexpected Payment Intent Status for PI# #{payment_intent.id} -- #{payment_intent.status}"
+      AdminMailer.payment_issue_notification(checkout_session, payment_intent)
+    end
+  end
+
+  def handle_async_payment_failed(checkout_session)
+    payment_intent = Stripe::PaymentIntent.retrieve(checkout_session.payment_intent)
+
+    order = Order.find_by(payment_intent_id: payment_intent.id)
+    checkout = Checkout.find_by(payment_intent_id: payment_intent.id)
+
+    order.update(status: 'payment failed')
+    checkout.update(status: 'payment failed')
+
+    AdminMailer.payment_issue_notification(checkout_session, payment_intent)
   end
 
   def handle_refunded_order(refund)
     Rails.logger.info "---Refund Succeeded: #{refund.id}---"
         
     order = Order.find_by(payment_intent_id: refund.payment_intent)
-    order.update(status: "refunded on #{DateTime.now}")
-    
     checkout = Checkout.find_by(payment_intent_id: refund.payment_intent)
+
+    order.update(status: "refunded on #{DateTime.now}")
     checkout.update(status: "refunded on #{DateTime.now}")
 
     OrderMailer.refunded(order).deliver_later
@@ -132,6 +167,7 @@ class WebhooksController < ApplicationController
   def handle_unexpected_event(event)
     Rails.logger.warn "[!] ->->-> Unexpected Event:"
     Rails.logger.warn "#{event.inspect}"
+
     AdminMailer.event_notification(event)
   end
 end
