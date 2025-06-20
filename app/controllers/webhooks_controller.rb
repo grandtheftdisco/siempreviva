@@ -96,8 +96,9 @@ class WebhooksController < ApplicationController
 
   def handle_async_payment(checkout_session)
     payment_intent = Stripe::PaymentIntent.retrieve(checkout_session.payment_intent)
-    checkout = Checkout.find_by(payment_intent_id: payment_intent.id)
+    Rails.logger.info "---Handling Async Payment... Payment Intent #{payment_intent.id}---"
 
+    checkout = Checkout.find_by(payment_intent_id: payment_intent.id)
     checkout.update(status: payment_intent.status,
                     payment_intent_id: payment_intent.id) 
 
@@ -109,18 +110,15 @@ class WebhooksController < ApplicationController
     Rails.logger.info ":-) feature-flagged (-:"
   end
 
-  def handle_refunded_order
-    Rails.logger.info "---Refund Succeeded!---"
+  def handle_refunded_order(refund)
+    Rails.logger.info "---Refund Succeeded: #{refund.id}---"
         
-    # update Order in pg db
     order = Order.find_by(payment_intent_id: refund.payment_intent)
     order.update(status: "refunded on #{DateTime.now}")
     
-    # update Checkout record in pg db
     checkout = Checkout.find_by(payment_intent_id: refund.payment_intent)
     checkout.update(status: "refunded on #{DateTime.now}")
 
-    # inform customer of refund issuance
     OrderMailer.refunded(order).deliver_later
   end
 
