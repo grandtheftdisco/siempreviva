@@ -1,5 +1,9 @@
 class CheckAsyncPaymentJob < ApplicationJob
   queue_as :default
+  retry_on ProcessingPaymentError, wait: 1.hour, attempts: 5
+  after_retry_exhausted do |job, exception|
+    AdminMailer.retry_limit_notification(job.arguments.first, exception.payment_intent).deliver_now
+  end
 
   def perform(checkout_session)
     payment_intent = Stripe::PaymentIntent.retrieve(checkout_session.payment_intent)
@@ -8,9 +12,7 @@ class CheckAsyncPaymentJob < ApplicationJob
     when 'succeeded'
       PaymentHandlingService::HandleSuccessfulPayment.call(checkout_session: checkout_session)
     when 'processing'
-      self.class.set(wait: 1.hour).perform_later(checkout_session)
-
-      # [?] if i've checked a certain number of times, or a certain amount of time has passed, how to send admin mail to notify/avoid loop?
+      raise ProcessingPaymentError.new(checkout_session, payment_intent)
     when 'canceled'
       handle_canceled_payment(checkout_session, payment_intent)
     else
@@ -37,5 +39,16 @@ class CheckAsyncPaymentJob < ApplicationJob
     Rails.logger.warn "#{payment_intent.inspect}"
 
     AdminMailer.payment_issue_notification(checkout_session, payment_intent)
+  end
+end
+
+### custom errors ###
+class ProcessingPaymentError < StandardError
+  attr_reader :checkout_session, :payment_intent
+
+  def initialize(checkout_session, payment_intent)
+    @checkout_session = checkout_session
+    @payment_intent = payment_intent
+    super("Payment is still processing for Checkout Session #{@checkout_session.id}")
   end
 end
