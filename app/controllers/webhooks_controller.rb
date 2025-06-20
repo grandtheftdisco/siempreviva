@@ -102,8 +102,7 @@ class WebhooksController < ApplicationController
     checkout.update(status: payment_intent.status,
                     payment_intent_id: payment_intent.id) 
 
-    # feature-flagged
-    CheckAsyncPaymentJob.set(wait: 1.hour).perform_later(checkout_session.id)
+    CheckAsyncPaymentJob.set(wait: 1.hour).perform_later(checkout_session)
   end
 
   def handle_no_payment_required(checkout_session)
