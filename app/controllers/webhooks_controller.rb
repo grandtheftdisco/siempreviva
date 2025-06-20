@@ -84,7 +84,7 @@ class WebhooksController < ApplicationController
   def determine_and_handle_payment_status(checkout_session, event)
     case checkout_session.payment_status
     when 'paid'
-      handle_successful_payment(checkout_session)
+      PaymentHandlingService::HandleSuccessfulPayment.call(checkout_session:)
     when 'unpaid'
       handle_async_payment(checkout_session)
     when 'no_payment_required'
@@ -93,22 +93,6 @@ class WebhooksController < ApplicationController
       Rails.logger.warn "Unknown payment status: #{checkout_session.payment_status}"
       AdminMailer.event_notification(event)
     end
-  end
-
-  def handle_successful_payment(checkout_session)
-    # add Order record to pg db
-    @order = Order.create!(
-      payment_intent_id: checkout_session.payment_intent,
-      stripe_customer_id: checkout_session.customer,
-      customer_email_address: checkout_session.customer_email,
-      amount: checkout_session.amount_total,
-      status: checkout_session.status
-    )
-    OrderMailer.received(@order).deliver_later
-
-    # update Checkout record in pg db
-    checkout = Checkout.find_by(stripe_checkout_session_id: checkout_session.id)
-    checkout.update!(status: checkout_session.status)
   end
 
   def handle_async_payment(checkout_session)
