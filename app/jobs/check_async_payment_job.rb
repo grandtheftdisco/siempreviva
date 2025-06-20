@@ -10,7 +10,7 @@ class CheckAsyncPaymentJob < ApplicationJob
     when 'processing'
       self.class.set(wait: 1.hour).perform_later(checkout_session)
 
-      # if i've checked a certain number of times, or a certain amount of time has passed, AdminMailer
+      # [?] if i've checked a certain number of times, or a certain amount of time has passed, how to send admin mail to notify/avoid loop?
     when 'canceled'
       handle_canceled_payment(checkout_session, payment_intent)
     else

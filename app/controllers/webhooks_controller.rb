@@ -23,7 +23,6 @@ class WebhooksController < ApplicationController
     head :ok
 
     handle_stripe_event(event)
-
   end
 
   private
