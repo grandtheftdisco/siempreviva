@@ -39,6 +39,8 @@ class WebhooksController < ApplicationController
       handle_async_payment_succeeded(checkout_session)
     when 'checkout.session.async_payment_failed'
       handle_async_payment_failed(checkout_session)
+    when 'price.updated'
+      handle_price_updated(event)
     when 'refund.created', 'refund.updated'
       refund = event.data.object
       Rails.logger.info "---Refund Created and/or Updated---"
@@ -150,6 +152,17 @@ class WebhooksController < ApplicationController
     checkout.update(status: 'payment failed')
 
     AdminMailer.payment_issue_notification(checkout_session, payment_intent)
+  end
+
+  def handle_price_updated(event)
+    price = event.data.object
+    product_id = price.product
+    
+    product_wrapper = ProductWrapper.new(Stripe::Product.retrieve(product_id))
+    new_price = product_wrapper.price
+
+    CartItem.where(stripe_product_id: product_id).update_all(price: new_price)
+    Rails.logger.info "New price for item #{product_id}: #{new_price}"
   end
 
   def handle_refunded_order(refund)
