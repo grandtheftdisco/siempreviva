@@ -1,14 +1,10 @@
 module CartService
-  class ValidateCart < ApplicationService
+  class CheckCartItemInventory < ApplicationService
     def self.call(cart:)
       unavailable_items = confirm_all_products_in_cart_are_active(cart)
 
-      confirm_all_prices_are_current(cart)        
-      # check to make sure all prices are correct
-        # if any prices have changed
-          # alert customer ??
-          # OR
-          # honor price that they added to their cart
+      # confirm_all_prices_are_current(cart)
+      # # returning unavailable items array to customize the alert to customer
       [cart, unavailable_items]
     end
 
@@ -38,8 +34,18 @@ module CartService
       unavailable_items
     end
 
-    def self.confirm_all_prices_are_current(cart)
+    # def self.confirm_all_prices_are_current(cart)
+    #   Rails.logger.info "cart at beginning of confirm_all_prices_are_current: #{cart.inspect}"
+    #   cart_items = cart.cart_items.to_a
+    #   Rails.logger.info "cart items after conversion to a: #{cart_items.inspect}"
 
-    end
+    #   price_changes = cart_items.select do |item|
+    #     stripe_price = Stripe::Price.retrieve(item.stripe_price)
+    #   # check to make sure all prices are correct
+    #     # if any prices have changed
+    #       # alert customer ??
+    #       # OR
+    #       # honor price that they added to their cart
+    # end
   end
 end
