@@ -3,7 +3,9 @@ module CartService
     def self.call(cart:)
       unavailable_items = confirm_all_products_in_cart_are_active(cart)
 
+      # DEPREC?
       # confirm_all_prices_are_current(cart)
+
       # # returning unavailable items array to customize the alert to customer
       [cart, unavailable_items]
     end
@@ -23,9 +25,7 @@ module CartService
       unavailable_items = cart_items - active_cart_items
 
       if unavailable_items.any?
-        # log the array for debugging/cs
-        # notify customer using this array 
-        # destroy the cart items in question
+        # log the array for debugging/customer service
         Rails.logger.warn "these items aren't available anymore: #{unavailable_items.inspect}"
         unavailable_items.each(&:destroy)
       end
@@ -34,6 +34,7 @@ module CartService
       unavailable_items
     end
 
+    # DEPREC?
     # def self.confirm_all_prices_are_current(cart)
     #   Rails.logger.info "cart at beginning of confirm_all_prices_are_current: #{cart.inspect}"
     #   cart_items = cart.cart_items.to_a

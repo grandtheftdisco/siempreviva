@@ -1,14 +1,11 @@
 class CheckoutsController < ApplicationController
   def new
     @updated_cart = validate_cart_and_handle_removals
-    # return unless @updated_cart #copilot
     @total = CartService::CalculateCart.call(cart: @updated_cart)
   end
   
   def create
     @updated_cart = validate_cart_and_handle_removals
-    # return unless @updated_cart #copilot
-    # @updated_cart.reload
     line_items = @updated_cart.cart_items.map do |item|
       product = Stripe::Product.retrieve(
         { id: item.stripe_product_id, expand: ['default_price'] }
@@ -65,7 +62,7 @@ class CheckoutsController < ApplicationController
 
     if removed_items.present?
       flash[:alert] = "We apologize, but the following items are out of stock, and have been removed from your cart: " + removed_items.map { |item| item.name }.join(', ')
-      redirect_to new_checkout_path #and return nil
+      redirect_to new_checkout_path
     end
     updated_cart
   end
