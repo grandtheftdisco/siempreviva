@@ -112,6 +112,8 @@ class WebhooksController < ApplicationController
         Rails.logger.warn "---Payment Intent #{payment_intent.id} has a status of #{payment_intent.status}---"
         
         AdminMailer.payment_issue_notification(checkout_session, payment_intent)
+      end
+    end
   end
 
   def handle_no_payment_required(checkout_session)
