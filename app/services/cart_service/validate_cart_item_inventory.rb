@@ -1,5 +1,5 @@
 module CartService
-  class CheckCartItemInventory < ApplicationService
+  class ValidateCartItemInventory < ApplicationService
     def self.call(cart:)
       unavailable_items = confirm_all_products_in_cart_are_active(cart)
 
