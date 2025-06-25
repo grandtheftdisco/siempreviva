@@ -1,11 +1,11 @@
 module CartService
-  # top-level validator - calls 2 separate services and returns updated/reloaded cart
   class ValidateCart < ApplicationService
     def self.call(cart:)
-      CheckItemInventory.call(cart)
+      cart, unavailable_items = CheckItemInventory.call(cart)
       CheckItemPrices.call(cart)
 
       cart.reload
+      [cart, unavailable_items]
     end
   end
 end

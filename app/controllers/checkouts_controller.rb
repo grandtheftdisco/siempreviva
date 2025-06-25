@@ -25,11 +25,12 @@ class CheckoutsController < ApplicationController
   private
   
   def validate_cart_and_handle_removals
-    @cart, removed_items = CartService::ValidateCartItemInventory.call(cart: @cart)
+    @cart, removed_items = CartService::ValidateCart.call(cart: @cart)
 
     if removed_items.present?
       flash.now[:alert] = "We apologize, but the following items are out of stock, and have been removed from your cart: " + removed_items.map { |item| item.name }.join(', ')
     end
+
     @cart
   end
 end
