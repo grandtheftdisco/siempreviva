@@ -20,6 +20,7 @@ class CheckoutsController < ApplicationController
 
   def show
     # set the vars you need in the view
+    @session = Stripe::Checkout::Session.retrieve(params[:id])
   end
 
   private
