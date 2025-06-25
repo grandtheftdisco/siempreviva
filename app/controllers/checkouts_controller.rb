@@ -13,11 +13,8 @@ class CheckoutsController < ApplicationController
       checkout.update!(status: 'complete')
       redirect_to checkout
     elsif session.status == 'expired'
-      @cart = validate_cart_and_handle_removals
-      @total = CartService::CalculateCart.call(cart: @cart)
-      # flash.now alert "that checkout session expired - try checking out again - your card didnt get charged"
-      render :new # could redirect - check if stripe needs a full new render or if a redirect is sufficient 
-      # if you redirect, you dont need all the repetition of the code from #new above
+      flash.now[:alert] = "Oops! This checkout session has expired. Don't worry - your card hasn't been charged. Try checking out again! 🙂"
+      redirect_to new_checkout_path
     end
   end
 
