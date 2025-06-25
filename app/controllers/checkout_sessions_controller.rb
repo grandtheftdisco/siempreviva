@@ -1,6 +1,6 @@
 class CheckoutSessionsController < ApplicationController
   def create
-    line_items = @updated_cart.cart_items.map do |item|
+    line_items = @cart.cart_items.map do |item|
       product = Stripe::Product.retrieve(
         { id: item.stripe_product_id, expand: ['default_price'] }
       )
@@ -25,7 +25,7 @@ class CheckoutSessionsController < ApplicationController
     # for my db
     checkout = Checkout.create(
       stripe_checkout_session_id: session.id,
-      cart_id: @updated_cart.id,
+      cart_id: @cart.id,
       status: session.status,
       stripe_customer_id: session.customer,
     )
