@@ -1,0 +1,13 @@
+Unexpected Payment Intent Issue
+
+Payment Intent <%= @payment_intent.id %> has an unexpected status: <%= @payment_intent.status %>
+
+Payment Intent Details:
+<%= @payment_intent.inspect %>
+
+Checkout Session Details:
+<%= @checkout_session.inspect %>
+
+You may need to update your database in the event of a payment/refund failure or other change to an order's status.
+
+If you are the site administrator, please check the logs for more information.
