@@ -1,9 +1,9 @@
-<h1>Payment Status: <%= @session.status %></h1>
-
-<% if @session.status == 'open' %>
-  <p>The payment is being processed.</p>
-<% elsif @session.status == 'expired' %>
-  <p>The session has expired.</p>
+<% case @session.status %>
+<% when 'complete' %>
+  <p>Thanks for your order! We'll get started on it right away.</p>
+<% when 'open' %>
+  <h1>Payment Status: <%= @session.status %></h1>
+  <p>Your payment is being processed. We'll email you when it's complete!</p>
+<% when 'expired' %>
+  <p>The session has expired. Please try checking out again.</p>
 <% end %>
-
-<script src="<%= asset_path 'checkout.js' %>"></script>
