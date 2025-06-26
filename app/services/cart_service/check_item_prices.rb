@@ -1,9 +1,10 @@
 module CartService
   class CheckItemPrices < ApplicationService
 
-    # TODO - manually test out these changes Thursday
     def self.call(cart:)
       cart_items = cart.cart_items.to_a
+
+      items_with_price_changes = []
 
       cart_items.each do |item|
         product = Stripe::Product.retrieve({
@@ -11,20 +12,20 @@ module CartService
           expand: ['default_price'],
         })
 
-        current_default_price_object = product.default_price
+        current_price = product.default_price.unit_amount
+        old_price = item.price
 
-        Rails.logger.info "Current item price: #{item.price}"
-        Rails.logger.info "Stripe Product default price: #{current_default_price_object.unit_amount}"
-        Rails.logger.info "Stripe Product default price ID: #{current_default_price_object.id}"
-
-        if item.price != current_default_price_object.unit_amount
-          item.update(price: current_default_price_object.unit_amount)
-          Rails.logger.info "new item price: #{item.price}"
+        if item.price != current_price
+          item.update(price: current_price)
+          items_with_price_changes << { item: item,
+                                        old_price: old_price,
+                                        new_price: current_price
+                                      }
         end
       end
 
       cart.reload
-      cart
+      [cart, items_with_price_changes]
     end
   end
 end

@@ -26,11 +26,26 @@ class CheckoutsController < ApplicationController
   private
   
   def validate_cart_and_handle_removals
-    @cart, removed_items = CartService::ValidateCart.call(cart: @cart)
+    @cart, removed_items, items_with_price_changes = CartService::ValidateCart.call(cart: @cart)
+
+    alerts = []
 
     if removed_items.present?
-      flash.now[:alert] = "We apologize, but the following items are out of stock, and have been removed from your cart: " + removed_items.map { |item| item.name }.join(', ')
+      alerts << "⚠️ We apologize, but the following items are out of stock, and have been removed from your cart: " + removed_items.map { |item| item.name }.join(', ')
     end
+
+    # this is going to be incredibly rare with a small ecom site, but IF it happens - you're covered!
+    if items_with_price_changes.present?
+      items_with_price_changes.each do |change|
+        item = change[:item]
+        old_price = format('%.2f', change[:old_price] / 100.0)
+        new_price = format('%.2f', change[:new_price] / 100.0)
+
+        alerts << "⚠️ We're updating our inventory right now! Heads up: The price of #{item.name} has changed from $#{old_price} to $#{new_price} since it was added to your cart."
+      end
+    end
+
+    flash.now[:alert] = alerts.join('<br/><br/>').html_safe if alerts.any?
 
     @cart
   end
