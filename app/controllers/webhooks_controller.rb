@@ -114,18 +114,6 @@ class WebhooksController < ApplicationController
     end
   end
 
-  def handle_no_payment_required(checkout_session)
-    Rails.logger.info "---Order Complete - No Payment Required: Checkout Session #{checkout_session.id}"
-
-    order = Order.find_by(payment_intent_id: checkout_session.payment_intent)  
-    checkout = Checkout.find_by(payment_intent_id: checkout_session.payment_intent)
-    
-    order.update(status: "no payment required")
-    checkout.update(status: "no payment required")
-
-    OrderMailer.received(order).deliver_later
-  end
-
   def handle_async_payment_succeeded(checkout_session)
     payment_intent = Stripe::PaymentIntent.retrieve(checkout_session.payment_intent)
 
