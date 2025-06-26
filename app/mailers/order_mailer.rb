@@ -30,8 +30,7 @@ class OrderMailer < ApplicationMailer
   def fetch_customer_name(order)
     payment_intent = Stripe::PaymentIntent.retrieve(order.payment_intent_id)
     customer = Stripe::Customer.retrieve(payment_intent.customer)
-    customer_full_name = customer.name.split
-    customer_first_name = customer_full_name[0]
+    customer.name.split.first
   end
 
   def fetch_refund_info(order)
