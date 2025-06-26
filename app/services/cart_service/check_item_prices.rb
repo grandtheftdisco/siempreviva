@@ -1,6 +1,5 @@
 module CartService
   class CheckItemPrices < ApplicationService
-
     def self.call(cart:)
       cart_items = cart.cart_items.to_a
 
