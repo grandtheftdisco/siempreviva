@@ -160,8 +160,8 @@ class WebhooksController < ApplicationController
     order = Order.find_by(payment_intent_id: refund.payment_intent)
     checkout = Checkout.find_by(payment_intent_id: refund.payment_intent)
 
-    order.update(status: "refunded on #{DateTime.now}")
-    checkout.update(status: "refunded on #{DateTime.now}")
+    order.update(status: "refunded")
+    checkout.update(status: "refunded")
 
     OrderMailer.refunded(order).deliver_later
   end
