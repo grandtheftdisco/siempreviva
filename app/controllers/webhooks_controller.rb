@@ -4,12 +4,15 @@ class WebhooksController < ApplicationController
   def create
     payload = request.body.read
     sig_header = request.env['HTTP_STRIPE_SIGNATURE']
-    event = nil
-    
-    begin
-      event = Stripe::Webhook.construct_event(
-        payload, sig_header, Rails.application.credentials.dig(:stripe, :webhook_secret)
-      )
+    event = Stripe::Webhook.construct_event(
+      payload,
+      sig_header,
+      Rails.application.credentials.dig(:stripe, :webhook_secret)
+    )
+
+    handle_stripe_event(event)
+    head :ok
+
     rescue JSON::ParserError => editing
       # invalid payload
       Rails.logger.debug "JSON Parser Error -- invalid payload"
@@ -19,10 +22,6 @@ class WebhooksController < ApplicationController
       Rails.logger.debug "Stripe Sig Verification Error - invalid signature"
       return head :bad_request
     end
-
-    head :ok
-
-    handle_stripe_event(event)
   end
 
   private
