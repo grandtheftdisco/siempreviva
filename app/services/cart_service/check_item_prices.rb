@@ -1,34 +1,30 @@
 module CartService
   class CheckItemPrices < ApplicationService
+
+    # TODO - manually test out these changes Thursday
     def self.call(cart:)
+      cart_items = cart.cart_items.to_a
 
-      # [?] add the price id to the product wrapper to avoid having to store stripe_price_id in cart_items table?
+      cart_items.each do |item|
+        product = Stripe::Product.retrieve({
+          id: item.stripe_product_id,
+          expand: ['default_price'],
+        })
 
-      # [?] update the cart item by updating the product wrapper?
+        current_default_price_object = product.default_price
 
-      ######
+        Rails.logger.info "Current item price: #{item.price}"
+        Rails.logger.info "Stripe Product default price: #{current_default_price_object.unit_amount}"
+        Rails.logger.info "Stripe Product default price ID: #{current_default_price_object.id}"
 
-      # ...what about setting up a webhook for changes to product status, ie product.updated events where the active attribute of the product object has changed?
+        if item.price != current_default_price_object.unit_amount
+          item.update(price: current_default_price_object.unit_amount)
+          Rails.logger.info "new item price: #{item.price}"
+        end
+      end
 
-
-      # for all cart items - fetch stripe product - use expandable attributes feature of product object
-
-
-    # def self.confirm_all_prices_are_current(cart)
-    #   Rails.logger.info "cart at beginning of confirm_all_prices_are_current: #{cart.inspect}"
-    #   cart_items = cart.cart_items.to_a
-    #   Rails.logger.info "cart items after conversion to a: #{cart_items.inspect}"
-#############################################
-# from original SO
-
-    #   price_changes = cart_items.select do |item|
-    #     stripe_price = Stripe::Price.retrieve(item.stripe_price)
-    #   # check to make sure all prices are correct
-    #     # if any prices have changed
-    #       # alert customer ??
-    #       # OR
-    #       # honor price that they added to their cart
-    # end
+      cart.reload
+      cart
     end
   end
 end
