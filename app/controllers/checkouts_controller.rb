@@ -30,8 +30,8 @@ class CheckoutsController < ApplicationController
     checkout = Checkout.create(
       stripe_checkout_session_id: session.id,
       cart_id: @cart.id,
-      status: 'open',
-      stripe_customer_id: 'test_customerid123',
+      status: session.status,
+      stripe_customer_id: session.customer,
     )
 
     render json: {

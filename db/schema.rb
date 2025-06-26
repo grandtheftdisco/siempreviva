@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_06_13_212737) do
+ActiveRecord::Schema[8.0].define(version: 2025_06_26_194039) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -42,6 +42,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_06_13_212737) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.text "stripe_checkout_session_id", null: false
+    t.datetime "refunded_on"
   end
 
   create_table "orders", force: :cascade do |t|
@@ -53,5 +54,6 @@ ActiveRecord::Schema[8.0].define(version: 2025_06_13_212737) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.text "tracking_number"
+    t.datetime "refunded_on"
   end
 end
