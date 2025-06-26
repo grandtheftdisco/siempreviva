@@ -4,12 +4,15 @@ class WebhooksController < ApplicationController
   def create
     payload = request.body.read
     sig_header = request.env['HTTP_STRIPE_SIGNATURE']
-    event = nil
-    
-    begin
-      event = Stripe::Webhook.construct_event(
-        payload, sig_header, Rails.application.credentials.dig(:stripe, :webhook_secret)
-      )
+    event = Stripe::Webhook.construct_event(
+      payload,
+      sig_header,
+      Rails.application.credentials.dig(:stripe, :webhook_secret)
+    )
+
+    handle_stripe_event(event)
+    head :ok
+
     rescue JSON::ParserError => editing
       # invalid payload
       Rails.logger.debug "JSON Parser Error -- invalid payload"
@@ -19,10 +22,6 @@ class WebhooksController < ApplicationController
       Rails.logger.debug "Stripe Sig Verification Error - invalid signature"
       return head :bad_request
     end
-
-    head :ok
-
-    handle_stripe_event(event)
   end
 
   private
@@ -114,18 +113,6 @@ class WebhooksController < ApplicationController
     end
   end
 
-  def handle_no_payment_required(checkout_session)
-    Rails.logger.info "---Order Complete - No Payment Required: Checkout Session #{checkout_session.id}"
-
-    order = Order.find_by(payment_intent_id: checkout_session.payment_intent)  
-    checkout = Checkout.find_by(payment_intent_id: checkout_session.payment_intent)
-    
-    order.update(status: "no payment required")
-    checkout.update(status: "no payment required")
-
-    OrderMailer.received(order).deliver_later
-  end
-
   def handle_async_payment_succeeded(checkout_session)
     payment_intent = Stripe::PaymentIntent.retrieve(checkout_session.payment_intent)
 
@@ -160,8 +147,8 @@ class WebhooksController < ApplicationController
     order = Order.find_by(payment_intent_id: refund.payment_intent)
     checkout = Checkout.find_by(payment_intent_id: refund.payment_intent)
 
-    order.update(status: "refunded on #{DateTime.now}")
-    checkout.update(status: "refunded on #{DateTime.now}")
+    order.update(status: "refunded", refunded_on: "#{Time.now}")
+    checkout.update(status: "refunded", refunded_on: "#{Time.now}")
 
     OrderMailer.refunded(order).deliver_later
   end
