@@ -17,9 +17,9 @@ module CartService
         if item.price != current_price
           item.update(price: current_price)
           price_changes << { item: item,
-                                        old_price: old_price,
-                                        new_price: current_price
-                                      }
+                             old_price: old_price,
+                             new_price: current_price
+                           }
         end
       end
 

@@ -10,9 +10,7 @@ module CartService
     private
 
     def self.confirm_all_products_in_cart_are_active(cart)
-      Rails.logger.debug "service cart class: #{cart.class}"
       cart_items = cart.cart_items.to_a
-      Rails.logger.debug "cart items: #{cart_items.inspect}"
       
       active_cart_items = cart_items.reject do |item|
         product = Stripe::Product.retrieve(item.stripe_product_id)
