@@ -26,7 +26,7 @@ class CheckoutsController < ApplicationController
   private
   
   def validate_cart_and_handle_removals
-    @cart, removed_items, items_with_price_changes = CartService::ValidateCart.call(cart: @cart)
+    @cart, removed_items, price_changes = CartService::ValidateCart.call(cart: @cart)
 
     alerts = []
 
@@ -35,8 +35,8 @@ class CheckoutsController < ApplicationController
     end
 
     # this is going to be incredibly rare with a small ecom site, but IF it happens - you're covered!
-    if items_with_price_changes.present?
-      items_with_price_changes.each do |change|
+    if price_changes.present?
+      price_changes.each do |change|
         item = change[:item]
         old_price = format('%.2f', change[:old_price] / 100.0)
         new_price = format('%.2f', change[:new_price] / 100.0)
