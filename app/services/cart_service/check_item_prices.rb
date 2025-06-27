@@ -1,6 +1,15 @@
 module CartService
   class CheckItemPrices < ApplicationService
     def self.call(cart:)
+      price_changes = check_for_price_changes(cart)
+
+      cart.reload
+      [cart, price_changes]
+    end
+
+    private
+
+    def self.check_for_price_changes(cart)
       cart_items = cart.cart_items.to_a
 
       price_changes = []
@@ -23,8 +32,7 @@ module CartService
         end
       end
 
-      cart.reload
-      [cart, price_changes]
+      price_changes
     end
   end
 end
