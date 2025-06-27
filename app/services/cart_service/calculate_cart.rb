@@ -1,6 +1,5 @@
 module CartService
   class CalculateCart < ApplicationService
-
     def self.call(cart:)
       return 0 if cart.cart_items.empty?
       calculate_cart_total(cart)
