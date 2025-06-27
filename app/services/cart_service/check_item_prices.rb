@@ -32,6 +32,7 @@ module CartService
         end
       end
 
+      cart.reload
       price_changes
     end
   end
