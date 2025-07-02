@@ -1,27 +1,6 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title><%= content_for(:title) || "Siempreviva" %></title>
-    <meta name="viewport" content="width=device-width,initial-scale=1">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="mobile-web-app-capable" content="yes">
-    <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
-
-    <%= yield :head %>
-
-    <%# Enable PWA manifest for installable apps (make sure to enable in config/routes.rb too!) %>
-    <%#= tag.link rel: "manifest", href: pwa_manifest_path(format: :json) %>
-
-    <link rel="icon" href="/logo.png" type="image/png">
-    <link rel="apple-touch-icon" href="/logo.png">
-
-    <%# Includes all stylesheet files in app/assets/stylesheets %>
-    <%= stylesheet_link_tag :app, "data-turbo-track": "reload" %>
-    <%= javascript_importmap_tags %>
-    <%= javascript_include_tag 'application', 'data-turbo-track': 'reload' %>
-    <script src="https://js.stripe.com/v3/"></script>
-  </head>
+  <%= render partial: "layouts/public/head" %>
 
   <body>
     <header>
@@ -39,9 +18,7 @@
       </nav>
     </header>
     <main>
-      <% if flash[:alert] %>
-        <div class="bg-purple-300 border border-purple-600 text-purple-950 px-4 py-3 rounded-2xl mb-5 w-1/2"><%= flash[:alert] %></div>
-      <% end %>
+      <%= render partial: "layouts/public/flash_alert" %>
       <%= yield %>
     </main>
   </body>

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+  <%= render partial: "layouts/public/head" %>
+
+  <body>
+    <header>
+      <nav class="flex justify-between p-5">
+        <ul class="inline-flex gap-5">
+          <li>View All Orders</li>
+          <li>
+            <%= link_to 'Log Out', 
+                  session_path, 
+                  method: :delete %>
+          </li>
+        </ul>
+      </nav>
+    </header>
+    <main>
+      <%= render partial: "layouts/public/flash_alert" %>
+      <%= yield %>
+      <p>layouts/public/_head.html.erb</p>
+    </main>
+  </body>
+</html>
