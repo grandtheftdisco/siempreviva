@@ -30,7 +30,7 @@ Rails.application.routes.draw do
 
   namespace :admins do 
     resources :orders, only: [ :create, :show, :index ]
-    resources :admins, only: [ :new, :create, :show ]
+    resources :admins, path: '', only: [ :new, :create, :show ]
   end
 
   get '/admin_login', to: 'sessions#new', as: :admin_login
