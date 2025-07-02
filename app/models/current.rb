@@ -1,4 +1,4 @@
 class Current < ActiveSupport::CurrentAttributes
   attribute :cart
-  attribute :user
+  attribute :admin
 end

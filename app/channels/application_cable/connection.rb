@@ -1,3 +1,4 @@
+# ADMIN RENAME - currently renaming stuff user >> admin BUT leaving this in case I can use it generically across classes
 module ApplicationCable
   class Connection < ActionCable::Connection::Base
     identified_by :current_user
