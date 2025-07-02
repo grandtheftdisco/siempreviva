@@ -1,6 +1,6 @@
 <h1>Create Admin Account</h1>
 
-<%= form_with model: @admin, url: admins_path do |f| %>
+<%= form_with model: [:admins, @admin] do |f| %>
   <div>
     <%= f.label :email_address %>
     <%= f.email_field :email_address %>
