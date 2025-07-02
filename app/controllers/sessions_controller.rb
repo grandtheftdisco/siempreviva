@@ -9,7 +9,7 @@ class SessionsController < ApplicationController
   def create
     if admin = Admin.authenticate_by(params.permit(:email_address, :password))
       start_new_session_for admin
-      redirect_to after_authentication_url
+      redirect_to admins_orders_url
     else
       redirect_to new_session_path, alert: "Try another email address or password."
     end
