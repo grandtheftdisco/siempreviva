@@ -27,4 +27,11 @@ Rails.application.routes.draw do
   post '/checkout_sessions', to: 'checkout_sessions#create'
 
   post 'webhooks', to: 'webhooks#create'
+
+  namespace :admins do 
+    resources :orders, only: [ :create, :show, :index ]
+    resources :admins, only: [ :new, :create, :show ]
+  end
+
+  get '/admin_login', to: 'sessions#new', as: :admin_login
 end
