@@ -29,7 +29,7 @@ Rails.application.routes.draw do
   post 'webhooks', to: 'webhooks#create'
 
   namespace :admins do 
-    resources :orders, only: [ :create, :show, :index ]
+    resources :orders, only: [ :create, :show, :edit, :update, :index ]
     resources :admins, path: '', only: [ :new, :create, :show ]
   end
 

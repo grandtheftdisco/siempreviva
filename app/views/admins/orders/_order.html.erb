@@ -1,0 +1,19 @@
+<div>
+  <div class="flex flex-col bg-green-200 p-10 border rounded-2xl">
+  <div class="flex justify-between p-5 gap-10">
+    <h3 class="text-xl font-bold">Order #<%= order.id %></h3>
+    <p class="text-xl font-bold"><%= order.created_at %></p>
+  </div>
+  <div class="flex flex-col">
+    <p>Customer Name</p>
+    <p>Shipping Address</p>
+    <div class="flex align-self-center bg-yellow-200">
+      <p>[product carousel]</p>
+    </div>
+    <%= link_to "Ship Order", 
+      edit_admins_order_path(order),
+      class: 'bg-purple-300 rounded-2xl w-1/2 border'
+    %>
+    <button class="bg-purple-300 rounded-2xl w-1/2 border">Ship Order</button>
+</div>
+</div>

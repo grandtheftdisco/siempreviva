@@ -1,1 +1,32 @@
-<p>hello i am orders index</p>
+
+<% if !@unfulfilled_orders %>
+  <p>puts "No orders to fulfill at this time."</p>
+<% else %>
+  <div>
+    <h1>Orders to Fulfill</h1>
+    <div class="flex">
+      <div class="flex h-200 w-1/2 items-center justify-self-center">
+        <% @unfulfilled_orders.each do |order| %>
+          <div>
+            <%= render order %>
+            <br/>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+<% end %>
+
+TODO -
+    1. create a dummy order somehow in your db or in controller
+    2. use that dummy order to pass to a edit_order_path
+      a. in other words, rewrite your html button to an erb buton helper
+    3. code out the html of the order#edit view
+      a. and again, all this is is a form where you can add a shipping number
+      b. probably it would be good to POST this shipping number as metadata to the Stripe resource (PI? Checkout? idk) if you can
+      c. [ina garten voice] if you can't make a POST to the API, saving it to your database is fine
+    4. install local time & get format helpers in there
+
+<div>
+  <h1>[View All Orders]</h1>
+</div>
