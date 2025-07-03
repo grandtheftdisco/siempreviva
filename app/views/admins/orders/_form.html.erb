@@ -1,1 +1,13 @@
-<p>form begins here</p>
+<div>
+  <h1>Order #<%= @order.id %> Fulfillment</h1>
+  <%= form_with model: [:admins, @order] do |order_form| %>
+    <%= order_form.label :tracking_number %>
+    <%= order_form.text_field :tracking_number %>
+    [ ] checkbox - i have created the label only
+    [ ] checkbox - i have shipped this order 
+
+[ ] make sure your button submits this tracking number to the database
+[ ] BONUS - shoot that data to Stripe to add metadata to the payment_intent_id
+  <%= order_form.submit "Save Changes & Fulfill" %>
+  <% end %>
+</div>
