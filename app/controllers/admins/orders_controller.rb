@@ -34,6 +34,10 @@ module Admins
       end
     end
 
+    def archive
+      @orders = Order.all
+    end
+
     private
 
     def set_order
