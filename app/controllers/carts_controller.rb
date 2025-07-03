@@ -1,4 +1,5 @@
 class CartsController < ApplicationController
+  skip_before_action :require_authentication
   def show
     @total = CartService::CalculateCart.call(cart: @cart)
   end

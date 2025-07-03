@@ -1,4 +1,5 @@
 class CheckoutsController < ApplicationController
+  skip_before_action :require_authentication
   def new
     @cart = validate_cart_and_handle_removals
     @total = CartService::CalculateCart.call(cart: @cart)

@@ -1,4 +1,5 @@
 class CartItemsController < ApplicationController
+  skip_before_action :require_authentication
   before_action :set_cart_item, only: %i[ destroy ]
 
   def create

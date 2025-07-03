@@ -1,4 +1,5 @@
 class CheckoutSessionsController < ApplicationController
+  skip_before_action :require_authentication
   def create
     line_items = @cart.cart_items.map do |item|
       product = Stripe::Product.retrieve(
