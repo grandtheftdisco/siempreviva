@@ -5,8 +5,9 @@
   <body>
     <header>
       <nav class="flex justify-between p-5">
+        <p>[logo]</p>
+        <h2>Admin Dashboard</h2>
         <ul class="inline-flex gap-5">
-          <li>View All Orders</li>
           <li>
             <%= button_to 'Log Out', 
                   session_path, 
@@ -16,7 +17,6 @@
       </nav>
     </header>
     <main>
-      <p>layouts/public/_head.html.erb</p>
       <%= render partial: "layouts/public/flash_alert" %>
       <%= yield %>
     </main>
