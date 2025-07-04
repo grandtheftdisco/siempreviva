@@ -10,8 +10,10 @@ class CheckoutsController < ApplicationController
     checkout = Checkout.find_by(stripe_checkout_session_id: session.id)
 
     if session.status == 'complete'
-      @cart.destroy! # will implement soft deletion in near future
-      checkout.update!(status: 'complete')
+      # @cart.destroy! # will implement soft deletion in near future
+      # Rails.logger.debug "Cart #{checkout.cart_id} just destroyed"
+      # Rails.logger.debug "to be sure, here is cart: #{@cart.inspect}" if @cart
+      # checkout.update!(status: 'completeCHECKOUTSCONTROLLER')
       redirect_to checkout
     elsif session.status == 'expired'
       flash.now[:alert] = "Oops! This checkout session has expired. Don't worry - your card hasn't been charged. Try checking out again! 🙂"
