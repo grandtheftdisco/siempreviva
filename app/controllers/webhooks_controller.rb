@@ -14,15 +14,14 @@ class WebhooksController < ApplicationController
     handle_stripe_event(event)
     head :ok
 
-    rescue JSON::ParserError => editing
-      # invalid payload
-      Rails.logger.debug "JSON Parser Error -- invalid payload"
-      return head :bad_request
-    rescue Stripe::SignatureVerificationError => e
-      # invalid signature
-      Rails.logger.debug "Stripe Sig Verification Error - invalid signature"
-      return head :bad_request
-    end
+  rescue JSON::ParserError => editing
+    # invalid payload
+    Rails.logger.debug "JSON Parser Error -- invalid payload"
+    return head :bad_request
+  rescue Stripe::SignatureVerificationError => e
+    # invalid signature
+    Rails.logger.debug "Stripe Sig Verification Error - invalid signature"
+    return head :bad_request
   end
 
   private
@@ -82,8 +81,9 @@ class WebhooksController < ApplicationController
   end
 
   def handle_checkout_session_completed(checkout_session)
-    
-    if checkout_session.payment_status == 'paid' || 'no_payment_required'
+    payment_intent = Stripe::PaymentIntent.retrieve(checkout_session.payment_intent)
+    Rails.logger.info "PAYMENT STATUS IS #{payment_intent.status}"
+    if checkout_session.payment_status == 'paid' || checkout_session.payment_status == 'no_payment_required'
       Rails.logger.info "---Checkout Session #{checkout_session.id} complete!---"
       Rails.logger.info "Calling PaymentHandlingServie..."
       begin
