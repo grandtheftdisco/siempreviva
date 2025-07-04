@@ -98,6 +98,7 @@ class WebhooksController < ApplicationController
       case payment_intent.status
       when 'succeeded'
         Rails.logger.info "---Payment Intent #{payment_intent.id} complete!---"
+        # TODO - i think i need to re-route this to a payment handler but i'm trying to focus on another problem rn - so this is a backburner thing
       when 'processing'
         Rails.logger.info "---Payment Intent #{payment_intent.id} for Checkout Session #{checkout_session.id} PROCESSING...---"
 

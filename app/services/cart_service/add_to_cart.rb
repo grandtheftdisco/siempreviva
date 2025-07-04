@@ -11,8 +11,6 @@ module CartService
         cart_items = cart.cart_items.to_a
         existing_item = cart_items.find { |i| i.stripe_product_id == product.id }
         
-        # checking the price to be 100% sure - trying to avoid this 'nil can't be coerced into integer' error i get when i add an item to an empty cart
-        # seeing if this works
         stripe_product = Stripe::Product.retrieve(product.id)
         stripe_price = Stripe::Price.retrieve(stripe_product.default_price)
 
