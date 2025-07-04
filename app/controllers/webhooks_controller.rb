@@ -81,8 +81,6 @@ class WebhooksController < ApplicationController
   end
 
   def handle_checkout_session_completed(checkout_session)
-    payment_intent = Stripe::PaymentIntent.retrieve(checkout_session.payment_intent)
-    Rails.logger.info "PAYMENT STATUS IS #{payment_intent.status}"
     if checkout_session.payment_status == 'paid' || checkout_session.payment_status == 'no_payment_required'
       Rails.logger.info "---Checkout Session #{checkout_session.id} complete!---"
       Rails.logger.info "Calling PaymentHandlingServie..."

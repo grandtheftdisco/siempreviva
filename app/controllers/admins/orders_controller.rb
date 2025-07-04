@@ -13,12 +13,11 @@ module Admins
     end
 
     def update
-      AdminService::UpdateOrderTracking.call(order: @order)
-
       if @order.update(order_params)
+        AdminService::UpdateOrderTracking.call(order: @order)
+        Rails.logger.debug "order tracking: #{@order.tracking_number}"
         redirect_to admins_orders_url
-        # FIXME - this ain't showin
-        flash.now[:alert] = "Order was successfully updated."
+        flash[:alert] = "Order was successfully updated."
       else
         render :edit, status: :unprocessable_entity
       end

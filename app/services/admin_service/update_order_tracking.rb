@@ -1,6 +1,7 @@
 module AdminService
   class UpdateOrderTracking < ApplicationService
     def self.call(order:)
+      Rails.logger.debug "TRACKING NUMBER FOR ORDER: #{order.tracking_number} <-------"
       begin
         intent = Stripe::PaymentIntent.update(
           order.payment_intent_id,
@@ -16,7 +17,3 @@ module AdminService
     end
   end
 end
-
-TODO
-1. tracking number not getting sent via metadata unless i'ts a hardcoded string - but the test_field kv pair get ssent.
-2. stripe sig verification issue in server logs ...?
