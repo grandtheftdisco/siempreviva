@@ -1,10 +1,10 @@
 module PaymentHandlingService
   class HandleSuccessfulPayment < ApplicationService
-    def self.call(checkout_session:)
-      # cart.destroy!
-      # Rails.logger.debug "the cart actually got destroyed, right?"
-      # Rails.logger.debug "to be sure, here is cart: #{cart.inspect}"
-      Rails.logger.debug "WE GOT AN ORDER BEING CREATED........"
+    def self.call(checkout_session:, cart:)
+      cart.destroy! if cart.present?
+      Rails.logger.debug "the cart actually got destroyed, right?"
+      Rails.logger.debug "to be sure, here is cart: #{cart.inspect}"
+      Rails.logger.debug "\e[95m---->WE GOT AN ORDER BEING CREATED........\e[0m"
       # add Order record to pg db
       @order = Order.create!(
         payment_intent_id: checkout_session.payment_intent,
