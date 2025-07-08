@@ -30,12 +30,10 @@ module CartService
         end
       rescue Stripe::StripeError => edit
         Rails.logger.error("Stripe error: #{e.message}")
-        flash[:error] = "Unable to add item to cart. Please try again later."
-        redirect_to products_path
+        raise
       rescue StandardError => e
         Rails.logger.error("Error adding item to cart: #{e.message}")
-        flash[:error] = "An error occurred. Please try again later."
-        redirect_to products_path
+        raise
       end
     end
   end
