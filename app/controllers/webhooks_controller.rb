@@ -2,9 +2,16 @@ class WebhooksController < ApplicationController
   skip_before_action :verify_authenticity_token
   skip_before_action :require_authentication
   skip_before_action :set_current_cart
-  def create
-    payload = request.body.read
+    def create
+      Rails.logger.debug "Content-Type: #{request.content_type}"
+      unless request.content_type&.include?('application/json')
+        Rails.logger.debug "Webhook received with wrong content type: #{request.content_type}"
+        return head :unsupported_media_type
+      end
+    payload = request.raw_post
     sig_header = request.env['HTTP_STRIPE_SIGNATURE']
+    # FIXME - may not need this line anymore - removing so logs are easier to read while debugging something else 
+    # Rails.logger.debug "Raw payload: #{request.raw_post}"
     event = Stripe::Webhook.construct_event(
       payload,
       sig_header,
@@ -82,14 +89,9 @@ class WebhooksController < ApplicationController
 
   def handle_checkout_session_completed(checkout_session)
     if checkout_session.payment_status == 'paid' || checkout_session.payment_status == 'no_payment_required'
-      Rails.logger.info "---Checkout Session #{checkout_session.id} complete!---"
-      Rails.logger.info "Calling PaymentHandlingServie..."
-      begin
-        PaymentHandlingService::HandleSuccessfulPayment.call(checkout_session:)
-      rescue => e
-        Rails.logger.error "Error in PaymentHandlingService: #{e.message}"
-        Rails.logger.error e.backtrace.join("\n")
-      end
+      Rails.logger.info "\e[0;95m---> Webhooks Ctrlr ---Checkout Session #{checkout_session.id} complete!---\e[0m"
+      # CheckoutsController will call PaymentHandlingService since it has access
+      # to session data; this controller does NOT.
     elsif checkout_session.payment_status == 'unpaid'
       payment_intent = Stripe::PaymentIntent.retrieve(checkout_session.payment_intent)
 
