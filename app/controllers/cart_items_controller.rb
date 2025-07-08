@@ -18,11 +18,23 @@ class CartItemsController < ApplicationController
         status: :created, 
         location: @new_cart_item }
     end
-    rescue ActiveRecord::RecordInvalid
-      respond_to do |format|    
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @new_cart_item.errors, status: :unprocessable_entity }
-      end
+  rescue ActiveRecord::RecordInvalid
+    respond_to do |format|    
+      format.html { render :new, status: :unprocessable_entity }
+      format.json { render json: @new_cart_item.errors, status: :unprocessable_entity }
+    end
+
+  rescue Stripe::StripeError
+    respond_to do |format|
+      format.html { redirect_to products_path, alert: "Unable to add item to cart. Please try again later." }
+      format.json { render json: { error: "Stripe error" }, status: :unprocessable_entity }
+    end
+
+  rescue => e
+    respond_to do |format|
+      format.html { redirect_to products_path, alert: "An error occured. Please try again later." }
+      format.json { render json: { error: e.message }, status: :unprocessable_entity }
+    end
   end
 
   def destroy
