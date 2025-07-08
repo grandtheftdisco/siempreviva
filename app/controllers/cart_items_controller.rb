@@ -8,7 +8,8 @@ class CartItemsController < ApplicationController
 
     @new_cart_item = CartService::AddToCart.call(product: @product, 
                                                  cart: @cart, 
-                                                 quantity: @quantity)
+                                                 quantity: quantity)
+    
 
     respond_to do |format|
       format.html { redirect_to cart_path,
