@@ -17,7 +17,7 @@ module PaymentHandlingService
 
       # update Checkout record in pg db
       checkout = Checkout.find_by(stripe_checkout_session_id: checkout_session.id)
-      checkout.update(status: checkout_session.status)
+      checkout.update(status: "awaiting shipment")
     end
   end
 end

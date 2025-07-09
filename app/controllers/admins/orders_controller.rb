@@ -13,6 +13,7 @@ module Admins
     end
 
     def update
+      Rails.logger.debug "\e[1;45m---->Params: #{params.inspect}\n"
       if !params[:ship_confirmation]
         flash[:alert] = "You must confirm shipment before you can mark this order as 'shipped'."
         redirect_to edit_admins_order_path(@order) and return
@@ -30,7 +31,13 @@ module Admins
     end
 
     def archive
-      @orders = Order.all
+      @page_title = "All Processed Orders"
+
+      if params[:status].present?
+        @orders = Order.where(status: params[:status])
+      else
+        @orders = Order.all
+      end
     end
 
     private
@@ -41,7 +48,8 @@ module Admins
 
     def order_params
       params.require(:order)
-            .permit(:tracking_number)
+            .permit(:tracking_number,
+                    :status)
     end
   end
 end

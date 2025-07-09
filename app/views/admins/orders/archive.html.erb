@@ -1,3 +1,34 @@
+<h2 class="mb-5 font-bold text-xl self-center p-3">
+  <% if !params.dig(:status).present? %>
+    All Orders
+  <% else %>
+    <%= params.dig(:status)&.capitalize %> Orders
+  <% end %>
+</h2>
+
+<h3 class="mb-5 font-bold bg-slate-200 rounded-2xl self-center px-2 uppercase text-sm">
+  Filter by:
+</h3>
+
+<div class="inline-flex flex-wrap gap-10">
+  <%= link_to "All Orders", 
+    archive_admins_orders_path,
+    class: "font-bold hover:text-purple-800 p-3 mb-8 border
+      border-purple-300 rounded-2xl bg-purple-100" %>
+  <%= link_to "Shipped",
+    archive_admins_orders_path(status: "shipped"),
+    class: "font-bold hover:text-purple-800 p-3 mb-8 border
+      border-purple-200 rounded-2xl bg-purple-200" %>
+  <!--# the 'Delivered' view is feature flagged -- need USPS API hookup-->
+  <%= link_to "Delivered",
+    archive_admins_orders_path(status: "delivered"),
+    class: "font-bold hover:text-purple-800 p-3 mb-8 border
+      border-purple-200 rounded-2xl bg-purple-200" %>
+</div>
+<%= link_to "Back to Home",
+  admins_orders_path,
+  class: "m-5 p-3 border rounded-2xl bg-purple-50" %>
+
 <% @orders.each do |order| %>
   <%= render order %>
   <br/>
