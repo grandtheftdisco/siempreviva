@@ -6,8 +6,7 @@ module AdminService
         intent = Stripe::PaymentIntent.update(
           order.payment_intent_id,
           metadata: { 
-            tracking_number: order.tracking_number,
-            test_field: "123testfield"
+            tracking_number: order.tracking_number
          }
         )
         Rails.logger.info "Successfully added tracking number to PaymentIntent #{intent.id}"

@@ -4,9 +4,9 @@
 
   <body>
     <header>
-      <nav class="flex justify-between p-5">
+      <nav class="flex justify-between p-5 items-center">
         <p>[logo]</p>
-        <%= link_to 'Admin Dashboard', admins_orders_path %>
+        <p class="text-4xl"><%= link_to 'Admin Dashboard', admins_orders_path %></p>
         <ul class="inline-flex gap-5">
           <li>
             <%= button_to 'Log Out', 

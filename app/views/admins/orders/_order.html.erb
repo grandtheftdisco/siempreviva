@@ -1,18 +1,21 @@
 <div>
   <div class="flex flex-col bg-green-200 p-10 border rounded-2xl">
-  <div class="flex justify-between p-5 gap-10">
-    <h3 class="text-xl font-bold">Order #<%= order.id %></h3>
-    <p class="text-xl font-bold"><%= order.created_at %></p>
-  </div>
-  <div class="flex flex-col">
-    <p>Customer Name</p>
-    <p>Shipping Address</p>
-    <div class="flex align-self-center bg-yellow-200">
-      <p>[product carousel]</p>
+    <div class="flex justify-between p-5 gap-10">
+      <h3 class="text-lg font-bold">Order <%= order.id %></h3>
+      <p class="text-lg"><%= order.created_at.strftime('%m/%d/%Y, %I:%M%P (%Z)') %></p>
     </div>
-    <%= link_to "Ship Order", 
-      edit_admins_order_path(order),
-      class: 'bg-purple-300 rounded-2xl w-1/2 border'
-    %>
-</div>
+    <div class="flex flex-col">
+      <p>[customer name]</p>
+      <p>[shipping city/state/zip]</p>
+      <br/>
+      <div class="flex align-self-center bg-yellow-200 m-5">
+        <p class="text-center text-sm">[product carousel]</p>
+      </div>
+      <br/>
+      <%= link_to "Ship Order", 
+        edit_admins_order_path(order),
+        class: 'bg-purple-300 rounded-2xl w-1/2 border mt-5 text-center'
+      %>
+    </div>
+  </div>
 </div>
