@@ -1,8 +1,14 @@
-<div class="flex flex-col items-center">
+<div class="flex flex-col items-center bg-orange-500">
   <%= form_with model: [:admins, @order] do |order_form| %>
     <%= order_form.label :tracking_number %>
     <%= order_form.text_field :tracking_number, autocomplete: 'off', class: 'border rounded-2xl bg-green-50' %>
     <br/>
+    <label>
+      <%= check_box_tag :ship_confirmation, value: 0 %>
+      I have dropped this order off with USPS
+    </label>
+    <br/>
     <%= order_form.submit "Save Changes & Fulfill", class: 'bg-purple-300 px-3 rounded-2xl' %>
+    <%= link_to "Back to all orders", admins_orders_path, class: 'bg-yellow-200 px-3 rounded-2xl' %>
   <% end %>
 </div>
