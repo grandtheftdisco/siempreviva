@@ -1,9 +1,16 @@
 module Admins
   class OrdersController < Admins::ApplicationController
+    ORDERS_PER_PAGE = 2
     before_action :set_order, only: %i[ edit update show ]
 
     def index
+      @page = params.fetch(:page, 0)
+                    .to_i
+      @orders_per_page = ORDERS_PER_PAGE
+      @total_unfulfilled_orders = Order.where(tracking_number: nil).count
       @unfulfilled_orders = Order.where(tracking_number: nil)
+                                 .offset(@page * @orders_per_page)
+                                 .limit(@orders_per_page)
     end
 
     def show
@@ -30,6 +37,7 @@ module Admins
       end
     end
 
+    # find a way to integrate this into #index to stay restful
     def archive
       @page_title = "All Processed Orders"
 
