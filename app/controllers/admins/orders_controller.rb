@@ -3,6 +3,7 @@ module Admins
     ORDERS_PER_PAGE = 2
     before_action :set_order, only: %i[ edit update show ]
 
+    # 'main' page, where unfulfilled orders live
     def index
       @page = params.fetch(:page, 0)
                     .to_i
@@ -37,14 +38,20 @@ module Admins
       end
     end
 
-    # find a way to integrate this into #index to stay restful
+    # where all fulfilled orders live
     def archive
+      @page = params.fetch(:page, 0)
+                    .to_i
+      @orders_per_page = ORDERS_PER_PAGE
+      @total_fulfilled_orders = Order.all.count
+      @fulfilled_orders = Order.where.not(tracking_number: nil)
+                               .offset(@page * @orders_per_page)
+                               .limit(@orders_per_page)
+
       @page_title = "All Processed Orders"
 
       if params[:status].present?
         @orders = Order.where(status: params[:status])
-      else
-        @orders = Order.all
       end
     end
 
