@@ -12,9 +12,26 @@ module Admins
       @unfulfilled_orders = Order.where(tracking_number: nil)
                                  .offset(@page * @orders_per_page)
                                  .limit(@orders_per_page)
+
     end
 
     def show
+      # view elements
+      @order = Order.find(params.expect(:id))
+      @stripe_transaction = Stripe::PaymentIntent.retrieve({
+        id: @order.payment_intent_id,
+        expand: ['shipping', 'customer']
+      })
+      @shipping_address = @stripe_transaction.shipping
+                                            &.address
+                                            &.to_h
+      @customer = @stripe_transaction.customer
+
+      @line_items = fetch_line_items(@order.payment_intent_id)
+      @stripe_charge = Stripe::Charge.retrieve({
+        id: @stripe_transaction.latest_charge
+      })
+      @customer_info = @stripe_charge.billing_details
     end
 
     def edit
@@ -56,6 +73,55 @@ module Admins
     end
 
     private
+
+    def fetch_line_items(payment_intent_id)
+      begin
+        # ensures no duplicate sessions for same payment intent
+        session_list = Stripe::Checkout::Session.list({
+          payment_intent: payment_intent_id,
+          expand: ['data.line_items']
+        })
+
+        if session_list.data.empty?
+          return { error: "No checkout session found for this payment."}
+    
+        end
+        
+        session = session_list.data.first
+        line_items = session.line_items.data
+
+        detailed_line_items = fetch_product_details(line_items)
+
+        return detailed_line_items
+      rescue Stripe::StripeError => e
+        return { error: e.message }
+      end
+    end
+
+    def fetch_product_details(line_items)
+      line_items.map do |item|
+        price = Stripe::Price.retrieve({
+          id: item.price.id,
+          expand: ['product']
+        })
+
+        # return hash of line item product details
+        {
+          id: item.id,
+          quantity: item.quantity,
+          amount_total: item.amount_total,
+          unit_amount: price.unit_amount,
+          currency: price.currency,
+          product: {
+            id: price.product.id,
+            name: price.product.name,
+            description: price.product.description,
+            images: price.product.images,
+            metadata: price.product.metadata
+          }
+        }
+      end
+    end
 
     def set_order
       @order = Order.find(params[:id])

@@ -20,7 +20,12 @@ class CheckoutSessionsController < ApplicationController
       ui_mode: 'embedded',
       line_items: line_items,
       mode: 'payment',
-      return_url: return_url
+      return_url: return_url,
+      customer_creation: 'always',
+      billing_address_collection: 'required',
+      shipping_address_collection: {
+        allowed_countries: ['US']
+      }
     })
 
     # for my db
