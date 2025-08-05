@@ -4,5 +4,5 @@
 Rails.application.config.assets.version = "1.0"
 
 # Add additional assets to the asset load path.
-# Rails.application.config.assets.paths << Emoji.images_path
-Rails.application.config.assets.paths << Rails.root.join("app/assets/tailwind")
+# Rails.application.config.assets.paths << Emoji.images_pathweb: bin/rails server -p 3000 -b 0.0.0.0
+Rails.application.config.assets.paths << Rails.root.join("public/assets")
