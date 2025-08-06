@@ -54,9 +54,7 @@ class CartItemsController < ApplicationController
     end
 
     def product_setup
-      @products = Stripe::Product.list(active: true, limit: 100).map do |product|
-                    ProductWrapper.new(product)
-                  end
+      @products = StripeService::FetchProductInventory.call
       @product = @products.find { |item| item.id == params[:cart_item][:stripe_product_id] }
     end
 

@@ -11,15 +11,7 @@ class ProductsController < ApplicationController
 
   private
     def call_stripe_products
-      @products = Rails.cache.fetch("stripe_products", expires_in: 30.days) do
-                    response = Stripe::Product.list(
-                      active: true,
-                      expand: ['data.default_price']
-                    )
-
-                    Rails.logger.info "----------> sending expanded results......"
-                    response.data
-                  end
+      @products = StripeService::FetchProductInventory.call
     end
   
     def set_product

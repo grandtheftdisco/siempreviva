@@ -19,7 +19,7 @@ module CartService
           existing_item.tap(&:save!)
         
         else
-          new_cart_item = CartItem.create!(price: product.price,
+          new_cart_item = CartItem.create!(price: product.default_price.unit_amount,
                                           cart_id: cart.id,
                                           stripe_product_id: product.id,
                                           image: product.images[0],
