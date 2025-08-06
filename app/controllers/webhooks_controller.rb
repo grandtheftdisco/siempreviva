@@ -53,6 +53,9 @@ class WebhooksController < ApplicationController
       if refund.status == 'succeeded'
         handle_refunded_order(refund)
       end
+    when /product\..*/, /price\..*/
+      Rails.cache.delete("stripe_products")
+      Rails.logger.info "--------> PRODUCT OR PRICE CHANGED: #{event.inspect}"
     # -------------------------------------------
     ### THE EVENTS BELOW SHOULD BE HANDLED AD HOC BY DEV/PRODUCT OWNER ###
     # -------------------------------------------
