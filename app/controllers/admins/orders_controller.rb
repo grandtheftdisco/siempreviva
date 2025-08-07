@@ -78,7 +78,7 @@ module Admins
                     .to_i
       @orders_per_page = ORDERS_PER_PAGE
       @fulfilled_orders = Order.where.not(tracking_number: nil)
-                               .offset((@page - 1) * @orders_per_page)
+                               .offset(@page * @orders_per_page)
                                .limit(@orders_per_page)
                                .order(:created_at)
       @total_fulfilled_orders = Order.where.not(tracking_number: nil).count
