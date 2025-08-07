@@ -2,16 +2,17 @@ class WebhooksController < ApplicationController
   skip_before_action :verify_authenticity_token
   skip_before_action :require_authentication
   skip_before_action :set_current_cart
+
     def create
-      Rails.logger.debug "Content-Type: #{request.content_type}"
+      # from debugging some gnarly issues with request parsing
       unless request.content_type&.include?('application/json')
         Rails.logger.debug "Webhook received with wrong content type: #{request.content_type}"
         return head :unsupported_media_type
       end
+
     payload = request.raw_post
     sig_header = request.env['HTTP_STRIPE_SIGNATURE']
-    # FIXME - may not need this line anymore - removing so logs are easier to read while debugging something else 
-    # Rails.logger.debug "Raw payload: #{request.raw_post}"
+    
     event = Stripe::Webhook.construct_event(
       payload,
       sig_header,
@@ -93,15 +94,18 @@ class WebhooksController < ApplicationController
   def handle_checkout_session_completed(checkout_session)
     if checkout_session.payment_status == 'paid' || checkout_session.payment_status == 'no_payment_required'
       Rails.logger.info "\e[0;95m---> Webhooks Ctrlr ---Checkout Session #{checkout_session.id} complete!---\e[0m"
+      # There WAS a PaymentHandlingService call, but due to scope, it moved.
       # CheckoutsController will call PaymentHandlingService since it has access
       # to session data; this controller does NOT.
+      
+      # CODE REVIEW -- should I just take this `if` clause out of the statement?
+
     elsif checkout_session.payment_status == 'unpaid'
       payment_intent = Stripe::PaymentIntent.retrieve(checkout_session.payment_intent)
 
       case payment_intent.status
       when 'succeeded'
         Rails.logger.info "---Payment Intent #{payment_intent.id} complete!---"
-        # TODO - i think i need to re-route this to a payment handler but i'm trying to focus on another problem rn - so this is a backburner thing
       when 'processing'
         Rails.logger.info "---Payment Intent #{payment_intent.id} for Checkout Session #{checkout_session.id} PROCESSING...---"
 
