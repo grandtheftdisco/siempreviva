@@ -29,7 +29,7 @@
   admins_orders_path,
   class: "m-5 p-3 border rounded-2xl bg-purple-50 text-sm" %>
 
-<% if @orders.count == 0 %>
+<% if @fulfilled_orders.count == 0 %>
     <p class="p-10 bg-purple-100 rounded-2xl border text-xl">There are no orders in this category.</p>
 <% else %>
   <% @fulfilled_orders.each do |order| %>
@@ -38,15 +38,15 @@
   <% end %>
 
   <div>
-    <% if @page >= 1 %>
+    <% if @page > 1 %>
       <%= link_to "<< Previous Page",
-        admins_orders_path(page: @page - 1),
+        archive_admins_orders_path(page: @page - 1),
         class: 'font-bold' %>
     <% end %>
     |
     <% if (@page + 1) * @orders_per_page < @total_fulfilled_orders %> 
     <%= link_to "Next Page >>",
-      admins_orders_path(page: @page + 1),
+      archive_admins_orders_path(page: @page + 1),
       class: 'font-bold' %>
     <% end %>
   </div>

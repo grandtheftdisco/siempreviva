@@ -5,12 +5,19 @@
   </div>
   <div class="flex flex-col">
 
+    <% stripe_info = @stripe_infos[order.id] %>
 
-    <p class="font-bold text-lg">NEED TO RENDER BASIC INFO HERE... API CALL?</p>
-    <br/>
-    <div class="flex align-self-center bg-green-50 m-5">
-      <p class="text-center text-sm">[product carousel]</p>
-    </div>
+    <% if stripe_info && !stripe_info[:error] %>
+      <p><%= stripe_info[:customer][:name] if stripe_info[:customer] %></p>
+      <p>
+        <%= stripe_info[:shipping_address]&.[](:city) %>
+        <%= stripe_info[:shipping_address]&.[](:state) %>
+        <%= stripe_info[:shipping_address]&.[](:postal_code) %>
+      </p>
+    <% elsif !stripe_info %>
+      <p>Order info unavailable. Please click the "Stripe Transaction" button below for more details.</p>
+    <% end %>
+
     <br/>
     <div class="flex gap-5 self-center items-center p-10 gap-x-2">
       <%= link_to "Order Details",
