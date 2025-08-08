@@ -30,7 +30,7 @@ class CheckoutsController < ApplicationController
       # the current session cookie. The WebhooksCtrlr does not have session info,
       # so it would have required sending metadata to Stripe and then querying
       # for it.
-    if @session.status == 'complete' || @session.payment_status == 'paid'
+    if @session.payment_status == 'paid'
       begin
         PaymentHandlingService::HandleSuccessfulPayment.call(checkout_session: @session,
                                                              cart: @cart)
@@ -38,11 +38,15 @@ class CheckoutsController < ApplicationController
         Rails.logger.error "Error in PaymentHandlingService: #{e.message}"
         Rails.logger.error e.backtrace.join("\n")
       end
-      # no redirect here, since I am using the Stripe Checkout Session ID in my URLs
-      # redirect is only necessary if I want to use PG DB's Checkout id for local Checkout lookup
+      # no redirect here, since you use the Stripe Checkout Session ID in your URLs
+      # redirect is only necessary if you want to use postgres db's Checkout id for local Checkout lookup
+    elsif @session.status == 'complete' && @session.payment_status == 'processing'
+      # async payment in progress
     elsif @session.status == 'expired'
       flash.now[:alert] = "Oops! This checkout session has expired. Don't worry - your card hasn't been charged. Try checking out again! 🙂"
       redirect_to new_checkout_path
+    else
+      Rails.logger.debug "\e[0;92m--------x-------You have an unhandled sitch in CheckoutsController....\e[0"
     end
   end
 
