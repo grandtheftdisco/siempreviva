@@ -111,9 +111,8 @@ class WebhooksController < ApplicationController
       when 'processing'
         Rails.logger.info "---Payment Intent #{payment_intent.id} for Checkout Session #{checkout_session.id} PROCESSING...---"
 
-        # order.update(status: 'payment processing')
-
-        local_checkout_record.update(status: 'payment_processing')
+        local_checkout_record.update(status: 'payment_processing',
+                                     payment_intent_id: payment_intent.id)
       when 'requires_payment_method', 'requires_action', 'requires_confirmation'
         Rails.logger.warn "---Payment Issue! #{payment_intent.id}has status of #{payment_intent.status}---"
 
