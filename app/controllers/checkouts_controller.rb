@@ -9,39 +9,34 @@ class CheckoutsController < ApplicationController
   def create
   end
 
-  # TODO - restructure this entire action so it makes sense
-  # REFACTOR - abstract out business logic into service objects AFTER restructuring
   def show
-    checkout = Checkout.find_by(stripe_checkout_session_id: params[:id])
+    local_checkout_record = Checkout.find_by(stripe_checkout_session_id: params[:id])
 
-    if !checkout
-      Rails.logger.error "\e[0;91mNo checkout found with Stripe Session ID: #{params[:id]}\e[0"
-      return render plain: "Checkout not found", status: :not_found
+    if !local_checkout_record
+      Rails.logger.error "\e[101;1mNo local checkout record found with Stripe Session ID: #{params[:id]}\e[0"
+      return render plain: "local Checkout record not found", status: :not_found
     end
 
     begin
       session_id = checkout.stripe_checkout_session_id
       @session = Stripe::Checkout::Session.retrieve(session_id) if session_id.present?
-    rescue Stripe::InvalidRequestError => e
-      Rails.logger.error "\e[0;92m-----x----- Failed to retrieve Checkout Session: #{e.message}\e[0"
-      return render plain: "Invalid Checkout Session", status: :not_found
-    end
 
-    # !! Calling this service here, instead of inside the event router in
-      # the WebhooksCtrlr, because in order to delete the cart, you need
-      # the current session cookie. The WebhooksCtrlr does not have session info,
-      # so it would have required sending metadata to Stripe and then querying
-      # for it.
-    if @session.status == 'complete' && @session.payment_status == 'paid'
-      # TODO - restructure now that payment handling service won't be called here. 
-      
-      # no redirect here, since I am using the Stripe Checkout Session ID in my URLs
-      # redirect is only necessary if I want to use PG DB's Checkout id for local Checkout lookup
-    elsif @session.payment_status == 'unpaid'
-      Rails.logger.debug "\e[101;1m-----> ASYNC PAYMENT is UNPAID\e[0"
-    elsif @session.status == 'expired'
-      flash.now[:alert] = "Oops! This checkout session has expired. Don't worry - your card hasn't been charged. Try checking out again! 🙂"
-      redirect_to new_checkout_path
+      if @session.status == 'expired'
+        flash.now[:alert] = "Oops! This checkout session has expired. Don't worry - your card hasn't been charged. Try checking out again! 🙂"
+        redirect_to new_checkout_path
+      end
+    rescue Stripe::InvalidRequestError => e
+      Rails.logger.error "\e[101;1m-----x----- Failed to retrieve Checkout Session: #{e.message}\e[0"
+      Rails.logger.error "\e[101m ---> Checkout Session ID #{@session.id}]"
+      return render plain: "Invalid Checkout Session", status: :not_found
+    rescue Stripe::StripeError =>
+      Rails.logger.error "\e[101;1m-----x----- Stripe error occured: #{e.message}\e[0"
+      Rails.logger.error "\e[101m ---> Checkout Session ID #{@session.id}]"
+      return render plain: "Payment processing error", status: :service_unavailable
+    rescue => e
+      Rails.logger.error "\e[101;1m-----x----- Unexpected error in checkout: #{e.message}\e[0"
+      Rails.logger.error "\e[101m ---> Checkout Session ID #{@session.id}]"
+      return render plain: "An unexpected error occured", status: :internal_server_error
     end
   end
 
