@@ -40,7 +40,6 @@ module Admins
     end
 
     def update
-      Rails.logger.debug "\e[1;45m---->Params: #{params.inspect}\n"
       if !params[:ship_confirmation]
         flash[:alert] = "You must confirm shipment before you can mark this order as 'shipped'."
         redirect_to edit_admins_order_path(@order) and return
@@ -49,7 +48,6 @@ module Admins
       if @order.update(order_params)
         AdminService::UpdateOrderTracking.call(order: @order)
         OrderMailer.shipped(@order).deliver_later
-        Rails.logger.debug "order tracking: #{@order.tracking_number}"
         redirect_to admins_orders_url
         flash[:alert] = "Order was successfully updated."
       else
