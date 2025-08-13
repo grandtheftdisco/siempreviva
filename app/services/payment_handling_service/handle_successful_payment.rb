@@ -21,8 +21,9 @@ module PaymentHandlingService
     end
 
     def self.update_checkout_in_database(checkout_session)
-      checkout = Checkout.find_by(stripe_checkout_session_id: checkout_session.id)
-      checkout.update(status: "awaiting shipment")
+      local_checkout_record = Checkout.find_by(stripe_checkout_session_id: checkout_session.id)
+      local_checkout_record.update(status: "awaiting shipment",
+                                   payment_intent_id: checkout_session.payment_intent)
     end
   end
 end
