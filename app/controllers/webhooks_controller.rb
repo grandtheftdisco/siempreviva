@@ -5,8 +5,9 @@ class WebhooksController < ApplicationController
 
     def create
       # from debugging some gnarly issues with request parsing
+      # >> keep this in case it happens again!
       unless request.content_type&.include?('application/json')
-        Rails.logger.debug "Webhook received with wrong content type: #{request.content_type}"
+        Rails.logger.error "\e[101;1mWebhook received with wrong content type: #{request.content_type}\e[0"
         return head :unsupported_media_type
       end
 
@@ -24,11 +25,11 @@ class WebhooksController < ApplicationController
 
   rescue JSON::ParserError => editing
     # invalid payload
-    Rails.logger.debug "JSON Parser Error -- invalid payload"
+    Rails.logger.error "\e[101;1mJSON Parser Error -- invalid payload\e[0"
     return head :bad_request
   rescue Stripe::SignatureVerificationError => e
     # invalid signature
-    Rails.logger.debug "Stripe Sig Verification Error - invalid signature"
+    Rails.logger.error "\e[101;1mStripe Sig Verification Error - invalid signature\e[0"
     return head :bad_request
   end
 
@@ -96,30 +97,31 @@ class WebhooksController < ApplicationController
         PaymentHandlingService::HandleSuccessfulPayment.call(checkout_session: checkout_session,
                                                              cart: cart)
       rescue => e
-        Rails.logger.error "Error in PaymentHandlingService: #{e.message}"
+        Rails.logger.error "\e[101;1mError in PaymentHandlingService: #{e.message}\e[0"
         Rails.logger.error e.backtrace.join("\n")
       end
     elsif checkout_session.payment_status == 'unpaid'
       case payment_intent.status
       when 'succeeded'
+        # >> no, it's not likely this combo (CS with 'unpaid' payment_status
+        #    + PI with 'succeeded' status), however, the goal is handle all
+        #    possible scenarios, in case events hit the server out of order
         Rails.logger.info "---Payment Intent #{payment_intent.id} complete!---"
-        # rare
-        # HandleSuccessfulPayment
+        PaymentHandlingService::HandleSuccessfulPayment.call(checkout_session: checkout_session,
+                                                             cart: cart)
       when 'processing'
         Rails.logger.info "---Payment Intent #{payment_intent.id} for Checkout Session #{checkout_session.id} PROCESSING...---"
 
         local_checkout_record.update(status: 'payment_processing',
                                      payment_intent_id: payment_intent.id)
       when 'requires_payment_method', 'requires_action', 'requires_confirmation'
-        Rails.logger.warn "---Payment Issue! #{payment_intent.id}has status of #{payment_intent.status}---"
-
-        # order.update(status: payment_intent.status)
+        Rails.logger.warn "\e[101;1m---Payment Issue! #{payment_intent.id}has status of #{payment_intent.status}---\e[0"
 
         local_checkout_record.update(status: payment_intent.status)
         AdminMailer.payment_issue_notification(checkout_session, payment_intent)
       else
-        Rails.logger.warn "---Unexpected Payment Intent Status---"
-        Rails.logger.warn "---Payment Intent #{payment_intent.id} has a status of #{payment_intent.status}---"
+        Rails.logger.warn "\e[101;1m---Unexpected Payment Intent Status---\e[0"
+        Rails.logger.warn "\e[101;1m---Payment Intent #{payment_intent.id} has a status of #{payment_intent.status}---\e[0"
         
         AdminMailer.payment_issue_notification(checkout_session, payment_intent)
       end
@@ -133,7 +135,7 @@ class WebhooksController < ApplicationController
       PaymentHandlingService::HandleSuccessfulPayment.call(checkout_session: checkout_session,
                                                            cart: cart)
     else
-      Rails.logger.warn "---Unexpected Payment Intent Status for PI# #{payment_intent.id} -- #{payment_intent.status}"
+      Rails.logger.warn "\e[101;1m---Unexpected Payment Intent Status for PI# #{payment_intent.id} -- #{payment_intent.status}\e[0"
       AdminMailer.payment_issue_notification(checkout_session, payment_intent)
     end
   end
@@ -162,8 +164,8 @@ class WebhooksController < ApplicationController
   end
 
   def handle_unexpected_event(event)
-    Rails.logger.warn "[!] ->->-> Unexpected Event:"
-    Rails.logger.warn "#{event.inspect}"
+    Rails.logger.warn "\e[101;1m[!] ->->-> Unexpected Event:\e[0"
+    Rails.logger.warn "\e[101;1m#{event.inspect}\e[0"
 
     AdminMailer.event_notification(event)
   end
