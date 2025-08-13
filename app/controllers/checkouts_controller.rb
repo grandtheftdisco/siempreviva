@@ -9,6 +9,8 @@ class CheckoutsController < ApplicationController
   def create
   end
 
+  # TODO - restructure this entire action so it makes sense
+  # REFACTOR - abstract out business logic into service objects AFTER restructuring
   def show
     checkout = Checkout.find_by(stripe_checkout_session_id: params[:id])
 
@@ -30,16 +32,13 @@ class CheckoutsController < ApplicationController
       # the current session cookie. The WebhooksCtrlr does not have session info,
       # so it would have required sending metadata to Stripe and then querying
       # for it.
-    if @session.status == 'complete' || @session.payment_status == 'paid'
-      begin
-        PaymentHandlingService::HandleSuccessfulPayment.call(checkout_session: @session,
-                                                             cart: @cart)
-      rescue => e
-        Rails.logger.error "Error in PaymentHandlingService: #{e.message}"
-        Rails.logger.error e.backtrace.join("\n")
-      end
+    if @session.status == 'complete' && @session.payment_status == 'paid'
+      # TODO - restructure now that payment handling service won't be called here. 
+      
       # no redirect here, since I am using the Stripe Checkout Session ID in my URLs
       # redirect is only necessary if I want to use PG DB's Checkout id for local Checkout lookup
+    elsif @session.payment_status == 'unpaid'
+      Rails.logger.debug "\e[101;1m-----> ASYNC PAYMENT is UNPAID\e[0"
     elsif @session.status == 'expired'
       flash.now[:alert] = "Oops! This checkout session has expired. Don't worry - your card hasn't been charged. Try checking out again! 🙂"
       redirect_to new_checkout_path

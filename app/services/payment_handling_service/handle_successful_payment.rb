@@ -9,7 +9,7 @@ module PaymentHandlingService
 
     private
 
-    def self.add_order_to_database(checkout_session:)
+    def self.add_order_to_database(checkout_session)
       @order = Order.create!(
         payment_intent_id: checkout_session.payment_intent,
         stripe_customer_id: checkout_session.customer,
