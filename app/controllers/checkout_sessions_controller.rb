@@ -20,6 +20,7 @@ class CheckoutSessionsController < ApplicationController
       ui_mode: 'embedded',
       line_items: line_items,
       mode: 'payment',
+      payment_method_types: ['card', 'us_bank_account'],
       return_url: return_url,
       customer_creation: 'always',
       billing_address_collection: 'required',

@@ -89,31 +89,34 @@ class WebhooksController < ApplicationController
   end
 
   def handle_checkout_session_completed(checkout_session)
+    payment_intent, local_checkout_record, cart = set_up_transaction_info(checkout_session)
+
     if checkout_session.payment_status == 'paid' || checkout_session.payment_status == 'no_payment_required'
-      Rails.logger.info "\e[0;95m---> Webhooks Ctrlr ---Checkout Session #{checkout_session.id} complete!---\e[0m"
-      # There WAS a PaymentHandlingService call, but due to scope, it moved.
-      # CheckoutsController will call PaymentHandlingService since it has access
-      # to session data; this controller does NOT.
-      
-      # CODE REVIEW -- should I just take this `if` clause out of the statement?
-
+      begin
+        PaymentHandlingService::HandleSuccessfulPayment.call(checkout_session: checkout_session,
+                                                             cart: cart)
+      rescue => e
+        Rails.logger.error "Error in PaymentHandlingService: #{e.message}"
+        Rails.logger.error e.backtrace.join("\n")
+      end
     elsif checkout_session.payment_status == 'unpaid'
-      payment_intent = Stripe::PaymentIntent.retrieve(checkout_session.payment_intent)
-
       case payment_intent.status
       when 'succeeded'
         Rails.logger.info "---Payment Intent #{payment_intent.id} complete!---"
+        # rare
+        # HandleSuccessfulPayment
       when 'processing'
         Rails.logger.info "---Payment Intent #{payment_intent.id} for Checkout Session #{checkout_session.id} PROCESSING...---"
 
-        order.update(status: 'payment processing')
-        checkout.update(status: 'payment_processing')
+        # order.update(status: 'payment processing')
+
+        local_checkout_record.update(status: 'payment_processing')
       when 'requires_payment_method', 'requires_action', 'requires_confirmation'
         Rails.logger.warn "---Payment Issue! #{payment_intent.id}has status of #{payment_intent.status}---"
 
-        order.update(status: payment_intent.status)
-        checkout.update(status: payment_intent.status)
+        # order.update(status: payment_intent.status)
 
+        local_checkout_record.update(status: payment_intent.status)
         AdminMailer.payment_issue_notification(checkout_session, payment_intent)
       else
         Rails.logger.warn "---Unexpected Payment Intent Status---"
@@ -125,15 +128,11 @@ class WebhooksController < ApplicationController
   end
 
   def handle_async_payment_succeeded(checkout_session)
-    payment_intent = Stripe::PaymentIntent.retrieve(checkout_session.payment_intent)
-
-    order = Order.find_by(payment_intent_id: payment_intent.id)
-    checkout = Checkout.find_by(payment_intent_id: payment_intent.id)
+    payment_intent, local_checkout_record, cart = set_up_transaction_info(checkout_session)
 
     if payment_intent.status == 'succeeded'
-      order.update(status: 'paid')
-      checkout.update(status: 'paid')
-      OrderMailer.received(order).deliver_later
+      PaymentHandlingService::HandleSuccessfulPayment.call(checkout_session: checkout_session,
+                                                           cart: cart)
     else
       Rails.logger.warn "---Unexpected Payment Intent Status for PI# #{payment_intent.id} -- #{payment_intent.status}"
       AdminMailer.payment_issue_notification(checkout_session, payment_intent)
@@ -141,13 +140,12 @@ class WebhooksController < ApplicationController
   end
 
   def handle_async_payment_failed(checkout_session)
-    payment_intent = Stripe::PaymentIntent.retrieve(checkout_session.payment_intent)
+    payment_intent, local_checkout_record, cart = set_up_transaction_info(checkout_session)
 
-    order = Order.find_by(payment_intent_id: payment_intent.id)
-    checkout = Checkout.find_by(payment_intent_id: payment_intent.id)
-
-    order.update(status: 'payment failed')
-    checkout.update(status: 'payment failed')
+    local_checkout_record.update(status: 'payment failed')
+    
+    Rails.logger.error "\e[101;1m -----x----- Payment Failed for Checkout Session # #{checkout_session.id}\e[0"
+    Rails.logger.error "\e[101;1m #{checkout_session.inspect}\e[0"
 
     AdminMailer.payment_issue_notification(checkout_session, payment_intent)
   end
@@ -169,5 +167,13 @@ class WebhooksController < ApplicationController
     Rails.logger.warn "#{event.inspect}"
 
     AdminMailer.event_notification(event)
+  end
+
+  def set_up_transaction_info(checkout_session)
+    payment_intent = Stripe::PaymentIntent.retrieve(checkout_session.payment_intent)
+    local_checkout_record = Checkout.find_by(stripe_checkout_session_id: checkout_session.id)
+    cart = Cart.find(local_checkout_record.cart_id)
+
+    [payment_intent, local_checkout_record, cart]
   end
 end
