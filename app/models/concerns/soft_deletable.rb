@@ -1,0 +1,33 @@
+module SoftDeletable
+  extend ActiveSupport::Concern
+
+  included do
+    define_callbacks :soft_delete
+    default_scope { where(deleted_at: nil) }
+    scope :only_deleted, -> { unscope(where: :deleted_at).where.not(deleted_at: nil) }
+    scope :with_deleted, -> { unscope(where: :deleted_at) }
+  end
+
+  def soft_delete
+    update_column :deleted_at, Time.now if has_attribute? :deleted_at
+    # TODO - is there a way to override the line below so it's not just generic 'soft_deleted'
+    #  ie, update it to "abandoned" for Carts? 
+    update_column :status, "soft_deleted" if has_attribute? :status
+    Rails.logger.debug "\e[101;1---- S O F T    D E L E T E D ----\e[0"
+  end
+
+  def soft_delete_records
+    associations = self.class.reflect_on_all_associations.select do |reflection|
+      reflection.options[:dependent].present?
+    end
+    
+    associations.each do |association|
+      associated_records = public_send(association.name)
+      if association.options[:dependent] == :destroy
+        associated_records.each(&:soft_delete)
+      elsif association.options[:dependent] == :delete_all
+        associated_records.update_all(deleted_at: Time.now)
+      end
+    end
+  end
+end

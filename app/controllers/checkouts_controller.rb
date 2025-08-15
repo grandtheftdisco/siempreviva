@@ -18,7 +18,7 @@ class CheckoutsController < ApplicationController
     end
 
     begin
-      session_id = checkout.stripe_checkout_session_id
+      session_id = local_checkout_record.stripe_checkout_session_id
       @session = Stripe::Checkout::Session.retrieve(session_id) if session_id.present?
 
       if @session.status == 'expired'
@@ -29,7 +29,7 @@ class CheckoutsController < ApplicationController
       Rails.logger.error "\e[101;1m-----x----- Failed to retrieve Checkout Session: #{e.message}\e[0"
       Rails.logger.error "\e[101m ---> Checkout Session ID #{@session.id}]"
       return render plain: "Invalid Checkout Session", status: :not_found
-    rescue Stripe::StripeError =>
+    rescue Stripe::StripeError => e
       Rails.logger.error "\e[101;1m-----x----- Stripe error occured: #{e.message}\e[0"
       Rails.logger.error "\e[101m ---> Checkout Session ID #{@session.id}]"
       return render plain: "Payment processing error", status: :service_unavailable
