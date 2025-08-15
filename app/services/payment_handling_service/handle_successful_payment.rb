@@ -1,8 +1,6 @@
 module PaymentHandlingService
   class HandleSuccessfulPayment < ApplicationService
     def self.call(checkout_session:, cart:)
-      cart.destroy! if cart.present?
-      
       add_order_to_database(checkout_session)
       update_checkout_in_database(checkout_session)
     end
