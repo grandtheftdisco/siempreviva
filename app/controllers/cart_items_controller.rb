@@ -21,20 +21,26 @@ class CartItemsController < ApplicationController
     end
   rescue ActiveRecord::RecordInvalid
     respond_to do |format|    
-      format.html { redirect_to cart_path, alert: "Could not add item to cart. Please try again later."}
-      format.json { render json: @new_cart_item.errors, status: :unprocessable_entity }
+      format.html { redirect_to cart_path,
+                    alert: "Could not add item to cart. Please try again later."}
+      format.json { render json: @new_cart_item.errors,
+                    status: :unprocessable_entity }
     end
 
   rescue Stripe::StripeError
     respond_to do |format|
-      format.html { redirect_to products_path, alert: "Unable to add item to cart. Please try again later." }
-      format.json { render json: { error: "Stripe error" }, status: :unprocessable_entity }
+      format.html { redirect_to products_path,
+                    alert: "Unable to add item to cart. Please try again later." }
+      format.json { render json: { error: "Stripe error" },
+                    status: :unprocessable_entity }
     end
 
   rescue => e
     respond_to do |format|
-      format.html { redirect_to products_path, alert: "An error occured. Please try again later." }
-      format.json { render json: { error: e.message }, status: :unprocessable_entity }
+      format.html { redirect_to products_path,
+                    alert: "An error occured. Please try again later." }
+      format.json { render json: { error: e.message },
+                    status: :unprocessable_entity }
     end
   end
 
@@ -64,8 +70,9 @@ class CartItemsController < ApplicationController
 
     def cart_item_params 
       params.require(:cart_item)
-        .permit(
-          :price, :stripe_product_id, :cart_id, :quantity 
-        )
+        .permit(:price,
+                :stripe_product_id,
+                :cart_id,
+                :quantity)
     end
 end
