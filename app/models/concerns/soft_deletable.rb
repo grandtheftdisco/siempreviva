@@ -10,8 +10,6 @@ module SoftDeletable
 
   def soft_delete
     update_column :deleted_at, Time.now if has_attribute? :deleted_at
-    # TODO - is there a way to override the line below so it's not just generic 'soft_deleted'
-    #  ie, update it to "abandoned" for Carts? 
     update_column :status, "soft_deleted" if has_attribute? :status
   end
 

@@ -9,6 +9,7 @@ class CartItemsController < ApplicationController
     @new_cart_item = CartService::AddToCart.call(product: @product, 
                                                  cart: @cart, 
                                                  quantity: quantity)
+    @cart.update(total_amount: CartService::CalculateCart.call(cart: @cart))
     
 
     respond_to do |format|
@@ -39,6 +40,7 @@ class CartItemsController < ApplicationController
 
   def destroy
     @cart_item.destroy!
+    @cart.update(total_amount: CartService::CalculateCart.call(cart: @cart))
 
     respond_to do |format|
       format.html { redirect_to cart_path, 

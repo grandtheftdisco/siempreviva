@@ -5,6 +5,7 @@ class CartsController < ApplicationController
   end
 
   def update
+    self.update(total_amount: CartService::CalculateCart.call(cart: self))
     respond_to do |format|
       if @cart.update(cart_params)
         format.html { redirect_to @cart, notice: "Bag was updated!" }
