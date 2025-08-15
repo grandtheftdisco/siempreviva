@@ -1,4 +1,7 @@
 development:
-  abandoned_cart_cleanup:
-    class: CheckForAbandonedCartsJob
+  abandoned_cart_soft_deletion:
+    class: SoftDeleteAbandonedCartsJob
+    schedule: every day
+  abandoned_cart_hard_deletion:
+    class: HardDeleteAbandonedCartsJob
     schedule: every day

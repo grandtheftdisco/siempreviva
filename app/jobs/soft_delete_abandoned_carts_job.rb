@@ -1,4 +1,4 @@
-class CheckForAbandonedCartsJob < ApplicationJob
+class SoftDeleteAbandonedCartsJob < ApplicationJob
   queue_as :default
 
   def perform
