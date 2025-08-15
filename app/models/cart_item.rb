@@ -6,11 +6,6 @@ class CartItem < ApplicationRecord
   before_validation :set_quantity
   before_validation :set_price
 
-  # TODO - check to see if you need to delete this or any other methods in here
-  def price_in_dollars
-    self.price / 100.00
-  end
-
   private
 
   def set_quantity

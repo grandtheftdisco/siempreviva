@@ -13,7 +13,6 @@ module SoftDeletable
     # TODO - is there a way to override the line below so it's not just generic 'soft_deleted'
     #  ie, update it to "abandoned" for Carts? 
     update_column :status, "soft_deleted" if has_attribute? :status
-    Rails.logger.debug "\e[101;1---- S O F T    D E L E T E D ----\e[0"
   end
 
   def soft_delete_records
