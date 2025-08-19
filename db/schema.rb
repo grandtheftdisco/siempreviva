@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_08_15_184836) do
+ActiveRecord::Schema[8.0].define(version: 2025_08_19_184641) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -41,6 +41,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_08_15_184836) do
     t.datetime "updated_at", null: false
     t.string "session_id"
     t.datetime "deleted_at"
+    t.string "status"
     t.index ["session_id", "deleted_at"], name: "index_carts_on_session_id_and_deleted_at", unique: true
   end
 

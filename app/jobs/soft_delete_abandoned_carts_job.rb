@@ -6,7 +6,7 @@ class SoftDeleteAbandonedCartsJob < ApplicationJob
     return if open_carts.empty?
 
     open_carts.each do |cart|
-      return if Time.now - cart.deleted_at < 24.hours
+      return if Time.now - cart.updated_at < 24.hours
       cart.soft_delete_records
     end
   end

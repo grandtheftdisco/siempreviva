@@ -1,13 +1,13 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 lavender:
-  price: 10
-  product: lavender
+  price: 100
+  stripe_product_id: si_123
   cart: mary
   quantity: 1
 
 rose:
-  price: 20
-  product: rose
+  price: 200
+  stripe_product_id: si_124
   cart: bob
   quantity: 1

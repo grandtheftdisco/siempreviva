@@ -26,5 +26,7 @@ module SoftDeletable
         associated_records.update_all(deleted_at: Time.now)
       end
     end
+    
+    self.update(status: "soft_deleted")
   end
 end
