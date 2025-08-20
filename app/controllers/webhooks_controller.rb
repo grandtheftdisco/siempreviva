@@ -55,6 +55,17 @@ class WebhooksController < ApplicationController
       if refund.status == 'succeeded'
         handle_refunded_order(refund)
       end
+    when /price\..*/
+      Rails.cache.delete("stripe_products")
+      Rails.logger.info "--------> PRICE CHANGED: #{event.inspect}"
+    when /product\..*/
+      Rails.cache.delete("stripe_products")
+
+      product = event.data.object
+      previous_attributes = event.data.previous_attributes
+      
+      AlgoliaService::PostProductUpdate.call(product:, previous_attributes:)
+    ###########################################################################
     # -------------------------------------------
     ### THE EVENTS BELOW SHOULD BE HANDLED AD HOC BY DEV/PRODUCT OWNER ###
     # -------------------------------------------
@@ -66,6 +77,7 @@ class WebhooksController < ApplicationController
     # monitor & handle these events as needed with a low-traffic site.
     # -------------------------------------------
     # ie, "if refund status is requires_action, failed, canceled, or pending"
+    ###########################################################################
     when /refund\.(?!created|updated).*/
       Rails.logger.info "---Refund Event: #{event.type}---"
       handle_unexpected_event(event)
