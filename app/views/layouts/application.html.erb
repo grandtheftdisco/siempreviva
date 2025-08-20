@@ -5,7 +5,7 @@
   <body>
     <header>
       <div id="searchbox"></div>
-      <div id="hits"></div>
+      <div id="hits" class="border border-blue-300"></div>
       <nav class="flex justify-between p-5">
         <ul class="inline-flex gap-5">
           <li><%= link_to '[[logo]]', root_path %></li>
@@ -53,17 +53,26 @@
   search.addWidgets([
     instantsearch.widgets.searchBox({
       container: '#searchbox',
+      cssClasses: {
+        input: 'border border-purple-500 rounded-2xl px-2 py-1',
+        submit: 'bg-transparent p-2 text-purple-300 hover:text-purple-700'
+      }
     }),
 
     instantsearch.widgets.hits({
       container: '#hits',
       templates: {
         item(hit, { html, components }) {
+
+          const url = `/products/${hit.objectId}`;
+
           return html`
-            <h2>
-              ${components.Highlight({ attribute: 'name', hit })}
-            </h2>
-            <p>${hit.description}</p>
+            <a href="${url}" class="block hover:bg-purple-50 rounded-2xl p-2">
+              <h2>
+                ${components.Highlight({ attribute: 'name', hit })}
+              </h2>
+              <p> ${hit}</p>
+            </a>
           `;
         },
       },
