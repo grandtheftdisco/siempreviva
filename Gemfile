@@ -71,4 +71,5 @@ gem "foreman", "~> 0.88.1"
 gem 'stripe'
 gem 'dotenv', groups: [:development, :test]
 gem 'redis', '~> 5.0'
-gem "algolia", "~> 3.23"
+gem 'algolia', '~> 3.23'
+gem 'mail_form'

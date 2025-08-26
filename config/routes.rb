@@ -38,4 +38,5 @@ Rails.application.routes.draw do
   end
 
   get '/admin_login', to: 'sessions#new', as: :admin_login
+  resources :contact_form, only: [ :new, :create ]
 end

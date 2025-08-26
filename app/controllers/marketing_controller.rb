@@ -1,6 +1,7 @@
 class MarketingController < ApplicationController
   skip_before_action :require_authentication
   def contact
+    @contact_form = ContactForm.new
   end
 
   def home

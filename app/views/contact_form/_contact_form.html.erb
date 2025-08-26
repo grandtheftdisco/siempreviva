@@ -1,0 +1,26 @@
+<%= form_for @contact_form, url: contact_form_index_path do |f| %>
+  <div>
+    <div>
+      <%= f.label :name %>
+      <%= f.text_field :name, required: true %>
+    </div>
+
+    <div>
+      <%= f.label :email %>
+      <%= f.email_field :email, required: true %>
+    </div>
+
+    <%= f.label :message %>
+    <%= f.text_area :message, rows: 8,
+                              cols: 40,
+                              required: true,
+                              placeholder: "Send me a message" %>
+
+    <div class= "hidden">
+      <%= f.label :nickname %>
+      <%= f.text_field :nickname, :hint => 'Leave this field blank!' %>
+    </div>
+
+    <%= f.submit 'Send Message' %>
+  </div>
+<% end %>
