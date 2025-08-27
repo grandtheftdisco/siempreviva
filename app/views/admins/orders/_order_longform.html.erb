@@ -3,23 +3,53 @@
         <p class="text-lg"><%= format_time(order.created_at) %></p>
     </div>
     <div class="flex flex-col">
-      <p>[customer name]</p>
-      <p>[shipping address line 1]</p>
-      <p>[shipping addrses line 2]</p>
-      <p>[customer email if present, mailto: ]</p>
-      <p>[customer phone if present, mailto: ]</p>
+      <div class="mb-5">
+        <p class="font-bold mb-2 underline">
+            Shipping Address
+        </p>
+        <p><%= @customer? @customer.name : 'Guest Customer' %></p>
+        <% if @shipping_address.present? %>
+            <p><%= @shipping_address[:line1] %></p>
+            <p><%= @shipping_address[:line2] %></p>
+            <p>
+                <%= @shipping_address[:city] %>
+                <%= @shipping_address[:state] %>
+                <%= @shipping_address[:postal_code] %>
+            </p>
+        <% else %>
+            <div class="font-bold text-sm m-5">
+            <p>No shipping address provided.</p>
+            <p>Please contact customer if you need any additional information to fulfill this order.</p>
+            </div>      
+        <% end %>
+      </div>
+
+      <p class="font-bold underline mb-2">Email Address</p>
+      <p><%= @customer_info.email %></p>
       <br/>
-      <div class="flex flex-col align-self-center bg-green-50 m-5 self-center items-center">
-      <p class="text-center text-sm">[product carousel]</p>
+      <p class="font-bold underline mb-2">Phone Number</p>
+      <p><%= @customer_info.phone || '(none provided)' %></p>
       <br/>
-      <p> [[ link to stripe page for transaction ]]</p>
+      <hr/>
+      <div>
+        <p class="font-bold my-5">
+            Items in This Order
+        </p>
+        <div class="flex flex-col align-self-center bg-green-50 m-5 self-center items-center">
+            <% @line_items.each do |item| %>
+            <% if item[:product][:images].present? && item[:product][:images].first.present? %>
+                <%= image_tag item[:product][:images].first, alt: item[:product][:name], class: "w-24 h-24 object-cover rounded-xl" %>
+            <% end %>
+            <%= item[:quantity] %> x <%= item[:product][:name]%>: <%= to_dollars(item[:amount_total]) %>
+            <% end %>
+        </div>
       </div>
       <br/>
       <div class="flex inline-flex gap-5 self-center items-center">
       <%= link_to "Ship Order",
           edit_admins_order_path(order),
           class: 'bg-purple-300 rounded-2xl p-3 text-center' %>
-      <% if order.tracking_number %>
+      <% if order.tracking_number != "" %>
           <%= link_to "Track Order",
           "https://tools.usps.com/go/TrackConfirmAction?qtc_tLabels1=#{order.tracking_number}",
           class: 'bg-blue-300 rounded-2xl p-3 text-center' %>
