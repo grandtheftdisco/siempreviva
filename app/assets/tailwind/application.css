@@ -2,5 +2,5 @@
 /* can import other ss's through rel path */
 .debug {
   @apply text-red-500;
-  outline: 1px solid pink;
+  outline: 1px solid red;
 }
