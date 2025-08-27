@@ -14,9 +14,6 @@ gem "importmap-rails"
 gem "turbo-rails"
 # Hotwire's modest JavaScript framework [https://stimulus.hotwired.dev]
 gem "stimulus-rails"
-
-gem "tailwindcss-rails", "~> 4.2.3"
-
 # Build JSON APIs with ease [https://github.com/rails/jbuilder]
 gem "jbuilder"
 
@@ -69,3 +66,4 @@ gem "foreman", "~> 0.88.1"
 gem 'stripe'
 gem 'dotenv', groups: [:development, :test]
 gem 'redis', '~> 5.0'
+gem "tailwindcss-rails", "~> 4.3"
