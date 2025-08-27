@@ -87,4 +87,8 @@ Rails.application.configure do
 
   # NGROK
   Rails.application.config.hosts << "ce89-216-115-150-32.ngrok-free.app"
+
+  config.assets.compile = true
+  config.assets.digest = false
+
 end
