@@ -1,6 +1,16 @@
-<!--TODO - rename this partial to avoid confusion with email templates-->
 <%= form_for @contact_form, url: contact_form_index_path do |f| %>
-  <div>
+  <% if @contact_form.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(@contact_form.errors.count, "error") %> prohibited this message from being sent:</h2>
+      <ul>
+        <% @contact_form.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="container">
     <div>
       <%= f.label :name %>
       <%= f.text_field :name, required: true %>
@@ -15,13 +25,13 @@
     <%= f.text_area :message, rows: 8,
                               cols: 40,
                               required: true,
-                              placeholder: "Send me a message" %>
+                              placeholder: "Send us a message!" %>
 
     <div class= "hidden">
       <%= f.label :nickname %>
       <%= f.text_field :nickname, :hint => 'Leave this field blank!' %>
     </div>
 
-    <%= f.submit 'Send Message' %>
+    <%= f.submit 'Send Message', class: 'submit-btn' %>
   </div>
 <% end %>
