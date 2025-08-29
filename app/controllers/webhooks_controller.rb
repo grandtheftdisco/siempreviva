@@ -3,17 +3,17 @@ class WebhooksController < ApplicationController
   skip_before_action :require_authentication
   skip_before_action :set_current_cart
 
-    def create
-      # from debugging some gnarly issues with request parsing
-      # >> keep this in case it happens again!
-      unless request.content_type&.include?('application/json')
-        Rails.logger.error "\e[101;1mWebhook received with wrong content type: #{request.content_type}\e[0"
-        return head :unsupported_media_type
-      end
+  def create
+    # From debugging some gnarly issues with request parsing
+    # >> Keep this in case it happens again!
+    unless request.content_type&.include?('application/json')
+      Rails.logger.error "\e[101;1mWebhook received with wrong content type: #{request.content_type}\e[0"
+      return head :unsupported_media_type
+    end
 
     payload = request.raw_post
     sig_header = request.env['HTTP_STRIPE_SIGNATURE']
-    
+
     event = Stripe::Webhook.construct_event(
       payload,
       sig_header,
@@ -22,13 +22,12 @@ class WebhooksController < ApplicationController
 
     handle_stripe_event(event)
     head :ok
-
-  rescue JSON::ParserError => editing
-    # invalid payload
+  rescue JSON::ParserError => e
+    # Invalid payload
     Rails.logger.error "\e[101;1mJSON Parser Error -- invalid payload\e[0"
     return head :bad_request
   rescue Stripe::SignatureVerificationError => e
-    # invalid signature
+    # Invalid signature
     Rails.logger.error "\e[101;1mStripe Sig Verification Error - invalid signature\e[0"
     return head :bad_request
   end
@@ -39,7 +38,7 @@ class WebhooksController < ApplicationController
   def handle_stripe_event(event)
     check_for_duplicate_events(event)
     checkout_session = event.data.object
-    
+
     case event.type
     when 'checkout.session.completed'
       handle_checkout_session_completed(checkout_session)
@@ -49,17 +48,15 @@ class WebhooksController < ApplicationController
       handle_async_payment_failed(checkout_session)
     when 'refund.created', 'refund.updated'
       refund = event.data.object
-      Rails.logger.info "---Refund Created and/or Updated---"
+      Rails.logger.info '---Refund Created and/or Updated---'
       Rails.logger.info "-0-0-0- Refund: #{refund.id} -0-0-0-"
-      
-      if refund.status == 'succeeded'
-        handle_refunded_order(refund)
-      end
+
+      handle_refunded_order(refund) if refund.status == 'succeeded'
     when /price\..*/
-      Rails.cache.delete("stripe_products")
+      Rails.cache.delete('stripe_products')
       Rails.logger.info "--------> PRICE CHANGED: #{event.inspect}"
     when /product\..*/
-      Rails.cache.delete("stripe_products")
+      Rails.cache.delete('stripe_products')
 
       product = event.data.object
       previous_attributes = event.data.previous_attributes
@@ -72,7 +69,7 @@ class WebhooksController < ApplicationController
     # If any patterns emerge over time (ie, if you have a lot of failed 
     # refunds), it will be worth your time to develop a more sophisticated
     # solution to keep yourself from having to solve these problems ad hoc.
-
+    #
     # But otherwise, this section of the case statement should allow you to
     # monitor & handle these events as needed with a low-traffic site.
     # -------------------------------------------
@@ -89,10 +86,10 @@ class WebhooksController < ApplicationController
 
   def check_for_duplicate_events(event)
     event_already_in_cache = Rails.cache.read("stripe_event:#{event.id}")
-    
+
     if event_already_in_cache
-      Rails.logger.info "!=!=! This event has already been cached & routed !=!=!"
-      Rails.logger.info "--- ignoring ---"
+      Rails.logger.info '!=!=! This event has already been cached & routed !=!=!'
+      Rails.logger.info '--- ignoring ---'
       AdminMailer.event_notification(event)
       return
     elsif !event_already_in_cache
@@ -106,26 +103,32 @@ class WebhooksController < ApplicationController
 
     if checkout_session.payment_status == 'paid' || checkout_session.payment_status == 'no_payment_required'
       begin
-        PaymentHandlingService::HandleSuccessfulPayment.call(checkout_session: checkout_session,
-                                                             cart: cart)
-      rescue => e
+        PaymentHandlingService::HandleSuccessfulPayment.call(
+          checkout_session: checkout_session,
+          cart: cart
+        )
+      rescue StandardError => e
         Rails.logger.error "\e[101;1mError in PaymentHandlingService: #{e.message}\e[0"
         Rails.logger.error e.backtrace.join("\n")
       end
     elsif checkout_session.payment_status == 'unpaid'
       case payment_intent.status
       when 'succeeded'
-        # >> no, it's not likely this combo (CS with 'unpaid' payment_status
+        # >> No, it's not likely this combo (CS with 'unpaid' payment_status
         #    + PI with 'succeeded' status), however, the goal is handle all
         #    possible scenarios, in case events hit the server out of order
         Rails.logger.info "---Payment Intent #{payment_intent.id} complete!---"
-        PaymentHandlingService::HandleSuccessfulPayment.call(checkout_session: checkout_session,
-                                                             cart: cart)
+        PaymentHandlingService::HandleSuccessfulPayment.call(
+          checkout_session: checkout_session,
+          cart: cart
+        )
       when 'processing'
         Rails.logger.info "---Payment Intent #{payment_intent.id} for Checkout Session #{checkout_session.id} PROCESSING...---"
 
-        local_checkout_record.update(status: 'payment_processing',
-                                     payment_intent_id: payment_intent.id)
+        local_checkout_record.update(
+          status: 'payment_processing',
+          payment_intent_id: payment_intent.id
+        )
       when 'requires_payment_method', 'requires_action', 'requires_confirmation'
         Rails.logger.warn "\e[101;1m---Payment Issue! #{payment_intent.id}has status of #{payment_intent.status}---\e[0"
 
@@ -134,7 +137,7 @@ class WebhooksController < ApplicationController
       else
         Rails.logger.warn "\e[101;1m---Unexpected Payment Intent Status---\e[0"
         Rails.logger.warn "\e[101;1m---Payment Intent #{payment_intent.id} has a status of #{payment_intent.status}---\e[0"
-        
+
         AdminMailer.payment_issue_notification(checkout_session, payment_intent)
       end
     end
@@ -144,8 +147,10 @@ class WebhooksController < ApplicationController
     payment_intent, local_checkout_record, cart = set_up_transaction_info(checkout_session)
 
     if payment_intent.status == 'succeeded'
-      PaymentHandlingService::HandleSuccessfulPayment.call(checkout_session: checkout_session,
-                                                           cart: cart)
+      PaymentHandlingService::HandleSuccessfulPayment.call(
+        checkout_session: checkout_session,
+        cart: cart
+      )
     else
       Rails.logger.warn "\e[101;1m---Unexpected Payment Intent Status for PI# #{payment_intent.id} -- #{payment_intent.status}\e[0"
       AdminMailer.payment_issue_notification(checkout_session, payment_intent)
@@ -156,7 +161,7 @@ class WebhooksController < ApplicationController
     payment_intent, local_checkout_record, cart = set_up_transaction_info(checkout_session)
 
     local_checkout_record.update(status: 'payment failed')
-    
+
     Rails.logger.error "\e[101;1m -----x----- Payment Failed for Checkout Session # #{checkout_session.id}\e[0"
     Rails.logger.error "\e[101;1m #{checkout_session.inspect}\e[0"
 
@@ -165,12 +170,12 @@ class WebhooksController < ApplicationController
 
   def handle_refunded_order(refund)
     Rails.logger.info "---Refund Succeeded: #{refund.id}---"
-        
+
     order = Order.find_by(payment_intent_id: refund.payment_intent)
     checkout = Checkout.find_by(payment_intent_id: refund.payment_intent)
 
-    order.update(status: "refunded", refunded_on: "#{Time.now}")
-    checkout.update(status: "refunded", refunded_on: "#{Time.now}")
+    order.update(status: 'refunded', refunded_on: Time.now.to_s)
+    checkout.update(status: 'refunded', refunded_on: Time.now.to_s)
 
     OrderMailer.refunded(order).deliver_later
   end
