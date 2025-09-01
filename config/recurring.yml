@@ -5,3 +5,6 @@ development:
   abandoned_cart_hard_deletion:
     class: HardDeleteAbandonedCartsJob
     schedule: every day
+  update_algolia_index:
+    class: UpdateAlgoliaIndexJob
+    schedule: every day

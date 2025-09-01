@@ -18,5 +18,13 @@
     <%= stylesheet_link_tag "tailwind", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
     <%= javascript_include_tag 'application', 'data-turbo-track': 'reload' %>
+    <!-- stripe js -->
     <script src="https://js.stripe.com/v3/"></script>
+
+    <!-- algolia js -->
+    <script src="https://cdn.jsdelivr.net/npm/algoliasearch@5.35.0/dist/lite/builds/browser.umd.js" integrity="sha256-k54K9sZqimlyVUDmX8WGI5Xbe9OvyjOlkoWLdxa79Kk=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/instantsearch.js@4.79.2/dist/instantsearch.production.min.js" integrity="sha256-xzEobMl7YU4X8/v8b+Ax4tXJtrs9DVhKOzKDSnZgj1Q=" crossorigin="anonymous"></script>
+
+    <!-- algolia css -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/instantsearch.css@8.5.1/themes/reset-min.css" integrity="sha256-KvFgFCzgqSErAPu6y9gz/AhZAvzK48VJASu3DpNLCEQ=" crossorigin="anonymous">
   </head>

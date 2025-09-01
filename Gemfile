@@ -14,9 +14,6 @@ gem "importmap-rails"
 gem "turbo-rails"
 # Hotwire's modest JavaScript framework [https://stimulus.hotwired.dev]
 gem "stimulus-rails"
-
-gem "tailwindcss-rails", "~> 4.2.3"
-
 # Build JSON APIs with ease [https://github.com/rails/jbuilder]
 gem "jbuilder"
 
@@ -63,9 +60,15 @@ group :test do
   # Use system testing [https://guides.rubyonrails.org/testing.html#system-testing]
   gem "capybara"
   gem "selenium-webdriver"
+  gem "mocha"
+  gem "webmock"
 end
 
 gem "foreman", "~> 0.88.1"
 gem 'stripe'
 gem 'dotenv', groups: [:development, :test]
 gem 'redis', '~> 5.0'
+gem 'tailwindcss-rails', '~> 4.3'
+gem 'mail_form'
+gem "algolia", "~> 3.23"
+gem "premailer-rails"
