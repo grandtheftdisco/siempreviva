@@ -6,9 +6,10 @@ class CartsController < ApplicationController
   end
 
   def update
-    self.update(total_amount: CartService::CalculateCart.call(cart: self))
     respond_to do |format|
-      if @cart.update(cart_params)
+      cart_data = cart_params.merge(total_amount: CartService::CalculateCart.call(cart: @cart))
+
+      if @cart.update(cart_data)
         format.html { redirect_to @cart, notice: 'Bag was updated!' }
         format.json { render :show, status: :ok, location: @cart }
       else
@@ -21,6 +22,6 @@ class CartsController < ApplicationController
   private
 
   def cart_params
-    params.fetch(:cart, {})
+    params.require(:cart).permit
   end
 end
