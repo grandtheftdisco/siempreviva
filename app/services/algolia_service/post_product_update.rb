@@ -10,7 +10,7 @@ module AlgoliaService
 
       res = client.partial_update_object("products_index",
                                          product.id,
-                                         {key => new_value})
+                                         {key.to_s => new_value})
     end
   end
 end
