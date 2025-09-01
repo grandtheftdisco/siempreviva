@@ -1,11 +1,11 @@
 class CheckoutsController < ApplicationController
   skip_before_action :require_authentication
-  
+
   def new
     @cart = validate_cart_and_handle_removals
     @total = CartService::CalculateCart.call(cart: @cart)
   end
-  
+
   def create
   end
 
@@ -14,44 +14,45 @@ class CheckoutsController < ApplicationController
 
     if !local_checkout_record
       Rails.logger.error "\e[101;1mNo local checkout record found with Stripe Session ID: #{params[:id]}\e[0"
-      return render plain: "local Checkout record not found", status: :not_found
+      return render plain: 'Local Checkout record not found', status: :not_found
     end
 
     begin
-      session_id = checkout.stripe_checkout_session_id
+      session_id = local_checkout_record.stripe_checkout_session_id
       @session = Stripe::Checkout::Session.retrieve(session_id) if session_id.present?
 
       if @session.status == 'expired'
-        flash.now[:alert] = "Oops! This checkout session has expired. Don't worry - your card hasn't been charged. Try checking out again! 🙂"
+        flash.now[:alert] = 'Oops! This checkout session has expired. Don\'t worry - your card hasn\'t been charged. Try checking out again! 🙂'
         redirect_to new_checkout_path
       end
     rescue Stripe::InvalidRequestError => e
       Rails.logger.error "\e[101;1m-----x----- Failed to retrieve Checkout Session: #{e.message}\e[0"
       Rails.logger.error "\e[101m ---> Checkout Session ID #{@session.id}]"
-      return render plain: "Invalid Checkout Session", status: :not_found
-    rescue Stripe::StripeError =>
-      Rails.logger.error "\e[101;1m-----x----- Stripe error occured: #{e.message}\e[0"
+      return render plain: 'Invalid Checkout Session', status: :not_found
+    rescue Stripe::StripeError => e
+      Rails.logger.error "\e[101;1m-----x----- Stripe error occurred: #{e.message}\e[0"
       Rails.logger.error "\e[101m ---> Checkout Session ID #{@session.id}]"
-      return render plain: "Payment processing error", status: :service_unavailable
-    rescue => e
+      return render plain: 'Payment processing error', status: :service_unavailable
+    rescue StandardError => e
       Rails.logger.error "\e[101;1m-----x----- Unexpected error in checkout: #{e.message}\e[0"
       Rails.logger.error "\e[101m ---> Checkout Session ID #{@session.id}]"
-      return render plain: "An unexpected error occured", status: :internal_server_error
+      return render plain: 'An unexpected error occurred', status: :internal_server_error
     end
   end
 
   private
-  
+
   def validate_cart_and_handle_removals
     @cart, removed_items, price_changes = CartService::ValidateCart.call(cart: @cart)
 
     alerts = []
 
     if removed_items.present?
-      alerts << "⚠️ We apologize, but the following items are out of stock, and have been removed from your cart: " + removed_items.map { |item| item.name }.join(', ')
+      removed_item_names = removed_items.map(&:name).join(', ')
+      alerts << "⚠️ We apologize, but the following items are out of stock, and have been removed from your cart: #{removed_item_names}"
     end
 
-    # this is going to be incredibly rare with a small ecom site, but IF it happens - you're covered!
+    # This is going to be incredibly rare with a small ecom site, but IF it happens - you're covered!
     if price_changes.present?
       price_changes.each do |change|
         item = change[:item]

@@ -1,13 +1,16 @@
 class CartsController < ApplicationController
   skip_before_action :require_authentication
+
   def show
     @total = CartService::CalculateCart.call(cart: @cart)
   end
 
   def update
     respond_to do |format|
-      if @cart.update(cart_params)
-        format.html { redirect_to @cart, notice: "Bag was updated!" }
+      cart_data = cart_params.merge(total_amount: CartService::CalculateCart.call(cart: @cart))
+
+      if @cart.update(cart_data)
+        format.html { redirect_to @cart, notice: 'Bag was updated!' }
         format.json { render :show, status: :ok, location: @cart }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -17,7 +20,8 @@ class CartsController < ApplicationController
   end
 
   private
-    def cart_params
-      params.fetch(:cart, {})
-    end
+
+  def cart_params
+    params.require(:cart).permit
+  end
 end

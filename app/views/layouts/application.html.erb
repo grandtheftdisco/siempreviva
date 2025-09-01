@@ -4,6 +4,8 @@
 
   <body>
     <header>
+      <div id="searchbox" class="flex items-center justify-end p-5"></div>
+      <div id="hits" class="flex justify-end px-5"></div>
       <nav class="flex justify-between p-5">
         <ul class="inline-flex gap-5">
           <li><%= link_to '[[logo]]', root_path %></li>
@@ -23,3 +25,112 @@
     </main>
   </body>
 </html>
+
+<style>
+ /* will refactor this into stylesheet and/or custom classes when i start on the front end*/
+  .ais-SearchBox-submitIcon {
+    width: 20px !important;
+    height: 20px !important;
+    margin-top: 2px;
+    margin-left: 5px;
+  }
+
+  .ais-SearchBox-input {
+    background: lavender;
+    border: 1px solid;
+    border-radius: 1rem;
+    padding: 0.25rem 0.5rem;
+  }
+
+  .ais-SearchBox-submit {
+    font-size: 1.125rem;
+    background: transparent;
+    padding: 0 2.5rem;
+    color: #d8b4fe;
+  }
+
+  .ais-SearchBox-submit:hover {
+    color: #7c3aed;
+  }
+
+  .ais-Hits {
+    background: lavender;
+    width: 200px;
+    border-radius: 1rem;
+    border: 1px solid;
+    padding: 4px 6px 4px 6px;
+    margin-right: 114px;
+  }
+
+  .ais-Hits-item a {
+    display: block;
+    border-radius: 1rem;
+    padding: 0.5rem;
+  }
+
+  .ais-Hits-item a:hover {
+    background: #e3c7ff;
+    border-radius: 1rem;
+  }
+
+  .ais-Highlight-highlighted {
+    background: #e3c7ff;
+  }
+</style>
+
+<script>
+  // Initialize the search client
+
+  const { liteClient: algoliasearch } = window['algoliasearch/lite'];
+  const searchClient = algoliasearch('<%= Rails.application.credentials.algolia[:application_id] %>',
+                                     '<%= Rails.application.credentials.algolia[:search_api_key] %>');
+
+  // Render the InstantSearch.js wrapper
+  const search = instantsearch({
+    indexName: 'products_index',
+    searchClient,
+    searchFunction(helper) {
+      // only search if the query is not empty
+      if (helper.state.query.trim() === '') {
+        // hide hits container if query is empty
+        document.querySelector('#hits').style.display = 'none';
+        return;
+      }
+      // show hits container and search
+      document.querySelector('#hits').style.display = '';
+      helper.search();
+    }
+  });
+
+  search.addWidgets([
+    instantsearch.widgets.searchBox({
+      container: '#searchbox'
+    }),
+
+    instantsearch.widgets.hits({
+      container: '#hits',
+      templates: {
+        item(hit, { html, components }) {
+
+          const url = `/products/${hit.objectId}`;
+
+          return html`
+            <a href="${url}" class="block hover:bg-purple-50 rounded-2xl p-2">
+              <h2>
+                ${components.Highlight({ attribute: 'name', hit })}
+              </h2>
+            </a>
+          `;
+        },
+      },
+    })
+  ]);
+
+  // hide hits on initial load
+  document.addEventListener('DOMContentLoaded', function() {
+    document.querySelector('#hits').style.display = 'none';
+  });
+
+  search.start();
+
+</script>
