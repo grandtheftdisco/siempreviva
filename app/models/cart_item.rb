@@ -1,12 +1,10 @@
 class CartItem < ApplicationRecord
+  include SoftDeletable
+
   belongs_to :cart
   validates :stripe_product_id, uniqueness: { scope: :cart_id }
   before_validation :set_quantity
   before_validation :set_price
-
-  def price_in_dollars
-    self.price / 100.00
-  end
 
   private
 

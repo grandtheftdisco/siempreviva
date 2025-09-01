@@ -1,9 +1,11 @@
 class CheckoutSessionsController < ApplicationController
   skip_before_action :require_authentication
+
   def create
     line_items = @cart.cart_items.map do |item|
       product = Stripe::Product.retrieve(
-        { id: item.stripe_product_id, expand: ['default_price'] }
+        { id: item.stripe_product_id, 
+          expand: ['default_price'] }
       )
 
       {
@@ -12,7 +14,7 @@ class CheckoutSessionsController < ApplicationController
       }
     end
 
-    # so Rails will interpret the URL helper properly
+    # So Rails will interpret the URL helper properly
     return_url = checkout_url('CHECKOUT_SESSION_ID')
     return_url = return_url.gsub('CHECKOUT_SESSION_ID', '{CHECKOUT_SESSION_ID}')
     
@@ -20,20 +22,21 @@ class CheckoutSessionsController < ApplicationController
       ui_mode: 'embedded',
       line_items: line_items,
       mode: 'payment',
+      payment_method_types: ['card', 'us_bank_account'],
       return_url: return_url,
       customer_creation: 'always',
       billing_address_collection: 'required',
       shipping_address_collection: {
         allowed_countries: ['US']
       }
-    })
+    )
 
-    # for my db
+    # For my db
     checkout = Checkout.create(
       stripe_checkout_session_id: session.id,
       cart_id: @cart.id,
       status: session.status,
-      stripe_customer_id: session.customer,
+      stripe_customer_id: session.customer
     )
 
     render json: {

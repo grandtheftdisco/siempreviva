@@ -13,24 +13,8 @@ module Admins
                                  .offset(@page * @orders_per_page)
                                  .limit(@orders_per_page)
 
-      # !!!!!!!!!!! TODO - abstract this into a private method
-      # Fetch Stripe info for each order - cp
-      @stripe_infos = @unfulfilled_orders.each_with_object({}) do |order, hash|
-        begin
-          stripe_transaction = Stripe::PaymentIntent.retrieve({
-            id: order.payment_intent_id,
-            expand: ['shipping', 'customer']
-          })
-          Rails.logger.debug "---------------->shipping info: #{stripe_transaction.shipping.inspect}"
-          hash[order.id] = {
-            shipping_address: stripe_transaction.shipping&.address&.to_h,
-            customer: stripe_transaction.customer,
-            charge: Stripe::Charge.retrieve({ id: stripe_transaction.latest_charge }),
-          }
-        rescue Stripe::StripeError => e
-          hash[order.id] = { error: e.message }
-        end
-      end
+      # fetch Stripe info for each order - cp
+      @stripe_infos = fetch_stripe_info(@unfulfilled_orders)
     end
 
     def show
@@ -56,7 +40,6 @@ module Admins
     end
 
     def update
-      Rails.logger.debug "\e[1;45m---->Params: #{params.inspect}\n"
       if !params[:ship_confirmation]
         flash[:alert] = "You must confirm shipment before you can mark this order as 'shipped'."
         redirect_to edit_admins_order_path(@order) and return
@@ -65,7 +48,6 @@ module Admins
       if @order.update(order_params)
         AdminService::UpdateOrderTracking.call(order: @order)
         OrderMailer.shipped(@order).deliver_later
-        Rails.logger.debug "order tracking: #{@order.tracking_number}"
         redirect_to admins_orders_url
         flash[:alert] = "Order was successfully updated."
       else
@@ -84,25 +66,7 @@ module Admins
                                .order(:created_at)
       @total_fulfilled_orders = Order.where.not(tracking_number: nil).count
 
-      Rails.logger.debug "--------->total fulfilled orders: #{@total_fulfilled_orders.inspect}"
-
-      # TODO - abstract this into a private method
-      @stripe_infos = @fulfilled_orders.each_with_object({}) do |order, hash|
-        begin
-          stripe_transaction = Stripe::PaymentIntent.retrieve({
-            id: order.payment_intent_id,
-            expand: ['shipping', 'customer']
-          })
-          Rails.logger.debug "---------------->shipping info: #{stripe_transaction.shipping.inspect}"
-          hash[order.id] = {
-            shipping_address: stripe_transaction.shipping&.address&.to_h,
-            customer: stripe_transaction.customer,
-            charge: Stripe::Charge.retrieve({ id: stripe_transaction.latest_charge }),
-          }
-        rescue Stripe::StripeError => e
-          hash[order.id] = { error: e.message }
-        end
-      end
+      @stripe_infos = fetch_stripe_info(@fulfilled_orders)
 
       if params[:status].present?
         @orders = Order.where(status: params[:status])
@@ -158,6 +122,26 @@ module Admins
           }
         }
       end
+    end
+
+    def fetch_stripe_info(orders)
+      stripe_infos = orders.each_with_object({}) do |order, hash|
+        begin
+          stripe_transaction = Stripe::PaymentIntent.retrieve({
+            id: order.payment_intent_id,
+            expand: ['shipping', 'customer']
+          })
+
+          hash[order.id] = {
+            shipping_address: stripe_transaction.shipping&.address&.to_h,
+            customer: stripe_transaction.customer,
+            charge: Stripe::Charge.retrieve({ id: stripe_transaction.latest_charge }),
+          }
+        rescue Stripe::StripeError => e
+          hash[order.id] = { error: e.message }
+        end
+      end
+      stripe_infos
     end
 
     def set_order
