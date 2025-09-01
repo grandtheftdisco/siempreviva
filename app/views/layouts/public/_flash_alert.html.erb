@@ -1,5 +1,17 @@
-<% if flash[:alert] %>
-  <div class="bg-purple-300 border border-purple-600 text-purple-950 px-4 py-3 rounded-2xl mb-5 w-1/2">
-    <%= flash[:alert] %>
+<% flash.each do |type, message| %>
+  <% css_class = case type.to_s
+                 when 'notice'
+                   'bg-green-300 border border-green-600 text-green-950'
+                 when 'alert'
+                   'bg-purple-300 border border-purple-600 text-purple-950'
+                 when 'error'
+                   'bg-red-300 border border-red-600 text-red-950'
+                 when 'warning'
+                   'bg-yellow-300 border border-yellow-600 text-yellow-950'
+                 else
+                   'bg-blue-300 border border-blue-600 text-blue-950'
+                 end %>
+  <div class="flash-<%= type %> <%= css_class %> px-4 py-3 rounded-2xl mb-5 w-1/2">
+    <%= message %>
   </div>
 <% end %>

@@ -1,14 +1,5 @@
-<h1>Admin Profile for <%= @admin.email_address %></h1>
+<h1 class="mb-5">Admin Profile for <%= @admin.email_address %></h1>
 
-TODO - good place for post-login landing page?
-TODO - add a logout button if logged in
-
-> controllers
-  > admin/
-    > application_controller (Admin::ApplicationController)
-      - class method `layout` 
-    > orders_controller
-
-
-
-<p>[under construction]</p>
+<%= link_to 'Update Your Password',
+  edit_password_path(@admin.password_reset_token),
+  class: 'underline' %>

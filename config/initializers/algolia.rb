@@ -1,0 +1,2 @@
+ALGOLIA_CLIENT = Algolia::SearchClient.create(Rails.application.credentials.algolia[:application_id],
+                                              Rails.application.credentials.algolia[:write_api_key])
