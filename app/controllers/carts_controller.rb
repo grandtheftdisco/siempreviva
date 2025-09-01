@@ -22,6 +22,6 @@ class CartsController < ApplicationController
   private
 
   def cart_params
-    params.require(:cart).permit
+    params.require(:cart).permit(:total_amount, :session_id, :status)
   end
 end

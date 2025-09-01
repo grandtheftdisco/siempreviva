@@ -7,7 +7,7 @@ class HardDeleteAbandonedCartsJob < ApplicationJob
     return if soft_deleted_carts.empty?
 
     soft_deleted_carts.each do |cart|
-      return if Time.now - cart.deleted_at < 30.days
+      next if Time.now - cart.deleted_at < 30.days
       cart.destroy!
     end
   end

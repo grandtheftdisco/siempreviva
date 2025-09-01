@@ -13,7 +13,7 @@ class CheckoutsController < ApplicationController
     local_checkout_record = Checkout.find_by(stripe_checkout_session_id: params[:id])
 
     if !local_checkout_record
-      Rails.logger.error "\e[101;1mNo local checkout record found with Stripe Session ID: #{params[:id]}\e[0"
+      Rails.logger.error "\e[101;1mNo local checkout record found with Stripe Session ID: #{params[:id]}\e[0m"
       return render plain: 'Local Checkout record not found', status: :not_found
     end
 
@@ -26,16 +26,16 @@ class CheckoutsController < ApplicationController
         redirect_to new_checkout_path
       end
     rescue Stripe::InvalidRequestError => e
-      Rails.logger.error "\e[101;1m-----x----- Failed to retrieve Checkout Session: #{e.message}\e[0"
-      Rails.logger.error "\e[101m ---> Checkout Session ID #{@session.id}]"
+      Rails.logger.error "\e[101;1m-----x----- Failed to retrieve Checkout Session: #{e.message}\e[0m"
+      Rails.logger.error "\e[101m ---> Checkout Session ID #{@session&.id || 'not yet assigned' }]"
       return render plain: 'Invalid Checkout Session', status: :not_found
     rescue Stripe::StripeError => e
-      Rails.logger.error "\e[101;1m-----x----- Stripe error occurred: #{e.message}\e[0"
-      Rails.logger.error "\e[101m ---> Checkout Session ID #{@session.id}]"
+      Rails.logger.error "\e[101;1m-----x----- Stripe error occurred: #{e.message}\e[0m"
+      Rails.logger.error "\e[101m ---> Checkout Session ID #{@session&.id || 'not yet assigned' }]"
       return render plain: 'Payment processing error', status: :service_unavailable
     rescue StandardError => e
-      Rails.logger.error "\e[101;1m-----x----- Unexpected error in checkout: #{e.message}\e[0"
-      Rails.logger.error "\e[101m ---> Checkout Session ID #{@session.id}]"
+      Rails.logger.error "\e[101;1m-----x----- Unexpected error in checkout: #{e.message}\e[0m"
+      Rails.logger.error "\e[101m ---> Checkout Session ID #{@session&.id || 'not yet assigned' }]"
       return render plain: 'An unexpected error occurred', status: :internal_server_error
     end
   end
