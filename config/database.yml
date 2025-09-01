@@ -12,9 +12,17 @@ development:
   host: localhost
   port: 5432
 
+# run Solid Queue migrations: bin/rails db:migrate QUEUE=queue
+queue:
+  <<: *default
+  database: siempreviva_development
+  migrations_paths: db/queue_migrate
+
 test:
   <<: *default
   database: siempreviva_test
+  host: localhost
+  port: 5432
 
 # As with config/credentials.yml, you never want to store sensitive information,
 # like your database password, in your source code. If your source code is

@@ -17,11 +17,11 @@ module CartService
         
         else
           new_cart_item = CartItem.create!(price: product.price,
-                                          cart_id: cart.id,
-                                          stripe_product_id: product.id,
-                                          image: product.images[0],
-                                          name: product.name,
-                                          quantity: quantity)
+                                           cart_id: cart.id,
+                                           stripe_product_id: product.id,
+                                           image: product.images[0],
+                                           name: product.name,
+                                           quantity: quantity)
           cart.cart_items.reload
           new_cart_item
         end
