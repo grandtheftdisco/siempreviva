@@ -60,12 +60,10 @@ class CartItemsController < ApplicationController
     @cart_item = CartItem.find(params[:id])
   end
 
-  def product_setup
-    @products = Stripe::Product.list(active: true, limit: 100).map do |product|
-      ProductWrapper.new(product)
+    def product_setup
+      @products = StripeService::FetchProductInventory.call
+      @product = @products.find { |item| item.id == params[:cart_item][:stripe_product_id] }
     end
-    @product = @products.find { |item| item.id == params[:cart_item][:stripe_product_id] }
-  end
 
   def cart_item_params
     params.require(:cart_item)

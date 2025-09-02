@@ -5,12 +5,11 @@ module Admins
 
     # 'main' page, where unfulfilled orders live
     def index
-      @page = params.fetch(:page, 0)
-                    .to_i
+      @page = [params.fetch(:page, 1).to_i, 1].max # Ensure minimum page is '1'
       @orders_per_page = ORDERS_PER_PAGE
       @total_unfulfilled_orders = Order.where(tracking_number: nil).count
       @unfulfilled_orders = Order.where(tracking_number: nil)
-                                 .offset(@page * @orders_per_page)
+                                 .offset((@page - 1) * @orders_per_page)
                                  .limit(@orders_per_page)
 
       # fetch Stripe info for each order - cp
@@ -57,11 +56,10 @@ module Admins
 
     # where all fulfilled orders live
     def archive
-      @page = params.fetch(:page, 0)
-                    .to_i
+      @page = [params.fetch(:page, 1).to_i, 1].max
       @orders_per_page = ORDERS_PER_PAGE
       @fulfilled_orders = Order.where.not(tracking_number: nil)
-                               .offset((@page -1) * @orders_per_page)
+                               .offset((@page - 1) * @orders_per_page)
                                .limit(@orders_per_page)
                                .order(:created_at)
       @total_fulfilled_orders = Order.where.not(tracking_number: nil).count

@@ -16,12 +16,12 @@ module CartService
           existing_item.tap(&:save!)
         
         else
-          new_cart_item = CartItem.create!(price: product.price,
-                                           cart_id: cart.id,
-                                           stripe_product_id: product.id,
-                                           image: product.images[0],
-                                           name: product.name,
-                                           quantity: quantity)
+          new_cart_item = CartItem.create!(price: product.default_price.unit_amount,
+                                          cart_id: cart.id,
+                                          stripe_product_id: product.id,
+                                          image: product.images[0],
+                                          name: product.name,
+                                          quantity: quantity)
           cart.cart_items.reload
           new_cart_item
         end

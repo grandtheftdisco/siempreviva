@@ -10,14 +10,11 @@ class ProductsController < ApplicationController
   end
 
   private
-
-  def call_stripe_products
-    @products = Stripe::Product.list(active: true, limit: 100).map do |product|
-      ProductWrapper.new(product)
+    def call_stripe_products
+      @products = StripeService::FetchProductInventory.call
     end
-  end
-
-  def set_product
-    @product = @products.find { |product| product.id == params[:id] }
-  end
+  
+    def set_product
+      @product = @products.find { |product| product.id == params[:id] }
+    end
 end

@@ -3,7 +3,7 @@
   <% product.images.each do |i| %>
     <%= image_tag(i, width: 200) %>
   <% end %>
-  <p>Price: <%= to_dollars(product.price) %></p>
+  <p>Price: <%= to_dollars(product.default_price.unit_amount) %></p>
 
   <%= form_for :cart_item, url: cart_items_path, method: :post do |f| %>
     <%= hidden_field_tag 'cart_item[stripe_product_id]', product.id %>

@@ -10,6 +10,6 @@ class Cart < ApplicationRecord
 
   def soft_delete
     super
-    soft_destroy_records
+    soft_delete_records
   end
 end
