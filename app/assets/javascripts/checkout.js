@@ -3,7 +3,7 @@ document.addEventListener('DOMContentLoaded', function () {
   const stripeKey = document.getElementById('stripe-key').dataset.publishableKey;
   const stripe = Stripe(stripeKey);
 
-  fetch('/checkouts', {
+  fetch('/checkout_sessions', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',

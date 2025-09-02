@@ -1,0 +1,30 @@
+<head>
+    <title><%= content_for(:title) || "Siempreviva" %></title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="mobile-web-app-capable" content="yes">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= yield :head %>
+
+    <%# Enable PWA manifest for installable apps (make sure to enable in config/routes.rb too!) %>
+    <%#= tag.link rel: "manifest", href: pwa_manifest_path(format: :json) %>
+
+    <link rel="icon" href="/logo.png" type="image/png">
+    <link rel="apple-touch-icon" href="/logo.png">
+
+    <%# Includes all stylesheet files in app/assets/stylesheets %>
+    <%= stylesheet_link_tag "tailwind", "data-turbo-track": "reload" %>
+    <%= javascript_importmap_tags %>
+    <%= javascript_include_tag 'application', 'data-turbo-track': 'reload' %>
+    <!-- stripe js -->
+    <script src="https://js.stripe.com/v3/"></script>
+
+    <!-- algolia js -->
+    <script src="https://cdn.jsdelivr.net/npm/algoliasearch@5.35.0/dist/lite/builds/browser.umd.js" integrity="sha256-k54K9sZqimlyVUDmX8WGI5Xbe9OvyjOlkoWLdxa79Kk=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/instantsearch.js@4.79.2/dist/instantsearch.production.min.js" integrity="sha256-xzEobMl7YU4X8/v8b+Ax4tXJtrs9DVhKOzKDSnZgj1Q=" crossorigin="anonymous"></script>
+
+    <!-- algolia css -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/instantsearch.css@8.5.1/themes/reset-min.css" integrity="sha256-KvFgFCzgqSErAPu6y9gz/AhZAvzK48VJASu3DpNLCEQ=" crossorigin="anonymous">
+  </head>

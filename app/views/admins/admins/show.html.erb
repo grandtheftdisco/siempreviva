@@ -1,0 +1,5 @@
+<h1 class="mb-5">Admin Profile for <%= @admin.email_address %></h1>
+
+<%= link_to 'Update Your Password',
+  edit_password_path(@admin.password_reset_token),
+  class: 'underline' %>

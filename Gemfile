@@ -14,13 +14,11 @@ gem "importmap-rails"
 gem "turbo-rails"
 # Hotwire's modest JavaScript framework [https://stimulus.hotwired.dev]
 gem "stimulus-rails"
-# Use Tailwind CSS [https://github.com/rails/tailwindcss-rails]
-gem "tailwindcss-rails"
 # Build JSON APIs with ease [https://github.com/rails/jbuilder]
 gem "jbuilder"
 
 # Use Active Model has_secure_password [https://guides.rubyonrails.org/active_model_basics.html#securepassword]
-# gem "bcrypt", "~> 3.1.7"
+gem "bcrypt", "~> 3.1.7"
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem "tzinfo-data", platforms: %i[ windows jruby ]
@@ -62,10 +60,15 @@ group :test do
   # Use system testing [https://guides.rubyonrails.org/testing.html#system-testing]
   gem "capybara"
   gem "selenium-webdriver"
+  gem "mocha"
+  gem "webmock"
 end
 
-gem "tailwindcss-ruby", "~> 4.1"
 gem "foreman", "~> 0.88.1"
 gem 'stripe'
 gem 'dotenv', groups: [:development, :test]
 gem 'redis', '~> 5.0'
+gem 'tailwindcss-rails', '~> 4.3'
+gem 'mail_form'
+gem "algolia", "~> 3.23"
+gem "premailer-rails"

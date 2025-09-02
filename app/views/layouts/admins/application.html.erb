@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+  <%= render partial: "layouts/public/head" %>
+
+  <body>
+    <header>
+      <nav class="flex justify-between p-5 items-center">
+        <p>[logo]</p>
+        <p class="text-4xl"><%= link_to 'Admin Dashboard', admins_orders_path %></p>
+        <ul class="inline-flex gap-5">
+          <li>
+            <%= button_to 'Log Out', 
+                  session_path, 
+                  method: :delete %>
+          </li>
+        </ul>
+      </nav>
+    </header>
+    <main class="flex flex-col self-center items-center">
+      <%= render partial: "layouts/public/flash_alert" %>
+      <%= yield %>
+    </main>
+  </body>
+</html>

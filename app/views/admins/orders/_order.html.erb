@@ -1,0 +1,40 @@
+<div class="flex flex-col bg-green-200 p-10 border rounded-2xl">
+  <div class="flex justify-between p-5 gap-10">
+    <h3 class="text-lg font-bold"><%= link_to "Order #{order.id}", admins_order_path(order) %></h3>
+    <p class="text-lg"><%= format_time(order.created_at) %></p>
+  </div>
+  <div class="flex flex-col">
+
+    <% stripe_info = @stripe_infos[order.id] %>
+
+    <% if stripe_info && !stripe_info[:error] %>
+      <p><%= stripe_info[:customer][:name] if stripe_info[:customer] %></p>
+      <p>
+        <%= stripe_info[:shipping_address]&.[](:city) %>
+        <%= stripe_info[:shipping_address]&.[](:state) %>
+        <%= stripe_info[:shipping_address]&.[](:postal_code) %>
+      </p>
+    <% elsif !stripe_info %>
+      <p>Order info unavailable. Please click the "Stripe Transaction" button below for more details.</p>
+    <% end %>
+
+    <br/>
+    <div class="flex gap-5 self-center items-center p-10 gap-x-2">
+      <%= link_to "Order Details",
+        admins_order_path(order),
+        class: 'bg-yellow-200 rounded-2xl p-3 text-center' %>
+      <%= link_to "Ship Order",
+        edit_admins_order_path(order),
+        class: 'bg-purple-300 rounded-2xl p-3 text-center' %>
+      <% if order.tracking_number %>
+        <%= link_to "Track Order",
+          "https://tools.usps.com/go/TrackConfirmAction?qtc_tLabels1=#{order.tracking_number}",
+          class: 'bg-blue-300 rounded-2xl p-3 text-center' %>
+      <% end %>
+        <%= link_to "Stripe Transaction",
+          "https://dashboard.stripe.com/test/payments/#{order.payment_intent_id}",
+          class: 'bg-red-300 rounded-2xl p-3 text-center',
+          target: "_blank" %>
+    </div>
+  </div>
+</div>

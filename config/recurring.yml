@@ -1,10 +1,10 @@
-# production:
-#   periodic_cleanup:
-#     class: CleanSoftDeletedRecordsJob
-#     queue: background
-#     args: [ 1000, { batch_size: 500 } ]
-#     schedule: every hour
-#   periodic_command:
-#     command: "SoftDeletedRecord.due.delete_all"
-#     priority: 2
-#     schedule: at 5am every day
+development:
+  abandoned_cart_soft_deletion:
+    class: SoftDeleteAbandonedCartsJob
+    schedule: every day
+  abandoned_cart_hard_deletion:
+    class: HardDeleteAbandonedCartsJob
+    schedule: every day
+  update_algolia_index:
+    class: UpdateAlgoliaIndexJob
+    schedule: every day

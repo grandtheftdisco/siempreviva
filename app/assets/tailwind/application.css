@@ -1,1 +1,124 @@
 @import "tailwindcss";
+/* can import other ss's through rel path */
+/* @import "./email.css"; */
+
+/* TODO - sort these & separate out into smaller stylesheets during frontend dev */
+form {
+  max-width: 600px;
+  margin: 2rem auto;
+  padding: 2rem;
+  background-color: #fff;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  font-family: Arial, sans-serif;
+}
+
+form > div {
+  margin-bottom: 1.5rem;
+}
+
+form label {
+  display: block;
+  color: #674174;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+}
+
+form input[type="text"],
+form input[type="email"],
+form textarea {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #d9cee0;
+  border-radius: 4px;
+  background-color: #f9f4fc;
+  font-family: Arial, sans-serif;
+}
+
+form input[type="text"]:focus,
+form input[type="email"]:focus,
+form textarea:focus {
+  outline: none;
+  border-color: #8e6999;
+  box-shadow: 0 0 0 2px rgba(142, 105, 153, 0.2);
+}
+
+form textarea {
+  min-height: 150px;
+  resize: vertical;
+}
+
+form input[type="submit"] {
+  background-color: #8e6999;
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  font-size: 16px;
+  font-weight: bold;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+form input[type="submit"]:hover {
+  background-color: #674174;
+}
+
+.container {
+  padding: 0px;
+  margin: 0px;
+}
+
+.page-title {
+  color: #674174;
+  padding: 20px;
+  text-align: center;
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+.submit-btn {
+  margin: 12px 0px;
+}
+
+.hidden {
+  display: none;
+}
+
+.social-links {
+  margin-top: 1.5rem;
+  margin-bottom: 1.5rem;
+  text-align: center;
+  padding-top: 1.5rem;
+  border-top: 1px solid #d9cee0;
+}
+
+.social-links p {
+  color: #674174;
+  font-weight: bold;
+  margin-bottom: 1rem;
+  font-size: 0.95rem;
+}
+
+.social-icons {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+}
+
+.social-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: #8e6999;
+  color: white;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+}
+
+.social-icon:hover {
+  background-color: #674174;
+}

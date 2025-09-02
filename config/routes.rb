@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resource :session, only: [ :new, :create, :destroy ]
+  resources :passwords, param: :token
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
   # Can be used by load balancers and uptime monitors to verify that the app is live.
@@ -22,8 +24,19 @@ Rails.application.routes.draw do
   resources :cart_items, only: [:create, :destroy ] 
     
   resources :checkouts, only: [ :new, :create, :show ]
-  get "checkout_success", to: "checkouts#checkout_success", as: :checkout_success
-  get "checkout_cancelled", to: "checkouts#checkout_cancelled", as: :checkout_cancelled
+  post '/checkout_sessions', to: 'checkout_sessions#create'
 
   post 'webhooks', to: 'webhooks#create'
+
+  namespace :admins do 
+    resources :orders, only: [ :create, :show, :edit, :update, :index ] do
+      collection do
+        get :archive, as: :archive
+      end
+    end
+    resources :admins, path: '', only: [ :new, :create, :show ]
+  end
+
+  get '/admin_login', to: 'sessions#new', as: :admin_login
+  resources :contact_form, only: [ :new, :create ]
 end

@@ -5,9 +5,11 @@ one:
   cart_id: 1
   status: fulfilled
   stripe_customer_id: MyText
+  stripe_checkout_session_id: scsi_123
 
 two:
   payment_intent_id: pi_34567
   cart_id: 1
   status: requires_payment_method
   stripe_customer_id: MyText
+  stripe_checkout_session_id: scsi_124

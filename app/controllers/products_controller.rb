@@ -1,6 +1,7 @@
 class ProductsController < ApplicationController
-  before_action :call_stripe_products, only: %i[ index show ]
-  before_action :set_product, only: %i[ show ]
+  skip_before_action :require_authentication
+  before_action :call_stripe_products, only: %i[index show]
+  before_action :set_product, only: %i[show]
 
   def index
   end
@@ -10,9 +11,7 @@ class ProductsController < ApplicationController
 
   private
     def call_stripe_products
-      @products = Stripe::Product.list(active: true, limit: 100).map do |product|
-        ProductWrapper.new(product)
-      end
+      @products = StripeService::FetchProductInventory.call
     end
   
     def set_product
