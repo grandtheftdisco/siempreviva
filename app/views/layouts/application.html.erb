@@ -44,19 +44,34 @@
           <!-- Dropdown Menu -->
           <div id="cartDropdown" class="cart-dropdown">
             <div class="cart-dropdown-header">
-              <h3 class="cart-dropdown-title">My Bag</h3>
+              <h3 class="cart-dropdown-title">my bag</h3>
             </div>
             <ul class="cart-items-list">
             <% @cart.cart_items.each do |item| %>
               <li class="cart-item">
+                <%= image_tag(item.image, class: "cart-item-image") %>
                 <div class="cart-item-details">
-                  <%= image_tag(item.image, class: "cart-item-image") %>
                   <p class="cart-item-name"><%= item.name %></p>
                   <p class="cart-item-price"><%= to_dollars(item.price) %></p>
                 </div>
+                <button class="cart-item-remove">×</button>
               </li>
             <% end %>
             </ul>
+            <div class="cart-summary">
+              <div class="cart-summary-line">
+                <span>subtotal</span>
+                <span>xx.xx</span>
+              </div>
+              <div class="cart-summary-line">
+                <span>shipping</span>
+                <span>xx.xx</span>
+              </div>
+              <div class="cart-summary-line cart-total">
+                <span>TOTAL</span>
+                <span>xx.xx</span>
+              </div>
+            </div>
             <div class="cart-actions">
               <a href="<%= cart_path %>" class="cart-view-button">View Cart</a>
               <a href="<%= new_checkout_path %>" class="cart-checkout-button">Checkout</a>
