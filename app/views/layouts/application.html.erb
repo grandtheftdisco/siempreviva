@@ -35,10 +35,10 @@
           <button id="cartDropdownButton" data-dropdown-toggle="cartDropdown" class="relative inline-flex items-center p-2 text-sm font-medium text-center text-gray-600 hover:text-gray-900">
             <!-- Shopping Cart Icon -->
             <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2 9h14l-2-9M10 21a1 1 0 100-2 1 1 0 000 2zm8 0a1 1 0 100-2 1 1 0 000 2z"></path>
+              <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 10.5V6a3.75 3.75 0 10-7.5 0v4.5m11.356-1.993l1.263 12c.07.665-.45 1.243-1.119 1.243H4.25a1.125 1.125 0 01-1.12-1.243l1.264-12A1.125 1.125 0 015.513 7.5h12.974c.576 0 1.059.435 1.119.993zM8.625 10.5a.375.375 0 11-.75 0 .375.375 0 01.75 0zm7.5 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z"></path>
             </svg>
-            <!-- Cart Badge -->
-            <span class="absolute inline-flex items-center justify-center w-4 h-4 text-xs font-bold text-white bg-red-500 rounded-full -top-1 -right-1">3</span>
+            <!-- Cart Badge (positioned on top-right side) -->
+            <span class="absolute -top-1 -right-1 bg-purple-500 text-white text-xs font-bold rounded-full h-5 w-5 flex items-center justify-center"><%= @cart.cart_items.count %></span>
           </button>
 
           <!-- Dropdown Menu -->
@@ -47,23 +47,15 @@
               <h3 class="font-semibold text-gray-900">Shopping Cart</h3>
             </div>
             <ul class="divide-y divide-gray-200">
-              <!-- TODO - iterate thru cart items here -->
-              <!-- Item 1 -->
+            <% @cart.cart_items.each do |item| %>
               <li class="flex items-center p-4">
-                <img src="https://flowbite.com/docs/images/products/apple-watch.png" class="w-12 h-12 rounded" alt="Product">
                 <div class="ms-3">
-                  <p class="text-sm font-medium text-gray-900">Apple Watch</p>
-                  <p class="text-sm text-gray-500">$299</p>
+                  <%= image_tag(item.image, class: "h-20 rounded-2xl") %>
+                  <p class="text-sm font-medium text-gray-900"><%= item.name %></p>
+                  <p class="text-sm text-gray-500"><%= to_dollars(item.price) %></p>
                 </div>
               </li>
-              <!-- Item 2 -->
-              <li class="flex items-center p-4">
-                <img src="https://flowbite.com/docs/images/products/imac.png" class="w-12 h-12 rounded" alt="Product">
-                <div class="ms-3">
-                  <p class="text-sm font-medium text-gray-900">iMac 27"</p>
-                  <p class="text-sm text-gray-500">$999</p>
-                </div>
-              </li>
+            <% end %>
             </ul>
             <div class="p-4 space-y-2">
               <a href="<%= cart_path %>" class="block w-full px-4 py-2 text-center text-white bg-blue-600 rounded-lg hover:bg-blue-700">View Cart</a>
