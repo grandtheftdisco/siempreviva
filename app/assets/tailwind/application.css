@@ -337,6 +337,17 @@ form input[type="submit"]:hover {
   color: #374151;
 }
 
+/* Style the form wrapper for cart item remove buttons */
+.cart-item form {
+  position: absolute;
+  top: 0;
+  right: 0;
+  background: transparent;
+  border: none;
+  margin: 0;
+  padding: 0;
+}
+
 .cart-summary {
   margin-bottom: 1rem;
   padding-top: 0.75rem;
