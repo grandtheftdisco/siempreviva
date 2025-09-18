@@ -1,8 +1,16 @@
-# Omakase Ruby styling for Rails
-inherit_gem: { rubocop-rails-omakase: rubocop.yml }
+# Airbnb Ruby style guide
+inherit_gem:
+  rubocop-airbnb:
+    - config/default.yml
 
-# Overwrite or add rules to create your own house style
-#
-# # Use `[a, [b, c]]` not `[ a, [ b, c ] ]`
-# Layout/SpaceInsideArrayLiteralBrackets:
-#   Enabled: false
+AllCops:
+  TargetRubyVersion: 3.3
+  NewCops: enable
+  SuggestExtensions: false
+  Exclude:
+    - 'vendor/**/*'
+    - 'db/schema.rb'
+    - 'bin/*'
+    - 'node_modules/**/*'
+    - 'tmp/**/*'
+    - 'log/**/*'
