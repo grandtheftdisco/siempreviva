@@ -3,7 +3,7 @@
   <%= render partial: "layouts/public/head" %>
 
   <body>
-    <header>
+    <header class="relative">
       <div class="header-container">
           
         <!-- Logo -->
@@ -14,17 +14,33 @@
         </div>
       
         <!-- Navbar Links -->
-        <div class="navbar-section" id="navbar-default">
+        <div class="navbar-section hidden md:flex" id="navbar-default">
           <ul class="navbar-list">
-            <li><%= link_to 'Products', products_path %></li>
-            <li><%= link_to 'Our Farms', our_farms_path %></li> 
-            <li><%= link_to 'Learn', learn_path %></li>
-            <li><%= link_to 'Contact', contact_path %></li>
+            <li><%= link_to 'products', products_path %></li>
+            <li><%= link_to 'our farms', our_farms_path %></li> 
+            <li><%= link_to 'learn', learn_path %></li>
+            <li><%= link_to 'contact', contact_path %></li>
           </ul>
         </div>
 
         <!-- Search Section -->
         <div class="search-section">
+          <!-- Search Icon Button (Mobile) -->
+          <button id="searchToggleButton" class="search-toggle-button">
+            <svg class="search-icon" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z"></path>
+            </svg>
+          </button>
+          
+          <!-- Desktop Search (always visible) -->
+          <div class="search-desktop">
+            <div id="searchbox-desktop" class="search-container"></div>
+            <div id="hits-desktop" class="search-results"></div>
+          </div>
+        </div>
+
+        <!-- Search Dropdown (Mobile) - Moved outside search-section -->
+        <div id="searchDropdown" class="search-dropdown">
           <div id="searchbox" class="search-container"></div>
           <div id="hits" class="search-results"></div>
         </div>
@@ -112,21 +128,48 @@
       if (helper.state.query.trim() === '') {
         // hide hits container if query is empty
         document.querySelector('#hits').style.display = 'none';
+        document.querySelector('#hits-desktop').style.display = 'none';
         return;
       }
       // show hits container and search
       document.querySelector('#hits').style.display = '';
+      document.querySelector('#hits-desktop').style.display = '';
       helper.search();
     }
   });
 
   search.addWidgets([
+    // Mobile searchbox
     instantsearch.widgets.searchBox({
       container: '#searchbox'
     }),
+    // Desktop searchbox
+    instantsearch.widgets.searchBox({
+      container: '#searchbox-desktop'
+    }),
 
+    // Mobile hits
     instantsearch.widgets.hits({
       container: '#hits',
+      templates: {
+        item(hit, { html, components }) {
+
+          const url = `/products/${hit.objectId}`;
+
+          return html`
+            <a href="${url}" class="search-hit-item">
+              <h2>
+                ${components.Highlight({ attribute: 'name', hit })}
+              </h2>
+            </a>
+          `;
+        },
+      },
+    }),
+    
+    // Desktop hits
+    instantsearch.widgets.hits({
+      container: '#hits-desktop',
       templates: {
         item(hit, { html, components }) {
 
@@ -147,6 +190,36 @@
   // hide hits on initial load
   document.addEventListener('DOMContentLoaded', function() {
     document.querySelector('#hits').style.display = 'none';
+    document.querySelector('#hits-desktop').style.display = 'none';
+
+    // Search dropdown functionality
+    const searchButton = document.getElementById('searchToggleButton');
+    const searchDropdown = document.getElementById('searchDropdown');
+
+    // Initially hide search dropdown
+    if (searchDropdown) {
+      searchDropdown.style.display = 'none';
+    }
+
+    if (searchButton && searchDropdown) {
+      searchButton.addEventListener('click', function(e) {
+        e.preventDefault();
+
+        // Toggle display
+        if (searchDropdown.style.display === 'none' || searchDropdown.style.display === '') {
+          searchDropdown.style.display = 'block';
+        } else {
+          searchDropdown.style.display = 'none';
+        }
+      });
+
+      // Close dropdown when clicking outside
+      document.addEventListener('click', function(e) {
+        if (!searchButton.contains(e.target) && !searchDropdown.contains(e.target)) {
+          searchDropdown.style.display = 'none';
+        }
+      });
+    }
 
     // Cart dropdown functionality
     const cartButton = document.getElementById('cartDropdownButton');
