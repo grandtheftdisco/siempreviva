@@ -1,7 +1,53 @@
 <% content_for :title, "My Bag" %>
 
-<h1>My Bag</h1>
+<div class="cart-container">
+  <!-- Page Header -->
+  <div class="cart-header">
+    <h1 class="page-title">my bag</h1>
+  </div>
 
-<%= render @cart %>
+  <% if @cart.cart_items.any? %>
+    <!-- Cart Items Section -->
+    <div class="cart-content">
+      <div class="cart-items-section">
+        <%= render @cart %>
+      </div>
 
-<p id="checkout-button"><%= link_to 'Check Out', new_checkout_path %></p>
+      <!-- Cart Summary Section -->
+      <div class="cart-summary-section">
+        <div class="summary-card">
+          <h3 class="summary-title">order summary</h3>
+          
+          <div class="summary-line">
+            <span>subtotal (<%= pluralize(@cart.cart_items.sum(:quantity), 'item') %>)</span>
+            <span><%= to_dollars(@cart.total) %></span>
+          </div>
+          
+          <div class="summary-line">
+            <span>shipping</span>
+            <span>calculated at checkout</span>
+          </div>
+          
+          <div class="summary-line summary-total">
+            <span>total (before shipping)</span>
+            <span><%= to_dollars(@cart.total) %></span>
+          </div>
+          
+          <div class="cart-actions">
+            <%= link_to 'continue shopping', products_path, class: 'continue-shopping-btn' %>
+            <%= link_to 'checkout', new_checkout_path, class: 'checkout-btn' %>
+          </div>
+        </div>
+      </div>
+    </div>
+  <% else %>
+    <!-- Empty Cart State -->
+    <div class="empty-cart">
+      <div class="empty-cart-content">
+        <h2>your bag is empty</h2>
+        <p>discover our collection of premium essential oils</p>
+        <%= link_to 'shop products', products_path, class: 'shop-products-btn' %>
+      </div>
+    </div>
+  <% end %>
+</div>

@@ -1,0 +1,125 @@
+/* UI Components Stylesheet with SASS Mixins */
+
+/* ===== BUTTON MIXINS ===== */
+
+/* Base button mixin with pill shape */
+@mixin btn-base {
+  padding: 0.75rem 1.5rem;
+  border-radius: 9999px; /* Full pill shape */
+  text-decoration: none;
+  text-align: center;
+  font-family: 'Raleway', sans-serif;
+  font-weight: 500;
+  cursor: pointer;
+  display: inline-block;
+  transition: all 0.2s ease;
+  border: 2px solid transparent;
+}
+
+/* Primary button (filled) */
+@mixin btn-primary($bg-color: #674174, $text-color: white, $hover-bg: #5a3766) {
+  @include btn-base;
+  background: $bg-color;
+  color: $text-color;
+  border-color: $bg-color;
+  
+  &:hover {
+    background: $hover-bg;
+    border-color: $hover-bg;
+    color: $text-color;
+  }
+}
+
+/* Secondary button (outline) */
+@mixin btn-secondary($border-color: #674174, $text-color: #674174, $hover-bg: #674174, $hover-text: white) {
+  @include btn-base;
+  background: transparent;
+  color: $text-color;
+  border-color: $border-color;
+  
+  &:hover {
+    background: $hover-bg;
+    color: $hover-text;
+    border-color: $hover-bg;
+  }
+}
+
+/* Danger button (red) */
+@mixin btn-danger($bg-color: #dc2626, $text-color: white, $hover-bg: #b91c1c) {
+  @include btn-base;
+  background: $bg-color;
+  color: $text-color;
+  border-color: $bg-color;
+  
+  &:hover {
+    background: $hover-bg;
+    border-color: $hover-bg;
+    color: $text-color;
+  }
+}
+
+/* Small button variant */
+@mixin btn-small {
+  padding: 0.5rem 1rem;
+  font-size: 0.85rem;
+}
+
+/* Large button variant */
+@mixin btn-large {
+  padding: 1rem 2rem;
+  font-size: 1.1rem;
+}
+
+/* ===== UTILITY CLASSES ===== */
+
+/* Ready-to-use button classes using only Tailwind utilities */
+.btn-pill-base {
+  @apply px-6 py-3 rounded-full no-underline text-center font-medium cursor-pointer inline-block transition-all duration-200 border-2 border-transparent;
+  font-family: 'Raleway', sans-serif;
+}
+
+.btn-pill-primary {
+  @apply px-6 py-3 rounded-full no-underline text-center font-medium cursor-pointer inline-block transition-all duration-200 border-2 bg-purple-700 text-white border-purple-700 hover:bg-purple-800 hover:border-purple-800;
+  font-family: 'Raleway', sans-serif;
+}
+
+.btn-pill-secondary {
+  @apply px-6 py-3 rounded-full no-underline text-center font-medium cursor-pointer inline-block transition-all duration-200 border-2 bg-transparent text-purple-700 border-purple-700 hover:bg-purple-700 hover:text-white;
+  font-family: 'Raleway', sans-serif;
+}
+
+.btn-pill-danger {
+  @apply px-6 py-3 rounded-full no-underline text-center font-medium cursor-pointer inline-block transition-all duration-200 border-2 bg-red-600 text-white border-red-600 hover:bg-red-700 hover:border-red-700;
+  font-family: 'Raleway', sans-serif;
+}
+
+.btn-pill-small {
+  @apply px-4 py-2 text-sm rounded-full no-underline text-center font-medium cursor-pointer inline-block transition-all duration-200 border-2;
+  font-family: 'Raleway', sans-serif;
+}
+
+.btn-pill-large {
+  @apply px-8 py-4 text-lg rounded-full no-underline text-center font-medium cursor-pointer inline-block transition-all duration-200 border-2;
+  font-family: 'Raleway', sans-serif;
+}
+
+/* ===== COMPONENT STYLES ===== */
+
+/* Update existing cart buttons to pill shape */
+.continue-shopping-btn {
+  @include btn-secondary;
+}
+
+.checkout-btn {
+  @include btn-primary;
+}
+
+.quantity-update-btn-visible {
+  @include btn-primary;
+  @include btn-small;
+}
+
+.remove-item-btn-red {
+  @include btn-danger;
+  @include btn-small;
+}

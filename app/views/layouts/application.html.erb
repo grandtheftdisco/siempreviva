@@ -62,36 +62,52 @@
             <div class="cart-dropdown-header">
               <h3 class="cart-dropdown-title">my bag</h3>
             </div>
-            <ul class="cart-items-list">
-            <% @cart.cart_items.each do |item| %>
-              <li class="cart-item">
-                <%= image_tag(item.image, class: "cart-item-image") %>
-                <div class="cart-item-details">
-                  <p class="cart-item-name"><%= item.name %></p>
-                  <p class="cart-item-price"><%= to_dollars(item.price) %></p>
-                </div>
-                <%= button_to '×', item, method: :delete, class: 'cart-item-remove' %>
-              </li>
-            <% end %>
-            </ul>
-            <div class="cart-summary">
-              <div class="cart-summary-line">
-                <span>subtotal</span>
-                <span><%= to_dollars(@cart.total) %></span>
-              </div>
-              <div class="cart-summary-line">
-                <span>shipping</span>
-                <span>(calculated at checkout)</span>
-                <!-- TODO - add shipping in here once customer has selected it; ie if they begin checkout process & then abandon cart -->
-              </div>
-              <div class="cart-summary-line cart-total">
-                <span>TOTAL</span>
-                <span><%= to_dollars(@cart.total) %></span>
-              </div>
+            <div class="cart-dropdown-content">
+              <ul class="cart-items-list <%= 'compact' if @cart.cart_items.count > 2 %>">
+              <% @cart.cart_items.each do |item| %>
+                <% if @cart.cart_items.count > 2 %>
+                  <!-- Compact view without images -->
+                  <li class="cart-item-compact">
+                    <div class="cart-item-details">
+                      <p class="cart-item-name"><%= item.name %></p>
+                      <p class="cart-item-price"><%= to_dollars(item.price) %></p>
+                    </div>
+                    <%= button_to '×', item, method: :delete, class: 'cart-item-remove' %>
+                  </li>
+                <% else %>
+                  <!-- Regular view with images -->
+                  <li class="cart-item">
+                    <%= image_tag(item.image, class: "cart-item-image") %>
+                    <div class="cart-item-details">
+                      <p class="cart-item-name"><%= item.name %></p>
+                      <p class="cart-item-price"><%= to_dollars(item.price) %></p>
+                    </div>
+                    <%= button_to '×', item, method: :delete, class: 'cart-item-remove' %>
+                  </li>
+                <% end %>
+              <% end %>
+              </ul>
             </div>
-            <div class="cart-actions">
-              <a href="<%= cart_path %>" class="cart-view-button">View Cart</a>
-              <a href="<%= new_checkout_path %>" class="cart-checkout-button">Checkout</a>
+            <div class="cart-dropdown-footer">
+              <div class="cart-summary">
+                <div class="cart-summary-line">
+                  <span>subtotal</span>
+                  <span><%= to_dollars(@cart.total) %></span>
+                </div>
+                <div class="cart-summary-line">
+                  <span>shipping</span>
+                  <span>(calculated at checkout)</span>
+                  <!-- TODO - add shipping in here once customer has selected it; ie if they begin checkout process & then abandon cart -->
+                </div>
+                <div class="cart-summary-line cart-total">
+                  <span>TOTAL</span>
+                  <span><%= to_dollars(@cart.total) %></span>
+                </div>
+              </div>
+              <div class="cart-actions">
+                <a href="<%= cart_path %>" class="cart-view-button">View Cart</a>
+                <a href="<%= new_checkout_path %>" class="cart-checkout-button">Checkout</a>
+              </div>
             </div>
           </div>
 
@@ -229,18 +245,14 @@
       cartButton.addEventListener('click', function(e) {
         e.preventDefault();
 
-        // Toggle display
-        if (cartDropdown.style.display === 'none' || cartDropdown.style.display === '') {
-          cartDropdown.style.display = 'block';
-        } else {
-          cartDropdown.style.display = 'none';
-        }
+        // Toggle show class
+        cartDropdown.classList.toggle('show');
       });
 
       // Close dropdown when clicking outside
       document.addEventListener('click', function(e) {
         if (!cartButton.contains(e.target) && !cartDropdown.contains(e.target)) {
-          cartDropdown.style.display = 'none';
+          cartDropdown.classList.remove('show');
         }
       });
     }

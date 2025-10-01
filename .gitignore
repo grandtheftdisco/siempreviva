@@ -38,3 +38,4 @@
 .env.development.local
 /app/assets/builds/*
 !/app/assets/builds/.keep
+CART_WIREFRAME.md
