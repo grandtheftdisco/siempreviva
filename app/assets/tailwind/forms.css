@@ -1,0 +1,296 @@
+/* Forms Stylesheet */
+/* Contains all form-related styles including inputs, labels, buttons, and form layouts */
+
+/* ===== FORM CONTAINERS ===== */
+
+form {
+  max-width: 600px;
+  margin: 2rem auto;
+  padding: 2rem;
+  background-color: #ffffff;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  font-family: 'Raleway', sans-serif;
+}
+
+form > div {
+  margin-bottom: 1.5rem;
+}
+
+/* ===== FORM LABELS ===== */
+
+form label {
+  display: block;
+  color: #674174;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+  font-family: 'Raleway', sans-serif;
+}
+
+/* ===== FORM INPUTS ===== */
+
+form input[type="text"],
+form input[type="email"],
+form input[type="password"],
+form input[type="number"],
+form textarea {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #d9cee0;
+  border-radius: 4px;
+  background-color: #f0e8f5;
+  font-family: 'Raleway', sans-serif;
+  color: #2c3e50;
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+form input[type="text"]:focus,
+form input[type="email"]:focus,
+form input[type="password"]:focus,
+form input[type="number"]:focus,
+form textarea:focus {
+  outline: none;
+  border-color: #c5aace;
+  box-shadow: 0 0 0 2px rgba(197, 170, 206, 0.2);
+}
+
+form textarea {
+  min-height: 150px;
+  resize: vertical;
+}
+
+/* ===== FORM BUTTONS ===== */
+
+form input[type="submit"],
+form button[type="submit"] {
+  background-color: #c5aace;
+  color: #ffffff;
+  border: none;
+  padding: 12px 24px;
+  font-size: 16px;
+  font-weight: bold;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  font-family: 'Raleway', sans-serif;
+}
+
+form input[type="submit"]:hover,
+form button[type="submit"]:hover {
+  background-color: #674174;
+}
+
+.submit-btn {
+  margin: 12px 0px;
+}
+
+/* ===== FORM INPUT STATES ===== */
+
+/* Error state */
+.form-input-error,
+form input.error,
+form textarea.error {
+  border-color: #dc3545;
+  background-color: #f8d7da;
+}
+
+.form-input-error:focus,
+form input.error:focus,
+form textarea.error:focus {
+  border-color: #dc3545;
+  box-shadow: 0 0 0 2px rgba(220, 53, 69, 0.1);
+}
+
+/* Success state */
+.form-input-success,
+form input.success,
+form textarea.success {
+  border-color: #28a745;
+  background-color: #d4edda;
+}
+
+.form-input-success:focus,
+form input.success:focus,
+form textarea.success:focus {
+  border-color: #28a745;
+  box-shadow: 0 0 0 2px rgba(40, 167, 69, 0.1);
+}
+
+/* ===== FORM GROUPS ===== */
+
+.form-group {
+  margin-bottom: 1.5rem;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+  color: #2c3e50;
+  font-family: 'Raleway', sans-serif;
+}
+
+.form-group input,
+.form-group textarea,
+.form-group select {
+  padding: 0.75rem 1rem;
+  border: 1px solid #d1d5db;
+  border-radius: 0.375rem;
+  font-family: 'Raleway', sans-serif;
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+.form-group input:focus,
+.form-group textarea:focus,
+.form-group select:focus {
+  outline: none;
+  border-color: #674174;
+  box-shadow: 0 0 0 3px rgba(103, 65, 116, 0.1);
+}
+
+/* ===== SELECT INPUTS ===== */
+
+form select,
+.form-select {
+  padding: 0.75rem 1rem;
+  border: 1px solid #d1d5db;
+  border-radius: 0.375rem;
+  font-family: 'Raleway', sans-serif;
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+  cursor: pointer;
+  background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath fill='none' stroke='%23674174' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='m2 5 6 6 6-6'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 0.75rem center;
+  background-size: 16px 12px;
+  padding-right: 2.5rem;
+}
+
+form select:focus,
+.form-select:focus {
+  outline: none;
+  border-color: #674174;
+  box-shadow: 0 0 0 3px rgba(103, 65, 116, 0.1);
+}
+
+/* ===== CHECKBOX AND RADIO INPUTS ===== */
+
+form input[type="checkbox"],
+form input[type="radio"] {
+  width: auto;
+  margin-right: 0.5rem;
+  accent-color: #674174;
+}
+
+.form-checkbox,
+.form-radio {
+  display: flex;
+  align-items: center;
+  margin-bottom: 0.75rem;
+}
+
+.form-checkbox input,
+.form-radio input {
+  margin-right: 0.5rem;
+  margin-top: 0;
+}
+
+.form-checkbox label,
+.form-radio label {
+  margin-bottom: 0;
+  font-weight: normal;
+  cursor: pointer;
+}
+
+/* ===== FORM VALIDATION MESSAGES ===== */
+
+.form-error-message {
+  color: #dc3545;
+  font-size: 0.875rem;
+  margin-top: 0.25rem;
+  display: block;
+}
+
+.form-success-message {
+  color: #28a745;
+  font-size: 0.875rem;
+  margin-top: 0.25rem;
+  display: block;
+}
+
+.form-help-text {
+  color: #6c757d;
+  font-size: 0.875rem;
+  margin-top: 0.25rem;
+  display: block;
+}
+
+/* ===== INLINE FORMS ===== */
+
+.form-inline {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin: 0;
+  padding: 0;
+  background: none;
+  border: none;
+  max-width: none;
+}
+
+.form-inline .form-group {
+  margin-bottom: 0;
+  flex: 1;
+}
+
+.form-inline label {
+  margin-right: 0.5rem;
+  margin-bottom: 0;
+  white-space: nowrap;
+}
+
+.form-inline input,
+.form-inline select {
+  width: auto;
+  flex: 1;
+}
+
+/* ===== RESPONSIVE FORMS ===== */
+
+@media (max-width: 768px) {
+  form {
+    margin: 1rem auto;
+    padding: 1.5rem 1rem;
+  }
+  
+  .form-inline {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.75rem;
+  }
+  
+  .form-inline label {
+    margin-right: 0;
+    margin-bottom: 0.25rem;
+  }
+  
+  .form-inline input,
+  .form-inline select {
+    width: 100%;
+  }
+}
+
+/* ===== FIELDSET AND LEGEND ===== */
+
+fieldset {
+  border: 1px solid #d1d5db;
+  border-radius: 0.5rem;
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+legend {
+  color: #674174;
+  font-weight: 600;
+  padding: 0 0.5rem;
+  font-size: 1.1rem;
+}

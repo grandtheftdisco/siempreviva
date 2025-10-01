@@ -1,0 +1,274 @@
+/* Layout Stylesheet */
+/* Contains header, navigation, responsive layout, and main structural styles */
+
+/* ===== CSS CUSTOM PROPERTIES (COLORS) ===== */
+:root {
+  --primary-purple: #674174;
+  --light-purple: #c5aace;
+  --button-purple: #e6d3ec;
+  --light-pink: #f7c8d8;
+  --medium-pink: #f4a5c2;
+  --light-bg: #f8f9fa;
+  --white-bg: #ffffff;
+  --dark-text: #2c3e50;
+  --medium-text: #6c757d;
+  --light-text: #adb5bd;
+  --success-green: #28a745;
+  --warning-orange: #fd7e14;
+  --danger-red: #dc3545;
+  --info-blue: #17a2b8;
+}
+
+/* ===== GLOBAL LAYOUT ===== */
+
+body, html {
+  font-family: 'Raleway', sans-serif;
+}
+
+p {
+  font-family: 'Raleway', sans-serif;
+}
+
+.container {
+  padding: 0px;
+  margin: 0px;
+}
+
+/* General content spacing - applies to all screen sizes */
+h1 {
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+main {
+  padding-left: 1rem;
+  padding-right: 1rem;
+  padding-top: 8rem; /* Add space for fixed header */
+}
+
+.page-title {
+  color: var(--primary-purple);
+  padding: 1rem; /* Consistent padding across all screen sizes */
+  text-align: center;
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+/* Responsive page title */
+@media (max-width: 768px) {
+  .page-title {
+    text-align: left; /* Left align on mobile */
+    font-size: 1.5rem; /* Slightly smaller on mobile */
+  }
+}
+
+.hidden {
+  display: none;
+}
+
+/* ===== HEADER & NAVIGATION ===== */
+
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  background-color: var(--white-bg);
+  border-bottom: 1px solid #e5e7eb;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1);
+}
+
+.header-container {
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  padding: 1rem;
+  gap: 1.25rem;
+  min-width: 0; /* Prevent flex items from overflowing */
+}
+
+/* Responsive header container */
+@media (max-width: 768px) {
+  .header-container {
+    padding: 0.5rem 1rem; /* Increased left/right padding on mobile */
+    gap: 0.25rem;
+    flex-wrap: nowrap;
+  }
+}
+
+/* ===== LOGO SECTION ===== */
+
+.logo-section {
+  margin-right: auto;
+  padding-left: 0.5rem;
+  padding-top: 0.5rem;
+  flex-shrink: 0; /* Don't let logo shrink too much */
+}
+
+/* Responsive logo section */
+@media (max-width: 767px) {
+  .logo-section {
+    padding-left: 0.25rem;
+    padding-top: 0.25rem;
+  }
+}
+
+.logo-link {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.logo-image {
+  height: 7.5rem;
+  width: auto;
+  flex-shrink: 0;
+}
+
+/* Responsive logo sizing - Tailwind md breakpoint */
+@media (max-width: 767px) {
+  .logo-image {
+    height: 5rem;
+  }
+}
+
+/* ===== NAVIGATION SECTION ===== */
+
+.navbar-section {
+  flex: 1;
+  display: flex;
+  padding-left: 3.75rem;
+  min-width: 0; /* Allow shrinking */
+}
+
+/* Responsive navbar section - Tailwind md breakpoint (below 768px) */
+@media (max-width: 767px) {
+  .navbar-section {
+    display: none;
+  }
+  
+  .navbar-section:not(.hidden) {
+    display: block !important;
+    position: absolute !important;
+    top: 100% !important;
+    left: 0 !important;
+    right: 0 !important;
+    background-color: var(--white-bg) !important;
+    border-top: 1px solid #e5e7eb !important;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1) !important;
+    z-index: 50 !important;
+    padding: 0 !important;
+  }
+  
+  .navbar-section:not(.hidden) .navbar-list {
+    flex-direction: column !important;
+    padding: 1rem !important;
+    gap: 0.75rem !important;
+    background-color: var(--white-bg) !important;
+    border: none !important;
+    border-radius: 0 !important;
+    margin: 0 !important;
+    font-size: 1.125rem !important;
+  }
+  
+  .navbar-section:not(.hidden) .navbar-list li {
+    border-bottom: 1px solid #f3f4f6 !important;
+    padding-bottom: 0.5rem !important;
+  }
+  
+  .navbar-section:not(.hidden) .navbar-list li:last-child {
+    border-bottom: none !important;
+  }
+}
+
+.navbar-list {
+  display: flex;
+  flex-direction: column;
+  padding: 1.25rem;
+  margin-top: 1rem;
+  font-weight: 500;
+  font-size: 1.5rem;
+  font-family: 'Playfair Display', serif;
+  gap: 1.25rem;
+  border: 1px solid #f3f4f6;
+  border-radius: 0.5rem;
+  background-color: #f9fafb;
+}
+
+/* Tailwind md breakpoint (768px+) - horizontal navbar */
+@media (min-width: 768px) {
+  .navbar-list {
+    padding: 0;
+    margin-top: 0;
+    gap: 1.5rem; /* Reduced from 2rem */
+    border: none;
+    background-color: var(--white-bg);
+    flex-direction: row;
+    font-size: 1.125rem; /* Reduced from 1.5rem to 1.125rem (text-lg) */
+  }
+}
+
+/* Tailwind lg breakpoint (1024px+) - larger screens get bigger text */
+@media (min-width: 1024px) {
+  .navbar-section {
+    padding-left: 1.5rem;
+  }
+  
+  .navbar-list {
+    font-size: 1.125rem; /* Reduced from 1.5rem to 1.125rem (text-lg) */
+    gap: 1.5rem; /* Reduced gap from 2rem to 1.5rem */
+  }
+}
+
+/* Between md and lg (768px-1023px) - compact nav for tablets */
+@media (min-width: 768px) and (max-width: 1023px) {
+  .navbar-section {
+    padding-left: 0.75rem;
+  }
+  
+  .navbar-list {
+    font-size: 0.875rem; /* Tailwind text-sm */
+    gap: 0.75rem;
+  }
+}
+
+/* ===== SOCIAL LINKS SECTION ===== */
+
+.social-links {
+  margin-top: 1.5rem;
+  margin-bottom: 1.5rem;
+  text-align: center;
+  padding-top: 1.5rem;
+  border-top: 1px solid #d9cee0;
+}
+
+.social-links p {
+  color: var(--primary-purple);
+  font-weight: bold;
+  margin-bottom: 1rem;
+  font-size: 0.95rem;
+}
+
+.social-icons {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+}
+
+.social-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: var(--light-purple);
+  color: var(--white-bg);
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+}
+
+.social-icon:hover {
+  background-color: var(--primary-purple);
+}

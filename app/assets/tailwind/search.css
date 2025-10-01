@@ -1,0 +1,318 @@
+/* Search Stylesheet */
+/* Contains all search-related styles including Algolia components and search dropdowns */
+
+/* ===== SEARCH SECTION LAYOUT ===== */
+
+.search-section {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0 1rem; /* Reduced from 2.5rem (40px) to 1rem (16px) */
+  position: relative;
+  flex-shrink: 1; /* Allow search to shrink */
+}
+
+/* Compact search for tablet range */
+@media (min-width: 768px) and (max-width: 1023px) {
+  .search-section {
+    padding: 0 0.25rem; /* Reduced from 1rem to 0.25rem (4px each side) */
+    gap: 0.25rem; /* Reduced from 0.5rem */
+  }
+  
+  .search-desktop input {
+    height: 2rem; /* Smaller input height */
+    font-size: 0.875rem; /* Match nav font size */
+    padding: 0.375rem 0.75rem; /* Smaller padding */
+    max-width: 250px; /* Limit width */
+  }
+  
+  .search-desktop button {
+    height: 2rem; /* Match input height */
+    width: 2rem;
+    padding: 0.25rem;
+  }
+}
+
+/* Tailwind sm and below (below 640px) - mobile search */
+@media (max-width: 639px) {
+  .search-section {
+    padding: 0 0.5rem;
+    gap: 0.25rem;
+    flex: 0 1 auto;
+    min-width: 0;
+  }
+  
+  .search-toggle-button {
+    display: flex;
+  }
+  
+  .search-desktop {
+    display: none;
+  }
+}
+
+/* Tailwind sm to md (640px-767px) - tablet range, compact search */
+@media (min-width: 640px) and (max-width: 767px) {
+  .search-section {
+    padding: 0 1rem;
+    gap: 0.25rem;
+    flex: 0 1 200px; /* Limited width to prevent overlap */
+    min-width: 150px;
+  }
+  
+  .search-desktop input {
+    width: 100%;
+    max-width: 200px;
+    font-size: 0.875rem;
+  }
+}
+
+/* ===== SEARCH TOGGLE BUTTON (MOBILE) ===== */
+
+.search-toggle-button {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  padding: 0.5rem;
+  background: transparent;
+  border: none;
+  border-radius: 0.5rem;
+  color: #6b7280;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.search-toggle-button:hover {
+  background-color: #f3f4f6;
+}
+
+.search-icon {
+  width: 1.5rem;
+  height: 1.5rem;
+}
+
+/* ===== SEARCH DROPDOWN ===== */
+
+.search-dropdown {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background-color: #ffffff;
+  border-top: 1px solid #e5e7eb;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  z-index: 50;
+  padding: 1rem;
+}
+
+/* Responsive search dropdown - full width on mobile */
+@media (max-width: 768px) {
+  .search-dropdown {
+    border-radius: 0;
+    border-left: none;
+    border-right: none;
+  }
+}
+
+/* Tailwind md+ (768px+) - desktop search dropdown */
+@media (min-width: 768px) {
+  .search-dropdown {
+    left: auto;
+    right: 0;
+    min-width: 300px;
+    border: 1px solid #e5e7eb;
+    border-radius: 0.5rem;
+    margin-top: 0.5rem;
+  }
+}
+
+/* Mobile search dropdown specific styles */
+.search-dropdown .search-container {
+  justify-content: flex-start;
+  width: 100%;
+  max-width: 100%;
+  overflow: hidden;
+}
+
+.search-dropdown .search-results {
+  position: static;
+  margin-top: 0.5rem;
+  right: auto;
+  width: 100%;
+  min-width: auto;
+}
+
+/* Ensure Algolia search input doesn't overflow on mobile */
+@media (max-width: 768px) {
+  .search-dropdown .search-container input {
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+  }
+  
+  .search-dropdown .ais-SearchBox {
+    width: 100% !important;
+  }
+  
+  .search-dropdown .ais-SearchBox-form {
+    width: 100% !important;
+  }
+  
+  .search-dropdown .ais-SearchBox-input {
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+  }
+}
+
+/* ===== DESKTOP SEARCH ===== */
+
+.search-desktop {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.search-container {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding: 0;
+  margin: 0;
+  position: relative;
+}
+
+.search-results {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  z-index: 50;
+  margin-top: 0.5rem;
+  width: auto;
+  min-width: 250px;
+}
+
+/* ===== SEARCH HIT ITEMS ===== */
+
+.search-hit-item {
+  display: block;
+  padding: 0.5rem;
+  border-radius: 1rem;
+  transition: background-color 0.2s;
+}
+
+.search-hit-item:hover {
+  background-color: #faf5ff;
+}
+
+/* ===== ALGOLIA SEARCH COMPONENTS ===== */
+
+.ais-SearchBox-form {
+  padding: 0px;
+  margin: 0px;
+  border: none;
+  outline: none;
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.ais-SearchBox-input {
+  background: #e6d3ec;
+  border: 1px solid #d1d5db;
+  border-radius: 1rem;
+  padding: 8px;
+  padding-right: 80px;
+  flex: 1;
+  color: #2c3e50;
+}
+
+.ais-SearchBox-input:focus {
+  outline: none;
+  border-color: #674174;
+  box-shadow: 0 0 0 2px rgba(103, 65, 116, 0.1);
+}
+
+.ais-SearchBox-submit {
+  font-size: 1.125rem;
+  background: transparent;
+  padding: 0px;
+  color: #c5aace;
+  border: none;
+  outline: none;
+  position: absolute;
+  right: 8px;
+  cursor: pointer;
+  transition: color 0.2s;
+}
+
+.ais-SearchBox-submit:hover {
+  color: #674174;
+}
+
+.ais-SearchBox-submitIcon {
+  width: 20px !important;
+  height: 20px !important;
+  margin-top: 0px;
+  margin-left: 5px;
+  padding: 0px;
+}
+
+.ais-SearchBox-reset {
+  background: transparent;
+  border: none;
+  outline: none;
+  padding: 4px 8px;
+  color: #6b7280;
+  position: absolute;
+  right: 45px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: color 0.2s;
+}
+
+.ais-SearchBox-reset:hover {
+  color: #374151;
+}
+
+.ais-SearchBox-resetIcon {
+  width: 14px !important;
+  height: 14px !important;
+}
+
+/* ===== SEARCH RESULTS CONTAINER ===== */
+
+.ais-Hits {
+  background: #e6d3ec;
+  width: 250px;
+  border-radius: 0.5rem;
+  border: 1px solid #d1d5db;
+  padding: 0px;
+  margin-right: 20px;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+
+.ais-Hits-item a {
+  display: block;
+  border-radius: 1rem;
+  padding: 0px;
+  color: #2c3e50;
+  text-decoration: none;
+  transition: background-color 0.2s;
+}
+
+.ais-Hits-item a:hover {
+  background: #c5aace;
+  border-radius: 1rem;
+  color: #2c3e50;
+}
+
+.ais-Highlight-highlighted {
+  background: #c5aace;
+  padding: 0.125rem 0.25rem;
+  border-radius: 0.25rem;
+}
