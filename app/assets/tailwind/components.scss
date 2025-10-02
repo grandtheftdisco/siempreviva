@@ -213,6 +213,13 @@ $info-blue: #6b9fa8;
 
 /* ===== FLASH NOTIFICATION STYLES ===== */
 
+/* Base flash notification sizing */
+.flash-notification {
+  width: 14rem; /* ~224px - reasonable fixed width */
+  min-width: 12rem; /* ~192px - minimum for short messages */
+  max-width: 90vw; /* Responsive max width for mobile */
+}
+
 /* Use high specificity to override any transparent backgrounds */
 main .flash-notice,
 div.flash-notice {
