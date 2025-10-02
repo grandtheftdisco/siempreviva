@@ -40,6 +40,22 @@ The application uses a service layer to encapsulate business logic:
 
 ## Development Approach
 
+### Development Methodology
+This project demonstrates a strategic approach to AI-assisted development with clear delineation of responsibilities:
+
+**Backend Development (Human-Led)**:
+- Backend architecture, service objects, and business logic developed primarily by human developer
+- Rails patterns, database design, and API integrations implemented through traditional development methods
+- Minimal use of AI assistance limited to occasional consultation (Claude) and code review (Copilot)
+
+**Frontend Development (AI-Assisted)**:
+- Wireframing, prototyping, and all other design planning carried out by human developer
+- Frontend styling, component structure, and UI implementation developed with supervised AI assistance
+- Human developer leverages frontend expertise to effectively guide and review AI-generated code
+- Ensures quality control while accelerating development velocity in areas of established competency
+
+This approach maintains architectural integrity and learning objectives while strategically leveraging AI tools where appropriate.
+
 ### Testing Strategy
 - Test-Driven Development (TDD)
 - Comprehensive service object testing
