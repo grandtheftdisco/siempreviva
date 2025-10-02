@@ -1,6 +1,6 @@
 class CartItemsController < ApplicationController
   skip_before_action :require_authentication
-  before_action :set_cart_item, only: %i[destroy]
+  before_action :set_cart_item, only: %i[update destroy]
 
   def create
     product_setup
@@ -37,6 +37,23 @@ class CartItemsController < ApplicationController
         redirect_to products_path, alert: 'An error occurred. Please try again later.'
       end
       format.json { render json: { error: e.message }, status: :unprocessable_entity }
+    end
+  end
+
+  def update
+    @cart_item.update!(cart_item_params)
+    @cart.update(total_amount: CartService::CalculateCart.call(cart: @cart))
+
+    respond_to do |format|
+      format.html { redirect_to cart_path, notice: 'Quantity updated!' }
+      format.json { render :show, status: :ok, location: @cart_item }
+    end
+  rescue ActiveRecord::RecordInvalid
+    respond_to do |format|
+      format.html do
+        redirect_to cart_path, alert: 'Could not update quantity. Please try again.'
+      end
+      format.json { render json: @cart_item.errors, status: :unprocessable_entity }
     end
   end
 
