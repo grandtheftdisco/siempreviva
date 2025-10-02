@@ -15,7 +15,7 @@
     - Organized my CSS properly by breaking stylesheets into view-specific files using SASS components.
     - Added Flowbite components for better UI consistency.
   - **DevEx Improvements**:
-    - Added RuboCop Airbnb for code quality.
+    - Added the `rubocop-airbnb` gem and adopted its style guide (see `.rubocop.yml` for configuration).
     - Set up proper font loading and responsive design patterns.
   - **The Real Talk**: This took WAY longer than expected, but I'm learning so much about real-world Rails architecture. The admin dashboard alone taught me tons about authentication, authorization, and API integration patterns.
 
