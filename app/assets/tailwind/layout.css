@@ -27,6 +27,10 @@ body, html {
   min-height: 100vh;
 }
 
+body {
+  padding-top: 5rem; /* Reduced base padding for fixed header */
+}
+
 p {
   font-family: 'Raleway', sans-serif;
 }
@@ -45,7 +49,19 @@ h1 {
 main {
   padding-left: 1rem;
   padding-right: 1rem;
-  padding-top: 8rem; /* Add space for fixed header */
+  padding-top: 3rem; /* Increased base padding for better spacing */
+}
+
+/* Add extra padding when flash messages are present */
+main.has-flash-messages {
+  padding-top: 5rem; /* Increased padding when flash messages exist */
+}
+
+/* Flash message styling to ensure proper positioning below fixed header */
+[class^="flash-"] {
+  margin-top: 1rem;
+  position: relative;
+  z-index: 10;
 }
 
 .page-title {

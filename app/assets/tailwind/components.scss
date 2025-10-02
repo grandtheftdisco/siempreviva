@@ -211,6 +211,41 @@ $info-blue: #6b9fa8;
   @include btn-small;
 }
 
+/* ===== FLASH NOTIFICATION STYLES ===== */
+
+/* Use high specificity to override any transparent backgrounds */
+main .flash-notice,
+div.flash-notice {
+  background-color: #bdcea9 !important; /* Light green derived from $primary-green */
+  background: #bdcea9 !important;
+  border-color: #8ba170 !important; /* $primary-green */
+  color: #5e6b4d !important; /* Darker green for text */
+}
+
+main .flash-alert,
+div.flash-alert {
+  background-color: #d4c2dc !important; /* Light purple derived from $primary-purple */
+  background: #d4c2dc !important;
+  border-color: #674174 !important; /* $primary-purple */
+  color: #3d2545 !important; /* Darker purple for text */
+}
+
+main .flash-error,
+div.flash-error {
+  background-color: #f5c6cb !important; /* Light red */
+  background: #f5c6cb !important;
+  border-color: #dc3545 !important; /* Red */
+  color: #721c24 !important; /* Dark red for text */
+}
+
+main .flash-warning,
+div.flash-warning {
+  background-color: #ffeaa7 !important; /* Light orange */
+  background: #ffeaa7 !important;
+  border-color: #fd7e14 !important; /* Orange */
+  color: #7d3c06 !important; /* Dark orange for text */
+}
+
 /* ===== FORM MIXINS ===== */
 
 /* Base form input */

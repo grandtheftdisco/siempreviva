@@ -121,7 +121,7 @@
         </div>
         </div>
       </header>
-    <main>
+    <main<%= ' class="has-flash-messages"'.html_safe if flash.any? %>>
       <%= render partial: "layouts/public/flash_alert" %>
       <%= yield %>
     </main>
