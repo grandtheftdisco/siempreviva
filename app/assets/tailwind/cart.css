@@ -81,7 +81,7 @@
 .cart-dropdown-header {
   position: sticky;
   top: 0;
-  background-color: #e6d3ec;
+  background-color: #f0e8f5;
   padding: 1rem 1rem 0.5rem 1rem;
   margin-bottom: 0;
   border-radius: 0.5rem 0.5rem 0 0;
@@ -102,12 +102,13 @@
   overflow-y: auto;
   padding: 0 1rem 0 1rem;
   min-height: 0;
+  background: #f0e8f5;
 }
 
 .cart-dropdown-footer {
   position: sticky;
   bottom: 0;
-  background-color: #e6d3ec;
+  background-color: #f0e8f5;
   padding: 0.75rem 1rem 1rem 1rem;
   border-radius: 0 0 0.5rem 0.5rem;
   z-index: 10;
@@ -305,7 +306,8 @@
   padding: 0.75rem 1rem;
   text-align: center;
   color: #374151;
-  background-color: #c5aace;
+  /* background-color: #c5aace; */
+  background-color: #e6d3ec;
   border-radius: 9999px;
   text-decoration: none;
   transition: background-color 0.2s;
@@ -314,25 +316,7 @@
 }
 
 .cart-view-button:hover {
-  background-color: #aa8bb5;
-}
-
-.cart-checkout-button {
-  display: block;
-  width: 100%;
-  padding: 0.75rem 1rem;
-  text-align: center;
-  color: #ffffff;
-  background-color: #28a745;
-  border-radius: 9999px;
-  text-decoration: none;
-  transition: background-color 0.2s;
-  font-size: 0.875rem;
-  font-weight: 500;
-}
-
-.cart-checkout-button:hover {
-  background-color: #1e7e34;
+  background-color: #c5aace;
 }
 
 /* ===== CART PAGE LAYOUT ===== */
@@ -559,17 +543,18 @@
 
 .quantity-update-btn {
   padding: 0.25rem 0.5rem !important;
-  background: #c5aace !important;
-  color: #ffffff;
-  border: none;
+  background: #bdcea9 !important;
+  color: #4f5e3c;
+  border: 2px solid #bdcea9;
   border-radius: 9999px !important;
   font-size: 0.65rem !important;
   cursor: pointer;
-  transition: background-color 0.2s;
+  transition: all 0.2s ease;
 }
 
 .quantity-update-btn:hover {
-  background: #aa8bb5 !important;
+  background: #8ba170 !important;
+  border-color: #8ba170 !important;
 }
 
 /* Improved quantity section layout */
@@ -779,20 +764,20 @@
 
 .checkout-btn {
   padding: 0.75rem 1.5rem;
-  background: #674174;
+  background: #718558;
   color: #ffffff;
-  border: 2px solid #674174;
+  border: 2px solid #718558;
   border-radius: 9999px;
   text-decoration: none;
   text-align: center;
   font-family: 'Raleway', sans-serif;
   font-weight: 500;
-  transition: background-color 0.2s;
+  transition: all 0.2s ease;
 }
 
 .checkout-btn:hover {
-  background: #5a3766;
-  border-color: #5a3766;
+  background: #4f5e3c;
+  border-color: #4f5e3c;
 }
 
 /* ===== EMPTY CART STATE ===== */

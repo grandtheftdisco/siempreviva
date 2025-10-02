@@ -10,6 +10,7 @@
   padding: 0 1rem; /* Reduced from 2.5rem (40px) to 1rem (16px) */
   position: relative;
   flex-shrink: 1; /* Allow search to shrink */
+  background: transparent !important;
 }
 
 /* Compact search for tablet range */
@@ -173,6 +174,7 @@
   display: flex;
   align-items: center;
   gap: 0.5rem;
+  background: transparent !important;
 }
 
 .search-container {
@@ -182,6 +184,7 @@
   padding: 0;
   margin: 0;
   position: relative;
+  background: transparent !important;
 }
 
 .search-results {
@@ -209,6 +212,10 @@
 
 /* ===== ALGOLIA SEARCH COMPONENTS ===== */
 
+.ais-SearchBox {
+  background: transparent !important;
+}
+
 .ais-SearchBox-form {
   padding: 0px;
   margin: 0px;
@@ -217,6 +224,7 @@
   position: relative;
   display: flex;
   align-items: center;
+  background: transparent !important;
 }
 
 .ais-SearchBox-input {
@@ -237,19 +245,23 @@
 
 .ais-SearchBox-submit {
   font-size: 1.125rem;
-  background: transparent;
-  padding: 0px;
+  background: transparent !important;
+  padding: 0px !important;
   color: #c5aace;
-  border: none;
+  border: none !important;
+  border-radius: 0 !important;
   outline: none;
   position: absolute;
   right: 8px;
   cursor: pointer;
   transition: color 0.2s;
-}
-
-.ais-SearchBox-submit:hover {
-  color: #674174;
+  
+  /* Reset any inherited global button styles */
+  margin: 0 !important;
+  box-shadow: none !important;
+  font-family: inherit !important;
+  font-weight: inherit !important;
+  text-decoration: none !important;
 }
 
 .ais-SearchBox-submitIcon {

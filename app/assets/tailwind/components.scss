@@ -4,9 +4,16 @@
 /* Standardized color palette from wireframe */
 
 /* Purple shades */
-$primary-purple: #674174;
-$light-purple: #c5aace;
+$primary-purple: #c5aace;
 $button-purple: #e6d3ec;
+$button-hover-purple: #674174 ;
+$background-purple: #f0e8f5;
+
+/* Green shades */
+$primary-green: #8ba170;
+$light-green: #bdcea9;
+$button-green: #698b3f;
+$button-hover-green: #4f5e3c;
 
 /* Pink shades */  
 $light-pink: #f7c8d8;
@@ -22,10 +29,10 @@ $medium-text: #6c757d;
 $light-text: #adb5bd;
 
 /* Action colors */
-$success-green: #28a745;
-$warning-orange: #fd7e14;
-$danger-red: #dc3545;
-$info-blue: #17a2b8;
+$success-green: #5a8664;
+$warning-orange: #c19550;
+$danger-red: #b9626b;
+$info-blue: #6b9fa8;
 
 /* ===== BUTTON MIXINS ===== */
 
@@ -58,7 +65,7 @@ $info-blue: #17a2b8;
 }
 
 /* Secondary button (outline) */
-@mixin btn-secondary($border-color: $primary-purple, $text-color: $primary-purple, $hover-bg: $primary-purple, $hover-text: $white-bg) {
+@mixin btn-secondary($border-color: $button-green, $text-color: $primary-purple, $hover-bg: $button-hover-green, $hover-text: $white-bg) {
   @include btn-base;
   background: transparent;
   color: $text-color;
@@ -71,8 +78,22 @@ $info-blue: #17a2b8;
   }
 }
 
-/* Light button (filled with light purple) */
-@mixin btn-light($bg-color: $button-purple, $text-color: $primary-purple, $hover-bg: $light-purple) {
+/* green button (filled with white text) */
+@mixin btn-green($bg-color: $button-green, $text-color: $white-bg, $hover-bg: $button-hover-green) {
+  @include btn-base;
+  background: $bg-color;
+  color: $text-color;
+  border-color: $bg-color;
+  
+  &:hover {
+    background: $hover-bg;
+    border-color: $hover-bg;
+    color: $text-color;
+  }
+}
+
+/* light green button (with dark green text) */
+@mixin btn-green-light($bg-color: $light-green, $text-color: $button-hover-green, $hover-bg: $primary-green) {
   @include btn-base;
   background: $bg-color;
   color: $text-color;
@@ -152,11 +173,36 @@ $info-blue: #17a2b8;
 }
 
 .checkout-btn {
-  @include btn-primary;
+  @include btn-green;
+}
+
+.cart-checkout-btn {
+  /* Manually include btn-green styles with hex colors */
+  padding: 0.75rem 1.5rem;
+  border-radius: 9999px;
+  text-decoration: none;
+  text-align: center;
+  font-family: 'Raleway', sans-serif;
+  font-weight: 500;
+  cursor: pointer;
+  display: block;
+  width: 100%;
+  transition: all 0.2s ease;
+  border: 2px solid transparent;
+  background: #698b3f;
+  color: #ffffff;
+  border-color: #698b3f;
+  font-size: 0.875rem;
+  
+  &:hover {
+    background: #63754c;
+    border-color: #63754c;
+    color: #ffffff;
+  }
 }
 
 .quantity-update-btn-visible {
-  @include btn-primary;
+  @include btn-green-light;
   @include btn-small;
 }
 
