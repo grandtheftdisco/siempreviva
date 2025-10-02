@@ -4,6 +4,47 @@
 ## ⚒️ UNDER CONSTRUCTION 
 - I'm building this project as you read this, so watch the repo or check back often to see my progress!
 
+- 📆 **10/2/25** 
+  - Okay, I've been TERRIBLE about updates, but SO much has happened! 🚀
+  - **Major Backend Wins**: 
+    - Refined and polished the admin dashboard UI for better order fulfillment workflow.
+    - Added pagination and filtering to admin order views for better usability.
+  - **Frontend Progress**: 
+    - Completely overhauled the cart system! Now there's a slick dropdown preview when you hover over the cart icon, plus a full "My Bag" view.
+    - Implemented responsive header with mobile-friendly navigation - search and menu now collapse properly on mobile.
+    - Organized my CSS properly by breaking stylesheets into view-specific files using SASS components.
+    - Added Flowbite components for better UI consistency.
+  - **DevEx Improvements**:
+    - Added RuboCop Airbnb for code quality.
+    - Set up proper font loading and responsive design patterns.
+  - **The Real Talk**: This took WAY longer than expected, but I'm learning so much about real-world Rails architecture. The admin dashboard alone taught me tons about authentication, authorization, and API integration patterns.
+
+- 📆 **6/13/25 - 7/11/25** *(The Summer Sprint I Forgot to Document! 👩🏻‍💻 Heads Down & Locked In)* 
+  - **Webhook & Payment Infrastructure**: 
+    - Built a complete Stripe webhook system from scratch! 🎯 This was HARD but so rewarding.
+    - Implemented proper handling of checkout sessions, payment intents, and refund events.
+    - Added Redis caching for duplicate event prevention (Stripe best practices).
+    - Created comprehensive logging and admin email notifications for unexpected events.
+  - **Order Management System**:
+    - Created the Order model and OrderMailer for customer confirmations.
+    - Built tracking number functionality that syncs between Postgres and Stripe metadata.
+    - Added order status updates (shipped, refunded, etc.) with proper timestamping.
+  - **Cart Validation & Error Handling**:
+    - Implemented cart validation services (`CheckItemInventory`, `CheckItemPrices`) that run before checkout.
+    - Added proper error handling throughout controllers - no more mysterious crashes! 
+    - Built cart cleanup system that hard-deletes carts after successful payments.
+  - **Authentication Deep Dive**:
+    - Built admin-only namespaced controllers and views.
+    - Implemented proper session management and authentication flows.
+  - **Background Jobs**:
+    - Created async payment checking job for payment methods that take time to process.
+    - Added retry logic with admin notifications for failed payments.
+  - **Development Environment**:
+    - Finally switched to Linux! (No more Windows development pain 🎉)
+    - Set up proper webhook testing with ngrok.
+    - Dealt with SO many Tailwind issues (even uninstalled and reinstalled from scratch once).
+  - **Lessons Learned**: Webhooks are no joke. Error handling is everything. And proper service object architecture makes debugging 1000x easier when things go wrong (which they will!).
+
 - 📆 **5/23/25**
   - Completed my `CartService` objects: `AddToCart` and `CartCalculator` are now functional and merged into `main` after code review!
   - Also switched from using my own `products` table to using Stripe Products that were generated in the web dashboard; this will make it easy for the product owners to add, remove, and disable/enable products with ease.
@@ -55,6 +96,12 @@ ______________________________________
 - I'm also extremely grateful for the feedback that the Siempreviva owners gave me during the design process.
   - It's not often you get to build something for a real customer this early in your webdev journey!
   - Thank you to these wonderful women for giving me a chance.
+
+## Development Approach 🤖
+- I'm being super transparent about my AI usage here because I want to be clear about what's human effort vs. AI assistance.
+- **Backend stuff**: That's all me! 💪 I'm building the Rails architecture, service objects, and business logic myself to really learn the patterns. I occasionally ask Claude questions, but I'm writing the code.
+- **Frontend work**: Here's where I lean more on AI assistance. Since I'm more comfortable with frontend concepts (thank you, MySpace days), I can effectively supervise and review AI-generated styling and component code. It speeds me up without compromising quality.
+- Basically, I'm using AI strategically where I already have the expertise to guide it properly, while doing the heavy architectural lifting myself where I want to build those skills from scratch.
 
 ## Stack
 - Ruby on Rails
