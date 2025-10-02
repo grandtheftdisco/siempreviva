@@ -695,7 +695,19 @@
 .cart-summary-section {
   position: sticky;
   top: 2rem;
+  max-height: calc(100vh - 4rem); /* Ensure it fits in viewport with margin */
+  overflow-y: auto; /* Allow scrolling if content is too tall */
   font-family: 'Playfair Display', serif;
+  align-self: start; /* Ensure proper alignment in grid */
+}
+
+/* Disable sticky on mobile since layout becomes single column */
+@media (max-width: 768px) {
+  .cart-summary-section {
+    position: static;
+    max-height: none;
+    overflow-y: visible;
+  }
 }
 
 .summary-card {
