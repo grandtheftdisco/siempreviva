@@ -81,12 +81,13 @@
   border: none;
   border-radius: 0.5rem;
   color: #6b7280;
-  cursor: pointer;
   transition: background-color 0.2s;
+  cursor: pointer;
 }
 
 .search-toggle-button:hover {
   background-color: #f3f4f6;
+  cursor: pointer;
 }
 
 .search-icon {
@@ -204,6 +205,7 @@
   padding: 0.5rem;
   border-radius: 1rem;
   transition: background-color 0.2s;
+  cursor: pointer;
 }
 
 .search-hit-item:hover {
@@ -315,6 +317,7 @@
   color: #2c3e50;
   text-decoration: none;
   transition: background-color 0.2s;
+  cursor: pointer;
 }
 
 .ais-Hits-item a:hover {

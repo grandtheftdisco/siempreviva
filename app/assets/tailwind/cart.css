@@ -28,6 +28,7 @@
   text-align: center;
   color: #6c757d;
   transition: color 0.2s;
+  cursor: pointer;
 }
 
 .cart-button:hover {
@@ -355,6 +356,7 @@
 
 .cart-breadcrumb .breadcrumb-link:hover {
   color: #674174;
+  cursor: pointer;
 }
 
 .cart-content {

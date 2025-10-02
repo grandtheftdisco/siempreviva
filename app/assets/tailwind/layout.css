@@ -125,6 +125,7 @@ header {
   display: flex;
   align-items: center;
   gap: 0.75rem;
+  cursor: pointer;
 }
 
 .logo-image {
@@ -279,8 +280,10 @@ header {
   color: var(--white-bg);
   text-decoration: none;
   transition: background-color 0.3s ease;
+  cursor: pointer;
 }
 
 .social-icon:hover {
   background-color: var(--primary-purple);
+  cursor: pointer;
 }
