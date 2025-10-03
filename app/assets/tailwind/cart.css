@@ -435,6 +435,7 @@
 }
 
 .cart-item-header {
+  position: relative; /* Make this a positioned container for absolute positioning */
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
