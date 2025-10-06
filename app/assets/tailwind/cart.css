@@ -396,7 +396,7 @@
     grid-template-columns: 1fr;
     gap: 1rem;
   }
-  
+
   .cart-item-image {
     justify-self: center;
   }
@@ -611,7 +611,7 @@
     align-items: stretch;
     gap: 0.5rem;
   }
-  
+
   .quantity-controls-group {
     justify-content: center;
   }

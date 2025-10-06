@@ -19,14 +19,14 @@
     padding: 0 0.25rem;
     gap: 0.25rem;
   }
-  
+
   .search-desktop input {
     height: 2rem;
     font-size: 0.875rem;
     padding: 0.375rem 0.75rem;
     max-width: 250px;
   }
-  
+
   .search-desktop button {
     height: 2rem; /* Match input height */
     width: 2rem;
@@ -43,7 +43,7 @@
     min-width: 2.5rem; /* Ensure minimum width for search icon */
     width: auto;
   }
-  
+
   .search-toggle-button {
     display: flex !important; /* Force display on mobile */
     flex-shrink: 0; /* Prevent button from shrinking */
@@ -52,21 +52,21 @@
     background: transparent !important; /* Transparent background */
     border-radius: 0.5rem;
   }
-  
+
   .search-toggle-button:hover {
     background: transparent !important; /* Keep transparent on hover */
   }
-  
+
   /* Ensure search section is visible */
   .search-section {
     visibility: visible !important;
     opacity: 1 !important;
   }
-  
+
   .search-desktop {
     display: none !important;
   }
-  
+
   /* Ensure any desktop search elements are hidden */
   #searchbox-desktop,
   #hits-desktop {
@@ -82,7 +82,7 @@
     flex: 0 1 200px; /* Limited width to prevent overlap */
     min-width: 150px;
   }
-  
+
   .search-desktop input {
     width: 100%;
     max-width: 200px;
@@ -186,30 +186,30 @@
   .search-dropdown {
     padding: 0.75rem !important; /* Reduce padding to give more space */
   }
-  
+
   .search-dropdown .search-container {
     width: 100% !important;
     max-width: 100% !important;
     padding: 0 !important;
     margin: 0 !important;
   }
-  
+
   .search-dropdown .search-container input {
     width: 100% !important;
     max-width: 100% !important;
     box-sizing: border-box !important;
   }
-  
+
   .search-dropdown .ais-SearchBox {
     width: 100% !important;
     max-width: 100% !important;
   }
-  
+
   .search-dropdown .ais-SearchBox-form {
     width: 100% !important;
     max-width: 100% !important;
   }
-  
+
   .search-dropdown .ais-SearchBox-input {
     width: 100% !important;
     max-width: calc(100% - 1.5rem) !important; /* Account for padding and submit button */
@@ -223,17 +223,17 @@
   .search-dropdown {
     padding: 0.5rem !important; /* Even less padding on very small screens */
   }
-  
+
   .search-dropdown .ais-SearchBox-input {
     max-width: calc(100% - 1rem) !important; /* Even tighter constraints */
     padding-right: 45px !important; /* Smaller submit button area */
     font-size: 0.875rem !important; /* Slightly smaller font */
   }
-  
+
   .search-dropdown .ais-SearchBox-submit {
     right: 6px !important; /* Adjust submit button position */
   }
-  
+
   .search-dropdown .ais-SearchBox-submitIcon {
     width: 18px !important;
     height: 18px !important;
@@ -337,7 +337,7 @@
   right: 8px;
   cursor: pointer;
   transition: color 0.2s;
-  
+
   /* Reset any inherited global button styles */
   margin: 0 !important;
   box-shadow: none !important;

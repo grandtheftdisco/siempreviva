@@ -158,13 +158,13 @@ header {
     justify-content: space-between; /* Logo left, nav items right */
     align-items: center;
   }
-  
+
   /* Logo stays on the left */
   .logo-section {
     order: 1;
     flex: 0 0 auto; /* Fixed size */
   }
-  
+
   /* Mobile nav items wrapper - groups search, cart, and hamburger together */
   .mobile-nav-items {
     order: 2;
@@ -173,20 +173,20 @@ header {
     align-items: center;
     gap: 0.75rem; /* Even spacing between search, cart, and hamburger */
   }
-  
+
   .search-section {
     flex: 0 0 auto;
     display: flex;
     align-items: center;
   }
-  
+
   .right-icons {
     flex: 0 0 auto;
     display: flex;
     align-items: center;
     gap: 0.75rem; /* Space between cart and hamburger */
   }
-  
+
 
 }
 
@@ -240,7 +240,7 @@ header {
   .navbar-section {
     display: none;
   }
-  
+
   /* Mobile dropdown - override transparent background rule for dropdown only */
   .navbar-section:not(.hidden) {
     display: block !important;
@@ -255,7 +255,7 @@ header {
     padding: 1rem !important;
     flex-direction: column !important;
   }
-  
+
   /* Override the global transparent rule specifically for mobile dropdown */
   .navbar-section:not(.hidden),
   .navbar-section:not(.hidden) .navbar-list,
@@ -263,7 +263,7 @@ header {
   .navbar-section:not(.hidden) .navbar-list li a {
     background-color: #f0e8f5 !important; /* Ensure all child elements have proper background */
   }
-  
+
   .navbar-section:not(.hidden) .navbar-list {
     flex-direction: column !important;
     padding: 0 !important; /* Remove extra padding since parent has padding */
@@ -273,28 +273,28 @@ header {
     margin: 0 !important;
     font-size: 1.125rem !important;
   }
-  
+
   .navbar-section:not(.hidden) .navbar-list li {
     border-bottom: 1px solid rgba(103, 65, 116, 0.1) !important; /* Subtle separator */
     padding-bottom: 0.75rem !important;
     padding-top: 0.75rem !important;
   }
-  
+
   .navbar-section:not(.hidden) .navbar-list li:first-child {
     padding-top: 0 !important;
   }
-  
+
   .navbar-section:not(.hidden) .navbar-list li:last-child {
     border-bottom: none !important;
     padding-bottom: 0 !important;
   }
-  
+
   .navbar-section:not(.hidden) .navbar-list li a {
     padding: 0 !important;
     display: block !important;
     transition: color 0.2s ease !important;
   }
-  
+
   .navbar-section:not(.hidden) .navbar-list li a:hover {
     color: #674174 !important; /* Purple hover color */
   }
@@ -332,7 +332,7 @@ header {
   .navbar-section {
     padding-left: 1.5rem;
   }
-  
+
   .navbar-list {
     font-size: 1.125rem;
     gap: 1.5rem;
@@ -344,7 +344,7 @@ header {
   .navbar-section {
     padding-left: 0.75rem;
   }
-  
+
   .navbar-list {
     font-size: 0.875rem; /* Tailwind text-sm */
     gap: 0.75rem;

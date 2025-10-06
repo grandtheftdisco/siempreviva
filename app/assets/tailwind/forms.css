@@ -262,18 +262,18 @@ form input[type="radio"] {
     margin: 1rem auto;
     padding: 1.5rem 1rem;
   }
-  
+
   .form-inline {
     flex-direction: column;
     align-items: stretch;
     gap: 0.75rem;
   }
-  
+
   .form-inline label {
     margin-right: 0;
     margin-bottom: 0.25rem;
   }
-  
+
   .form-inline input,
   .form-inline select {
     width: 100%;
