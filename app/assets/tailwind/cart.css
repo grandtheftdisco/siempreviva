@@ -695,8 +695,8 @@
 
 .cart-summary-section {
   position: sticky;
-  top: 2rem;
-  max-height: calc(100vh - 4rem); /* Ensure it fits in viewport with margin */
+  top: 11rem; /* Account for 7.5rem logo height + 1rem padding */
+  max-height: calc(100vh - 10.5rem); /* Ensure it fits in viewport with proper margin */
   overflow-y: auto; /* Allow scrolling if content is too tall */
   font-family: 'Playfair Display', serif;
   align-self: start; /* Ensure proper alignment in grid */
