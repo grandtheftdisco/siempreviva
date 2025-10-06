@@ -36,10 +36,12 @@
         <div class="quantity-row">
           <label class="quantity-label">quantity:</label>
           <div class="quantity-controls-group">
-            <%= f.number_field :quantity, 
-                value: cart_item.quantity, 
-                min: 1, 
-                class: 'quantity-input' %>
+            <%= f.text_field :quantity,
+                value: cart_item.quantity,
+                pattern: '[0-9]*',
+                inputmode: 'numeric',
+                maxlength: '2',
+                class: 'form-input-small' %>
             <%= f.submit 'update', class: 'quantity-update-btn' %>
           </div>
         </div>

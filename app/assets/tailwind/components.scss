@@ -255,11 +255,14 @@ div.flash-warning {
 
 /* ===== FORM MIXINS ===== */
 
-/* Base form input */
-@mixin form-input-base {
-  padding: 0.75rem 1rem;
+/* Base form input with optional parameters */
+@mixin form-input-base($width: auto, $padding: 0.75rem 1rem, $border-radius: 0.375rem) {
+  @if $width != auto {
+    width: $width;
+  }
+  padding: $padding;
   border: 1px solid lighten($medium-text, 30%);
-  border-radius: 0.375rem;
+  border-radius: $border-radius;
   font-family: 'Raleway', sans-serif;
   transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
   
@@ -340,6 +343,18 @@ div.flash-warning {
 /* Form components */
 .form-input {
   @include form-input-base;
+}
+
+.form-input-small {
+  @include form-input-base($width: 30px, $padding: 2px 4px, $border-radius: 9999px);
+  text-align: center !important;
+  font-size: 0.85rem !important;
+  background: #f0e8f5 !important;
+  width: 50px !important;
+  max-width: 60px !important;
+  min-width: 50px !important;
+  border-radius: 4500px !important;
+  box-sizing: border-box !important;
 }
 
 .form-label {
