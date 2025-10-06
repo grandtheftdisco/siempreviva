@@ -122,9 +122,11 @@ main.has-flash-messages {
 
 /* ===== HEADER & NAVIGATION ===== */
 
-/* Force transparent backgrounds for all navigation elements */
-.navbar-section, .navbar-section *, .navbar-list, .navbar-list * {
-  background-color: transparent !important;
+/* Force transparent backgrounds for navigation elements (desktop/inline only) */
+@media (min-width: 768px) {
+  .navbar-section, .navbar-section *, .navbar-list, .navbar-list * {
+    background-color: transparent !important;
+  }
 }
 
 header {
@@ -153,6 +155,23 @@ header {
     padding: 0.5rem 1rem; /* Increased left/right padding on mobile */
     gap: 0.25rem;
     flex-wrap: nowrap;
+    justify-content: space-between; /* Distribute items evenly */
+  }
+  
+  /* Ensure proper mobile header layout: logo - search - hamburger */
+  .logo-section {
+    order: 1;
+    flex: 0 0 auto;
+  }
+  
+  .search-section {
+    order: 2;
+    flex: 0 0 auto;
+  }
+  
+  .right-icons {
+    order: 3;
+    flex: 0 0 auto;
   }
 }
 
@@ -198,34 +217,41 @@ header {
 .navbar-section {
   flex: 1;
   display: flex;
-  padding-left: 3.75rem;
-  min-width: 0; /* Allow shrinking */
 }
 
-/* Responsive navbar section - Tailwind md breakpoint (below 768px) */
+/* Mobile navigation dropdown styling */
 @media (max-width: 767px) {
   .navbar-section {
     display: none;
   }
   
+  /* Mobile dropdown - override transparent background rule for dropdown only */
   .navbar-section:not(.hidden) {
     display: block !important;
     position: absolute !important;
     top: 100% !important;
     left: 0 !important;
     right: 0 !important;
-    background-color: transparent !important;
-    border-top: none !important;
-    box-shadow: none !important;
+    background-color: #f0e8f5 !important; /* Light purple background */
+    border-top: 1px solid rgba(103, 65, 116, 0.15) !important;
+    box-shadow: 0 4px 12px -2px rgba(103, 65, 116, 0.15), 0 2px 4px -1px rgba(103, 65, 116, 0.06) !important; /* Drop shadow */
     z-index: 50 !important;
-    padding: 0 !important;
+    padding: 1rem !important;
+    flex-direction: column !important;
+  }
+  
+  /* Override the global transparent rule specifically for mobile dropdown */
+  .navbar-section:not(.hidden),
+  .navbar-section:not(.hidden) .navbar-list,
+  .navbar-section:not(.hidden) .navbar-list li,
+  .navbar-section:not(.hidden) .navbar-list li a {
+    background-color: #f0e8f5 !important; /* Ensure all child elements have proper background */
   }
   
   .navbar-section:not(.hidden) .navbar-list {
     flex-direction: column !important;
-    padding: 1rem !important;
+    padding: 0 !important; /* Remove extra padding since parent has padding */
     gap: 0.75rem !important;
-    background-color: transparent !important;
     border: none !important;
     border-radius: 0 !important;
     margin: 0 !important;
@@ -233,17 +259,28 @@ header {
   }
   
   .navbar-section:not(.hidden) .navbar-list li {
-    border-bottom: none !important;
-    padding-bottom: 0.5rem !important;
-    background-color: transparent !important;
+    border-bottom: 1px solid rgba(103, 65, 116, 0.1) !important; /* Subtle separator */
+    padding-bottom: 0.75rem !important;
+    padding-top: 0.75rem !important;
   }
   
-  .navbar-section:not(.hidden) .navbar-list li a {
-    background-color: transparent !important;
+  .navbar-section:not(.hidden) .navbar-list li:first-child {
+    padding-top: 0 !important;
   }
   
   .navbar-section:not(.hidden) .navbar-list li:last-child {
     border-bottom: none !important;
+    padding-bottom: 0 !important;
+  }
+  
+  .navbar-section:not(.hidden) .navbar-list li a {
+    padding: 0 !important;
+    display: block !important;
+    transition: color 0.2s ease !important;
+  }
+  
+  .navbar-section:not(.hidden) .navbar-list li a:hover {
+    color: #674174 !important; /* Purple hover color */
   }
 }
 

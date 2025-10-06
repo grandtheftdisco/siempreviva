@@ -224,6 +224,14 @@
         // Toggle display
         if (searchDropdown.style.display === 'none' || searchDropdown.style.display === '') {
           searchDropdown.style.display = 'block';
+          
+          // Auto-focus the search input on mobile for better UX
+          setTimeout(() => {
+            const searchInput = searchDropdown.querySelector('.ais-SearchBox-input');
+            if (searchInput && window.innerWidth <= 768) {
+              searchInput.focus();
+            }
+          }, 100);
         } else {
           searchDropdown.style.display = 'none';
         }

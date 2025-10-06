@@ -39,16 +39,23 @@
   .search-section {
     padding: 0 0.5rem;
     gap: 0.25rem;
-    flex: 0 1 auto;
+    flex: 0 0 auto; /* Don't grow or shrink */
     min-width: 0;
   }
   
   .search-toggle-button {
     display: flex;
+    flex-shrink: 0; /* Prevent button from shrinking */
   }
   
   .search-desktop {
-    display: none;
+    display: none !important;
+  }
+  
+  /* Ensure any desktop search elements are hidden */
+  #searchbox-desktop,
+  #hits-desktop {
+    display: none !important;
   }
 }
 
@@ -107,6 +114,7 @@
   box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
   z-index: 50;
   padding: 1rem;
+  display: none; /* Initially hidden */
 }
 
 /* Responsive search dropdown - full width on mobile */
@@ -115,6 +123,11 @@
     border-radius: 0;
     border-left: none;
     border-right: none;
+    width: 100vw; /* Full viewport width */
+    left: 50%; /* Center relative to parent */
+    transform: translateX(-50%); /* Adjust to true center */
+    max-width: 100vw;
+    overflow-x: hidden; /* Prevent horizontal overflow */
   }
 }
 
@@ -136,6 +149,8 @@
   width: 100%;
   max-width: 100%;
   overflow: hidden;
+  padding: 0; /* Remove any inherited padding */
+  margin: 0; /* Remove any inherited margin */
 }
 
 .search-dropdown .search-results {
@@ -144,10 +159,23 @@
   right: auto;
   width: 100%;
   min-width: auto;
+  max-width: 100%;
+  overflow-x: hidden; /* Prevent horizontal overflow */
 }
 
 /* Ensure Algolia search input doesn't overflow on mobile */
 @media (max-width: 768px) {
+  .search-dropdown {
+    padding: 0.75rem !important; /* Reduce padding to give more space */
+  }
+  
+  .search-dropdown .search-container {
+    width: 100% !important;
+    max-width: 100% !important;
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+  
   .search-dropdown .search-container input {
     width: 100% !important;
     max-width: 100% !important;
@@ -156,16 +184,50 @@
   
   .search-dropdown .ais-SearchBox {
     width: 100% !important;
+    max-width: 100% !important;
   }
   
   .search-dropdown .ais-SearchBox-form {
     width: 100% !important;
+    max-width: 100% !important;
   }
   
   .search-dropdown .ais-SearchBox-input {
     width: 100% !important;
-    max-width: 100% !important;
+    max-width: calc(100% - 1.5rem) !important; /* Account for padding and submit button */
     box-sizing: border-box !important;
+    padding-right: 50px !important; /* Reduce right padding for submit button */
+  }
+}
+
+/* Additional constraints for very small mobile screens (iPhone SE, etc.) */
+@media (max-width: 480px) {
+  .search-dropdown {
+    padding: 0.5rem !important; /* Even less padding on very small screens */
+  }
+  
+  .search-dropdown .ais-SearchBox-input {
+    max-width: calc(100% - 1rem) !important; /* Even tighter constraints */
+    padding-right: 45px !important; /* Smaller submit button area */
+    font-size: 0.875rem !important; /* Slightly smaller font */
+  }
+  
+  .search-dropdown .ais-SearchBox-submit {
+    right: 6px !important; /* Adjust submit button position */
+  }
+  
+  .search-dropdown .ais-SearchBox-submitIcon {
+    width: 18px !important;
+    height: 18px !important;
+  }
+}
+
+/* Focus and interaction improvements for mobile */
+@media (max-width: 768px) {
+  .search-dropdown .ais-SearchBox-input:focus {
+    border-color: #674174 !important;
+    box-shadow: 0 0 0 2px rgba(103, 65, 116, 0.1) !important;
+    outline: none !important;
   }
 }
 
