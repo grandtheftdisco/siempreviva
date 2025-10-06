@@ -14,7 +14,7 @@
 /* Responsive right-icons */
 @media (max-width: 767px) {
   .right-icons {
-    gap: 0.5rem;
+    gap: 1rem; /* Match the consistent spacing between other icons */
   }
 }
 

@@ -37,15 +37,30 @@
 /* Tailwind sm and below (below 640px) - mobile search */
 @media (max-width: 639px) {
   .search-section {
-    padding: 0 0.5rem;
-    gap: 0.25rem;
+    padding: 0; /* Remove padding to prevent extra space */
+    gap: 0;
     flex: 0 0 auto; /* Don't grow or shrink */
-    min-width: 0;
+    min-width: 2.5rem; /* Ensure minimum width for search icon */
+    width: auto; /* Allow natural width */
   }
   
   .search-toggle-button {
-    display: flex;
+    display: flex !important; /* Force display on mobile */
     flex-shrink: 0; /* Prevent button from shrinking */
+    width: 2.5rem; /* Ensure button has proper width */
+    height: 2.5rem; /* Ensure button has proper height */
+    background: transparent !important; /* Transparent background */
+    border-radius: 0.5rem;
+  }
+  
+  .search-toggle-button:hover {
+    background: transparent !important; /* Keep transparent on hover */
+  }
+  
+  /* Ensure search section is visible */
+  .search-section {
+    visibility: visible !important;
+    opacity: 1 !important;
   }
   
   .search-desktop {
@@ -100,6 +115,7 @@
 .search-icon {
   width: 1.5rem;
   height: 1.5rem;
+  color: #674174; /* Purple color to make it visible */
 }
 
 /* ===== SEARCH DROPDOWN ===== */
@@ -109,9 +125,9 @@
   top: 100%;
   left: 0;
   right: 0;
-  background-color: #ffffff;
-  border-top: 1px solid #e5e7eb;
-  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  background-color: #f0e8f5; /* Light purple background - same as nav dropdown */
+  border-top: 1px solid rgba(103, 65, 116, 0.15);
+  box-shadow: 0 4px 12px -2px rgba(103, 65, 116, 0.15), 0 2px 4px -1px rgba(103, 65, 116, 0.06); /* Same drop shadow as nav */
   z-index: 50;
   padding: 1rem;
   display: none; /* Initially hidden */
@@ -128,6 +144,8 @@
     transform: translateX(-50%); /* Adjust to true center */
     max-width: 100vw;
     overflow-x: hidden; /* Prevent horizontal overflow */
+    background-color: #f0e8f5; /* Maintain purple background */
+    border-top: 1px solid rgba(103, 65, 116, 0.15);
   }
 }
 
@@ -137,7 +155,7 @@
     left: auto;
     right: 0;
     min-width: 300px;
-    border: 1px solid #e5e7eb;
+    border: 1px solid rgba(103, 65, 116, 0.15);
     border-radius: 0.5rem;
     margin-top: 0.5rem;
   }

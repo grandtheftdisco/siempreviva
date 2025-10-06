@@ -23,30 +23,26 @@
           </ul>
         </div>
 
-        <!-- Search Section -->
-        <div class="search-section">
-          <!-- Search Icon Button (Mobile) -->
-          <button id="searchToggleButton" class="search-toggle-button">
-            <svg class="search-icon" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z"></path>
-            </svg>
-          </button>
-          
-          <!-- Desktop Search (always visible) -->
-          <div class="search-desktop">
-            <div id="searchbox-desktop" class="search-container"></div>
-            <div id="hits-desktop" class="search-results"></div>
+        <!-- Mobile Nav Items (Search + Right Icons) -->
+        <div class="mobile-nav-items">
+          <!-- Search Section -->
+          <div class="search-section">
+            <!-- Search Icon Button (Mobile) -->
+            <button id="searchToggleButton" class="search-toggle-button">
+              <svg class="search-icon" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z"></path>
+              </svg>
+            </button>
+            
+            <!-- Desktop Search (always visible) -->
+            <div class="search-desktop">
+              <div id="searchbox-desktop" class="search-container"></div>
+              <div id="hits-desktop" class="search-results"></div>
+            </div>
           </div>
-        </div>
 
-        <!-- Search Dropdown (Mobile) - Moved outside search-section -->
-        <div id="searchDropdown" class="search-dropdown">
-          <div id="searchbox" class="search-container"></div>
-          <div id="hits" class="search-results"></div>
-        </div>
-
-        <!-- Right Side Icons -->
-        <div class="right-icons">
+          <!-- Right Side Icons -->
+          <div class="right-icons">
           <!-- Cart Dropdown -->
           <button id="cartDropdownButton" class="cart-button">
             <!-- Shopping Cart Icon -->
@@ -119,9 +115,17 @@
             </svg>
           </button>
         </div>
+        </div> <!-- End mobile-nav-items -->
+        
+        <!-- Search Dropdown (Mobile) - Moved outside search-section -->
+        <div id="searchDropdown" class="search-dropdown">
+          <div id="searchbox" class="search-container"></div>
+          <div id="hits" class="search-results"></div>
         </div>
+        </div> <!-- End header-container -->
       </header>
-    <main<%= ' class="has-flash-messages"'.html_safe if flash.any? %>>
+    <main>
+      <%= ' class="has-flash-messages"'.html_safe if flash.any? %>
       <%= render partial: "layouts/public/flash_alert" %>
       <%= yield %>
     </main>

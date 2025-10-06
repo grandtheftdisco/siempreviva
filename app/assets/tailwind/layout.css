@@ -153,26 +153,41 @@ header {
 @media (max-width: 768px) {
   .header-container {
     padding: 0.5rem 1rem; /* Increased left/right padding on mobile */
-    gap: 0.25rem;
+    gap: 0; /* No gap, we'll use justify-content: space-between */
     flex-wrap: nowrap;
-    justify-content: space-between; /* Distribute items evenly */
+    justify-content: space-between; /* Logo left, nav items right */
+    align-items: center;
   }
   
-  /* Ensure proper mobile header layout: logo - search - hamburger */
+  /* Logo stays on the left */
   .logo-section {
     order: 1;
+    flex: 0 0 auto; /* Fixed size */
+  }
+  
+  /* Mobile nav items wrapper - groups search, cart, and hamburger together */
+  .mobile-nav-items {
+    order: 2;
     flex: 0 0 auto;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem; /* Even spacing between search, cart, and hamburger */
   }
   
   .search-section {
-    order: 2;
     flex: 0 0 auto;
+    display: flex;
+    align-items: center;
   }
   
   .right-icons {
-    order: 3;
     flex: 0 0 auto;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem; /* Space between cart and hamburger */
   }
+  
+
 }
 
 /* ===== LOGO SECTION ===== */
@@ -189,6 +204,7 @@ header {
   .logo-section {
     padding-left: 0.25rem;
     padding-top: 0.25rem;
+    margin-right: 0 !important; /* Override auto margin on mobile */
   }
 }
 

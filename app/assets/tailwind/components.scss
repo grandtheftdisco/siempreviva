@@ -317,6 +317,32 @@ div.flash-warning {
   z-index: 10;
 }
 
+/* Mobile dropdown styling with light purple background and drop shadow */
+@mixin dropdown-div {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background-color: $background-purple; /* Light purple background */
+  border-top: 1px solid rgba(103, 65, 116, 0.15);
+  box-shadow: 0 4px 12px -2px rgba(103, 65, 116, 0.15), 0 2px 4px -1px rgba(103, 65, 116, 0.06);
+  z-index: 50;
+  padding: 1rem;
+  display: none; /* Initially hidden */
+}
+
+/* ===== DROPDOWN UTILITY CLASSES ===== */
+
+/* Base dropdown class using the mixin */
+.dropdown-base {
+  @include dropdown-div;
+}
+
+/* Mobile dropdown for navigation and search */
+.mobile-dropdown {
+  @include dropdown-div;
+}
+
 /* Flex center helper */
 @mixin flex-center {
   display: flex;
