@@ -111,7 +111,7 @@ main.has-flash-messages {
 /* Responsive page title */
 @media (max-width: 768px) {
   .page-title {
-    text-align: left; /* Left align on mobile */
+    text-align: left;
     font-size: 1.5rem; /* Slightly smaller on mobile */
   }
 }
@@ -153,7 +153,7 @@ header {
 @media (max-width: 768px) {
   .header-container {
     padding: 0.5rem 1rem; /* Increased left/right padding on mobile */
-    gap: 0; /* No gap, we'll use justify-content: space-between */
+    gap: 0;
     flex-wrap: nowrap;
     justify-content: space-between; /* Logo left, nav items right */
     align-items: center;
@@ -323,7 +323,7 @@ header {
     border: none;
     background-color: var(--white-bg);
     flex-direction: row;
-    font-size: 1.125rem; /* Reduced from 1.5rem to 1.125rem (text-lg) */
+    font-size: 1.125rem;
   }
 }
 
@@ -334,8 +334,8 @@ header {
   }
   
   .navbar-list {
-    font-size: 1.125rem; /* Reduced from 1.5rem to 1.125rem (text-lg) */
-    gap: 1.5rem; /* Reduced gap from 2rem to 1.5rem */
+    font-size: 1.125rem;
+    gap: 1.5rem;
   }
 }
 

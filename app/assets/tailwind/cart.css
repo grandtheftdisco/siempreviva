@@ -8,13 +8,13 @@
   align-items: center;
   gap: 1rem;
   position: relative;
-  flex-shrink: 0; /* Never shrink the cart icon */
+  flex-shrink: 0;
 }
 
 /* Responsive right-icons */
 @media (max-width: 767px) {
   .right-icons {
-    gap: 1rem; /* Match the consistent spacing between other icons */
+    gap: 1rem;
   }
 }
 
@@ -180,7 +180,6 @@
   color: #374151;
 }
 
-/* Style the form wrapper for cart item remove buttons */
 .cart-item form {
   position: absolute;
   top: 0;
@@ -203,7 +202,7 @@
 
 .cart-item-compact .cart-item-details {
   flex: 1;
-  margin-right: 2rem; /* Space for remove button */
+  margin-right: 2rem;
 }
 
 .cart-item-compact .cart-item-name {
@@ -435,7 +434,7 @@
 }
 
 .cart-item-header {
-  position: relative; /* Make this a positioned container for absolute positioning */
+  position: relative;
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
@@ -695,7 +694,7 @@
 
 .cart-summary-section {
   position: sticky;
-  top: 11rem; /* Account for 7.5rem logo height + 1rem padding */
+  top: 11rem;
   max-height: calc(100vh - 10.5rem); /* Ensure it fits in viewport with proper margin */
   overflow-y: auto; /* Allow scrolling if content is too tall */
   font-family: 'Playfair Display', serif;
