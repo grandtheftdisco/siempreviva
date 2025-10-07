@@ -200,9 +200,20 @@
   position: relative;
 }
 
+/* ===== RESPONSIVE CART ITEMS (compact on mobile, regular on desktop) ===== */
+
+.cart-item-responsive {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  position: relative;
+}
+
+
+
 .cart-item-compact .cart-item-details {
   flex: 1;
-  margin-right: 2rem;
+  margin-right: 1rem;
 }
 
 .cart-item-compact .cart-item-name {
@@ -221,13 +232,20 @@
   transform: translateY(-50%);
 }
 
-.cart-items-list.compact > li:not(:last-child) {
-  border-bottom: 1px solid #d1d5db;
-  margin-bottom: 0.5rem;
-  padding-bottom: 0.5rem;
-}
+  .cart-items-list.compact > li:not(:last-child) {
+    border-bottom: 1px solid #d1d5db;
+    margin-bottom: 0.5rem;
+    padding-bottom: 0.5rem;
+  }
 
-/* Override button_to styling for cart dropdown remove buttons */
+  /* Mobile spacing for responsive cart items */
+  @media (max-width: 767px) {
+    .cart-items-list > li:not(:last-child) {
+      border-bottom: 1px solid #d1d5db;
+      margin-bottom: 0.5rem;
+      padding-bottom: 0.5rem;
+    }
+  }/* Override button_to styling for cart dropdown remove buttons */
 .cart-dropdown .cart-item-remove,
 .cart-dropdown input[type="submit"] {
   background: none !important;
@@ -328,10 +346,32 @@
   font-family: 'Raleway', sans-serif;
 }
 
+/* Mobile: Remove top padding from cart container */
+@media (max-width: 768px) {
+  .cart-container {
+    padding-top: 0 !important;
+  }
+}
+
 .cart-header {
   text-align: center;
   margin-bottom: 3rem;
   font-family: 'Playfair Display', serif;
+}
+
+/* Mobile: Reduce header spacing */
+@media (max-width: 768px) {
+  .cart-header {
+    margin-bottom: 1.5rem !important;
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+  }
+  
+  .cart-header .page-title {
+    margin-bottom: 0 !important;
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+  }
 }
 
 .cart-header .page-title {
@@ -378,6 +418,16 @@
   display: flex;
   flex-direction: column;
   gap: 2rem;
+  background-color: #e6d3ec; /* $button-purple from SASS variables */
+  padding: 1rem;
+  border-radius: 8px;
+}
+
+/* Mobile: Reduce gap between cart items */
+@media (max-width: 768px) {
+  .cart-items {
+    gap: 0.75rem !important;
+  }
 }
 
 .cart-item {
@@ -389,6 +439,93 @@
   border: 1px solid #e0e0e0;
   border-radius: 8px;
   background: #ffffff;
+}
+
+/* Mobile: Make cart page items compact like dropdown */
+@media (max-width: 768px) {
+  .cart-items .cart-item {
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: flex-start !important;
+    padding: 0.5rem 1rem !important;
+    gap: 0 !important;
+    grid-template-columns: none !important;
+    background-color: transparent !important; /* Remove individual item background */
+    border: none !important; /* Remove any borders */
+    position: relative !important;
+  }
+
+  .cart-items .cart-item .cart-item-image,
+  .cart-items .cart-item .cart-item-image-container {
+    display: none !important;
+  }
+
+  .cart-items .cart-item .cart-item-details {
+    flex: 1 !important;
+    margin-right: 0 !important; /* No margin - button is absolutely positioned */
+    display: block !important; /* Change from flex to block for inline layout */
+    width: 100% !important; /* Full width - let header manage its own width */
+    padding-top: 0.25rem !important; /* Small top padding */
+    padding-right: 0 !important; /* No padding - header will handle spacing */
+  }
+
+  .cart-items .cart-item .cart-item-header {
+    width: calc(100% - 1.75rem) !important; /* Header takes full width minus button space */
+    display: flex !important; /* Use flex to spread name and price */
+    justify-content: space-between !important;
+    align-items: center !important;
+    margin-bottom: 0 !important;
+    padding-right: 0.5rem !important; /* Small padding to prevent text overlap with button */
+  }
+
+  .cart-items .cart-item .product-name {
+    font-size: 0.95rem !important;
+    margin: 0 !important;
+    display: inline !important; /* Inline for same-line layout */
+    margin-right: 0.75rem !important;
+  }
+
+  .cart-items .cart-item .product-price {
+    font-size: 0.85rem !important;
+    margin: 0 !important;
+    display: inline !important; /* Inline to appear on same line as name */
+    color: #6c757d !important;
+    font-weight: 500 !important;
+  }
+
+  .cart-items .cart-item .quantity-section {
+    display: none !important; /* Hide quantity controls on mobile for now */
+  }
+
+  /* Small 'x' button positioned in top-right corner */
+  .cart-items .cart-item .remove-item-btn-soft {
+    position: absolute !important;
+    top: 0.25rem !important;
+    right: 0 !important; /* Flush against right edge */
+    width: 1.25rem !important; /* Smaller button */
+    height: 1.25rem !important;
+    padding: 0.125rem 0.125rem !important;
+    margin: 0 0.45rem !important;
+    transform: none !important;
+    border-radius: 50% !important; /* Make it circular */
+    z-index: 10 !important; /* Ensure it's above content */
+  }
+
+  .cart-items .cart-item .inline-form {
+    position: absolute !important;
+    top: 0.25rem !important;
+    right: 0 !important; /* Flush against right edge */
+    margin: 0 !important;
+    width: 1.25rem !important;
+    height: 1.25rem !important;
+    z-index: 10 !important;
+  }
+
+  /* Make the trash icon smaller - we'll change this to 'x' */
+  .cart-items .cart-item .trash-icon {
+    width: 0.75rem !important;
+    height: 0.75rem !important;
+  }
 }
 
 @media (max-width: 640px) {
@@ -434,7 +571,6 @@
 }
 
 .cart-item-header {
-  position: relative;
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
