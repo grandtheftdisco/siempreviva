@@ -49,28 +49,15 @@
               <h3 class="cart-dropdown-title">my bag</h3>
             </div>
             <div class="cart-dropdown-content">
-              <ul class="cart-items-list <%= 'compact' if @cart.cart_items.count > 2 %>">
+              <ul class="cart-items-list">
               <% @cart.cart_items.each do |item| %>
-                <% if @cart.cart_items.count > 2 %>
-                  <!-- Compact view without images -->
-                  <li class="cart-item-compact">
-                    <div class="cart-item-details">
-                      <p class="cart-item-name"><%= item.name %></p>
-                      <p class="cart-item-price"><%= to_dollars(item.price) %></p>
-                    </div>
-                    <%= button_to '×', item, method: :delete, class: 'cart-item-remove' %>
-                  </li>
-                <% else %>
-                  <!-- Regular view with images -->
                   <li class="cart-item">
-                    <%= image_tag(item.image, class: "cart-item-image") %>
                     <div class="cart-item-details">
                       <p class="cart-item-name"><%= item.name %></p>
                       <p class="cart-item-price"><%= to_dollars(item.price) %></p>
                     </div>
-                    <%= button_to '×', item, method: :delete, class: 'cart-item-remove' %>
+                    <%= button_to '×', item, method: :delete, class: 'remove-button-small' %>
                   </li>
-                <% end %>
               <% end %>
               </ul>
             </div>
@@ -128,28 +115,15 @@
               <h3 class="cart-dropdown-title">my bag</h3>
             </div>
             <div class="cart-dropdown-content">
-              <ul class="cart-items-list <%= 'compact' if @cart.cart_items.count > 2 %>">
+              <ul class="cart-items-list">
               <% @cart.cart_items.each do |item| %>
-                <% if @cart.cart_items.count > 2 %>
-                  <!-- Compact view without images -->
-                  <li class="cart-item-compact">
-                    <div class="cart-item-details">
-                      <p class="cart-item-name"><%= item.name %></p>
-                      <p class="cart-item-price"><%= to_dollars(item.price) %></p>
-                    </div>
-                    <%= button_to '×', item, method: :delete, class: 'cart-item-remove' %>
-                  </li>
-                <% else %>
-                  <!-- Regular view with images -->
                   <li class="cart-item">
-                    <%= image_tag(item.image, class: "cart-item-image") %>
                     <div class="cart-item-details">
                       <p class="cart-item-name"><%= item.name %></p>
                       <p class="cart-item-price"><%= to_dollars(item.price) %></p>
                     </div>
-                    <%= button_to '×', item, method: :delete, class: 'cart-item-remove' %>
+                    <%= button_to '×', item, method: :delete, class: 'remove-button-small' %>
                   </li>
-                <% end %>
               <% end %>
               </ul>
             </div>
