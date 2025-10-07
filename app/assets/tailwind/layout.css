@@ -39,7 +39,7 @@ a:not(.logo-link):not(.breadcrumb-link):not(.ais-Hits-item a):not(.remove-button
   .navbar-list li a {
     transition: color 0.2s ease;
   }
-  
+
   .navbar-list li a:hover {
     color: var(--primary-purple);
   }
@@ -193,7 +193,7 @@ main.has-flash-messages {
 @media (max-width: 768px) {
   .page-title {
     text-align: left;
-    font-size: 1.5rem; /* Slightly smaller on mobile */
+    font-size: 1.5rem;
   }
 }
 
@@ -233,7 +233,7 @@ header {
 /* Desktop: Simple inline layout for all 4 elements */
 @media (min-width: 768px) {
   .header-container {
-    gap: 3rem; /* Even more generous desktop spacing */
+    gap: 3rem;
     padding-right: 2rem; /* Add extra space from cart icon to viewport edge */
   }
 }
@@ -288,7 +288,7 @@ header {
     justify-content: flex-end; /* Push search input to the right */
     margin-right: 1rem; /* Space before cart */
   }
-  
+
   .right-icons.md\:flex {
     flex: 0 0 auto; /* Fixed size for cart */
     display: flex;
@@ -368,9 +368,9 @@ header {
     top: 100% !important;
     left: 0 !important;
     right: 0 !important;
-    background-color: #f0e8f5 !important; /* Light purple background */
+    background-color: #f0e8f5 !important;
     border-top: 1px solid rgba(103, 65, 116, 0.15) !important;
-    box-shadow: 0 4px 12px -2px rgba(103, 65, 116, 0.15), 0 2px 4px -1px rgba(103, 65, 116, 0.06) !important; /* Drop shadow */
+    box-shadow: 0 4px 12px -2px rgba(103, 65, 116, 0.15), 0 2px 4px -1px rgba(103, 65, 116, 0.06) !important;
     z-index: 50 !important;
     padding: 1rem !important;
     flex-direction: column !important;
@@ -416,7 +416,7 @@ header {
   }
 
   .navbar-section:not(.hidden) .navbar-list li a:hover {
-    color: #674174 !important; /* Purple hover color */
+    color: #674174 !important;
   }
 }
 
@@ -439,7 +439,7 @@ header {
   .navbar-list {
     padding: 0;
     margin-top: 0;
-    gap: 2rem; /* Doubled gap for better readability */
+    gap: 2rem;
     border: none;
     background-color: var(--white-bg);
     flex-direction: row;
@@ -450,12 +450,12 @@ header {
 /* Tailwind lg breakpoint (1024px+) - larger screens get bigger text */
 @media (min-width: 1024px) {
   .navbar-section {
-    padding-left: 1rem; /* Reduced from 1.5rem */
+    padding-left: 1rem;
   }
 
   .navbar-list {
     font-size: 1.125rem;
-    gap: 2rem; /* Doubled gap for better readability */
+    gap: 2rem;
   }
 }
 
@@ -467,11 +467,12 @@ header {
 
   .navbar-list {
     font-size: 0.875rem; /* Tailwind text-sm */
-    gap: 1.5rem; /* Doubled gap for better readability */
+    gap: 1.5rem;
   }
 }
 
 /* ===== SOCIAL LINKS SECTION ===== */
+/* TODO - on Contact form branch, move these to their own stylesheet */
 
 .social-links {
   margin-top: 1.5rem;

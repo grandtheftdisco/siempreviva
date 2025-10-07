@@ -336,7 +336,6 @@
   padding: 0.75rem 1rem;
   text-align: center;
   color: #374151;
-  /* background-color: #c5aace; */
   background-color: #e6d3ec;
   border-radius: 9999px;
   text-decoration: none;
@@ -378,7 +377,7 @@
     padding-top: 0 !important;
     padding-bottom: 0 !important;
   }
-  
+
   .cart-header .page-title {
     margin-bottom: 0 !important;
     padding-top: 0 !important;
@@ -424,14 +423,14 @@
     gap: 2rem;
     align-items: center !important;
   }
-  
+
   /* Order summary appears first on mobile */
   .cart-summary-section {
     order: 1;
     width: 100% !important;
     max-width: none !important;
   }
-  
+
   /* Cart items appear second on mobile */
   .cart-items-section {
     order: 2;
