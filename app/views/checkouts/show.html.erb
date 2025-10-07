@@ -1,7 +1,7 @@
 <% case @session.status %>
 <% when 'complete' %>
-  <div class="checkout-success">
-    <div class="checkout-success-content">
+  <div class="post-checkout-container">
+    <div class="post-checkout-info">
       <!-- Thank you message -->
       <div>
         <h1>
@@ -35,8 +35,60 @@
     </div>
   </div>
 <% when 'open' %>
-  <h1>Payment Status: <%= @session.status %></h1>
-  <p>Your payment is being processed. We'll email you when it's complete!</p>
+  <div class="post-checkout-container">
+    <div class="post-checkout-info">
+      <div>
+        <h1>
+          Your payment is<br>
+          being processed!
+        </h1>
+        <p class="subtitle">
+          we'll email you when it's complete.
+        </p>
+      </div>
+
+      <!-- TODO - make this a vertical/portrait image -->
+      <div class="image-placeholder">
+        <span>Processing Payment Image</span>
+      </div>
+    </div>
+  </div>
 <% when 'expired' %>
-  <p>The session has expired. Please try checking out again.</p>
+  <div class="post-checkout-container">
+    <div class="post-checkout-info">
+      <div>
+        <h1>
+          Your session<br>
+          has expired.
+        </h1>
+        <p class="subtitle">
+          please try checking out again.
+        </p>
+      </div>
+
+      <!-- TODO - make this a vertical/portrait image -->
+      <div class="image-placeholder">
+        <span>Session Expired Image</span>
+      </div>
+    </div>
+  </div>
+<% else %>
+  <div class="post-checkout-container">
+    <div class="post-checkout-info">
+      <div>
+        <h1>
+          Something<br>
+          went wrong.
+        </h1>
+        <p class="subtitle">
+          please <%= link_to "contact us", contact_path %> for more info.
+        </p>
+      </div>
+
+      <!-- TODO - make this a vertical/portrait image -->
+      <div class="image-placeholder">
+        <span>Error State Image</span>
+      </div>
+    </div>
+  </div>
 <% end %>
