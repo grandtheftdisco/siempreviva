@@ -257,6 +257,47 @@
   height: 1.5rem !important;
 }
 
+/* Cart page remove button styling to match dropdown */
+.cart-item-header form.inline-form {
+  position: absolute;
+  top: 50%;
+  right: 0;
+  transform: translateY(-50%);
+  background: transparent !important;
+  border: none !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  width: 1.5rem !important;
+  height: 1.5rem !important;
+}
+
+.cart-item-header input[type="submit"].remove-button-small {
+  background: #c5aace !important;
+  border: 1px solid #c5aace !important;
+  color: #ffffff !important;
+  cursor: pointer !important;
+  padding: 0 !important;
+  border-radius: 50% !important;
+  transition: background-color 0.2s !important;
+  flex-shrink: 0 !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: 1.5rem !important;
+  height: 1.5rem !important;
+  position: relative !important;
+  margin: 0 !important;
+  font-size: 1rem !important;
+  font-weight: normal !important;
+  z-index: 10 !important;
+}
+
+.cart-item-header input[type="submit"].remove-button-small:hover {
+  background: #aa8bb5 !important;
+  border-color: #aa8bb5 !important;
+  color: #ffffff !important;
+}
+
 /* ===== CART DROPDOWN SUMMARY ===== */
 
 .cart-summary {
@@ -562,6 +603,7 @@
   align-items: flex-start;
   gap: 1rem;
   margin-bottom: 0.5rem;
+  position: relative;
 }
 
 .cart-item-spacer {
