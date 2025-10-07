@@ -317,7 +317,6 @@
 .cart-summary-line.cart-total {
   font-weight: 600;
   color: #2c3e50;
-  text-transform: uppercase;
   border-top: 1px solid #d1d5db;
   padding-top: 0.5rem;
   margin-top: 0.5rem;
