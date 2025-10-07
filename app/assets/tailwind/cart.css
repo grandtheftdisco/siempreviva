@@ -407,8 +407,23 @@
 
 @media (max-width: 768px) {
   .cart-content {
-    grid-template-columns: 1fr;
+    display: flex !important;
+    flex-direction: column !important;
     gap: 2rem;
+    align-items: center !important;
+  }
+  
+  /* Order summary appears first on mobile */
+  .cart-summary-section {
+    order: 1;
+    width: 100% !important;
+    max-width: none !important;
+  }
+  
+  /* Cart items appear second on mobile */
+  .cart-items-section {
+    order: 2;
+    width: 100% !important;
   }
 }
 
@@ -450,8 +465,8 @@
     padding: 0.5rem 1rem !important;
     gap: 0 !important;
     grid-template-columns: none !important;
-    background-color: transparent !important; /* Remove individual item background */
-    border: none !important; /* Remove any borders */
+    background-color: transparent !important;
+    border: none !important;
     position: relative !important;
   }
 
@@ -502,7 +517,7 @@
     position: absolute !important;
     top: 0.25rem !important;
     right: 0 !important; /* Flush against right edge */
-    width: 1.25rem !important; /* Smaller button */
+    width: 1.25rem !important;
     height: 1.25rem !important;
     padding: 0.125rem 0.125rem !important;
     margin: 0 0.45rem !important;
@@ -521,7 +536,6 @@
     z-index: 10 !important;
   }
 
-  /* Make the trash icon smaller - we'll change this to 'x' */
   .cart-items .cart-item .trash-icon {
     width: 0.75rem !important;
     height: 0.75rem !important;
