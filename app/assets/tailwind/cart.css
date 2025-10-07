@@ -62,7 +62,7 @@
 .cart-dropdown {
   position: absolute;
   top: calc(100% + 0.5rem);
-  right: 0;
+  right: 2rem;
   z-index: 50;
   width: 18rem;
   max-height: 70vh;
