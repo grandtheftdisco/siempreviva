@@ -153,6 +153,7 @@ header {
 @media (min-width: 768px) {
   .header-container {
     gap: 3rem; /* Even more generous desktop spacing */
+    padding-right: 2rem; /* Add extra space from cart icon to viewport edge */
   }
 }
 

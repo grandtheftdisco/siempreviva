@@ -7,10 +7,17 @@
   display: flex;
   align-items: center;
   gap: 0.5rem;
-  padding: 0 1rem;
+  padding: 0 1rem; /* Desktop padding */
   position: relative;
   flex-shrink: 1; /* Allow search to shrink */
   background: transparent !important;
+}
+
+/* Remove horizontal padding on mobile for tighter icon spacing */
+@media (max-width: 767px) {
+  .search-section:not(.hidden) {
+    padding: 0;
+  }
 }
 
 /* Compact search for tablet range */
