@@ -190,14 +190,14 @@ $info-blue: #6b9fa8;
   transition: all 0.2s ease;
   border: 2px solid transparent;
   background: #698b3f;
-  color: #ffffff;
+  color: #ffffff !important;
   border-color: #698b3f;
   font-size: 0.875rem;
   
   &:hover {
     background: #63754c;
     border-color: #63754c;
-    color: #ffffff;
+    color: #ffffff !important;
   }
 }
 
@@ -371,8 +371,9 @@ div.flash-warning {
   @include form-input-base;
 }
 
+form input.form-input-small,
 .form-input-small {
-  @include form-input-base($width: 30px, $padding: 2px 4px, $border-radius: 9999px);
+  @include form-input-base($width: 30px, $padding: 0.5px 1px, $border-radius: 9999px);
   text-align: center !important;
   font-size: 0.85rem !important;
   background: #f0e8f5 !important;
@@ -381,6 +382,7 @@ div.flash-warning {
   min-width: 50px !important;
   border-radius: 4500px !important;
   box-sizing: border-box !important;
+  padding: 0.5px 1px !important;
 }
 
 .form-label {
