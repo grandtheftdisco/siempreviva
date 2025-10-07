@@ -130,13 +130,17 @@ h1 {
 main {
   padding-left: 1rem;
   padding-right: 1rem;
-  padding-top: 3rem; /* Increased base padding for better spacing */
+  padding-top: 3rem; /* Base padding for mobile */
 }
 
-/* Add extra padding when flash messages are present - only on desktop/large tablet */
+/* Desktop/large tablet: Increase main padding for better spacing */
 @media (min-width: 768px) {
+  main {
+    padding-top: 7rem; /* Consistent spacing for desktop */
+  }
+  
   main.has-flash-messages {
-    padding-top: 5rem; /* Increased padding when flash messages exist */
+    padding-top: 8rem; /* Additional padding when flash messages exist */
   }
 }
 
