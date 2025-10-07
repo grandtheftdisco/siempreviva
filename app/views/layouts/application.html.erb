@@ -23,26 +23,16 @@
           </ul>
         </div>
 
-        <!-- Mobile Nav Items (Search + Right Icons) -->
-        <div class="mobile-nav-items">
-          <!-- Search Section -->
-          <div class="search-section">
-            <!-- Search Icon Button (Mobile) -->
-            <button id="searchToggleButton" class="search-toggle-button">
-              <svg class="search-icon" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z"></path>
-              </svg>
-            </button>
-            
-            <!-- Desktop Search (always visible) -->
-            <div class="search-desktop">
-              <div id="searchbox-desktop" class="search-container"></div>
-              <div id="hits-desktop" class="search-results"></div>
-            </div>
+        <!-- Desktop Search Section -->
+        <div class="search-section hidden md:flex">
+          <div class="search-desktop">
+            <div id="searchbox-desktop" class="search-container"></div>
+            <div id="hits-desktop" class="search-results"></div>
           </div>
+        </div>
 
-          <!-- Right Side Icons -->
-          <div class="right-icons">
+        <!-- Desktop Cart Section -->
+        <div class="right-icons hidden md:flex">
           <!-- Cart Dropdown -->
           <button id="cartDropdownButton" class="cart-button">
             <!-- Shopping Cart Icon -->
@@ -55,6 +45,85 @@
 
           <!-- Dropdown Menu -->
           <div id="cartDropdown" class="cart-dropdown">
+            <div class="cart-dropdown-header">
+              <h3 class="cart-dropdown-title">my bag</h3>
+            </div>
+            <div class="cart-dropdown-content">
+              <ul class="cart-items-list <%= 'compact' if @cart.cart_items.count > 2 %>">
+              <% @cart.cart_items.each do |item| %>
+                <% if @cart.cart_items.count > 2 %>
+                  <!-- Compact view without images -->
+                  <li class="cart-item-compact">
+                    <div class="cart-item-details">
+                      <p class="cart-item-name"><%= item.name %></p>
+                      <p class="cart-item-price"><%= to_dollars(item.price) %></p>
+                    </div>
+                    <%= button_to '×', item, method: :delete, class: 'cart-item-remove' %>
+                  </li>
+                <% else %>
+                  <!-- Regular view with images -->
+                  <li class="cart-item">
+                    <%= image_tag(item.image, class: "cart-item-image") %>
+                    <div class="cart-item-details">
+                      <p class="cart-item-name"><%= item.name %></p>
+                      <p class="cart-item-price"><%= to_dollars(item.price) %></p>
+                    </div>
+                    <%= button_to '×', item, method: :delete, class: 'cart-item-remove' %>
+                  </li>
+                <% end %>
+              <% end %>
+              </ul>
+            </div>
+            <div class="cart-dropdown-footer">
+              <div class="cart-summary">
+                <div class="cart-summary-line">
+                  <span>subtotal</span>
+                  <span><%= to_dollars(@cart.total) %></span>
+                </div>
+                <div class="cart-summary-line">
+                  <span>shipping</span>
+                  <span>(calculated at checkout)</span>
+                  <!-- TODO - add shipping in here once customer has selected it; ie if they begin checkout process & then abandon cart -->
+                </div>
+                <div class="cart-summary-line cart-total">
+                  <span>TOTAL</span>
+                  <span><%= to_dollars(@cart.total) %></span>
+                </div>
+              </div>
+              <div class="cart-actions">
+                <a href="<%= cart_path %>" class="cart-view-button">View Cart</a>
+                <a href="<%= new_checkout_path %>" class="cart-checkout-btn">Checkout</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Mobile Nav Items (Search + Right Icons) -->
+        <div class="mobile-nav-items md:hidden">
+          <!-- Mobile Search Section -->
+          <div class="search-section">
+            <!-- Search Icon Button (Mobile) -->
+            <button id="searchToggleButton" class="search-toggle-button">
+              <svg class="search-icon" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z"></path>
+              </svg>
+            </button>
+          </div>
+
+          <!-- Mobile Right Side Icons -->
+          <div class="right-icons">
+          <!-- Mobile Cart Dropdown -->
+          <button id="cartDropdownButtonMobile" class="cart-button">
+            <!-- Shopping Cart Icon -->
+            <svg class="cart-icon" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 10.5V6a3.75 3.75 0 10-7.5 0v4.5m11.356-1.993l1.263 12c.07.665-.45 1.243-1.119 1.243H4.25a1.125 1.125 0 01-1.12-1.243l1.264-12A1.125 1.125 0 015.513 7.5h12.974c.576 0 1.059.435 1.119.993zM8.625 10.5a.375.375 0 11-.75 0 .375.375 0 01.75 0zm7.5 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z"></path>
+            </svg>
+            <!-- Cart Badge -->
+            <span class="cart-badge"><%= @cart.cart_items.count %></span>
+          </button>
+
+          <!-- Mobile Dropdown Menu -->
+          <div id="cartDropdownMobile" class="cart-dropdown">
             <div class="cart-dropdown-header">
               <h3 class="cart-dropdown-title">my bag</h3>
             </div>
@@ -249,15 +318,13 @@
       });
     }
 
-    // Cart dropdown functionality
+    // Desktop Cart dropdown functionality
     const cartButton = document.getElementById('cartDropdownButton');
     const cartDropdown = document.getElementById('cartDropdown');
 
     if (cartButton && cartDropdown) {
       cartButton.addEventListener('click', function(e) {
         e.preventDefault();
-
-        // Toggle show class
         cartDropdown.classList.toggle('show');
       });
 
@@ -265,6 +332,24 @@
       document.addEventListener('click', function(e) {
         if (!cartButton.contains(e.target) && !cartDropdown.contains(e.target)) {
           cartDropdown.classList.remove('show');
+        }
+      });
+    }
+
+    // Mobile Cart dropdown functionality
+    const cartButtonMobile = document.getElementById('cartDropdownButtonMobile');
+    const cartDropdownMobile = document.getElementById('cartDropdownMobile');
+
+    if (cartButtonMobile && cartDropdownMobile) {
+      cartButtonMobile.addEventListener('click', function(e) {
+        e.preventDefault();
+        cartDropdownMobile.classList.toggle('show');
+      });
+
+      // Close dropdown when clicking outside
+      document.addEventListener('click', function(e) {
+        if (!cartButtonMobile.contains(e.target) && !cartDropdownMobile.contains(e.target)) {
+          cartDropdownMobile.classList.remove('show');
         }
       });
     }

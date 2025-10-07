@@ -145,8 +145,15 @@ header {
   display: flex;
   align-items: center;
   padding: 1rem;
-  gap: 1.25rem;
+  gap: 2rem; /* Generous spacing between all elements */
   min-width: 0; /* Prevent flex items from overflowing */
+}
+
+/* Desktop: Simple inline layout for all 4 elements */
+@media (min-width: 768px) {
+  .header-container {
+    gap: 3rem; /* Even more generous desktop spacing */
+  }
 }
 
 /* Responsive header container */
@@ -174,13 +181,13 @@ header {
     gap: 0.75rem; /* Even spacing between search, cart, and hamburger */
   }
 
-  .search-section {
+  .mobile-nav-items .search-section {
     flex: 0 0 auto;
     display: flex;
     align-items: center;
   }
 
-  .right-icons {
+  .mobile-nav-items .right-icons {
     flex: 0 0 auto;
     display: flex;
     align-items: center;
@@ -190,19 +197,43 @@ header {
 
 }
 
+/* Desktop: Search and cart sections inline */
+@media (min-width: 768px) {
+  .search-section.md\:flex {
+    flex: 1; /* Take remaining space for search input */
+    display: flex;
+    align-items: center;
+    justify-content: flex-end; /* Push search input to the right */
+    margin-right: 1rem; /* Space before cart */
+  }
+  
+  .right-icons.md\:flex {
+    flex: 0 0 auto; /* Fixed size for cart */
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+}
+
 /* ===== LOGO SECTION ===== */
 
 .logo-section {
-  margin-right: auto;
   padding-left: 0.5rem;
   padding-top: 0.5rem;
   flex-shrink: 0; /* Don't let logo shrink too much */
 }
 
+/* Desktop: Logo takes minimal space */
+@media (min-width: 768px) {
+  .logo-section {
+    flex: 0 0 auto; /* Fixed size, no grow/shrink */
+  }
+}
+
 /* Responsive logo section */
 @media (max-width: 767px) {
   .logo-section {
-    padding-left: 0.25rem;
+    padding-left: 0; /* Remove left padding for flush left alignment */
     padding-top: 0.25rem;
     margin-right: 0 !important; /* Override auto margin on mobile */
   }
@@ -231,8 +262,15 @@ header {
 /* ===== NAVIGATION SECTION ===== */
 
 .navbar-section {
-  flex: 1;
+  flex: 0 0 auto; /* Fixed size, no grow/shrink */
   display: flex;
+}
+
+/* Desktop: Navbar inline with other elements */
+@media (min-width: 768px) {
+  .navbar-section {
+    flex: 0 0 auto; /* Take only needed space */
+  }
 }
 
 /* Mobile navigation dropdown styling */
@@ -319,7 +357,7 @@ header {
   .navbar-list {
     padding: 0;
     margin-top: 0;
-    gap: 1.5rem; /* Reduced from 2rem */
+    gap: 1rem; /* Further reduced for tighter spacing */
     border: none;
     background-color: var(--white-bg);
     flex-direction: row;
@@ -330,12 +368,12 @@ header {
 /* Tailwind lg breakpoint (1024px+) - larger screens get bigger text */
 @media (min-width: 1024px) {
   .navbar-section {
-    padding-left: 1.5rem;
+    padding-left: 1rem; /* Reduced from 1.5rem */
   }
 
   .navbar-list {
     font-size: 1.125rem;
-    gap: 1.5rem;
+    gap: 1rem; /* Consistent tighter spacing */
   }
 }
 

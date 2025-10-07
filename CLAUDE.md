@@ -81,6 +81,11 @@ This approach maintains architectural integrity and learning objectives while st
 - Meaningful naming for classes, methods, and variables
 - Consistent error handling and validation
 
+### Communication Standards
+- When summarizing work or providing progress updates, use paragraph format without emojis
+- Maintain professional, clear, and concise communication style
+- Focus on technical details and outcomes rather than stylistic elements
+
 ### Feature Development Process
 - Feature branches for new development
 - Code review before merging to main
