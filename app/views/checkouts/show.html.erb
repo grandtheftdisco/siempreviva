@@ -1,6 +1,39 @@
 <% case @session.status %>
 <% when 'complete' %>
-  <p>Thanks for your order! We'll get started on it right away.</p>
+  <div class="checkout-success">
+    <div class="checkout-success-content">
+      <!-- Thank you message -->
+      <div>
+        <h1>
+          Thanks for shopping<br>
+          with Siempreviva!
+        </h1>
+        <p class="subtitle">
+          we'll get started on your order right away.
+        </p>
+      </div>
+
+      <!-- Placeholder image (grey box from wireframe) -->
+      <div class="image-placeholder">
+        <span>Order Confirmation Image</span>
+      </div>
+
+      <!-- Order details -->
+      <div class="order-details">
+        <p class="order-label">
+          your order number is
+        </p>
+        <p class="order-number">
+          #<%= '123456' %>
+        </p>
+      </div>
+
+      <!-- Receipt notice -->
+      <p class="receipt-notice">
+        (please check your email for your receipt)
+      </p>
+    </div>
+  </div>
 <% when 'open' %>
   <h1>Payment Status: <%= @session.status %></h1>
   <p>Your payment is being processed. We'll email you when it's complete!</p>

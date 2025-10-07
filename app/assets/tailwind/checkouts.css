@@ -1,0 +1,108 @@
+/* ===== CHECKOUT SUCCESS PAGE STYLES ===== */
+
+/* Checkout success container */
+.checkout-success {
+  background-color: transparent;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 2rem 1rem 2rem 1rem;
+  font-family: 'Playfair Display', serif;
+  min-height: fit-content;
+}
+
+.checkout-success-content {
+  max-width: 28rem; /* max-w-md equivalent */
+  width: 100%;
+  text-align: center;
+  margin-top: 0;
+}
+
+/* Typography styles */
+.checkout-success h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: 2.25rem; /* text-4xl equivalent */
+  font-weight: 700;
+  color: #000000;
+  line-height: 1.2;
+  margin-bottom: 0.75rem;
+  margin-top: 0;
+}
+
+.checkout-success .subtitle {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.125rem; /* text-lg equivalent */
+  color: #000000;
+  font-style: italic;
+  margin-bottom: 1.5rem;
+  margin-top: 0;
+}
+
+/* Image placeholder */
+.checkout-success .image-placeholder {
+  background-color: #d1d5db; /* gray-300 equivalent */
+  border-radius: 0.5rem;
+  height: 12rem; /* h-48 equivalent */
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1.5rem;
+}
+
+.checkout-success .image-placeholder span {
+  color: #6b7280; /* gray-500 equivalent */
+  font-size: 0.875rem;
+}
+
+/* Order details */
+.checkout-success .order-details {
+  margin-bottom: 0.75rem;
+}
+
+.checkout-success .order-label {
+  font-family: 'Playfair Display', serif;
+  color: #000000;
+  font-weight: 500;
+  margin-bottom: 0.25rem;
+  margin-top: 0;
+}
+
+.checkout-success .order-number {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.5rem; /* text-2xl equivalent */
+  font-weight: 700;
+  color: #000000;
+  margin-bottom: 0.75rem;
+  margin-top: 0;
+}
+
+/* Receipt notice */
+.checkout-success .receipt-notice {
+  font-family: 'Playfair Display', serif;
+  font-size: 0.875rem;
+  color: #000000;
+  font-style: italic;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+/* Responsive adjustments */
+@media (max-height: 700px) {
+  .checkout-success-content {
+    gap: 1.5rem;
+  }
+  
+  .checkout-success h1 {
+    margin-bottom: 0.75rem;
+  }
+  
+  .checkout-success .subtitle {
+    margin-bottom: 1.5rem;
+  }
+  
+  .checkout-success .image-placeholder {
+    height: 10rem;
+    margin-bottom: 1.5rem;
+  }
+}
