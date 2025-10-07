@@ -29,7 +29,7 @@ class CheckoutSessionsController < ApplicationController
       shipping_address_collection: {
         allowed_countries: ['US']
       }
-    )
+    })
 
     # For my db
     checkout = Checkout.create(

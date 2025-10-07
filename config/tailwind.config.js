@@ -1,12 +1,16 @@
 module.exports = {
   content: [
-    './app/views/**/*.html.erb',
+    "./app/views/**/*.{erb,html,html.erb,haml,slim}",
     './app/helpers/**/*.rb',
     './app/javascript/**/*.js',
     './app/components/**/*.rb', // If using ViewComponents
+    "./app/assets/stylesheets/**/*.css",
+    "./node_modules/flowbite/**/*.js"
   ],
   theme: {
     extend: {},
   },
-  plugins: [],
+  plugins: [
+    require('flowbite/plugin')
+  ],
 };

@@ -1,0 +1,51 @@
+<div class="cart-page-item">
+  <!-- Product Image -->
+  <div class="cart-item-image">
+    <% if cart_item.image.present? %>
+      <%= image_tag(cart_item.image, alt: cart_item.name, class: 'product-image') %>
+    <% else %>
+      <div class="image-placeholder"></div>
+    <% end %>
+  </div>
+  
+  <!-- Product Details -->
+  <div class="cart-item-details">
+    <div class="cart-item-header">
+      <h3 class="product-name"><%= cart_item.name.titleize %></h3>
+      
+      <!-- Remove Button - Top Right -->
+      <%= button_to cart_item_path(cart_item), 
+          method: :delete,
+          class: 'remove-button-small',
+          data: { 
+            confirm: 'Remove this item from your cart?'
+          },
+          title: 'Remove item',
+          form_class: 'inline-form' do %>
+        <svg class="trash-icon" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"></path>
+        </svg>
+      <% end %>
+    </div>
+    
+    <p class="product-price"><%= to_dollars(cart_item.price) %></p>
+    
+    <!-- Quantity Controls - Reorganized for better UX -->
+    <div class="quantity-section">
+      <%= form_with model: cart_item, url: cart_item_path(cart_item), method: :patch, local: true, class: 'quantity-form-improved' do |f| %>
+        <div class="quantity-row">
+          <label class="quantity-label">quantity:</label>
+          <div class="quantity-controls-group">
+            <%= f.text_field :quantity,
+                value: cart_item.quantity,
+                pattern: '[0-9]*',
+                inputmode: 'numeric',
+                maxlength: '2',
+                class: 'form-input-small' %>
+            <%= f.submit 'update', class: 'quantity-update-btn' %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
