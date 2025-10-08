@@ -102,6 +102,12 @@ class WebhooksController < ApplicationController
     payment_intent, local_checkout_record, cart = set_up_transaction_info(checkout_session)
 
     if checkout_session.payment_status == 'paid' || checkout_session.payment_status == 'no_payment_required'
+      # Check if we've already processed this payment (idempotency check)
+      if local_checkout_record.status == 'awaiting shipment'
+        Rails.logger.info "🔄 Payment already processed for checkout session #{checkout_session.id} - skipping"
+        return
+      end
+      
       begin
         PaymentHandlingService::HandleSuccessfulPayment.call(
           checkout_session: checkout_session,
@@ -147,6 +153,12 @@ class WebhooksController < ApplicationController
     payment_intent, local_checkout_record, cart = set_up_transaction_info(checkout_session)
 
     if payment_intent.status == 'succeeded'
+      # Check if we've already processed this payment (idempotency check)
+      if local_checkout_record.status == 'awaiting shipment'
+        Rails.logger.info "🔄 Async payment already processed for checkout session #{checkout_session.id} - skipping"
+        return
+      end
+      
       PaymentHandlingService::HandleSuccessfulPayment.call(
         checkout_session: checkout_session,
         cart: cart

@@ -20,13 +20,16 @@ class CheckoutsController < ApplicationController
     begin
       session_id = local_checkout_record.stripe_checkout_session_id
       @session = Stripe::Checkout::Session.retrieve(session_id) if session_id.present?
-
       @order = Order.find_by(payment_intent_id: @session.payment_intent)
 
       if @session.status == 'expired'
         flash.now[:alert] = 'Oops! This checkout session has expired. Don\'t worry - your card hasn\'t been charged. Try checking out again! 🙂'
         redirect_to new_checkout_path
       end
+      
+      # Process payment synchronously if webhook hasn't arrived yet
+      WebhookSynchronizationService::EnsurePaymentProcessed.call(stripe_checkout_session_id: session_id)
+
     rescue Stripe::InvalidRequestError => e
       Rails.logger.error "\e[101;1m-----x----- Failed to retrieve Checkout Session: #{e.message}\e[0m"
       Rails.logger.error "\e[101m ---> Checkout Session ID #{@session&.id || 'not yet assigned' }]"
