@@ -27,6 +27,6 @@ module SoftDeletable
       end
     end
     
-    self.update(status: "soft_deleted")
+    self.update(status: "soft_deleted", deleted_at: Time.now)
   end
 end
