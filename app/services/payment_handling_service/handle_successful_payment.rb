@@ -19,7 +19,7 @@ module PaymentHandlingService
         amount: checkout_session.amount_total,
         status: checkout_session.status
       )
-      OrderMailer.received(@order).deliver_later
+      OrderMailer.received(@order).deliver_now
     end
 
     def self.update_checkout_in_database(checkout_session)

@@ -24,7 +24,12 @@
           your order number is
         </p>
         <p class="order-number">
-          #<%= '123456' %>
+          <% if @order.present? %>
+            #<%= @order.id %>
+          <% else %>
+            <!-- Order not available - check logs for HandleSuccessfulPayment errors -->
+            PENDING
+          <% end %>
         </p>
       </div>
 
