@@ -23,5 +23,9 @@ module PaymentHandlingService
       local_checkout_record.update(status: "awaiting shipment",
                                    payment_intent_id: checkout_session.payment_intent)
     end
+
+    def self.clear_cart_items(cart)
+      cart.soft_delete_records
+    end
   end
 end
