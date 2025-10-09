@@ -141,3 +141,14 @@ div[style*="background-color: rgba(247, 242, 237"] {
     margin-bottom: 1.5rem;
   }
 }
+
+/* Image formatting utility */
+.formatted-image {
+  filter: saturate(0.7);
+  border-radius: 1.5rem; /* rounded-3xl equivalent */
+  transition: filter 0.2s ease-in-out;
+}
+
+.formatted-image:hover {
+  filter: saturate(1);
+}
