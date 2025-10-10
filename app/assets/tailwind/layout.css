@@ -188,11 +188,14 @@ main {
 }
 
 .page-title {
-  color: var(--primary-purple);
+  font-family: 'Playfair Display', serif;
+  font-size: 2.5rem;
+  font-weight: 300;
+  color: #2c3e50;
+  margin-bottom: 0.5rem;
+  letter-spacing: 0.05em;
   padding: 1rem; /* Consistent padding across all screen sizes */
   text-align: center;
-  font-size: 2rem;
-  font-weight: bold;
 }
 
 /* Responsive page title */
