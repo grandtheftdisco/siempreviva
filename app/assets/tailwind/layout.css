@@ -23,13 +23,13 @@
 
 /* ===== GENERAL LINK HOVER STYLES ===== */
 /* Apply consistent hover behavior to all links, excluding specific components */
-a:not(.logo-link):not(.breadcrumb-link):not(.ais-Hits-item a):not(.remove-button-small):not(.social-icon) {
+a:not(.logo-link):not(.breadcrumb-link):not(.ais-Hits-item a):not(.remove-button-small):not(.social-icon):not(.shop-products-btn) {
   color: var(--dark-text);
   text-decoration: none;
   transition: color 0.2s ease;
 }
 
-a:not(.logo-link):not(.breadcrumb-link):not(.ais-Hits-item a):not(.remove-button-small):not(.social-icon):hover {
+a:not(.logo-link):not(.breadcrumb-link):not(.ais-Hits-item a):not(.remove-button-small):not(.social-icon):not(.shop-products-btn):hover {
   color: var(--primary-purple);
   cursor: pointer;
 }
