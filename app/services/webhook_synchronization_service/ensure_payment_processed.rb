@@ -2,7 +2,7 @@ module WebhookSynchronizationService
   class EnsurePaymentProcessed < ApplicationService
     def self.call(stripe_checkout_session_id:)
       checkout_session = Stripe::Checkout::Session.retrieve(stripe_checkout_session_id)
-      local_checkout_record = Checkout.find_by(stripe_checkout_session_id: stripe_checkout_session_id)
+      local_checkout_record = Checkout.find_by(stripe_checkout_session_id: stripe_checkout_session_id)&.lock
       
       return false unless local_checkout_record
       return false if already_processed?(local_checkout_record)
