@@ -1,0 +1,440 @@
+/* Search Stylesheet */
+/* Contains all search-related styles including Algolia components and search dropdowns */
+
+/* ===== SEARCH SECTION LAYOUT ===== */
+
+.search-section:not(.hidden) {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0 1rem; /* Desktop padding */
+  position: relative;
+  flex-shrink: 1; /* Allow search to shrink */
+  background: transparent !important;
+}
+
+/* Remove horizontal padding on mobile for tighter icon spacing */
+@media (max-width: 767px) {
+  .search-section:not(.hidden) {
+    padding: 0;
+  }
+}
+
+/* Compact search for tablet range */
+@media (min-width: 768px) and (max-width: 1023px) {
+  .search-section {
+    padding: 0 0.25rem;
+    gap: 0.25rem;
+  }
+
+  .search-desktop input {
+    height: 2rem;
+    font-size: 0.875rem;
+    padding: 0.375rem 0.75rem;
+    max-width: 250px;
+  }
+
+  .search-desktop button {
+    height: 2rem; /* Match input height */
+    width: 2rem;
+    padding: 0.25rem;
+  }
+}
+
+/* Tailwind sm and below (below 640px) - mobile search */
+@media (max-width: 639px) {
+  .search-section {
+    padding: 0;
+    gap: 0;
+    flex: 0 0 auto;
+    min-width: 2.5rem; /* Ensure minimum width for search icon */
+    width: auto;
+  }
+
+  .search-toggle-button {
+    display: flex !important; /* Force display on mobile */
+    flex-shrink: 0; /* Prevent button from shrinking */
+    width: 2.5rem; /* Ensure button has proper width */
+    height: 2.5rem; /* Ensure button has proper height */
+    background: transparent !important;
+    border-radius: 0.5rem;
+  }
+
+  .search-toggle-button:hover {
+    background: transparent !important; /* Keep transparent on hover */
+  }
+
+  /* Ensure search section is visible */
+  .search-section {
+    visibility: visible !important;
+    opacity: 1 !important;
+  }
+
+  .search-desktop {
+    display: none !important;
+  }
+
+  /* Ensure any desktop search elements are hidden */
+  #searchbox-desktop,
+  #hits-desktop {
+    display: none !important;
+  }
+}
+
+/* Tailwind sm to md (640px-767px) - tablet range, compact search */
+@media (min-width: 640px) and (max-width: 767px) {
+  .search-section {
+    padding: 0 1rem;
+    gap: 0.25rem;
+    flex: 0 1 200px; /* Limited width to prevent overlap */
+    min-width: 150px;
+  }
+
+  .search-desktop input {
+    width: 100%;
+    max-width: 200px;
+    font-size: 0.875rem;
+  }
+}
+
+/* ===== SEARCH TOGGLE BUTTON (MOBILE) ===== */
+
+.search-toggle-button {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  padding: 0.5rem;
+  background: transparent;
+  border: none;
+  border-radius: 0.5rem;
+  color: #6b7280;
+  transition: background-color 0.2s;
+  cursor: pointer;
+}
+
+.search-toggle-button:hover {
+  background-color: #f3f4f6;
+  cursor: pointer;
+}
+
+.search-icon {
+  width: 1.5rem;
+  height: 1.5rem;
+  color: #674174;
+}
+
+/* ===== SEARCH DROPDOWN ===== */
+
+.search-dropdown {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background-color: #f0e8f5;
+  border-top: 1px solid rgba(103, 65, 116, 0.15);
+  box-shadow: 0 4px 12px -2px rgba(103, 65, 116, 0.15), 0 2px 4px -1px rgba(103, 65, 116, 0.06); /* Same drop shadow as nav */
+  z-index: 50;
+  padding: 1rem;
+  display: none;
+}
+
+/* Responsive search dropdown - full width on mobile */
+@media (max-width: 768px) {
+  .search-dropdown {
+    border-radius: 0;
+    border-left: none;
+    border-right: none;
+    width: 100vw;
+    left: 50%; /* Center relative to parent */
+    transform: translateX(-50%); /* Adjust to true center */
+    max-width: 100vw;
+    overflow-x: hidden; /* Prevent horizontal overflow */
+    background-color: #f0e8f5;
+    border-top: 1px solid rgba(103, 65, 116, 0.15);
+  }
+}
+
+/* Tailwind md+ (768px+) - desktop search dropdown */
+@media (min-width: 768px) {
+  .search-dropdown {
+    left: auto;
+    right: 0;
+    min-width: 300px;
+    border: 1px solid rgba(103, 65, 116, 0.15);
+    border-radius: 0.5rem;
+    margin-top: 0.5rem;
+  }
+}
+
+/* Mobile search dropdown specific styles */
+.search-dropdown .search-container {
+  justify-content: flex-start;
+  width: 100%;
+  max-width: 100%;
+  overflow: hidden;
+  padding: 0; /* Remove any inherited padding */
+  margin: 0; /* Remove any inherited margin */
+}
+
+.search-dropdown .search-results {
+  position: static;
+  margin-top: 0.5rem;
+  right: auto;
+  width: 100%;
+  min-width: auto;
+  max-width: 100%;
+  overflow-x: hidden; /* Prevent horizontal overflow */
+}
+
+/* Ensure Algolia search input doesn't overflow on mobile */
+@media (max-width: 768px) {
+  .search-dropdown {
+    padding: 0.75rem !important; /* Reduce padding to give more space */
+  }
+
+  .search-dropdown .search-container {
+    width: 100% !important;
+    max-width: 100% !important;
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+
+  .search-dropdown .search-container input {
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+  }
+
+  .search-dropdown .ais-SearchBox {
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+
+  .search-dropdown .ais-SearchBox-form {
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+
+  .search-dropdown .ais-SearchBox-input {
+    width: 100% !important;
+    max-width: calc(100% - 1.5rem) !important; /* Account for padding and submit button */
+    box-sizing: border-box !important;
+    padding-right: 50px !important; /* Reduce right padding for submit button */
+  }
+}
+
+/* Additional constraints for very small mobile screens (iPhone SE, etc.) */
+@media (max-width: 480px) {
+  .search-dropdown {
+    padding: 0.5rem !important;
+  }
+
+  .search-dropdown .ais-SearchBox-input {
+    max-width: calc(100% - 1rem) !important;
+    padding-right: 45px !important;
+    font-size: 0.875rem !important;
+  }
+
+  .search-dropdown .ais-SearchBox-submit {
+    right: 6px !important; /* Adjust submit button position */
+  }
+
+  .search-dropdown .ais-SearchBox-submitIcon {
+    width: 18px !important;
+    height: 18px !important;
+  }
+}
+
+/* Focus and interaction improvements for mobile */
+@media (max-width: 768px) {
+  .search-dropdown .ais-SearchBox-input:focus {
+    border-color: #674174 !important;
+    box-shadow: 0 0 0 2px rgba(103, 65, 116, 0.1) !important;
+    outline: none !important;
+  }
+}
+
+/* ===== DESKTOP SEARCH ===== */
+
+.search-desktop {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: transparent !important;
+  position: relative;
+}
+
+.search-container {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding: 0;
+  margin: 0;
+  position: relative;
+  background: transparent !important;
+}
+
+.search-results {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  z-index: 50;
+  margin-top: 0.5rem;
+  width: 100%;
+}
+
+/* Match search results width to search input width at different breakpoints */
+@media (min-width: 640px) and (max-width: 767px) {
+  .search-results .ais-Hits {
+    width: 200px;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1023px) {
+  .search-results .ais-Hits {
+    width: 250px;
+  }
+}
+
+/* Default desktop size for larger screens */
+@media (min-width: 1024px) {
+  .search-results .ais-Hits {
+    width: 250px;
+  }
+}
+
+/* ===== SEARCH HIT ITEMS ===== */
+
+.search-hit-item {
+  display: block;
+  padding: 0.5rem;
+  border-radius: 1rem;
+  transition: background-color 0.2s;
+  cursor: pointer;
+}
+
+.search-hit-item:hover {
+  background-color: #faf5ff;
+}
+
+/* ===== ALGOLIA SEARCH COMPONENTS ===== */
+
+.ais-SearchBox {
+  background: transparent !important;
+}
+
+.ais-SearchBox-form {
+  padding: 0px;
+  margin: 0px;
+  border: none;
+  outline: none;
+  position: relative;
+  display: flex;
+  align-items: center;
+  background: transparent !important;
+}
+
+.ais-SearchBox-input {
+  background: #e6d3ec;
+  border: 1px solid #d1d5db;
+  border-radius: 1rem;
+  padding: 8px;
+  padding-right: 80px;
+  flex: 1;
+  color: #2c3e50;
+}
+
+.ais-SearchBox-input:focus {
+  outline: none;
+  border-color: #674174;
+  box-shadow: 0 0 0 2px rgba(103, 65, 116, 0.1);
+}
+
+.ais-SearchBox-submit {
+  font-size: 1.125rem;
+  background: transparent !important;
+  padding: 0px !important;
+  color: #c5aace;
+  border: none !important;
+  border-radius: 0 !important;
+  outline: none;
+  position: absolute;
+  right: 8px;
+  cursor: pointer;
+  transition: color 0.2s;
+
+  /* Reset any inherited global button styles */
+  margin: 0 !important;
+  box-shadow: none !important;
+  font-family: inherit !important;
+  font-weight: inherit !important;
+  text-decoration: none !important;
+}
+
+.ais-SearchBox-submitIcon {
+  width: 20px !important;
+  height: 20px !important;
+  margin-top: 0px;
+  margin-left: 5px;
+  padding: 0px;
+}
+
+.ais-SearchBox-reset {
+  background: transparent;
+  border: none;
+  outline: none;
+  padding: 4px 8px;
+  color: #6b7280;
+  position: absolute;
+  right: 45px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: color 0.2s;
+}
+
+.ais-SearchBox-reset:hover {
+  color: #374151;
+}
+
+.ais-SearchBox-resetIcon {
+  width: 14px !important;
+  height: 14px !important;
+}
+
+/* ===== SEARCH RESULTS CONTAINER ===== */
+
+.ais-Hits {
+  background: #e6d3ec;
+  width: 250px;
+  border-radius: 0.5rem;
+  border: 1px solid #d1d5db;
+  padding: 0px;
+  margin-right: 0px;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+
+.ais-Hits-item a {
+  display: block;
+  border-radius: 1rem;
+  padding: 0px;
+  color: #2c3e50;
+  text-decoration: none;
+  transition: background-color 0.2s;
+  cursor: pointer;
+}
+
+.ais-Hits-item a:hover {
+  background: #c5aace;
+  border-radius: 1rem;
+  color: #2c3e50;
+}
+
+.ais-Highlight-highlighted {
+  background: #c5aace;
+  padding: 0.125rem 0.25rem;
+  border-radius: 0.25rem;
+}

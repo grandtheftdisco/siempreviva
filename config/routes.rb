@@ -21,7 +21,7 @@ Rails.application.routes.draw do
   
   get "my-bag", to: "carts#show", as: :cart
 
-  resources :cart_items, only: [:create, :destroy ] 
+  resources :cart_items, only: [:create, :update, :destroy ] 
     
   resources :checkouts, only: [ :new, :create, :show ]
   post '/checkout_sessions', to: 'checkout_sessions#create'

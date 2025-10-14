@@ -65,10 +65,11 @@ group :test do
 end
 
 gem "foreman", "~> 0.88.1"
-gem 'stripe'
-gem 'dotenv', groups: [:development, :test]
-gem 'redis', '~> 5.0'
-gem 'tailwindcss-rails', '~> 4.3'
-gem 'mail_form'
+gem "stripe"
+gem "dotenv", groups: [ :development, :test ]
+gem "redis", "~> 5.0"
+gem "tailwindcss-rails", "~> 4.3"
+gem "mail_form"
 gem "algolia", "~> 3.23"
 gem "premailer-rails"
+gem "rubocop-airbnb", require: false
