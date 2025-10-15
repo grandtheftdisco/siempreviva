@@ -149,3 +149,25 @@
     height: 16rem;
   }
 }
+
+/* Product Show Page Specific Styles */
+.product-show-title {
+  /* Inherit all styles from page-title */
+  font-family: 'Playfair Display', serif;
+  font-size: 3rem;
+  font-weight: 300;
+  color: #2c3e50;
+  margin-bottom: 0.5rem;
+  letter-spacing: 0.05em;
+  padding: 0;
+  /* Override text-align for product show page */
+  text-align: left;
+}
+
+/* Responsive product show title */
+@media (max-width: 768px) {
+  .product-show-title {
+    text-align: left;
+    font-size: 1.5rem;
+  }
+}
