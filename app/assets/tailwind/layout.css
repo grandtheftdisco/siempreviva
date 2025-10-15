@@ -522,3 +522,14 @@ header {
   background-color: var(--primary-purple);
   cursor: pointer;
 }
+
+/* Image formatting utility */
+.formatted-image {
+  filter: saturate(0.5);
+  border-radius: 1.5rem; /* rounded-3xl equivalent */
+  transition: filter 0.2s ease-in-out;
+}
+
+.formatted-image:hover {
+  filter: saturate(0.7);
+}
