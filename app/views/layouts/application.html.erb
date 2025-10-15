@@ -178,6 +178,40 @@
       <%= render partial: "layouts/public/flash_alert" %>
       <%= yield %>
     </main>
+
+    <footer class="site-footer">
+      <div class="footer-container">
+        <div class="footer-content">
+          <!-- Navigation Links -->
+          <div class="footer-section">
+            <h3 class="footer-section-title">Explore</h3>
+            <ul class="footer-nav">
+              <li><%= link_to 'Products', products_path, class: 'footer-link' %></li>
+              <li><%= link_to 'Our Farms', our_farms_path, class: 'footer-link' %></li>
+              <li><%= link_to 'Learn', learn_path, class: 'footer-link' %></li>
+              <li><%= link_to 'Contact', contact_path, class: 'footer-link' %></li>
+              <li><%= link_to 'Gallery', gallery_path, class: 'footer-link' %></li>
+            </ul>
+          </div>
+
+          <!-- Social Links -->
+          <div class="footer-section">
+            <h3 class="footer-section-title">Follow Us</h3>
+            <div class="footer-social-icons">
+              <%= social_icon(:facebook, "https://facebook.com/siemprevivaoils") %>
+              <%= social_icon(:instagram, "https://instagram.com/siemprevivaulja") %>
+            </div>
+          </div>
+        </div>
+
+        <!-- Copyright -->
+        <div class="footer-bottom">
+          <p class="footer-copyright">
+            &copy; <%= Date.current.year %> Siempreviva. All rights reserved.
+          </p>
+        </div>
+      </div>
+    </footer>
   </body>
 </html>
 
