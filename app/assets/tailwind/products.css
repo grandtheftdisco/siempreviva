@@ -98,6 +98,17 @@
 }
 
 /* Responsive Design */
+/* iPad/Tablet landscape - 3 columns */
+@media (max-width: 1024px) {
+  .products-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+  }
+  .products-container {
+    padding: 2rem 1rem;
+  }
+}
+
 /* Tablet (portrait) - 2 columns */
 @media (max-width: 768px) {
   .products-grid {
@@ -110,11 +121,11 @@
   }
   
   .product-card {
-    height: 22rem;
+    height: 21rem;
   }
   
   .product-image-container {
-    height: 18rem;
+    height: 17rem;
   }
 }
 
