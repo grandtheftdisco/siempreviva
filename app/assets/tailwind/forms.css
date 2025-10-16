@@ -121,6 +121,7 @@ form button[type="submit"] {
   color: #ffffff;
   border: none;
   padding: 16px 32px;
+  margin-bottom: 10px;
   font-size: 18px;
   font-weight: bold;
   border-radius: 9999px;

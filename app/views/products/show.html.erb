@@ -19,29 +19,31 @@
 
       <!-- Right Column - Product Details -->
       <div class="flex flex-col justify-start">
-        <!-- Breadcrumb Navigation -->
-        <nav class="breadcrumb-nav mb-2" style="font-family: 'Playfair Display', serif; font-size: 0.875rem; color: #6c757d;">
-          <%= link_to "essential oils", products_path, class: "breadcrumb-link" %>
-          <span class="breadcrumb-separator mx-2">></span>
-          <span class="current-page"><%= format_product_name(@product.name) %></span>
-        </nav>
-
         <div>
-          <!-- Page Title -->
-          <h1 class="product-show-title -mt-4"><%= format_product_name(@product.name) %></h1>
+          <!-- Breadcrumb Navigation -->
+          <nav class="breadcrumb-nav mb-2" style="font-family: 'Playfair Display', serif; font-size: 0.875rem; color: #6c757d;">
+            <%= link_to "essential oils", products_path, class: "breadcrumb-link" %>
+            <span class="breadcrumb-separator mx-2">></span>
+            <span class="current-page"><%= format_product_name(@product.name) %></span>
+          </nav>
 
-          <!-- Price -->
-          <div class="text-2xl text-gray-800">
-            <%= to_dollars(@product.default_price.unit_amount) %>
-          </div>
+          <div id="key-product-info" class="mb-10">
+            <!-- Page Title -->
+            <h1 class="product-show-title -mt-4"><%= format_product_name(@product.name) %></h1>
 
-          <!-- Description -->
-          <div class="prose prose-lg text-gray-600">
-            <% if @product.description.present? %>
-              <%= simple_format(@product.description) %>
-            <% else %>
-              <p>100% natural sage essential oil, made in Europe.</p>
-            <% end %>
+            <!-- Price -->
+            <div class="text-2xl text-gray-800 mb-5">
+              <%= to_dollars(@product.default_price.unit_amount) %>
+            </div>
+
+            <!-- Description -->
+            <div class="prose prose-lg text-gray-600">
+              <% if @product.description.present? %>
+                <%= simple_format(@product.description) %>
+              <% else %>
+                <p>100% natural sage essential oil, made in Europe.</p>
+              <% end %>
+            </div>
           </div>
 
           <!-- Add to Cart Button -->
