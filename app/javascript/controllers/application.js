@@ -7,4 +7,11 @@ const application = Application.start()
 application.debug = false
 window.Stimulus   = application
 
+// Initialize Flowbite components
+document.addEventListener('DOMContentLoaded', function() {
+  if (typeof window.initFlowbite === 'function') {
+    window.initFlowbite()
+  }
+})
+
 export { application }

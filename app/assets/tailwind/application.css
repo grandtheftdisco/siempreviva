@@ -76,3 +76,16 @@
   height: 1.5rem;
   color: #674174;
 }
+
+/* deactivate native browser spinner for number input fields */
+@layer base {
+  input[type=number]::-webkit-inner-spin-button,
+  input[type=number]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+
+  input[type=number] {
+    -moz-appearance: textfield;
+  }
+}
