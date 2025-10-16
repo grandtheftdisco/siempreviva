@@ -1,2 +1,162 @@
-<p>product longform</p>
-<p><%= @product.name %>
+<!-- Mobile Header - Breadcrumb & Title (visible on mobile/tablet, hidden on lg+) -->
+<div class="lg:hidden mb-6">
+  <!-- Breadcrumb Navigation -->
+  <nav class="breadcrumb-nav mb-4" style="font-family: 'Playfair Display', serif; font-size: 0.875rem; color: #6c757d;">
+    <%= link_to "essential oils", products_path, class: "breadcrumb-link" %>
+    <span class="breadcrumb-separator mx-2">></span>
+    <span class="current-page"><%= format_product_name(@product.name) %></span>
+  </nav>
+
+  <!-- Page Title -->
+  <h1 class="product-show-title"><%= format_product_name(@product.name) %></h1>
+</div>
+
+<!-- Element #1 in Stack - Product Content Grid -->
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-12">
+
+  <!-- Left Column - Product Image -->
+  <div class="flex items-stretch">
+    <div class="w-full flex items-center justify-center bg-gray-100 rounded-lg">
+      <% if @product.images.any? %>
+        <%= image_tag(@product.images.first, alt: @product.name.titleize, class: "max-w-full h-auto rounded-lg") %>
+      <% else %>
+        <div class="w-full h-96 bg-gray-200 rounded-lg flex items-center justify-center">
+          <span class="text-gray-500">Product Image</span>
+        </div>
+      <% end %>
+    </div>
+  </div>
+
+  <!-- Right Column - Product Details -->
+  <div class="flex flex-col justify-start">
+    <div>
+      <!-- Desktop Breadcrumb Navigation (hidden on mobile/tablet, visible on lg+) -->
+      <nav class="breadcrumb-nav mb-2 lg:block" style="font-family: 'Playfair Display', serif; font-size: 0.875rem; color: #6c757d;">
+        <%= link_to "essential oils", products_path, class: "breadcrumb-link" %>
+        <span class="breadcrumb-separator mx-2">></span>
+        <span class="current-page"><%= format_product_name(@product.name) %></span>
+      </nav>
+
+      <div id="key-product-info" class="mb-5 lg:mb-10">
+        <!-- Desktop Page Title (hidden on mobile/tablet, visible on lg+) -->
+        <h1 class="product-show-title -mt-4lg:block"><%= format_product_name(@product.name) %></h1>
+
+        <!-- Price -->
+        <div class="text-2xl text-gray-800 mb-5">
+          <%= to_dollars(@product.default_price.unit_amount) %>
+        </div>
+
+        <!-- Description -->
+        <div class="prose prose-lg text-gray-600">
+          <% if @product.description.present? %>
+            <%= simple_format(@product.description) %>
+          <% else %>
+            <p>100% natural sage essential oil, made in Europe.</p>
+          <% end %>
+        </div>
+      </div>
+
+      <!-- Add to Cart Button -->
+      <%= form_for :cart_item, url: cart_items_path, method: :post, class: "space-y-4 !w-full !mx-0", style: "width: auto; margin: 0; padding: 0; max-width: none;" do |f| %>
+        <div class="flex items-center gap-3 justify-start w-full !ml-0">
+          <%= hidden_field_tag 'cart_item[stripe_product_id]', @product.id, class: '!m-0 !mb-0' %>
+
+          <%= f.label :quantity, "Quantity:" %>
+
+          <!-- Flowbite Quantity Selector -->
+          <div class="relative flex items-center max-w-[8rem]">
+            <button type="button" id="decrement-button" data-input-counter-decrement="quantity-input" class="quantity-button">
+              <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 2">
+                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 1h16"/>
+              </svg>
+            </button>
+            <%= f.number_field :quantity,
+                  value: 1,
+                  min: 1,
+                  id: "quantity-input",
+                  data: { input_counter: true },
+                  class: "text-center text-sm block w-full" %>
+            <button type="button" id="increment-button" data-input-counter-increment="quantity-input" class="quantity-button">
+              <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 18">
+                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 1v16M1 9h16"/>
+              </svg>
+            </button>
+          </div>
+        </div>
+        <div>
+          <%= f.submit "Add to Bag", id: "add-to-bag-button", class: "px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 focus:ring-4 focus:ring-blue-300" %>
+        </div>
+      <% end %>
+
+      <!-- Product Features/Benefits -->
+        <div class="space-y-2">
+          <ul class="list-disc list-inside text-gray-600 space-y-1 text-sm">
+            <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit</li>
+            <li>Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua</li>
+            <li>Ut enim ad minim veniam, quis nostrud exercitation</li>
+            <li>Duis aute irure dolor in reprehenderit in voluptate velit esse</li>
+            <li>Excepteur sint occaecat cupidatat non proident</li>
+            <li>Sunt in culpa qui officia deserunt mollit anim id est laborum</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+</div>
+<!-- Element #2 in Stack - Supplementary Images & Cross-Sells -->
+<div id="supplementary-image-container">
+  <!-- Additional Product Images -->
+  <div class="mb-12">
+    <div class="grid grid-cols-2 gap-4 max-w-lg mx-auto">
+      <div class="bg-gray-200 h-32 rounded-lg flex items-center justify-center">
+        <span class="text-gray-500 text-sm">Image 2</span>
+      </div>
+      <div class="bg-gray-200 h-32 rounded-lg flex items-center justify-center">
+        <span class="text-gray-500 text-sm">Image 3</span>
+      </div>
+      <div class="bg-gray-200 h-32 rounded-lg flex items-center justify-center">
+        <span class="text-gray-500 text-sm">Image 4</span>
+      </div>
+      <div class="bg-gray-200 h-32 rounded-lg flex items-center justify-center">
+        <span class="text-gray-500 text-sm">Image 5</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Cross-sell Section -->
+  <div id="cross-sell-container" class="border-t pt-8">
+    <h2 class="text-2xl font-light font-serif mb-8 text-center" style="font-family: 'Playfair Display', serif;">you may also like</h2>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+      <!-- Cross-sell Product 1 -->
+      <div class="text-center">
+        <div class="bg-gray-200 h-48 rounded-lg mb-3 flex items-center justify-center">
+          <span class="text-gray-500">Product Image</span>
+        </div>
+        <h3 class="font-medium text-gray-800 mb-1">rose</h3>
+        <p class="text-gray-600">$XX.XX</p>
+      </div>
+
+      <!-- Cross-sell Product 2 -->
+      <div class="text-center">
+        <div class="bg-gray-200 h-48 rounded-lg mb-3 flex items-center justify-center">
+          <span class="text-gray-500">Product Image</span>
+        </div>
+        <h3 class="font-medium text-gray-800 mb-1">roman chamomile</h3>
+        <p class="text-gray-600">$XX.XX</p>
+      </div>
+
+      <!-- Cross-sell Product 3 -->
+      <div class="text-center">
+        <div class="bg-gray-200 h-48 rounded-lg mb-3 flex items-center justify-center">
+          <span class="text-gray-500">Product Image</span>
+        </div>
+        <h3 class="font-medium text-gray-800 mb-1">helichrysum</h3>
+        <p class="text-gray-600">$XX.XX</p>
+      </div>
+    </div>
+  </div>
+</div>
