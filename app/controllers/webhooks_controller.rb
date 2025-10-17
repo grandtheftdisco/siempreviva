@@ -40,8 +40,6 @@ class WebhooksController < ApplicationController
     checkout_session = event.data.object
 
     case event.type
-    when 'checkout.session.completed'
-      handle_checkout_session_completed(checkout_session)
     when 'checkout.session.async_payment_succeeded'
       handle_async_payment_succeeded(checkout_session)
     when 'checkout.session.async_payment_failed'
@@ -95,57 +93,6 @@ class WebhooksController < ApplicationController
     elsif !event_already_in_cache
       Rails.cache.write("stripe_event:#{event.id}", DateTime.now, expires_in: 7.days)
       Rails.logger.info "#-#-# Event #{event.id} has been cached. #-#-#"
-    end
-  end
-
-  def handle_checkout_session_completed(checkout_session)
-    payment_intent, local_checkout_record, cart = set_up_transaction_info(checkout_session)
-
-    if checkout_session.payment_status == 'paid' || checkout_session.payment_status == 'no_payment_required'
-      # Check if we've already processed this payment (idempotency check)
-      if local_checkout_record.status == 'awaiting shipment'
-        Rails.logger.info "🔄 Payment already processed for checkout session #{checkout_session.id} - skipping"
-        return
-      end
-      
-      begin
-        PaymentHandlingService::HandleSuccessfulPayment.call(
-          checkout_session: checkout_session,
-          cart: cart
-        )
-      rescue StandardError => e
-        Rails.logger.error "\e[101;1mError in PaymentHandlingService: #{e.message}\e[0m"
-        Rails.logger.error e.backtrace.join("\n")
-      end
-    elsif checkout_session.payment_status == 'unpaid'
-      case payment_intent.status
-      when 'succeeded'
-        # >> No, it's not likely this combo (CS with 'unpaid' payment_status
-        #    + PI with 'succeeded' status), however, the goal is handle all
-        #    possible scenarios, in case events hit the server out of order
-        Rails.logger.info "---Payment Intent #{payment_intent.id} complete!---"
-        PaymentHandlingService::HandleSuccessfulPayment.call(
-          checkout_session: checkout_session,
-          cart: cart
-        )
-      when 'processing'
-        Rails.logger.info "---Payment Intent #{payment_intent.id} for Checkout Session #{checkout_session.id} PROCESSING...---"
-
-        local_checkout_record.update(
-          status: 'payment_processing',
-          payment_intent_id: payment_intent.id
-        )
-      when 'requires_payment_method', 'requires_action', 'requires_confirmation'
-        Rails.logger.warn "\e[101;1m---Payment Issue! #{payment_intent.id}has status of #{payment_intent.status}---\e[0m"
-
-        local_checkout_record.update(status: payment_intent.status)
-        AdminMailer.payment_issue_notification(checkout_session, payment_intent)
-      else
-        Rails.logger.warn "\e[101;1m---Unexpected Payment Intent Status---\e[0m"
-        Rails.logger.warn "\e[101;1m---Payment Intent #{payment_intent.id} has a status of #{payment_intent.status}---\e[0m"
-
-        AdminMailer.payment_issue_notification(checkout_session, payment_intent)
-      end
     end
   end
 
