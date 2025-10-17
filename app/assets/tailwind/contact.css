@@ -1,0 +1,38 @@
+/* Contact Page Stylesheet */
+/* Contains styles specific to the contact page and contact form */
+/* Inherits base form styles from forms.css with customizations */
+
+/* ===== CONTACT FORM CONTAINER ENHANCEMENTS ===== */
+
+.contact-page form {
+  background-color: #ffffff;
+  border: 1px solid #d9cee0;
+  box-shadow: 0 4px 6px -1px rgba(103, 65, 116, 0.08), 
+              0 2px 4px -1px rgba(103, 65, 116, 0.04);
+}
+
+/* ===== CONTACT FORM INPUT OVERRIDES ===== */
+
+/* Input fields */
+.contact-page form input[type="text"],
+.contact-page form input[type="email"],
+.contact-page form input[type="password"],
+.contact-page form input[type="number"],
+.contact-page form textarea {
+  background-color: #faf8fb;
+  border: 1px solid #e6d3ec;
+  border-radius: 8px;
+  transition: all 0.2s ease-in-out;
+}
+
+/* Enhanced focus state for engagement */
+.contact-page form input[type="text"]:focus,
+.contact-page form input[type="email"]:focus,
+.contact-page form input[type="password"]:focus,
+.contact-page form input[type="number"]:focus,
+.contact-page form textarea:focus {
+  background-color: #ffffff;
+  border-color: #c5aace;
+  box-shadow: 0 0 0 3px rgba(197, 170, 206, 0.15);
+}
+
