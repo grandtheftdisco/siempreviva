@@ -1,14 +1,14 @@
 <!-- Mobile Header - Breadcrumb & Title (visible on mobile/tablet, hidden on lg+) -->
 <div class="lg:hidden mb-6">
   <!-- Breadcrumb Navigation -->
-  <nav class="breadcrumb-nav mb-4" style="font-family: 'Playfair Display', serif; font-size: 0.875rem; color: #6c757d;">
+  <nav class="breadcrumb-nav mb-4 hidden" style="font-family: 'Playfair Display', serif; font-size: 0.875rem; color: #6c757d;">
     <%= link_to "essential oils", products_path, class: "breadcrumb-link" %>
     <span class="breadcrumb-separator mx-2">></span>
     <span class="current-page"><%= format_product_name(@product.name) %></span>
   </nav>
 
   <!-- Page Title -->
-  <h1 class="product-show-title"><%= format_product_name(@product.name) %></h1>
+  <h1 class="product-show-title hidden"><%= format_product_name(@product.name) %></h1>
 </div>
 
 <!-- Element #1 in Stack - Product Content Grid -->
@@ -31,7 +31,7 @@
   <div class="flex flex-col justify-start">
     <div>
       <!-- Desktop Breadcrumb Navigation (hidden on mobile/tablet, visible on lg+) -->
-      <nav class="breadcrumb-nav mb-2 lg:block" style="font-family: 'Playfair Display', serif; font-size: 0.875rem; color: #6c757d;">
+      <nav class="breadcrumb-nav mb-2 md:hidden lg:block" style="font-family: 'Playfair Display', serif; font-size: 0.875rem; color: #6c757d;">
         <%= link_to "essential oils", products_path, class: "breadcrumb-link" %>
         <span class="breadcrumb-separator mx-2">></span>
         <span class="current-page"><%= format_product_name(@product.name) %></span>
@@ -39,7 +39,7 @@
 
       <div id="key-product-info" class="mb-5 lg:mb-10">
         <!-- Desktop Page Title (hidden on mobile/tablet, visible on lg+) -->
-        <h1 class="product-show-title -mt-4lg:block"><%= format_product_name(@product.name) %></h1>
+        <h1 class="product-show-title md:hidden lg:block"><%= format_product_name(@product.name) %></h1>
 
         <!-- Price -->
         <div class="text-2xl text-gray-800 mb-5">
@@ -104,15 +104,14 @@
   </div>
 </div>
 
-<div id="supplementary-image-container">
-  <!-- Cross-sell Section -->
-  <div id="cross-sell-container" class="border-t pt-8">
+<!-- Cross-sell Section -->
+<div id="cross-sell-container" class="mt-12 pt-8 border-t mx-4 lg:mx-8">
     <h2 class="text-2xl font-light font-serif mb-8 text-center" style="font-family: 'Playfair Display', serif;">you may also like</h2>
 
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+    <div class="flex flex-col md:flex-row justify-center items-center md:items-start gap-8 lg:gap-12">
       <!-- Cross-sell Product 1 -->
-      <div class="text-center">
-        <div class="bg-gray-200 h-48 rounded-lg mb-3 flex items-center justify-center">
+      <div class="text-center flex-shrink-0">
+        <div class="bg-gray-200 h-40 w-80 rounded-lg mb-3 flex items-center justify-center">
           <span class="text-gray-500">Product Image</span>
         </div>
         <h3 class="font-medium text-gray-800 mb-1">rose</h3>
@@ -120,8 +119,8 @@
       </div>
 
       <!-- Cross-sell Product 2 -->
-      <div class="text-center">
-        <div class="bg-gray-200 h-48 rounded-lg mb-3 flex items-center justify-center">
+      <div class="text-center flex-shrink-0">
+        <div class="bg-gray-200 h-40 w-80 rounded-lg mb-3 flex items-center justify-center">
           <span class="text-gray-500">Product Image</span>
         </div>
         <h3 class="font-medium text-gray-800 mb-1">roman chamomile</h3>
@@ -129,13 +128,12 @@
       </div>
 
       <!-- Cross-sell Product 3 -->
-      <div class="text-center">
-        <div class="bg-gray-200 h-48 rounded-lg mb-3 flex items-center justify-center">
+      <div class="text-center flex-shrink-0">
+        <div class="bg-gray-200 h-40 w-80 rounded-lg mb-3 flex items-center justify-center">
           <span class="text-gray-500">Product Image</span>
         </div>
         <h3 class="font-medium text-gray-800 mb-1">helichrysum</h3>
         <p class="text-gray-600">$XX.XX</p>
       </div>
     </div>
-  </div>
 </div>
