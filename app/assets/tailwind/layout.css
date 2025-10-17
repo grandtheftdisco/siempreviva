@@ -104,7 +104,7 @@ a:not(.logo-link):not(.breadcrumb-link):not(.ais-Hits-item a):not(.remove-button
 
 body, html {
   font-family: 'Raleway', sans-serif;
-  background-color: #f0e8f5 !important;
+  background-color: #faf9fb !important;
   min-height: 100vh;
 }
 
@@ -198,12 +198,10 @@ main {
   text-align: center;
 }
 
-/* Responsive page title */
-@media (max-width: 768px) {
-  .page-title {
-    text-align: left;
-    font-size: 1.5rem;
-  }
+h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.5rem;
+  margin: 1rem;
 }
 
 .hidden {
@@ -486,9 +484,8 @@ header {
 .social-links {
   margin-top: 1.5rem;
   margin-bottom: 1.5rem;
+  padding: 3rem;
   text-align: center;
-  padding-top: 1.5rem;
-  border-top: 1px solid #d9cee0;
 }
 
 .social-links p {
@@ -499,6 +496,7 @@ header {
 }
 
 .social-icons {
+  padding-top: 1rem;
   display: flex;
   justify-content: center;
   gap: 1.5rem;

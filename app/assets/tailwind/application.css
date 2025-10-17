@@ -45,6 +45,7 @@
 @import "./search.css";        /* Search functionality and Algolia components */
 @import "./cart.css";          /* Cart dropdown and cart page styles */
 @import "./forms.css";         /* Form inputs, labels, validation styles */
+@import "./contact.css";       /* Contact page specific form overrides */
 @import "./checkouts.css";     /* Checkout success page styles */
 
 /* Additional stylesheets can be imported here */

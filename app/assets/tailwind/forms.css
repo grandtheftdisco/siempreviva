@@ -95,7 +95,7 @@ form textarea {
   width: 100%;
   padding: 10px;
   border: 1px solid #d9cee0;
-  border-radius: 4px;
+  border-radius: 10px;
   background-color: #f0e8f5; /* sv-purple-100 */
   @apply font-sans;
   color: #2c3e50; /* sv-gray-800 */
@@ -140,7 +140,7 @@ form button[type="submit"]:hover {
 }
 
 .submit-btn {
-  margin: 12px 0px;
+  margin: 12px auto;
 }
 
 /* ===== FORM INPUT STATES ===== */
