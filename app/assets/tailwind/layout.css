@@ -23,13 +23,13 @@
 
 /* ===== GENERAL LINK HOVER STYLES ===== */
 /* Apply consistent hover behavior to all links, excluding specific components */
-a:not(.logo-link):not(.breadcrumb-link):not(.ais-Hits-item a):not(.remove-button-small):not(.social-icon) {
+a:not(.logo-link):not(.breadcrumb-link):not(.ais-Hits-item a):not(.remove-button-small):not(.social-icon):not(.shop-products-btn) {
   color: var(--dark-text);
   text-decoration: none;
   transition: color 0.2s ease;
 }
 
-a:not(.logo-link):not(.breadcrumb-link):not(.ais-Hits-item a):not(.remove-button-small):not(.social-icon):hover {
+a:not(.logo-link):not(.breadcrumb-link):not(.ais-Hits-item a):not(.remove-button-small):not(.social-icon):not(.shop-products-btn):hover {
   color: var(--primary-purple);
   cursor: pointer;
 }
@@ -130,13 +130,17 @@ h1 {
 main {
   padding-left: 1rem;
   padding-right: 1rem;
-  padding-top: 3rem; /* Increased base padding for better spacing */
+  padding-top: 3rem; /* Base padding for mobile */
 }
 
-/* Add extra padding when flash messages are present - only on desktop/large tablet */
+/* Desktop/large tablet: Increase main padding for better spacing */
 @media (min-width: 768px) {
+  main {
+    padding-top: 7rem; /* Consistent spacing for desktop */
+  }
+  
   main.has-flash-messages {
-    padding-top: 5rem; /* Increased padding when flash messages exist */
+    padding-top: 8rem; /* Additional padding when flash messages exist */
   }
 }
 
@@ -184,11 +188,14 @@ main {
 }
 
 .page-title {
-  color: var(--primary-purple);
+  font-family: 'Playfair Display', serif;
+  font-size: 2.5rem;
+  font-weight: 300;
+  color: #2c3e50;
+  margin-bottom: 0.5rem;
+  letter-spacing: 0.05em;
   padding: 1rem; /* Consistent padding across all screen sizes */
   text-align: center;
-  font-size: 2rem;
-  font-weight: bold;
 }
 
 /* Responsive page title */

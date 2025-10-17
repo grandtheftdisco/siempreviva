@@ -1,9 +1,94 @@
 <% case @session.status %>
 <% when 'complete' %>
-  <p>Thanks for your order! We'll get started on it right away.</p>
+  <div class="post-checkout-container">
+    <div class="post-checkout-info">
+      <!-- Thank you message -->
+      <div>
+        <h1>
+          Thanks for shopping with Siempreviva!
+        </h1>
+        <p class="subtitle">
+          we'll get started on your order right away.
+        </p>
+      </div>
+
+      <div>
+        <%= image_tag 'helichrysum-landscape.jpg', alt: 'field of flowers', class: 'formatted-image' %>
+      </div>
+
+      <!-- Order details -->
+      <div class="order-details pt-5">
+        <p class="order-label">
+          your order number is
+        </p>
+        <p class="order-number">
+          <% if @order.present? %>
+            #<%= @order.id %>
+          <% else %>
+            <!-- Order not available - check logs for HandleSuccessfulPayment errors -->
+            Order number pending
+          <% end %>
+        </p>
+      </div>
+
+      <!-- Receipt notice -->
+      <p class="receipt-notice">
+        (please check your email for your receipt)
+      </p>
+    </div>
+  </div>
 <% when 'open' %>
-  <h1>Payment Status: <%= @session.status %></h1>
-  <p>Your payment is being processed. We'll email you when it's complete!</p>
+  <div class="post-checkout-container">
+    <div class="post-checkout-info">
+      <div>
+        <h1>
+          Your payment is<br>
+          being processed!
+        </h1>
+        <p class="subtitle">
+          we'll email you when it's complete.
+        </p>
+      </div>
+
+      <div>
+        <%= image_tag 'lavender.jpg', alt: 'field of lavender', class: 'formatted-image' %>
+      </div>
+    </div>
+  </div>
 <% when 'expired' %>
-  <p>The session has expired. Please try checking out again.</p>
+  <div class="post-checkout-container">
+    <div class="post-checkout-info">
+      <div>
+        <h1>
+          Your session<br>
+          has expired.
+        </h1>
+        <p class="subtitle">
+          please try checking out again.
+        </p>
+      </div>
+
+      <div>
+        <%= image_tag 'lavender-2.jpg', alt: 'field of lavender', class: 'formatted-image' %>
+      </div>
+    </div>
+  </div>
+<% else %>
+  <div class="post-checkout-container">
+    <div class="post-checkout-info">
+      <div>
+        <h1>
+          Something<br>
+          went wrong.
+        </h1>
+        <p class="subtitle">
+          please <%= link_to "contact us", contact_path %> for more info.
+        </p>
+      </div>
+
+      <div>
+        <%= image_tag 'floral-dress.jpg', alt: 'woman harvesting flowers', class: 'formatted-image' %>
+      </div>
+    </div>
+  </div>
 <% end %>
