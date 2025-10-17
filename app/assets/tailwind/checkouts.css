@@ -1,0 +1,154 @@
+/* ===== CHECKOUT FORM PAGE STYLES ===== */
+
+/* Override body background for checkout pages */
+body:has(.checkouts.new) {
+  background-color: transparent !important;
+}
+
+/* If the above doesn't work due to browser support, use class-based approach */
+.checkout-new-page {
+  background-color: transparent !important;
+  min-height: 100vh;
+}
+
+/* Target Stripe's embedded checkout container and override background */
+#checkout-element {
+  background-color: transparent !important;
+}
+
+/* Target Stripe's internal iframe and container elements */
+#checkout-element iframe,
+#checkout-element div,
+#checkout-element [class*="HeightObserverProvider"],
+#checkout-element [class*="App-Background"],
+#checkout-element [class*="container"] {
+  background-color: transparent !important;
+}
+
+/* More specific targeting of Stripe's nested divs */
+div[style*="background-color: rgb(242, 237, 247)"],
+div[style*="background-color: rgb(247, 242, 237)"],
+div[style*="background-color: rgba(242, 237, 247"],
+div[style*="background-color: rgba(247, 242, 237"] {
+  background-color: transparent !important;
+}
+
+/* ===== CHECKOUT SUCCESS PAGE STYLES ===== */
+
+/* Post checkout container */
+.post-checkout-container {
+  background-color: transparent;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 2rem 1rem 2rem 1rem;
+  font-family: 'Playfair Display', serif;
+  min-height: fit-content;
+}
+
+.post-checkout-info {
+  max-width: 28rem; /* max-w-md equivalent */
+  width: 100%;
+  text-align: center;
+  margin-top: 0;
+}
+
+/* Typography styles */
+.post-checkout-container h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: 2.25rem; /* text-4xl equivalent */
+  font-weight: 700;
+  color: #000000;
+  line-height: 1.2;
+  margin-bottom: 0.75rem;
+  margin-top: 0;
+}
+
+.post-checkout-container .subtitle {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.125rem; /* text-lg equivalent */
+  color: #000000;
+  font-style: italic;
+  margin-bottom: 1.5rem;
+  margin-top: 0;
+}
+
+/* Image placeholder */
+.post-checkout-container .image-placeholder {
+  background-color: #d1d5db; /* gray-300 equivalent */
+  border-radius: 0.5rem;
+  height: 12rem; /* h-48 equivalent */
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1.5rem;
+}
+
+.post-checkout-container .image-placeholder span {
+  color: #6b7280; /* gray-500 equivalent */
+  font-size: 0.875rem;
+}
+
+/* Order details */
+.post-checkout-container .order-details {
+  margin-bottom: 0.75rem;
+}
+
+.post-checkout-container .order-label {
+  font-family: 'Playfair Display', serif;
+  color: #000000;
+  font-weight: 500;
+  margin-bottom: 0.25rem;
+  margin-top: 0;
+}
+
+.post-checkout-container .order-number {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.5rem; /* text-2xl equivalent */
+  font-weight: 700;
+  color: #000000;
+  margin-bottom: 0.75rem;
+  margin-top: 0;
+}
+
+/* Receipt notice */
+.post-checkout-container .receipt-notice {
+  font-family: 'Playfair Display', serif;
+  font-size: 0.875rem;
+  color: #000000;
+  font-style: italic;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+/* Responsive adjustments */
+@media (max-height: 700px) {
+  .post-checkout-info {
+    gap: 1.5rem;
+  }
+  
+  .post-checkout-container h1 {
+    margin-bottom: 0.75rem;
+  }
+  
+  .post-checkout-container .subtitle {
+    margin-bottom: 1.5rem;
+  }
+  
+  .post-checkout-container .image-placeholder {
+    height: 10rem;
+    margin-bottom: 1.5rem;
+  }
+}
+
+/* Image formatting utility */
+.formatted-image {
+  filter: saturate(0.7);
+  border-radius: 1.5rem; /* rounded-3xl equivalent */
+  transition: filter 0.2s ease-in-out;
+}
+
+.formatted-image:hover {
+  filter: saturate(1);
+}

@@ -1,8 +1,12 @@
 module PaymentHandlingService
   class HandleSuccessfulPayment < ApplicationService
     def self.call(checkout_session:, cart:)
-      add_order_to_database(checkout_session)
-      update_checkout_in_database(checkout_session)
+      # ensures procedures happen atomically - either ALL succeed or ALL get rolled back if one fails
+      ActiveRecord::Base.transaction do
+        add_order_to_database(checkout_session)
+        update_checkout_in_database(checkout_session)
+        clear_cart_items(cart)
+      end
     end
 
     private
@@ -15,13 +19,17 @@ module PaymentHandlingService
         amount: checkout_session.amount_total,
         status: checkout_session.status
       )
-      OrderMailer.received(@order).deliver_later
+      OrderMailer.received(@order).deliver_now
     end
 
     def self.update_checkout_in_database(checkout_session)
       local_checkout_record = Checkout.find_by(stripe_checkout_session_id: checkout_session.id)
       local_checkout_record.update(status: "awaiting shipment",
                                    payment_intent_id: checkout_session.payment_intent)
+    end
+
+    def self.clear_cart_items(cart)
+      cart.soft_delete_records
     end
   end
 end

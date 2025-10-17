@@ -14,7 +14,7 @@ class CartItemsController < ApplicationController
     @cart.update(total_amount: CartService::CalculateCart.call(cart: @cart))
 
     respond_to do |format|
-      format.html { redirect_to cart_path, notice: 'Item added to bag!' }
+      format.html { redirect_to products_path, notice: 'Item added to bag!' }
       format.json { render :show, status: :created, location: @new_cart_item }
     end
   rescue ActiveRecord::RecordInvalid
