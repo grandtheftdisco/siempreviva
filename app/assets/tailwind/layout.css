@@ -206,10 +206,6 @@ main {
   }
 }
 
-.hidden {
-  display: none;
-}
-
 /* ===== HEADER & NAVIGATION ===== */
 
 /* Force transparent backgrounds for navigation elements (desktop/inline only) */
