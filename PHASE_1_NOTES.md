@@ -150,13 +150,19 @@ Screenshots saved in folder for reference to ensure:
 ## Testing Log
 
 ### Cart Views
-- [ ] Cart dropdown renders correctly
-- [ ] Cart page renders correctly
-- [ ] Add to cart buttons work
-- [ ] Update cart button works
-- [ ] Remove item buttons work
-- [ ] Checkout button works
-- [ ] Quantity selectors work
+- [x] Cart dropdown renders correctly
+- [x] Cart page renders correctly
+- [x] Add to cart buttons work
+- [x] Update cart button works
+- [x] Remove item buttons work
+- [x] Checkout button works
+- [x] Quantity selectors work
+
+**Testing Notes:**
+- All cart functionality working as expected
+- Improved checkout button UX: swapped greens so hover brightens instead of darkens
+- Cart dropdown and /my-bag page both tested successfully
+- No visual regressions detected
 
 ### Checkout Views
 - [ ] Checkout form renders correctly
