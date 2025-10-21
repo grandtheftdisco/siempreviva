@@ -1,18 +1,20 @@
-<!-- Mobile Header - Breadcrumb & Title (visible on mobile/tablet, hidden on lg+) -->
-<div class="block lg:hidden mb-6">
-  <!-- Breadcrumb Navigation -->
-  <nav class="breadcrumb-nav mb-4" style="font-family: 'Playfair Display', serif; font-size: 0.875rem; color: #6c757d;">
-    <%= link_to "essential oils", products_path, class: "breadcrumb-link" %>
-    <span class="breadcrumb-separator mx-2">></span>
-    <span class="current-page"><%= format_product_name(@product.name) %></span>
-  </nav>
+<!-- Container for sticky button boundary (mobile/tablet only) -->
+<div class="lg:contents">
+  <!-- Mobile Header - Breadcrumb & Title (visible on mobile/tablet, hidden on lg+) -->
+  <div class="block lg:hidden mb-6">
+    <!-- Breadcrumb Navigation -->
+    <nav class="breadcrumb-nav mb-4" style="font-family: 'Playfair Display', serif; font-size: 0.875rem; color: #6c757d;">
+      <%= link_to "essential oils", products_path, class: "breadcrumb-link" %>
+      <span class="breadcrumb-separator mx-2">></span>
+      <span class="current-page"><%= format_product_name(@product.name) %></span>
+    </nav>
 
-  <!-- Page Title -->
-  <h1 class="product-show-title"><%= format_product_name(@product.name) %></h1>
-</div>
+    <!-- Page Title -->
+    <h1 class="product-show-title"><%= format_product_name(@product.name) %></h1>
+  </div>
 
-<!-- Element #1 in Stack - Product Content Grid -->
-<div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-12">
+  <!-- Element #1 in Stack - Product Content Grid -->
+  <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-12">
 
   <!-- Left Column - Product Image -->
   <div class="flex items-stretch">
@@ -55,8 +57,8 @@
       </div>
     </div>
 
-    <!-- Add to Cart Button -->
-    <%= form_for :cart_item, url: cart_items_path, method: :post, class: "space-y-4 !w-full !mx-0", style: "width: auto; margin: 0; padding: 0; max-width: none;" do |f| %>
+    <!-- Desktop Add to Cart Form (hidden on mobile/tablet) -->
+    <%= form_for :cart_item, url: cart_items_path, method: :post, class: "hidden lg:block space-y-4 !w-full !mx-0", style: "width: auto; margin: 0; padding: 0; max-width: none;" do |f| %>
       <div class="flex items-center gap-3 justify-start w-full !ml-0">
         <%= hidden_field_tag 'cart_item[stripe_product_id]', @product.id, class: '!m-0 !mb-0' %>
 
@@ -98,6 +100,19 @@
         <li>Sunt in culpa qui officia deserunt mollit anim id est laborum</li>
       </ul>
     </div>
+  </div>
+</div>
+
+  <!-- Fixed Floating Add to Bag for Mobile/Tablet (visible only on mobile/tablet, hidden on lg+) -->
+  <div class="lg:hidden sticky bottom-10 left-0 right-0 bg-transparent backdrop-blur-xs border-t border-gray-200 shadow-lg p-2 m-10 z-50 pointer-events-none">
+    <%= form_for :cart_item, url: cart_items_path, method: :post, class: "flex flex-col items-center gap-4 pointer-events-auto !w-full !max-w-none !p-0 !m-0" do |f| %>
+      <%= hidden_field_tag 'cart_item[stripe_product_id]', @product.id %>
+
+      <!-- Quantity Selector (hidden on mobile/tablet for now) -->
+
+      <!-- Add to Bag Button (centered and full width on mobile) -->
+      <%= f.submit "Add to Bag", class: "w-full max-w-md px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 focus:ring-4 focus:ring-blue-300 font-medium text-lg !mb-0" %>
+    <% end %>
   </div>
 </div>
 
