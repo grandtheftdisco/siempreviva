@@ -1,8 +1,40 @@
 /* ===== TAILWIND AND MODULAR IMPORTS ===== */
 @import "tailwindcss";
 
-/* Import SCSS components file (contains variables and mixins) */
-@import "./components.scss";   /* UI components, buttons, forms, cards, utilities with SCSS variables */
+/* ===== TAILWIND V4 CUSTOM THEME ===== */
+/* Define custom sv-colors using Tailwind v4 @theme directive */
+@theme {
+  /* Purple shades */
+  --color-sv-purple-100: #f0e8f5;
+  --color-sv-purple-200: #e6d3ec;
+  --color-sv-purple-400: #c5aace;
+  --color-sv-purple-700: #674174;
+
+  /* Green shades */
+  --color-sv-green-200: #bdcea9;
+  --color-sv-green-400: #8ba170;
+  --color-sv-green-600: #698b3f;
+  --color-sv-green-700: #4f5e3c;
+
+  /* Pink shades */
+  --color-sv-pink-200: #f7c8d8;
+  --color-sv-pink-400: #f4a5c2;
+
+  /* Gray/Neutral shades */
+  --color-sv-gray-100: #f8f9fa;
+  --color-sv-gray-400: #adb5bd;
+  --color-sv-gray-500: #6c757d;
+  --color-sv-gray-800: #2c3e50;
+
+  /* Semantic/Action colors */
+  --color-sv-success: #5a8664;
+  --color-sv-warning: #c19550;
+  --color-sv-danger: #b9626b;
+  --color-sv-info: #6b9fa8;
+}
+
+/* Import components file (pure CSS with Tailwind @apply) */
+@import "./components.css";   /* UI components, buttons, forms, cards, utilities using sv-colors */
 
 /* Import CSS-only modular stylesheets */
 @import "./layout.css";        /* Header, navigation, responsive layout */
