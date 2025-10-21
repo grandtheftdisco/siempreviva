@@ -28,7 +28,7 @@
 /* Green button - filled */
 .btn-green {
   @apply px-6 py-3 rounded-full no-underline text-center font-medium cursor-pointer inline-block transition-all duration-200 border-2 text-white;
-  @apply bg-sv-green-600 border-sv-green-600 hover:bg-sv-green-700 hover:border-sv-green-700;
+  @apply bg-sv-green-700 border-sv-green-700 hover:bg-sv-green-600 hover:border-sv-green-600;
   font-family: 'Raleway', sans-serif;
 }
 
@@ -91,14 +91,14 @@
   display: inline-block;
   transition: all 0.2s ease;
   border: 2px solid transparent;
-  background: #698b3f; /* sv-green-600 */
+  background: #4f5e3c; /* sv-green-700 */
   color: #ffffff;
-  border-color: #698b3f; /* sv-green-600 */
+  border-color: #4f5e3c; /* sv-green-700 */
 }
 
 .checkout-btn:hover {
-  background: #4f5e3c; /* sv-green-700 */
-  border-color: #4f5e3c; /* sv-green-700 */
+  background: #698b3f; /* sv-green-600 - brighter on hover */
+  border-color: #698b3f; /* sv-green-600 */
   color: #ffffff;
 }
 
@@ -114,15 +114,15 @@
   width: 100%;
   transition: all 0.2s ease;
   border: 2px solid transparent;
-  background: #698b3f; /* sv-green-600 */
+  background: #4f5e3c; /* sv-green-700 */
   color: #ffffff !important;
-  border-color: #698b3f; /* sv-green-600 */
+  border-color: #4f5e3c; /* sv-green-700 */
   font-size: 0.875rem;
 }
 
 .cart-checkout-btn:hover {
-  background: #63754c; /* Slightly darker green */
-  border-color: #63754c;
+  background: #698b3f; /* sv-green-600 - brighter on hover */
+  border-color: #698b3f;
   color: #ffffff !important;
 }
 
