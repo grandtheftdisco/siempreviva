@@ -30,14 +30,21 @@ Refactoring CSS architecture to use Tailwind v4 `@theme` directive with componen
 
 ---
 
-### 🎯 Session 2: Product & Marketing Views (NEXT)
-**Status:** Ready to start
+### 🎯 Session 2: Product & Marketing Views (IN PROGRESS)
+**Status:** Branch rebased, ready to code
+**Branch:** `amanda/marketing-views` (rebased on main with Session 1 foundation)
 **Focus:** Style product/marketing pages using new component classes
 
+**Completed:**
+- ✅ Session 1 PR merged to main (Oct 22, 2025)
+- ✅ Rebased `amanda/marketing-views` on updated main
+- ✅ Resolved conflicts in forms.css
+- ✅ Verified Session 1 foundation present (@theme, component classes)
+
 **Next Steps:**
-1. Rebase `amanda/marketing-views` on updated main
-2. Use new component classes (.btn-primary, .input-text, etc.)
-3. Just-in-time refactor products.css as needed
+1. Use new component classes (.btn-primary, .input-text, etc.)
+2. Just-in-time refactor products.css as needed
+3. Complete product/marketing view styling
 
 **Details:** [`sessions/session_2_product_views.md`](./sessions/session_2_product_views.md)
 
