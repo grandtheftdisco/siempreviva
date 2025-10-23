@@ -8,42 +8,42 @@
 /* Base button class */
 .btn-base {
   @apply px-6 py-3 rounded-full no-underline text-center font-medium cursor-pointer inline-block transition-all duration-200 border-2 border-transparent;
-  font-family: 'Raleway', sans-serif;
+  @apply font-sans;
 }
 
 /* Primary button - purple filled */
 .btn-primary {
   @apply px-6 py-3 rounded-full no-underline text-center font-medium cursor-pointer inline-block transition-all duration-200 border-2 text-white;
   @apply bg-sv-purple-400 border-sv-purple-400 hover:bg-sv-purple-700 hover:border-sv-purple-700;
-  font-family: 'Raleway', sans-serif;
+  @apply font-sans;
 }
 
 /* Secondary button - green outline */
 .btn-secondary {
   @apply px-6 py-3 rounded-full no-underline text-center font-medium cursor-pointer inline-block transition-all duration-200 border-2 bg-transparent;
   @apply text-sv-purple-400 border-sv-green-600 hover:bg-sv-green-700 hover:text-white hover:border-sv-green-700;
-  font-family: 'Raleway', sans-serif;
+  @apply font-sans;
 }
 
 /* Green button - filled */
 .btn-green {
   @apply px-6 py-3 rounded-full no-underline text-center font-medium cursor-pointer inline-block transition-all duration-200 border-2 text-white;
   @apply bg-sv-green-700 border-sv-green-700 hover:bg-sv-green-600 hover:border-sv-green-600;
-  font-family: 'Raleway', sans-serif;
+  @apply font-sans;
 }
 
 /* Light green button */
 .btn-green-light {
   @apply px-6 py-3 rounded-full no-underline text-center font-medium cursor-pointer inline-block transition-all duration-200 border-2;
   @apply bg-sv-green-200 text-sv-green-700 border-sv-green-200 hover:bg-sv-green-400 hover:border-sv-green-400;
-  font-family: 'Raleway', sans-serif;
+  @apply font-sans;
 }
 
 /* Danger button - red filled */
 .btn-danger {
   @apply px-6 py-3 rounded-full no-underline text-center font-medium cursor-pointer inline-block transition-all duration-200 border-2 text-white;
   @apply bg-sv-danger border-sv-danger hover:bg-sv-danger/90 hover:border-sv-danger/90;
-  font-family: 'Raleway', sans-serif;
+  @apply font-sans;
 }
 
 /* Button size variants */
@@ -63,7 +63,7 @@
   border-radius: 9999px;
   text-decoration: none;
   text-align: center;
-  font-family: 'Raleway', sans-serif;
+  @apply font-sans;
   font-weight: 500;
   cursor: pointer;
   display: inline-block;
@@ -85,7 +85,7 @@
   border-radius: 9999px;
   text-decoration: none;
   text-align: center;
-  font-family: 'Raleway', sans-serif;
+  @apply font-sans;
   font-weight: 500;
   cursor: pointer;
   display: inline-block;
@@ -107,7 +107,7 @@
   border-radius: 9999px;
   text-decoration: none;
   text-align: center;
-  font-family: 'Raleway', sans-serif;
+  @apply font-sans;
   font-weight: 500;
   cursor: pointer;
   display: block;
@@ -132,7 +132,7 @@
   border-radius: 9999px;
   text-decoration: none;
   text-align: center;
-  font-family: 'Raleway', sans-serif;
+  @apply font-sans;
   font-weight: 500;
   cursor: pointer;
   display: inline-block;
@@ -154,7 +154,7 @@
   border-radius: 9999px;
   text-decoration: none;
   text-align: center;
-  font-family: 'Raleway', sans-serif;
+  @apply font-sans;
   font-weight: 500;
   cursor: pointer;
   display: inline-block;
@@ -217,7 +217,7 @@ div.flash-warning {
   padding: 0.75rem 1rem;
   border: 1px solid #d1d5db;
   border-radius: 0.375rem;
-  font-family: 'Raleway', sans-serif;
+  @apply font-sans;
   transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 }
 
@@ -245,14 +245,14 @@ form input.form-input-small,
   margin-bottom: 0.5rem;
   font-weight: 500;
   color: #2c3e50; /* sv-gray-800 */
-  font-family: 'Raleway', sans-serif;
+  @apply font-sans;
 }
 
 .form-input-error {
   padding: 0.75rem 1rem;
   border: 1px solid #b9626b; /* sv-danger */
   border-radius: 0.375rem;
-  font-family: 'Raleway', sans-serif;
+  @apply font-sans;
   transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 }
 
