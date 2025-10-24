@@ -1,7 +1,7 @@
-<!-- Section 1 Wrapper (mobile viewport height with arrow at bottom) -->
-<div id="section-1" class="lg:contents scroll-mt-28">
+<!-- Section 1 -->
+<div id="section-1" class="lg:contents">
   <!-- Frame 1: Initial viewport content (mobile only) -->
-  <div class="lg:hidden min-h-screen relative -mx-4 -mt-4 px-4 pt-4 pb-20">
+  <div class="lg:hidden relative -mx-4 -mt-4 px-4 pt-4 pb-8">
     <!-- Mobile Header - Breadcrumb & Title -->
     <div class="mb-4 max-[400px]:mb-2">
       <!-- Breadcrumb Navigation -->
@@ -40,16 +40,12 @@
           <p>100% natural sage essential oil, made in Europe.</p>
         <% end %>
       </div>
-    </div>
 
-    <!-- Scroll Arrow - Section 1 to Section 2 (mobile only) -->
-    <div class="absolute bottom-4 left-1/2 -translate-x-1/2">
-      <button onclick="document.getElementById('section-2').scrollIntoView({behavior: 'smooth'})"
-              class="text-gray-600 hover:text-gray-900 transition-colors duration-200 focus:outline-none pointer-events-auto">
-        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
-        </svg>
-      </button>
+      <!-- Add to Bag (mobile only, non-floating) -->
+      <%= form_for :cart_item, url: cart_items_path, method: :post, class: "flex flex-col items-center" do |f| %>
+        <%= hidden_field_tag 'cart_item[stripe_product_id]', @product.id %>
+        <%= f.submit "Add to Bag", class: "w-full max-w-md px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 focus:ring-4 focus:ring-blue-300 font-medium text-lg" %>
+      <% end %>
     </div>
   </div>
 
@@ -158,22 +154,10 @@
   </div>
 </div>
   </div>
-
-  <!-- Fixed Floating Add to Bag for Mobile/Tablet (visible only on mobile/tablet, hidden on lg+) -->
-  <div class="lg:hidden sticky bottom-[100px] max-[400px]:bottom-[70px] left-0 right-0 bg-transparent backdrop-blur-xs border-t border-gray-200 shadow-lg p-2 mx-10 my-4 max-[400px]:my-2 z-50 pointer-events-none">
-    <%= form_for :cart_item, url: cart_items_path, method: :post, class: "flex flex-col items-center gap-4 pointer-events-auto !w-full !max-w-none !p-0 !m-0" do |f| %>
-      <%= hidden_field_tag 'cart_item[stripe_product_id]', @product.id %>
-
-      <!-- Quantity Selector (hidden on mobile/tablet for now) -->
-
-      <!-- Add to Bag Button (centered and full width on mobile) -->
-      <%= f.submit "Add to Bag", class: "w-full max-w-md px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 focus:ring-4 focus:ring-blue-300 font-medium text-lg !mb-0" %>
-    <% end %>
-  </div>
 </div>
 
-<!-- Section 2: Product Details/Images Grid (mobile only concept) -->
-<div id="section-2" class="lg:hidden min-h-screen flex flex-col justify-between py-8 scroll-mt-28">
+<!-- Section 2: Product Details/Images Grid (mobile only) -->
+<div id="section-2" class="lg:hidden pt-8 pb-4 border-t mx-4">
   <div>
     <!-- 2x2 Product Images Grid -->
     <div class="grid grid-cols-2 gap-4 px-4 mb-6">
@@ -212,20 +196,10 @@
       </ul>
     </div>
   </div>
-
-  <!-- Scroll Arrow - Section 2 to Section 3 -->
-  <div class="flex justify-center pb-8">
-    <button onclick="document.getElementById('section-3').scrollIntoView({behavior: 'smooth'})"
-            class="text-gray-600 hover:text-gray-900 transition-colors duration-200 focus:outline-none">
-      <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
-      </svg>
-    </button>
-  </div>
 </div>
 
 <!-- Cross-sell Section -->
-<div id="section-3" class="mt-40 pt-8 border-t mx-4 lg:mx-8 scroll-mt-28">
+<div id="section-3" class="mt-8 pt-8 border-t mx-4 lg:mx-8">
     <h2 class="text-2xl font-light font-serif mb-8 text-center" style="font-family: 'Playfair Display', serif;">you may also like</h2>
 
     <div class="flex flex-col md:flex-row justify-center items-center md:items-start gap-8 lg:gap-12">
@@ -255,16 +229,5 @@
         <h3 class="font-medium text-gray-800 mb-1">helichrysum</h3>
         <p class="text-gray-600">$XX.XX</p>
       </div>
-    </div>
-
-    <!-- Back to Top Button (mobile only) -->
-    <div class="lg:hidden flex flex-col items-center pt-12 pb-8">
-      <button onclick="window.scrollTo({top: 0, behavior: 'smooth'})"
-              class="flex flex-col items-center text-gray-600 hover:text-gray-900 transition-colors duration-200 focus:outline-none">
-        <svg class="w-6 h-6 mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18"></path>
-        </svg>
-        <span class="text-xs uppercase tracking-wide">Back to Top</span>
-      </button>
     </div>
 </div>

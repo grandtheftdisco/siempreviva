@@ -179,3 +179,18 @@
     margin-bottom: 0.25rem;
   }
 }
+
+/* Scroll-snap for mobile only (< 768px) */
+@media (max-width: 767px) {
+  html {
+    scroll-snap-type: y proximity;
+  }
+
+  /* Each mobile section is a snap point with offset for nav bar */
+  #section-1 > div:first-child,
+  #section-2,
+  #section-3 {
+    scroll-snap-align: start;
+    scroll-margin-top: 7rem; /* Account for fixed nav bar height */
+  }
+}
