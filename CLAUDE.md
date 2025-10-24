@@ -91,6 +91,23 @@ This approach maintains architectural integrity and learning objectives while st
 - Code review before merging to main
 - Incremental development with regular integration
 
+### Using Claude Code Subagents
+When facing complex scenarios that require deep analysis, utilize the Task tool with specialized subagents:
+
+**Use Cases for Subagents:**
+- **Merge Conflict Analysis**: Before merging branches with potentially conflicting changes, use a general-purpose subagent to analyze both branches and identify conflicts
+- **Breaking Change Detection**: When unsure if changes will break existing functionality, have a subagent analyze the codebase and provide a risk assessment
+- **Cross-File Impact Analysis**: For changes that span multiple files or affect multiple systems, subagents can trace dependencies and potential issues
+- **Refactoring Strategy**: When planning large refactors, subagents can analyze current architecture and propose safe transformation paths
+
+**Example Usage:**
+```
+Task tool with subagent_type: "general-purpose"
+Prompt: "Analyze branches X and Y, identify conflicts, and create a safe merge plan that preserves functionality Z"
+```
+
+Subagents provide detailed analysis reports with specific line numbers, code snippets, and step-by-step strategies, significantly reducing risk in complex operations.
+
 ## Business Context
 E-commerce platform for a small business in the agricultural/botanical space, handling product catalogs, shopping cart functionality, and secure payment processing.
 
