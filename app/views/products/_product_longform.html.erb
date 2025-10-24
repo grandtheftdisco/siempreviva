@@ -1,7 +1,7 @@
 <!-- Section 1 -->
 <div id="section-1" class="lg:contents">
   <!-- Frame 1: Initial viewport content (mobile only) -->
-  <div class="lg:hidden relative -mx-4 -mt-4 px-4 pt-4 pb-8">
+  <div class="lg:hidden relative -mx-4 -mt-4 px-4 pt-4 pb-8 md:mx-auto md:mt-0 md:max-w-2xl">
     <!-- Mobile Header - Breadcrumb & Title -->
     <div class="mb-4 max-[400px]:mb-2">
       <!-- Breadcrumb Navigation -->
@@ -42,7 +42,7 @@
       </div>
 
       <!-- Add to Bag (mobile only, non-floating) -->
-      <%= form_for :cart_item, url: cart_items_path, method: :post, class: "flex flex-col items-center" do |f| %>
+      <%= form_for :cart_item, url: cart_items_path, method: :post, class: "flex justify-center mx-auto" do |f| %>
         <%= hidden_field_tag 'cart_item[stripe_product_id]', @product.id %>
         <%= f.submit "Add to Bag", class: "w-full max-w-md px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 focus:ring-4 focus:ring-blue-300 font-medium text-lg" %>
       <% end %>
@@ -157,7 +157,7 @@
 </div>
 
 <!-- Section 2: Product Details/Images Grid (mobile only) -->
-<div id="section-2" class="lg:hidden pt-8 pb-4 border-t mx-4">
+<div id="section-2" class="lg:hidden pt-8 pb-4 border-t mx-4 md:mx-auto md:max-w-2xl">
   <div>
     <!-- 2x2 Product Images Grid -->
     <div class="grid grid-cols-2 gap-4 px-4 mb-6">
@@ -202,7 +202,7 @@
 <div id="section-3" class="mt-8 pt-8 border-t mx-4 lg:mx-8">
     <h2 class="text-2xl font-light font-serif mb-8 text-center" style="font-family: 'Playfair Display', serif;">you may also like</h2>
 
-    <div class="flex flex-col md:flex-row justify-center items-center md:items-start gap-8 lg:gap-12">
+    <div class="flex flex-col lg:flex-row justify-center items-center lg:items-start gap-8 lg:gap-12">
       <!-- Cross-sell Product 1 -->
       <div class="text-center flex-shrink-0">
         <div class="bg-gray-200 h-40 w-80 rounded-lg mb-3 flex items-center justify-center">
