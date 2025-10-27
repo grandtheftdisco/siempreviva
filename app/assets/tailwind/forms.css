@@ -40,7 +40,7 @@ form textarea {
 }
 
 /* Quantity selector specific styling - 30% smaller */
-#quantity-input {
+input[data-input-counter] {
   height: 2rem !important; /* Reduced from ~2.75rem (h-11) */
   padding: 0.4rem 0.6rem !important; /* Reduced from default padding */
   font-size: 0.875rem !important; /* Slightly smaller text */
@@ -74,14 +74,14 @@ form textarea {
 }
 
 /* Left button (decrement) border radius */
-#decrement-button.quantity-button {
+button[data-input-counter-decrement].quantity-button {
   border-top-left-radius: 9999px !important;
   border-bottom-left-radius: 9999px !important;
   border-right: none !important;
 }
 
 /* Right button (increment) border radius */
-#increment-button.quantity-button {
+button[data-input-counter-increment].quantity-button {
   border-top-right-radius: 9999px !important;
   border-bottom-right-radius: 9999px !important;
   border-left: none !important;
