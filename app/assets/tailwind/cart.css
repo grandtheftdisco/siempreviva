@@ -531,7 +531,8 @@
   }
 
   .cart-items .cart-page-item .quantity-section {
-    display: none !important; /* Hide quantity controls on mobile for now */
+    display: block !important; /* Show collapsed quantity badge on mobile */
+    margin-top: 0.25rem !important;
   }
 
   /* Small 'x' button positioned in top-right corner */
