@@ -5,9 +5,9 @@
     <!-- Mobile Header - Breadcrumb & Title -->
     <div class="mb-4 max-[400px]:mb-2">
       <!-- Breadcrumb Navigation -->
-      <nav class="breadcrumb-nav mb-4 max-[400px]:mb-2" style="font-family: 'Playfair Display', serif; font-size: 0.875rem; color: #6c757d;">
+      <nav class="breadcrumb-nav mb-4 max-[400px]:mb-2">
         <%= link_to "essential oils", products_path, class: "breadcrumb-link" %>
-        <span class="breadcrumb-separator mx-2">></span>
+        <span class="breadcrumb-separator">></span>
         <span class="current-page"><%= format_product_name(@product.name) %></span>
       </nav>
 
@@ -28,7 +28,7 @@
       </div>
 
       <!-- Price -->
-      <div class="text-2xl text-center text-gray-800 mb-4 max-[400px]:mb-2 max-[400px]:!text-4xl" style="font-family: 'Playfair Display', serif; font-size: 3rem;">
+      <div class="product-price-display mb-4 max-[400px]:mb-2">
         <%= to_dollars(@product.default_price.unit_amount) %>
       </div>
 
@@ -54,9 +54,9 @@
     <!-- Mobile Header - Breadcrumb & Title (visible on mobile/tablet, hidden on lg+) -->
     <div class="block lg:hidden mb-6">
       <!-- Breadcrumb Navigation -->
-      <nav class="breadcrumb-nav mb-4" style="font-family: 'Playfair Display', serif; font-size: 0.875rem; color: #6c757d;">
+      <nav class="breadcrumb-nav mb-4">
         <%= link_to "essential oils", products_path, class: "breadcrumb-link" %>
-        <span class="breadcrumb-separator mx-2">></span>
+        <span class="breadcrumb-separator">></span>
         <span class="current-page"><%= format_product_name(@product.name) %></span>
       </nav>
 
@@ -84,9 +84,9 @@
   <div class="flex flex-col justify-start">
     <!-- Desktop Breadcrumb & Title (hidden on mobile, visible on lg+) -->
     <div class="hidden lg:block">
-      <nav class="breadcrumb-nav mb-2" style="font-family: 'Playfair Display', serif; font-size: 0.875rem; color: #6c757d;">
+      <nav class="breadcrumb-nav mb-2">
         <%= link_to "essential oils", products_path, class: "breadcrumb-link" %>
-        <span class="breadcrumb-separator mx-2">></span>
+        <span class="breadcrumb-separator">></span>
         <span class="current-page"><%= format_product_name(@product.name) %></span>
       </nav>
       <h1 class="product-show-title"><%= format_product_name(@product.name) %></h1>
@@ -94,7 +94,7 @@
 
     <div id="key-product-info" class="mb-5 max-[400px]:mb-2 lg:mb-10">
       <!-- Price -->
-      <div class="text-2xl lg:text-2xl text-center lg:text-left text-gray-800 mb-5 max-[400px]:mb-2 max-[400px]:!text-4xl" style="font-family: 'Playfair Display', serif; font-size: 3rem;">
+      <div class="product-price-display mb-5 max-[400px]:mb-2">
           <%= to_dollars(@product.default_price.unit_amount) %>
         </div>
 
@@ -218,7 +218,7 @@
 
 <!-- Cross-sell Section -->
 <div id="section-3" class="mt-8 pt-8 border-t mx-4 lg:mx-8">
-    <h2 class="text-2xl font-light font-serif mb-8 text-center" style="font-family: 'Playfair Display', serif;">you may also like</h2>
+    <h2 class="section-heading">you may also like</h2>
 
     <div class="flex flex-col lg:flex-row justify-center items-center lg:items-start gap-8 lg:gap-12">
       <!-- Cross-sell Product 1 -->

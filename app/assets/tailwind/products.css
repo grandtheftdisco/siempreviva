@@ -180,6 +180,59 @@
   }
 }
 
+/* Product Price Display (for show page) */
+.product-price-display {
+  font-family: 'Playfair Display', serif;
+  font-size: 3rem;
+  text-align: center;
+  color: #2c3e50;
+}
+
+@media (min-width: 1024px) {
+  .product-price-display {
+    text-align: left;
+  }
+}
+
+@media (max-width: 400px) {
+  .product-price-display {
+    font-size: 2.25rem !important;
+  }
+}
+
+/* Breadcrumb Navigation */
+.breadcrumb-nav {
+  font-family: 'Playfair Display', serif;
+  font-size: 0.875rem;
+  color: #6c757d;
+}
+
+.breadcrumb-link {
+  text-decoration: none;
+  color: inherit;
+}
+
+.breadcrumb-link:hover {
+  text-decoration: underline;
+}
+
+.breadcrumb-separator {
+  margin: 0 0.5rem;
+}
+
+.current-page {
+  color: inherit;
+}
+
+/* Section Headings */
+.section-heading {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.5rem;
+  font-weight: 300;
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
 /* Scroll-snap for mobile only (< 768px) */
 @media (max-width: 767px) {
   html {
