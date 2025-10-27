@@ -81,6 +81,18 @@ This approach maintains architectural integrity and learning objectives while st
 - Meaningful naming for classes, methods, and variables
 - Consistent error handling and validation
 
+### CSS/Styling Conventions
+- **Tailwind-First Approach**: Always use Tailwind CSS utilities and the `@apply` directive
+- **Vanilla CSS Only When Necessary**: Only use vanilla CSS when Tailwind does not provide the required functionality
+- **Explain Before Using Vanilla CSS**: Before using vanilla CSS, explain the reasoning in chat so the human developer can manually check and confirm that Tailwind truly doesn't provide the needed functionality
+- **Use `@apply` for Component Classes**: Create reusable component classes in CSS files using Tailwind's `@apply` directive rather than inline utility classes in views
+- **Single Source of Truth**: Use the sv-color system defined in `@theme` block for all color values
+
+### File Path Conventions
+- **Development Environment**: This project is being developed in WSL (Windows Subsystem for Linux)
+- **Convert Windows Paths**: Always convert Windows file paths (e.g., `C:\Users\...`) to WSL format (e.g., `/mnt/c/Users/...`)
+- **Path Format**: Use forward slashes `/` not backslashes `\`
+
 ### Communication Standards
 - When summarizing work or providing progress updates, use paragraph format without emojis
 - Maintain professional, clear, and concise communication style
