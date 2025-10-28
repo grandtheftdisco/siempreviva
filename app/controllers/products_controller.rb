@@ -7,6 +7,8 @@ class ProductsController < ApplicationController
   end
 
   def show
+    # Get 3 random products for cross-sells, excluding current product
+    @cross_sell_products = @products.reject { |p| p.id == @product.id }.sample(3)
   end
 
   private

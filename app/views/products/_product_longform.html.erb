@@ -199,34 +199,6 @@
 
 <!-- Cross-sell Section -->
 <div id="section-3" class="mt-8 pt-8 border-t mx-4 lg:mx-8">
-    <h2 class="section-heading">you may also like</h2>
-
-    <div class="flex flex-col lg:flex-row justify-center items-center lg:items-start gap-8 lg:gap-12">
-      <!-- Cross-sell Product 1 -->
-      <div class="text-center flex-shrink-0">
-        <div class="bg-gray-200 h-40 w-80 rounded-lg mb-3 flex items-center justify-center">
-          <span class="text-gray-500">Product Image</span>
-        </div>
-        <h3 class="font-medium text-gray-800 mb-1">rose</h3>
-        <p class="text-gray-600">$XX.XX</p>
-      </div>
-
-      <!-- Cross-sell Product 2 -->
-      <div class="text-center flex-shrink-0">
-        <div class="bg-gray-200 h-40 w-80 rounded-lg mb-3 flex items-center justify-center">
-          <span class="text-gray-500">Product Image</span>
-        </div>
-        <h3 class="font-medium text-gray-800 mb-1">roman chamomile</h3>
-        <p class="text-gray-600">$XX.XX</p>
-      </div>
-
-      <!-- Cross-sell Product 3 -->
-      <div class="text-center flex-shrink-0">
-        <div class="bg-gray-200 h-40 w-80 rounded-lg mb-3 flex items-center justify-center">
-          <span class="text-gray-500">Product Image</span>
-        </div>
-        <h3 class="font-medium text-gray-800 mb-1">helichrysum</h3>
-        <p class="text-gray-600">$XX.XX</p>
-      </div>
-    </div>
+  <h2 class="section-heading">you may also like</h2>
+  <%= render 'products/cross_sells_container', products: @cross_sell_products %>
 </div>

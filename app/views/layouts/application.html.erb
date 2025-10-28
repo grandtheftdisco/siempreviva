@@ -299,35 +299,26 @@
     const searchButton = document.getElementById('searchToggleButton');
     const searchDropdown = document.getElementById('searchDropdown');
 
-    // Initially hide search dropdown
-    if (searchDropdown) {
-      searchDropdown.style.display = 'none';
-    }
-
     if (searchButton && searchDropdown) {
       searchButton.addEventListener('click', function(e) {
         e.preventDefault();
+        searchDropdown.classList.toggle('show');
 
-        // Toggle display
-        if (searchDropdown.style.display === 'none' || searchDropdown.style.display === '') {
-          searchDropdown.style.display = 'block';
-          
-          // Auto-focus the search input on mobile for better UX
+        // Auto-focus the search input on mobile for better UX
+        if (searchDropdown.classList.contains('show')) {
           setTimeout(() => {
             const searchInput = searchDropdown.querySelector('.ais-SearchBox-input');
             if (searchInput && window.innerWidth <= 768) {
               searchInput.focus();
             }
           }, 100);
-        } else {
-          searchDropdown.style.display = 'none';
         }
       });
 
       // Close dropdown when clicking outside
       document.addEventListener('click', function(e) {
         if (!searchButton.contains(e.target) && !searchDropdown.contains(e.target)) {
-          searchDropdown.style.display = 'none';
+          searchDropdown.classList.remove('show');
         }
       });
     }
