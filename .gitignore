@@ -35,6 +35,7 @@
 
 
 /notes.txt
+/git_notes.txt
 .env.development.local
 /app/assets/builds/*
 !/app/assets/builds/.keep
