@@ -41,8 +41,10 @@ class CartItemsController < ApplicationController
   end
 
   def update
-    @cart_item.update!(cart_item_params)
-    @cart.update(total_amount: CartService::CalculateCart.call(cart: @cart))
+    ActiveRecord::Base.transaction do
+      @cart_item.update!(cart_item_params)
+      @cart.update!(total_amount: CartService::CalculateCart.call(cart: @cart))
+    end
 
     respond_to do |format|
       format.html { redirect_to cart_path, notice: 'Quantity updated!' }

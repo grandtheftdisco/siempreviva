@@ -8,7 +8,11 @@ module.exports = {
     "./node_modules/flowbite/**/*.js"
   ],
   theme: {
-    extend: {},
+    extend: {
+      // Note: Custom colors (sv-*) are defined using Tailwind v4 @theme directive
+      // in app/assets/tailwind/application.css, not here.
+      // This config file is still needed for content paths and plugins.
+    },
   },
   plugins: [
     require('flowbite/plugin')
