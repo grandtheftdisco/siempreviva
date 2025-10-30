@@ -100,7 +100,7 @@
             <%= hidden_field_tag 'cart_item[stripe_product_id]', @product.id, class: '!m-0 !mb-0' %>
 
             <%= f.label :quantity, "Quantity:" %>
-            <%= render 'shared/quantity_selector', input_id: 'quantity-input', initial_value: 1, min_value: 1 %>
+            <%= render 'shared/quantity_selector', input_id: 'quantity-input', initial_value: 1, min_value: 1, field_name: 'cart_item[quantity]' %>
           </div>
           <div>
             <%= f.submit "Add to Bag", id: "add-to-bag-button", class: "px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 focus:ring-4 focus:ring-blue-300" %>
