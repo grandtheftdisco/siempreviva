@@ -120,18 +120,6 @@
         <%= f.submit "Add to Bag", id: "add-to-bag-button", class: "px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 focus:ring-4 focus:ring-blue-300" %>
       </div>
     <% end %>
-
-    <!-- Product Features/Benefits (desktop only - moved to section 2 on mobile) -->
-    <div class="hidden lg:block space-y-2">
-      <ul class="list-disc list-inside text-gray-600 space-y-1 text-sm">
-        <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit</li>
-        <li>Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua</li>
-        <li>Ut enim ad minim veniam, quis nostrud exercitation</li>
-        <li>Duis aute irure dolor in reprehenderit in voluptate velit esse</li>
-        <li>Excepteur sint occaecat cupidatat non proident</li>
-        <li>Sunt in culpa qui officia deserunt mollit anim id est laborum</li>
-      </ul>
-    </div>
   </div>
 </div>
   </div>
@@ -139,7 +127,7 @@
 
 <!-- Additional Product Images (desktop only) -->
 <div class="hidden lg:block mb-12 pt-8 border-t mx-4 lg:mx-8">
-  <div class="grid grid-cols-2 gap-4 max-w-lg mx-auto">
+  <div class="grid grid-cols-2 gap-4 max-w-lg mx-auto mb-8">
     <div class="bg-gray-200 h-32 rounded-lg flex items-center justify-center">
       <span class="text-gray-500 text-sm">Image 2</span>
     </div>
@@ -152,6 +140,18 @@
     <div class="bg-gray-200 h-32 rounded-lg flex items-center justify-center">
       <span class="text-gray-500 text-sm">Image 5</span>
     </div>
+  </div>
+
+  <!-- Product Features/Benefits -->
+  <div class="max-w-lg mx-auto">
+    <ul class="list-disc list-inside text-gray-600 space-y-1 text-sm">
+      <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit</li>
+      <li>Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua</li>
+      <li>Ut enim ad minim veniam, quis nostrud exercitation</li>
+      <li>Duis aute irure dolor in reprehenderit in voluptate velit esse</li>
+      <li>Excepteur sint occaecat cupidatat non proident</li>
+      <li>Sunt in culpa qui officia deserunt mollit anim id est laborum</li>
+    </ul>
   </div>
 </div>
 
