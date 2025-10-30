@@ -3,7 +3,7 @@
 
 <% products ||= [] %>
 
-<div class="flex flex-col lg:flex-row justify-center items-center lg:items-start gap-8 lg:gap-12">
+<div class="flex flex-col xl:flex-row justify-center items-center xl:items-start gap-8 xl:gap-12">
   <% if products.any? %>
     <% products.take(3).each do |product| %>
       <%= render 'products/cross_sell_card', product: product %>
