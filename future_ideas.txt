@@ -1,0 +1,90 @@
+# Future Ideas & Improvements
+
+## UX Improvements - Cart Add Flow
+**Current behavior:** After adding item to cart, redirects to products#index
+**Problem:** Disruptive to user flow, interrupts browsing, makes cross-sells less effective
+
+**Proposed improvement:**
+Change cart_items_controller.rb line 17 from:
+```ruby
+redirect_to products_path
+```
+
+To:
+```ruby
+redirect_back(fallback_location: product_path(@cart_item.stripe_product_id))
+```
+
+**Benefits:**
+- Keeps user in context on product page
+- Encourages adding multiple quantities
+- Makes cross-sells more effective (can add multiple items from one page)
+- Reduces cognitive load and friction
+- Better mobile UX
+
+**Future enhancement (Turbo approach):**
+Use Turbo Streams to update cart badge and show flash message without ANY page reload
+- No redirect needed
+- Instant feedback
+- Zero interruption to browsing
+- Industry best practice (Amazon, Shopify, etc.)
+
+---
+
+///////////////////////////
+Here are the key screen sizes to test:
+
+  Mobile:
+  - iPhone SE (375x667) - smallest common mobile
+  - iPhone 12/13/14 (390x844) - standard modern mobile
+  - iPhone 14 Pro Max (430x932) - large mobile
+
+  Tablet:
+  - iPad Mini (768x1024) - small tablet
+  - iPad Air/Pro portrait (820x1180 or 1024x1366) - standard tablet portrait
+  - iPad Pro landscape (1366x1024) - tablet landscape
+
+  Desktop:
+  - 1280x720 - small laptop
+  - 1440x900 - standard desktop
+  - 1920x1080 - large desktop
+
+  Focus especially on the breakpoints where layout shifts happen:
+  - 640px (sm) - mobile to small tablet
+  - 768px (md) - tablet portrait
+  - 1024px (lg) - tablet landscape to desktop
+  - 1280px (xl) - cross-sells switch to row layout
+
+---
+
+## Testing Infrastructure - System Tests with Capybara
+
+**Current state:** Capybara and Selenium already installed (Rails 8 defaults), but no system tests written yet
+**Limitation:** Only have controller/integration tests - cannot test UI edge cases like:
+- Text overflow behavior
+- Broken/missing images rendering
+- Layout breakage with long content
+- CSS-specific issues
+- JavaScript interactions
+- Mobile viewport testing
+
+**Next steps:**
+1. Configure `test/application_system_test_case.rb` if not already done
+2. Create `test/system/` directory
+3. Write system tests for critical user flows (product browsing, cart, cross-sells, quantity selector)
+4. Add responsive viewport tests for breakpoints (375px, 768px, 1024px, 1280px)
+
+**Example use cases:**
+- Test that product name truncates properly with ellipsis on cards
+- Verify cross-sell cards don't overflow viewport at iPad Mini breakpoint
+- Test quantity selector increment/decrement buttons
+- Verify dropdown animations work correctly (cart, search, mobile nav)
+- Test mobile nav hamburger menu interaction
+- Screenshot testing for visual regressions
+
+**Benefits:**
+- Catch UI bugs before they reach production
+- Automated testing of responsive breakpoints
+- Test actual browser rendering, not just controller logic
+
+---

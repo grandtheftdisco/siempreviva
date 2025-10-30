@@ -1,6 +1,5 @@
-<!-- Section 1 -->
 <div id="section-1" class="lg:contents">
-  <!-- Frame 1: Initial viewport content (mobile only) -->
+  <!-- Section 1 (MOBILE) -->
   <div class="lg:hidden relative -mx-4 -mt-4 px-4 pt-4 pb-8 md:mx-auto md:mt-0 md:max-w-2xl">
     <!-- Mobile Header - Breadcrumb & Title -->
     <div class="mb-4 max-[400px]:mb-2">
@@ -49,92 +48,76 @@
     </div>
   </div>
 
-  <!-- Desktop Grid (hidden on mobile) -->
+  <!-- Section 1 (DESKTOP) -->
   <div class="hidden lg:block">
-    <!-- Mobile Header - Breadcrumb & Title (visible on mobile/tablet, hidden on lg+) -->
-    <div class="block lg:hidden mb-6">
-      <!-- Breadcrumb Navigation -->
-      <nav class="breadcrumb-nav mb-4">
-        <%= link_to "essential oils", products_path, class: "breadcrumb-link" %>
-        <span class="breadcrumb-separator">></span>
-        <span class="current-page"><%= format_product_name(@product.name) %></span>
-      </nav>
-
-      <!-- Page Title -->
-      <h1 class="product-show-title"><%= format_product_name(@product.name) %></h1>
-    </div>
-
-    <!-- Element #1 in Stack - Product Content Grid -->
+    <!-- Product Content Container -->
     <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-12 max-[400px]:mb-6">
-
-  <!-- Left Column - Product Image -->
-  <div class="flex items-stretch">
-    <div class="w-full flex items-center justify-center bg-gray-100 rounded-lg">
-      <% if @product.images.any? %>
-        <%= image_tag(@product.images.first, alt: @product.name.titleize, class: "max-w-full h-auto max-h-[40vh] max-[400px]:max-h-[30vh] lg:max-h-none rounded-lg object-cover") %>
-      <% else %>
-        <div class="w-full h-96 bg-gray-200 rounded-lg flex items-center justify-center">
-          <span class="text-gray-500">Product Image</span>
+      <!-- Left Column - Product Image -->
+      <div class="flex items-stretch">
+        <div class="w-full flex items-center justify-center bg-gray-100 rounded-lg">
+          <% if @product.images.any? %>
+            <%= image_tag(@product.images.first, alt: @product.name.titleize, class: "max-w-full h-auto max-h-[40vh] max-[400px]:max-h-[30vh] lg:max-h-none rounded-lg object-cover") %>
+          <% else %>
+            <div class="w-full h-96 bg-gray-200 rounded-lg flex items-center justify-center">
+              <span class="text-gray-500">Product Image</span>
+            </div>
+          <% end %>
         </div>
-      <% end %>
-    </div>
-  </div>
+      </div>
 
-  <!-- Right Column - Product Details -->
-  <div class="flex flex-col justify-start">
-    <!-- Desktop Breadcrumb & Title (hidden on mobile, visible on lg+) -->
-    <div class="hidden lg:block">
-      <nav class="breadcrumb-nav mb-2">
-        <%= link_to "essential oils", products_path, class: "breadcrumb-link" %>
-        <span class="breadcrumb-separator">></span>
-        <span class="current-page"><%= format_product_name(@product.name) %></span>
-      </nav>
-      <h1 class="product-show-title"><%= format_product_name(@product.name) %></h1>
-    </div>
-
-    <div id="key-product-info" class="mb-5 max-[400px]:mb-2 lg:mb-10">
-      <!-- Price -->
-      <div class="product-price-display mb-5 max-[400px]:mb-2">
-          <%= to_dollars(@product.default_price.unit_amount) %>
+      <!-- Right Column - Product Details -->
+      <div class="flex flex-col justify-start">
+        <!-- Breadcrumb & Title -->
+        <div class="hidden lg:block">
+          <nav class="breadcrumb-nav mb-2">
+            <%= link_to "essential oils", products_path, class: "breadcrumb-link" %>
+            <span class="breadcrumb-separator">></span>
+            <span class="current-page"><%= format_product_name(@product.name) %></span>
+          </nav>
+          <h1 class="product-show-title"><%= format_product_name(@product.name) %></h1>
         </div>
 
-      <!-- Description (desktop only, moved to Section 2 on mobile) -->
-      <div class="hidden lg:block prose prose-lg text-gray-600">
-        <% if @product.description.present? %>
-          <%= simple_format(@product.description) %>
-        <% else %>
-          <p>100% natural sage essential oil, made in Europe.</p>
+        <!-- Name, Price & Description -->
+        <div id="key-product-info" class="mb-5 max-[400px]:mb-2 lg:mb-10">
+          <!-- Price -->
+          <div class="product-price-display mb-5 max-[400px]:mb-2">
+            <%= to_dollars(@product.default_price.unit_amount) %>
+          </div>
+
+          <!-- Description (desktop only, moved to Section 2 on mobile) -->
+          <div class="hidden lg:block prose prose-lg text-gray-600">
+            <% if @product.description.present? %>
+              <%= simple_format(@product.description) %>
+            <% else %>
+              <p>(product info coming soon!)</p>
+            <% end %>
+          </div>
+        </div>
+
+        <!-- Add To Cart Button -->
+        <%= form_for :cart_item, url: cart_items_path, method: :post, class: "hidden lg:block space-y-4 !w-full !mx-0", style: "width: auto; margin: 0; padding: 0; max-width: none;" do |f| %>
+          <div class="flex items-center gap-3 justify-start w-full !ml-0">
+            <%= hidden_field_tag 'cart_item[stripe_product_id]', @product.id, class: '!m-0 !mb-0' %>
+
+            <%= f.label :quantity, "Quantity:" %>
+            <%= render 'shared/quantity_selector', input_id: 'quantity-input', initial_value: 1, min_value: 1 %>
+          </div>
+          <div>
+            <%= f.submit "Add to Bag", id: "add-to-bag-button", class: "px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 focus:ring-4 focus:ring-blue-300" %>
+          </div>
         <% end %>
       </div>
     </div>
-
-    <!-- Desktop Add to Cart Form (hidden on mobile/tablet) -->
-    <%= form_for :cart_item, url: cart_items_path, method: :post, class: "hidden lg:block space-y-4 !w-full !mx-0", style: "width: auto; margin: 0; padding: 0; max-width: none;" do |f| %>
-      <div class="flex items-center gap-3 justify-start w-full !ml-0">
-        <%= hidden_field_tag 'cart_item[stripe_product_id]', @product.id, class: '!m-0 !mb-0' %>
-
-        <%= f.label :quantity, "Quantity:" %>
-        <%= render 'shared/quantity_selector', input_id: 'quantity-input', initial_value: 1, min_value: 1 %>
-      </div>
-      <div>
-        <%= f.submit "Add to Bag", id: "add-to-bag-button", class: "px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 focus:ring-4 focus:ring-blue-300" %>
-      </div>
-    <% end %>
-  </div>
-</div>
   </div>
 </div>
 
 <!-- Section 2: Additional Images & Product Features -->
 <div id="section-2" class="pt-8 pb-4 lg:pb-12 border-t mx-auto max-w-4xl px-4 lg:px-8">
-  <!-- 2x2 Product Images Grid -->
   <%= render 'products/additional_images_grid' %>
-
-  <!-- Product Features/Benefits -->
   <%= render 'products/product_features' %>
 </div>
 
-<!-- Cross-sell Section -->
+<!-- Section 3: Cross-Sells -->
 <div id="section-3" class="mt-8 pt-8 border-t mx-4 lg:mx-8">
   <h2 class="section-heading">you may also like</h2>
   <%= render 'products/cross_sells_container', products: @cross_sell_products %>

@@ -8,6 +8,7 @@ class ProductsController < ApplicationController
 
   def show
     # Get 3 random products for cross-sells, excluding current product
+    # FUTURE: When product inventory grows & POs want to select specific cross-sells, this strategy will change
     @cross_sell_products = @products.reject { |p| p.id == @product.id }.sample(3)
   end
 

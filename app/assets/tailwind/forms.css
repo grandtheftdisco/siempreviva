@@ -96,8 +96,6 @@ button[data-input-counter-increment].quantity-button {
   box-shadow: 0 0 0 2px rgba(107, 114, 128, 0.1) !important; /* Subtle gray shadow */
 }
 
-
-
 form input[type="text"]:focus,
 form input[type="email"]:focus,
 form input[type="password"]:focus,

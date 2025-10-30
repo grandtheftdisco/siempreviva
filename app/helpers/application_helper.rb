@@ -7,6 +7,8 @@ module ApplicationHelper
     timestamp.strftime('%m/%d/%Y, %I:%M%P (%Z)')
   end
 
+  # Strips trailing text from Stripe inventory version of product name
+  # Cleans up UI without affecting PO's inventory management in Stripe Dashboard
   def format_product_name(product_name)
     if product_name[/essential oils?/i]
       product_name = product_name.gsub(/essential oils?/i, '').strip
