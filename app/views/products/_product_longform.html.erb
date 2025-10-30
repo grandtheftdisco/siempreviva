@@ -125,67 +125,13 @@
   </div>
 </div>
 
-<!-- Additional Product Images (desktop only) -->
-<div class="hidden lg:block mb-12 pt-8 border-t mx-4 lg:mx-8">
-  <div class="grid grid-cols-2 gap-4 max-w-lg mx-auto mb-8">
-    <div class="bg-gray-200 h-32 rounded-lg flex items-center justify-center">
-      <span class="text-gray-500 text-sm">Image 2</span>
-    </div>
-    <div class="bg-gray-200 h-32 rounded-lg flex items-center justify-center">
-      <span class="text-gray-500 text-sm">Image 3</span>
-    </div>
-    <div class="bg-gray-200 h-32 rounded-lg flex items-center justify-center">
-      <span class="text-gray-500 text-sm">Image 4</span>
-    </div>
-    <div class="bg-gray-200 h-32 rounded-lg flex items-center justify-center">
-      <span class="text-gray-500 text-sm">Image 5</span>
-    </div>
-  </div>
+<!-- Section 2: Additional Images & Product Features -->
+<div id="section-2" class="pt-8 pb-4 lg:pb-12 border-t mx-auto max-w-4xl px-4 lg:px-8">
+  <!-- 2x2 Product Images Grid -->
+  <%= render 'products/additional_images_grid' %>
 
   <!-- Product Features/Benefits -->
-  <div class="max-w-lg mx-auto">
-    <ul class="list-disc list-inside text-gray-600 space-y-1 text-sm">
-      <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit</li>
-      <li>Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua</li>
-      <li>Ut enim ad minim veniam, quis nostrud exercitation</li>
-      <li>Duis aute irure dolor in reprehenderit in voluptate velit esse</li>
-      <li>Excepteur sint occaecat cupidatat non proident</li>
-      <li>Sunt in culpa qui officia deserunt mollit anim id est laborum</li>
-    </ul>
-  </div>
-</div>
-
-<!-- Section 2: Product Details/Images Grid (mobile only) -->
-<div id="section-2" class="lg:hidden pt-8 pb-4 border-t mx-4 md:mx-auto md:max-w-2xl">
-  <div>
-    <!-- 2x2 Product Images Grid -->
-    <div class="grid grid-cols-2 gap-4 px-4 mb-6">
-      <div class="bg-gray-200 h-40 rounded-lg flex items-center justify-center">
-        <span class="text-gray-500">Image 1</span>
-      </div>
-      <div class="bg-gray-200 h-40 rounded-lg flex items-center justify-center">
-        <span class="text-gray-500">Image 2</span>
-      </div>
-      <div class="bg-gray-200 h-40 rounded-lg flex items-center justify-center">
-        <span class="text-gray-500">Image 3</span>
-      </div>
-      <div class="bg-gray-200 h-40 rounded-lg flex items-center justify-center">
-        <span class="text-gray-500">Image 4</span>
-      </div>
-    </div>
-
-    <!-- Product Features/Benefits -->
-    <div class="px-4 mb-6">
-      <ul class="list-disc list-inside text-gray-600 space-y-1 text-sm">
-        <li>Euismod in pellentesque massa placerat duis ultricies</li>
-        <li>Nisi est sit amet facilisis magna etiam</li>
-        <li>Non curabitur gravida arcu ac tortor dignissim</li>
-        <li>Mattis sodales faucibus, aenean vulputate consectetur et nunc potenti auque</li>
-        <li>Proin morbis eros nostra rutrum montes suspendisse</li>
-        <li>Aneque nunc hendrerit ligula praesent taciti</li>
-      </ul>
-    </div>
-  </div>
+  <%= render 'products/product_features' %>
 </div>
 
 <!-- Cross-sell Section -->
