@@ -2,20 +2,12 @@
 <%# Usage: <%= render 'products/cross_sell_card', product: product %>
 <%# Or for placeholder: <%= render 'products/cross_sell_card', product: nil %>
 
-<% if product.present? %>
-  <%= link_to product_path(product.id), class: "block no-underline flex-shrink-0" do %>
-    <div class="cross-sell-card">
-      <%# TODO: Refactor nested if statement - consider using safe navigation or dig %>
-      <% if product.images.any? %>
-        <%= image_tag(product.images.first, alt: product.name.titleize, class: "cross-sell-image") %>
-      <% else %>
-        <span class="cross-sell-placeholder-text">image coming soon!</span>
-      <% end %>
-      <h3 class="cross-sell-title"><%= format_product_name(product.name) %></h3>
-    </div>
-  <% end %>
-<% else %>
-  <%# Placeholder card when no product passed %>
+<% if product.present? && product&.images&.any? %>
+  <%= render 'products/cross_sell_card_content', product: product, has_image: true %>
+<% elsif product.present? %>
+  <%= render 'products/cross_sell_card_content', product: product, has_image: false %>
+<%# explicit conditions can avoid surprise bugs in the future - avoiding the `else` umbrella! %>
+<% elsif !product.present? %>
   <div class="cross-sell-card-placeholder">
     <span class="cross-sell-placeholder-text">product not loaded</span>
   </div>

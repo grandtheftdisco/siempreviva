@@ -1,0 +1,13 @@
+<%# Cross-sell Product Card %>
+<%# Usage: <%= render 'products/cross_sell_card_content', product: product, has_image: [boolean] %>
+
+<%= link_to product_path(product.id), class: "block no-underline flex-shrink-0" do %>
+  <div class="cross-sell-card">
+    <% if has_image %>
+      <%= image_tag(product.images.first, alt: product.name.titleize, class: "cross-sell-image") %>
+    <% else %>
+      <span class="cross-sell-placeholder-text">image coming soon!</span>
+    <% end %>
+    <h3 class="cross-sell-title"><%= format_product_name(product.name) %></h3>
+  </div>
+<% end %>
