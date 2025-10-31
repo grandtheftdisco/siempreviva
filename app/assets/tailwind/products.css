@@ -22,6 +22,19 @@
   }
 }
 
+/* Product Show Page - Image Containers */
+.product-image-wrapper {
+  @apply flex items-center justify-center bg-gray-100 rounded-lg;
+}
+
+.product-image-placeholder {
+  @apply w-full h-96 bg-gray-200 rounded-lg flex items-center justify-center;
+}
+
+.product-image-placeholder-text {
+  @apply text-gray-500;
+}
+
 .products-header {
   @apply text-center mb-12;
 }
