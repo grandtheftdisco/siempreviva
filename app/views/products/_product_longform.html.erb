@@ -16,12 +16,12 @@
 
     <!-- Product Image, Price, Description (mobile only) -->
     <div class="flex flex-col">
-      <div class="flex items-center justify-center bg-gray-100 rounded-lg mb-4">
+      <div class="product-image-wrapper mb-4">
         <% if @product.images.any? %>
           <%= image_tag(@product.images.first, alt: @product.name.titleize, class: "max-w-full h-auto max-h-[40vh] max-[400px]:max-h-[30vh] rounded-lg object-cover") %>
         <% else %>
-          <div class="w-full h-96 bg-gray-200 rounded-lg flex items-center justify-center">
-            <span class="text-gray-500">Product Image</span>
+          <div class="product-image-placeholder">
+            <span class="product-image-placeholder-text">(product image coming soon!)</span>
           </div>
         <% end %>
       </div>
@@ -54,12 +54,12 @@
     <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-12 max-[400px]:mb-6">
       <!-- Left Column - Product Image -->
       <div class="flex items-stretch">
-        <div class="w-full flex items-center justify-center bg-gray-100 rounded-lg">
+        <div class="product-image-wrapper w-full">
           <% if @product.images.any? %>
             <%= image_tag(@product.images.first, alt: @product.name.titleize, class: "max-w-full h-auto max-h-[40vh] max-[400px]:max-h-[30vh] lg:max-h-none rounded-lg object-cover") %>
           <% else %>
-            <div class="w-full h-96 bg-gray-200 rounded-lg flex items-center justify-center">
-              <span class="text-gray-500">Product Image</span>
+            <div class="product-image-placeholder">
+              <span class="product-image-placeholder-text">Product Image</span>
             </div>
           <% end %>
         </div>

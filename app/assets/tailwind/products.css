@@ -5,6 +5,19 @@
   padding: 2rem 1rem;
 }
 
+/* Product Show Page - Image Containers */
+.product-image-wrapper {
+  @apply flex items-center justify-center bg-gray-100 rounded-lg;
+}
+
+.product-image-placeholder {
+  @apply w-full h-96 bg-gray-200 rounded-lg flex items-center justify-center;
+}
+
+.product-image-placeholder-text {
+  @apply text-gray-500;
+}
+
 .products-header {
   text-align: center;
   margin-bottom: 3rem;
