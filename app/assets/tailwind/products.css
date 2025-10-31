@@ -35,6 +35,44 @@
   @apply text-gray-500;
 }
 
+/* Product Features Section */
+.product-features-container {
+  @apply max-w-lg mx-auto px-4 mb-6;
+}
+
+.product-features-list {
+  @apply list-disc list-inside text-gray-600 space-y-1 text-sm;
+}
+
+/* Additional Images Grid */
+.additional-images-grid {
+  @apply grid grid-cols-2 gap-4 max-w-lg mx-auto px-4 mb-6 lg:mb-8;
+}
+
+.additional-image-placeholder {
+  @apply bg-gray-200 h-40 lg:h-32 rounded-lg flex items-center justify-center;
+}
+
+.additional-image-placeholder-text {
+  @apply text-gray-500 text-sm;
+}
+
+/* Cross-Sells Section */
+.cross-sells-grid {
+  @apply flex flex-col justify-center items-center gap-8;
+}
+
+/* Responsive: row layout on xl screens (1280px+) */
+@media (min-width: 1280px) {
+  .cross-sells-grid {
+    @apply flex-row items-start gap-12;
+  }
+}
+
+.cross-sell-link {
+  @apply block no-underline flex-shrink-0;
+}
+
 .products-header {
   @apply text-center mb-12;
 }
