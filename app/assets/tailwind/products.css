@@ -5,6 +5,19 @@
   padding: 2rem 1rem;
 }
 
+/* Product Show Page Container */
+.product-show-container {
+  @apply max-w-6xl mx-auto px-4 pt-4 pb-8 lg:py-8;
+}
+
+/* Product Add to Cart Form - overrides default form styling */
+.product-add-to-cart-form {
+  width: auto;
+  margin: 0;
+  padding: 0;
+  max-width: none;
+}
+
 /* Product Show Page - Image Containers */
 .product-image-wrapper {
   @apply flex items-center justify-center bg-gray-100 rounded-lg;

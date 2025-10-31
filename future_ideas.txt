@@ -88,3 +88,10 @@ Here are the key screen sizes to test:
 - Test actual browser rendering, not just controller logic
 
 ---
+
+
+10.31.25
+i am wondering if removing the flowbite
+requirement from one of my js files (from pr 25 i believe) is what is causing me to have
+ to reload the page every time i want to use a flowbite component because i dont
+remember it happening BEFORE this change
