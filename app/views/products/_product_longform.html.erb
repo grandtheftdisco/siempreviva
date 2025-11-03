@@ -112,13 +112,13 @@
 </div>
 
 <!-- Section 2: Additional Images & Product Features -->
-<div id="section-2" class="pt-8 pb-2 lg:pb-4 border-t mx-4 lg:mx-8">
+<div id="section-2" class="product-section-divider pt-8 pb-2 lg:pb-4 mx-4 lg:mx-8">
   <%= render 'products/additional_images_grid', product: @product %>
   <%= render 'products/product_features' %>
 </div>
 
 <!-- Section 3: Cross-Sells -->
-<div id="section-3" class="mt-8 pt-8 border-t mx-4 lg:mx-8">
+<div id="section-3" class="product-section-divider mt-8 pt-8 mx-4 lg:mx-8">
   <h2 class="section-heading">you may also like</h2>
   <%= render 'products/cross_sells_container', products: @cross_sell_products %>
 </div>

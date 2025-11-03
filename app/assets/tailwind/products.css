@@ -262,6 +262,11 @@
   @apply font-serif text-2xl font-light italic text-center mb-8;
 }
 
+/* Product Section Divider */
+.product-section-divider {
+  @apply border-t border-sv-gray-500;
+}
+
 /* Cross-sell Product Card */
 .cross-sell-card {
   @apply relative bg-sv-gray-100 h-40 w-80 rounded-xl border-0 overflow-hidden flex items-end justify-start;
