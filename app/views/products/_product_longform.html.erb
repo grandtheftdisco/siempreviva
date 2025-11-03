@@ -18,7 +18,7 @@
     <div class="flex flex-col">
       <div class="product-image-wrapper mb-4">
         <% if @product.images.any? %>
-          <%= image_tag(@product.images.first, alt: @product.name.titleize, class: "max-w-full h-auto max-h-[40vh] max-[400px]:max-h-[30vh] rounded-lg object-cover") %>
+          <%= image_tag(@product.images.first, alt: @product.name.titleize, class: "product-image-mobile") %>
         <% else %>
           <div class="product-image-placeholder">
             <span class="product-image-placeholder-text">(product image coming soon!)</span>
@@ -32,7 +32,7 @@
       </div>
 
       <!-- Description -->
-      <div class="prose prose-lg text-gray-600 mb-4">
+      <div class="product-description mb-4">
         <% if @product.description.present? %>
           <%= simple_format(@product.description) %>
         <% else %>
@@ -56,7 +56,7 @@
       <div class="flex items-stretch">
         <div class="product-image-wrapper w-full">
           <% if @product.images.any? %>
-            <%= image_tag(@product.images.first, alt: @product.name.titleize, class: "max-w-full h-auto max-h-[40vh] max-[400px]:max-h-[30vh] lg:max-h-none rounded-lg object-cover") %>
+            <%= image_tag(@product.images.first, alt: @product.name.titleize, class: "product-image-desktop") %>
           <% else %>
             <div class="product-image-placeholder">
               <span class="product-image-placeholder-text">Product Image</span>
@@ -85,7 +85,7 @@
           </div>
 
           <!-- Description (desktop only, moved to Section 2 on mobile) -->
-          <div class="hidden lg:block prose prose-lg text-gray-600">
+          <div class="hidden lg:block product-description">
             <% if @product.description.present? %>
               <%= simple_format(@product.description) %>
             <% else %>
