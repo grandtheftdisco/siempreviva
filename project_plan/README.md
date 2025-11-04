@@ -1,6 +1,6 @@
 # Siempreviva CSS Refactoring Project
 
-**Status:** Session 1 Complete ✅ | Session 2 In Progress 🎯
+**Status:** Session 1 Complete ✅ | Session 2a PR Submitted ✅ | Session 2b Next ⏳
 **Started:** October 21, 2025
 **Branch:** `refactor/css-to-tailwind` (merged to main)
 
@@ -30,23 +30,36 @@ Refactoring CSS architecture to use Tailwind v4 `@theme` directive with componen
 
 ---
 
-### 🎯 Session 2: Product & Marketing Views (IN PROGRESS)
-**Status:** Branch rebased, ready to code
-**Branch:** `amanda/marketing-views` (rebased on main with Session 1 foundation)
-**Focus:** Style product/marketing pages using new component classes
+### 🎯 Session 2a: Product Views CSS Refactoring (PR SUBMITTED)
+**Status:** PR in review
+**Branch:** `amanda/css-refactor-session-2a` (based on `amanda/product-views`)
+**Base Branch:** `amanda/product-views`
+**Focus:** Refactor product view styling to use component classes from Session 1
 
 **Completed:**
-- ✅ Session 1 PR merged to main (Oct 22, 2025)
-- ✅ Rebased `amanda/marketing-views` on updated main
-- ✅ Resolved conflicts in forms.css
-- ✅ Verified Session 1 foundation present (@theme, component classes)
+- ✅ Replaced inline Tailwind with component classes in product views
+- ✅ Refactored products.css to use @apply with sv-colors
+- ✅ Added 13 new component classes for product views
+- ✅ Reorganized products.css with clear sections and inline media queries
+- ✅ Tested across all breakpoints (mobile, tablet, desktop)
+- ✅ Visual regression check completed
+- ✅ PR submitted for review
 
-**Next Steps:**
-1. Use new component classes (.btn-primary, .input-text, etc.)
-2. Just-in-time refactor products.css as needed
-3. Complete product/marketing view styling
+**Details:** [`sessions/session_2a_product_views.md`](./sessions/session_2a_product_views.md)
 
-**Details:** [`sessions/session_2_product_views.md`](./sessions/session_2_product_views.md)
+---
+
+### ⏳ Session 2b: Marketing Views CSS Refactoring (NEXT)
+**Status:** Ready to start (branching off Session 2a)
+**Branch:** `amanda/css-refactor-session-2b` (based on `amanda/css-refactor-session-2a`)
+**Focus:** Refactor marketing page styling to use component classes from Session 1
+
+**Approach:**
+- Start by branching off Session 2a (russian doll branching)
+- When Session 2a merges to main, rebase Session 2b onto main
+- Focus on marketing views: home, contact, gallery, learn, our_farms
+
+**Details:** [`sessions/session_2b_marketing_views.md`](./sessions/session_2b_marketing_views.md)
 
 ---
 
