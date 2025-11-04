@@ -66,6 +66,14 @@ Refactoring CSS architecture to use Tailwind v4 `@theme` directive with componen
 
 ---
 
+### 🔧 Session 5: CSS Specificity & !important Cleanup (FUTURE)
+**When:** After Sessions 2a/2b complete
+**Focus:** Remove !important hacks, fix CSS specificity issues, establish proper architecture
+
+**Details:** [`sessions/session_5_specificity_cleanup.md`](./sessions/session_5_specificity_cleanup.md)
+
+---
+
 ## Key Resources
 
 ### Technical Documentation
