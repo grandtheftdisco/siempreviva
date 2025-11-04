@@ -368,7 +368,7 @@ header {
     margin-top: 0;
     gap: 2rem;
     border: none;
-    background-color: var(--white-bg);
+    background-color: #ffffff; /* TODO - confirm this is the correct color for spec/no visual regression, then convert to sv- color */
     flex-direction: row;
     font-size: 1.125rem;
   }
