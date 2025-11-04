@@ -139,7 +139,7 @@ Refactoring CSS architecture to use Tailwind v4 `@theme` directive with componen
 | `layout.css` | ⏳ Future | Works as-is, refactor when needed |
 | `cart.css` | ⏳ Future | Works as-is, refactor when needed |
 | `checkouts.css` | ⏳ Future | Works as-is, refactor when needed |
-| `products.css` | 🎯 Next | Refactor just-in-time in Session 2 |
+| `products.css` | ✅ Refactored | Component classes with @apply (Session 2a) |
 | `components.scss` | ⚠️ Deprecated | No longer imported |
 
 ---
@@ -155,4 +155,4 @@ Refactoring CSS architecture to use Tailwind v4 `@theme` directive with componen
 
 ---
 
-*Last Updated: October 22, 2025*
+*Last Updated: November 4, 2025*
