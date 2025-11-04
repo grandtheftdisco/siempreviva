@@ -86,6 +86,11 @@ This approach maintains architectural integrity and learning objectives while st
 - Maintain professional, clear, and concise communication style
 - Focus on technical details and outcomes rather than stylistic elements
 
+### Work Log Standards
+- **Time Estimates**: Can provide time estimates when planning future work
+- **No Retrospective Time Tracking**: Do not report "time spent" on completed tasks in work logs, as AI cannot accurately track elapsed time
+- **Focus on Accomplishments**: Work logs should document what was completed, decisions made, and context for future reference
+
 ### Feature Development Process
 - Feature branches for new development
 - Code review before merging to main
