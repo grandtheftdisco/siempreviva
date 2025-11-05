@@ -8,29 +8,6 @@
 /* NOTE: All !important declarations in this file will be addressed in Session 5 of the CSS refactor plan.
    Session 5 focuses on specificity cleanup and removing !important hacks. */
 
-/* ===== GENERAL LINK HOVER STYLES ===== */
-/* Apply consistent hover behavior to all links, excluding specific components */
-a:not(.logo-link):not(.breadcrumb-link):not(.ais-Hits-item a):not(.remove-button-small):not(.social-icon):not(.shop-products-btn) {
-  @apply text-sv-gray-800 no-underline transition-colors duration-200;
-}
-
-a:not(.logo-link):not(.breadcrumb-link):not(.ais-Hits-item a):not(.remove-button-small):not(.social-icon):not(.shop-products-btn):hover {
-  @apply text-sv-purple-700 cursor-pointer;
-}
-
-/* Navbar link hover styles for desktop */
-@media (min-width: 768px) {
-  .navbar-list li a {
-    @apply transition-colors duration-200;
-  }
-
-  .navbar-list li a:hover {
-    @apply text-sv-purple-700;
-  }
-}
-
-/* ===== BODY & MAIN LAYOUT ===== */
-
 /* ===== GLOBAL LAYOUT ===== */
 
 body, html {
@@ -49,7 +26,6 @@ p {
   @apply p-0 m-0;
 }
 
-/* General content spacing - applies to all screen sizes */
 h1 {
   @apply px-4;
 }
@@ -58,7 +34,6 @@ main {
   @apply px-4 pt-12 flex-1;
 }
 
-/* Desktop/large tablet: Increase main padding for better spacing */
 @media (min-width: 768px) {
   main {
     @apply pt-28;
@@ -69,15 +44,96 @@ main {
   }
 }
 
-/* Flash message styling to ensure proper positioning below fixed header */
+/* Flash message styling */
 [class^="flash-"] {
   @apply mt-4 relative z-10;
 }
 
-
 /* ===== HEADER & NAVIGATION ===== */
 
-/* Mobile menu button */
+header {
+  @apply fixed top-0 left-0 right-0 z-[1000] bg-sv-purple-100;
+  border-bottom: 1px solid rgba(103, 65, 116, 0.15);
+  box-shadow: 0 1px 3px 0 rgba(103, 65, 116, 0.08);
+}
+
+.header-container {
+  @apply mx-auto flex items-center p-4 gap-8 min-w-0;
+}
+
+@media (min-width: 768px) {
+  .header-container {
+    @apply gap-12 pr-8;
+  }
+}
+
+@media (max-width: 768px) {
+  .header-container {
+    @apply p-2 px-4 gap-0 flex-nowrap justify-between items-center;
+  }
+
+  .logo-section {
+    @apply order-1 flex-none;
+  }
+
+  .mobile-nav-items {
+    @apply order-2 flex-none flex items-center gap-3;
+  }
+
+  .mobile-nav-items .search-section {
+    @apply flex-none flex items-center;
+  }
+
+  .mobile-nav-items .right-icons {
+    @apply flex-none flex items-center gap-3;
+  }
+}
+
+@media (min-width: 768px) {
+  .search-section.md\:flex {
+    @apply flex-1 flex items-center justify-end mr-4;
+  }
+
+  .right-icons.md\:flex {
+    @apply flex-none flex items-center gap-3;
+  }
+}
+
+/* ===== LOGO SECTION ===== */
+
+.logo-section {
+  @apply pl-2 pt-2 flex-shrink-0;
+}
+
+@media (min-width: 768px) {
+  .logo-section {
+    @apply flex-none;
+  }
+}
+
+@media (max-width: 767px) {
+  .logo-section {
+    @apply pl-0 pt-1;
+    margin-right: 0 !important;
+  }
+}
+
+.logo-link {
+  @apply flex items-center gap-3 cursor-pointer;
+}
+
+.logo-image {
+  @apply h-[7.5rem] w-auto flex-shrink-0;
+}
+
+@media (max-width: 767px) {
+  .logo-image {
+    @apply h-20;
+  }
+}
+
+/* ===== MOBILE MENU BUTTON ===== */
+
 .mobile-menu-button {
   display: inline-flex !important;
   @apply items-center justify-center p-2 w-10 h-10 text-sm text-sv-purple-700 rounded-lg border-0 bg-transparent transition-colors duration-200 flex-shrink-0;
@@ -107,6 +163,8 @@ main {
   @apply w-6 h-6 text-sv-purple-700;
 }
 
+/* ===== NAVIGATION MENU ===== */
+
 /* Force transparent backgrounds for navigation elements (desktop/inline only) */
 @media (min-width: 768px) {
   .navbar-section, .navbar-section *, .navbar-list, .navbar-list * {
@@ -114,116 +172,22 @@ main {
   }
 }
 
-header {
-  @apply fixed top-0 left-0 right-0 z-[1000] bg-sv-purple-100;
-  border-bottom: 1px solid rgba(103, 65, 116, 0.15);
-  box-shadow: 0 1px 3px 0 rgba(103, 65, 116, 0.08);
-}
-
-.header-container {
-  @apply mx-auto flex items-center p-4 gap-8 min-w-0;
-}
-
-/* Desktop: Simple inline layout for all 4 elements */
-@media (min-width: 768px) {
-  .header-container {
-    @apply gap-12 pr-8;
-  }
-}
-
-/* Responsive header container */
-@media (max-width: 768px) {
-  .header-container {
-    @apply p-2 px-4 gap-0 flex-nowrap justify-between items-center;
-  }
-
-  /* Logo stays on the left */
-  .logo-section {
-    @apply order-1 flex-none;
-  }
-
-  /* Mobile nav items wrapper - groups search, cart, and hamburger together */
-  .mobile-nav-items {
-    @apply order-2 flex-none flex items-center gap-3;
-  }
-
-  .mobile-nav-items .search-section {
-    @apply flex-none flex items-center;
-  }
-
-  .mobile-nav-items .right-icons {
-    @apply flex-none flex items-center gap-3;
-  }
-
-}
-
-/* Desktop: Search and cart sections inline */
-@media (min-width: 768px) {
-  .search-section.md\:flex {
-    @apply flex-1 flex items-center justify-end mr-4;
-  }
-
-  .right-icons.md\:flex {
-    @apply flex-none flex items-center gap-3;
-  }
-}
-
-/* ===== LOGO SECTION ===== */
-
-.logo-section {
-  @apply pl-2 pt-2 flex-shrink-0;
-}
-
-/* Desktop: Logo takes minimal space */
-@media (min-width: 768px) {
-  .logo-section {
-    @apply flex-none;
-  }
-}
-
-/* Responsive logo section */
-@media (max-width: 767px) {
-  .logo-section {
-    @apply pl-0 pt-1;
-    margin-right: 0 !important; /* override auto margin on mobile */
-  }
-}
-
-.logo-link {
-  @apply flex items-center gap-3 cursor-pointer;
-}
-
-.logo-image {
-  @apply h-[7.5rem] w-auto flex-shrink-0;
-}
-
-/* Responsive logo sizing - Tailwind md breakpoint */
-@media (max-width: 767px) {
-  .logo-image {
-    @apply h-20;
-  }
-}
-
-/* ===== NAVIGATION SECTION ===== */
-
 .navbar-section {
   @apply flex-none flex;
 }
 
-/* Desktop: Navbar inline with other elements */
 @media (min-width: 768px) {
   .navbar-section {
     @apply flex-none;
   }
 }
 
-/* Mobile navigation dropdown styling */
 @media (max-width: 767px) {
   .navbar-section {
     @apply hidden;
   }
 
-  /* Mobile dropdown - override transparent background rule for dropdown only */
+  /* Mobile dropdown */
   .navbar-section:not(.hidden) {
     display: block !important;
     position: absolute !important;
@@ -235,7 +199,6 @@ header {
     box-shadow: 0 4px 12px -2px rgba(103, 65, 116, 0.15), 0 2px 4px -1px rgba(103, 65, 116, 0.06) !important;
   }
 
-  /* Override the global transparent rule specifically for mobile dropdown - ensures all child elements have proper background */
   .navbar-section:not(.hidden),
   .navbar-section:not(.hidden) .navbar-list,
   .navbar-section:not(.hidden) .navbar-list li,
@@ -246,7 +209,7 @@ header {
   .navbar-section:not(.hidden) .navbar-list {
     @apply flex-col p-0 gap-3 border-0 rounded-none m-0 text-lg;
     flex-direction: column !important;
-    padding: 0 !important; /* removes extra padding since parent has padding */
+    padding: 0 !important;
     gap: 0.75rem !important;
     border: none !important;
     border-radius: 0 !important;
@@ -255,7 +218,7 @@ header {
   }
 
   .navbar-section:not(.hidden) .navbar-list li {
-    border-bottom: 1px solid rgba(103, 65, 116, 0.1) !important; /* subtle separator */
+    border-bottom: 1px solid rgba(103, 65, 116, 0.1) !important;
     padding-bottom: 0.75rem !important;
     padding-top: 0.75rem !important;
   }
@@ -287,14 +250,12 @@ header {
   background-color: transparent !important;
 }
 
-/* Tailwind md breakpoint (768px+) - horizontal navbar */
 @media (min-width: 768px) {
   .navbar-list {
     @apply p-0 mt-0 gap-8 border-0 flex-row text-lg;
   }
 }
 
-/* Tailwind lg breakpoint (1024px+) - larger screens get bigger text */
 @media (min-width: 1024px) {
   .navbar-section {
     @apply pl-4;
@@ -305,7 +266,6 @@ header {
   }
 }
 
-/* Between md and lg (768px-1023px) - compact nav for tablets */
 @media (min-width: 768px) and (max-width: 1023px) {
   .navbar-section {
     @apply pl-3;
@@ -316,7 +276,27 @@ header {
   }
 }
 
-/* ===== SOCIAL LINKS SECTION ===== */
+/* ===== GENERAL LINK STYLES ===== */
+
+a:not(.logo-link):not(.breadcrumb-link):not(.ais-Hits-item a):not(.remove-button-small):not(.social-icon):not(.shop-products-btn) {
+  @apply text-sv-gray-800 no-underline transition-colors duration-200;
+}
+
+a:not(.logo-link):not(.breadcrumb-link):not(.ais-Hits-item a):not(.remove-button-small):not(.social-icon):not(.shop-products-btn):hover {
+  @apply text-sv-purple-700 cursor-pointer;
+}
+
+@media (min-width: 768px) {
+  .navbar-list li a {
+    @apply transition-colors duration-200;
+  }
+
+  .navbar-list li a:hover {
+    @apply text-sv-purple-700;
+  }
+}
+
+/* ===== SOCIAL LINKS ===== */
 /* TODO - on Contact form branch, move these to their own stylesheet */
 
 .social-links {
@@ -357,6 +337,18 @@ header {
   @apply grid grid-cols-1 gap-8 mb-8 pb-8;
 }
 
+@media (min-width: 768px) {
+  .footer-content {
+    @apply grid-cols-2 gap-16 justify-items-center max-w-[800px] mx-auto;
+  }
+}
+
+@media (min-width: 1024px) {
+  .footer-content {
+    @apply gap-16;
+  }
+}
+
 .footer-section {
   @apply text-center;
 }
@@ -391,33 +383,14 @@ header {
   @apply text-sv-gray-500 text-sm font-sans m-0;
 }
 
-/* Desktop layout for footer */
 @media (min-width: 768px) {
-  .footer-content {
-    @apply grid-cols-2 gap-16 justify-items-center max-w-[800px] mx-auto;
-  }
-
-  .footer-section {
-    @apply text-center;
-  }
-
-  .footer-social-icons {
-    @apply justify-center;
-  }
-
   .site-footer {
     @apply py-16 pb-12;
   }
 }
 
-/* Large desktop layout */
-@media (min-width: 1024px) {
-  .footer-content {
-    @apply gap-16;
-  }
-}
+/* ===== IMAGE UTILITIES ===== */
 
-/* Image formatting utility */
 .formatted-image {
   @apply rounded-3xl;
   @apply transition-all duration-200 ease-in-out;
