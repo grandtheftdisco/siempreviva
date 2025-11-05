@@ -1,6 +1,9 @@
 /* UI Components Stylesheet */
-/* Pure CSS with Tailwind @apply - No SCSS dependency */
-/* Colors defined using Tailwind v4 @theme directive in application.css */
+
+/* NOTE: All !important declarations in this file will be addressed in Session 5 of the CSS refactor plan.
+   Session 5 focuses on specificity cleanup and removing !important hacks. */
+
+/* SESSION 4 TODO: reorganize this file when converting legacy vanilla classes to Tailwind */
 
 /* ===== NEW @APPLY BUTTON COMPONENT CLASSES ===== */
 /* Use these classes in new views (product/marketing) */
@@ -361,4 +364,16 @@ form input.form-input-small,
     text-align: left;
     font-size: 1.5rem;
   }
+}
+
+/* ===== IMAGE UTILITIES ===== */
+
+.formatted-image {
+  @apply rounded-3xl;
+  @apply transition-all duration-200 ease-in-out;
+  filter: saturate(0.5);
+}
+
+.formatted-image:hover {
+  filter: saturate(0.7);
 }

@@ -2,17 +2,16 @@
 @import "tailwindcss";
 
 /* ===== TAILWIND V4 CUSTOM THEME ===== */
-/* Define custom sv-colors using Tailwind v4 @theme directive */
 @theme {
   /* Fonts */
   --font-sans: 'Raleway', sans-serif;
   --font-serif: 'Playfair Display', serif;
 
   /* Purple shades */
-  --color-sv-purple-50: #faf9fb;   /* Very light lavender - body background */
+  --color-sv-purple-50: #faf9fb;
   --color-sv-purple-100: #f0e8f5;
   --color-sv-purple-200: #e6d3ec;
-  --color-sv-purple-300: #d9cee0;  /* Light purple - borders */
+  --color-sv-purple-300: #d9cee0;
   --color-sv-purple-400: #c5aace;
   --color-sv-purple-700: #674174;
 
@@ -28,8 +27,8 @@
 
   /* Gray/Neutral shades */
   --color-sv-gray-100: #f8f9fa;
-  --color-sv-gray-200: #e5e7eb;   /* Light gray - borders/focus */
-  --color-sv-gray-300: #f3f4f6;   /* Light gray - hover states */
+  --color-sv-gray-200: #e5e7eb;
+  --color-sv-gray-300: #f3f4f6;
   --color-sv-gray-400: #adb5bd;
   --color-sv-gray-500: #6c757d;
   --color-sv-gray-800: #2c3e50;
@@ -45,7 +44,10 @@
 @import "./components.css";   /* UI components, buttons, forms, cards, utilities using sv-colors */
 
 /* Import CSS-only modular stylesheets */
-@import "./layout.css";        /* Header, navigation, responsive layout */
+@import "./layout.css";        /* Global layout structure and link styles */
+@import "./header.css";        /* Header structure and logo */
+@import "./navigation.css";    /* Mobile menu button and navigation menu */
+@import "./footer.css";        /* Site footer and social links */
 @import "./search.css";        /* Search functionality and Algolia components */
 @import "./cart.css";          /* Cart dropdown and cart page styles */
 @import "./forms.css";         /* Form inputs, labels, validation styles */
