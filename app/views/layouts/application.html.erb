@@ -3,6 +3,7 @@
   <%= render partial: "layouts/public/head" %>
 
   <body>
+    <!-- Keep relative inline - breaks header layout if moved to CSS -->
     <header class="relative">
       <div class="header-container">
           
@@ -13,17 +14,17 @@
           </a>
         </div>
       
-        <!-- Navbar Links -->
+        <!-- Navbar Links - Keep responsive utilities inline for proper mobile/desktop visibility toggle -->
         <div class="navbar-section hidden md:flex" id="navbar-default">
           <ul class="navbar-list">
             <li><%= link_to 'products', products_path %></li>
-            <li><%= link_to 'our farms', our_farms_path %></li> 
+            <li><%= link_to 'our farms', our_farms_path %></li>
             <li><%= link_to 'learn', learn_path %></li>
             <li><%= link_to 'contact', contact_path %></li>
           </ul>
         </div>
 
-        <!-- Desktop Search Section -->
+        <!-- Desktop Search Section - Keep responsive utilities inline for proper mobile/desktop visibility toggle -->
         <div class="search-section hidden md:flex">
           <div class="search-desktop">
             <div id="searchbox-desktop" class="search-container"></div>
@@ -31,7 +32,7 @@
           </div>
         </div>
 
-        <!-- Desktop Cart Section -->
+        <!-- Desktop Cart Section - Keep responsive utilities inline for proper mobile/desktop visibility toggle -->
         <div class="right-icons hidden md:flex">
           <!-- Cart Dropdown -->
           <button id="cartDropdownButton" class="cart-button">
@@ -92,7 +93,7 @@
           </div>
         </div>
 
-        <!-- Mobile Nav Items (Search + Right Icons) -->
+        <!-- Mobile Nav Items (Search + Right Icons) - Keep responsive utilities inline for proper mobile/desktop visibility toggle -->
         <div class="mobile-nav-items md:hidden">
           <!-- Mobile Search Section -->
           <div class="search-section">
