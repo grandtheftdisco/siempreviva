@@ -1,6 +1,13 @@
 /* Search Stylesheet */
 /* Contains all search-related styles including Algolia components and search dropdowns */
 
+/* NOTE: All !important declarations in this file will be addressed in Session 5 of the CSS refactor plan.
+   Session 5 focuses on specificity cleanup and removing !important hacks. */
+
+/* NOTE: Any comments in this file that seem superfluous are to keep record of design decisions
+   so that when the time comes for legacy cleanup & refactor in Session 4, there is context for the
+   reasoning behind the vanilla code. */
+
 /* ===== SEARCH SECTION LAYOUT ===== */
 
 .search-section:not(.hidden) {

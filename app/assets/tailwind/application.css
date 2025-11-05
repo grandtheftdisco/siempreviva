@@ -52,6 +52,3 @@
 @import "./cart.css";          /* Cart dropdown and cart page styles */
 @import "./forms.css";         /* Form inputs, labels, validation styles */
 @import "./checkouts.css";     /* Checkout success page styles */
-
-/* Additional stylesheets can be imported here */
-/* @import "./email.css"; */
