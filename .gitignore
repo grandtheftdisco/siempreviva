@@ -4,13 +4,13 @@
 # belong in git's global ignore instead:
 # `$XDG_CONFIG_HOME/git/ignore` or `~/.config/git/ignore`
 
-# Ignore bundler config.
+# Bundler config.
 /.bundle
 
-# Ignore all environment files.
+# Environment files.
 /.env*
 
-# Ignore all logfiles and tempfiles.
+# All logfiles and tempfiles.
 /log/*
 /tmp/*
 !/log/.keep
@@ -21,24 +21,28 @@
 !/tmp/pids/
 !/tmp/pids/.keep
 
-# Ignore storage (uploaded files in development and any SQLite databases).
+# Storage (uploaded files in development and any SQLite databases).
 /storage/*
 !/storage/.keep
 /tmp/storage/*
 !/tmp/storage/
 !/tmp/storage/.keep
 
+# Compiled assets & build outputs
 /public/assets
+/app/assets/builds/*
+!/app/assets/builds/.keep
 
 # Ignore master key for decrypting credentials and more.
 /config/master.key
 
-
+# Personal notes
 /notes.txt
 /git_notes.txt
-.env.development.local
-/app/assets/builds/*
-!/app/assets/builds/.keep
 CART_WIREFRAME.md
 github-profile-README.md
 additional_images_grid.html.erb
+LAYOUT_CSS_AUDIT.md
+GALLERY_ARCHITECTURE.md
+PR_NOTES*
+WORK_LOG*
