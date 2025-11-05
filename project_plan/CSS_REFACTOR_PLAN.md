@@ -16,8 +16,17 @@ The CSS refactoring documentation has been reorganized into a structured directo
 
 ### Main Documentation
 - **[Project Overview](./project_plan/README.md)** - High-level summary and current status
-- **[Session 1: Foundation](./project_plan/sessions/session_1_foundation.md)** - What we accomplished ✅
-- **[Session 2: Product Views](./project_plan/sessions/session_2_product_views.md)** - What's next 🎯
+
+### Completed Sessions
+- **[Session 1: Foundation](./project_plan/sessions/session_1_foundation.md)** - CSS architecture setup ✅
+- **[Session 2a: Product Views](./project_plan/sessions/session_2_product_views.md)** - Product CSS refactoring ✅
+- **[Session 3: Layout Modularization](./project_plan/sessions/session_3_layout.md)** - Layout.css split into modules ✅
+
+### In Progress
+- **[Session 4: Legacy Cleanup](./project_plan/sessions/session_4_legacy_cleanup.md)** - View migrations & CSS refactoring (4-part series) 🎯
+
+### Future Sessions
+- **Session 5: Specificity Cleanup** - Remove !important declarations (after Session 4)
 
 ### Technical References
 - **[Color System](./project_plan/technical/color_inventory.md)** - Available sv-colors
@@ -41,5 +50,15 @@ The original CSS_REFACTOR_PLAN.md was 670+ lines and hard to navigate. The new s
 
 ---
 
-*Last updated: October 22, 2025*
-*Original file preserved in git history*
+---
+
+## Project Status
+
+**Current:** Session 4A in progress (View migrations & legacy code removal)
+**Completed:** Sessions 1, 2a, 3
+**Upcoming:** Sessions 4B, 4C, 4D, 5
+
+---
+
+*Last updated: November 6, 2025*
+*Original monolithic file preserved in git history*
