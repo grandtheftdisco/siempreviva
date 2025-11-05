@@ -3,13 +3,13 @@
 **Status:** 🧹 OPTIONAL - Future
 **When:** If/when we modify cart or checkout features
 **Estimated Time:** 2-3 hours
-**Branch:** `refactor/legacy-views-cleanup` (if done)
+**Branch:** `css-refactor/session-4` (if done)
 
 ---
 
 ## Overview
 
-Migrate cart and checkout views to use new component classes, then remove backward-compatibility code from CSS files. This completes the CSS refactoring project.
+Migrate cart and checkout views to use new component classes, remove backward-compatibility code from CSS files, and **eliminate inline CSS/Tailwind utilities** by extracting them into reusable component classes. This completes the CSS refactoring project with a focus on maximizing maintainability through component-based styling.
 
 ---
 
@@ -29,35 +29,47 @@ Migrate cart and checkout views to use new component classes, then remove backwa
 
 ## Scope
 
-### Views to Migrate
+### Views to Migrate & Audit
 - `app/views/carts/` - Cart page, cart dropdown
 - `app/views/checkouts/` - Checkout form, success page
 - `app/views/layouts/application.html.erb` - Cart dropdown in header
+- **All views with inline CSS or extensive inline Tailwind** - Extract to component classes
 
 ### CSS to Clean Up
 - `app/assets/tailwind/forms.css` - Remove element selectors
 - `app/assets/tailwind/components.css` - Remove legacy classes
 - `app/assets/tailwind/cart.css` - Refactor to @apply
 - `app/assets/tailwind/checkouts.css` - Refactor to @apply
+- `app/assets/tailwind/email.css` - Refactor to @apply with sv-colors
+- `app/assets/tailwind/search.css` - Refactor to @apply with sv-colors
 
 ---
 
 ## Tasks Breakdown
 
-### 1. Migrate Cart Views
+### 1. Audit All Views for Inline Styles (PRIORITY)
+- [ ] Grep codebase for `style=` attributes (inline CSS)
+- [ ] Identify views with excessive inline Tailwind utilities (3+ utilities)
+- [ ] Create component classes for repeated patterns
+- [ ] Extract inline styles to appropriate CSS files
+- [ ] Document any inline utilities that must remain (responsive utilities, etc.)
+
+### 2. Migrate Cart Views
 - [ ] Update cart dropdown form to use `.btn-submit` class
 - [ ] Update cart page forms to use component classes
 - [ ] Update quantity controls to use component classes
+- [ ] **Remove inline styles and extract to cart.css**
 - [ ] Test cart dropdown functionality
 - [ ] Test cart page (add, update, remove items)
 
-### 2. Migrate Checkout Views
+### 3. Migrate Checkout Views
 - [ ] Update checkout forms to use `.btn-submit` class
 - [ ] Update any custom styling to use component classes
+- [ ] **Remove inline styles and extract to checkouts.css**
 - [ ] Test checkout flow end-to-end
 - [ ] Test payment processing
 
-### 3. Remove Backward-Compatibility Code
+### 4. Remove Backward-Compatibility Code
 
 **forms.css cleanup:**
 ```css
@@ -89,7 +101,7 @@ form {
 /* etc. */
 ```
 
-### 4. Refactor Feature CSS Files
+### 5. Refactor Feature CSS Files
 
 **cart.css:**
 - Convert to @apply with sv-colors
@@ -101,7 +113,17 @@ form {
 - Remove hardcoded colors
 - Use component classes where possible
 
-### 5. Testing
+**email.css:**
+- Convert to @apply with sv-colors
+- Remove hardcoded hex values
+- Maintain email client compatibility
+
+**search.css:**
+- Convert to @apply with sv-colors
+- Remove hardcoded hex values
+- Ensure Algolia components styled correctly
+
+### 6. Testing
 - [ ] Test all cart functionality (add, update, remove, checkout)
 - [ ] Test all checkout functionality (form, payment, success)
 - [ ] Run full test suite
@@ -132,10 +154,12 @@ Uses explicit `.form-container` and `.btn-submit` classes.
 
 ## Success Criteria
 
+✅ **No inline CSS (scan for both `style=` and `class=` attributes) in views unless there is a valid reason**
+✅ **Inline Tailwind reduced to minimum** (only layout/responsive utilities)
 ✅ Cart views use new component classes
 ✅ Checkout views use new component classes
 ✅ All backward-compatibility code removed
-✅ cart.css and checkouts.css refactored to @apply
+✅ cart.css, checkouts.css, email.css, and search.css refactored to @apply
 ✅ All functionality working
 ✅ No visual regressions
 ✅ Test suite passing
