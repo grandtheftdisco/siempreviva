@@ -171,6 +171,15 @@
   flex-direction: column;
 }
 
+/* Mobile: Position dropdown below entire header, not just .right-icons */
+@media (max-width: 767px) {
+  .cart-dropdown {
+    position: fixed;
+    top: 7rem; /* Clears full header height (logo + padding) with gap */
+    right: 0.5rem;
+  }
+}
+
 .cart-dropdown-header {
   position: sticky;
   top: 0;
