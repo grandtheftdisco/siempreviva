@@ -35,7 +35,6 @@ a:not(.logo-link):not(.breadcrumb-link):not(.ais-Hits-item a):not(.remove-button
 
 body, html {
   @apply font-sans min-h-screen bg-sv-purple-50;
-  background-color: #faf9fb !important;
 }
 
 body {
@@ -232,18 +231,16 @@ header {
     left: 0 !important;
     right: 0 !important;
     @apply bg-sv-purple-100 p-4 flex-col z-50;
-    background-color: #f0e8f5 !important;
     border-top: 1px solid rgba(103, 65, 116, 0.15) !important;
     box-shadow: 0 4px 12px -2px rgba(103, 65, 116, 0.15), 0 2px 4px -1px rgba(103, 65, 116, 0.06) !important;
   }
 
-  /* Override the global transparent rule specifically for mobile dropdown */
+  /* Override the global transparent rule specifically for mobile dropdown - ensures all child elements have proper background */
   .navbar-section:not(.hidden),
   .navbar-section:not(.hidden) .navbar-list,
   .navbar-section:not(.hidden) .navbar-list li,
   .navbar-section:not(.hidden) .navbar-list li a {
     @apply bg-sv-purple-100;
-    background-color: #f0e8f5 !important; /* ensures all child elements have proper background */
   }
 
   .navbar-section:not(.hidden) .navbar-list {
@@ -281,7 +278,6 @@ header {
 
   .navbar-section:not(.hidden) .navbar-list li a:hover {
     @apply text-sv-purple-700;
-    color: #674174 !important;
   }
 }
 
@@ -295,7 +291,6 @@ header {
 @media (min-width: 768px) {
   .navbar-list {
     @apply p-0 mt-0 gap-8 border-0 flex-row text-lg;
-    background-color: #ffffff; /* TODO - confirm this is the correct color for spec/no visual regression, then convert to sv-color */
   }
 }
 
