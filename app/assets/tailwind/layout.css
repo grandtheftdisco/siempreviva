@@ -36,7 +36,7 @@ body, html {
 }
 
 body {
-  @apply pt-20;
+  @apply pt-20 flex flex-col;
 }
 
 p {
@@ -53,7 +53,7 @@ h1 {
 }
 
 main {
-  @apply px-4 pt-12;
+  @apply px-4 pt-12 flex-1;
 }
 
 /* Desktop/large tablet: Increase main padding for better spacing */
