@@ -107,65 +107,65 @@
 
           <!-- Mobile Right Side Icons -->
           <div class="right-icons">
-          <!-- Mobile Cart Dropdown -->
-          <button id="cartDropdownButtonMobile" class="cart-button">
-            <!-- Shopping Cart Icon -->
-            <svg class="cart-icon" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 10.5V6a3.75 3.75 0 10-7.5 0v4.5m11.356-1.993l1.263 12c.07.665-.45 1.243-1.119 1.243H4.25a1.125 1.125 0 01-1.12-1.243l1.264-12A1.125 1.125 0 015.513 7.5h12.974c.576 0 1.059.435 1.119.993zM8.625 10.5a.375.375 0 11-.75 0 .375.375 0 01.75 0zm7.5 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z"></path>
-            </svg>
-            <!-- Cart Badge -->
-            <span class="cart-badge"><%= @cart.cart_items.count %></span>
-          </button>
+            <!-- Mobile Cart Dropdown -->
+            <button id="cartDropdownButtonMobile" class="cart-button">
+              <!-- Shopping Cart Icon -->
+              <svg class="cart-icon" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 10.5V6a3.75 3.75 0 10-7.5 0v4.5m11.356-1.993l1.263 12c.07.665-.45 1.243-1.119 1.243H4.25a1.125 1.125 0 01-1.12-1.243l1.264-12A1.125 1.125 0 015.513 7.5h12.974c.576 0 1.059.435 1.119.993zM8.625 10.5a.375.375 0 11-.75 0 .375.375 0 01.75 0zm7.5 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z"></path>
+              </svg>
+              <!-- Cart Badge -->
+              <span class="cart-badge"><%= @cart.cart_items.count %></span>
+            </button>
 
-          <!-- Mobile Dropdown Menu -->
-          <div id="cartDropdownMobile" class="cart-dropdown">
-            <div class="cart-dropdown-header">
-              <h3 class="cart-dropdown-title">my bag</h3>
-            </div>
-            <div class="cart-dropdown-content">
-              <ul class="cart-items-list">
-              <% @cart.cart_items.each do |item| %>
-                  <li class="cart-item">
-                    <div class="cart-item-details">
-                      <p class="cart-item-name"><%= item.name %></p>
-                      <p class="cart-item-price"><%= to_dollars(item.price) %></p>
-                    </div>
-                    <%= button_to '×', item, method: :delete, class: 'remove-button-small' %>
-                  </li>
-              <% end %>
-              </ul>
-            </div>
-            <div class="cart-dropdown-footer">
-              <div class="cart-summary">
-                <div class="cart-summary-line">
-                  <span>subtotal</span>
-                  <span><%= to_dollars(@cart.total) %></span>
+            <!-- Mobile Dropdown Menu -->
+            <div id="cartDropdownMobile" class="cart-dropdown">
+              <div class="cart-dropdown-header">
+                <h3 class="cart-dropdown-title">my bag</h3>
+              </div>
+              <div class="cart-dropdown-content">
+                <ul class="cart-items-list">
+                <% @cart.cart_items.each do |item| %>
+                    <li class="cart-item">
+                      <div class="cart-item-details">
+                        <p class="cart-item-name"><%= item.name %></p>
+                        <p class="cart-item-price"><%= to_dollars(item.price) %></p>
+                      </div>
+                      <%= button_to '×', item, method: :delete, class: 'remove-button-small' %>
+                    </li>
+                <% end %>
+                </ul>
+              </div>
+              <div class="cart-dropdown-footer">
+                <div class="cart-summary">
+                  <div class="cart-summary-line">
+                    <span>subtotal</span>
+                    <span><%= to_dollars(@cart.total) %></span>
+                  </div>
+                  <div class="cart-summary-line">
+                    <span>shipping</span>
+                    <span>(calculated at checkout)</span>
+                    <!-- TODO - add shipping in here once customer has selected it; ie if they begin checkout process & then abandon cart -->
+                  </div>
+                  <div class="cart-summary-line cart-total">
+                    <span>total</span>
+                    <span><%= to_dollars(@cart.total) %></span>
+                  </div>
                 </div>
-                <div class="cart-summary-line">
-                  <span>shipping</span>
-                  <span>(calculated at checkout)</span>
-                  <!-- TODO - add shipping in here once customer has selected it; ie if they begin checkout process & then abandon cart -->
-                </div>
-                <div class="cart-summary-line cart-total">
-                  <span>total</span>
-                  <span><%= to_dollars(@cart.total) %></span>
+                <div class="cart-actions">
+                  <a href="<%= cart_path %>" class="cart-view-button">view cart</a>
+                  <a href="<%= new_checkout_path %>" class="cart-checkout-btn">checkout</a>
                 </div>
               </div>
-              <div class="cart-actions">
-                <a href="<%= cart_path %>" class="cart-view-button">view cart</a>
-                <a href="<%= new_checkout_path %>" class="cart-checkout-btn">checkout</a>
-              </div>
             </div>
+
+            <!-- Mobile Menu Button -->
+            <button data-collapse-toggle="navbar-default" type="button" class="mobile-menu-button">
+              <span class="sr-only">Open main menu</span>
+              <svg class="mobile-menu-icon" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"></path>
+              </svg>
+            </button>
           </div>
-
-          <!-- Mobile Menu Button -->
-          <button data-collapse-toggle="navbar-default" type="button" class="mobile-menu-button">
-            <span class="sr-only">Open main menu</span>
-            <svg class="mobile-menu-icon" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"></path>
-            </svg>
-          </button>
-        </div>
         </div> <!-- End mobile-nav-items -->
         
         <!-- Search Dropdown (Mobile) - Moved outside search-section -->
@@ -173,8 +173,8 @@
           <div id="searchbox" class="search-container"></div>
           <div id="hits" class="search-results"></div>
         </div>
-        </div> <!-- End header-container -->
-      </header>
+      </div> <!-- End header-container -->
+    </header>
     <main<%= ' class="has-flash-messages"'.html_safe if flash.any? %>>
       <%= render partial: "layouts/public/flash_alert" %>
       <%= yield %>
