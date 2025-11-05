@@ -8,24 +8,21 @@
 /* ===== GENERAL LINK HOVER STYLES ===== */
 /* Apply consistent hover behavior to all links, excluding specific components */
 a:not(.logo-link):not(.breadcrumb-link):not(.ais-Hits-item a):not(.remove-button-small):not(.social-icon):not(.shop-products-btn) {
-  color: #2c3e50;
-  text-decoration: none;
-  transition: color 0.2s ease;
+  @apply text-sv-gray-800 no-underline transition-colors duration-200;
 }
 
 a:not(.logo-link):not(.breadcrumb-link):not(.ais-Hits-item a):not(.remove-button-small):not(.social-icon):not(.shop-products-btn):hover {
-  color: #674174;
-  cursor: pointer;
+  @apply text-sv-purple-700 cursor-pointer;
 }
 
 /* Navbar link hover styles for desktop */
 @media (min-width: 768px) {
   .navbar-list li a {
-    transition: color 0.2s ease;
+    @apply transition-colors duration-200;
   }
 
   .navbar-list li a:hover {
-    color: #674174;
+    @apply text-sv-purple-700;
   }
 }
 
@@ -34,52 +31,45 @@ a:not(.logo-link):not(.breadcrumb-link):not(.ais-Hits-item a):not(.remove-button
 /* ===== GLOBAL LAYOUT ===== */
 
 body, html {
-  font-family: 'Raleway', sans-serif;
-  background-color: #faf9fb !important;
-  min-height: 100vh;
+  @apply font-sans min-h-screen bg-sv-purple-50;
+  background-color: #faf9fb !important; /* Keep !important for Session 5 */
 }
 
 body {
-  padding-top: 5rem; /* Reduced base padding for fixed header */
+  @apply pt-20;
 }
 
 p {
-  font-family: 'Raleway', sans-serif;
+  @apply font-sans;
 }
 
 .container {
-  padding: 0px;
-  margin: 0px;
+  @apply p-0 m-0;
 }
 
 /* General content spacing - applies to all screen sizes */
 h1 {
-  padding-left: 1rem;
-  padding-right: 1rem;
+  @apply px-4;
 }
 
 main {
-  padding-left: 1rem;
-  padding-right: 1rem;
-  padding-top: 3rem; /* Base padding for mobile */
+  @apply px-4 pt-12;
 }
 
 /* Desktop/large tablet: Increase main padding for better spacing */
 @media (min-width: 768px) {
   main {
-    padding-top: 7rem; /* Consistent spacing for desktop */
+    @apply pt-28;
   }
-  
+
   main.has-flash-messages {
-    padding-top: 8rem; /* Additional padding when flash messages exist */
+    @apply pt-32;
   }
 }
 
 /* Flash message styling to ensure proper positioning below fixed header */
 [class^="flash-"] {
-  margin-top: 1rem;
-  position: relative;
-  z-index: 10;
+  @apply mt-4 relative z-10;
 }
 
 
@@ -87,120 +77,80 @@ main {
 
 /* Mobile menu button */
 .mobile-menu-button {
-  display: inline-flex !important;
-  align-items: center;
-  padding: 0.5rem;
-  width: 2.5rem;
-  height: 2.5rem;
-  justify-content: center;
-  font-size: 0.875rem;
-  color: #674174; /* Purple color to match spyglass */
-  border-radius: 0.5rem;
-  border: none;
-  background: transparent;
-  transition: background-color 0.2s;
-  flex-shrink: 0; /* Prevent from shrinking */
+  display: inline-flex !important; /* Keep !important for Session 5 */
+  @apply items-center justify-center p-2 w-10 h-10 text-sm text-sv-purple-700 rounded-lg border-0 bg-transparent transition-colors duration-200 flex-shrink-0;
 }
 
 .mobile-menu-button:hover {
-  background-color: #f3f4f6;
-  cursor: pointer;
+  @apply cursor-pointer;
 }
 
 .mobile-menu-button:focus {
   outline: none;
-  box-shadow: 0 0 0 2px #e5e7eb;
 }
 
 @media (min-width: 768px) {
   .mobile-menu-button {
-    display: none !important;
+    display: none !important; /* Keep !important for Session 5 */
   }
 }
 
 @media (max-width: 767px) {
   .mobile-menu-button {
-    display: inline-flex !important;
+    display: inline-flex !important; /* Keep !important for Session 5 */
   }
 }
 
 .mobile-menu-icon {
-  width: 1.5rem;
-  height: 1.5rem;
-  color: #674174;
+  @apply w-6 h-6 text-sv-purple-700;
 }
 
 /* Force transparent backgrounds for navigation elements (desktop/inline only) */
 @media (min-width: 768px) {
   .navbar-section, .navbar-section *, .navbar-list, .navbar-list * {
-    background-color: transparent !important;
+    background-color: transparent !important; /* Keep !important for Session 5 */
   }
 }
 
 header {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  z-index: 1000;
-  background-color: #f0e8f5;
+  @apply fixed top-0 left-0 right-0 z-[1000] bg-sv-purple-100;
   border-bottom: 1px solid rgba(103, 65, 116, 0.15);
   box-shadow: 0 1px 3px 0 rgba(103, 65, 116, 0.08);
 }
 
 .header-container {
-  margin: 0 auto;
-  display: flex;
-  align-items: center;
-  padding: 1rem;
-  gap: 2rem; /* Generous spacing between all elements */
-  min-width: 0; /* Prevent flex items from overflowing */
+  @apply mx-auto flex items-center p-4 gap-8 min-w-0;
 }
 
 /* Desktop: Simple inline layout for all 4 elements */
 @media (min-width: 768px) {
   .header-container {
-    gap: 3rem;
-    padding-right: 2rem; /* Add extra space from cart icon to viewport edge */
+    @apply gap-12 pr-8;
   }
 }
 
 /* Responsive header container */
 @media (max-width: 768px) {
   .header-container {
-    padding: 0.5rem 1rem; /* Increased left/right padding on mobile */
-    gap: 0;
-    flex-wrap: nowrap;
-    justify-content: space-between; /* Logo left, nav items right */
-    align-items: center;
+    @apply p-2 px-4 gap-0 flex-nowrap justify-between items-center;
   }
 
   /* Logo stays on the left */
   .logo-section {
-    order: 1;
-    flex: 0 0 auto; /* Fixed size */
+    @apply order-1 flex-none;
   }
 
   /* Mobile nav items wrapper - groups search, cart, and hamburger together */
   .mobile-nav-items {
-    order: 2;
-    flex: 0 0 auto;
-    display: flex;
-    align-items: center;
-    gap: 0.75rem; /* Even spacing between search, cart, and hamburger */
+    @apply order-2 flex-none flex items-center gap-3;
   }
 
   .mobile-nav-items .search-section {
-    flex: 0 0 auto;
-    display: flex;
-    align-items: center;
+    @apply flex-none flex items-center;
   }
 
   .mobile-nav-items .right-icons {
-    flex: 0 0 auto;
-    display: flex;
-    align-items: center;
-    gap: 0.75rem; /* Space between cart and hamburger */
+    @apply flex-none flex items-center gap-3;
   }
 
 
@@ -209,98 +159,80 @@ header {
 /* Desktop: Search and cart sections inline */
 @media (min-width: 768px) {
   .search-section.md\:flex {
-    flex: 1; /* Take remaining space for search input */
-    display: flex;
-    align-items: center;
-    justify-content: flex-end; /* Push search input to the right */
-    margin-right: 1rem; /* Space before cart */
+    @apply flex-1 flex items-center justify-end mr-4;
   }
 
   .right-icons.md\:flex {
-    flex: 0 0 auto; /* Fixed size for cart */
-    display: flex;
-    align-items: center;
-    gap: 0.75rem;
+    @apply flex-none flex items-center gap-3;
   }
 }
 
 /* ===== LOGO SECTION ===== */
 
 .logo-section {
-  padding-left: 0.5rem;
-  padding-top: 0.5rem;
-  flex-shrink: 0; /* Don't let logo shrink too much */
+  @apply pl-2 pt-2 flex-shrink-0;
 }
 
 /* Desktop: Logo takes minimal space */
 @media (min-width: 768px) {
   .logo-section {
-    flex: 0 0 auto; /* Fixed size, no grow/shrink */
+    @apply flex-none;
   }
 }
 
 /* Responsive logo section */
 @media (max-width: 767px) {
   .logo-section {
-    padding-left: 0; /* Remove left padding for flush left alignment */
-    padding-top: 0.25rem;
-    margin-right: 0 !important; /* Override auto margin on mobile */
+    @apply pl-0 pt-1;
+    margin-right: 0 !important; /* Keep !important for Session 5 - override auto margin on mobile */
   }
 }
 
 .logo-link {
-  display: flex;
-  align-items: center;
-  gap: 0.75rem;
-  cursor: pointer;
+  @apply flex items-center gap-3 cursor-pointer;
 }
 
 .logo-image {
-  height: 7.5rem;
-  width: auto;
-  flex-shrink: 0;
+  @apply h-[7.5rem] w-auto flex-shrink-0;
 }
 
 /* Responsive logo sizing - Tailwind md breakpoint */
 @media (max-width: 767px) {
   .logo-image {
-    height: 5rem;
+    @apply h-20;
   }
 }
 
 /* ===== NAVIGATION SECTION ===== */
 
 .navbar-section {
-  flex: 0 0 auto; /* Fixed size, no grow/shrink */
-  display: flex;
+  @apply flex-none flex;
 }
 
 /* Desktop: Navbar inline with other elements */
 @media (min-width: 768px) {
   .navbar-section {
-    flex: 0 0 auto; /* Take only needed space */
+    @apply flex-none;
   }
 }
 
 /* Mobile navigation dropdown styling */
 @media (max-width: 767px) {
   .navbar-section {
-    display: none;
+    @apply hidden;
   }
 
   /* Mobile dropdown - override transparent background rule for dropdown only */
   .navbar-section:not(.hidden) {
-    display: block !important;
-    position: absolute !important;
-    top: 100% !important;
-    left: 0 !important;
-    right: 0 !important;
-    background-color: #f0e8f5 !important;
-    border-top: 1px solid rgba(103, 65, 116, 0.15) !important;
-    box-shadow: 0 4px 12px -2px rgba(103, 65, 116, 0.15), 0 2px 4px -1px rgba(103, 65, 116, 0.06) !important;
-    z-index: 50 !important;
-    padding: 1rem !important;
-    flex-direction: column !important;
+    display: block !important; /* Keep !important for Session 5 */
+    position: absolute !important; /* Keep !important for Session 5 */
+    top: 100% !important; /* Keep !important for Session 5 */
+    left: 0 !important; /* Keep !important for Session 5 */
+    right: 0 !important; /* Keep !important for Session 5 */
+    @apply bg-sv-purple-100 p-4 flex-col z-50;
+    background-color: #f0e8f5 !important; /* Keep !important for Session 5 */
+    border-top: 1px solid rgba(103, 65, 116, 0.15) !important; /* Keep !important for Session 5 */
+    box-shadow: 0 4px 12px -2px rgba(103, 65, 116, 0.15), 0 2px 4px -1px rgba(103, 65, 116, 0.06) !important; /* Keep !important for Session 5 */
   }
 
   /* Override the global transparent rule specifically for mobile dropdown */
@@ -308,93 +240,82 @@ header {
   .navbar-section:not(.hidden) .navbar-list,
   .navbar-section:not(.hidden) .navbar-list li,
   .navbar-section:not(.hidden) .navbar-list li a {
-    background-color: #f0e8f5 !important; /* Ensure all child elements have proper background */
+    @apply bg-sv-purple-100;
+    background-color: #f0e8f5 !important; /* Keep !important for Session 5 - ensures all child elements have proper background */
   }
 
   .navbar-section:not(.hidden) .navbar-list {
-    flex-direction: column !important;
-    padding: 0 !important; /* Remove extra padding since parent has padding */
-    gap: 0.75rem !important;
-    border: none !important;
-    border-radius: 0 !important;
-    margin: 0 !important;
-    font-size: 1.125rem !important;
+    @apply flex-col p-0 gap-3 border-0 rounded-none m-0 text-lg;
+    flex-direction: column !important; /* Keep !important for Session 5 */
+    padding: 0 !important; /* Keep !important for Session 5 - removes extra padding since parent has padding */
+    gap: 0.75rem !important; /* Keep !important for Session 5 */
+    border: none !important; /* Keep !important for Session 5 */
+    border-radius: 0 !important; /* Keep !important for Session 5 */
+    margin: 0 !important; /* Keep !important for Session 5 */
+    font-size: 1.125rem !important; /* Keep !important for Session 5 */
   }
 
   .navbar-section:not(.hidden) .navbar-list li {
-    border-bottom: 1px solid rgba(103, 65, 116, 0.1) !important; /* Subtle separator */
-    padding-bottom: 0.75rem !important;
-    padding-top: 0.75rem !important;
+    border-bottom: 1px solid rgba(103, 65, 116, 0.1) !important; /* Keep !important for Session 5 - subtle separator */
+    padding-bottom: 0.75rem !important; /* Keep !important for Session 5 */
+    padding-top: 0.75rem !important; /* Keep !important for Session 5 */
   }
 
   .navbar-section:not(.hidden) .navbar-list li:first-child {
-    padding-top: 0 !important;
+    padding-top: 0 !important; /* Keep !important for Session 5 */
   }
 
   .navbar-section:not(.hidden) .navbar-list li:last-child {
-    border-bottom: none !important;
-    padding-bottom: 0 !important;
+    border-bottom: none !important; /* Keep !important for Session 5 */
+    padding-bottom: 0 !important; /* Keep !important for Session 5 */
   }
 
   .navbar-section:not(.hidden) .navbar-list li a {
-    padding: 0 !important;
-    display: block !important;
-    transition: color 0.2s ease !important;
+    @apply p-0 block;
+    padding: 0 !important; /* Keep !important for Session 5 */
+    display: block !important; /* Keep !important for Session 5 */
+    transition: color 0.2s ease !important; /* Keep !important for Session 5 */
   }
 
   .navbar-section:not(.hidden) .navbar-list li a:hover {
-    color: #674174 !important;
+    @apply text-sv-purple-700;
+    color: #674174 !important; /* Keep !important for Session 5 */
   }
 }
 
 .navbar-list {
-  display: flex;
-  flex-direction: column;
-  padding: 1.25rem;
-  margin-top: 1rem;
-  font-weight: 500;
-  font-size: 1.5rem;
-  font-family: 'Playfair Display', serif;
-  gap: 1.25rem;
-  border: none !important;
-  border-radius: 0.5rem;
-  background-color: transparent !important;
+  @apply flex flex-col p-5 mt-4 font-medium text-2xl font-serif gap-5 border-0 rounded-lg;
+  border: none !important; /* Keep !important for Session 5 */
+  background-color: transparent !important; /* Keep !important for Session 5 */
 }
 
 /* Tailwind md breakpoint (768px+) - horizontal navbar */
 @media (min-width: 768px) {
   .navbar-list {
-    padding: 0;
-    margin-top: 0;
-    gap: 2rem;
-    border: none;
-    background-color: #ffffff; /* TODO - confirm this is the correct color for spec/no visual regression, then convert to sv- color */
-    flex-direction: row;
-    font-size: 1.125rem;
+    @apply p-0 mt-0 gap-8 border-0 flex-row text-lg;
+    background-color: #ffffff; /* TODO - confirm this is the correct color for spec/no visual regression, then convert to sv-color */
   }
 }
 
 /* Tailwind lg breakpoint (1024px+) - larger screens get bigger text */
 @media (min-width: 1024px) {
   .navbar-section {
-    padding-left: 1rem;
+    @apply pl-4;
   }
 
   .navbar-list {
-    font-size: 1.125rem;
-    gap: 2rem;
+    @apply text-lg gap-8;
   }
 }
 
 /* Between md and lg (768px-1023px) - compact nav for tablets */
 @media (min-width: 768px) and (max-width: 1023px) {
   .navbar-section {
-    padding-left: 0.75rem;
+    @apply pl-3;
   }
 
   .navbar-list {
-    font-size: 0.875rem; /* Tailwind text-sm */
-    gap: 1.5rem;
+    @apply text-sm gap-6;
   }
 }
 
@@ -402,158 +323,108 @@ header {
 /* TODO - on Contact form branch, move these to their own stylesheet */
 
 .social-links {
-  margin-top: 1.5rem;
-  margin-bottom: 1.5rem;
-  text-align: center;
-  padding-top: 1.5rem;
-  border-top: 1px solid #d9cee0;
+  @apply my-6 text-center pt-6;
+  border-top: 1px solid theme('colors.sv-purple-300');
 }
 
 .social-links p {
-  color: #674174;
-  font-weight: bold;
-  margin-bottom: 1rem;
-  font-size: 0.95rem;
+  @apply text-sv-purple-700 font-bold mb-4 text-[0.95rem];
 }
 
 .social-icons {
-  display: flex;
-  justify-content: center;
-  gap: 1.5rem;
+  @apply flex justify-center gap-6;
 }
 
 .social-icon {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  background-color: #c5aace;
-  color: #ffffff;
-  text-decoration: none;
-  transition: background-color 0.3s ease;
-  cursor: pointer;
+  @apply flex items-center justify-center w-10 h-10 rounded-full bg-sv-purple-400 text-white no-underline cursor-pointer;
+  @apply transition-colors duration-300 ease-in-out;
 }
 
 .social-icon:hover {
-  background-color: #674174;
-  cursor: pointer;
+  @apply bg-sv-purple-700 cursor-pointer;
 }
 
 /* ===== SITE FOOTER ===== */
 
 .site-footer {
-  background-color: #f0e8f5;
+  @apply bg-sv-purple-100 mt-16 py-12 pb-8;
   border-top: 1px solid rgba(103, 65, 116, 0.15);
   box-shadow: 0 -1px 3px 0 rgba(103, 65, 116, 0.08);
-  margin-top: 4rem;
-  padding: 3rem 0 2rem 0;
 }
 
 .footer-container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 1rem;
+  @apply max-w-[1200px] mx-auto px-4;
 }
 
 .footer-content {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 2rem;
-  margin-bottom: 2rem;
-  padding-bottom: 2rem;
+  @apply grid grid-cols-1 gap-8 mb-8 pb-8;
 }
 
 .footer-section {
-  text-align: center;
+  @apply text-center;
 }
 
 .footer-section-title {
-  font-family: 'Raleway', sans-serif;
-  font-weight: 600;
-  font-size: 1.125rem;
-  color: #674174;
-  margin-bottom: 1rem;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
+  @apply font-sans font-semibold text-lg text-sv-purple-700 mb-4 uppercase tracking-wider;
 }
 
 .footer-nav {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
+  @apply list-none p-0 m-0 flex flex-col gap-2;
 }
 
 .footer-link {
-  color: #6c757d;
-  text-decoration: none;
-  font-family: 'Raleway', sans-serif;
-  font-size: 0.95rem;
-  transition: color 0.2s ease;
+  @apply text-sv-gray-500 no-underline font-sans text-[0.95rem];
+  @apply transition-colors duration-200;
 }
 
 .footer-link:hover {
-  color: #674174;
+  @apply text-sv-purple-700;
 }
 
 .footer-social-icons {
-  display: flex;
-  justify-content: center;
-  gap: 1rem;
+  @apply flex justify-center gap-4;
 }
 
 .footer-bottom {
-  text-align: center;
+  @apply text-center pt-6;
   border-top: 1px solid rgba(103, 65, 116, 0.1);
-  padding-top: 1.5rem;
 }
 
 .footer-copyright {
-  color: #6c757d;
-  font-size: 0.875rem;
-  font-family: 'Raleway', sans-serif;
-  margin: 0;
+  @apply text-sv-gray-500 text-sm font-sans m-0;
 }
 
 /* Desktop layout for footer */
 @media (min-width: 768px) {
   .footer-content {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 4rem;
-    justify-items: center;
-    max-width: 800px;
-    margin: 0 auto;
+    @apply grid-cols-2 gap-16 justify-items-center max-w-[800px] mx-auto;
   }
 
   .footer-section {
-    text-align: center;
+    @apply text-center;
   }
 
   .footer-social-icons {
-    justify-content: center;
+    @apply justify-center;
   }
 
   .site-footer {
-    padding: 4rem 0 3rem 0;
+    @apply py-16 pb-12;
   }
 }
 
 /* Large desktop layout */
 @media (min-width: 1024px) {
   .footer-content {
-    gap: 4rem;
+    @apply gap-16;
   }
 }
 
 /* Image formatting utility */
 .formatted-image {
+  @apply rounded-3xl;
+  @apply transition-all duration-200 ease-in-out;
   filter: saturate(0.5);
-  border-radius: 1.5rem; /* rounded-3xl equivalent */
-  transition: filter 0.2s ease-in-out;
 }
 
 .formatted-image:hover {
