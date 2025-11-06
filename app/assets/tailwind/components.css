@@ -35,7 +35,7 @@
 /* Light green button */
 .btn-green-light {
   @apply px-6 py-3 rounded-full no-underline text-center font-medium cursor-pointer inline-block transition-all duration-200 border-2;
-  @apply bg-sv-green-200 text-sv-green-700 border-sv-green-200 hover:bg-sv-green-400 hover:border-sv-green-400;
+  @apply bg-sv-green-200 text-sv-green-700 border-sv-green-200 hover:bg-sv-green-400 hover:border-sv-green-400 text-white;
   @apply font-sans;
 }
 
@@ -47,6 +47,10 @@
 }
 
 /* Button size variants */
+.btn-xs {
+  @apply px-3 py-0.5 text-xs;
+}
+
 .btn-small {
   @apply px-4 py-2 text-sm;
 }
