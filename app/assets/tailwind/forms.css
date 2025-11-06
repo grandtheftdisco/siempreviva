@@ -118,26 +118,7 @@ form textarea {
 }
 
 /* ===== FORM BUTTONS ===== */
-
-form input[type="submit"],
-form button[type="submit"] {
-  background-color: #c5aace; /* sv-purple-400 */
-  color: #ffffff;
-  border: none;
-  padding: 12px 24px;
-  font-size: 16px;
-  font-weight: bold;
-  border-radius: 9999px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-  @apply font-sans;
-}
-
-form input[type="submit"]:hover,
-form button[type="submit"]:hover {
-  background-color: #674174; /* sv-purple-700 */
-  cursor: pointer;
-}
+/* Element selectors removed - use component classes (.btn-primary, .btn-submit, etc.) */
 
 .submit-btn {
   margin: 12px 0px;
