@@ -78,14 +78,14 @@
                     </div>
                   </div>
                   <div class="cart-actions">
-                    <a href="<%= cart_path %>" class="cart-view-button">view cart</a>
-                    <a href="<%= new_checkout_path %>" class="cart-checkout-btn">checkout</a>
+                    <a href="<%= cart_path %>" class="btn-secondaryee">view cart</a>
+                    <a href="<%= new_checkout_path %>" class="btn-green">checkout</a>
                   </div>
                 </div>
               <% else %>
                 <div class="empty-cart-div">
                   <p class="empty-cart-text">Your cart is empty.</p>
-                  <%= link_to 'shop now', products_path, class: 'continue-shopping-btn' %>
+                  <%= link_to 'shop now', products_path, class: 'btn-secondary' %>
                 </div>
               <% end %>
             </div>
@@ -151,8 +151,8 @@
                 </div>
               </div>
               <div class="cart-actions">
-                <a href="<%= cart_path %>" class="cart-view-button">view cart</a>
-                <a href="<%= new_checkout_path %>" class="cart-checkout-btn">checkout</a>
+                <a href="<%= cart_path %>" class="btn-secondary">view cart</a>
+                <a href="<%= new_checkout_path %>" class="btn-green">checkout</a>
               </div>
             </div>
           </div>

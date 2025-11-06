@@ -23,7 +23,10 @@ The CSS refactoring documentation has been reorganized into a structured directo
 - **[Session 3: Layout Modularization](./project_plan/sessions/session_3_layout.md)** - Layout.css split into modules ✅
 
 ### In Progress
-- **[Session 4: Legacy Cleanup](./project_plan/sessions/session_4_legacy_cleanup.md)** - View migrations & CSS refactoring (4-part series) 🎯
+- **[Session 4A: View Migrations](./project_plan/sessions/session_4a_view_migrations.md)** - Audit views, migrate cart/checkout, remove legacy code 🎯
+- **[Session 4B: cart.css](./project_plan/sessions/session_4b_cart_css.md)** - Refactor cart.css to @apply (upcoming)
+- **[Session 4C: checkouts.css](./project_plan/sessions/session_4c_checkouts_css.md)** - Refactor checkouts.css to @apply (upcoming)
+- **[Session 4D: email + search](./project_plan/sessions/session_4d_email_search_css.md)** - Refactor email.css & search.css to @apply (upcoming)
 
 ### Future Sessions
 - **Session 5: Specificity Cleanup** - Remove !important declarations (after Session 4)

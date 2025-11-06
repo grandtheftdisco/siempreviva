@@ -69,20 +69,22 @@ Refactoring CSS architecture to use Tailwind v4 `@theme` directive with componen
 - **Branch:** `css-refactor/session-4a-view-migrations`
 - **Status:** In progress
 - **Focus:** Audit views for inline styles, migrate cart/checkout views, remove backward-compatibility code
+- **Details:** [`sessions/session_4a_view_migrations.md`](./sessions/session_4a_view_migrations.md)
 
 **Session 4B: cart.css Refactoring** (Upcoming)
 - **Branch:** `css-refactor/session-4b-cart-css`
 - **Focus:** Convert cart.css to @apply with sv-colors
+- **Details:** [`sessions/session_4b_cart_css.md`](./sessions/session_4b_cart_css.md)
 
 **Session 4C: checkouts.css Refactoring** (Upcoming)
 - **Branch:** `css-refactor/session-4c-checkouts-css`
 - **Focus:** Convert checkouts.css to @apply with sv-colors
+- **Details:** [`sessions/session_4c_checkouts_css.md`](./sessions/session_4c_checkouts_css.md)
 
 **Session 4D: email.css + search.css Refactoring** (Upcoming)
 - **Branch:** `css-refactor/session-4d-email-search`
 - **Focus:** Convert email.css and search.css to @apply with sv-colors
-
-**Details:** [`sessions/session_4_legacy_cleanup.md`](./sessions/session_4_legacy_cleanup.md)
+- **Details:** [`sessions/session_4d_email_search_css.md`](./sessions/session_4d_email_search_css.md)
 
 ---
 

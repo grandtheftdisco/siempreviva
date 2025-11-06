@@ -34,8 +34,8 @@
           </div>
           
           <div class="cart-actions">
-            <%= link_to 'continue shopping', products_path, class: 'continue-shopping-btn' %>
-            <%= link_to 'checkout', new_checkout_path, class: 'cart-checkout-btn' %>
+            <%= link_to 'continue shopping', products_path, class: 'btn-secondary' %>
+            <%= link_to 'checkout', new_checkout_path, class: 'btn-green' %>
           </div>
         </div>
       </div>
@@ -46,7 +46,7 @@
       <div class="empty-cart-content">
         <h2>your bag is empty</h2>
         <p>discover our collection of premium essential oils</p>
-        <%= link_to 'shop products', products_path, class: 'shop-products-btn' %>
+        <%= link_to 'shop products', products_path, class: 'btn-primary' %>
       </div>
     </div>
   <% end %>

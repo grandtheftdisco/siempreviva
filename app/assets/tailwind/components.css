@@ -18,17 +18,17 @@
   @apply font-sans;
 }
 
-/* Secondary button - green outline */
+/* Secondary button - purple filled */
 .btn-secondary {
-  @apply px-6 py-3 rounded-full no-underline text-center font-medium cursor-pointer inline-block transition-all duration-200 border-2 bg-transparent;
-  @apply text-sv-purple-400 border-sv-green-600 hover:bg-sv-green-700 hover:text-white hover:border-sv-green-700;
+  @apply px-6 py-3 rounded-full no-underline text-center font-medium cursor-pointer inline-block transition-all duration-200 border-2 text-white;
+  @apply bg-sv-purple-400 border-sv-purple-400 hover:bg-sv-purple-700 hover:border-sv-purple-700;
   @apply font-sans;
 }
 
 /* Green button - filled */
 .btn-green {
   @apply px-6 py-3 rounded-full no-underline text-center font-medium cursor-pointer inline-block transition-all duration-200 border-2 text-white;
-  @apply bg-sv-green-700 border-sv-green-700 hover:bg-sv-green-600 hover:border-sv-green-600;
+  @apply bg-sv-green-600 border-sv-green-600 hover:bg-sv-green-700 hover:border-sv-green-700;
   @apply font-sans;
 }
 
