@@ -12,7 +12,7 @@ Rails.application.routes.draw do
 
   root "marketing#home"
 
-  get "/contact", to: "marketing#contact"
+  get "/contact", to: "contact_form#new", as: :contact
   get "/learn", to: "marketing#learn"
   get "/gallery", to: "marketing#gallery"
   get "/our-farms", to: "marketing#our_farms"
