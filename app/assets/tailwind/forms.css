@@ -262,6 +262,32 @@ form input[type="radio"] {
 
 /* ===== FORM VALIDATION MESSAGES ===== */
 
+/* Container for form error messages (Rails error_messages pattern) */
+.form-errors-container {
+  color: #b9626b; /* sv-danger */
+  margin-bottom: 1.5rem;
+  padding: 1rem;
+  background-color: #f8d7da; /* Light red background */
+  border: 1px solid #b9626b; /* sv-danger */
+  border-radius: 0.375rem;
+}
+
+.form-errors-container h2 {
+  font-size: 1.125rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  margin-top: 0;
+}
+
+.form-errors-container ul {
+  margin: 0;
+  padding-left: 1.5rem;
+}
+
+.form-errors-container li {
+  margin-bottom: 0.25rem;
+}
+
 .form-error-message {
   color: #dc3545; /* Bootstrap red - consider sv-danger: #b9626b */
   font-size: 0.875rem;
