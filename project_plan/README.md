@@ -1,8 +1,8 @@
 # Siempreviva CSS Refactoring Project
 
-**Status:** Session 1 Complete ✅ | Session 2 In Progress 🎯
+**Status:** Sessions 1, 2a, 3 Complete ✅ | Session 4A In Progress 🎯
 **Started:** October 21, 2025
-**Branch:** `refactor/css-to-tailwind` (merged to main)
+**Current Branch:** `css-refactor/session-4a-view-migrations`
 
 ---
 
@@ -30,39 +30,82 @@ Refactoring CSS architecture to use Tailwind v4 `@theme` directive with componen
 
 ---
 
-### 🎯 Session 2: Product & Marketing Views (IN PROGRESS)
-**Status:** Branch rebased, ready to code
-**Branch:** `amanda/marketing-views` (rebased on main with Session 1 foundation)
-**Focus:** Style product/marketing pages using new component classes
-
-**Completed:**
-- ✅ Session 1 PR merged to main (Oct 22, 2025)
-- ✅ Rebased `amanda/marketing-views` on updated main
-- ✅ Resolved conflicts in forms.css
-- ✅ Verified Session 1 foundation present (@theme, component classes)
-
-**Next Steps:**
-1. Use new component classes (.btn-primary, .input-text, etc.)
-2. Just-in-time refactor products.css as needed
-3. Complete product/marketing view styling
+### ✅ Session 2a: Product Views Refactoring (COMPLETE)
+**Completed:** November 4, 2025
+**PR:** Merged to main
+**What we did:**
+- Refactored products.css to use @apply with sv-colors
+- Added missing component classes for product cards and sections
+- Replaced inline Tailwind utilities in product partials
+- Organized products.css with clear section structure
 
 **Details:** [`sessions/session_2_product_views.md`](./sessions/session_2_product_views.md)
 
 ---
 
-### 📋 Session 3: Layout & Navigation (OPTIONAL - Future)
-**When:** If/when we modify header/nav/footer
-**Focus:** Refactor layout.css to component classes
+### ✅ Session 3: Layout.css Refactoring & Modularization (COMPLETE)
+**Completed:** November 5, 2025
+**PR:** Merged to main
+**What we did:**
+- Refactored layout.css to use @apply with sv-colors
+- Fixed mobile cart dropdown, sticky footer, and mobile menu button bugs
+- Reorganized layout.css with clear section headers
+- Split monolithic layout.css into modular files:
+  - `layout.css` - Global layout and link styles
+  - `header.css` - Header structure and logo
+  - `navigation.css` - Mobile menu button and navigation
+  - `footer.css` - Site footer and social links
+- Documented inline utilities that must remain (responsive utilities)
 
 **Details:** [`sessions/session_3_layout.md`](./sessions/session_3_layout.md)
 
 ---
 
-### 🧹 Session 4: Legacy Views Migration (OPTIONAL - Future)
-**When:** If/when we modify cart/checkout features
-**Focus:** Migrate cart/checkout to new classes, remove backward-compatibility code
+### 🎯 Session 4: Legacy Views Migration & CSS Cleanup (IN PROGRESS - 4 Part Series)
+**Started:** November 6, 2025
+**Strategy:** Split into 4 independent PRs for manageable reviews
+
+**Session 4A: View Migrations & Legacy Code Removal** (IN PROGRESS)
+- **Branch:** `css-refactor/session-4a-view-migrations`
+- **Status:** In progress
+- **Focus:** Audit views for inline styles, migrate cart/checkout views, remove backward-compatibility code
+
+**Session 4B: cart.css Refactoring** (Upcoming)
+- **Branch:** `css-refactor/session-4b-cart-css`
+- **Focus:** Convert cart.css to @apply with sv-colors
+
+**Session 4C: checkouts.css Refactoring** (Upcoming)
+- **Branch:** `css-refactor/session-4c-checkouts-css`
+- **Focus:** Convert checkouts.css to @apply with sv-colors
+
+**Session 4D: email.css + search.css Refactoring** (Upcoming)
+- **Branch:** `css-refactor/session-4d-email-search`
+- **Focus:** Convert email.css and search.css to @apply with sv-colors
+
+**Session 4E: semantic grouping of @apply directives** (Upcoming)
+- **Branch:** `css-refactor/session-4e-semantic-grouping`
+- **Focus:** Apply the semantic grouping pattern (established in 4A) consistently across all CSS files in the codebase
 
 **Details:** [`sessions/session_4_legacy_cleanup.md`](./sessions/session_4_legacy_cleanup.md)
+
+---
+
+### 🔮 Session 5: Specificity Cleanup & !important Removal (FUTURE)
+**When:** After Session 4 complete
+**Estimated Time:** 2-3 hours
+**Focus:** Remove all `!important` declarations by fixing underlying CSS specificity issues
+
+**Scope:**
+- Audit all `!important` declarations across codebase
+- Analyze root causes of specificity conflicts
+- Fix specificity issues systematically
+- Convert vanilla CSS to @apply where appropriate
+- Thorough testing across all breakpoints and browsers
+
+**Why it's last:**
+Throughout Sessions 2-4, we intentionally left `!important` declarations in place to avoid scope creep. Session 5 addresses this technical debt systematically once all CSS files are refactored.
+
+**Details:** [`sessions/session_5_specificity_cleanup.md`](./sessions/session_5_specificity_cleanup.md)
 
 ---
 
@@ -115,10 +158,15 @@ Refactoring CSS architecture to use Tailwind v4 `@theme` directive with componen
 | `application.css` | ✅ Refactored | Has @theme block with sv-colors |
 | `components.css` | ✅ Refactored | New component classes with @apply |
 | `forms.css` | ✅ Refactored | Component classes + backward compatibility |
-| `layout.css` | ⏳ Future | Works as-is, refactor when needed |
-| `cart.css` | ⏳ Future | Works as-is, refactor when needed |
-| `checkouts.css` | ⏳ Future | Works as-is, refactor when needed |
-| `products.css` | 🎯 Next | Refactor just-in-time in Session 2 |
+| `layout.css` | ✅ Refactored | Global layout structure (71 lines) |
+| `header.css` | ✅ Created | Header structure and logo (90 lines) |
+| `navigation.css` | ✅ Created | Mobile menu and navigation (157 lines) |
+| `footer.css` | ✅ Created | Site footer and social links (96 lines) |
+| `products.css` | ✅ Refactored | Product cards and sections with @apply |
+| `cart.css` | 🎯 Session 4B | Refactoring in progress |
+| `checkouts.css` | 🎯 Session 4C | Refactoring in progress |
+| `email.css` | 🎯 Session 4D | Refactoring in progress |
+| `search.css` | 🎯 Session 4D | Refactoring in progress |
 | `components.scss` | ⚠️ Deprecated | No longer imported |
 
 ---
@@ -134,4 +182,28 @@ Refactoring CSS architecture to use Tailwind v4 `@theme` directive with componen
 
 ---
 
-*Last Updated: October 22, 2025*
+---
+
+## Session 4 Branching Strategy
+
+Session 4 uses a **mixed strategy** to allow parallel work while maintaining clean git history:
+
+```
+main
+  ├─ css-refactor/session-4a-view-migrations (DO FIRST)
+  ├─ css-refactor/session-4b-cart-css (independent)
+  ├─ css-refactor/session-4c-checkouts-css (independent)
+  └─ css-refactor/session-4d-email-search (independent)
+```
+
+**Key Points:**
+- 4A must be done first (changes views)
+- 4B, 4C, 4D branch from `main`, NOT from 4A
+- 4B, 4C, 4D can be worked on in parallel or any order
+- All can be reviewed/merged independently after 4A
+
+**See:** `SESSION_4_BRANCHING_STRATEGY.md` in root for detailed workflow
+
+---
+
+*Last Updated: November 6, 2025*
