@@ -14,56 +14,146 @@
 
 /* Base button class */
 .btn-base {
-  @apply px-6 py-3 rounded-full no-underline text-center font-medium cursor-pointer inline-block transition-all duration-200 border-2 border-transparent;
-  @apply font-sans;
+  /* Spacing & shape */
+  @apply px-6 py-3 rounded-full;
+
+  /* Border & layout */
+  @apply border-2 border-transparent inline-block;
+
+  /* Interactive & animation */
+  @apply cursor-pointer transition-all duration-200;
+
+  /* Link styling */
+  @apply no-underline text-center;
+
+  /* Typography */
+  @apply font-medium font-sans;
 }
 
 /* Primary button - purple filled */
 .btn-primary {
-  @apply px-6 py-3 rounded-full no-underline text-center font-medium cursor-pointer inline-block transition-all duration-200 border-2 text-white;
-  @apply bg-sv-purple-400 border-sv-purple-400 hover:bg-sv-purple-700 hover:border-sv-purple-700;
-  @apply font-sans;
+  /* Spacing & shape */
+  @apply px-6 py-3 rounded-full;
+
+  /* Border & layout */
+  @apply border-2 inline-block;
+
+  /* Interactive & animation */
+  @apply cursor-pointer transition-all duration-200;
+
+  /* Link styling */
+  @apply no-underline text-center;
+
+  /* Colors */
+  @apply bg-sv-purple-400 border-sv-purple-400 text-white;
+  @apply hover:bg-sv-purple-700 hover:border-sv-purple-700;
+
+  /* Typography */
+  @apply font-medium font-sans;
 }
 
 /* Secondary button - green outline */
 .btn-secondary {
-  @apply px-6 py-3 rounded-full no-underline text-center font-medium cursor-pointer inline-block transition-all duration-200 border-2 bg-transparent;
-  @apply text-sv-purple-400 border-sv-green-600 hover:bg-sv-green-700 hover:text-white hover:border-sv-green-700;
-  @apply font-sans;
+  /* Spacing & shape */
+  @apply px-6 py-3 rounded-full;
+
+  /* Border & layout */
+  @apply border-2 inline-block;
+
+  /* Interactive & animation */
+  @apply cursor-pointer transition-all duration-200;
+
+  /* Link styling */
+  @apply no-underline text-center;
+
+  /* Colors */
+  @apply bg-transparent text-sv-purple-400 border-sv-green-600;
+  @apply hover:bg-sv-green-700 hover:text-white hover:border-sv-green-700;
+
+  /* Typography */
+  @apply font-medium font-sans;
 }
 
 /* Green button - filled */
 .btn-green {
-  @apply px-6 py-3 rounded-full no-underline text-center font-medium cursor-pointer inline-block transition-all duration-200 border-2 text-white;
-  @apply bg-sv-green-700 border-sv-green-700 hover:bg-sv-green-600 hover:border-sv-green-600;
-  @apply font-sans;
+  /* Spacing & shape */
+  @apply px-6 py-3 rounded-full;
+
+  /* Border & layout */
+  @apply border-2 inline-block;
+
+  /* Interactive & animation */
+  @apply cursor-pointer transition-all duration-200;
+
+  /* Link styling */
+  @apply no-underline text-center;
+
+  /* Colors */
+  @apply bg-sv-green-700 border-sv-green-700 text-white;
+  @apply hover:bg-sv-green-600 hover:border-sv-green-600;
+
+  /* Typography */
+  @apply font-medium font-sans;
 }
 
 /* Light green button */
 .btn-green-light {
-  @apply px-6 py-3 rounded-full no-underline text-center font-medium cursor-pointer inline-block transition-all duration-200 border-2;
-  @apply bg-sv-green-200 text-sv-green-700 border-sv-green-200 hover:bg-sv-green-400 hover:border-sv-green-400;
-  @apply font-sans;
+  /* Spacing & shape */
+  @apply px-6 py-3 rounded-full;
+
+  /* Border & layout */
+  @apply border-2 inline-block;
+
+  /* Interactive & animation */
+  @apply cursor-pointer transition-all duration-200;
+
+  /* Link styling */
+  @apply no-underline text-center;
+
+  /* Colors */
+  @apply bg-sv-green-200 text-sv-green-700 border-sv-green-200;
+  @apply hover:bg-sv-green-400 hover:border-sv-green-400;
+
+  /* Typography */
+  @apply font-medium font-sans;
 }
 
 /* Danger button - red filled */
 .btn-danger {
-  @apply px-6 py-3 rounded-full no-underline text-center font-medium cursor-pointer inline-block transition-all duration-200 border-2 text-white;
-  @apply bg-sv-danger border-sv-danger hover:bg-sv-danger/90 hover:border-sv-danger/90;
-  @apply font-sans;
+  /* Spacing & shape */
+  @apply px-6 py-3 rounded-full;
+
+  /* Border & layout */
+  @apply border-2 inline-block;
+
+  /* Interactive & animation */
+  @apply cursor-pointer transition-all duration-200;
+
+  /* Link styling */
+  @apply no-underline text-center;
+
+  /* Colors */
+  @apply bg-sv-danger border-sv-danger text-white;
+  @apply hover:bg-sv-danger/90 hover:border-sv-danger/90;
+
+  /* Typography */
+  @apply font-medium font-sans;
 }
 
 /* Button size variants */
 .btn-small {
+  /* Sizing & typography */
   @apply px-4 py-2 text-sm;
 }
 
 .btn-large {
+  /* Sizing & typography */
   @apply px-8 py-4 text-lg;
 }
 
 /* ===== LEGACY BUTTON CLASSES (Backward Compatibility) ===== */
-/* These classes are used by cart/checkout views - keep them working! */
+/* These classes remain in vanilla CSS until Session 4B (cart.css refactoring). */
+/* They will be migrated to component classes when their views are updated. */
 
 .continue-shopping-btn {
   padding: 0.75rem 1.5rem;
