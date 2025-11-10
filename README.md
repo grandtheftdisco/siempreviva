@@ -72,7 +72,7 @@ ______________________________________
 - **Frontend**: Tailwind CSS, SASS, Flowbite components, responsive design  
 - **Infrastructure**: Redis caching, background jobs, Linux development environment  
 - **Code Quality**: RuboCop-enforced Airbnb style guide, comprehensive testing with TDD  
-- **Deployment**: Render (projected)
+- **Deployment**: Heroku (projected)
 
 ## 📬 Connect
 - 💼 **Portfolio Discussion**: [Drop me a line!](mailto:grandtheftdisco@gmail.com)  
