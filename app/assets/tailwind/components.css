@@ -173,7 +173,7 @@
 }
 
 .remove-item-btn-red:hover {
-  background: #a0545c; /* Darker danger - calculated */
+  background: #a0545c; /* Darker sv-danger - calculated */
   border-color: #a0545c;
   color: #ffffff;
 }
@@ -181,203 +181,96 @@
 /* ===== FLASH NOTIFICATION STYLES ===== */
 
 .flash-notification {
-  width: 14rem;
-  min-width: 12rem;
-  max-width: 90vw;
+  /* Sizing */
+  @apply w-56 min-w-48 max-w-[90vw];
 }
 
 main .flash-notice,
 div.flash-notice {
+  /* Colors (!important declarations will be addressed in Session 5) */
   background-color: #bdcea9 !important; /* sv-green-200 */
-  background: #bdcea9 !important;
   border-color: #8ba170 !important; /* sv-green-400 */
   color: #5e6b4d !important;
 }
 
 main .flash-alert,
 div.flash-alert {
-  background-color: #d4c2dc !important;
-  background: #d4c2dc !important;
+  /* Colors (!important declarations will be addressed in Session 5) */
+  background-color: #d4c2dc !important; /* sv-purple-200 */
   border-color: #674174 !important; /* sv-purple-700 */
   color: #3d2545 !important;
 }
 
 main .flash-error,
 div.flash-error {
+  /* Colors (!important declarations will be addressed in Session 5) */
   background-color: #f5c6cb !important;
-  background: #f5c6cb !important;
   border-color: #dc3545 !important;
   color: #721c24 !important;
 }
 
 main .flash-warning,
 div.flash-warning {
+  /* Colors (!important declarations will be addressed in Session 5) */
   background-color: #ffeaa7 !important;
-  background: #ffeaa7 !important;
   border-color: #fd7e14 !important;
   color: #7d3c06 !important;
 }
 
 /* ===== FORM COMPONENT CLASSES ===== */
 
-.form-input {
-  padding: 0.75rem 1rem;
-  border: 1px solid #d1d5db;
-  border-radius: 0.375rem;
-  @apply font-sans;
-  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
-}
-
-.form-input:focus {
-  outline: none;
-  border-color: #c5aace; /* sv-purple-400 */
-  box-shadow: 0 0 0 3px rgba(103, 65, 116, 0.1);
-}
-
+/* Small input for quantity fields in cart */
 form input.form-input-small,
 .form-input-small {
-  text-align: center !important;
-  font-size: 0.85rem !important;
-  background: #f0e8f5 !important; /* sv-purple-100 */
+  /* Sizing (!important declarations will be addressed in Session 5) */
   width: 50px !important;
   max-width: 60px !important;
   min-width: 50px !important;
+  padding: 0.5px 1px !important;
+
+  /* Shape & spacing */
   border-radius: 4500px !important;
   box-sizing: border-box !important;
-  padding: 0.5px 1px !important;
+
+  /* Typography & alignment */
+  text-align: center !important;
+  font-size: 0.85rem !important;
+
+  /* Colors */
+  background: #f0e8f5 !important; /* sv-purple-100 */
 }
 
-.form-label {
-  display: block;
-  margin-bottom: 0.5rem;
-  font-weight: 500;
-  color: #2c3e50; /* sv-gray-800 */
-  @apply font-sans;
-}
-
-.form-input-error {
-  padding: 0.75rem 1rem;
-  border: 1px solid #b9626b; /* sv-danger */
-  border-radius: 0.375rem;
-  @apply font-sans;
-  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
-}
-
-.form-input-error:focus {
-  outline: none;
-  border-color: #b9626b; /* sv-danger */
-  box-shadow: 0 0 0 3px rgba(185, 98, 107, 0.1);
-}
-
-/* ===== CARD COMPONENT CLASSES ===== */
-
-.card {
-  background: #ffffff;
-  border-radius: 0.5rem;
-  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
-  padding: 1.5rem;
-}
-
-.card-bordered {
-  background: #ffffff;
-  border-radius: 0.5rem;
-  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
-  padding: 1.5rem;
-  border: 1px solid #e5e7eb;
-}
-
-/* ===== DROPDOWN UTILITY CLASSES ===== */
-
-.dropdown-base {
-  position: absolute;
-  top: 100%;
-  left: 0;
-  right: 0;
-  background-color: #f0e8f5; /* sv-purple-100 */
-  border-top: 1px solid rgba(103, 65, 116, 0.15);
-  box-shadow: 0 4px 12px -2px rgba(103, 65, 116, 0.15), 0 2px 4px -1px rgba(103, 65, 116, 0.06);
-  z-index: 50;
-  padding: 1rem;
-  display: none;
-}
-
-.mobile-dropdown {
-  position: absolute;
-  top: 100%;
-  left: 0;
-  right: 0;
-  background-color: #f0e8f5; /* sv-purple-100 */
-  border-top: 1px solid rgba(103, 65, 116, 0.15);
-  box-shadow: 0 4px 12px -2px rgba(103, 65, 116, 0.15), 0 2px 4px -1px rgba(103, 65, 116, 0.06);
-  z-index: 50;
-  padding: 1rem;
-  display: none;
-}
-
-/* ===== UTILITY CLASSES ===== */
-
-.flex-center {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.flex-between {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
-.text-truncate {
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-}
-
-.sr-only {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(0, 0, 0, 0);
-  white-space: nowrap;
-  border: 0;
-}
-
-.hidden {
-  display: none;
-}
 
 /* ===== TYPOGRAPHY COMPONENTS ===== */
 
 .page-title {
+  /* Typography */
   font-family: 'Playfair Display', serif;
-  font-size: 2.5rem;
-  font-weight: 300;
-  color: #2c3e50;
-  margin-bottom: 0.5rem;
+  @apply text-4xl font-light text-sv-gray-800;
   letter-spacing: 0.05em;
-  padding: 1rem;
-  text-align: center;
+
+  /* Spacing & alignment */
+  @apply mb-2 p-4 text-center;
 }
 
 @media (max-width: 768px) {
   .page-title {
-    text-align: left;
-    font-size: 1.5rem;
+    /* Mobile typography & alignment */
+    @apply text-left text-2xl;
   }
 }
 
 /* ===== IMAGE UTILITIES ===== */
 
 .formatted-image {
-  @apply rounded-3xl;
-  @apply transition-all duration-200 ease-in-out;
+  /* Shape & animation */
+  @apply rounded-3xl transition-all duration-200 ease-in-out;
+
+  /* Visual effects */
   filter: saturate(0.5);
 }
 
 .formatted-image:hover {
+  /* Visual effects */
   filter: saturate(0.7);
 }
