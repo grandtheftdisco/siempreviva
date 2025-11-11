@@ -1,0 +1,61 @@
+/* Cart Empty State Stylesheet */
+/* Contains empty cart state - shared across dropdown and cart page */
+
+/* ===== EMPTY CART STATE ===== */
+
+.empty-cart {
+  /* Sizing & spacing */
+  @apply py-16 px-8;
+
+  /* Typography */
+  @apply text-center;
+}
+
+.empty-cart-content {
+  /* Sizing & spacing */
+  @apply max-w-md mx-auto;
+}
+
+.empty-cart h2 {
+  /* Sizing & spacing */
+  @apply mb-4;
+
+  /* Typography */
+  @apply text-3xl font-light tracking-wide;
+
+  /* Colors */
+  @apply text-sv-gray-900;
+}
+
+.empty-cart p {
+  /* Sizing & spacing */
+  @apply mb-8 leading-relaxed;
+
+  /* Colors */
+  @apply text-sv-gray-600;
+}
+
+.shop-products-btn {
+  /* Sizing & spacing */
+  @apply py-4 px-8;
+
+  /* Layout */
+  @apply inline-block;
+
+  /* Shape */
+  @apply rounded-full;
+
+  /* Colors */
+  @apply bg-sv-purple-500 text-white;
+
+  /* Typography */
+  @apply font-medium no-underline;
+
+  /* Interactive & animation */
+  @apply transition-colors duration-200;
+}
+
+.shop-products-btn:hover {
+  /* Colors */
+  @apply bg-sv-purple-700 text-white;
+}

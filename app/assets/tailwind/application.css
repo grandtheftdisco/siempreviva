@@ -51,7 +51,10 @@
 /* Import CSS-only modular stylesheets */
 @import "./layout.css";        /* Header, navigation, responsive layout */
 @import "./search.css";        /* Search functionality and Algolia components */
-@import "./cart.css";          /* Cart dropdown and cart page styles */
+@import "./cart_dropdown.css"; /* Cart dropdown styles */
+@import "./cart_page.css";     /* Cart page layout and items */
+@import "./cart_actions.css";  /* Quantity controls and remove buttons (shared) */
+@import "./cart_empty.css";    /* Empty cart state (shared) */
 @import "./forms.css";         /* Form inputs, labels, validation styles */
 @import "./checkouts.css";     /* Checkout success page styles */
 
