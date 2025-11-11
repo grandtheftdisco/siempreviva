@@ -5,18 +5,16 @@
 
 .right-icons:not(.hidden) {
   /* Layout & spacing */
-  @apply flex items-center gap-3 relative;
+  @apply flex items-center gap-3 relative p-2;
 
   /* Behavior */
   @apply flex-shrink-0;
-
-  padding: 2 2 2 2;
 }
 
 /* Responsive right-icons */
 @media (max-width: 767px) {
   .right-icons {
-    gap: 0.75rem; /* Match mobile-nav-items gap for consistent spacing */
+    @apply gap-3; /* Match mobile-nav-items gap for consistent spacing */
   }
 }
 
@@ -80,12 +78,10 @@
   @apply shadow-lg;
 
   /* Behavior */
-  @apply overflow-hidden;
+  @apply overflow-hidden hidden;
 
-  position: absolute;
   top: calc(100% + 0.5rem);
   max-height: 70vh;
-  display: none;
 }
 
 .cart-dropdown.show {
@@ -129,9 +125,7 @@
   @apply bg-sv-purple-100;
 
   /* Behavior */
-  @apply overflow-y-auto;
-
-  min-height: 0;
+  @apply overflow-y-auto min-h-0;
 }
 
 .cart-dropdown-footer {
@@ -350,9 +344,7 @@
   margin: 0 !important;
 
   /* Layout & positioning */
-  position: absolute;
-  top: 50%;
-  right: 0;
+  @apply absolute top-1/2 right-0;
 
   /* Colors */
   background: transparent !important;
@@ -373,9 +365,7 @@
   margin: 0 !important;
 
   /* Layout & positioning */
-  position: absolute;
-  top: 50%;
-  right: 0;
+  @apply absolute top-1/2 right-0;
 
   /* Colors */
   background: transparent !important;
@@ -570,6 +560,7 @@
   /* Layout & spacing */
   @apply grid gap-12 items-start;
 
+  /* Grid columns using fraction units - Tailwind doesn't support fr units in utilities */
   grid-template-columns: 2fr 1fr;
 }
 
@@ -578,20 +569,20 @@
     /* Layout & spacing */
     display: flex !important;
     flex-direction: column !important;
-    gap: 2rem;
+    @apply gap-8;
     align-items: center !important;
   }
 
   /* Order summary appears first on mobile */
   .cart-summary-section {
-    order: 1;
+    @apply order-1;
     width: 100% !important;
     max-width: none !important;
   }
 
   /* Cart items appear second on mobile */
   .cart-items-section {
-    order: 2;
+    @apply order-2;
     width: 100% !important;
   }
 }
@@ -631,7 +622,8 @@
   /* Colors */
   @apply bg-white border border-gray-300;
 
-  grid-template-columns: 120px 1fr;
+  /* Grid columns using fraction units - Tailwind doesn't support fr units in utilities */
+  grid-template-columns: 8rem 1fr;
 }
 
 /* Mobile: Make cart page items compact like dropdown */
@@ -722,8 +714,9 @@
 
 @media (max-width: 640px) {
   .cart-page-item {
+    /* Grid columns using fraction units - Tailwind doesn't support fr units in utilities */
     grid-template-columns: 1fr;
-    gap: 1rem;
+    @apply gap-4;
   }
 
   .cart-item-image {
@@ -733,8 +726,7 @@
 
 .cart-item-image {
   /* Sizing */
-  width: 120px;
-  height: 120px;
+  @apply w-32 h-32;
 
   /* Layout */
   @apply flex items-center justify-center;
@@ -909,8 +901,7 @@
 
 .quantity-input {
   /* Sizing & spacing */
-  width: 40px;
-  padding: 0px 0px 0px 1px;
+  @apply w-10 pl-px;
 
   /* Shape */
   @apply rounded-full;
@@ -949,8 +940,7 @@
   font-size: 0.65rem !important;
 
   /* Interactive & animation */
-  @apply cursor-pointer;
-  transition: all 0.2s ease;
+  @apply cursor-pointer transition-all duration-200;
 }
 
 .quantity-update-btn:hover {
@@ -971,14 +961,14 @@
   @apply relative;
 
   /* Behavior */
-  clear: both;
+  @apply clear-both;
 }
 
 .quantity-form-improved {
   /* Sizing & spacing */
   margin: 0 !important;
   padding: 0 !important;
-  width: 100%;
+  @apply w-full;
 
   /* Layout & positioning */
   position: static !important;
@@ -992,16 +982,11 @@
 
 .quantity-row {
   /* Sizing & spacing */
-  gap: 1rem;
-  width: 100%;
-  margin: 0;
-  padding: 0;
+  @apply gap-4 w-full m-0 p-0;
 
   /* Layout & positioning */
   display: flex !important;
-  align-items: center;
-  justify-content: flex-end;
-  position: relative;
+  @apply items-center justify-end relative;
 }
 
 .quantity-controls-group {
@@ -1023,9 +1008,7 @@
 
 @media (max-width: 640px) {
   .quantity-row {
-    flex-direction: column;
-    align-items: stretch;
-    gap: 0.5rem;
+    @apply flex-col items-stretch gap-2;
   }
 
   .quantity-controls-group {
@@ -1065,7 +1048,7 @@
 
 .remove-item-btn-red {
   /* Sizing & spacing */
-  padding: 0.5rem 1rem;
+  @apply py-2 px-4;
 
   /* Shape */
   border-radius: 9999px !important;
@@ -1079,8 +1062,7 @@
   @apply text-sm font-medium;
 
   /* Interactive & animation */
-  @apply cursor-pointer;
-  transition: all 0.2s;
+  @apply cursor-pointer transition-all duration-200;
 
   /* Behavior */
   @apply flex-shrink-0;
@@ -1094,7 +1076,7 @@
 
 .remove-item-btn-soft {
   /* Sizing & spacing */
-  padding: 0.375rem;
+  @apply p-1.5;
 
   /* Layout & positioning */
   @apply inline-flex items-center justify-center;
@@ -1108,8 +1090,7 @@
   color: #ffffff !important;
 
   /* Interactive & animation */
-  @apply cursor-pointer;
-  transition: background-color 0.2s;
+  @apply cursor-pointer transition-colors duration-200;
 
   /* Behavior */
   @apply flex-shrink-0;
@@ -1139,7 +1120,7 @@
 
 .cart-summary-section {
   /* Layout & positioning */
-  @apply sticky self-start;
+  @apply sticky self-start top-44;
 
   /* Typography */
   @apply font-serif;
@@ -1147,15 +1128,13 @@
   /* Behavior */
   @apply overflow-y-auto;
 
-  top: 11rem;
   max-height: calc(100vh - 10.5rem);
 }
 
 /* Disable sticky on mobile since layout becomes single column */
 @media (max-width: 768px) {
   .cart-summary-section {
-    @apply static overflow-y-visible;
-    max-height: none;
+    @apply static overflow-y-visible max-h-none;
   }
 }
 
@@ -1179,8 +1158,6 @@
 
   /* Colors */
   @apply text-sv-gray-900;
-
-  margin: 0 0 1.5rem 0;
 }
 
 .summary-line {
