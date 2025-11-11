@@ -9,6 +9,7 @@
   --font-serif: 'Playfair Display', serif;
 
   /* Purple shades */
+  --color-sv-purple-50: #f8f2fb;
   --color-sv-purple-100: #f0e8f5;
   --color-sv-purple-200: #e6d3ec;
   --color-sv-purple-400: #c5aace;
@@ -26,6 +27,8 @@
 
   /* Gray/Neutral shades */
   --color-sv-gray-100: #f8f9fa;
+  --color-sv-gray-200: #dfe2e6;
+  --color-sv-gray-300: #c6ccd1;
   --color-sv-gray-400: #adb5bd;
   --color-sv-gray-500: #6c757d;
   --color-sv-gray-800: #2c3e50;
