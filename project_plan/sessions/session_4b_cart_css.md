@@ -113,13 +113,33 @@ border-color: #698b3f; /* sv-green-600 */
 
 ---
 
-### Task 4: Organize and Structure
+### Task 4: Organize and Structure with Semantic Grouping
 
 **Apply Session 3 organizational pattern:**
 - Clear `/* ===== ALL CAPS SECTION ===== */` headers
 - Group related components together
 - Place media queries adjacent to base classes
 - Logical top-to-bottom flow
+
+**Apply semantic grouping pattern (established in Sessions 3 & 4A):**
+- Group `@apply` directives by semantic category with explanatory comments
+- Standard categories: Sizing & spacing, Colors, Layout & positioning, Interactive & animation, Typography, Visual effects
+- **IMPORTANT:** Apply semantic grouping AS YOU REFACTOR, not later in Session 4E
+- Session 4E is only for applying grouping to files already refactored in 4B/4C/4D that might need retroactive grouping
+
+**Example pattern:**
+```css
+.cart-item-card {
+  /* Sizing & spacing */
+  @apply p-4 rounded-lg;
+
+  /* Colors */
+  @apply bg-white border border-sv-gray-300;
+
+  /* Layout */
+  @apply flex items-center gap-4;
+}
+```
 
 **Suggested structure:**
 ```css
@@ -135,6 +155,7 @@ border-color: #698b3f; /* sv-green-600 */
 **Steps:**
 - [ ] Add section headers
 - [ ] Group related styles
+- [ ] Apply semantic grouping to each component class
 - [ ] Move media queries adjacent to base classes
 - [ ] Ensure logical flow
 
