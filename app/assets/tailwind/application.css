@@ -13,6 +13,8 @@
   --color-sv-purple-100: #f0e8f5;
   --color-sv-purple-200: #e6d3ec;
   --color-sv-purple-400: #c5aace;
+  --color-sv-purple-500: #a687b0;
+  --color-sv-purple-600: #866492;
   --color-sv-purple-700: #674174;
 
   /* Green shades */
@@ -31,7 +33,10 @@
   --color-sv-gray-300: #c6ccd1;
   --color-sv-gray-400: #adb5bd;
   --color-sv-gray-500: #6c757d;
+  --color-sv-gray-600: #57636e;
+  --color-sv-gray-700: #415060;
   --color-sv-gray-800: #2c3e50;
+  --color-sv-gray-900: #161f28;
 
   /* Semantic/Action colors */
   --color-sv-success: #5a8664;
