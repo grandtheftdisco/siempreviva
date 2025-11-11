@@ -142,7 +142,7 @@
   @apply bg-sv-purple-100;
 }
 
-/* ===== CART DROPDOWN ITEMS ===== */
+/* ===== BASE CART ITEM STYLES FOR DROPDOWN ===== */
 
 .cart-items-list {
   /* Sizing & spacing */
@@ -242,7 +242,7 @@
 
 
 
-/* ===== DROPDOWN CART ITEMS (always compact styling) ===== */
+/* ===== CART DROPDOWN OVERRIDES (compact styling) ===== */
 
 .cart-dropdown .cart-item {
   /* Sizing & spacing */
