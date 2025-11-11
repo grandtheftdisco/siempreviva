@@ -58,7 +58,7 @@ div[style*="background-color: rgba(247, 242, 237"] {
   font-family: 'Playfair Display', serif;
   font-size: 2.25rem; /* text-4xl equivalent */
   font-weight: 700;
-  color: #000000;
+  @apply text-black;
   line-height: 1.2;
   margin-bottom: 0.75rem;
   margin-top: 0;
@@ -67,7 +67,7 @@ div[style*="background-color: rgba(247, 242, 237"] {
 .post-checkout-container .subtitle {
   font-family: 'Playfair Display', serif;
   font-size: 1.125rem; /* text-lg equivalent */
-  color: #000000;
+  @apply text-black;
   font-style: italic;
   margin-bottom: 1.5rem;
   margin-top: 0;
@@ -75,7 +75,7 @@ div[style*="background-color: rgba(247, 242, 237"] {
 
 /* Image placeholder */
 .post-checkout-container .image-placeholder {
-  background-color: #d1d5db; /* gray-300 equivalent */
+  @apply bg-sv-gray-300;
   border-radius: 0.5rem;
   height: 12rem; /* h-48 equivalent */
   width: 100%;
@@ -86,7 +86,7 @@ div[style*="background-color: rgba(247, 242, 237"] {
 }
 
 .post-checkout-container .image-placeholder span {
-  color: #6b7280; /* gray-500 equivalent */
+  @apply text-sv-gray-500;
   font-size: 0.875rem;
 }
 
@@ -97,7 +97,7 @@ div[style*="background-color: rgba(247, 242, 237"] {
 
 .post-checkout-container .order-label {
   font-family: 'Playfair Display', serif;
-  color: #000000;
+  @apply text-black;
   font-weight: 500;
   margin-bottom: 0.25rem;
   margin-top: 0;
@@ -107,7 +107,7 @@ div[style*="background-color: rgba(247, 242, 237"] {
   font-family: 'Playfair Display', serif;
   font-size: 1.5rem; /* text-2xl equivalent */
   font-weight: 700;
-  color: #000000;
+  @apply text-black;
   margin-bottom: 0.75rem;
   margin-top: 0;
 }
@@ -116,7 +116,7 @@ div[style*="background-color: rgba(247, 242, 237"] {
 .post-checkout-container .receipt-notice {
   font-family: 'Playfair Display', serif;
   font-size: 0.875rem;
-  color: #000000;
+  @apply text-black;
   font-style: italic;
   margin-top: 0;
   margin-bottom: 0;
