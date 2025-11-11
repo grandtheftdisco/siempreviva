@@ -1,4 +1,14 @@
-/* ===== CHECKOUT FORM PAGE STYLES ===== */
+/* ===== STRIPE CHECKOUT FORM OVERRIDES ===== */
+/*
+ * WARNING: DO NOT MODIFY THIS SECTION (lines 1-35)
+ *
+ * These styles override Stripe's embedded checkout element to match our site design.
+ * Stripe loads its checkout form in an iframe with its own styling. These overrides
+ * use !important to force our background-color preferences.
+ *
+ * Modifying these styles may break the payment form appearance or Stripe integration.
+ * Changes should only be made after thorough testing in Stripe test mode.
+ */
 
 /* Override body background for checkout pages */
 body:has(.checkouts.new) {
@@ -32,6 +42,8 @@ div[style*="background-color: rgba(242, 237, 247"],
 div[style*="background-color: rgba(247, 242, 237"] {
   background-color: transparent !important;
 }
+
+/* ===== END STRIPE CHECKOUT FORM OVERRIDES ===== */
 
 /* ===== CHECKOUT SUCCESS PAGE STYLES ===== */
 
