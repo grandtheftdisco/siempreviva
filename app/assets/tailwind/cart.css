@@ -112,12 +112,10 @@
   @apply m-0;
 
   /* Typography */
-  @apply text-lg font-semibold lowercase;
+  @apply text-lg font-semibold lowercase font-serif;
 
   /* Colors */
   @apply text-sv-gray-900;
-
-  font-family: 'Playfair Display', serif;
 }
 
 .cart-dropdown-content {
@@ -507,7 +505,7 @@
   @apply max-w-screen-xl mx-auto px-4;
 
   /* Typography */
-  font-family: 'Raleway', sans-serif;
+  @apply font-sans;
 }
 
 .cart-header {
@@ -515,9 +513,7 @@
   @apply mb-12;
 
   /* Typography */
-  @apply text-center;
-
-  font-family: 'Playfair Display', serif;
+  @apply text-center font-serif;
 }
 
 /* Mobile: Reduce header spacing */
@@ -1146,7 +1142,7 @@
   @apply sticky self-start;
 
   /* Typography */
-  font-family: 'Playfair Display', serif;
+  @apply font-serif;
 
   /* Behavior */
   @apply overflow-y-auto;
@@ -1179,13 +1175,12 @@
   @apply mb-6;
 
   /* Typography */
-  @apply text-xl font-normal tracking-wide;
+  @apply text-xl font-normal tracking-wide font-serif;
 
   /* Colors */
   @apply text-sv-gray-900;
 
   margin: 0 0 1.5rem 0;
-  font-family: 'Playfair Display', serif;
 }
 
 .summary-line {
@@ -1199,12 +1194,10 @@
   @apply border-b border-sv-gray-100;
 
   /* Typography */
-  @apply text-sm;
+  @apply text-sm font-sans;
 
   /* Colors */
   @apply text-sv-gray-600;
-
-  font-family: 'Raleway', sans-serif;
 }
 
 .summary-line:last-of-type {
@@ -1220,12 +1213,10 @@
   @apply border-t-2 border-sv-gray-200;
 
   /* Typography */
-  @apply text-lg font-semibold;
+  @apply text-lg font-semibold font-sans;
 
   /* Colors */
   @apply text-sv-gray-900;
-
-  font-family: 'Raleway', sans-serif;
 }
 
 .cart-actions {
@@ -1247,12 +1238,10 @@
   @apply bg-sv-purple-200 text-sv-purple-700 border-2 border-sv-purple-200;
 
   /* Typography */
-  @apply font-medium text-center no-underline;
+  @apply font-medium text-center no-underline font-sans;
 
   /* Interactive & animation */
   @apply transition-all duration-200;
-
-  font-family: 'Raleway', sans-serif;
 }
 
 .continue-shopping-btn:hover {
@@ -1272,12 +1261,10 @@
   color: #ffffff !important;
 
   /* Typography */
-  @apply font-medium text-center no-underline;
+  @apply font-medium text-center no-underline font-sans;
 
   /* Interactive & animation */
   @apply transition-all duration-200;
-
-  font-family: 'Raleway', sans-serif;
 }
 
 .checkout-btn:hover {
