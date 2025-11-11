@@ -37,114 +37,155 @@ div[style*="background-color: rgba(247, 242, 237"] {
 
 /* Post checkout container */
 .post-checkout-container {
-  background-color: transparent;
-  @apply flex items-start justify-center;
+  /* Sizing & spacing */
   @apply py-8 px-4;
-  @apply font-serif;
   min-height: fit-content;
+
+  /* Layout & positioning */
+  @apply flex items-start justify-center;
+
+  /* Colors */
+  background-color: transparent;
+
+  /* Typography */
+  @apply font-serif;
 }
 
 .post-checkout-info {
-  @apply max-w-md;
-  @apply w-full;
+  /* Sizing & spacing */
+  @apply max-w-md w-full mt-0;
+
+  /* Typography */
   @apply text-center;
-  @apply mt-0;
+}
+
+@media (max-height: 700px) {
+  .post-checkout-info {
+    /* Sizing & spacing */
+    @apply gap-6;
+  }
 }
 
 /* Typography styles */
 .post-checkout-container h1 {
-  @apply font-serif;
-  @apply text-4xl;
-  @apply font-bold;
+  /* Sizing & spacing */
+  @apply mb-3 mt-0;
+
+  /* Colors */
   @apply text-black;
-  @apply leading-tight;
-  @apply mb-3;
-  @apply mt-0;
+
+  /* Typography */
+  @apply font-serif text-4xl font-bold leading-tight;
+}
+
+@media (max-height: 700px) {
+  .post-checkout-container h1 {
+    /* Sizing & spacing */
+    @apply mb-3;
+  }
 }
 
 .post-checkout-container .subtitle {
-  @apply font-serif;
-  @apply text-lg;
+  /* Sizing & spacing */
+  @apply mb-6 mt-0;
+
+  /* Colors */
   @apply text-black;
-  @apply italic;
-  @apply mb-6;
-  @apply mt-0;
+
+  /* Typography */
+  @apply font-serif text-lg italic;
+}
+
+@media (max-height: 700px) {
+  .post-checkout-container .subtitle {
+    /* Sizing & spacing */
+    @apply mb-6;
+  }
 }
 
 /* Image placeholder */
 .post-checkout-container .image-placeholder {
-  @apply bg-sv-gray-300;
-  @apply rounded-lg;
-  @apply h-48;
-  @apply w-full;
+  /* Sizing & spacing */
+  @apply h-48 w-full mb-6;
+
+  /* Layout & positioning */
   @apply flex items-center justify-center;
-  @apply mb-6;
+
+  /* Border & shape */
+  @apply rounded-lg;
+
+  /* Colors */
+  @apply bg-sv-gray-300;
+}
+
+@media (max-height: 700px) {
+  .post-checkout-container .image-placeholder {
+    /* Sizing & spacing */
+    @apply h-40 mb-6;
+  }
 }
 
 .post-checkout-container .image-placeholder span {
+  /* Colors */
   @apply text-sv-gray-500;
+
+  /* Typography */
   @apply text-sm;
 }
 
 /* Order details */
 .post-checkout-container .order-details {
+  /* Sizing & spacing */
   @apply mb-3;
 }
 
 .post-checkout-container .order-label {
-  @apply font-serif;
+  /* Sizing & spacing */
+  @apply mb-1 mt-0;
+
+  /* Colors */
   @apply text-black;
-  @apply font-medium;
-  @apply mb-1;
-  @apply mt-0;
+
+  /* Typography */
+  @apply font-serif font-medium;
 }
 
 .post-checkout-container .order-number {
-  @apply font-serif;
-  @apply text-2xl;
-  @apply font-bold;
+  /* Sizing & spacing */
+  @apply mb-3 mt-0;
+
+  /* Colors */
   @apply text-black;
-  @apply mb-3;
-  @apply mt-0;
+
+  /* Typography */
+  @apply font-serif text-2xl font-bold;
 }
 
 /* Receipt notice */
 .post-checkout-container .receipt-notice {
-  @apply font-serif;
-  @apply text-sm;
+  /* Sizing & spacing */
+  @apply mt-0 mb-0;
+
+  /* Colors */
   @apply text-black;
-  @apply italic;
-  @apply mt-0;
-  @apply mb-0;
-}
 
-/* Responsive adjustments */
-@media (max-height: 700px) {
-  .post-checkout-info {
-    @apply gap-6;
-  }
-
-  .post-checkout-container h1 {
-    @apply mb-3;
-  }
-
-  .post-checkout-container .subtitle {
-    @apply mb-6;
-  }
-
-  .post-checkout-container .image-placeholder {
-    @apply h-40;
-    @apply mb-6;
-  }
+  /* Typography */
+  @apply font-serif text-sm italic;
 }
 
 /* Image formatting utility */
 .formatted-image {
-  filter: saturate(0.7);
+  /* Border & shape */
   @apply rounded-3xl;
+
+  /* Interactive & animation */
   @apply transition-all duration-200;
+
+  /* Visual effects */
+  filter: saturate(0.7);
 }
 
 .formatted-image:hover {
+  /* Visual effects */
   filter: saturate(1);
 }
