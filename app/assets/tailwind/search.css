@@ -320,6 +320,8 @@
 }
 
 /* ===== ALGOLIA SEARCH COMPONENTS ===== */
+/* IMPORTANT - handle uses of !important carefully in session 5,
+   as these could truly be needed to override algolia's default styling */
 
 .ais-SearchBox {
   background: transparent !important;
