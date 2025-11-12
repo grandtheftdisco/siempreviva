@@ -1,51 +1,119 @@
+/* ===== EMAIL BASE STYLES ===== */
+
 body {
-  font-family: Arial, sans-serif;
+  /* Sizing & spacing */
+  @apply m-0 p-0;
+
+  /* Colors */
   @apply text-sv-gray-800 bg-white;
-  margin: 0;
-  padding: 0;
+
+  /* Typography */
+  @apply font-sans;
 }
+
+/* ===== EMAIL CONTAINER ===== */
+
 .email-container {
-  max-width: 600px;
-  margin: 0 auto;
+  /* Sizing & spacing */
+  max-width: 600px; /* Email-specific width, no Tailwind equivalent */
+  @apply mx-auto;
+
+  /* Border & shape */
   @apply border border-sv-gray-300;
 }
+
+/* ===== EMAIL HEADER ===== */
+
 .header {
+  /* Sizing & spacing */
+  @apply p-5;
+
+  /* Layout & positioning */
+  @apply text-center;
+
+  /* Colors */
   @apply bg-sv-purple-800;
-  padding: 20px;
-  text-align: center;
 }
+
 .logo-placeholder {
+  /* Sizing & spacing */
+  @apply p-8;
+
+  /* Layout & positioning */
+  @apply text-center;
+
+  /* Colors */
   @apply bg-sv-purple-100 text-sv-purple-800;
-  padding: 30px;
-  text-align: center;
-  font-weight: bold;
+
+  /* Typography */
+  @apply font-bold;
 }
-.content {
-  @apply bg-white;
-  padding: 20px;
-}
-.message-box {
-  @apply bg-sv-purple-100 border-l-4 border-sv-purple-600;
-  padding: 15px;
-  margin: 15px 0;
-}
-.field {
-  margin-bottom: 10px;
-  padding: 10px;
-  @apply bg-sv-purple-100;
-  border-radius: 4px;
-}
-.field-name {
-  @apply text-sv-purple-800 font-bold;
-  margin-bottom: 5px;
-}
-.footer {
-  font-size: 12px;
-  @apply text-white bg-sv-purple-600;
-  padding: 15px;
-  text-align: center;
-}
+
 h1 {
+  /* Sizing & spacing */
+  @apply m-0;
+
+  /* Colors */
   @apply text-white;
-  margin: 0;
+}
+
+/* ===== EMAIL CONTENT ===== */
+
+.content {
+  /* Sizing & spacing */
+  @apply p-5;
+
+  /* Colors */
+  @apply bg-white;
+}
+
+.message-box {
+  /* Sizing & spacing */
+  @apply p-4 my-4;
+
+  /* Border & shape */
+  @apply border-l-4 border-sv-purple-600;
+
+  /* Colors */
+  @apply bg-sv-purple-100;
+}
+
+/* ===== EMAIL FIELDS ===== */
+
+.field {
+  /* Sizing & spacing */
+  @apply mb-2.5 p-2.5;
+
+  /* Border & shape */
+  @apply rounded;
+
+  /* Colors */
+  @apply bg-sv-purple-100;
+}
+
+.field-name {
+  /* Sizing & spacing */
+  @apply mb-1.5;
+
+  /* Colors */
+  @apply text-sv-purple-800;
+
+  /* Typography */
+  @apply font-bold;
+}
+
+/* ===== EMAIL FOOTER ===== */
+
+.footer {
+  /* Sizing & spacing */
+  @apply p-4;
+
+  /* Layout & positioning */
+  @apply text-center;
+
+  /* Colors */
+  @apply text-white bg-sv-purple-600;
+
+  /* Typography */
+  @apply text-xs;
 }
