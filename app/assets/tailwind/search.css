@@ -109,20 +109,20 @@
   background: transparent;
   border: none;
   border-radius: 0.5rem;
-  color: #6b7280;
+  @apply text-sv-gray-500;
   transition: background-color 0.2s;
   cursor: pointer;
 }
 
 .search-toggle-button:hover {
-  background-color: #f3f4f6;
+  @apply bg-sv-gray-100;
   cursor: pointer;
 }
 
 .search-icon {
   width: 1.5rem;
   height: 1.5rem;
-  color: #674174;
+  @apply text-sv-purple-700;
 }
 
 /* ===== SEARCH DROPDOWN ===== */
@@ -132,9 +132,7 @@
   top: 100%;
   left: 0;
   right: 0;
-  background-color: #f0e8f5;
-  border-top: 1px solid rgba(103, 65, 116, 0.15);
-  box-shadow: 0 4px 12px -2px rgba(103, 65, 116, 0.15), 0 2px 4px -1px rgba(103, 65, 116, 0.06); /* Same drop shadow as nav */
+  @apply bg-sv-purple-100 border-t border-sv-purple-700/15 shadow-lg;
   z-index: 50;
   padding: 1rem;
   display: none;
@@ -151,8 +149,7 @@
     transform: translateX(-50%); /* Adjust to true center */
     max-width: 100vw;
     overflow-x: hidden; /* Prevent horizontal overflow */
-    background-color: #f0e8f5;
-    border-top: 1px solid rgba(103, 65, 116, 0.15);
+    @apply bg-sv-purple-100 border-t border-sv-purple-700/15;
   }
 }
 
@@ -162,8 +159,7 @@
     left: auto;
     right: 0;
     min-width: 300px;
-    border: 1px solid rgba(103, 65, 116, 0.15);
-    border-radius: 0.5rem;
+    @apply border border-sv-purple-700/15 rounded-lg;
     margin-top: 0.5rem;
   }
 }
@@ -251,8 +247,8 @@
 @media (max-width: 768px) {
   .search-dropdown .ais-SearchBox-input:focus {
     border-color: #674174 !important;
-    box-shadow: 0 0 0 2px rgba(103, 65, 116, 0.1) !important;
     outline: none !important;
+    @apply border-sv-purple-700 ring-2 ring-sv-purple-700/10;
   }
 }
 
@@ -316,7 +312,7 @@
 }
 
 .search-hit-item:hover {
-  background-color: #faf5ff;
+  @apply bg-sv-purple-50;
 }
 
 /* ===== ALGOLIA SEARCH COMPONENTS ===== */
@@ -339,26 +335,21 @@
 }
 
 .ais-SearchBox-input {
-  background: #e6d3ec;
-  border: 1px solid #d1d5db;
-  border-radius: 1rem;
+  @apply bg-sv-purple-200 border border-sv-gray-300 rounded-2xl text-sv-gray-800;
   padding: 8px;
   padding-right: 80px;
   flex: 1;
-  color: #2c3e50;
 }
 
 .ais-SearchBox-input:focus {
-  outline: none;
-  border-color: #674174;
-  box-shadow: 0 0 0 2px rgba(103, 65, 116, 0.1);
+  @apply outline-none border-sv-purple-700 ring-2 ring-sv-purple-700/10;
 }
 
 .ais-SearchBox-submit {
   font-size: 1.125rem;
   background: transparent !important;
   padding: 0px !important;
-  color: #c5aace;
+  @apply text-sv-purple-400;
   border: none !important;
   border-radius: 0 !important;
   outline: none;
@@ -388,7 +379,7 @@
   border: none;
   outline: none;
   padding: 4px 8px;
-  color: #6b7280;
+  @apply text-sv-gray-500;
   position: absolute;
   right: 45px;
   display: flex;
@@ -399,7 +390,7 @@
 }
 
 .ais-SearchBox-reset:hover {
-  color: #374151;
+  @apply text-sv-gray-700;
 }
 
 .ais-SearchBox-resetIcon {
@@ -410,33 +401,28 @@
 /* ===== SEARCH RESULTS CONTAINER ===== */
 
 .ais-Hits {
-  background: #e6d3ec;
+  @apply bg-sv-purple-200 border border-sv-gray-300 rounded-lg shadow-lg;
   width: 250px;
-  border-radius: 0.5rem;
-  border: 1px solid #d1d5db;
   padding: 0px;
   margin-right: 0px;
-  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
 }
 
 .ais-Hits-item a {
   display: block;
   border-radius: 1rem;
   padding: 0px;
-  color: #2c3e50;
-  text-decoration: none;
+  @apply text-sv-gray-800 no-underline;
   transition: background-color 0.2s;
   cursor: pointer;
 }
 
 .ais-Hits-item a:hover {
-  background: #c5aace;
+  @apply bg-sv-purple-400 text-sv-gray-800;
   border-radius: 1rem;
-  color: #2c3e50;
 }
 
 .ais-Highlight-highlighted {
-  background: #c5aace;
+  @apply bg-sv-purple-400;
   padding: 0.125rem 0.25rem;
   border-radius: 0.25rem;
 }
