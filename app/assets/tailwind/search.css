@@ -4,64 +4,53 @@
 /* ===== SEARCH SECTION LAYOUT ===== */
 
 .search-section:not(.hidden) {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  padding: 0 1rem; /* Desktop padding */
-  position: relative;
-  flex-shrink: 1; /* Allow search to shrink */
+  /* Sizing & spacing */
+  @apply gap-2 px-4 shrink;
+
+  /* Layout & positioning */
+  @apply flex items-center relative;
+
+  /* Colors */
   background: transparent !important;
 }
 
 /* Remove horizontal padding on mobile for tighter icon spacing */
 @media (max-width: 767px) {
   .search-section:not(.hidden) {
-    padding: 0;
+    @apply p-0;
   }
 }
 
 /* Compact search for tablet range */
 @media (min-width: 768px) and (max-width: 1023px) {
   .search-section {
-    padding: 0 0.25rem;
-    gap: 0.25rem;
+    @apply px-1 gap-1;
   }
 
   .search-desktop input {
-    height: 2rem;
-    font-size: 0.875rem;
-    padding: 0.375rem 0.75rem;
+    @apply h-8 text-sm py-1.5 px-3;
     max-width: 250px;
   }
 
   .search-desktop button {
-    height: 2rem; /* Match input height */
-    width: 2rem;
-    padding: 0.25rem;
+    @apply h-8 w-8 p-1;
   }
 }
 
 /* Tailwind sm and below (below 640px) - mobile search */
 @media (max-width: 639px) {
   .search-section {
-    padding: 0;
-    gap: 0;
-    flex: 0 0 auto;
-    min-width: 2.5rem; /* Ensure minimum width for search icon */
-    width: auto;
+    @apply p-0 gap-0 flex-none min-w-10 w-auto;
   }
 
   .search-toggle-button {
-    display: flex !important; /* Force display on mobile */
-    flex-shrink: 0; /* Prevent button from shrinking */
-    width: 2.5rem; /* Ensure button has proper width */
-    height: 2.5rem; /* Ensure button has proper height */
+    display: flex !important;
+    @apply shrink-0 w-10 h-10 rounded-lg;
     background: transparent !important;
-    border-radius: 0.5rem;
   }
 
   .search-toggle-button:hover {
-    background: transparent !important; /* Keep transparent on hover */
+    background: transparent !important;
   }
 
   /* Ensure search section is visible */
@@ -84,104 +73,89 @@
 /* Tailwind sm to md (640px-767px) - tablet range, compact search */
 @media (min-width: 640px) and (max-width: 767px) {
   .search-section {
-    padding: 0 1rem;
-    gap: 0.25rem;
+    @apply px-4 gap-1;
     flex: 0 1 200px; /* Limited width to prevent overlap */
     min-width: 150px;
   }
 
   .search-desktop input {
-    width: 100%;
+    @apply w-full text-sm;
     max-width: 200px;
-    font-size: 0.875rem;
   }
 }
 
 /* ===== SEARCH TOGGLE BUTTON (MOBILE) ===== */
 
 .search-toggle-button {
-  display: none;
-  align-items: center;
-  justify-content: center;
-  width: 2.5rem;
-  height: 2.5rem;
-  padding: 0.5rem;
-  background: transparent;
-  border: none;
-  border-radius: 0.5rem;
-  @apply text-sv-gray-500;
-  transition: background-color 0.2s;
-  cursor: pointer;
+  /* Sizing & spacing */
+  @apply w-10 h-10 p-2;
+
+  /* Layout & positioning */
+  @apply hidden items-center justify-center;
+
+  /* Border & shape */
+  @apply border-none rounded-lg;
+
+  /* Colors */
+  @apply bg-transparent text-sv-gray-500;
+
+  /* Interactive & animation */
+  @apply transition-colors duration-200 cursor-pointer;
 }
 
 .search-toggle-button:hover {
   @apply bg-sv-gray-100;
-  cursor: pointer;
 }
 
 .search-icon {
-  width: 1.5rem;
-  height: 1.5rem;
+  /* Sizing & spacing */
+  @apply w-6 h-6;
+
+  /* Colors */
   @apply text-sv-purple-700;
 }
 
 /* ===== SEARCH DROPDOWN ===== */
 
 .search-dropdown {
-  position: absolute;
-  top: 100%;
-  left: 0;
-  right: 0;
-  @apply bg-sv-purple-100 border-t border-sv-purple-700/15 shadow-lg;
-  z-index: 50;
-  padding: 1rem;
-  display: none;
+  /* Sizing & spacing */
+  @apply p-4;
+
+  /* Layout & positioning */
+  @apply absolute top-full left-0 right-0 z-50 hidden;
+
+  /* Border & shape */
+  @apply border-t border-sv-purple-700/15 shadow-lg;
+
+  /* Colors */
+  @apply bg-sv-purple-100;
 }
 
 /* Responsive search dropdown - full width on mobile */
 @media (max-width: 768px) {
   .search-dropdown {
-    border-radius: 0;
-    border-left: none;
-    border-right: none;
-    width: 100vw;
+    @apply rounded-none border-l-0 border-r-0 w-screen max-w-full overflow-x-hidden bg-sv-purple-100 border-t border-sv-purple-700/15;
     left: 50%; /* Center relative to parent */
     transform: translateX(-50%); /* Adjust to true center */
-    max-width: 100vw;
-    overflow-x: hidden; /* Prevent horizontal overflow */
-    @apply bg-sv-purple-100 border-t border-sv-purple-700/15;
   }
 }
 
 /* Tailwind md+ (768px+) - desktop search dropdown */
 @media (min-width: 768px) {
   .search-dropdown {
-    left: auto;
-    right: 0;
+    @apply left-auto right-0 border border-sv-purple-700/15 rounded-lg mt-2;
     min-width: 300px;
-    @apply border border-sv-purple-700/15 rounded-lg;
-    margin-top: 0.5rem;
   }
 }
 
 /* Mobile search dropdown specific styles */
 .search-dropdown .search-container {
-  justify-content: flex-start;
-  width: 100%;
-  max-width: 100%;
-  overflow: hidden;
-  padding: 0; /* Remove any inherited padding */
-  margin: 0; /* Remove any inherited margin */
+  @apply justify-start w-full max-w-full overflow-hidden p-0 m-0;
 }
 
 .search-dropdown .search-results {
-  position: static;
-  margin-top: 0.5rem;
-  right: auto;
-  width: 100%;
+  @apply static mt-2 right-auto w-full max-w-full overflow-x-hidden;
   min-width: auto;
-  max-width: 100%;
-  overflow-x: hidden; /* Prevent horizontal overflow */
 }
 
 /* Ensure Algolia search input doesn't overflow on mobile */
@@ -255,30 +229,33 @@
 /* ===== DESKTOP SEARCH ===== */
 
 .search-desktop {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
+  /* Sizing & spacing */
+  @apply gap-2;
+
+  /* Layout & positioning */
+  @apply flex items-center relative;
+
+  /* Colors */
   background: transparent !important;
-  position: relative;
 }
 
 .search-container {
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
-  padding: 0;
-  margin: 0;
-  position: relative;
+  /* Sizing & spacing */
+  @apply p-0 m-0;
+
+  /* Layout & positioning */
+  @apply flex items-center justify-end relative;
+
+  /* Colors */
   background: transparent !important;
 }
 
 .search-results {
-  position: absolute;
-  top: 100%;
-  left: 0;
-  z-index: 50;
-  margin-top: 0.5rem;
-  width: 100%;
+  /* Sizing & spacing */
+  @apply mt-2 w-full;
+
+  /* Layout & positioning */
+  @apply absolute top-full left-0 z-50;
 }
 
 /* Match search results width to search input width at different breakpoints */
@@ -304,11 +281,17 @@
 /* ===== SEARCH HIT ITEMS ===== */
 
 .search-hit-item {
-  display: block;
-  padding: 0.5rem;
-  border-radius: 1rem;
-  transition: background-color 0.2s;
-  cursor: pointer;
+  /* Sizing & spacing */
+  @apply p-2;
+
+  /* Layout & positioning */
+  @apply block;
+
+  /* Border & shape */
+  @apply rounded-2xl;
+
+  /* Interactive & animation */
+  @apply transition-colors duration-200 cursor-pointer;
 }
 
 .search-hit-item:hover {
@@ -324,41 +307,57 @@
 }
 
 .ais-SearchBox-form {
-  padding: 0px;
-  margin: 0px;
-  border: none;
-  outline: none;
-  position: relative;
-  display: flex;
-  align-items: center;
+  /* Sizing & spacing */
+  @apply p-0 m-0;
+
+  /* Layout & positioning */
+  @apply relative flex items-center;
+
+  /* Border & shape */
+  @apply border-none outline-none;
+
+  /* Colors */
   background: transparent !important;
 }
 
 .ais-SearchBox-input {
-  @apply bg-sv-purple-200 border border-sv-gray-300 rounded-2xl text-sv-gray-800;
-  padding: 8px;
-  padding-right: 80px;
-  flex: 1;
+  /* Sizing & spacing */
+  @apply p-2 flex-1;
+  padding-right: 80px; /* Space for submit button */
+
+  /* Border & shape */
+  @apply border border-sv-gray-300 rounded-2xl;
+
+  /* Colors */
+  @apply bg-sv-purple-200 text-sv-gray-800;
 }
 
 .ais-SearchBox-input:focus {
+  /* Border & shape */
   @apply outline-none border-sv-purple-700 ring-2 ring-sv-purple-700/10;
 }
 
 .ais-SearchBox-submit {
-  font-size: 1.125rem;
-  background: transparent !important;
-  padding: 0px !important;
+  /* Layout & positioning */
+  @apply absolute right-2;
+
+  /* Border & shape */
+  @apply outline-none;
+
+  /* Colors */
   @apply text-sv-purple-400;
+  background: transparent !important;
+
+  /* Interactive & animation */
+  @apply transition-colors duration-200 cursor-pointer;
+
+  /* Typography */
+  @apply text-lg;
+
+  /* All !important overrides for Algolia defaults */
+  padding: 0px !important;
   border: none !important;
   border-radius: 0 !important;
-  outline: none;
-  position: absolute;
-  right: 8px;
-  cursor: pointer;
-  transition: color 0.2s;
-
-  /* Reset any inherited global button styles */
   margin: 0 !important;
   box-shadow: none !important;
   font-family: inherit !important;
@@ -367,26 +366,28 @@
 }
 
 .ais-SearchBox-submitIcon {
+  /* Sizing & spacing */
+  @apply mt-0 ml-1.5 p-0;
   width: 20px !important;
   height: 20px !important;
-  margin-top: 0px;
-  margin-left: 5px;
-  padding: 0px;
 }
 
 .ais-SearchBox-reset {
-  background: transparent;
-  border: none;
-  outline: none;
-  padding: 4px 8px;
-  @apply text-sv-gray-500;
-  position: absolute;
+  /* Sizing & spacing */
+  @apply py-1 px-2;
   right: 45px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  transition: color 0.2s;
+
+  /* Layout & positioning */
+  @apply absolute flex items-center justify-center;
+
+  /* Border & shape */
+  @apply border-none outline-none;
+
+  /* Colors */
+  @apply bg-transparent text-sv-gray-500;
+
+  /* Interactive & animation */
+  @apply cursor-pointer transition-colors duration-200;
 }
 
 .ais-SearchBox-reset:hover {
@@ -401,28 +402,49 @@
 /* ===== SEARCH RESULTS CONTAINER ===== */
 
 .ais-Hits {
-  @apply bg-sv-purple-200 border border-sv-gray-300 rounded-lg shadow-lg;
+  /* Sizing & spacing */
+  @apply p-0 mr-0;
   width: 250px;
-  padding: 0px;
-  margin-right: 0px;
+
+  /* Border & shape */
+  @apply border border-sv-gray-300 rounded-lg shadow-lg;
+
+  /* Colors */
+  @apply bg-sv-purple-200;
 }
 
 .ais-Hits-item a {
-  display: block;
-  border-radius: 1rem;
-  padding: 0px;
+  /* Sizing & spacing */
+  @apply p-0;
+
+  /* Layout & positioning */
+  @apply block;
+
+  /* Border & shape */
+  @apply rounded-2xl;
+
+  /* Colors */
   @apply text-sv-gray-800 no-underline;
-  transition: background-color 0.2s;
-  cursor: pointer;
+
+  /* Interactive & animation */
+  @apply transition-colors duration-200 cursor-pointer;
 }
 
 .ais-Hits-item a:hover {
+  /* Border & shape */
+  @apply rounded-2xl;
+
+  /* Colors */
   @apply bg-sv-purple-400 text-sv-gray-800;
-  border-radius: 1rem;
 }
 
 .ais-Highlight-highlighted {
+  /* Sizing & spacing */
+  @apply py-0.5 px-1;
+
+  /* Border & shape */
+  @apply rounded;
+
+  /* Colors */
   @apply bg-sv-purple-400;
-  padding: 0.125rem 0.25rem;
-  border-radius: 0.25rem;
 }
