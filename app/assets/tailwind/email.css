@@ -1,56 +1,51 @@
 body {
   font-family: Arial, sans-serif;
-  color: #333;
-  background-color: #fff;
+  @apply text-sv-gray-800 bg-white;
   margin: 0;
   padding: 0;
 }
 .email-container {
   max-width: 600px;
   margin: 0 auto;
-  border: 1px solid #e0e0e0;
+  @apply border border-sv-gray-300;
 }
 .header {
-  background-color: #6a1b9a;
+  @apply bg-sv-purple-800;
   padding: 20px;
   text-align: center;
 }
 .logo-placeholder {
-  background-color: #f3e5f5;
+  @apply bg-sv-purple-100 text-sv-purple-800;
   padding: 30px;
   text-align: center;
-  color: #6a1b9a;
   font-weight: bold;
 }
 .content {
-  background-color: #fff;
+  @apply bg-white;
   padding: 20px;
 }
 .message-box {
-  background-color: #f3e5f5;
-  border-left: 4px solid #9c27b0;
+  @apply bg-sv-purple-100 border-l-4 border-sv-purple-600;
   padding: 15px;
   margin: 15px 0;
 }
 .field {
   margin-bottom: 10px;
   padding: 10px;
-  background-color: #f9f4fc;
+  @apply bg-sv-purple-100;
   border-radius: 4px;
 }
 .field-name {
-  color: #6a1b9a;
-  font-weight: bold;
+  @apply text-sv-purple-800 font-bold;
   margin-bottom: 5px;
 }
 .footer {
   font-size: 12px;
-  color: #fff;
-  background-color: #9c27b0;
+  @apply text-white bg-sv-purple-600;
   padding: 15px;
   text-align: center;
 }
 h1 {
-  color: #fff;
+  @apply text-white;
   margin: 0;
 }
