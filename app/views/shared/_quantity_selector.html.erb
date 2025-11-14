@@ -5,7 +5,7 @@
 #            min_value: 1,
 #            field_name: 'cart_item[quantity]' (optional, defaults to nil for use with form builders) %>
 
-<% input_id ||= "quantity-input-#{SecureRandom.hex(4)}" %>
+<% input_id ||= "quantity-input-#{SecureRandom.uuid}" %>
 <% initial_value ||= 1 %>
 <% min_value ||= 1 %>
 <% field_name ||= nil %>
