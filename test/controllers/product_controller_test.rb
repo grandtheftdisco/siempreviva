@@ -28,7 +28,7 @@ class ProductControllerTest < ActionDispatch::IntegrationTest
 
     get product_path(product.id)
     assert_response :success
-    assert_select "span.text-gray-500", text: "Product Image"
+    assert_select "[data-product-image-placeholder]", text: "Product Image"
   end
 
   # Product with fewer than 5 images should not render additional image grid

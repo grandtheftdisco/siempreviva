@@ -21,7 +21,7 @@
           <%= image_tag(@product.images.first, alt: @product.name.titleize, class: "product-image-mobile") %>
         <% else %>
           <div class="product-image-placeholder">
-            <span class="product-image-placeholder-text">(product image coming soon!)</span>
+            <span class="product-image-placeholder-text" data-product-image-placeholder>(product image coming soon!)</span>
           </div>
         <% end %>
       </div>
@@ -59,7 +59,7 @@
             <%= image_tag(@product.images.first, alt: @product.name.titleize, class: "product-image-desktop") %>
           <% else %>
             <div class="product-image-placeholder">
-              <span class="product-image-placeholder-text">Product Image</span>
+              <span class="product-image-placeholder-text" data-product-image-placeholder>Product Image</span>
             </div>
           <% end %>
         </div>
