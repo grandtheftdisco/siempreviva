@@ -1,0 +1,149 @@
+/* Navigation Stylesheet */
+/* Contains mobile menu button and navigation menu styles */
+
+/* NOTE: All !important declarations in this file will be addressed in Session 5 of the CSS refactor plan.
+   Session 5 focuses on specificity cleanup and removing !important hacks. */
+
+/* ===== MOBILE MENU BUTTON ===== */
+
+.mobile-menu-button {
+  display: inline-flex !important;
+  @apply items-center justify-center p-2 w-10 h-10 text-sm text-sv-purple-700 rounded-lg border-0 bg-transparent transition-colors duration-200 flex-shrink-0;
+}
+
+.mobile-menu-button:hover {
+  @apply cursor-pointer;
+}
+
+.mobile-menu-button:focus {
+  outline: none;
+}
+
+@media (min-width: 768px) {
+  .mobile-menu-button {
+    display: none !important;
+  }
+}
+
+@media (max-width: 767px) {
+  .mobile-menu-button {
+    display: inline-flex !important;
+  }
+}
+
+.mobile-menu-icon {
+  @apply w-6 h-6 text-sv-purple-700;
+}
+
+/* ===== NAVIGATION MENU ===== */
+
+/* Force transparent backgrounds for navigation elements (desktop/inline only) */
+@media (min-width: 768px) {
+  .navbar-section, .navbar-section *, .navbar-list, .navbar-list * {
+    background-color: transparent !important;
+  }
+}
+
+.navbar-section {
+  @apply flex-none flex;
+}
+
+@media (min-width: 768px) {
+  .navbar-section {
+    @apply flex-none;
+  }
+}
+
+@media (max-width: 767px) {
+  .navbar-section {
+    @apply hidden;
+  }
+
+  /* Mobile dropdown */
+  .navbar-section:not(.hidden) {
+    display: block !important;
+    position: absolute !important;
+    top: 100% !important;
+    left: 0 !important;
+    right: 0 !important;
+    @apply bg-sv-purple-100 p-4 flex-col z-50;
+    border-top: 1px solid rgba(103, 65, 116, 0.15) !important;
+    box-shadow: 0 4px 12px -2px rgba(103, 65, 116, 0.15), 0 2px 4px -1px rgba(103, 65, 116, 0.06) !important;
+  }
+
+  .navbar-section:not(.hidden),
+  .navbar-section:not(.hidden) .navbar-list,
+  .navbar-section:not(.hidden) .navbar-list li,
+  .navbar-section:not(.hidden) .navbar-list li a {
+    @apply bg-sv-purple-100;
+  }
+
+  .navbar-section:not(.hidden) .navbar-list {
+    @apply flex-col p-0 gap-3 border-0 rounded-none m-0 text-lg;
+    flex-direction: column !important;
+    padding: 0 !important;
+    gap: 0.75rem !important;
+    border: none !important;
+    border-radius: 0 !important;
+    margin: 0 !important;
+    font-size: 1.125rem !important;
+  }
+
+  .navbar-section:not(.hidden) .navbar-list li {
+    border-bottom: 1px solid rgba(103, 65, 116, 0.1) !important;
+    padding-bottom: 0.75rem !important;
+    padding-top: 0.75rem !important;
+  }
+
+  .navbar-section:not(.hidden) .navbar-list li:first-child {
+    padding-top: 0 !important;
+  }
+
+  .navbar-section:not(.hidden) .navbar-list li:last-child {
+    border-bottom: none !important;
+    padding-bottom: 0 !important;
+  }
+
+  .navbar-section:not(.hidden) .navbar-list li a {
+    @apply p-0 block;
+    padding: 0 !important;
+    display: block !important;
+    transition: color 0.2s ease !important;
+  }
+
+  .navbar-section:not(.hidden) .navbar-list li a:hover {
+    @apply text-sv-purple-700;
+  }
+}
+
+.navbar-list {
+  @apply flex flex-col p-5 mt-4 font-medium text-2xl font-serif gap-5 border-0 rounded-lg;
+  border: none !important;
+  background-color: transparent !important;
+}
+
+@media (min-width: 768px) {
+  .navbar-list {
+    @apply p-0 mt-0 gap-8 border-0 flex-row text-lg;
+  }
+}
+
+@media (min-width: 1024px) {
+  .navbar-section {
+    @apply pl-4;
+  }
+
+  .navbar-list {
+    @apply text-lg gap-8;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1023px) {
+  .navbar-section {
+    @apply pl-3;
+  }
+
+  .navbar-list {
+    @apply text-sm gap-6;
+  }
+}

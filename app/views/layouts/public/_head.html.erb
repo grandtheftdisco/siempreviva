@@ -17,12 +17,12 @@
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700;1,800;1,900&family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700;1,800;1,900&family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+          rel="stylesheet">
 
     <%# Includes all stylesheet files in app/assets/stylesheets %>
     <%= stylesheet_link_tag "tailwind", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
-    <%= javascript_include_tag 'application', 'data-turbo-track': 'reload' %>
 
     <!-- flowbite js -->
     <script src="https://cdn.jsdelivr.net/npm/flowbite@2.5.1/dist/flowbite.min.js"></script>
@@ -31,9 +31,16 @@
     <script src="https://js.stripe.com/v3/"></script>
 
     <!-- algolia js -->
-    <script src="https://cdn.jsdelivr.net/npm/algoliasearch@5.35.0/dist/lite/builds/browser.umd.js" integrity="sha256-k54K9sZqimlyVUDmX8WGI5Xbe9OvyjOlkoWLdxa79Kk=" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/instantsearch.js@4.79.2/dist/instantsearch.production.min.js" integrity="sha256-xzEobMl7YU4X8/v8b+Ax4tXJtrs9DVhKOzKDSnZgj1Q=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/algoliasearch@5.35.0/dist/lite/builds/browser.umd.js"
+            integrity="sha256-k54K9sZqimlyVUDmX8WGI5Xbe9OvyjOlkoWLdxa79Kk="
+            crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/instantsearch.js@4.79.2/dist/instantsearch.production.min.js"
+            integrity="sha256-xzEobMl7YU4X8/v8b+Ax4tXJtrs9DVhKOzKDSnZgj1Q="
+            crossorigin="anonymous"></script>
 
     <!-- algolia css -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/instantsearch.css@8.5.1/themes/reset-min.css" integrity="sha256-KvFgFCzgqSErAPu6y9gz/AhZAvzK48VJASu3DpNLCEQ=" crossorigin="anonymous">
+    <link rel="stylesheet"
+          href="https://cdn.jsdelivr.net/npm/instantsearch.css@8.5.1/themes/reset-min.css"
+          integrity="sha256-KvFgFCzgqSErAPu6y9gz/AhZAvzK48VJASu3DpNLCEQ="
+          crossorigin="anonymous">
   </head>
