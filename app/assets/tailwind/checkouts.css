@@ -57,7 +57,7 @@ div[style*="background-color: rgba(247, 242, 237"] {
   @apply flex items-start justify-center;
 
   /* Colors */
-  background-color: transparent;
+  @apply bg-transparent;
 
   /* Typography */
   @apply font-serif;
