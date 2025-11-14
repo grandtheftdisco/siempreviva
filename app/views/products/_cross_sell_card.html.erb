@@ -2,12 +2,9 @@
 <%# Usage: <%= render 'products/cross_sell_card', product: product %>
 <%# Or for placeholder: <%= render 'products/cross_sell_card', product: nil %>
 
-<% if product.present? && product&.images&.any? %>
-  <%= render 'products/cross_sell_card_content', product: product, has_image: true %>
-<% elsif product.present? %>
-  <%= render 'products/cross_sell_card_content', product: product, has_image: false %>
-<%# explicit conditions can avoid surprise bugs in the future - avoiding the `else` umbrella! %>
-<% elsif !product.present? %>
+<% if product.present? %>
+  <%= render 'products/cross_sell_card_content', product: product, has_image: product.images&.any? %>
+<% else %>
   <div class="cross-sell-card-placeholder">
     <span class="cross-sell-placeholder-text">product not loaded</span>
   </div>
