@@ -1,9 +1,9 @@
 # Session 4B: cart.css Refactoring
 
-**Status:** ⏳ UPCOMING
+**Status:** ✅ COMPLETE
 **When:** After Session 4A submitted for review
 **Estimated Time:** 2-3 hours
-**Branch:** `css-refactor/session-4b-cart-css` (will branch from `main`, NOT 4A)
+**Branch:** `css-refactor/session-4b-cart-css` (branched from `main`, NOT 4A)
 
 ---
 
@@ -40,13 +40,13 @@ Refactor cart.css (~1000+ lines) to use Tailwind's `@apply` directive with sv-co
 
 ## Tasks Breakdown
 
-### Task 1: Analyze Current cart.css Structure
+### Task 1: Analyze Current cart.css Structure ✅
 
 **Steps:**
-- [ ] Read through cart.css to understand current structure
-- [ ] Identify all sections (dropdown, cart page, item cards, buttons, etc.)
-- [ ] Catalog all hardcoded hex values
-- [ ] Note any repeated patterns that could be extracted
+- [x] Read through cart.css to understand current structure
+- [x] Identify all sections (dropdown, cart page, item cards, buttons, etc.)
+- [x] Catalog all hardcoded hex values
+- [x] Note any repeated patterns that could be extracted
 
 **Expected sections:**
 - Cart-specific button styles
@@ -60,7 +60,7 @@ Refactor cart.css (~1000+ lines) to use Tailwind's `@apply` directive with sv-co
 
 ---
 
-### Task 2: Replace Hex Colors with sv-colors
+### Task 2: Replace Hex Colors with sv-colors ✅
 
 **Common replacements:**
 ```css
@@ -80,14 +80,16 @@ border-color: #698b3f; /* sv-green-600 */
 ```
 
 **Steps:**
-- [ ] Replace all purple hex values with sv-purple-*
-- [ ] Replace all green hex values with sv-green-*
-- [ ] Replace all gray hex values with sv-gray-*
-- [ ] Test after each major color replacement
+- [x] Replace all purple hex values with sv-purple-*
+- [x] Replace all green hex values with sv-green-*
+- [x] Replace all gray hex values with sv-gray-*
+- [x] Test after each major color replacement
+
+**New palette entries added:** sv-purple-50, sv-purple-500, sv-purple-600, sv-gray-200, sv-gray-300, sv-gray-600, sv-gray-700, sv-gray-900
 
 ---
 
-### Task 3: Convert Utilities and Patterns to @apply
+### Task 3: Convert Utilities and Patterns to @apply ✅
 
 **Target conversions:**
 - Spacing (padding, margin, gap)
@@ -104,22 +106,43 @@ border-color: #698b3f; /* sv-green-600 */
 - Custom rgba values
 
 **Steps:**
-- [ ] Convert spacing utilities
-- [ ] Convert layout patterns (flex, grid)
-- [ ] Convert typography
-- [ ] Convert borders and radius
-- [ ] Convert transitions
-- [ ] Test thoroughly after each section
+- [x] Convert spacing utilities
+- [x] Convert layout patterns (flex, grid)
+- [x] Convert typography (font-family to @apply font-sans/serif)
+- [x] Convert borders and radius
+- [x] Convert transitions
+- [x] Test thoroughly after each section
+- [x] Manual review pass completed (19 oversights fixed)
 
 ---
 
-### Task 4: Organize and Structure
+### Task 4: Organize and Structure with Semantic Grouping ✅
 
 **Apply Session 3 organizational pattern:**
 - Clear `/* ===== ALL CAPS SECTION ===== */` headers
 - Group related components together
 - Place media queries adjacent to base classes
 - Logical top-to-bottom flow
+
+**Apply semantic grouping pattern (established in Sessions 3 & 4A):**
+- Group `@apply` directives by semantic category with explanatory comments
+- Standard categories: Sizing & spacing, Colors, Layout & positioning, Interactive & animation, Typography, Visual effects
+- **IMPORTANT:** Apply semantic grouping AS YOU REFACTOR, not later in Session 4E
+- Session 4E is only for applying grouping to files already refactored in 4B/4C/4D that might need retroactive grouping
+
+**Example pattern:**
+```css
+.cart-item-card {
+  /* Sizing & spacing */
+  @apply p-4 rounded-lg;
+
+  /* Colors */
+  @apply bg-white border border-sv-gray-300;
+
+  /* Layout */
+  @apply flex items-center gap-4;
+}
+```
 
 **Suggested structure:**
 ```css
@@ -133,34 +156,34 @@ border-color: #698b3f; /* sv-green-600 */
 ```
 
 **Steps:**
-- [ ] Add section headers
-- [ ] Group related styles
-- [ ] Move media queries adjacent to base classes
-- [ ] Ensure logical flow
+- [x] Apply semantic grouping to each component class (done during refactoring)
+- [x] Verify section headers are present and clear (12 section headers found)
+- [x] Verify media queries are adjacent to base classes (9 media queries properly placed)
+- [x] Verify logical flow (organized top-to-bottom from dropdown → page → components)
 
 ---
 
-### Task 5: Consider Modularization
+### Task 5: Consider Modularization ✅
 
 **Question:** Should cart.css be split into smaller files?
 
-**Current size:** >1000 lines
+**Decision:** Yes - split into 4 files
 
-**Potential split:**
-- `cart_dropdown.css` - Cart dropdown styles
-- `cart_page.css` - Main cart page layout
-- `cart_items.css` - Cart item card styles
-- `cart_controls.css` - Quantity controls, buttons
+**Final structure:**
+- `cart_dropdown.css` (490 lines) - Cart dropdown styles
+- `cart_page.css` (439 lines) - Main cart page layout & summary
+- `cart_actions.css` (336 lines) - Quantity controls & remove buttons (shared)
+- `cart_empty.css` (60 lines) - Empty cart state (shared)
 
 **Decision criteria:**
-- If each section is >200 lines, consider splitting
-- If sections are independent, splitting makes sense
-- If tightly coupled, keep together
+- Each section is reasonable size (60-490 lines)
+- Sections are logically independent
+- Shared components clearly identified
 
 **Steps:**
-- [ ] Assess section sizes after refactoring
-- [ ] Decide if modularization adds value
-- [ ] Split if beneficial (separate commit)
+- [x] Assess section sizes after refactoring
+- [x] Decide if modularization adds value
+- [x] Split into 4 files with clear separation of concerns
 
 ---
 

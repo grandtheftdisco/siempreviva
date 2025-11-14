@@ -1,5 +1,5 @@
 /* Layout Stylesheet */
-/* Contains header, navigation, responsive layout, and main structural styles */
+/* Contains global layout structure and link styles */
 
 /* ===== CSS CUSTOM PROPERTIES (COLORS) ===== */
 :root {
@@ -23,13 +23,13 @@
 
 /* ===== GENERAL LINK HOVER STYLES ===== */
 /* Apply consistent hover behavior to all links, excluding specific components */
-a:not(.logo-link):not(.breadcrumb-link):not(.ais-Hits-item a):not(.remove-button-small):not(.social-icon):not(.shop-products-btn) {
+a:not(.logo-link):not(.breadcrumb-link):not(.ais-Hits-item a):not(.remove-button-small):not(.social-icon):not(.shop-products-btn):not(.btn-primary):not(.btn-secondary):not(.btn-green):not(.btn-green-light):not(.btn-danger):not(.cart-view-button) {
   color: var(--dark-text);
   text-decoration: none;
   transition: color 0.2s ease;
 }
 
-a:not(.logo-link):not(.breadcrumb-link):not(.ais-Hits-item a):not(.remove-button-small):not(.social-icon):not(.shop-products-btn):hover {
+a:not(.logo-link):not(.breadcrumb-link):not(.ais-Hits-item a):not(.remove-button-small):not(.social-icon):not(.shop-products-btn):not(.btn-primary):not(.btn-secondary):not(.btn-green):not(.btn-green-light):not(.btn-danger):not(.cart-view-button):hover {
   color: var(--primary-purple);
   cursor: pointer;
 }
@@ -103,422 +103,60 @@ a:not(.logo-link):not(.breadcrumb-link):not(.ais-Hits-item a):not(.remove-button
 /* ===== GLOBAL LAYOUT ===== */
 
 body, html {
-  font-family: 'Raleway', sans-serif;
-  background-color: #f0e8f5 !important;
-  min-height: 100vh;
+  @apply font-sans min-h-screen bg-sv-purple-50;
 }
 
 body {
-  padding-top: 5rem; /* Reduced base padding for fixed header */
+  @apply pt-20 flex flex-col;
 }
 
 p {
-  font-family: 'Raleway', sans-serif;
+  @apply font-sans;
 }
 
 .container {
-  padding: 0px;
-  margin: 0px;
+  @apply p-0 m-0;
 }
 
-/* General content spacing - applies to all screen sizes */
 h1 {
-  padding-left: 1rem;
-  padding-right: 1rem;
+  @apply px-4;
 }
 
 main {
-  padding-left: 1rem;
-  padding-right: 1rem;
-  padding-top: 3rem; /* Base padding for mobile */
+  @apply px-4 pt-12 flex-1;
 }
 
-/* Desktop/large tablet: Increase main padding for better spacing */
 @media (min-width: 768px) {
   main {
-    padding-top: 7rem; /* Consistent spacing for desktop */
+    @apply pt-28;
   }
-  
+
   main.has-flash-messages {
-    padding-top: 8rem; /* Additional padding when flash messages exist */
+    @apply pt-32;
   }
 }
 
-/* Flash message styling to ensure proper positioning below fixed header */
+/* Flash message styling */
 [class^="flash-"] {
-  margin-top: 1rem;
-  position: relative;
-  z-index: 10;
+  @apply mt-4 relative z-10;
 }
 
-/* Inline form styling for delete buttons */
-.inline-form {
-  display: inline-block;
-  margin: 0;
-  padding: 0;
+/* ===== GENERAL LINK STYLES ===== */
+
+a:not(.logo-link):not(.breadcrumb-link):not(.ais-Hits-item a):not(.remove-button-small):not(.social-icon):not(.shop-products-btn) {
+  @apply text-sv-gray-800 no-underline transition-colors duration-200;
 }
 
-/* Make button_to forms with remove-item-btn-soft look like original circular buttons */
-.inline-form .remove-item-btn-soft {
-  border: 1px solid #c5aace !important;
-  background: #c5aace !important;
-  color: #ffffff !important;
-  cursor: pointer;
-  padding: 0.375rem !important;
-  border-radius: 9999px !important;
-  transition: background-color 0.2s;
-  flex-shrink: 0;
-  display: inline-flex !important;
-  align-items: center;
-  justify-content: center;
-  width: auto !important;
-  height: auto !important;
-  min-width: unset !important;
-  font-size: 0 !important; /* Hide any default button text */
-  position: absolute;
-  top: 0;
-  right: 0;
-  margin: 0 !important;
+a:not(.logo-link):not(.breadcrumb-link):not(.ais-Hits-item a):not(.remove-button-small):not(.social-icon):not(.shop-products-btn):hover {
+  @apply text-sv-purple-700 cursor-pointer;
 }
 
-.inline-form .remove-item-btn-soft:hover {
-  background: #aa8bb5 !important;
-  border-color: #aa8bb5 !important;
-  color: #ffffff !important;
-}
-
-.page-title {
-  font-family: 'Playfair Display', serif;
-  font-size: 2.5rem;
-  font-weight: 300;
-  color: #2c3e50;
-  margin-bottom: 0.5rem;
-  letter-spacing: 0.05em;
-  padding: 1rem; /* Consistent padding across all screen sizes */
-  text-align: center;
-}
-
-/* Responsive page title */
-@media (max-width: 768px) {
-  .page-title {
-    text-align: left;
-    font-size: 1.5rem;
-  }
-}
-
-.hidden {
-  display: none;
-}
-
-/* ===== HEADER & NAVIGATION ===== */
-
-/* Force transparent backgrounds for navigation elements (desktop/inline only) */
 @media (min-width: 768px) {
-  .navbar-section, .navbar-section *, .navbar-list, .navbar-list * {
-    background-color: transparent !important;
-  }
-}
-
-header {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  z-index: 1000;
-  background-color: #f0e8f5;
-  border-bottom: 1px solid rgba(103, 65, 116, 0.15);
-  box-shadow: 0 1px 3px 0 rgba(103, 65, 116, 0.08);
-}
-
-.header-container {
-  margin: 0 auto;
-  display: flex;
-  align-items: center;
-  padding: 1rem;
-  gap: 2rem; /* Generous spacing between all elements */
-  min-width: 0; /* Prevent flex items from overflowing */
-}
-
-/* Desktop: Simple inline layout for all 4 elements */
-@media (min-width: 768px) {
-  .header-container {
-    gap: 3rem;
-    padding-right: 2rem; /* Add extra space from cart icon to viewport edge */
-  }
-}
-
-/* Responsive header container */
-@media (max-width: 768px) {
-  .header-container {
-    padding: 0.5rem 1rem; /* Increased left/right padding on mobile */
-    gap: 0;
-    flex-wrap: nowrap;
-    justify-content: space-between; /* Logo left, nav items right */
-    align-items: center;
+  .navbar-list li a {
+    @apply transition-colors duration-200;
   }
 
-  /* Logo stays on the left */
-  .logo-section {
-    order: 1;
-    flex: 0 0 auto; /* Fixed size */
+  .navbar-list li a:hover {
+    @apply text-sv-purple-700;
   }
-
-  /* Mobile nav items wrapper - groups search, cart, and hamburger together */
-  .mobile-nav-items {
-    order: 2;
-    flex: 0 0 auto;
-    display: flex;
-    align-items: center;
-    gap: 0.75rem; /* Even spacing between search, cart, and hamburger */
-  }
-
-  .mobile-nav-items .search-section {
-    flex: 0 0 auto;
-    display: flex;
-    align-items: center;
-  }
-
-  .mobile-nav-items .right-icons {
-    flex: 0 0 auto;
-    display: flex;
-    align-items: center;
-    gap: 0.75rem; /* Space between cart and hamburger */
-  }
-
-
-}
-
-/* Desktop: Search and cart sections inline */
-@media (min-width: 768px) {
-  .search-section.md\:flex {
-    flex: 1; /* Take remaining space for search input */
-    display: flex;
-    align-items: center;
-    justify-content: flex-end; /* Push search input to the right */
-    margin-right: 1rem; /* Space before cart */
-  }
-
-  .right-icons.md\:flex {
-    flex: 0 0 auto; /* Fixed size for cart */
-    display: flex;
-    align-items: center;
-    gap: 0.75rem;
-  }
-}
-
-/* ===== LOGO SECTION ===== */
-
-.logo-section {
-  padding-left: 0.5rem;
-  padding-top: 0.5rem;
-  flex-shrink: 0; /* Don't let logo shrink too much */
-}
-
-/* Desktop: Logo takes minimal space */
-@media (min-width: 768px) {
-  .logo-section {
-    flex: 0 0 auto; /* Fixed size, no grow/shrink */
-  }
-}
-
-/* Responsive logo section */
-@media (max-width: 767px) {
-  .logo-section {
-    padding-left: 0; /* Remove left padding for flush left alignment */
-    padding-top: 0.25rem;
-    margin-right: 0 !important; /* Override auto margin on mobile */
-  }
-}
-
-.logo-link {
-  display: flex;
-  align-items: center;
-  gap: 0.75rem;
-  cursor: pointer;
-}
-
-.logo-image {
-  height: 7.5rem;
-  width: auto;
-  flex-shrink: 0;
-}
-
-/* Responsive logo sizing - Tailwind md breakpoint */
-@media (max-width: 767px) {
-  .logo-image {
-    height: 5rem;
-  }
-}
-
-/* ===== NAVIGATION SECTION ===== */
-
-.navbar-section {
-  flex: 0 0 auto; /* Fixed size, no grow/shrink */
-  display: flex;
-}
-
-/* Desktop: Navbar inline with other elements */
-@media (min-width: 768px) {
-  .navbar-section {
-    flex: 0 0 auto; /* Take only needed space */
-  }
-}
-
-/* Mobile navigation dropdown styling */
-@media (max-width: 767px) {
-  .navbar-section {
-    display: none;
-  }
-
-  /* Mobile dropdown - override transparent background rule for dropdown only */
-  .navbar-section:not(.hidden) {
-    display: block !important;
-    position: absolute !important;
-    top: 100% !important;
-    left: 0 !important;
-    right: 0 !important;
-    background-color: #f0e8f5 !important;
-    border-top: 1px solid rgba(103, 65, 116, 0.15) !important;
-    box-shadow: 0 4px 12px -2px rgba(103, 65, 116, 0.15), 0 2px 4px -1px rgba(103, 65, 116, 0.06) !important;
-    z-index: 50 !important;
-    padding: 1rem !important;
-    flex-direction: column !important;
-  }
-
-  /* Override the global transparent rule specifically for mobile dropdown */
-  .navbar-section:not(.hidden),
-  .navbar-section:not(.hidden) .navbar-list,
-  .navbar-section:not(.hidden) .navbar-list li,
-  .navbar-section:not(.hidden) .navbar-list li a {
-    background-color: #f0e8f5 !important; /* Ensure all child elements have proper background */
-  }
-
-  .navbar-section:not(.hidden) .navbar-list {
-    flex-direction: column !important;
-    padding: 0 !important; /* Remove extra padding since parent has padding */
-    gap: 0.75rem !important;
-    border: none !important;
-    border-radius: 0 !important;
-    margin: 0 !important;
-    font-size: 1.125rem !important;
-  }
-
-  .navbar-section:not(.hidden) .navbar-list li {
-    border-bottom: 1px solid rgba(103, 65, 116, 0.1) !important; /* Subtle separator */
-    padding-bottom: 0.75rem !important;
-    padding-top: 0.75rem !important;
-  }
-
-  .navbar-section:not(.hidden) .navbar-list li:first-child {
-    padding-top: 0 !important;
-  }
-
-  .navbar-section:not(.hidden) .navbar-list li:last-child {
-    border-bottom: none !important;
-    padding-bottom: 0 !important;
-  }
-
-  .navbar-section:not(.hidden) .navbar-list li a {
-    padding: 0 !important;
-    display: block !important;
-    transition: color 0.2s ease !important;
-  }
-
-  .navbar-section:not(.hidden) .navbar-list li a:hover {
-    color: #674174 !important;
-  }
-}
-
-.navbar-list {
-  display: flex;
-  flex-direction: column;
-  padding: 1.25rem;
-  margin-top: 1rem;
-  font-weight: 500;
-  font-size: 1.5rem;
-  font-family: 'Playfair Display', serif;
-  gap: 1.25rem;
-  border: none !important;
-  border-radius: 0.5rem;
-  background-color: transparent !important;
-}
-
-/* Tailwind md breakpoint (768px+) - horizontal navbar */
-@media (min-width: 768px) {
-  .navbar-list {
-    padding: 0;
-    margin-top: 0;
-    gap: 2rem;
-    border: none;
-    background-color: var(--white-bg);
-    flex-direction: row;
-    font-size: 1.125rem;
-  }
-}
-
-/* Tailwind lg breakpoint (1024px+) - larger screens get bigger text */
-@media (min-width: 1024px) {
-  .navbar-section {
-    padding-left: 1rem;
-  }
-
-  .navbar-list {
-    font-size: 1.125rem;
-    gap: 2rem;
-  }
-}
-
-/* Between md and lg (768px-1023px) - compact nav for tablets */
-@media (min-width: 768px) and (max-width: 1023px) {
-  .navbar-section {
-    padding-left: 0.75rem;
-  }
-
-  .navbar-list {
-    font-size: 0.875rem; /* Tailwind text-sm */
-    gap: 1.5rem;
-  }
-}
-
-/* ===== SOCIAL LINKS SECTION ===== */
-/* TODO - on Contact form branch, move these to their own stylesheet */
-
-.social-links {
-  margin-top: 1.5rem;
-  margin-bottom: 1.5rem;
-  text-align: center;
-  padding-top: 1.5rem;
-  border-top: 1px solid #d9cee0;
-}
-
-.social-links p {
-  color: var(--primary-purple);
-  font-weight: bold;
-  margin-bottom: 1rem;
-  font-size: 0.95rem;
-}
-
-.social-icons {
-  display: flex;
-  justify-content: center;
-  gap: 1.5rem;
-}
-
-.social-icon {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  background-color: var(--light-purple);
-  color: var(--white-bg);
-  text-decoration: none;
-  transition: background-color 0.3s ease;
-  cursor: pointer;
-}
-
-.social-icon:hover {
-  background-color: var(--primary-purple);
-  cursor: pointer;
 }

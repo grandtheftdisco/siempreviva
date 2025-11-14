@@ -1,0 +1,337 @@
+/* Cart Actions Stylesheet */
+/* Contains quantity controls and remove buttons - shared across dropdown and cart page */
+
+/* ===== QUANTITY CONTROLS ===== */
+
+.quantity-controls-bottom {
+  /* Sizing & spacing */
+  @apply mt-3;
+
+  /* Layout */
+  @apply flex justify-end;
+}
+
+.quantity-controls-bottom .quantity-form-inline {
+  /* Sizing & spacing */
+  @apply m-0 p-0 gap-3;
+
+  /* Layout */
+  @apply flex items-center flex-nowrap;
+
+  /* Colors */
+  @apply bg-transparent;
+
+  /* Border */
+  @apply border-none;
+}
+
+.remove-form {
+  /* Sizing & spacing */
+  @apply m-0 p-0;
+
+  /* Layout */
+  @apply inline-block;
+
+  /* Colors */
+  @apply bg-transparent;
+
+  /* Border */
+  @apply border-none;
+}
+
+.product-name {
+  /* Sizing & spacing */
+  @apply m-0;
+
+  /* Layout */
+  @apply flex-1;
+
+  /* Typography */
+  @apply text-xl font-normal tracking-wide;
+
+  /* Colors */
+  @apply text-sv-gray-900;
+}
+
+.product-price {
+  /* Sizing & spacing */
+  @apply m-0;
+
+  /* Typography */
+  @apply text-lg;
+
+  /* Colors */
+  @apply text-sv-gray-600;
+}
+
+.quantity-controls {
+  /* Sizing & spacing */
+  @apply my-3;
+}
+
+.quantity-form-inline {
+  /* Sizing & spacing */
+  @apply m-0 p-0 gap-3;
+
+  /* Layout */
+  @apply flex items-center flex-nowrap;
+
+  /* Colors */
+  @apply bg-transparent;
+
+  /* Border */
+  @apply border-none;
+}
+
+.quantity-label {
+  /* Sizing & spacing */
+  @apply m-0;
+
+  /* Typography */
+  @apply text-sm font-medium;
+
+  /* Colors */
+  @apply text-sv-gray-600;
+
+  /* Behavior */
+  @apply flex-shrink-0;
+}
+
+.quantity-form {
+  /* Sizing & spacing */
+  @apply m-0 p-0;
+
+  /* Layout */
+  @apply flex items-center;
+
+  /* Colors */
+  @apply bg-transparent;
+
+  /* Border */
+  @apply border-none;
+}
+
+.quantity-input-group {
+  /* Sizing & spacing */
+  @apply gap-2;
+
+  /* Layout */
+  @apply flex items-center flex-nowrap;
+}
+
+.quantity-input {
+  /* Sizing & spacing */
+  @apply w-10 pl-px;
+
+  /* Shape */
+  @apply rounded-full;
+
+  /* Colors */
+  @apply bg-sv-purple-100 border border-sv-purple-200;
+
+  /* Typography */
+  @apply text-center text-sm;
+}
+
+.quantity-input:focus {
+  /* Border */
+  @apply border-sv-purple-700;
+
+  /* Visual effects */
+  box-shadow: 0 0 0 2px rgba(103, 65, 116, 0.2);
+
+  /* Behavior */
+  @apply outline-none;
+}
+
+.quantity-update-btn {
+  /* Sizing & spacing */
+  padding: 0.25rem 0.5rem !important;
+
+  /* Shape */
+  border-radius: 9999px !important;
+
+  /* Colors */
+  background: #bdcea9 !important;
+  @apply text-sv-green-700;
+  @apply border-2 border-sv-green-200;
+
+  /* Typography */
+  font-size: 0.65rem !important;
+
+  /* Interactive & animation */
+  @apply cursor-pointer transition-all duration-200;
+}
+
+.quantity-update-btn:hover {
+  /* Colors - using sv-green-600 (or 400?) */
+  background: #8ba170 !important;
+  border-color: #8ba170 !important;
+}
+
+/* Improved quantity section layout */
+.quantity-section {
+  /* Sizing & spacing */
+  @apply mt-4 pt-3 w-full;
+
+  /* Border */
+  @apply border-t border-sv-gray-100;
+
+  /* Layout & positioning */
+  @apply relative;
+
+  /* Behavior */
+  @apply clear-both;
+}
+
+.quantity-form-improved {
+  /* Sizing & spacing */
+  margin: 0 !important;
+  padding: 0 !important;
+  @apply w-full;
+
+  /* Layout & positioning */
+  position: static !important;
+
+  /* Colors */
+  background: none !important;
+
+  /* Border */
+  border: none !important;
+}
+
+.quantity-row {
+  /* Sizing & spacing */
+  @apply gap-4 w-full m-0 p-0;
+
+  /* Layout & positioning */
+  display: flex !important;
+  @apply items-center justify-end relative;
+}
+
+.quantity-controls-group {
+  /* Sizing & spacing */
+  @apply gap-3;
+
+  /* Layout & positioning */
+  @apply flex items-center relative;
+}
+
+/* Override any conflicting form styles */
+.cart-page-item .quantity-form-improved,
+.cart-page-item .quantity-section form {
+  position: static !important;
+  float: none !important;
+  margin: 0 !important;
+  display: block !important;
+}
+
+@media (max-width: 640px) {
+  .quantity-row {
+    @apply flex-col items-stretch gap-2;
+  }
+
+  .quantity-controls-group {
+    @apply justify-center;
+  }
+}
+
+.item-subtotal {
+  /* Sizing & spacing */
+  @apply m-0;
+
+  /* Typography */
+  @apply text-sm font-medium;
+
+  /* Colors */
+  @apply text-sv-gray-900;
+}
+
+.item-bottom-row {
+  /* Sizing & spacing */
+  @apply mt-2 gap-4;
+
+  /* Layout */
+  @apply flex justify-between items-center;
+}
+
+.item-actions {
+  /* Sizing & spacing */
+  @apply mt-3;
+
+  /* Layout */
+  @apply flex justify-end;
+}
+
+/* ===== REMOVE BUTTONS ===== */
+/* Note: !important declarations preserved for Session 5 cleanup */
+
+.remove-item-btn-red {
+  /* Sizing & spacing */
+  @apply py-2 px-4;
+
+  /* Shape */
+  border-radius: 9999px !important;
+
+  /* Colors */
+  background: #dc3545 !important; /* Bootstrap danger red - could convert to sv-danger (#b9626b) */
+  border: none !important;
+  color: #ffffff !important;
+
+  /* Typography */
+  @apply text-sm font-medium;
+
+  /* Interactive & animation */
+  @apply cursor-pointer transition-all duration-200;
+
+  /* Behavior */
+  @apply flex-shrink-0;
+}
+
+.remove-item-btn-red:hover {
+  /* Colors */
+  background: #c82333 !important; /* Darker Bootstrap danger red */
+  color: #ffffff !important;
+}
+
+.remove-item-btn-soft {
+  /* Sizing & spacing */
+  @apply p-1.5;
+
+  /* Layout & positioning */
+  @apply inline-flex items-center justify-center;
+
+  /* Shape */
+  border-radius: 9999px !important;
+
+  /* Colors */
+  background: #c5aace !important; /* sv-purple-400 */
+  border: 1px solid #c5aace !important; /* sv-purple-400 */
+  color: #ffffff !important;
+
+  /* Interactive & animation */
+  @apply cursor-pointer transition-colors duration-200;
+
+  /* Behavior */
+  @apply flex-shrink-0;
+}
+
+.remove-item-btn-soft:hover {
+  /* Colors */
+  background: #aa8bb5 !important; /* sv-purple-500 */
+  border-color: #aa8bb5 !important; /* sv-purple-500 */
+  color: #ffffff !important;
+}
+
+.trash-icon {
+  /* Sizing */
+  @apply w-4 h-4;
+
+  /* Behavior */
+  stroke: currentColor;
+}
+
+.cart-item-actions {
+  /* Layout */
+  @apply flex justify-center items-start;
+}

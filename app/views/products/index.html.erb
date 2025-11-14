@@ -1,9 +1,8 @@
-<div class="flex flex-col gap-5">
-  <div>
-    <h1 class="font-bold text-4xl">All Products</h1>
+<div class="products-container">
+  <div class="products-header">
+    <h1 class="page-title">essential oils</h1>
   </div>
-  <!--[this will be where ProductCategory lives; may use param filter strategy a la Henventory]-->
-  <div class="flex flex-col gap-10">
+  <div class="products-grid">
     <% @products.each do |product| %>
       <%= render partial: "product", object: product %>
     <% end %>
