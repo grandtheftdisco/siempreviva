@@ -8,11 +8,14 @@
   --font-serif: 'Playfair Display', serif;
 
   /* Purple shades */
+  --color-sv-purple-25: #f8f2fb; /* TODO - find a home for this since this was originally named -50 */
   --color-sv-purple-50: #faf9fb;
   --color-sv-purple-100: #f0e8f5;
   --color-sv-purple-200: #e6d3ec;
   --color-sv-purple-300: #d9cee0;
   --color-sv-purple-400: #c5aace;
+  --color-sv-purple-500: #a687b0;
+  --color-sv-purple-600: #866492;
   --color-sv-purple-700: #674174;
 
   /* Green shades */
@@ -27,11 +30,14 @@
 
   /* Gray/Neutral shades */
   --color-sv-gray-100: #f8f9fa;
-  --color-sv-gray-200: #e5e7eb;
-  --color-sv-gray-300: #f3f4f6;
+  --color-sv-gray-200: #dfe2e6;
+  --color-sv-gray-300: #c6ccd1;
   --color-sv-gray-400: #adb5bd;
   --color-sv-gray-500: #6c757d;
+  --color-sv-gray-600: #57636e;
+  --color-sv-gray-700: #415060;
   --color-sv-gray-800: #2c3e50;
+  --color-sv-gray-900: #161f28;
 
   /* Semantic/Action colors */
   --color-sv-success: #5a8664;
@@ -49,7 +55,10 @@
 @import "./navigation.css";    /* Mobile menu button and navigation menu */
 @import "./footer.css";        /* Site footer and social links */
 @import "./search.css";        /* Search functionality and Algolia components */
-@import "./cart.css";          /* Cart dropdown and cart page styles */
+@import "./cart_dropdown.css"; /* Cart dropdown styles */
+@import "./cart_page.css";     /* Cart page layout and items */
+@import "./cart_actions.css";  /* Quantity controls and remove buttons (shared) */
+@import "./cart_empty.css";    /* Empty cart state (shared) */
 @import "./forms.css";         /* Form inputs, labels, validation styles */
 @import "./checkouts.css";     /* Checkout success page styles */
 @import "./products.css";
