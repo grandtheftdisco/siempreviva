@@ -39,7 +39,19 @@ Refactoring CSS architecture to use Tailwind v4 `@theme` directive with componen
 - Replaced inline Tailwind utilities in product partials
 - Organized products.css with clear section structure
 
-**Details:** [`sessions/session_2_product_views.md`](./sessions/session_2_product_views.md)
+---
+
+### ⏳ Session 2b: Marketing Views CSS Refactoring (NEXT)
+**Status:** Ready to start (branching off Session 2a)
+**Branch:** `amanda/css-refactor-session-2b` (based on `amanda/css-refactor-session-2a`)
+**Focus:** Refactor marketing page styling to use component classes from Session 1
+
+**Approach:**
+- Start by branching off Session 2a (russian doll branching)
+- When Session 2a merges to main, rebase Session 2b onto main
+- Focus on marketing views: home, contact, gallery, learn, our_farms
+
+**Details:** [`sessions/session_2b_marketing_views.md`](./sessions/session_2b_marketing_views.md)
 
 ---
 
@@ -90,20 +102,9 @@ Refactoring CSS architecture to use Tailwind v4 `@theme` directive with componen
 
 ---
 
-### 🔮 Session 5: Specificity Cleanup & !important Removal (FUTURE)
-**When:** After Session 4 complete
-**Estimated Time:** 2-3 hours
-**Focus:** Remove all `!important` declarations by fixing underlying CSS specificity issues
-
-**Scope:**
-- Audit all `!important` declarations across codebase
-- Analyze root causes of specificity conflicts
-- Fix specificity issues systematically
-- Convert vanilla CSS to @apply where appropriate
-- Thorough testing across all breakpoints and browsers
-
-**Why it's last:**
-Throughout Sessions 2-4, we intentionally left `!important` declarations in place to avoid scope creep. Session 5 addresses this technical debt systematically once all CSS files are refactored.
+### 🔧 Session 5: CSS Specificity & !important Cleanup (FUTURE)
+**When:** After Sessions 2a/2b complete
+**Focus:** Remove !important hacks, fix CSS specificity issues, establish proper architecture
 
 **Details:** [`sessions/session_5_specificity_cleanup.md`](./sessions/session_5_specificity_cleanup.md)
 
@@ -158,15 +159,10 @@ Throughout Sessions 2-4, we intentionally left `!important` declarations in plac
 | `application.css` | ✅ Refactored | Has @theme block with sv-colors |
 | `components.css` | ✅ Refactored | New component classes with @apply |
 | `forms.css` | ✅ Refactored | Component classes + backward compatibility |
-| `layout.css` | ✅ Refactored | Global layout structure (71 lines) |
-| `header.css` | ✅ Created | Header structure and logo (90 lines) |
-| `navigation.css` | ✅ Created | Mobile menu and navigation (157 lines) |
-| `footer.css` | ✅ Created | Site footer and social links (96 lines) |
-| `products.css` | ✅ Refactored | Product cards and sections with @apply |
-| `cart.css` | 🎯 Session 4B | Refactoring in progress |
-| `checkouts.css` | 🎯 Session 4C | Refactoring in progress |
-| `email.css` | 🎯 Session 4D | Refactoring in progress |
-| `search.css` | 🎯 Session 4D | Refactoring in progress |
+| `layout.css` | ⏳ Future | Works as-is, refactor when needed |
+| `cart.css` | ⏳ Future | Works as-is, refactor when needed |
+| `checkouts.css` | ⏳ Future | Works as-is, refactor when needed |
+| `products.css` | ✅ Refactored | Component classes with @apply (Session 2a) |
 | `components.scss` | ⚠️ Deprecated | No longer imported |
 
 ---
@@ -182,28 +178,4 @@ Throughout Sessions 2-4, we intentionally left `!important` declarations in plac
 
 ---
 
----
-
-## Session 4 Branching Strategy
-
-Session 4 uses a **mixed strategy** to allow parallel work while maintaining clean git history:
-
-```
-main
-  ├─ css-refactor/session-4a-view-migrations (DO FIRST)
-  ├─ css-refactor/session-4b-cart-css (independent)
-  ├─ css-refactor/session-4c-checkouts-css (independent)
-  └─ css-refactor/session-4d-email-search (independent)
-```
-
-**Key Points:**
-- 4A must be done first (changes views)
-- 4B, 4C, 4D branch from `main`, NOT from 4A
-- 4B, 4C, 4D can be worked on in parallel or any order
-- All can be reviewed/merged independently after 4A
-
-**See:** `SESSION_4_BRANCHING_STRATEGY.md` in root for detailed workflow
-
----
-
-*Last Updated: November 6, 2025*
+*Last Updated: November 4, 2025*

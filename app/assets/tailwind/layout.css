@@ -104,7 +104,7 @@ a:not(.logo-link):not(.breadcrumb-link):not(.ais-Hits-item a):not(.remove-button
 
 body, html {
   font-family: 'Raleway', sans-serif;
-  background-color: #f0e8f5 !important;
+  background-color: #faf9fb !important;
   min-height: 100vh;
 }
 
@@ -204,10 +204,6 @@ main {
     text-align: left;
     font-size: 1.5rem;
   }
-}
-
-.hidden {
-  display: none;
 }
 
 /* ===== HEADER & NAVIGATION ===== */
@@ -367,22 +363,39 @@ header {
 /* Mobile navigation dropdown styling */
 @media (max-width: 767px) {
   .navbar-section {
-    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background-color: #f0e8f5;
+    border-top: 1px solid rgba(103, 65, 116, 0.15);
+    box-shadow: 0 4px 12px -2px rgba(103, 65, 116, 0.15), 0 2px 4px -1px rgba(103, 65, 116, 0.06);
+    z-index: 50;
+    padding: 1rem;
+    flex-direction: column;
+    /* Animation properties - vanilla CSS required for custom cubic-bezier timing function */
+    opacity: 0;
+    transform: translateY(-10px);
+    pointer-events: none;
+    transition: opacity 400ms ease-out, transform 400ms cubic-bezier(0.34, 1.56, 0.64, 1);
   }
 
-  /* Mobile dropdown - override transparent background rule for dropdown only */
+  /* Apply font-size to all states to prevent flash */
+  .navbar-section .navbar-list {
+    font-size: 1.125rem !important;
+  }
+
+  .navbar-section.hidden {
+    opacity: 0;
+    transform: translateY(-10px);
+    pointer-events: none;
+  }
+
   .navbar-section:not(.hidden) {
-    display: block !important;
-    position: absolute !important;
-    top: 100% !important;
-    left: 0 !important;
-    right: 0 !important;
-    background-color: #f0e8f5 !important;
-    border-top: 1px solid rgba(103, 65, 116, 0.15) !important;
-    box-shadow: 0 4px 12px -2px rgba(103, 65, 116, 0.15), 0 2px 4px -1px rgba(103, 65, 116, 0.06) !important;
-    z-index: 50 !important;
-    padding: 1rem !important;
-    flex-direction: column !important;
+    display: flex !important;
+    opacity: 1 !important;
+    transform: translateY(0) !important;
+    pointer-events: auto !important;
   }
 
   /* Override the global transparent rule specifically for mobile dropdown */
@@ -521,4 +534,123 @@ header {
 .social-icon:hover {
   background-color: var(--primary-purple);
   cursor: pointer;
+}
+
+/* ===== SITE FOOTER ===== */
+
+.site-footer {
+  background-color: #f0e8f5;
+  border-top: 1px solid rgba(103, 65, 116, 0.15);
+  box-shadow: 0 -1px 3px 0 rgba(103, 65, 116, 0.08);
+  margin-top: 4rem;
+  padding: 3rem 0 2rem 0;
+}
+
+.footer-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+.footer-content {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+  margin-bottom: 2rem;
+  padding-bottom: 2rem;
+}
+
+.footer-section {
+  text-align: center;
+}
+
+.footer-section-title {
+  font-family: 'Raleway', sans-serif;
+  font-weight: 600;
+  font-size: 1.125rem;
+  color: var(--primary-purple);
+  margin-bottom: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.footer-nav {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.footer-link {
+  color: var(--medium-text);
+  text-decoration: none;
+  font-family: 'Raleway', sans-serif;
+  font-size: 0.95rem;
+  transition: color 0.2s ease;
+}
+
+.footer-link:hover {
+  color: var(--primary-purple);
+}
+
+.footer-social-icons {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.footer-bottom {
+  text-align: center;
+  border-top: 1px solid rgba(103, 65, 116, 0.1);
+  padding-top: 1.5rem;
+}
+
+.footer-copyright {
+  color: var(--medium-text);
+  font-size: 0.875rem;
+  font-family: 'Raleway', sans-serif;
+  margin: 0;
+}
+
+/* Desktop layout for footer */
+@media (min-width: 768px) {
+  .footer-content {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 4rem;
+    justify-items: center;
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  .footer-section {
+    text-align: center;
+  }
+
+  .footer-social-icons {
+    justify-content: center;
+  }
+
+  .site-footer {
+    padding: 4rem 0 3rem 0;
+  }
+}
+
+/* Large desktop layout */
+@media (min-width: 1024px) {
+  .footer-content {
+    gap: 4rem;
+  }
+}
+
+/* Image formatting utility */
+.formatted-image {
+  filter: saturate(0.5);
+  border-radius: 1.5rem; /* rounded-3xl equivalent */
+  transition: filter 0.2s ease-in-out;
+}
+
+.formatted-image:hover {
+  filter: saturate(0.7);
 }

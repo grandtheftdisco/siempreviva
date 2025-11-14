@@ -26,6 +26,8 @@
 
   /* Gray/Neutral shades */
   --color-sv-gray-100: #f8f9fa;
+  --color-sv-gray-200: #dfe2e6;
+  /* --color-sv-gray-300: #c6ccd1; */
   --color-sv-gray-400: #adb5bd;
   --color-sv-gray-500: #6c757d;
   --color-sv-gray-800: #2c3e50;
@@ -46,6 +48,7 @@
 @import "./cart.css";          /* Cart dropdown and cart page styles */
 @import "./forms.css";         /* Form inputs, labels, validation styles */
 @import "./checkouts.css";     /* Checkout success page styles */
+@import "./products.css";      /* Products index grid layout and product cards */
 
 /* Additional stylesheets can be imported here */
 /* @import "./email.css"; */
@@ -110,4 +113,17 @@
   width: 1.5rem;
   height: 1.5rem;
   color: #674174;
+}
+
+/* deactivate native browser spinner for number input fields */
+@layer base {
+  input[type=number]::-webkit-inner-spin-button,
+  input[type=number]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+
+  input[type=number] {
+    -moz-appearance: textfield;
+  }
 }

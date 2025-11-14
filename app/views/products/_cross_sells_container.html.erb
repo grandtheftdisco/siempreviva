@@ -1,0 +1,17 @@
+<%# Cross-sell Products Container %>
+<%# Usage: <%= render 'products/cross_sells_container', products: @cross_sell_products %>
+
+<% products ||= [] %>
+
+<div class="cross-sells-grid">
+  <% if products.any? %>
+    <% products.take(3).each do |product| %>
+      <%= render 'products/cross_sell_card', product: product %>
+    <% end %>
+  <% else %>
+    <%# Show 3 placeholder cards when no products are passed %>
+    <% 3.times do %>
+      <%= render 'products/cross_sell_card', product: nil %>
+    <% end %>
+  <% end %>
+</div>
