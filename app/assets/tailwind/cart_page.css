@@ -1,0 +1,429 @@
+/* Cart Page Stylesheet */
+/* Contains cart page layout, cart page items, and cart summary section */
+
+/* ===== CART PAGE LAYOUT ===== */
+
+.cart-container {
+  /* Sizing & spacing */
+  @apply max-w-screen-xl mx-auto px-4;
+
+  /* Typography */
+  @apply font-sans;
+}
+
+.cart-header {
+  /* Sizing & spacing */
+  @apply mb-12;
+
+  /* Typography */
+  @apply text-center font-serif;
+}
+
+/* Mobile: Reduce header spacing */
+@media (max-width: 768px) {
+  .cart-header {
+    margin-bottom: 1.5rem !important;
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+  }
+
+  .cart-header .page-title {
+    margin-bottom: 0 !important;
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+  }
+}
+
+.cart-header .page-title {
+  /* Sizing & spacing */
+  @apply mb-2;
+
+  /* Typography */
+  @apply text-4xl font-light tracking-wider;
+
+  /* Colors */
+  @apply text-sv-gray-900;
+}
+
+.cart-breadcrumb {
+  /* Sizing & spacing */
+  @apply mt-4;
+
+  /* Typography */
+  @apply text-sm;
+
+  /* Colors */
+  @apply text-sv-gray-600;
+}
+
+.cart-breadcrumb .breadcrumb-link {
+  /* Colors */
+  @apply text-sv-gray-600 no-underline;
+}
+
+.cart-breadcrumb .breadcrumb-link:hover {
+  /* Colors */
+  @apply text-sv-purple-700;
+
+  /* Interactive */
+  @apply cursor-pointer;
+}
+
+.cart-content {
+  /* Layout & spacing */
+  @apply grid gap-12 items-start;
+
+  /* Grid columns using fraction units - Tailwind doesn't support fr units in utilities */
+  grid-template-columns: 2fr 1fr;
+}
+
+@media (max-width: 768px) {
+  .cart-content {
+    /* Layout & spacing */
+    display: flex !important;
+    flex-direction: column !important;
+    @apply gap-8;
+    align-items: center !important;
+  }
+
+  /* Order summary appears first on mobile */
+  .cart-summary-section {
+    @apply order-1;
+    width: 100% !important;
+    max-width: none !important;
+  }
+
+  /* Cart items appear second on mobile */
+  .cart-items-section {
+    @apply order-2;
+    width: 100% !important;
+  }
+}
+
+/* ===== CART PAGE ITEMS ===== */
+
+.cart-items {
+  /* Layout & spacing */
+  @apply flex flex-col gap-8;
+}
+
+/* Mobile: Add purple background and reduce gap between cart items */
+@media (max-width: 768px) {
+  .cart-items {
+    /* Spacing */
+    gap: 0.75rem !important;
+    padding: 1rem !important;
+
+    /* Shape */
+    border-radius: 8px !important;
+
+    /* Colors */
+    @apply bg-sv-purple-200;
+  }
+}
+
+.cart-page-item {
+  /* Sizing & spacing */
+  @apply p-6 gap-6;
+
+  /* Layout & positioning */
+  @apply grid items-start;
+
+  /* Shape */
+  @apply rounded-lg;
+
+  /* Colors */
+  @apply bg-white border border-gray-300;
+
+  /* Grid columns using fraction units - Tailwind doesn't support fr units in utilities */
+  grid-template-columns: 8rem 1fr;
+}
+
+/* Mobile: Make cart page items compact like dropdown */
+@media (max-width: 768px) {
+  .cart-items .cart-page-item {
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: flex-start !important;
+    padding: 0.5rem 1rem !important;
+    gap: 0 !important;
+    grid-template-columns: none !important;
+    background-color: transparent !important;
+    border: none !important;
+    position: relative !important;
+  }
+
+  .cart-items .cart-page-item .cart-item-image,
+  .cart-items .cart-page-item .cart-item-image-container {
+    display: none !important;
+  }
+
+  .cart-items .cart-page-item .cart-item-details {
+    flex: 1 !important;
+    margin-right: 0 !important; /* No margin - button is absolutely positioned */
+    display: block !important; /* Change from flex to block for inline layout */
+    width: 100% !important; /* Full width - let header manage its own width */
+    padding-top: 0.25rem !important; /* Small top padding */
+    padding-right: 0 !important; /* No padding - header will handle spacing */
+  }
+
+  .cart-items .cart-page-item .cart-item-header {
+    width: calc(100% - 1.75rem) !important; /* Header takes full width minus button space */
+    display: flex !important; /* Use flex to spread name and price */
+    justify-content: space-between !important;
+    align-items: center !important;
+    margin-bottom: 0 !important;
+    padding-right: 0.5rem !important; /* Small padding to prevent text overlap with button */
+  }
+
+  .cart-items .cart-page-item .product-name {
+    font-size: 0.95rem !important;
+    margin: 0 !important;
+    display: inline !important; /* Inline for same-line layout */
+    margin-right: 0.75rem !important;
+  }
+
+  .cart-items .cart-page-item .product-price {
+    font-size: 0.85rem !important;
+    margin: 0 !important;
+    display: inline !important; /* Inline to appear on same line as name */
+    color: #6c757d !important; /* sv-gray-600 - preserved with !important for Session 5 */
+    font-weight: 500 !important;
+  }
+
+  .cart-items .cart-page-item .quantity-section {
+    display: none !important; /* Hide quantity controls on mobile for now */
+  }
+
+  /* Small 'x' button positioned in top-right corner */
+  .cart-items .cart-page-item .remove-item-btn-soft {
+    position: absolute !important;
+    top: 0.25rem !important;
+    right: 0 !important; /* Flush against right edge */
+    width: 1.25rem !important;
+    height: 1.25rem !important;
+    padding: 0.125rem 0.125rem !important;
+    margin: 0 0.45rem !important;
+    transform: none !important;
+    border-radius: 50% !important; /* Make it circular */
+    z-index: 10 !important; /* Ensure it's above content */
+  }
+
+  .cart-items .cart-page-item .inline-form {
+    position: absolute !important;
+    top: 0.25rem !important;
+    right: 0 !important; /* Flush against right edge */
+    margin: 0 !important;
+    width: 1.25rem !important;
+    height: 1.25rem !important;
+    z-index: 10 !important;
+  }
+
+  .cart-items .cart-page-item .trash-icon {
+    width: 0.75rem !important;
+    height: 0.75rem !important;
+  }
+}
+
+@media (max-width: 640px) {
+  .cart-page-item {
+    /* Grid columns using fraction units - Tailwind doesn't support fr units in utilities */
+    grid-template-columns: 1fr;
+    @apply gap-4;
+  }
+
+  .cart-item-image {
+    @apply justify-self-center;
+  }
+}
+
+.cart-item-image {
+  /* Sizing */
+  @apply w-32 h-32;
+
+  /* Layout */
+  @apply flex items-center justify-center;
+
+  /* Shape */
+  @apply rounded-lg;
+
+  /* Colors */
+  @apply bg-gray-100;
+
+  /* Behavior */
+  @apply overflow-hidden;
+}
+
+.cart-item-image .product-image {
+  /* Sizing */
+  @apply w-full h-full;
+
+  /* Behavior */
+  @apply object-cover;
+}
+
+.image-placeholder {
+  /* Sizing */
+  @apply w-full h-full;
+
+  /* Shape */
+  @apply rounded;
+
+  /* Colors */
+  @apply bg-gray-200;
+}
+
+.cart-item-details {
+  /* Sizing & spacing */
+  @apply h-full gap-3;
+
+  /* Layout */
+  @apply flex flex-col;
+}
+
+.cart-item-header {
+  /* Sizing & spacing */
+  @apply gap-4 mb-2;
+
+  /* Layout & positioning */
+  @apply flex justify-between items-start relative;
+}
+
+.cart-item-spacer {
+  /* Layout */
+  @apply flex-grow;
+}
+
+/* ===== CART SUMMARY SECTION ===== */
+
+.cart-summary-section {
+  /* Layout & positioning */
+  @apply sticky self-start top-44;
+
+  /* Typography */
+  @apply font-serif;
+
+  /* Behavior */
+  @apply overflow-y-auto;
+
+  max-height: calc(100vh - 10.5rem);
+}
+
+/* Disable sticky on mobile since layout becomes single column */
+@media (max-width: 768px) {
+  .cart-summary-section {
+    @apply static overflow-y-visible max-h-none;
+  }
+}
+
+.summary-card {
+  /* Sizing & spacing */
+  @apply p-8;
+
+  /* Shape */
+  @apply rounded-lg;
+
+  /* Colors */
+  @apply bg-white border border-gray-300;
+}
+
+.summary-title {
+  /* Sizing & spacing */
+  @apply mb-6;
+
+  /* Typography */
+  @apply text-xl font-normal tracking-wide font-serif;
+
+  /* Colors */
+  @apply text-sv-gray-900;
+}
+
+.summary-line {
+  /* Sizing & spacing */
+  @apply py-3;
+
+  /* Layout */
+  @apply flex justify-between items-center;
+
+  /* Border */
+  @apply border-b border-sv-gray-100;
+
+  /* Typography */
+  @apply text-sm font-sans;
+
+  /* Colors */
+  @apply text-sv-gray-600;
+}
+
+.summary-line:last-of-type {
+  /* Border */
+  @apply border-b-0;
+}
+
+.summary-total {
+  /* Sizing & spacing */
+  @apply mt-4 pt-4;
+
+  /* Border */
+  @apply border-t-2 border-sv-gray-200;
+
+  /* Typography */
+  @apply text-lg font-semibold font-sans;
+
+  /* Colors */
+  @apply text-sv-gray-900;
+}
+
+.cart-actions {
+  /* Sizing & spacing */
+  @apply mt-8 gap-4;
+
+  /* Layout */
+  @apply flex flex-col;
+}
+
+.continue-shopping-btn {
+  /* Sizing & spacing */
+  @apply py-3 px-6;
+
+  /* Shape */
+  @apply rounded-full;
+
+  /* Colors */
+  @apply bg-sv-purple-200 text-sv-purple-700 border-2 border-sv-purple-200;
+
+  /* Typography */
+  @apply font-medium text-center no-underline font-sans;
+
+  /* Interactive & animation */
+  @apply transition-all duration-200;
+}
+
+.continue-shopping-btn:hover {
+  /* Colors */
+  @apply bg-sv-purple-400 border-sv-purple-400;
+}
+
+.checkout-btn {
+  /* Sizing & spacing */
+  @apply py-3 px-6;
+
+  /* Shape */
+  @apply rounded-full;
+
+  /* Colors */
+  @apply bg-sv-green-600 border-2 border-sv-green-600;
+  color: #ffffff !important;
+
+  /* Typography */
+  @apply font-medium text-center no-underline font-sans;
+
+  /* Interactive & animation */
+  @apply transition-all duration-200;
+}
+
+.checkout-btn:hover {
+  /* Colors */
+  @apply bg-sv-green-700 border-sv-green-700;
+  color: #ffffff !important;
+}

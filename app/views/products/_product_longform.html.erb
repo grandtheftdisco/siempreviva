@@ -1,2 +1,124 @@
-<p>product longform</p>
-<p><%= @product.name %>
+<div id="section-1" class="lg:contents">
+  <!-- Section 1 (MOBILE) -->
+  <div class="lg:hidden relative -mx-4 -mt-4 px-4 pt-4 pb-8 md:mx-auto md:mt-0 md:max-w-2xl">
+    <!-- Mobile Header - Breadcrumb & Title -->
+    <div class="mb-4 max-[400px]:mb-2">
+      <!-- Breadcrumb Navigation -->
+      <nav class="breadcrumb-nav mb-4 max-[400px]:mb-2">
+        <%= link_to "essential oils", products_path, class: "breadcrumb-link" %>
+        <span class="breadcrumb-separator">></span>
+        <span class="current-page"><%= format_product_name(@product.name) %></span>
+      </nav>
+
+      <!-- Page Title -->
+      <h1 class="product-show-title"><%= format_product_name(@product.name) %></h1>
+    </div>
+
+    <!-- Product Image, Price, Description (mobile only) -->
+    <div class="flex flex-col">
+      <div class="product-image-wrapper mb-4">
+        <% if @product.images.any? %>
+          <%= image_tag(@product.images.first, alt: @product.name.titleize, class: "product-image-mobile") %>
+        <% else %>
+          <div class="product-image-placeholder">
+            <span class="product-image-placeholder-text" data-product-image-placeholder>(product image coming soon!)</span>
+          </div>
+        <% end %>
+      </div>
+
+      <!-- Price -->
+      <div class="product-price-display mb-4 max-[400px]:mb-2">
+        <%= to_dollars(@product.default_price.unit_amount) %>
+      </div>
+
+      <!-- Description -->
+      <div class="product-description mb-4">
+        <% if @product.description.present? %>
+          <%= simple_format(@product.description) %>
+        <% else %>
+          <p>100% natural sage essential oil, made in Europe.</p>
+        <% end %>
+      </div>
+
+      <!-- Add to Bag (mobile only, non-floating) -->
+      <%= form_for :cart_item, url: cart_items_path, method: :post, class: "flex justify-center mx-auto" do |f| %>
+        <%= hidden_field_tag 'cart_item[stripe_product_id]', @product.id %>
+        <%= f.submit "Add to Bag", class: "btn-primary btn-large w-full max-w-md" %>
+      <% end %>
+    </div>
+  </div>
+
+  <!-- Section 1 (DESKTOP) -->
+  <div class="hidden lg:block">
+    <!-- Product Content Container -->
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-12 max-[400px]:mb-6">
+      <!-- Left Column - Product Image -->
+      <div class="flex items-stretch">
+        <div class="product-image-wrapper w-full">
+          <% if @product.images.any? %>
+            <%= image_tag(@product.images.first, alt: @product.name.titleize, class: "product-image-desktop") %>
+          <% else %>
+            <div class="product-image-placeholder">
+              <span class="product-image-placeholder-text" data-product-image-placeholder>Product Image</span>
+            </div>
+          <% end %>
+        </div>
+      </div>
+
+      <!-- Right Column - Product Details -->
+      <div class="flex flex-col justify-start">
+        <!-- Breadcrumb & Title -->
+        <div class="hidden lg:block">
+          <nav class="breadcrumb-nav mb-2">
+            <%= link_to "essential oils", products_path, class: "breadcrumb-link" %>
+            <span class="breadcrumb-separator">></span>
+            <span class="current-page"><%= format_product_name(@product.name) %></span>
+          </nav>
+          <h1 class="product-show-title"><%= format_product_name(@product.name) %></h1>
+        </div>
+
+        <!-- Name, Price & Description -->
+        <div id="key-product-info" class="mb-5 max-[400px]:mb-2 lg:mb-10">
+          <!-- Price -->
+          <div class="product-price-display mb-5 max-[400px]:mb-2">
+            <%= to_dollars(@product.default_price.unit_amount) %>
+          </div>
+
+          <!-- Description (desktop only, moved to Section 2 on mobile) -->
+          <div class="hidden lg:block product-description">
+            <% if @product.description.present? %>
+              <%= simple_format(@product.description) %>
+            <% else %>
+              <p>(product info coming soon!)</p>
+            <% end %>
+          </div>
+        </div>
+
+        <!-- Add To Cart Button -->
+        <%= form_for :cart_item, url: cart_items_path, method: :post, class: "product-add-to-cart-form hidden lg:block space-y-4" do |f| %>
+          <div class="flex items-center gap-3 justify-start w-full !ml-0">
+            <%= hidden_field_tag 'cart_item[stripe_product_id]', @product.id, class: '!m-0 !mb-0' %>
+
+            <%= f.label :quantity, "Quantity:" %>
+            <%= render 'shared/quantity_selector', input_id: 'quantity-input', initial_value: 1, min_value: 1, field_name: 'cart_item[quantity]' %>
+          </div>
+          <div>
+            <%= f.submit "Add to Bag", id: "add-to-bag-button", class: "btn-primary" %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Section 2: Additional Images & Product Features -->
+<div id="section-2" class="product-section-divider pt-8 pb-2 lg:pb-4 mx-4 lg:mx-8">
+  <%= render 'products/additional_images_grid', product: @product %>
+  <%= render 'products/product_features' %>
+</div>
+
+<!-- Section 3: Cross-Sells -->
+<div id="section-3" class="product-section-divider mt-8 pt-8 mx-4 lg:mx-8">
+  <h2 class="section-heading">you may also like</h2>
+  <%= render 'products/cross_sells_container', products: @cross_sell_products %>
+</div>

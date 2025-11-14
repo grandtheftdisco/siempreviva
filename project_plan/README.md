@@ -39,7 +39,19 @@ Refactoring CSS architecture to use Tailwind v4 `@theme` directive with componen
 - Replaced inline Tailwind utilities in product partials
 - Organized products.css with clear section structure
 
-**Details:** [`sessions/session_2_product_views.md`](./sessions/session_2_product_views.md)
+---
+
+### ⏳ Session 2b: Marketing Views CSS Refactoring (NEXT)
+**Status:** Ready to start (branching off Session 2a)
+**Branch:** `amanda/css-refactor-session-2b` (based on `amanda/css-refactor-session-2a`)
+**Focus:** Refactor marketing page styling to use component classes from Session 1
+
+**Approach:**
+- Start by branching off Session 2a (russian doll branching)
+- When Session 2a merges to main, rebase Session 2b onto main
+- Focus on marketing views: home, contact, gallery, learn, our_farms
+
+**Details:** [`sessions/session_2b_marketing_views.md`](./sessions/session_2b_marketing_views.md)
 
 ---
 
@@ -69,24 +81,22 @@ Refactoring CSS architecture to use Tailwind v4 `@theme` directive with componen
 - **Branch:** `css-refactor/session-4a-view-migrations`
 - **Status:** In progress
 - **Focus:** Audit views for inline styles, migrate cart/checkout views, remove backward-compatibility code
+- **Details:** [`sessions/session_4a_view_migrations.md`](./sessions/session_4a_view_migrations.md)
 
 **Session 4B: cart.css Refactoring** (Upcoming)
 - **Branch:** `css-refactor/session-4b-cart-css`
 - **Focus:** Convert cart.css to @apply with sv-colors
+- **Details:** [`sessions/session_4b_cart_css.md`](./sessions/session_4b_cart_css.md)
 
 **Session 4C: checkouts.css Refactoring** (Upcoming)
 - **Branch:** `css-refactor/session-4c-checkouts-css`
 - **Focus:** Convert checkouts.css to @apply with sv-colors
+- **Details:** [`sessions/session_4c_checkouts_css.md`](./sessions/session_4c_checkouts_css.md)
 
 **Session 4D: email.css + search.css Refactoring** (Upcoming)
 - **Branch:** `css-refactor/session-4d-email-search`
 - **Focus:** Convert email.css and search.css to @apply with sv-colors
-
-**Session 4E: semantic grouping of @apply directives** (Upcoming)
-- **Branch:** `css-refactor/session-4e-semantic-grouping`
-- **Focus:** Apply the semantic grouping pattern (established in 4A) consistently across all CSS files in the codebase
-
-**Details:** [`sessions/session_4_legacy_cleanup.md`](./sessions/session_4_legacy_cleanup.md)
+- **Details:** [`sessions/session_4d_email_search_css.md`](./sessions/session_4d_email_search_css.md)
 
 ---
 
@@ -104,6 +114,14 @@ Refactoring CSS architecture to use Tailwind v4 `@theme` directive with componen
 
 **Why it's last:**
 Throughout Sessions 2-4, we intentionally left `!important` declarations in place to avoid scope creep. Session 5 addresses this technical debt systematically once all CSS files are refactored.
+
+**Details:** [`sessions/session_5_specificity_cleanup.md`](./sessions/session_5_specificity_cleanup.md)
+
+---
+
+### 🔧 Session 5: CSS Specificity & !important Cleanup (FUTURE)
+**When:** After Sessions 2a/2b complete
+**Focus:** Remove !important hacks, fix CSS specificity issues, establish proper architecture
 
 **Details:** [`sessions/session_5_specificity_cleanup.md`](./sessions/session_5_specificity_cleanup.md)
 
