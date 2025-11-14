@@ -3,6 +3,7 @@
   <%= render partial: "layouts/public/head" %>
 
   <body>
+    <!-- Keep relative inline - breaks header layout if moved to CSS -->
     <header class="relative">
       <div class="header-container">
           
@@ -13,17 +14,17 @@
           </a>
         </div>
       
-        <!-- Navbar Links -->
+        <!-- Navbar Links - Keep responsive utilities inline for proper mobile/desktop visibility toggle -->
         <div class="navbar-section hidden md:flex" id="navbar-default">
           <ul class="navbar-list">
             <li><%= link_to 'products', products_path %></li>
-            <li><%= link_to 'our farms', our_farms_path %></li> 
+            <li><%= link_to 'our farms', our_farms_path %></li>
             <li><%= link_to 'learn', learn_path %></li>
             <li><%= link_to 'contact', contact_path %></li>
           </ul>
         </div>
 
-        <!-- Desktop Search Section -->
+        <!-- Desktop Search Section - Keep responsive utilities inline for proper mobile/desktop visibility toggle -->
         <div class="search-section hidden md:flex">
           <div class="search-desktop">
             <div id="searchbox-desktop" class="search-container"></div>
@@ -31,7 +32,7 @@
           </div>
         </div>
 
-        <!-- Desktop Cart Section -->
+        <!-- Desktop Cart Section - Keep responsive utilities inline for proper mobile/desktop visibility toggle -->
         <div class="right-icons hidden md:flex">
           <!-- Cart Dropdown -->
           <button id="cartDropdownButton" class="cart-button">
@@ -97,7 +98,7 @@
           </div>
         </div>
 
-        <!-- Mobile Nav Items (Search, Cart, Hamburger) -->
+        <!-- Mobile Nav Items (Search + Right Icons) - Keep responsive utilities inline for proper mobile/desktop visibility toggle -->
         <div class="mobile-nav-items md:hidden">
           <!-- Search Icon -->
           <div class="search-section">
@@ -110,9 +111,9 @@
 
           <!-- Bag & Hamburger Menu Icons -->
           <div class="right-icons">
-            <!-- Bag Icon w/ Badge -->
+            <!-- Mobile Cart Dropdown -->
             <button id="cartDropdownButtonMobile" class="cart-button">
-              <!-- Bag Icon -->
+              <!-- Shopping Cart Icon -->
               <svg class="cart-icon" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 10.5V6a3.75 3.75 0 10-7.5 0v4.5m11.356-1.993l1.263 12c.07.665-.45 1.243-1.119 1.243H4.25a1.125 1.125 0 01-1.12-1.243l1.264-12A1.125 1.125 0 015.513 7.5h12.974c.576 0 1.059.435 1.119.993zM8.625 10.5a.375.375 0 11-.75 0 .375.375 0 01.75 0zm7.5 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z"></path>
               </svg>
@@ -120,7 +121,7 @@
               <span class="cart-badge"><%= @cart.cart_items.count %></span>
             </button>
 
-            <!-- Mobile Cart Preview Dropdown - toggled via click of Bag Icon above -->
+            <!-- Mobile Dropdown Menu -->
             <div id="cartDropdownMobile" class="cart-dropdown">
               <div class="cart-dropdown-header">
                 <h3 class="cart-dropdown-title">my bag</h3>
@@ -130,13 +131,8 @@
                 <% @cart.cart_items.each do |item| %>
                   <li class="cart-item">
                     <div class="cart-item-details">
-                      <p class="cart-item-name"><%= item.name %> × <%= item.quantity %></p>
-                      <p class="cart-item-price">
-                        <%= to_dollars(item.price * item.quantity) %>
-                        <% if item.quantity > 1 %>
-                          <span style="color: #6b7280; margin-left: 0.5rem;">(<%= to_dollars(item.price) %> each)</span>
-                        <% end %>
-                      </p>
+                      <p class="cart-item-name"><%= item.name %></p>
+                      <p class="cart-item-price"><%= to_dollars(item.price) %></p>
                     </div>
                     <%= button_to '×', item, method: :delete, class: 'remove-button-small' %>
                   </li>
@@ -166,7 +162,7 @@
               </div>
             </div>
 
-            <!-- Hamburger Menu Icon -->
+            <!-- Mobile Menu Button -->
             <button data-collapse-toggle="navbar-default" type="button" class="mobile-menu-button">
               <span class="sr-only">Open main menu</span>
               <svg class="mobile-menu-icon" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
@@ -174,18 +170,15 @@
               </svg>
             </button>
           </div>
-        </div>
-
-        <!-- Search Dropdown (Mobile) - positioned as a sibling to Mobile Nav Items
-             for proper overlay positioning -->
+        </div> <!-- End mobile-nav-items -->
+        
+        <!-- Search Dropdown (Mobile) - Moved outside search-section -->
         <div id="searchDropdown" class="search-dropdown">
           <div id="searchbox" class="search-container"></div>
           <div id="hits" class="search-results"></div>
         </div>
-        
       </div> <!-- End header-container -->
     </header>
-
     <main<%= ' class="has-flash-messages"'.html_safe if flash.any? %>>
       <%= render partial: "layouts/public/flash_alert" %>
       <%= yield %>
