@@ -1,8 +1,8 @@
 # Siempreviva CSS Refactoring Project
 
-**Status:** Session 1 Complete ✅ | Session 2a PR Submitted ✅ | Session 2b Next ⏳
+**Status:** Sessions 1, 2a, 3 Complete ✅ | Session 4A In Progress 🎯
 **Started:** October 21, 2025
-**Branch:** `refactor/css-to-tailwind` (merged to main)
+**Current Branch:** `css-refactor/session-4a-view-migrations`
 
 ---
 
@@ -30,22 +30,14 @@ Refactoring CSS architecture to use Tailwind v4 `@theme` directive with componen
 
 ---
 
-### 🎯 Session 2a: Product Views CSS Refactoring (PR SUBMITTED)
-**Status:** PR in review
-**Branch:** `amanda/css-refactor-session-2a` (based on `amanda/product-views`)
-**Base Branch:** `amanda/product-views`
-**Focus:** Refactor product view styling to use component classes from Session 1
-
-**Completed:**
-- ✅ Replaced inline Tailwind with component classes in product views
-- ✅ Refactored products.css to use @apply with sv-colors
-- ✅ Added 13 new component classes for product views
-- ✅ Reorganized products.css with clear sections and inline media queries
-- ✅ Tested across all breakpoints (mobile, tablet, desktop)
-- ✅ Visual regression check completed
-- ✅ PR submitted for review
-
-**Details:** [`sessions/session_2a_product_views.md`](./sessions/session_2a_product_views.md)
+### ✅ Session 2a: Product Views Refactoring (COMPLETE)
+**Completed:** November 4, 2025
+**PR:** Merged to main
+**What we did:**
+- Refactored products.css to use @apply with sv-colors
+- Added missing component classes for product cards and sections
+- Replaced inline Tailwind utilities in product partials
+- Organized products.css with clear section structure
 
 ---
 
@@ -63,17 +55,48 @@ Refactoring CSS architecture to use Tailwind v4 `@theme` directive with componen
 
 ---
 
-### 📋 Session 3: Layout & Navigation (OPTIONAL - Future)
-**When:** If/when we modify header/nav/footer
-**Focus:** Refactor layout.css to component classes
+### ✅ Session 3: Layout.css Refactoring & Modularization (COMPLETE)
+**Completed:** November 5, 2025
+**PR:** Merged to main
+**What we did:**
+- Refactored layout.css to use @apply with sv-colors
+- Fixed mobile cart dropdown, sticky footer, and mobile menu button bugs
+- Reorganized layout.css with clear section headers
+- Split monolithic layout.css into modular files:
+  - `layout.css` - Global layout and link styles
+  - `header.css` - Header structure and logo
+  - `navigation.css` - Mobile menu button and navigation
+  - `footer.css` - Site footer and social links
+- Documented inline utilities that must remain (responsive utilities)
 
 **Details:** [`sessions/session_3_layout.md`](./sessions/session_3_layout.md)
 
 ---
 
-### 🧹 Session 4: Legacy Views Migration (OPTIONAL - Future)
-**When:** If/when we modify cart/checkout features
-**Focus:** Migrate cart/checkout to new classes, remove backward-compatibility code
+### 🎯 Session 4: Legacy Views Migration & CSS Cleanup (IN PROGRESS - 4 Part Series)
+**Started:** November 6, 2025
+**Strategy:** Split into 4 independent PRs for manageable reviews
+
+**Session 4A: View Migrations & Legacy Code Removal** (IN PROGRESS)
+- **Branch:** `css-refactor/session-4a-view-migrations`
+- **Status:** In progress
+- **Focus:** Audit views for inline styles, migrate cart/checkout views, remove backward-compatibility code
+
+**Session 4B: cart.css Refactoring** (Upcoming)
+- **Branch:** `css-refactor/session-4b-cart-css`
+- **Focus:** Convert cart.css to @apply with sv-colors
+
+**Session 4C: checkouts.css Refactoring** (Upcoming)
+- **Branch:** `css-refactor/session-4c-checkouts-css`
+- **Focus:** Convert checkouts.css to @apply with sv-colors
+
+**Session 4D: email.css + search.css Refactoring** (Upcoming)
+- **Branch:** `css-refactor/session-4d-email-search`
+- **Focus:** Convert email.css and search.css to @apply with sv-colors
+
+**Session 4E: semantic grouping of @apply directives** (Upcoming)
+- **Branch:** `css-refactor/session-4e-semantic-grouping`
+- **Focus:** Apply the semantic grouping pattern (established in 4A) consistently across all CSS files in the codebase
 
 **Details:** [`sessions/session_4_legacy_cleanup.md`](./sessions/session_4_legacy_cleanup.md)
 
