@@ -10,13 +10,13 @@
 - Created comprehensive service object architecture with TDD approach
 - Integrated Redis caching and background job processing for production scalability
 
-🛠️ **Tech Stack:** Ruby on Rails, PostgreSQL, Stripe API, Tailwind CSS, Redis, Background Jobs  
+🛠️ **Stack:** Ruby on Rails, PostgreSQL, Stripe API, Tailwind CSS, Redis 
 ⏱️ **Timeline:** March 2025 - Present (8+ months of active development)  
-🏢 **Client:** Real small business (Siempreviva) - not a tutorial project  
+🏢 **Client:** Real small business (Siempreviva): not a tutorial project  
 
 ## 📈 Latest Progress Update (November 2025)
 
-The past month has been intense! I shipped a complete cart/checkout overhaul, then dove headfirst into a massive CSS refactoring project. 🚀
+The past month has been intense! I shipped a complete cart/checkout overhaul, then dove headfirst into a massive CSS refactoring project.
 
 **Cart & Checkout System Overhaul** ([PR #21](https://github.com/grandtheftdisco/siempreviva/pull/21), [#22](https://github.com/grandtheftdisco/siempreviva/pull/22), [#23](https://github.com/grandtheftdisco/siempreviva/pull/23)):
 - Built comprehensive checkout flow with post-payment success states and robust error handling
@@ -27,7 +27,7 @@ The past month has been intense! I shipped a complete cart/checkout overhaul, th
 - Fixed cart item functionality (proper PATCH requests, consistent delete buttons, timestamp ordering)
 - Added empty cart state with "shop now" prompt
 
-**The Big CSS Refactor Plot Twist** 🎨:
+**The Big CSS Refactor Plot Twist**:
 Here's where things got interesting. I'd been using AI to help with frontend work, but I hadn't been supervising closely enough early on. The result? A mess of SCSS and vanilla CSS that didn't work well with Tailwind, inconsistent color usage, and no clear component system. Lesson learned: even when using AI for areas where you're strong, you still need to stay hands-on!
 
 **Phase 1: Foundation Reset** ([PR #24](https://github.com/grandtheftdisco/siempreviva/pull/24)):
@@ -38,7 +38,7 @@ Here's where things got interesting. I'd been using AI to help with frontend wor
 - Maintained full backward compatibility (zero breaking changes to cart/checkout)
 - Reorganized stylesheets into focused modules (cart.css, forms.css, layout.css, search.css, etc.)
 
-**Ongoing: Session-by-Session Refactoring** (4 PRs currently in review):
+**Ongoing: Session-by-Session Refactoring**:
 Now I'm methodically working through each area of the site to convert everything to the new system:
 - **Product Views** ([PR #26](https://github.com/grandtheftdisco/siempreviva/pull/26), [#27](https://github.com/grandtheftdisco/siempreviva/pull/27)): Added cross-selling, quantity selectors, responsive image grids, and converted all styling to `@apply` with semantic grouping
 - **Layout Components** ([PR #28](https://github.com/grandtheftdisco/siempreviva/pull/28)): Split monolithic layout.css (403 lines) into focused modules (header, navigation, footer), converted to `@apply`, fixed mobile cart dropdown bug
@@ -57,7 +57,7 @@ ______________________________________
 # 🏗️ PROJECT DETAILS
 
 ## 🎯 Project Goals & Approach
-**Challenge Level**: This is my second webdev project - a significant step up from [Henventory](https://www.github.com/grandtheftdisco/henventory) to tackle real-world ecommerce complexity.
+**Challenge Level**: This is my second webdev project: a significant step up from [Henventory](https://www.github.com/grandtheftdisco/henventory) to tackle real-world ecommerce complexity.
 
 **Real Client Work**: Built for actual business owners (not a tutorial project), giving me valuable experience working with stakeholder requirements and real-world constraints.
 
@@ -69,8 +69,8 @@ ______________________________________
 ## 🛠️ Tech Stack
 - **Backend**: Ruby on Rails, PostgreSQL  
 - **Payments**: Stripe API, Stripe.js with full webhook integration  
-- **Frontend**: Tailwind CSS, SASS, Flowbite components, responsive design  
-- **Infrastructure**: Redis caching, background jobs, Linux development environment  
+- **Frontend**: Tailwind CSS, Flowbite components  
+- **Infrastructure**: Redis caching, service layer, background jobs, Linux development environment  
 - **Code Quality**: RuboCop-enforced Airbnb style guide, comprehensive testing with TDD  
 - **Deployment**: Heroku (projected)
 
