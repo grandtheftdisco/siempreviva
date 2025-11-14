@@ -52,7 +52,7 @@
   @apply font-medium font-sans;
 }
 
-/* Secondary button - green outline */
+/* Secondary button - purple filled */
 .btn-secondary {
   /* Spacing & shape */
   @apply px-6 py-3 rounded-full;
@@ -118,6 +118,13 @@
   @apply font-medium font-sans;
 }
 
+/* Light purple button */
+.btn-purple-light {
+  @apply px-6 py-3 rounded-full no-underline text-center font-medium cursor-pointer inline-block transition-all duration-200 border-2;
+  @apply bg-sv-purple-200 text-sv-purple-700 border-sv-purple-200 hover:bg-sv-purple-400 hover:border-sv-purple-400;
+  @apply font-sans;
+}
+
 /* Danger button - red filled */
 .btn-danger {
   /* Spacing & shape */
@@ -141,6 +148,10 @@
 }
 
 /* Button size variants */
+.btn-xs {
+  @apply px-3 py-0.5 text-xs;
+}
+
 .btn-small {
   /* Sizing & typography */
   @apply px-4 py-2 text-sm;
@@ -151,122 +162,9 @@
   @apply px-8 py-4 text-lg;
 }
 
-/* ===== LEGACY BUTTON CLASSES (Backward Compatibility) ===== */
-/* These classes remain in vanilla CSS until Session 4B (cart.css refactoring). */
-/* They will be migrated to component classes when their views are updated. */
-
-.continue-shopping-btn {
-  padding: 0.75rem 1.5rem;
-  border-radius: 9999px;
-  text-decoration: none;
-  text-align: center;
-  @apply font-sans;
-  font-weight: 500;
-  cursor: pointer;
-  display: inline-block;
-  transition: all 0.2s ease;
-  border: 2px solid transparent;
-  background: transparent;
-  color: #c5aace; /* sv-purple-400 */
-  border-color: #698b3f; /* sv-green-600 */
-}
-
-.continue-shopping-btn:hover {
-  background: #4f5e3c; /* sv-green-700 */
-  color: #ffffff;
-  border-color: #4f5e3c; /* sv-green-700 */
-}
-
-.checkout-btn {
-  padding: 0.75rem 1.5rem;
-  border-radius: 9999px;
-  text-decoration: none;
-  text-align: center;
-  @apply font-sans;
-  font-weight: 500;
-  cursor: pointer;
-  display: inline-block;
-  transition: all 0.2s ease;
-  border: 2px solid transparent;
-  background: #4f5e3c; /* sv-green-700 */
-  color: #ffffff;
-  border-color: #4f5e3c; /* sv-green-700 */
-}
-
-.checkout-btn:hover {
-  background: #698b3f; /* sv-green-600 - brighter on hover */
-  border-color: #698b3f; /* sv-green-600 */
-  color: #ffffff;
-}
-
-.cart-checkout-btn {
-  padding: 0.75rem 1.5rem;
-  border-radius: 9999px;
-  text-decoration: none;
-  text-align: center;
-  @apply font-sans;
-  font-weight: 500;
-  cursor: pointer;
-  display: block;
-  width: 100%;
-  transition: all 0.2s ease;
-  border: 2px solid transparent;
-  background: #4f5e3c; /* sv-green-700 */
-  color: #ffffff !important;
-  border-color: #4f5e3c; /* sv-green-700 */
-  font-size: 0.875rem;
-}
-
-.cart-checkout-btn:hover {
-  background: #698b3f; /* sv-green-600 - brighter on hover */
-  border-color: #698b3f;
-  color: #ffffff !important;
-}
-
-.quantity-update-btn-visible {
-  padding: 0.5rem 1rem;
-  font-size: 0.85rem;
-  border-radius: 9999px;
-  text-decoration: none;
-  text-align: center;
-  @apply font-sans;
-  font-weight: 500;
-  cursor: pointer;
-  display: inline-block;
-  transition: all 0.2s ease;
-  border: 2px solid transparent;
-  background: #bdcea9; /* sv-green-200 */
-  color: #4f5e3c; /* sv-green-700 */
-  border-color: #bdcea9; /* sv-green-200 */
-}
-
-.quantity-update-btn-visible:hover {
-  background: #8ba170; /* sv-green-400 */
-  border-color: #8ba170; /* sv-green-400 */
-}
-
-.remove-item-btn-red {
-  padding: 0.5rem 1rem;
-  font-size: 0.85rem;
-  border-radius: 9999px;
-  text-decoration: none;
-  text-align: center;
-  @apply font-sans;
-  font-weight: 500;
-  cursor: pointer;
-  display: inline-block;
-  transition: all 0.2s ease;
-  border: 2px solid transparent;
-  background: #b9626b; /* sv-danger */
-  color: #ffffff;
-  border-color: #b9626b; /* sv-danger */
-}
-
-.remove-item-btn-red:hover {
-  background: #a0545c; /* Darker sv-danger - calculated */
-  border-color: #a0545c;
-  color: #ffffff;
-}
+/* ===== LEGACY BUTTON CLASSES REMOVED ===== */
+/* As of Session 4A, all views use new component classes (.btn-primary, .btn-green, etc.) */
+/* Legacy classes removed: .checkout-btn, .continue-shopping-btn, .cart-checkout-btn, .quantity-update-btn-visible, .remove-item-btn-red */
 
 /* ===== FLASH NOTIFICATION STYLES ===== */
 

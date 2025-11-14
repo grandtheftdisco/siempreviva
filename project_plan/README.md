@@ -81,24 +81,41 @@ Refactoring CSS architecture to use Tailwind v4 `@theme` directive with componen
 - **Branch:** `css-refactor/session-4a-view-migrations`
 - **Status:** In progress
 - **Focus:** Audit views for inline styles, migrate cart/checkout views, remove backward-compatibility code
+- **Details:** [`sessions/session_4a_view_migrations.md`](./sessions/session_4a_view_migrations.md)
 
 **Session 4B: cart.css Refactoring** (Upcoming)
 - **Branch:** `css-refactor/session-4b-cart-css`
 - **Focus:** Convert cart.css to @apply with sv-colors
+- **Details:** [`sessions/session_4b_cart_css.md`](./sessions/session_4b_cart_css.md)
 
 **Session 4C: checkouts.css Refactoring** (Upcoming)
 - **Branch:** `css-refactor/session-4c-checkouts-css`
 - **Focus:** Convert checkouts.css to @apply with sv-colors
+- **Details:** [`sessions/session_4c_checkouts_css.md`](./sessions/session_4c_checkouts_css.md)
 
 **Session 4D: email.css + search.css Refactoring** (Upcoming)
 - **Branch:** `css-refactor/session-4d-email-search`
 - **Focus:** Convert email.css and search.css to @apply with sv-colors
+- **Details:** [`sessions/session_4d_email_search_css.md`](./sessions/session_4d_email_search_css.md)
 
-**Session 4E: semantic grouping of @apply directives** (Upcoming)
-- **Branch:** `css-refactor/session-4e-semantic-grouping`
-- **Focus:** Apply the semantic grouping pattern (established in 4A) consistently across all CSS files in the codebase
+---
 
-**Details:** [`sessions/session_4_legacy_cleanup.md`](./sessions/session_4_legacy_cleanup.md)
+### 🔮 Session 5: Specificity Cleanup & !important Removal (FUTURE)
+**When:** After Session 4 complete
+**Estimated Time:** 2-3 hours
+**Focus:** Remove all `!important` declarations by fixing underlying CSS specificity issues
+
+**Scope:**
+- Audit all `!important` declarations across codebase
+- Analyze root causes of specificity conflicts
+- Fix specificity issues systematically
+- Convert vanilla CSS to @apply where appropriate
+- Thorough testing across all breakpoints and browsers
+
+**Why it's last:**
+Throughout Sessions 2-4, we intentionally left `!important` declarations in place to avoid scope creep. Session 5 addresses this technical debt systematically once all CSS files are refactored.
+
+**Details:** [`sessions/session_5_specificity_cleanup.md`](./sessions/session_5_specificity_cleanup.md)
 
 ---
 
@@ -159,10 +176,15 @@ Refactoring CSS architecture to use Tailwind v4 `@theme` directive with componen
 | `application.css` | ✅ Refactored | Has @theme block with sv-colors |
 | `components.css` | ✅ Refactored | New component classes with @apply |
 | `forms.css` | ✅ Refactored | Component classes + backward compatibility |
-| `layout.css` | ⏳ Future | Works as-is, refactor when needed |
-| `cart.css` | ⏳ Future | Works as-is, refactor when needed |
-| `checkouts.css` | ⏳ Future | Works as-is, refactor when needed |
-| `products.css` | ✅ Refactored | Component classes with @apply (Session 2a) |
+| `layout.css` | ✅ Refactored | Global layout structure (71 lines) |
+| `header.css` | ✅ Created | Header structure and logo (90 lines) |
+| `navigation.css` | ✅ Created | Mobile menu and navigation (157 lines) |
+| `footer.css` | ✅ Created | Site footer and social links (96 lines) |
+| `products.css` | ✅ Refactored | Product cards and sections with @apply |
+| `cart.css` | 🎯 Session 4B | Refactoring in progress |
+| `checkouts.css` | 🎯 Session 4C | Refactoring in progress |
+| `email.css` | 🎯 Session 4D | Refactoring in progress |
+| `search.css` | 🎯 Session 4D | Refactoring in progress |
 | `components.scss` | ⚠️ Deprecated | No longer imported |
 
 ---
@@ -178,4 +200,28 @@ Refactoring CSS architecture to use Tailwind v4 `@theme` directive with componen
 
 ---
 
-*Last Updated: November 4, 2025*
+---
+
+## Session 4 Branching Strategy
+
+Session 4 uses a **mixed strategy** to allow parallel work while maintaining clean git history:
+
+```
+main
+  ├─ css-refactor/session-4a-view-migrations (DO FIRST)
+  ├─ css-refactor/session-4b-cart-css (independent)
+  ├─ css-refactor/session-4c-checkouts-css (independent)
+  └─ css-refactor/session-4d-email-search (independent)
+```
+
+**Key Points:**
+- 4A must be done first (changes views)
+- 4B, 4C, 4D branch from `main`, NOT from 4A
+- 4B, 4C, 4D can be worked on in parallel or any order
+- All can be reviewed/merged independently after 4A
+
+**See:** `SESSION_4_BRANCHING_STRATEGY.md` in root for detailed workflow
+
+---
+
+*Last Updated: November 6, 2025*
