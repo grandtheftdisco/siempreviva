@@ -1,5 +1,8 @@
 # CLAUDE.md - Development Context for Siempreviva 🪻
 
+## Important Note
+Please refer to top-level `CLAUDE.md` file (found at `../CLAUDE.md`) for global context of human collaboration style 
+
 ## Project Overview
 **Siempreviva** is an e-commerce Rails application for a small business, currently under active development. This project builds on lessons learned from previous work and focuses on scalable architecture patterns.
 
@@ -81,6 +84,18 @@ This approach maintains architectural integrity and learning objectives while st
 - Meaningful naming for classes, methods, and variables
 - Consistent error handling and validation
 
+### CSS/Styling Conventions
+- **Tailwind-First Approach**: Always use Tailwind CSS utilities and the `@apply` directive
+- **Vanilla CSS Only When Necessary**: Only use vanilla CSS when Tailwind does not provide the required functionality
+- **Explain Before Using Vanilla CSS**: Before using vanilla CSS, explain the reasoning in chat so the human developer can manually check and confirm that Tailwind truly doesn't provide the needed functionality
+- **Use `@apply` for Component Classes**: Create reusable component classes in CSS files using Tailwind's `@apply` directive rather than inline utility classes in views
+- **Single Source of Truth**: Use the sv-color system defined in `@theme` block for all color values
+
+### File Path Conventions
+- **Development Environment**: This project is being developed in WSL (Windows Subsystem for Linux)
+- **Convert Windows Paths**: Always convert Windows file paths (e.g., `C:\Users\...`) to WSL format (e.g., `/mnt/c/Users/...`)
+- **Path Format**: Use forward slashes `/` not backslashes `\`
+
 ### Communication Standards
 - When summarizing work or providing progress updates, use paragraph format without emojis
 - Maintain professional, clear, and concise communication style
@@ -95,6 +110,23 @@ This approach maintains architectural integrity and learning objectives while st
 - Feature branches for new development
 - Code review before merging to main
 - Incremental development with regular integration
+
+### Using Claude Code Subagents
+When facing complex scenarios that require deep analysis, utilize the Task tool with specialized subagents:
+
+**Use Cases for Subagents:**
+- **Merge Conflict Analysis**: Before merging branches with potentially conflicting changes, use a general-purpose subagent to analyze both branches and identify conflicts
+- **Breaking Change Detection**: When unsure if changes will break existing functionality, have a subagent analyze the codebase and provide a risk assessment
+- **Cross-File Impact Analysis**: For changes that span multiple files or affect multiple systems, subagents can trace dependencies and potential issues
+- **Refactoring Strategy**: When planning large refactors, subagents can analyze current architecture and propose safe transformation paths
+
+**Example Usage:**
+```
+Task tool with subagent_type: "general-purpose"
+Prompt: "Analyze branches X and Y, identify conflicts, and create a safe merge plan that preserves functionality Z"
+```
+
+Subagents provide detailed analysis reports with specific line numbers, code snippets, and step-by-step strategies, significantly reducing risk in complex operations.
 
 ## Business Context
 E-commerce platform for a small business in the agricultural/botanical space, handling product catalogs, shopping cart functionality, and secure payment processing.

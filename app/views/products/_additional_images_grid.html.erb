@@ -1,0 +1,15 @@
+<%# 2x2 Additional Product Images Grid %>
+<%# Usage: <%= render 'products/additional_images_grid', product: @product %>
+<%# TODO - Feature-flagged until all product images acquired from PO %>
+<%# TODO - Multiple images must be added via Stripe API/CLI (not available in Dashboard GUI) %>
+<%# TODO - Future: Create adaptive layouts for 2-4 images instead of hiding grid entirely %>
+
+<% if product.images.length >= 5 %>
+  <div class="additional-images-grid" data-secondary-image-grid>
+    <% 4.times do |i| %>
+      <div class="additional-image-placeholder">
+        <span class="additional-image-placeholder-text">Image <%= i + 2 %></span>
+      </div>
+    <% end %>
+  </div>
+<% end %>
