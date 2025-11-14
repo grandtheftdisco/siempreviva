@@ -54,8 +54,13 @@
                 <% @cart.cart_items.each do |item| %>
                     <li class="cart-item">
                       <div class="cart-item-details">
-                        <p class="cart-item-name"><%= item.name %></p>
-                        <p class="cart-item-price"><%= to_dollars(item.price) %></p>
+                        <p class="cart-item-name"><%= item.name %> × <%= item.quantity %></p>
+                        <p class="cart-item-price">
+                          <%= to_dollars(item.price * item.quantity) %>
+                          <% if item.quantity > 1 %>
+                            <span style="color: #6b7280; margin-left: 0.5rem;">(<%= to_dollars(item.price) %> each)</span>
+                          <% end %>
+                        </p>
                       </div>
                       <%= button_to '×', item, method: :delete, class: 'remove-button-small' %>
                     </li>
@@ -125,8 +130,13 @@
                 <% @cart.cart_items.each do |item| %>
                   <li class="cart-item">
                     <div class="cart-item-details">
-                      <p class="cart-item-name"><%= item.name %></p>
-                      <p class="cart-item-price"><%= to_dollars(item.price) %></p>
+                      <p class="cart-item-name"><%= item.name %> × <%= item.quantity %></p>
+                      <p class="cart-item-price">
+                        <%= to_dollars(item.price * item.quantity) %>
+                        <% if item.quantity > 1 %>
+                          <span style="color: #6b7280; margin-left: 0.5rem;">(<%= to_dollars(item.price) %> each)</span>
+                        <% end %>
+                      </p>
                     </div>
                     <%= button_to '×', item, method: :delete, class: 'remove-button-small' %>
                   </li>

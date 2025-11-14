@@ -5,18 +5,11 @@
 <%# TODO - Future: Create adaptive layouts for 2-4 images instead of hiding grid entirely %>
 
 <% if product.images.length >= 5 %>
-  <div class="grid grid-cols-2 gap-4 max-w-lg mx-auto px-4 mb-6 lg:mb-8">
-    <div class="bg-gray-200 h-40 lg:h-32 rounded-lg flex items-center justify-center">
-      <span class="text-gray-500 text-sm">Image 2</span>
-    </div>
-    <div class="bg-gray-200 h-40 lg:h-32 rounded-lg flex items-center justify-center">
-      <span class="text-gray-500 text-sm">Image 3</span>
-    </div>
-    <div class="bg-gray-200 h-40 lg:h-32 rounded-lg flex items-center justify-center">
-      <span class="text-gray-500 text-sm">Image 4</span>
-    </div>
-    <div class="bg-gray-200 h-40 lg:h-32 rounded-lg flex items-center justify-center">
-      <span class="text-gray-500 text-sm">Image 5</span>
-    </div>
+  <div class="additional-images-grid">
+    <% 4.times do |i| %>
+      <div class="additional-image-placeholder">
+        <span class="additional-image-placeholder-text">Image <%= i + 2 %></span>
+      </div>
+    <% end %>
   </div>
 <% end %>

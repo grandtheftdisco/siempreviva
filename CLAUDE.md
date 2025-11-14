@@ -1,5 +1,8 @@
 # CLAUDE.md - Development Context for Siempreviva 🪻
 
+## Important Note
+Please refer to top-level `CLAUDE.md` file (found at `../CLAUDE.md`) for global context of human collaboration style 
+
 ## Project Overview
 **Siempreviva** is an e-commerce Rails application for a small business, currently under active development. This project builds on lessons learned from previous work and focuses on scalable architecture patterns.
 
