@@ -14,25 +14,43 @@
 ⏱️ **Timeline:** March 2025 - Present (8+ months of active development)  
 🏢 **Client:** Real small business (Siempreviva) - not a tutorial project  
 
-## 📈 Latest Progress Update (October 2025)
+## 📈 Latest Progress Update (November 2025)
 
-I've been heads-down building and just pushed some major features! 🚀
+The past month has been intense! I shipped a complete cart/checkout overhaul, then dove headfirst into a massive CSS refactoring project. 🚀
 
-**Major Backend Wins**: 
-- Refined and polished the admin dashboard UI for better order fulfillment workflow
-- Added pagination and filtering to admin order views for better usability
+**Cart & Checkout System Overhaul** ([PR #21](https://github.com/grandtheftdisco/siempreviva/pull/21), [#22](https://github.com/grandtheftdisco/siempreviva/pull/22), [#23](https://github.com/grandtheftdisco/siempreviva/pull/23)):
+- Built comprehensive checkout flow with post-payment success states and robust error handling
+- Styled cart view & cart preview dropdown with full responsive design across all screen sizes
+- Implemented race condition mitigation for payment processing (added `WebhookSynchronizationService::EnsurePaymentProcessed`)
+- Enhanced webhook processing with idempotency checks and atomic transactions
+- Reordered cart page elements to reduce purchase friction (checkout button appears before itemized list)
+- Fixed cart item functionality (proper PATCH requests, consistent delete buttons, timestamp ordering)
+- Added empty cart state with "shop now" prompt
 
-**Frontend Progress**: 
-- Completely overhauled the cart system! Now there's a slick dropdown preview when you hover over the cart icon, plus a full "My Bag" view
-- Implemented responsive header with mobile-friendly navigation - search and menu now collapse properly on mobile
-- Organized my CSS properly by breaking stylesheets into view-specific files using SASS components
-- Added Flowbite components for better UI consistency
+**The Big CSS Refactor Plot Twist** 🎨:
+Here's where things got interesting. I'd been using AI to help with frontend work, but I hadn't been supervising closely enough early on. The result? A mess of SCSS and vanilla CSS that didn't work well with Tailwind, inconsistent color usage, and no clear component system. Lesson learned: even when using AI for areas where you're strong, you still need to stay hands-on!
 
-**DevEx Improvements**:
-- Added RuboCop Airbnb for code quality
-- Set up proper font loading and responsive design patterns
+**Phase 1: Foundation Reset** ([PR #24](https://github.com/grandtheftdisco/siempreviva/pull/24)):
+- Converted SCSS → pure CSS with Tailwind v4 `@theme` directive
+- Built custom `sv-` color palette system (purple, green, gray, pink) using Tailwind's scale
+- Created modern component button classes (`.btn-primary`, `.btn-secondary`, `.btn-green`, etc.)
+- Converted all existing classes to use `@apply` with the new color system
+- Maintained full backward compatibility (zero breaking changes to cart/checkout)
+- Reorganized stylesheets into focused modules (cart.css, forms.css, layout.css, search.css, etc.)
 
-**All in All**: This took WAY longer than expected, but I'm learning so much about real-world Rails architecture. The admin dashboard alone taught me tons about authentication, authorization, and API integration patterns.
+**Ongoing: Session-by-Session Refactoring** (4 PRs currently in review):
+Now I'm methodically working through each area of the site to convert everything to the new system:
+- **Product Views** ([PR #26](https://github.com/grandtheftdisco/siempreviva/pull/26), [#27](https://github.com/grandtheftdisco/siempreviva/pull/27)): Added cross-selling, quantity selectors, responsive image grids, and converted all styling to `@apply` with semantic grouping
+- **Layout Components** ([PR #28](https://github.com/grandtheftdisco/siempreviva/pull/28)): Split monolithic layout.css (403 lines) into focused modules (header, navigation, footer), converted to `@apply`, fixed mobile cart dropdown bug
+- **Forms Migration** ([PR #31](https://github.com/grandtheftdisco/siempreviva/pull/31)): Migrated all forms to explicit component classes (`.form-container`, `.label-text`, `.input-text`), removed element selectors, applied semantic grouping pattern
+
+**Documentation & Process** ([PR #25](https://github.com/grandtheftdisco/siempreviva/pull/25)):
+- Restructured original 670+ line CSS refactor plan into organized `project_plan/` directory with session-based docs
+- Created technical reference docs for color systems, components, and design decisions
+- Established clear workflow for remaining refactoring sessions
+
+**What I'm Learning**:
+This CSS refactor has been humbling but incredibly valuable. I'm learning about proper component architecture, the importance of maintainable code organization, and how to effectively supervise AI assistance. The session-by-session approach is keeping the work manageable while steadily improving code quality. Plus, I'm getting much better at debugging CSS issues!
 
 ______________________________________
 
@@ -54,7 +72,7 @@ ______________________________________
 - **Frontend**: Tailwind CSS, SASS, Flowbite components, responsive design  
 - **Infrastructure**: Redis caching, background jobs, Linux development environment  
 - **Code Quality**: RuboCop-enforced Airbnb style guide, comprehensive testing with TDD  
-- **Deployment**: Render (projected)
+- **Deployment**: Heroku (projected)
 
 ## 📬 Connect
 - 💼 **Portfolio Discussion**: [Drop me a line!](mailto:grandtheftdisco@gmail.com)  
@@ -62,8 +80,22 @@ ______________________________________
 
 ______________________________________
 
-# 📚 DEVELOPMENT DIARY ARCHIVE 
+# 📚 DEVELOPMENT DIARY ARCHIVE
 *Complete development journey from March 2025 - for those interested in the full story*
+
+## 📆 **10/1/25 - 10/31/25** *(Admin Dashboard Polish & Initial Cart Work)*
+- **Admin Dashboard Refinement**:
+  - Polished the admin dashboard UI for better order fulfillment workflow
+  - Added pagination and filtering to admin order views for better usability
+- **Cart System Foundation**:
+  - Began overhaul of cart system with dropdown preview and full "My Bag" view
+  - Started implementing responsive header with mobile-friendly navigation
+  - Initial work on organizing CSS into view-specific files using SASS components
+  - Added Flowbite components for better UI consistency
+- **DevEx Improvements**:
+  - Added RuboCop Airbnb for code quality
+  - Set up proper font loading and responsive design patterns
+- **Reflection**: This phase took much longer than expected, but taught me tons about real-world Rails architecture. The admin dashboard work alone was a masterclass in authentication, authorization, and API integration patterns.
 
 ## 📆 **6/13/25 - 7/11/25** *(The Summer Sprint I Forgot to Document! 👩🏻‍💻 Heads Down & Locked In)* 
 - **Webhook & Payment Infrastructure**: 

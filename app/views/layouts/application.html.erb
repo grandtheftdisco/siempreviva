@@ -1,8 +1,9 @@
 <!DOCTYPE html>
-<html>
+<html class="scroll-smooth">
   <%= render partial: "layouts/public/head" %>
 
   <body>
+    <!-- Keep relative inline - breaks header layout if moved to CSS -->
     <header class="relative">
       <div class="header-container">
           
@@ -13,17 +14,17 @@
           </a>
         </div>
       
-        <!-- Navbar Links -->
+        <!-- Navbar Links - Keep responsive utilities inline for proper mobile/desktop visibility toggle -->
         <div class="navbar-section hidden md:flex" id="navbar-default">
           <ul class="navbar-list">
             <li><%= link_to 'products', products_path %></li>
-            <li><%= link_to 'our farms', our_farms_path %></li> 
+            <li><%= link_to 'our farms', our_farms_path %></li>
             <li><%= link_to 'learn', learn_path %></li>
             <li><%= link_to 'contact', contact_path %></li>
           </ul>
         </div>
 
-        <!-- Desktop Search Section -->
+        <!-- Desktop Search Section - Keep responsive utilities inline for proper mobile/desktop visibility toggle -->
         <div class="search-section hidden md:flex">
           <div class="search-desktop">
             <div id="searchbox-desktop" class="search-container"></div>
@@ -31,7 +32,7 @@
           </div>
         </div>
 
-        <!-- Desktop Cart Section -->
+        <!-- Desktop Cart Section - Keep responsive utilities inline for proper mobile/desktop visibility toggle -->
         <div class="right-icons hidden md:flex">
           <!-- Cart Dropdown -->
           <button id="cartDropdownButton" class="cart-button">
@@ -54,8 +55,13 @@
                 <% @cart.cart_items.each do |item| %>
                     <li class="cart-item">
                       <div class="cart-item-details">
-                        <p class="cart-item-name"><%= item.name %></p>
-                        <p class="cart-item-price"><%= to_dollars(item.price) %></p>
+                        <p class="cart-item-name"><%= item.name %> × <%= item.quantity %></p>
+                        <p class="cart-item-price">
+                          <%= to_dollars(item.price * item.quantity) %>
+                          <% if item.quantity > 1 %>
+                            <span style="color: #6b7280; margin-left: 0.5rem;">(<%= to_dollars(item.price) %> each)</span>
+                          <% end %>
+                        </p>
                       </div>
                       <%= button_to '×', item, method: :delete, class: 'remove-button-small' %>
                     </li>
@@ -92,11 +98,10 @@
           </div>
         </div>
 
-        <!-- Mobile Nav Items (Search + Right Icons) -->
+        <!-- Mobile Nav Items (Search + Right Icons) - Keep responsive utilities inline for proper mobile/desktop visibility toggle -->
         <div class="mobile-nav-items md:hidden">
-          <!-- Mobile Search Section -->
+          <!-- Search Icon -->
           <div class="search-section">
-            <!-- Search Icon Button (Mobile) -->
             <button id="searchToggleButton" class="search-toggle-button">
               <svg class="search-icon" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z"></path>
@@ -104,17 +109,17 @@
             </button>
           </div>
 
-          <!-- Mobile Right Side Icons -->
+          <!-- Bag & Hamburger Menu Icons -->
           <div class="right-icons">
-          <!-- Mobile Cart Dropdown -->
-          <button id="cartDropdownButtonMobile" class="cart-button">
-            <!-- Shopping Cart Icon -->
-            <svg class="cart-icon" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 10.5V6a3.75 3.75 0 10-7.5 0v4.5m11.356-1.993l1.263 12c.07.665-.45 1.243-1.119 1.243H4.25a1.125 1.125 0 01-1.12-1.243l1.264-12A1.125 1.125 0 015.513 7.5h12.974c.576 0 1.059.435 1.119.993zM8.625 10.5a.375.375 0 11-.75 0 .375.375 0 01.75 0zm7.5 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z"></path>
-            </svg>
-            <!-- Cart Badge -->
-            <span class="cart-badge"><%= @cart.cart_items.count %></span>
-          </button>
+            <!-- Mobile Cart Dropdown -->
+            <button id="cartDropdownButtonMobile" class="cart-button">
+              <!-- Shopping Cart Icon -->
+              <svg class="cart-icon" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 10.5V6a3.75 3.75 0 10-7.5 0v4.5m11.356-1.993l1.263 12c.07.665-.45 1.243-1.119 1.243H4.25a1.125 1.125 0 01-1.12-1.243l1.264-12A1.125 1.125 0 015.513 7.5h12.974c.576 0 1.059.435 1.119.993zM8.625 10.5a.375.375 0 11-.75 0 .375.375 0 01.75 0zm7.5 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z"></path>
+              </svg>
+              <!-- Cart Badge -->
+              <span class="cart-badge"><%= @cart.cart_items.count %></span>
+            </button>
 
           <!-- Mobile Dropdown Menu -->
           <div id="cartDropdownMobile" class="cart-dropdown">
@@ -162,16 +167,15 @@
                 </div>
               <% end %>
             </div>
-          </div>
 
-          <!-- Mobile Menu Button -->
-          <button data-collapse-toggle="navbar-default" type="button" class="mobile-menu-button">
-            <span class="sr-only">Open main menu</span>
-            <svg class="mobile-menu-icon" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"></path>
-            </svg>
-          </button>
-        </div>
+            <!-- Mobile Menu Button -->
+            <button data-collapse-toggle="navbar-default" type="button" class="mobile-menu-button">
+              <span class="sr-only">Open main menu</span>
+              <svg class="mobile-menu-icon" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"></path>
+              </svg>
+            </button>
+          </div>
         </div> <!-- End mobile-nav-items -->
         
         <!-- Search Dropdown (Mobile) - Moved outside search-section -->
@@ -179,12 +183,46 @@
           <div id="searchbox" class="search-container"></div>
           <div id="hits" class="search-results"></div>
         </div>
-        </div> <!-- End header-container -->
-      </header>
+      </div> <!-- End header-container -->
+    </header>
     <main<%= ' class="has-flash-messages"'.html_safe if flash.any? %>>
       <%= render partial: "layouts/public/flash_alert" %>
       <%= yield %>
     </main>
+
+    <footer class="site-footer">
+      <div class="footer-container">
+        <div class="footer-content">
+          <!-- Navigation Links -->
+          <div class="footer-section">
+            <h3 class="footer-section-title">Explore</h3>
+            <ul class="footer-nav">
+              <li><%= link_to 'Products', products_path, class: 'footer-link' %></li>
+              <li><%= link_to 'Our Farms', our_farms_path, class: 'footer-link' %></li>
+              <li><%= link_to 'Learn', learn_path, class: 'footer-link' %></li>
+              <li><%= link_to 'Contact', contact_path, class: 'footer-link' %></li>
+              <li><%= link_to 'Gallery', gallery_path, class: 'footer-link' %></li>
+            </ul>
+          </div>
+
+          <!-- Social Links -->
+          <div class="footer-section">
+            <h3 class="footer-section-title">Follow Us</h3>
+            <div class="footer-social-icons">
+              <%= social_icon(:facebook, "https://facebook.com/siemprevivaoils") %>
+              <%= social_icon(:instagram, "https://instagram.com/siemprevivaulja") %>
+            </div>
+          </div>
+        </div>
+
+        <!-- Copyright -->
+        <div class="footer-bottom">
+          <p class="footer-copyright">
+            &copy; <%= Date.current.year %> Siempreviva. All rights reserved.
+          </p>
+        </div>
+      </div>
+    </footer>
   </body>
 </html>
 
@@ -200,14 +238,14 @@
     indexName: 'products_index',
     searchClient,
     searchFunction(helper) {
-      // only search if the query is not empty
+      // Only search if the query is not empty
       if (helper.state.query.trim() === '') {
-        // hide hits container if query is empty
+        // Hide hits container if query is empty
         document.querySelector('#hits').style.display = 'none';
         document.querySelector('#hits-desktop').style.display = 'none';
         return;
       }
-      // show hits container and search
+      // Show hits container and search
       document.querySelector('#hits').style.display = '';
       document.querySelector('#hits-desktop').style.display = '';
       helper.search();
@@ -263,7 +301,7 @@
     })
   ]);
 
-  // hide hits on initial load
+  // Hide hits on initial load
   document.addEventListener('DOMContentLoaded', function() {
     document.querySelector('#hits').style.display = 'none';
     document.querySelector('#hits-desktop').style.display = 'none';
@@ -272,35 +310,26 @@
     const searchButton = document.getElementById('searchToggleButton');
     const searchDropdown = document.getElementById('searchDropdown');
 
-    // Initially hide search dropdown
-    if (searchDropdown) {
-      searchDropdown.style.display = 'none';
-    }
-
     if (searchButton && searchDropdown) {
       searchButton.addEventListener('click', function(e) {
         e.preventDefault();
+        searchDropdown.classList.toggle('show');
 
-        // Toggle display
-        if (searchDropdown.style.display === 'none' || searchDropdown.style.display === '') {
-          searchDropdown.style.display = 'block';
-          
-          // Auto-focus the search input on mobile for better UX
+        // Auto-focus the search input on mobile for better UX
+        if (searchDropdown.classList.contains('show')) {
           setTimeout(() => {
             const searchInput = searchDropdown.querySelector('.ais-SearchBox-input');
             if (searchInput && window.innerWidth <= 768) {
               searchInput.focus();
             }
           }, 100);
-        } else {
-          searchDropdown.style.display = 'none';
         }
       });
 
       // Close dropdown when clicking outside
       document.addEventListener('click', function(e) {
         if (!searchButton.contains(e.target) && !searchDropdown.contains(e.target)) {
-          searchDropdown.style.display = 'none';
+          searchDropdown.classList.remove('show');
         }
       });
     }

@@ -1,0 +1,37 @@
+<%# Quantity Selector Component - Flowbite Style %>
+<%# Usage: <%= render 'shared/quantity_selector',
+#            input_id: 'quantity-input',
+#            initial_value: 1,
+#            min_value: 1,
+#            field_name: 'cart_item[quantity]' (optional, defaults to nil for use with form builders) %>
+
+<% input_id ||= "quantity-input-#{SecureRandom.uuid}" %>
+<% initial_value ||= 1 %>
+<% min_value ||= 1 %>
+<% field_name ||= nil %>
+
+<div class="relative flex items-center max-w-[8rem]">
+  <button type="button"
+          data-input-counter-decrement="<%= input_id %>"
+          class="quantity-button">
+    <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 2">
+      <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 1h16"/>
+    </svg>
+  </button>
+
+  <input type="number"
+         id="<%= input_id %>"
+         <% if field_name.present? %>name="<%= field_name %>"<% end %>
+         value="<%= initial_value %>"
+         min="<%= min_value %>"
+         data-input-counter
+         class="text-center text-sm block w-full" />
+
+  <button type="button"
+          data-input-counter-increment="<%= input_id %>"
+          class="quantity-button">
+    <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 18">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 1v16M1 9h16"/>
+    </svg>
+  </button>
+</div>

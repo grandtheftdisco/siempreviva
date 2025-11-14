@@ -39,7 +39,19 @@ Refactoring CSS architecture to use Tailwind v4 `@theme` directive with componen
 - Replaced inline Tailwind utilities in product partials
 - Organized products.css with clear section structure
 
-**Details:** [`sessions/session_2_product_views.md`](./sessions/session_2_product_views.md)
+---
+
+### ⏳ Session 2b: Marketing Views CSS Refactoring (NEXT)
+**Status:** Ready to start (branching off Session 2a)
+**Branch:** `amanda/css-refactor-session-2b` (based on `amanda/css-refactor-session-2a`)
+**Focus:** Refactor marketing page styling to use component classes from Session 1
+
+**Approach:**
+- Start by branching off Session 2a (russian doll branching)
+- When Session 2a merges to main, rebase Session 2b onto main
+- Focus on marketing views: home, contact, gallery, learn, our_farms
+
+**Details:** [`sessions/session_2b_marketing_views.md`](./sessions/session_2b_marketing_views.md)
 
 ---
 
@@ -102,6 +114,14 @@ Refactoring CSS architecture to use Tailwind v4 `@theme` directive with componen
 
 **Why it's last:**
 Throughout Sessions 2-4, we intentionally left `!important` declarations in place to avoid scope creep. Session 5 addresses this technical debt systematically once all CSS files are refactored.
+
+**Details:** [`sessions/session_5_specificity_cleanup.md`](./sessions/session_5_specificity_cleanup.md)
+
+---
+
+### 🔧 Session 5: CSS Specificity & !important Cleanup (FUTURE)
+**When:** After Sessions 2a/2b complete
+**Focus:** Remove !important hacks, fix CSS specificity issues, establish proper architecture
 
 **Details:** [`sessions/session_5_specificity_cleanup.md`](./sessions/session_5_specificity_cleanup.md)
 
