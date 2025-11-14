@@ -46,7 +46,7 @@ class ProductControllerTest < ActionDispatch::IntegrationTest
     get product_path(product.id)
     assert_response :success
     # Additional images grid should NOT render
-    assert_select "div.grid.grid-cols-2", count: 0
+    assert_select "[data-secondary-image-grid]", count: 0
   end
 
   # Product with 5+ images should render additional image grid
@@ -70,7 +70,7 @@ class ProductControllerTest < ActionDispatch::IntegrationTest
     get product_path(product.id)
     assert_response :success
     # Additional images grid should render
-    assert_select "div.grid.grid-cols-2", count: 1
+    assert_select "[data-secondary-image-grid]", count: 1
   end
 
   test "product with missing or empty description shows fallback text" do
