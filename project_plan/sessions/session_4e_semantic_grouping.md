@@ -1,8 +1,18 @@
 # Session 4E: Apply Semantic Grouping Pattern Across All CSS Files
 
-**Status:** 🎯 Planned - Optional Enhancement
-**Branch:** `css-refactor/session-4e-semantic-grouping`
-**Base:** `main` (after Sessions 3 and 4A merge)
+**⚠️ THIS SESSION HAS BEEN MOVED**
+
+**This session is now Session 5B** due to project priority changes. Specificity cleanup must happen before semantic grouping to avoid reorganizing code twice.
+
+**📁 See the updated plan:** [`session_5b_semantic_grouping.md`](./session_5b_semantic_grouping.md)
+
+---
+
+## Original Plan (Preserved for Reference)
+
+**Status:** ⏸️ Deferred - Now Session 5B
+**Branch:** TBD (was `css-refactor/session-4e-semantic-grouping`)
+**Base:** `main` (after Sessions 3, 4A-4D, and 5A complete)
 
 ---
 

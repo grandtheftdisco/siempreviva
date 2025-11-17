@@ -1,8 +1,9 @@
 # Siempreviva CSS Refactoring Project
 
-**Status:** Sessions 1, 2a, 3 Complete ✅ | Session 4A In Progress 🎯
+**Status:** Sessions 1-4D Complete ✅ | Session 5A Ready to Begin 🎯
 **Started:** October 21, 2025
-**Current Branch:** `css-refactor/session-4a-view-migrations`
+**Current Branch:** `css-refactor/session-5-plan-update`
+**Last Updated:** November 17, 2025
 
 ---
 
@@ -73,57 +74,91 @@ Refactoring CSS architecture to use Tailwind v4 `@theme` directive with componen
 
 ---
 
-### 🎯 Session 4: Legacy Views Migration & CSS Cleanup (IN PROGRESS - 4 Part Series)
-**Started:** November 6, 2025
+### ✅ Session 4: Legacy Views Migration & CSS Cleanup (COMPLETE - 4 Part Series)
+**Completed:** November 14, 2025 (all PRs merged)
 **Strategy:** Split into 4 independent PRs for manageable reviews
 
-**Session 4A: View Migrations & Legacy Code Removal** (IN PROGRESS)
-- **Branch:** `css-refactor/session-4a-view-migrations`
-- **Status:** In progress
+**Session 4A: View Migrations & Legacy Code Removal** ✅
+- **Branch:** `css-refactor/session-4a-view-migrations` (merged)
 - **Focus:** Audit views for inline styles, migrate cart/checkout views, remove backward-compatibility code
 - **Details:** [`sessions/session_4a_view_migrations.md`](./sessions/session_4a_view_migrations.md)
 
-**Session 4B: cart.css Refactoring** (Upcoming)
-- **Branch:** `css-refactor/session-4b-cart-css`
-- **Focus:** Convert cart.css to @apply with sv-colors
+**Session 4B: cart.css Refactoring** ✅
+- **Branch:** `css-refactor/session-4b-cart-css` (merged)
+- **Focus:** Convert cart.css to @apply with sv-colors, modularize into 4 files
 - **Details:** [`sessions/session_4b_cart_css.md`](./sessions/session_4b_cart_css.md)
 
-**Session 4C: checkouts.css Refactoring** (Upcoming)
-- **Branch:** `css-refactor/session-4c-checkouts-css`
+**Session 4C: checkouts.css Refactoring** ✅
+- **Branch:** `css-refactor/session-4c-checkouts-css` (merged)
 - **Focus:** Convert checkouts.css to @apply with sv-colors
 - **Details:** [`sessions/session_4c_checkouts_css.md`](./sessions/session_4c_checkouts_css.md)
 
-**Session 4D: email.css + search.css Refactoring** (Upcoming)
-- **Branch:** `css-refactor/session-4d-email-search`
+**Session 4D: email.css + search.css Refactoring** ✅
+- **Branch:** `css-refactor/session-4d-email-search` (merged)
 - **Focus:** Convert email.css and search.css to @apply with sv-colors
 - **Details:** [`sessions/session_4d_email_search_css.md`](./sessions/session_4d_email_search_css.md)
 
 ---
 
-### 🔮 Session 5: Specificity Cleanup & !important Removal (FUTURE)
-**When:** After Session 4 complete
-**Estimated Time:** 2-3 hours
-**Focus:** Remove all `!important` declarations by fixing underlying CSS specificity issues
+### 🎯 Session 5A: Specificity Cleanup & Critical Foundation Fixes (NEXT)
+**Status:** Ready to begin
+**Estimated Time:** 12-15 hours (2-3 days)
+**Branch:** TBD
+**Focus:** Fix critical blocking issues before styling remaining views
 
 **Scope:**
-- Audit all `!important` declarations across codebase
-- Analyze root causes of specificity conflicts
-- Fix specificity issues systematically
-- Convert vanilla CSS to @apply where appropriate
-- Thorough testing across all breakpoints and browsers
+- Fix color palette conflicts (duplicate sv-purple-600, sv-purple-25 vs -50)
+- Remove layout.css legacy :root block and duplicate selectors
+- Convert generic Tailwind colors to sv-colors (11 instances)
+- Convert rgba() colors to Tailwind opacity modifiers (9 instances)
+- Reduce critical !important declarations (~250 in cart components)
+- Convert `background: transparent` to `@apply bg-transparent` (19 instances)
+- Comprehensive testing across all breakpoints
 
-**Why it's last:**
-Throughout Sessions 2-4, we intentionally left `!important` declarations in place to avoid scope creep. Session 5 addresses this technical debt systematically once all CSS files are refactored.
+**Why this is next:**
+These are blocking issues that must be fixed before styling marketing views, mailers, and admin dashboard. Provides clean foundation for remaining development.
 
-**Details:** [`sessions/session_5_specificity_cleanup.md`](./sessions/session_5_specificity_cleanup.md)
+**Details:** [`sessions/session_5a_specificity_cleanup.md`](./sessions/session_5a_specificity_cleanup.md)
 
 ---
 
-### 🔧 Session 5: CSS Specificity & !important Cleanup (FUTURE)
-**When:** After Sessions 2a/2b complete
-**Focus:** Remove !important hacks, fix CSS specificity issues, establish proper architecture
+### ⏸️ Session 5B: Semantic Grouping Retroactive Pass (DEFERRED)
+**Status:** Deferred until post-MVP
+**Estimated Time:** 4-5 hours
+**Focus:** Apply semantic grouping pattern to remaining CSS files
 
-**Details:** [`sessions/session_5_specificity_cleanup.md`](./sessions/session_5_specificity_cleanup.md)
+**Scope:**
+- layout.css (after 5A cleanup)
+- header.css
+- footer.css
+- navigation.css
+- products.css
+
+**Why deferred:**
+Semantic grouping is code organization, not functionality. Most critical files already have it applied (components, forms, cart files, checkouts, email, search). Remaining files are simpler and this work can be done post-MVP or incrementally.
+
+**Details:** [`sessions/session_5b_semantic_grouping.md`](./sessions/session_5b_semantic_grouping.md)
+*(Note: This was originally planned as Session 4E)*
+
+---
+
+### 🔮 Session 5C: Code Quality Audit (DEFERRED)
+**Status:** Deferred until post-MVP
+**Estimated Time:** 5-6 hours
+**Focus:** Nice-to-have improvements and polish
+
+**Scope:**
+- Scan for unused CSS classes
+- Manual line-by-line vanilla CSS audit
+- Review remaining !important in search/navigation (Algolia/external overrides)
+- Simplify complex selectors (11-chain :not() selector)
+- Consolidate button naming (btn-submit vs submit-btn)
+- Address non-critical TODOs
+
+**Why deferred:**
+These are polish items that don't block development. Can be done during maintenance phase or incrementally as we touch these files.
+
+**Details:** [`sessions/session_5c_code_quality.md`](./sessions/session_5c_code_quality.md)
 
 ---
 
@@ -181,10 +216,13 @@ Throughout Sessions 2-4, we intentionally left `!important` declarations in plac
 | `navigation.css` | ✅ Created | Mobile menu and navigation (157 lines) |
 | `footer.css` | ✅ Created | Site footer and social links (96 lines) |
 | `products.css` | ✅ Refactored | Product cards and sections with @apply |
-| `cart.css` | 🎯 Session 4B | Refactoring in progress |
-| `checkouts.css` | 🎯 Session 4C | Refactoring in progress |
-| `email.css` | 🎯 Session 4D | Refactoring in progress |
-| `search.css` | 🎯 Session 4D | Refactoring in progress |
+| `cart_dropdown.css` | ✅ Refactored | Split from cart.css in Session 4B |
+| `cart_page.css` | ✅ Refactored | Split from cart.css in Session 4B |
+| `cart_actions.css` | ✅ Refactored | Split from cart.css in Session 4B |
+| `cart_empty.css` | ✅ Refactored | Split from cart.css in Session 4B |
+| `checkouts.css` | ✅ Refactored | Completed in Session 4C |
+| `email.css` | ✅ Refactored | Completed in Session 4D |
+| `search.css` | ✅ Refactored | Completed in Session 4D |
 | `components.scss` | ⚠️ Deprecated | No longer imported |
 
 ---
@@ -202,26 +240,16 @@ Throughout Sessions 2-4, we intentionally left `!important` declarations in plac
 
 ---
 
-## Session 4 Branching Strategy
+## Next Steps
 
-Session 4 uses a **mixed strategy** to allow parallel work while maintaining clean git history:
+### Immediate (This Week):
+- **Session 5A:** Critical foundation cleanup (12-15 hours over 2-3 days)
+- Begin styling marketing views with clean CSS foundation
 
-```
-main
-  ├─ css-refactor/session-4a-view-migrations (DO FIRST)
-  ├─ css-refactor/session-4b-cart-css (independent)
-  ├─ css-refactor/session-4c-checkouts-css (independent)
-  └─ css-refactor/session-4d-email-search (independent)
-```
-
-**Key Points:**
-- 4A must be done first (changes views)
-- 4B, 4C, 4D branch from `main`, NOT from 4A
-- 4B, 4C, 4D can be worked on in parallel or any order
-- All can be reviewed/merged independently after 4A
-
-**See:** `SESSION_4_BRANCHING_STRATEGY.md` in root for detailed workflow
+### Post-MVP:
+- **Session 5B:** Semantic grouping retroactive pass (4-5 hours)
+- **Session 5C:** Code quality audit (5-6 hours)
 
 ---
 
-*Last Updated: November 6, 2025*
+*Last Updated: November 17, 2025*
