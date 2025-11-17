@@ -340,7 +340,7 @@
   @apply border border-sv-gray-300 rounded-2xl;
 
   /* Colors */
-  @apply bg-sv-purple-200 text-sv-gray-800;
+  @apply bg-sv-purple-25 text-sv-gray-800;
 }
 
 .ais-SearchBox-input:focus {

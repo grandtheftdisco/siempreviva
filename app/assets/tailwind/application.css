@@ -8,15 +8,14 @@
   --font-serif: 'Playfair Display', serif;
 
   /* Purple shades */
-  --color-sv-purple-25: #f8f2fb; /* TODO - find a home for this since this was originally named -50 */
+  --color-sv-purple-25: #f8f2fb;
   --color-sv-purple-50: #faf9fb;
   --color-sv-purple-100: #f0e8f5;
   --color-sv-purple-200: #e6d3ec;
   --color-sv-purple-300: #d9cee0;
   --color-sv-purple-400: #c5aace;
-  --color-sv-purple-600: #9c27b0;
   --color-sv-purple-500: #a687b0;
-  --color-sv-purple-600: #866492; /* TODO conflicting value 9c27b0 - saving until we can figure it out in dev */
+  --color-sv-purple-600: #9c27b0;
   --color-sv-purple-700: #674174;
   --color-sv-purple-800: #6a1b9a;
 
