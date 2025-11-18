@@ -275,7 +275,7 @@
   border-radius: 9999px !important;
 
   /* Colors */
-  background: #dc3545 !important; /* Bootstrap danger red - could convert to sv-danger (#b9626b) */
+  background: #dc3545 !important; /* Bootstrap danger red - could convert to tailwind rose-400 */
   border: none !important;
   color: #ffffff !important;
 

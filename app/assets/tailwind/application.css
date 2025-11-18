@@ -24,16 +24,6 @@
   --color-sv-green-400: #8ba170;
   --color-sv-green-600: #698b3f;
   --color-sv-green-700: #4f5e3c;
-
-  /* Pink shades */
-  --color-sv-pink-200: #f7c8d8;
-  --color-sv-pink-400: #f4a5c2;
-
-  /* Semantic/Action colors */
-  --color-sv-success: #5a8664;
-  --color-sv-warning: #c19550;
-  --color-sv-danger: #b9626b;
-  --color-sv-info: #6b9fa8;
 }
 
 /* Import components file (pure CSS with Tailwind @apply) */

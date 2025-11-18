@@ -140,8 +140,8 @@
   @apply no-underline text-center;
 
   /* Colors */
-  @apply bg-sv-danger border-sv-danger text-white;
-  @apply hover:bg-sv-danger/90 hover:border-sv-danger/90;
+  @apply bg-rose-400 border-rose-400 text-white;
+  @apply hover:bg-rose-400/90 hover:border-rose-400/90;
 
   /* Typography */
   @apply font-medium font-sans;
