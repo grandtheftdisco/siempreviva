@@ -166,6 +166,46 @@
 /* As of Session 4A, all views use new component classes (.btn-primary, .btn-green, etc.) */
 /* Legacy classes removed: .checkout-btn, .continue-shopping-btn, .cart-checkout-btn, .quantity-update-btn-visible, .remove-item-btn-red */
 
+/* ===== QUANTITY SELECTOR COMPONENTS ===== */
+
+/* Quantity selector input field */
+.item-quantity-input {
+  /* Sizing & spacing */
+  @apply text-center text-sm block w-12 h-8;
+
+  /* Border & shape */
+  @apply bg-sv-gray-100 rounded-none;
+  @apply border border-sv-gray-200;
+
+  /* Remove number input spinners */
+  @apply [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none;
+}
+
+/* Base button for quantity selector */
+.item-quantity-select-btn {
+  /* Sizing & layout */
+  @apply w-8 h-8 flex items-center justify-center;
+
+  /* Border & shape */
+  @apply border border-sv-gray-200;
+
+  /* Colors */
+  @apply bg-sv-gray-200 hover:bg-sv-gray-300;
+  @apply text-sv-gray-700;
+
+  /* Interactive & animation */
+  @apply transition-colors duration-200;
+}
+
+/* Rounding variants */
+.round-left {
+  @apply rounded-l-2xl;
+}
+
+.round-right {
+  @apply rounded-r-2xl;
+}
+
 /* ===== FLASH NOTIFICATION STYLES ===== */
 
 .flash-notification {
