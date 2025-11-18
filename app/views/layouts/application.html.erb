@@ -44,63 +44,7 @@
             <span class="cart-badge"><%= @cart.cart_items.count %></span>
           </button>
 
-          <!-- Dropdown Menu -->
-          <div id="cartDropdown" class="cart-dropdown">
-            <div class="cart-dropdown-header">
-              <h3 class="cart-dropdown-title">my bag</h3>
-            </div>
-            <div class="cart-dropdown-content">
-              <% if @cart.cart_items.count > 0 %>
-                <ul class="cart-items-list">
-                <% @cart.cart_items.each do |item| %>
-                    <li class="cart-item">
-                      <div class="cart-item-details">
-                        <p class="cart-item-name"><%= item.name %> × <%= item.quantity %></p>
-                        <p class="cart-item-price">
-                          <%= to_dollars(item.price * item.quantity) %>
-                          <% if item.quantity > 1 %>
-                            <span class="cart-item-price-detail">(<%= to_dollars(item.price) %> each)</span>
-                          <% end %>
-                        </p>
-                      </div>
-                      <%= button_to '×',
-                          item,
-                          method: :delete,
-                          class: 'remove-button-small' %>
-                    </li>
-                <% end %>
-                </ul>
-                <div class="cart-dropdown-footer">
-                  <div class="cart-summary">
-                    <div class="cart-summary-line">
-                      <span>subtotal</span>
-                      <span><%= to_dollars(@cart.total) %></span>
-                    </div>
-                    <div class="cart-summary-line">
-                      <span>shipping</span>
-                      <span>(calculated at checkout)</span>
-                      <!-- TODO - add shipping in here once customer has selected it; ie if they begin checkout process & then abandon cart -->
-                    </div>
-                    <div class="cart-summary-line cart-total">
-                      <span>total (before shipping)</span>
-                      <span><%= to_dollars(@cart.total) %></span>
-                    </div>
-                  </div>
-                  <div class="cart-actions">
-                    <a href="<%= cart_path %>" class="btn-purple-secondary">view cart</a>
-                    <a href="<%= new_checkout_path %>" class="btn-green">checkout</a>
-                  </div>
-                </div>
-              <% else %>
-                <div class="empty-cart-div">
-                  <p class="empty-cart-text">Your cart is empty.</p>
-                  <%= link_to 'shop now',
-                      products_path,
-                      class: 'btn-purple' %>
-                </div>
-              <% end %>
-            </div>
-          </div>
+          <%= render 'shared/cart_dropdown' %>
         </div>
 
         <!-- Mobile Nav Items (Search + Right Icons) - Keep responsive utilities inline for proper mobile/desktop visibility toggle -->
@@ -133,57 +77,7 @@
               <span class="cart-badge"><%= @cart.cart_items.count %></span>
             </button>
 
-          <!-- Mobile Cart Dropdown Div -->
-          <div id="cartDropdownMobile" class="cart-dropdown">
-            <div class="cart-dropdown-header">
-              <h3 class="cart-dropdown-title">my bag</h3>
-            </div>
-            <div class="cart-dropdown-content">
-              <% if @cart.cart_items.count > 0 %>
-                <ul class="cart-items-list">
-                <% @cart.cart_items.each do |item| %>
-                    <li class="cart-item">
-                      <div class="cart-item-details">
-                        <p class="cart-item-name"><%= item.name %></p>
-                        <p class="cart-item-price"><%= to_dollars(item.price) %></p>
-                      </div>
-                      <%= button_to '×',
-                          item,
-                          method: :delete,
-                          class: 'remove-button-small' %>
-                    </li>
-                <% end %>
-                </ul>
-                <div class="cart-dropdown-footer">
-                  <div class="cart-summary">
-                    <div class="cart-summary-line">
-                      <span>subtotal</span>
-                      <span><%= to_dollars(@cart.total) %></span>
-                    </div>
-                    <div class="cart-summary-line">
-                      <span>shipping</span>
-                      <span>(calculated at checkout)</span>
-                      <!-- TODO - add shipping in here once customer has selected it; ie if they begin checkout process & then abandon cart -->
-                    </div>
-                    <div class="cart-summary-line cart-total">
-                      <span>total</span>
-                      <span><%= to_dollars(@cart.total) %></span>
-                    </div>
-                  </div>
-                  <div class="cart-actions">
-                    <a href="<%= cart_path %>" class="btn-purple-secondary">view cart</a>
-                    <a href="<%= new_checkout_path %>" class="btn-green">checkout</a>
-                  </div>
-                </div>
-              <% else %>
-                <div class="empty-cart-div">
-                  <p class="empty-cart-text">Your cart is empty.</p>
-                  <%= link_to 'shop now', products_path, class: 'btn-purple' %>
-                </div>
-              <% end %>
-            </div>
-
-          </div>
+          <%= render 'shared/cart_dropdown', dropdown_id: 'cartDropdownMobile' %>
         </div> <!-- End mobile-nav-items -->
         
         <!-- Search Dropdown (Mobile) - Moved outside search-section -->
