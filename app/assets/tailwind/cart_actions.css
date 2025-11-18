@@ -329,7 +329,7 @@
   @apply w-4 h-4;
 
   /* Behavior */
-  stroke: currentColor;
+  @apply stroke-current;
 }
 
 .cart-item-actions {

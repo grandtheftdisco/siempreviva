@@ -304,9 +304,7 @@
   @apply font-serif;
 
   /* Behavior */
-  @apply overflow-y-auto;
-
-  max-height: calc(100vh - 10.5rem);
+  @apply overflow-y-auto max-h-[calc(100vh-10.5rem)];
 }
 
 /* Disable sticky on mobile since layout becomes single column */

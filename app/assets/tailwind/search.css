@@ -364,7 +364,7 @@
   @apply py-1 px-2;
 
   /* Layout & positioning */
-  @apply absolute flex items-center justify-center right-[3rem];
+  @apply absolute flex items-center justify-center right-12;
 
   /* Border & shape */
   @apply border-none outline-none;

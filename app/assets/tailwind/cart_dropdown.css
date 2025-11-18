@@ -78,10 +78,7 @@
   @apply shadow-lg;
 
   /* Behavior */
-  @apply overflow-hidden hidden;
-
-  top: calc(100% + 0.5rem);
-  max-height: 70vh;
+  @apply overflow-hidden hidden top-[calc(100%+0.5rem)] max-h-[70vh];
 }
 
 .cart-dropdown.show {
@@ -276,10 +273,7 @@
 
 .cart-dropdown .cart-item .cart-item-remove {
   /* Layout & positioning */
-  @apply absolute top-1/2 right-0;
-
-  /* Transform */
-  transform: translateY(-50%);
+  @apply absolute top-1/2 right-0 -translate-y-1/2;
 }
 
 /* Mobile spacing for responsive cart items */
@@ -351,7 +345,7 @@
   border: none !important;
 
   /* Transform */
-  transform: translateY(-50%);
+  @apply -translate-y-1/2;
 }
 
 /* Cart page remove button styling to match dropdown */
@@ -372,7 +366,7 @@
   border: none !important;
 
   /* Transform */
-  transform: translateY(-50%);
+  @apply -translate-y-1/2;
 }
 
 .cart-item-header input[type="submit"].remove-button-small {
