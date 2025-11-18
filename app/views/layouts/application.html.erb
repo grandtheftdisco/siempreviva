@@ -59,7 +59,7 @@
                         <p class="cart-item-price">
                           <%= to_dollars(item.price * item.quantity) %>
                           <% if item.quantity > 1 %>
-                            <span style="color: #6b7280; margin-left: 0.5rem;">(<%= to_dollars(item.price) %> each)</span>
+                            <span class="cart-item-price-detail">(<%= to_dollars(item.price) %> each)</span>
                           <% end %>
                         </p>
                       </div>

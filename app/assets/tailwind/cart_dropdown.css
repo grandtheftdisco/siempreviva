@@ -258,6 +258,14 @@
   @apply flex-1 mr-4;
 }
 
+.cart-item-price-detail {
+  /* Colors */
+  @apply text-neutral-500;
+
+  /* Spacing */
+  @apply ml-2;
+}
+
 .cart-dropdown .cart-item .cart-item-name {
   /* Sizing & spacing */
   @apply mb-0.5;
