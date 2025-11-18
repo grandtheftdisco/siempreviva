@@ -143,11 +143,11 @@ main {
 
 /* ===== GENERAL LINK STYLES ===== */
 
-a:not(.logo-link):not(.breadcrumb-link):not(.ais-Hits-item a):not(.remove-button-small):not(.social-icon):not(.shop-products-btn) {
+a:not(.logo-link):not(.breadcrumb-link):not(.ais-Hits-item a):not(.remove-button-small):not(.btn-primary):not(.social-icon):not(.shop-products-btn) {
   @apply text-sv-gray-800 no-underline transition-colors duration-200;
 }
 
-a:not(.logo-link):not(.breadcrumb-link):not(.ais-Hits-item a):not(.remove-button-small):not(.social-icon):not(.shop-products-btn):hover {
+a:not(.logo-link):not(.breadcrumb-link):not(.ais-Hits-item a):not(.remove-button-small):not(.btn-primary):not(.social-icon):not(.shop-products-btn):hover {
   @apply text-sv-purple-700 cursor-pointer;
 }
 

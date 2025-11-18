@@ -52,7 +52,7 @@
   @apply font-medium font-sans;
 }
 
-/* Secondary button - purple filled */
+/* TODO - fix this to be a green button /// Secondary button - purple filled */
 .btn-secondary {
   /* Spacing & shape */
   @apply px-6 py-3 rounded-full;
