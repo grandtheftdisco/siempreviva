@@ -99,11 +99,11 @@ main {
 
 /* ===== GENERAL LINK STYLES ===== */
 
-a:not(.logo-link):not(.breadcrumb-link):not(.ais-Hits-item a):not(.remove-button-small):not(.btn-primary):not(.btn-green):not(.btn-purple):not(.btn-purple-secondary):not(.social-icon):not(.shop-products-btn) {
+a:not(.logo-link):not(.breadcrumb-link):not(.ais-Hits-item a):not(.remove-button-small):not(.btn-primary):not(.btn-purple):not(.btn-purple-secondary):not(.btn-purple-light):not(.btn-secondary):not(.btn-green):not(.btn-green-light):not(.btn-danger):not(.social-icon):not(.shop-products-btn):not(.cart-view-button) {
   @apply text-sv-gray-800 no-underline transition-colors duration-200;
 }
 
-a:not(.logo-link):not(.breadcrumb-link):not(.ais-Hits-item a):not(.remove-button-small):not(.btn-primary):not(.btn-green):not(.btn-purple):not(.btn-purple-secondary):not(.social-icon):not(.shop-products-btn):hover {
+a:not(.logo-link):not(.breadcrumb-link):not(.ais-Hits-item a):not(.remove-button-small):not(.btn-primary):not(.btn-purple):not(.btn-purple-secondary):not(.btn-purple-light):not(.btn-secondary):not(.btn-green):not(.btn-green-light):not(.btn-danger):not(.social-icon):not(.shop-products-btn):not(.cart-view-button):hover {
   @apply text-sv-purple-700 cursor-pointer;
 }
 

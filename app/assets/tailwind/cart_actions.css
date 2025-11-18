@@ -167,6 +167,7 @@
   /* Colors - using sv-green-600 (or 400?) */
   background: #8ba170 !important;
   border-color: #8ba170 !important;
+  @apply text-white;
 }
 
 /* Improved quantity section layout */
