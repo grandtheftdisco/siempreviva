@@ -324,7 +324,7 @@
   color: #ffffff !important;
 }
 
-.trash-icon {
+.remove-cart-item-btn {
   /* Sizing */
   @apply w-4 h-4;
 

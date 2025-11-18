@@ -219,7 +219,7 @@
     z-index: 10 !important;
   }
 
-  .cart-items .cart-page-item .trash-icon {
+  .cart-items .cart-page-item .remove-cart-item-btn {
     width: 0.75rem !important;
     height: 0.75rem !important;
   }
