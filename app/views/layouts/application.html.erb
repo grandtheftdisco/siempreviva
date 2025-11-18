@@ -63,7 +63,10 @@
                           <% end %>
                         </p>
                       </div>
-                      <%= button_to '×', item, method: :delete, class: 'remove-button-small' %>
+                      <%= button_to '×',
+                          item,
+                          method: :delete,
+                          class: 'remove-button-small' %>
                     </li>
                 <% end %>
                 </ul>
@@ -91,7 +94,9 @@
               <% else %>
                 <div class="empty-cart-div">
                   <p class="empty-cart-text">Your cart is empty.</p>
-                  <%= link_to 'shop now', products_path, class: 'btn-purple' %>
+                  <%= link_to 'shop now',
+                      products_path,
+                      class: 'btn-purple' %>
                 </div>
               <% end %>
             </div>
@@ -142,7 +147,10 @@
                         <p class="cart-item-name"><%= item.name %></p>
                         <p class="cart-item-price"><%= to_dollars(item.price) %></p>
                       </div>
-                      <%= button_to '×', item, method: :delete, class: 'remove-button-small' %>
+                      <%= button_to '×',
+                          item,
+                          method: :delete,
+                          class: 'remove-button-small' %>
                     </li>
                 <% end %>
                 </ul>

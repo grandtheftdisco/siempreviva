@@ -41,4 +41,4 @@
 @import "./cart_empty.css";    /* Empty cart state (shared) */
 @import "./forms.css";         /* Form inputs, labels, validation styles */
 @import "./checkouts.css";     /* Checkout success page styles */
-@import "./products.css";
+@import "./products.css";      /* Product index & page styles */
