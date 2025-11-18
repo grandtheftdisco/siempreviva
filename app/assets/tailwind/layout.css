@@ -1,7 +1,7 @@
 /* Layout Stylesheet */
 /* Contains global layout structure and link styles */
 
-/* TODO - move these to components.css */
+/* TODO - session 5b - move these to components.css */
 /* Small circular remove button component - used in cart dropdown and mobile cart */
 .remove-button-small {
   background: #c5aace !important;
