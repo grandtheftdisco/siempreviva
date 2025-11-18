@@ -174,8 +174,8 @@
   @apply text-center text-sm block w-12 h-8;
 
   /* Border & shape */
-  @apply bg-sv-gray-100 rounded-none;
-  @apply border border-sv-gray-200;
+  @apply bg-neutral-100 rounded-none;
+  @apply border border-neutral-200;
 
   /* Remove number input spinners */
   @apply [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none;
@@ -187,11 +187,11 @@
   @apply w-8 h-8 flex items-center justify-center;
 
   /* Border & shape */
-  @apply border border-sv-gray-200;
+  @apply border border-neutral-200;
 
   /* Colors */
-  @apply bg-sv-gray-200 hover:bg-sv-gray-300;
-  @apply text-sv-gray-700;
+  @apply bg-neutral-200 hover:bg-neutral-300;
+  @apply text-neutral-700;
 
   /* Interactive & animation */
   @apply transition-colors duration-200 cursor-pointer;
@@ -274,7 +274,7 @@ form input.form-input-small,
 .page-title {
   /* Typography */
   font-family: 'Playfair Display', serif;
-  @apply text-4xl font-light text-sv-gray-800;
+  @apply text-4xl font-light text-neutral-800;
   letter-spacing: 0.05em;
 
   /* Spacing & alignment */

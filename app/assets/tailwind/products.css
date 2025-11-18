@@ -152,11 +152,11 @@
 }
 
 .product-name {
-  @apply text-xl font-serif font-medium text-sv-gray-800 mb-0 leading-tight flex-1 text-left overflow-hidden text-ellipsis;
+  @apply text-xl font-serif font-medium text-neutral-800 mb-0 leading-tight flex-1 text-left overflow-hidden text-ellipsis;
 }
 
 .product-price {
-  @apply text-sm text-sv-gray-800 font-light text-right whitespace-nowrap;
+  @apply text-sm text-neutral-800 font-light text-right whitespace-nowrap;
 }
 
 /* ===== PRODUCT SHOW PAGE ===== */
@@ -170,7 +170,7 @@
 }
 
 .breadcrumb-nav {
-  @apply font-serif text-sm text-sv-gray-500;
+  @apply font-serif text-sm text-neutral-500;
 }
 
 .breadcrumb-link {
@@ -190,7 +190,7 @@
 }
 
 .product-show-title {
-  @apply font-serif text-5xl font-light text-sv-gray-800 mb-4 tracking-wider p-0 text-left;
+  @apply font-serif text-5xl font-light text-neutral-800 mb-4 tracking-wider p-0 text-left;
 }
 
 @media (max-width: 768px) {
@@ -206,7 +206,7 @@
 }
 
 .product-price-display {
-  @apply font-serif text-2xl text-center text-sv-gray-800;
+  @apply font-serif text-2xl text-center text-neutral-800;
 }
 
 @media (max-width: 400px) {
@@ -228,11 +228,11 @@
 }
 
 .product-description {
-  @apply text-sv-gray-500 leading-relaxed;
+  @apply text-neutral-500 leading-relaxed;
 }
 
 .product-image-wrapper {
-  @apply flex items-center justify-center bg-sv-gray-100 rounded-lg;
+  @apply flex items-center justify-center bg-neutral-100 rounded-lg;
 }
 
 .product-image-mobile {
@@ -262,11 +262,11 @@
 }
 
 .product-image-placeholder {
-  @apply w-full h-96 bg-sv-gray-200 rounded-lg flex items-center justify-center;
+  @apply w-full h-96 bg-neutral-200 rounded-lg flex items-center justify-center;
 }
 
 .product-image-placeholder-text {
-  @apply text-sv-gray-500;
+  @apply text-neutral-500;
 }
 
 .product-features-container {
@@ -274,7 +274,7 @@
 }
 
 .product-features-list {
-  @apply list-disc list-inside text-sv-gray-500 space-y-1 text-sm;
+  @apply list-disc list-inside text-neutral-500 space-y-1 text-sm;
 }
 
 .additional-images-grid {
@@ -282,11 +282,11 @@
 }
 
 .additional-image-placeholder {
-  @apply bg-sv-gray-200 h-40 lg:h-32 rounded-lg flex items-center justify-center;
+  @apply bg-neutral-200 h-40 lg:h-32 rounded-lg flex items-center justify-center;
 }
 
 .additional-image-placeholder-text {
-  @apply text-sv-gray-500 text-sm;
+  @apply text-neutral-500 text-sm;
 }
 
 .section-heading {
@@ -294,7 +294,7 @@
 }
 
 .product-section-divider {
-  @apply border-t border-sv-gray-500;
+  @apply border-t border-neutral-500;
 }
 
 /* ===== CROSS-SELLS SECTION ===== */
@@ -314,7 +314,7 @@
 }
 
 .cross-sell-card {
-  @apply relative bg-sv-gray-100 h-40 w-80 rounded-xl border-0 overflow-hidden flex items-end justify-start;
+  @apply relative bg-neutral-100 h-40 w-80 rounded-xl border-0 overflow-hidden flex items-end justify-start;
 }
 
 .cross-sell-card::after {
@@ -323,7 +323,7 @@
 }
 
 .cross-sell-card-placeholder {
-  @apply relative bg-sv-gray-200 h-40 w-80 rounded-lg overflow-hidden flex items-end justify-start p-4;
+  @apply relative bg-neutral-200 h-40 w-80 rounded-lg overflow-hidden flex items-end justify-start p-4;
 }
 
 .cross-sell-image {
@@ -331,11 +331,11 @@
 }
 
 .cross-sell-placeholder-text {
-  @apply absolute inset-0 flex items-center justify-center text-sv-gray-500 text-sm;
+  @apply absolute inset-0 flex items-center justify-center text-neutral-500 text-sm;
 }
 
 .cross-sell-title {
-  @apply relative z-10 font-serif text-xl font-medium text-sv-gray-800 text-left p-4;
+  @apply relative z-10 font-serif text-xl font-medium text-neutral-800 text-left p-4;
 }
 
 /* ===== SCROLL BEHAVIOR (MOBILE) ===== */

@@ -25,7 +25,7 @@
   @apply w-full px-3 py-2 rounded border;
 
   /* Colors */
-  @apply bg-sv-purple-100 border-sv-purple-200 text-sv-gray-800;
+  @apply bg-sv-purple-100 border-sv-purple-200 text-neutral-800;
 
   /* Focus states */
   @apply focus:outline-none focus:border-sv-purple-400 focus:ring-2 focus:ring-sv-purple-400/20;
@@ -43,7 +43,7 @@
   @apply resize-y;
 
   /* Colors */
-  @apply bg-sv-purple-100 border-sv-purple-200 text-sv-gray-800;
+  @apply bg-sv-purple-100 border-sv-purple-200 text-neutral-800;
 
   /* Focus states */
   @apply focus:outline-none focus:border-sv-purple-400 focus:ring-2 focus:ring-sv-purple-400/20;
@@ -67,7 +67,7 @@
   @apply w-full px-3 py-2 rounded border;
 
   /* Colors */
-  @apply border-sv-danger bg-red-50 text-sv-gray-800;
+  @apply border-sv-danger bg-red-50 text-neutral-800;
 
   /* Focus states */
   @apply focus:outline-none focus:border-sv-danger focus:ring-2 focus:ring-sv-danger/20;
@@ -82,7 +82,7 @@
   @apply w-full px-3 py-2 rounded border;
 
   /* Colors */
-  @apply border-sv-success bg-green-50 text-sv-gray-800;
+  @apply border-sv-success bg-green-50 text-neutral-800;
 
   /* Focus states */
   @apply focus:outline-none focus:border-sv-success focus:ring-2 focus:ring-sv-success/20;
@@ -158,7 +158,7 @@
   @apply block mb-2;
 
   /* Typography */
-  @apply font-medium text-sv-gray-800 font-sans;
+  @apply font-medium text-neutral-800 font-sans;
 }
 
 .form-group input,
@@ -168,7 +168,7 @@
   @apply px-4 py-3;
 
   /* Border & shape */
-  @apply border border-sv-gray-400 rounded;
+  @apply border border-neutral-400 rounded;
 
   /* Animation & typography */
   @apply transition-all duration-150 font-sans;
@@ -188,7 +188,7 @@
   @apply px-4 py-3 pr-10;
 
   /* Border & shape */
-  @apply border border-sv-gray-400 rounded;
+  @apply border border-neutral-400 rounded;
 
   /* Interactive & animation */
   @apply cursor-pointer transition-all duration-150;
@@ -266,7 +266,7 @@
 
 .form-help-text {
   /* Typography & layout */
-  @apply text-sm mt-1 block text-sv-gray-500;
+  @apply text-sm mt-1 block text-neutral-500;
 }
 
 /* ===== INLINE FORMS ===== */
@@ -317,7 +317,7 @@
 
 fieldset {
   /* Border & spacing */
-  @apply border border-sv-gray-400 rounded-lg p-6 mb-6;
+  @apply border border-neutral-400 rounded-lg p-6 mb-6;
 }
 
 legend {

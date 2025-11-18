@@ -5,7 +5,7 @@ body {
   @apply m-0 p-0;
 
   /* Colors */
-  @apply text-sv-gray-800 bg-white;
+  @apply text-neutral-800 bg-white;
 
   /* Typography */
   @apply font-sans;
@@ -19,7 +19,7 @@ body {
   @apply mx-auto;
 
   /* Border & shape */
-  @apply border border-sv-gray-300;
+  @apply border border-neutral-300;
 }
 
 /* ===== EMAIL HEADER ===== */

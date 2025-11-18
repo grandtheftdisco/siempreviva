@@ -104,14 +104,14 @@
   @apply border-none rounded-lg;
 
   /* Colors */
-  @apply bg-transparent text-sv-gray-500;
+  @apply bg-transparent text-neutral-500;
 
   /* Interactive & animation */
   @apply transition-colors duration-200 cursor-pointer;
 }
 
 .search-toggle-button:hover {
-  @apply bg-sv-gray-100;
+  @apply bg-neutral-100;
 }
 
 .search-icon {
@@ -338,10 +338,10 @@
   padding-right: 80px; /* Space for submit button */
 
   /* Border & shape */
-  @apply border border-sv-gray-300 rounded-2xl;
+  @apply border border-neutral-300 rounded-2xl;
 
   /* Colors */
-  @apply bg-sv-purple-25 text-sv-gray-800;
+  @apply bg-sv-purple-25 text-neutral-800;
 }
 
 .ais-SearchBox-input:focus {
@@ -396,14 +396,14 @@
   @apply border-none outline-none;
 
   /* Colors */
-  @apply bg-transparent text-sv-gray-500;
+  @apply bg-transparent text-neutral-500;
 
   /* Interactive & animation */
   @apply cursor-pointer transition-colors duration-200;
 }
 
 .ais-SearchBox-reset:hover {
-  @apply text-sv-gray-700;
+  @apply text-neutral-700;
 }
 
 .ais-SearchBox-resetIcon {
@@ -419,7 +419,7 @@
   width: 250px;
 
   /* Border & shape */
-  @apply border border-sv-gray-300 rounded-lg shadow-lg;
+  @apply border border-neutral-300 rounded-lg shadow-lg;
 
   /* Colors */
   @apply bg-sv-purple-200;
@@ -436,7 +436,7 @@
   @apply rounded-2xl;
 
   /* Colors */
-  @apply text-sv-gray-800 no-underline;
+  @apply text-neutral-800 no-underline;
 
   /* Interactive & animation */
   @apply transition-colors duration-200 cursor-pointer;
@@ -447,7 +447,7 @@
   @apply rounded-2xl;
 
   /* Colors */
-  @apply bg-sv-purple-400 text-sv-gray-800;
+  @apply bg-sv-purple-400 text-neutral-800;
 }
 
 .ais-Highlight-highlighted {

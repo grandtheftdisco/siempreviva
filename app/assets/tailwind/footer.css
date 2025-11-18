@@ -66,7 +66,7 @@
 }
 
 .footer-link {
-  @apply text-sv-gray-500 no-underline font-sans text-[0.95rem];
+  @apply text-neutral-500 no-underline font-sans text-[0.95rem];
   @apply transition-colors duration-200;
 }
 
@@ -84,7 +84,7 @@
 }
 
 .footer-copyright {
-  @apply text-sv-gray-500 text-sm font-sans m-0;
+  @apply text-neutral-500 text-sm font-sans m-0;
 }
 
 @media (min-width: 768px) {

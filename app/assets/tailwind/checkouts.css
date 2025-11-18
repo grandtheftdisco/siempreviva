@@ -127,7 +127,7 @@ div[style*="background-color: rgba(247, 242, 237"] {
   @apply rounded-lg;
 
   /* Colors */
-  @apply bg-sv-gray-300;
+  @apply bg-neutral-300;
 }
 
 @media (max-height: 700px) {
@@ -139,7 +139,7 @@ div[style*="background-color: rgba(247, 242, 237"] {
 
 .post-checkout-container .image-placeholder span {
   /* Colors */
-  @apply text-sv-gray-500;
+  @apply text-neutral-500;
 
   /* Typography */
   @apply text-sm;

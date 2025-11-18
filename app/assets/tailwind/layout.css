@@ -1,6 +1,7 @@
 /* Layout Stylesheet */
 /* Contains global layout structure and link styles */
 
+/* TODO - move these to components.css */
 /* Small circular remove button component - used in cart dropdown and mobile cart */
 .remove-button-small {
   background: #c5aace !important;
@@ -100,7 +101,7 @@ main {
 /* ===== GENERAL LINK STYLES ===== */
 
 a:not(.logo-link):not(.breadcrumb-link):not(.ais-Hits-item a):not(.remove-button-small):not(.btn-primary):not(.btn-purple):not(.btn-purple-secondary):not(.btn-purple-light):not(.btn-secondary):not(.btn-green):not(.btn-green-light):not(.btn-danger):not(.social-icon):not(.shop-products-btn):not(.cart-view-button) {
-  @apply text-sv-gray-800 no-underline transition-colors duration-200;
+  @apply text-neutral-800 no-underline transition-colors duration-200;
 }
 
 a:not(.logo-link):not(.breadcrumb-link):not(.ais-Hits-item a):not(.remove-button-small):not(.btn-primary):not(.btn-purple):not(.btn-purple-secondary):not(.btn-purple-light):not(.btn-secondary):not(.btn-green):not(.btn-green-light):not(.btn-danger):not(.social-icon):not(.shop-products-btn):not(.cart-view-button):hover {
