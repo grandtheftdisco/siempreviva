@@ -45,7 +45,7 @@
   @apply no-underline text-center;
 
   /* Colors */
-  @apply bg-sv-purple-400 border-sv-purple-400 text-white;
+  @apply bg-sv-purple-500 border-sv-purple-500 text-white;
   @apply hover:bg-sv-purple-700 hover:border-sv-purple-700;
 
   /* Typography */
