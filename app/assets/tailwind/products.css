@@ -165,6 +165,19 @@
   @apply max-w-6xl mx-auto px-4 pt-4 pb-8 lg:py-8;
 }
 
+/* Product longform layout containers */
+.section-one-mobile-container {
+  @apply lg:hidden relative;
+}
+
+.add-to-bag-mobile-form {
+  @apply flex justify-center;
+}
+
+.product-content-grid {
+  @apply grid grid-cols-1 lg:grid-cols-2;
+}
+
 .product-add-to-cart-form {
   @apply w-auto m-0 p-0 max-w-none;
 }

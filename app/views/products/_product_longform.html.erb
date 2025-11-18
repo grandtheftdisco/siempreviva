@@ -1,6 +1,6 @@
 <div id="section-1" class="lg:contents">
   <!-- Section 1 (MOBILE) -->
-  <div class="lg:hidden relative -mx-4 -mt-4 px-4 pt-4 pb-8 md:mx-auto md:mt-0 md:max-w-2xl">
+  <div class="section-one-mobile-container -mx-4 -mt-4 px-4 pt-4 pb-8 md:mx-auto md:mt-0 md:max-w-2xl">
     <!-- Mobile Header - Breadcrumb & Title -->
     <div class="mb-4 max-[400px]:mb-2">
       <!-- Breadcrumb Navigation -->
@@ -45,7 +45,7 @@
       </div>
 
       <!-- Add to Bag (mobile only, non-floating) -->
-      <%= form_for :cart_item, url: cart_items_path, method: :post, class: "flex justify-center mx-auto" do |f| %>
+      <%= form_for :cart_item, url: cart_items_path, method: :post, class: "add-to-bag-mobile-form mx-auto" do |f| %>
         <%= hidden_field_tag 'cart_item[stripe_product_id]', @product.id %>
         <%= f.submit "Add to Bag", class: "btn-purple btn-large w-full max-w-md" %>
       <% end %>
@@ -55,7 +55,7 @@
   <!-- Section 1 (DESKTOP) -->
   <div class="hidden lg:block">
     <!-- Product Content Container -->
-    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-12 max-[400px]:mb-6">
+    <div class="product-content-grid gap-8 mb-12 max-[400px]:mb-6">
       <!-- Left Column - Product Image -->
       <div class="flex items-stretch">
         <div class="product-image-wrapper w-full">
