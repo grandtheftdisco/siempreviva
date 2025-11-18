@@ -16,7 +16,7 @@
 }
 
 .mobile-menu-button:focus {
-  outline: none;
+  @apply outline-none;
 }
 
 @media (min-width: 768px) {

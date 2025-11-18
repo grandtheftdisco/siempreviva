@@ -273,9 +273,7 @@ form input.form-input-small,
 
 .page-title {
   /* Typography */
-  font-family: 'Playfair Display', serif;
-  @apply text-4xl font-light text-neutral-800;
-  letter-spacing: 0.05em;
+  @apply font-serif text-4xl font-light text-neutral-800 tracking-wider;
 
   /* Spacing & alignment */
   @apply mb-2 p-4 text-center;
@@ -295,10 +293,10 @@ form input.form-input-small,
   @apply rounded-3xl transition-all duration-200 ease-in-out;
 
   /* Visual effects */
-  filter: saturate(0.5);
+  @apply saturate-50;
 }
 
 .formatted-image:hover {
   /* Visual effects */
-  filter: saturate(0.7);
+  @apply saturate-[0.7];
 }

@@ -15,8 +15,7 @@ body {
 
 .email-container {
   /* Sizing & spacing */
-  max-width: 600px; /* Email-specific width, no Tailwind equivalent */
-  @apply mx-auto;
+  @apply max-w-150 mx-auto;
 
   /* Border & shape */
   @apply border border-neutral-300;

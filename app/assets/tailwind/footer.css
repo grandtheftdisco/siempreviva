@@ -4,8 +4,7 @@
 /* TODO - on Contact form branch, move these to their own stylesheet */
 
 .social-links {
-  @apply my-6 text-center pt-6;
-  border-top: 1px solid theme('colors.sv-purple-300');
+  @apply my-6 text-center pt-6 border-t border-sv-purple-300;
 }
 
 .social-links p {
