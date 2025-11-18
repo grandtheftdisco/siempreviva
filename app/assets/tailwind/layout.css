@@ -23,13 +23,13 @@
 
 /* ===== GENERAL LINK HOVER STYLES ===== */
 /* Apply consistent hover behavior to all links, excluding specific components */
-a:not(.logo-link):not(.breadcrumb-link):not(.ais-Hits-item a):not(.remove-button-small):not(.social-icon):not(.shop-products-btn):not(.btn-primary):not(.btn-secondary):not(.btn-green):not(.btn-green-light):not(.btn-danger):not(.cart-view-button) {
+a:not(.logo-link):not(.breadcrumb-link):not(.ais-Hits-item a):not(.remove-button-small):not(.social-icon):not(.shop-products-btn):not(.btn-primary):not(.btn-purple):not(.btn-purple-secondary):not(.btn-secondary):not(.btn-green):not(.btn-green-light):not(.btn-danger):not(.cart-view-button) {
   color: var(--dark-text);
   text-decoration: none;
   transition: color 0.2s ease;
 }
 
-a:not(.logo-link):not(.breadcrumb-link):not(.ais-Hits-item a):not(.remove-button-small):not(.social-icon):not(.shop-products-btn):not(.btn-primary):not(.btn-secondary):not(.btn-green):not(.btn-green-light):not(.btn-danger):not(.cart-view-button):hover {
+a:not(.logo-link):not(.breadcrumb-link):not(.ais-Hits-item a):not(.remove-button-small):not(.social-icon):not(.shop-products-btn):not(.btn-primary):not(.btn-purple):not(.btn-purple-secondary):not(.btn-secondary):not(.btn-green):not(.btn-green-light):not(.btn-danger):not(.cart-view-button):hover {
   color: var(--primary-purple);
   cursor: pointer;
 }
@@ -143,11 +143,11 @@ main {
 
 /* ===== GENERAL LINK STYLES ===== */
 
-a:not(.logo-link):not(.breadcrumb-link):not(.ais-Hits-item a):not(.remove-button-small):not(.btn-primary):not(.social-icon):not(.shop-products-btn) {
+a:not(.logo-link):not(.breadcrumb-link):not(.ais-Hits-item a):not(.remove-button-small):not(.btn-primary):not(.btn-green):not(.btn-purple):not(.btn-purple-secondary):not(.social-icon):not(.shop-products-btn) {
   @apply text-sv-gray-800 no-underline transition-colors duration-200;
 }
 
-a:not(.logo-link):not(.breadcrumb-link):not(.ais-Hits-item a):not(.remove-button-small):not(.btn-primary):not(.social-icon):not(.shop-products-btn):hover {
+a:not(.logo-link):not(.breadcrumb-link):not(.ais-Hits-item a):not(.remove-button-small):not(.btn-primary):not(.btn-green):not(.btn-purple):not(.btn-purple-secondary):not(.social-icon):not(.shop-products-btn):hover {
   @apply text-sv-purple-700 cursor-pointer;
 }
 

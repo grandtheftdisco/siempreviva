@@ -43,7 +43,7 @@
       <!-- Add to Bag (mobile only, non-floating) -->
       <%= form_for :cart_item, url: cart_items_path, method: :post, class: "flex justify-center mx-auto" do |f| %>
         <%= hidden_field_tag 'cart_item[stripe_product_id]', @product.id %>
-        <%= f.submit "Add to Bag", class: "btn-primary btn-large w-full max-w-md" %>
+        <%= f.submit "Add to Bag", class: "btn-purple btn-large w-full max-w-md" %>
       <% end %>
     </div>
   </div>
@@ -103,7 +103,7 @@
             <%= render 'shared/quantity_selector', input_id: 'quantity-input', initial_value: 1, min_value: 1, field_name: 'cart_item[quantity]' %>
           </div>
           <div>
-            <%= f.submit "Add to Bag", id: "add-to-bag-button", class: "btn-primary" %>
+            <%= f.submit "Add to Bag", id: "add-to-bag-button", class: "btn-purple" %>
           </div>
         <% end %>
       </div>

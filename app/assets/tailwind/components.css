@@ -31,7 +31,7 @@
 }
 
 /* Primary button - purple filled */
-.btn-primary {
+.btn-purple {
   /* Spacing & shape */
   @apply px-6 py-3 rounded-full;
 
@@ -52,8 +52,8 @@
   @apply font-medium font-sans;
 }
 
-/* TODO - fix this to be a green button /// Secondary button - purple filled */
-.btn-secondary {
+/* Secondary button - purple filled */
+.btn-purple-secondary {
   /* Spacing & shape */
   @apply px-6 py-3 rounded-full;
 
@@ -67,8 +67,8 @@
   @apply no-underline text-center;
 
   /* Colors */
-  @apply bg-transparent text-sv-purple-400 border-sv-green-600;
-  @apply hover:bg-sv-green-700 hover:text-white hover:border-sv-green-700;
+  @apply bg-sv-purple-500 text-white border-sv-purple-500;
+  @apply hover:bg-sv-purple-400 hover:text-white hover:border-sv-purple-400;
 
   /* Typography */
   @apply font-medium font-sans;
@@ -89,8 +89,8 @@
   @apply no-underline text-center;
 
   /* Colors */
-  @apply bg-sv-green-700 border-sv-green-700 text-white;
-  @apply hover:bg-sv-green-600 hover:border-sv-green-600;
+  @apply bg-sv-green-600 border-sv-green-600 text-white;
+  @apply hover:bg-sv-green-400 hover:border-sv-green-400;
 
   /* Typography */
   @apply font-medium font-sans;
