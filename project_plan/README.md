@@ -1,9 +1,9 @@
 # Siempreviva CSS Refactoring Project
 
-**Status:** Sessions 1-4D Complete ✅ | Session 5A Ready to Begin 🎯
+**Status:** Sessions 1-5A Complete ✅ | Ready for New Feature Work 🎯
 **Started:** October 21, 2025
-**Current Branch:** `css-refactor/session-5-plan-update`
-**Last Updated:** November 17, 2025
+**Current Branch:** `main`
+**Last Updated:** November 18, 2025
 
 ---
 
@@ -100,45 +100,56 @@ Refactoring CSS architecture to use Tailwind v4 `@theme` directive with componen
 
 ---
 
-### 🎯 Session 5A: Specificity Cleanup & Critical Foundation Fixes (NEXT)
-**Status:** Ready to begin
-**Estimated Time:** 12-15 hours (2-3 days)
-**Branch:** TBD
-**Focus:** Fix critical blocking issues before styling remaining views
+### ✅ Session 5A: Critical Foundation Fixes & CSS Modernization (COMPLETE)
+**Status:** Complete - merged to main
+**Actual Time:** 12-15 hours over 2 days
+**Branch:** `css-refactor/session-5a-specificity-cleanup` (merged)
+**Focus:** Fixed critical blocking issues and comprehensive Tailwind modernization
 
-**Scope:**
-- Fix color palette conflicts (duplicate sv-purple-600, sv-purple-25 vs -50)
-- Remove layout.css legacy :root block and duplicate selectors
-- Convert generic Tailwind colors to sv-colors (11 instances)
-- Convert rgba() colors to Tailwind opacity modifiers (9 instances)
-- Reduce critical !important declarations (~250 in cart components)
-- Convert `background: transparent` to `@apply bg-transparent` (19 instances)
-- Comprehensive testing across all breakpoints
+**Completed:**
+- ✅ Fixed color palette conflicts (duplicate sv-purple-600, wrong search input color)
+- ✅ Fixed mobile UI bugs (hamburger menu, search dropdown)
+- ✅ Fixed button styling inconsistencies across cart flows
+- ✅ Removed layout.css legacy :root block and duplicate selectors
+- ✅ Converted generic Tailwind colors to neutral-* (11 instances)
+- ✅ Converted rgba() colors to Tailwind opacity modifiers (9 instances)
+- ✅ Converted 30+ vanilla CSS properties to Tailwind utilities
+- ✅ Standardized spacing units (arbitrary rem → numeric scale)
+- ✅ Extracted reusable view components (cart dropdown partial)
+- ✅ Comprehensive testing across all breakpoints
 
-**Why this is next:**
-These are blocking issues that must be fixed before styling marketing views, mailers, and admin dashboard. Provides clean foundation for remaining development.
+**Deferred to Session 5B:**
+- !important reduction (317 declarations remain)
+- Inline `!` prefix audit in views
 
 **Details:** [`sessions/session_5a_specificity_cleanup.md`](./sessions/session_5a_specificity_cleanup.md)
 
 ---
 
-### ⏸️ Session 5B: Semantic Grouping Retroactive Pass (DEFERRED)
+### ⏸️ Session 5B: Specificity Cleanup & Semantic Grouping (DEFERRED)
 **Status:** Deferred until post-MVP
-**Estimated Time:** 4-5 hours
-**Focus:** Apply semantic grouping pattern to remaining CSS files
+**Estimated Time:** 10-13 hours
+**Focus:** !important reduction + semantic grouping retroactive pass
 
 **Scope:**
-- layout.css (after 5A cleanup)
-- header.css
-- footer.css
-- navigation.css
-- products.css
+
+**Part 1: !important Reduction (6-8 hours)**
+- Audit inline `!` prefix usage in views (NEW)
+- Reduce !important in cart components by ~50% (317 → ~160 declarations)
+- layout.css: .remove-button-small cleanup (23 declarations)
+- cart_dropdown.css: remove button overrides (26 declarations)
+- cart_page.css: mobile overrides (40+ declarations)
+- Review search.css & navigation.css for justified vs. hack usage
+
+**Part 2: Semantic Grouping (4-5 hours)**
+- Apply semantic grouping to remaining files (layout, header, footer, navigation, products)
+- Ensure consistent category names and ordering across all files
 
 **Why deferred:**
-Semantic grouping is code organization, not functionality. Most critical files already have it applied (components, forms, cart files, checkouts, email, search). Remaining files are simpler and this work can be done post-MVP or incrementally.
+Both are code quality improvements that don't block feature development. !important reduction is risky work better done when not under timeline pressure. Most files already have semantic grouping from Sessions 3-4D.
 
 **Details:** [`sessions/session_5b_semantic_grouping.md`](./sessions/session_5b_semantic_grouping.md)
-*(Note: This was originally planned as Session 4E)*
+*(Note: Combines original Session 4E plan + Session 5A Phase 3 deferred work)*
 
 ---
 
@@ -242,14 +253,16 @@ These are polish items that don't block development. Can be done during maintena
 
 ## Next Steps
 
-### Immediate (This Week):
-- **Session 5A:** Critical foundation cleanup (12-15 hours over 2-3 days)
-- Begin styling marketing views with clean CSS foundation
+### Immediate:
+- ✅ Session 5A complete - clean CSS foundation established
+- 🎯 Begin styling marketing views (home, about, contact, gallery)
+- 🎯 Continue mailer styling refinements
+- 🎯 Begin admin dashboard styling
 
 ### Post-MVP:
-- **Session 5B:** Semantic grouping retroactive pass (4-5 hours)
+- **Session 5B:** !important reduction + semantic grouping (10-13 hours)
 - **Session 5C:** Code quality audit (5-6 hours)
 
 ---
 
-*Last Updated: November 17, 2025*
+*Last Updated: November 18, 2025*
