@@ -14,10 +14,10 @@
       <h3 class="product-name"><%= cart_item.name.titleize %></h3>
       
       <!-- Remove Button - Top Right -->
-      <%= button_to cart_item_path(cart_item), 
+      <%= button_to cart_item_path(cart_item),
           method: :delete,
-          class: 'remove-button-small',
-          data: { 
+          class: 'cart-remove-button absolute top-1/2 right-0 -translate-y-1/2 z-10 inline-flex items-center justify-center',
+          data: {
             confirm: 'Remove this item from your cart?'
           },
           title: 'Remove item',
