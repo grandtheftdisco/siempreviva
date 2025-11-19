@@ -50,7 +50,7 @@
   @apply text-xl font-normal tracking-wide;
 
   /* Colors */
-  @apply text-sv-gray-900;
+  @apply text-neutral-900;
 }
 
 .product-price {
@@ -61,7 +61,7 @@
   @apply text-lg;
 
   /* Colors */
-  @apply text-sv-gray-600;
+  @apply text-neutral-600;
 }
 
 .quantity-controls {
@@ -91,7 +91,7 @@
   @apply text-sm font-medium;
 
   /* Colors */
-  @apply text-sv-gray-600;
+  @apply text-neutral-600;
 
   /* Behavior */
   @apply flex-shrink-0;
@@ -138,7 +138,7 @@
   @apply border-sv-purple-700;
 
   /* Visual effects */
-  box-shadow: 0 0 0 2px rgba(103, 65, 116, 0.2);
+  @apply shadow-[0_0_0_2px] shadow-purple-700/20;
 
   /* Behavior */
   @apply outline-none;
@@ -167,6 +167,7 @@
   /* Colors - using sv-green-600 (or 400?) */
   background: #8ba170 !important;
   border-color: #8ba170 !important;
+  @apply text-white;
 }
 
 /* Improved quantity section layout */
@@ -175,7 +176,7 @@
   @apply mt-4 pt-3 w-full;
 
   /* Border */
-  @apply border-t border-sv-gray-100;
+  @apply border-t border-neutral-100;
 
   /* Layout & positioning */
   @apply relative;
@@ -244,7 +245,7 @@
   @apply text-sm font-medium;
 
   /* Colors */
-  @apply text-sv-gray-900;
+  @apply text-neutral-900;
 }
 
 .item-bottom-row {
@@ -274,7 +275,7 @@
   border-radius: 9999px !important;
 
   /* Colors */
-  background: #dc3545 !important; /* Bootstrap danger red - could convert to sv-danger (#b9626b) */
+  background: #dc3545 !important; /* Bootstrap danger red - could convert to tailwind rose-400 */
   border: none !important;
   color: #ffffff !important;
 
@@ -323,12 +324,12 @@
   color: #ffffff !important;
 }
 
-.trash-icon {
+.remove-cart-item-btn {
   /* Sizing */
   @apply w-4 h-4;
 
   /* Behavior */
-  stroke: currentColor;
+  @apply stroke-current;
 }
 
 .cart-item-actions {

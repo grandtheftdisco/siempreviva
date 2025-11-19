@@ -42,7 +42,7 @@
   @apply text-4xl font-light tracking-wider;
 
   /* Colors */
-  @apply text-sv-gray-900;
+  @apply text-neutral-900;
 }
 
 .cart-breadcrumb {
@@ -53,12 +53,12 @@
   @apply text-sm;
 
   /* Colors */
-  @apply text-sv-gray-600;
+  @apply text-neutral-600;
 }
 
 .cart-breadcrumb .breadcrumb-link {
   /* Colors */
-  @apply text-sv-gray-600 no-underline;
+  @apply text-neutral-600 no-underline;
 }
 
 .cart-breadcrumb .breadcrumb-link:hover {
@@ -187,7 +187,7 @@
     font-size: 0.85rem !important;
     margin: 0 !important;
     display: inline !important; /* Inline to appear on same line as name */
-    color: #6c757d !important; /* sv-gray-600 - preserved with !important for Session 5 */
+    color: #6c757d !important; /* neutral-600 - preserved with !important for Session 5 */
     font-weight: 500 !important;
   }
 
@@ -219,7 +219,7 @@
     z-index: 10 !important;
   }
 
-  .cart-items .cart-page-item .trash-icon {
+  .cart-items .cart-page-item .remove-cart-item-btn {
     width: 0.75rem !important;
     height: 0.75rem !important;
   }
@@ -304,9 +304,7 @@
   @apply font-serif;
 
   /* Behavior */
-  @apply overflow-y-auto;
-
-  max-height: calc(100vh - 10.5rem);
+  @apply overflow-y-auto max-h-[calc(100vh-10.5rem)];
 }
 
 /* Disable sticky on mobile since layout becomes single column */
@@ -335,7 +333,7 @@
   @apply text-xl font-normal tracking-wide font-serif;
 
   /* Colors */
-  @apply text-sv-gray-900;
+  @apply text-neutral-900;
 }
 
 .summary-line {
@@ -346,13 +344,13 @@
   @apply flex justify-between items-center;
 
   /* Border */
-  @apply border-b border-sv-gray-100;
+  @apply border-b border-neutral-100;
 
   /* Typography */
   @apply text-sm font-sans;
 
   /* Colors */
-  @apply text-sv-gray-600;
+  @apply text-neutral-600;
 }
 
 .summary-line:last-of-type {
@@ -365,13 +363,13 @@
   @apply mt-4 pt-4;
 
   /* Border */
-  @apply border-t-2 border-sv-gray-200;
+  @apply border-t-2 border-neutral-200;
 
   /* Typography */
   @apply text-lg font-semibold font-sans;
 
   /* Colors */
-  @apply text-sv-gray-900;
+  @apply text-neutral-900;
 }
 
 .cart-actions {

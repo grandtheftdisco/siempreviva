@@ -4,8 +4,7 @@
 /* TODO - on Contact form branch, move these to their own stylesheet */
 
 .social-links {
-  @apply my-6 text-center pt-6;
-  border-top: 1px solid theme('colors.sv-purple-300');
+  @apply my-6 text-center pt-6 border-t border-sv-purple-300;
 }
 
 .social-links p {
@@ -28,9 +27,8 @@
 /* ===== SITE FOOTER ===== */
 
 .site-footer {
-  @apply bg-sv-purple-100 mt-16 py-12 pb-8;
-  border-top: 1px solid rgba(103, 65, 116, 0.15);
-  box-shadow: 0 -1px 3px 0 rgba(103, 65, 116, 0.08);
+  @apply bg-sv-purple-100 mt-16 py-12 pb-8 border-t border-sv-purple-300/15;
+  @apply shadow-[0_-1px_3px_0] shadow-purple-700/[0.08];
 }
 
 .footer-container {
@@ -66,7 +64,7 @@
 }
 
 .footer-link {
-  @apply text-sv-gray-500 no-underline font-sans text-[0.95rem];
+  @apply text-neutral-500 no-underline font-sans text-[0.95rem];
   @apply transition-colors duration-200;
 }
 
@@ -79,12 +77,11 @@
 }
 
 .footer-bottom {
-  @apply text-center pt-6;
-  border-top: 1px solid rgba(103, 65, 116, 0.1);
+  @apply text-center pt-6 border-t border-sv-purple-700/10;
 }
 
 .footer-copyright {
-  @apply text-sv-gray-500 text-sm font-sans m-0;
+  @apply text-neutral-500 text-sm font-sans m-0;
 }
 
 @media (min-width: 768px) {

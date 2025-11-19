@@ -1,10 +1,10 @@
 # Session 4E: Apply Semantic Grouping Pattern Across All CSS Files
 
-**⚠️ THIS SESSION HAS BEEN MOVED**
+**⚠️ THIS FILE HAS BEEN ARCHIVED**
 
 **This session is now Session 5B** due to project priority changes. Specificity cleanup must happen before semantic grouping to avoid reorganizing code twice.
 
-**📁 See the updated plan:** [`session_5b_semantic_grouping.md`](./session_5b_semantic_grouping.md)
+**📁 See the updated plan:** [`session_5b_semantic_grouping.md`](../sessions/session_5b_semantic_grouping.md)
 
 ---
 

@@ -24,7 +24,7 @@
   @apply text-3xl font-light tracking-wide;
 
   /* Colors */
-  @apply text-sv-gray-900;
+  @apply text-neutral-900;
 }
 
 .empty-cart p {
@@ -32,7 +32,7 @@
   @apply mb-8 leading-relaxed;
 
   /* Colors */
-  @apply text-sv-gray-600;
+  @apply text-neutral-600;
 }
 
 .shop-products-btn {

@@ -1,9 +1,24 @@
+**⚠️ THIS FILE HAS BEEN ARCHIVED**
+
+This is the original Session 5 plan. After comprehensive audit (Nov 2025), this was restructured into three sessions:
+
+**📁 See the updated plans:**
+- **[Session 5A: Critical Foundation Fixes](../sessions/session_5a_specificity_cleanup.md)** - Current plan (12-15 hours)
+- **[Session 5B: Semantic Grouping](../sessions/session_5b_semantic_grouping.md)** - Deferred post-MVP
+- **[Session 5C: Code Quality Audit](../sessions/session_5c_code_quality.md)** - Deferred post-MVP
+
+**Reason for restructure:** Comprehensive audit revealed 317 !important declarations and multiple foundation issues. Original 2-3 hour estimate was unrealistic. Split into blocking work (5A) and polish work (5B/5C) to prioritize MVP timeline.
+
+---
+
+## Original Plan (Preserved for Reference)
+
 ❗might be some overlap in this file - will rewrite as needed later
 # Session 5: Specificity Cleanup & !important Removal
 
-**Status:** 🔮 FUTURE - After Session 4
+**Status:** 🗄️ ARCHIVED - Superseded by 5A/5B/5C
 **When:** After all CSS files refactored (Sessions 1-4 complete)
-**Estimated Time:** 2-3 hours
+**Estimated Time:** 2-3 hours (was unrealistic)
 **Branch:** `css-refactor/session-5` (when done)
 
 ---

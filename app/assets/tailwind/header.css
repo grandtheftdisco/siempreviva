@@ -7,9 +7,8 @@
 /* ===== HEADER STRUCTURE ===== */
 
 header {
-  @apply fixed top-0 left-0 right-0 z-[1000] bg-sv-purple-100;
-  border-bottom: 1px solid rgba(103, 65, 116, 0.15);
-  box-shadow: 0 1px 3px 0 rgba(103, 65, 116, 0.08);
+  @apply fixed top-0 left-0 right-0 z-[1000] bg-sv-purple-100 border-b border-sv-purple-300/15;
+  @apply shadow-[0_1px_3px_0] shadow-purple-700/[0.08];
 }
 
 .header-container {
@@ -78,7 +77,7 @@ header {
 }
 
 .logo-image {
-  @apply h-[7.5rem] w-auto flex-shrink-0;
+  @apply h-30 w-auto flex-shrink-0;
 }
 
 @media (max-width: 767px) {

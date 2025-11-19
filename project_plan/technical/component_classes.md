@@ -34,7 +34,7 @@ Quick reference for all available component classes created in Session 1.
 ```html
 <button class="btn-danger">Delete</button>
 ```
-- Red filled button (sv-danger)
+- Red filled button (rose-400)
 - Use for destructive actions
 
 ### Size Variants
@@ -98,7 +98,7 @@ Quick reference for all available component classes created in Session 1.
 ```html
 <input type="text" class="input-error" placeholder="Required field">
 ```
-- Red border (sv-danger)
+- Red border (rose-400)
 - Light red background
 - Use with error messages
 
@@ -106,7 +106,7 @@ Quick reference for all available component classes created in Session 1.
 ```html
 <input type="text" class="input-success" placeholder="Looks good!">
 ```
-- Green border (sv-success)
+- Green border (emerald-600)
 - Light green background
 - Use for validation feedback
 

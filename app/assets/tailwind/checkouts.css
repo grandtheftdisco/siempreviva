@@ -50,8 +50,7 @@ div[style*="background-color: rgba(247, 242, 237"] {
 /* Post checkout container */
 .post-checkout-container {
   /* Sizing & spacing */
-  @apply py-8 px-4;
-  min-height: fit-content;
+  @apply py-8 px-4 min-h-fit;
 
   /* Layout & positioning */
   @apply flex items-start justify-center;
@@ -127,7 +126,7 @@ div[style*="background-color: rgba(247, 242, 237"] {
   @apply rounded-lg;
 
   /* Colors */
-  @apply bg-sv-gray-300;
+  @apply bg-neutral-300;
 }
 
 @media (max-height: 700px) {
@@ -139,7 +138,7 @@ div[style*="background-color: rgba(247, 242, 237"] {
 
 .post-checkout-container .image-placeholder span {
   /* Colors */
-  @apply text-sv-gray-500;
+  @apply text-neutral-500;
 
   /* Typography */
   @apply text-sm;
@@ -194,10 +193,10 @@ div[style*="background-color: rgba(247, 242, 237"] {
   @apply transition-all duration-200;
 
   /* Visual effects */
-  filter: saturate(0.7);
+  @apply saturate-[0.7];
 }
 
 .formatted-image:hover {
   /* Visual effects */
-  filter: saturate(1);
+  @apply saturate-100;
 }

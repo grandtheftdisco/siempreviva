@@ -1,50 +1,7 @@
 /* Layout Stylesheet */
 /* Contains global layout structure and link styles */
 
-/* ===== CSS CUSTOM PROPERTIES (COLORS) ===== */
-:root {
-  --primary-purple: #674174;
-  --light-purple: #c5aace;
-  --button-purple: #e6d3ec;
-  --light-pink: #f7c8d8;
-  --medium-pink: #f4a5c2;
-  --light-bg: #f8f9fa;
-  --white-bg: #ffffff;
-  --dark-text: #2c3e50;
-  --medium-text: #6c757d;
-  --light-text: #adb5bd;
-  --success-green: #28a745;
-  --warning-orange: #fd7e14;
-  --danger-red: #dc3545;
-  --info-blue: #17a2b8;
-}
-
-/* ===== REUSABLE COMPONENTS ===== */
-
-/* ===== GENERAL LINK HOVER STYLES ===== */
-/* Apply consistent hover behavior to all links, excluding specific components */
-a:not(.logo-link):not(.breadcrumb-link):not(.ais-Hits-item a):not(.remove-button-small):not(.social-icon):not(.shop-products-btn):not(.btn-primary):not(.btn-secondary):not(.btn-green):not(.btn-green-light):not(.btn-danger):not(.cart-view-button) {
-  color: var(--dark-text);
-  text-decoration: none;
-  transition: color 0.2s ease;
-}
-
-a:not(.logo-link):not(.breadcrumb-link):not(.ais-Hits-item a):not(.remove-button-small):not(.social-icon):not(.shop-products-btn):not(.btn-primary):not(.btn-secondary):not(.btn-green):not(.btn-green-light):not(.btn-danger):not(.cart-view-button):hover {
-  color: var(--primary-purple);
-  cursor: pointer;
-}
-
-/* Navbar link hover styles for desktop */
-@media (min-width: 768px) {
-  .navbar-list li a {
-    transition: color 0.2s ease;
-  }
-
-  .navbar-list li a:hover {
-    color: var(--primary-purple);
-  }
-}
-
+/* TODO - session 5b - move these to components.css */
 /* Small circular remove button component - used in cart dropdown and mobile cart */
 .remove-button-small {
   background: #c5aace !important;
@@ -143,11 +100,11 @@ main {
 
 /* ===== GENERAL LINK STYLES ===== */
 
-a:not(.logo-link):not(.breadcrumb-link):not(.ais-Hits-item a):not(.remove-button-small):not(.social-icon):not(.shop-products-btn) {
-  @apply text-sv-gray-800 no-underline transition-colors duration-200;
+a:not(.logo-link):not(.breadcrumb-link):not(.ais-Hits-item a):not(.remove-button-small):not(.btn-primary):not(.btn-purple):not(.btn-purple-secondary):not(.btn-purple-light):not(.btn-secondary):not(.btn-green):not(.btn-green-light):not(.btn-danger):not(.social-icon):not(.shop-products-btn):not(.cart-view-button) {
+  @apply text-neutral-800 no-underline transition-colors duration-200;
 }
 
-a:not(.logo-link):not(.breadcrumb-link):not(.ais-Hits-item a):not(.remove-button-small):not(.social-icon):not(.shop-products-btn):hover {
+a:not(.logo-link):not(.breadcrumb-link):not(.ais-Hits-item a):not(.remove-button-small):not(.btn-primary):not(.btn-purple):not(.btn-purple-secondary):not(.btn-purple-light):not(.btn-secondary):not(.btn-green):not(.btn-green-light):not(.btn-danger):not(.social-icon):not(.shop-products-btn):not(.cart-view-button):hover {
   @apply text-sv-purple-700 cursor-pointer;
 }
 

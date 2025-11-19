@@ -1,11 +1,13 @@
 <div id="section-1" class="lg:contents">
   <!-- Section 1 (MOBILE) -->
-  <div class="lg:hidden relative -mx-4 -mt-4 px-4 pt-4 pb-8 md:mx-auto md:mt-0 md:max-w-2xl">
+  <div class="section-one-mobile-container -mx-4 -mt-4 px-4 pt-4 pb-8 md:mx-auto md:mt-0 md:max-w-2xl">
     <!-- Mobile Header - Breadcrumb & Title -->
     <div class="mb-4 max-[400px]:mb-2">
       <!-- Breadcrumb Navigation -->
       <nav class="breadcrumb-nav mb-4 max-[400px]:mb-2">
-        <%= link_to "essential oils", products_path, class: "breadcrumb-link" %>
+        <%= link_to "essential oils",
+            products_path,
+            class: "breadcrumb-link" %>
         <span class="breadcrumb-separator">></span>
         <span class="current-page"><%= format_product_name(@product.name) %></span>
       </nav>
@@ -18,7 +20,9 @@
     <div class="flex flex-col">
       <div class="product-image-wrapper mb-4">
         <% if @product.images.any? %>
-          <%= image_tag(@product.images.first, alt: @product.name.titleize, class: "product-image-mobile") %>
+          <%= image_tag(@product.images.first,
+              alt: @product.name.titleize,
+              class: "product-image-mobile") %>
         <% else %>
           <div class="product-image-placeholder">
             <span class="product-image-placeholder-text" data-product-image-placeholder>(product image coming soon!)</span>
@@ -36,14 +40,14 @@
         <% if @product.description.present? %>
           <%= simple_format(@product.description) %>
         <% else %>
-          <p>100% natural sage essential oil, made in Europe.</p>
+          <p>100% natural essential oil, made in Europe.</p>
         <% end %>
       </div>
 
       <!-- Add to Bag (mobile only, non-floating) -->
-      <%= form_for :cart_item, url: cart_items_path, method: :post, class: "flex justify-center mx-auto" do |f| %>
+      <%= form_for :cart_item, url: cart_items_path, method: :post, class: "add-to-bag-mobile-form mx-auto" do |f| %>
         <%= hidden_field_tag 'cart_item[stripe_product_id]', @product.id %>
-        <%= f.submit "Add to Bag", class: "btn-primary btn-large w-full max-w-md" %>
+        <%= f.submit "Add to Bag", class: "btn-purple btn-large w-full max-w-md" %>
       <% end %>
     </div>
   </div>
@@ -51,12 +55,14 @@
   <!-- Section 1 (DESKTOP) -->
   <div class="hidden lg:block">
     <!-- Product Content Container -->
-    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-12 max-[400px]:mb-6">
+    <div class="product-content-grid gap-8 mb-12 max-[400px]:mb-6">
       <!-- Left Column - Product Image -->
       <div class="flex items-stretch">
         <div class="product-image-wrapper w-full">
           <% if @product.images.any? %>
-            <%= image_tag(@product.images.first, alt: @product.name.titleize, class: "product-image-desktop") %>
+            <%= image_tag(@product.images.first,
+                          alt: @product.name.titleize,
+                          class: "product-image-desktop") %>
           <% else %>
             <div class="product-image-placeholder">
               <span class="product-image-placeholder-text" data-product-image-placeholder>Product Image</span>
@@ -70,7 +76,9 @@
         <!-- Breadcrumb & Title -->
         <div class="hidden lg:block">
           <nav class="breadcrumb-nav mb-2">
-            <%= link_to "essential oils", products_path, class: "breadcrumb-link" %>
+            <%= link_to "essential oils",
+                products_path,
+                class: "breadcrumb-link" %>
             <span class="breadcrumb-separator">></span>
             <span class="current-page"><%= format_product_name(@product.name) %></span>
           </nav>
@@ -97,13 +105,19 @@
         <!-- Add To Cart Button -->
         <%= form_for :cart_item, url: cart_items_path, method: :post, class: "product-add-to-cart-form hidden lg:block space-y-4" do |f| %>
           <div class="flex items-center gap-3 justify-start w-full !ml-0">
-            <%= hidden_field_tag 'cart_item[stripe_product_id]', @product.id, class: '!m-0 !mb-0' %>
+            <%= hidden_field_tag 'cart_item[stripe_product_id]',
+                @product.id,
+                class: '!m-0 !mb-0' %>
 
             <%= f.label :quantity, "Quantity:" %>
-            <%= render 'shared/quantity_selector', input_id: 'quantity-input', initial_value: 1, min_value: 1, field_name: 'cart_item[quantity]' %>
+            <%= render 'shared/quantity_selector',
+                input_id: 'quantity-input',
+                initial_value: 1,
+                min_value: 1,
+                field_name: 'cart_item[quantity]' %>
           </div>
           <div>
-            <%= f.submit "Add to Bag", id: "add-to-bag-button", class: "btn-primary" %>
+            <%= f.submit "Add to Bag", id: "add-to-bag-button", class: "btn-purple" %>
           </div>
         <% end %>
       </div>
