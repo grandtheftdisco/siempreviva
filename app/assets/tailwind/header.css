@@ -1,9 +1,6 @@
 /* Header Stylesheet */
 /* Contains header structure and logo styles */
 
-/* NOTE: All !important declarations in this file will be addressed in Session 5 of the CSS refactor plan.
-   Session 5 focuses on specificity cleanup and removing !important hacks. */
-
 /* ===== HEADER STRUCTURE ===== */
 
 header {
@@ -12,43 +9,42 @@ header {
 }
 
 .header-container {
-  @apply mx-auto flex items-center p-4 gap-8 min-w-0;
+  /* Mobile base */
+  @apply mx-auto flex items-center p-2 px-4 gap-0 flex-nowrap justify-between min-w-0;
 }
 
 @media (min-width: 768px) {
   .header-container {
-    @apply gap-12 pr-8;
+    @apply p-4 gap-12 pr-8;
   }
 }
 
-@media (max-width: 768px) {
-  .header-container {
-    @apply p-2 px-4 gap-0 flex-nowrap justify-between items-center;
-  }
+/* Mobile navigation container - only visible on mobile */
+.mobile-nav-items {
+  @apply order-2 flex-none flex items-center gap-3;
+}
 
-  .logo-section {
-    @apply order-1 flex-none;
-  }
+.mobile-nav-items .search-section {
+  @apply flex-none flex items-center;
+}
 
+.mobile-nav-items .right-icons {
+  @apply flex-none flex items-center gap-3;
+}
+
+@media (min-width: 768px) {
   .mobile-nav-items {
-    @apply order-2 flex-none flex items-center gap-3;
-  }
-
-  .mobile-nav-items .search-section {
-    @apply flex-none flex items-center;
-  }
-
-  .mobile-nav-items .right-icons {
-    @apply flex-none flex items-center gap-3;
+    @apply hidden;
   }
 }
 
+/* Desktop search and icons layout - visibility handled by view inline utilities */
 @media (min-width: 768px) {
-  .search-section.md\:flex {
+  .search-section {
     @apply flex-1 flex items-center justify-end mr-4;
   }
 
-  .right-icons.md\:flex {
+  .right-icons {
     @apply flex-none flex items-center gap-3;
   }
 }
@@ -56,19 +52,13 @@ header {
 /* ===== LOGO SECTION ===== */
 
 .logo-section {
-  @apply pl-2 pt-2 flex-shrink-0;
+  /* Mobile base */
+  @apply pl-0 pt-1 flex-shrink-0 order-1 flex-none;
 }
 
 @media (min-width: 768px) {
   .logo-section {
-    @apply flex-none;
-  }
-}
-
-@media (max-width: 767px) {
-  .logo-section {
-    @apply pl-0 pt-1;
-    margin-right: 0 !important;
+    @apply pl-2 pt-2 order-[initial];
   }
 }
 
@@ -77,11 +67,12 @@ header {
 }
 
 .logo-image {
-  @apply h-30 w-auto flex-shrink-0;
+  /* Mobile base */
+  @apply h-20 w-auto flex-shrink-0;
 }
 
-@media (max-width: 767px) {
+@media (min-width: 768px) {
   .logo-image {
-    @apply h-20;
+    @apply h-30;
   }
 }
