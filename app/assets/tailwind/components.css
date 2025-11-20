@@ -239,7 +239,7 @@ div.flash-notice {
 main .flash-alert,
 div.flash-alert {
   /* Colors */
-  @apply bg-sv-purple-200 border-sv-purple-700 text-sv-purple-900;
+  @apply bg-sv-purple-200 border-sv-purple-700 text-sv-purple-800;
 }
 
 main .flash-error,
