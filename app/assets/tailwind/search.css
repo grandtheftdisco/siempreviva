@@ -18,7 +18,7 @@
   @apply flex items-center relative;
 
   /* Colors */
-  background: transparent !important;
+  @apply bg-transparent;
 }
 
 /* Remove horizontal padding on mobile for tighter icon spacing */
@@ -51,12 +51,11 @@
 
   .search-toggle-button {
     display: flex !important;
-    @apply shrink-0 w-10 h-10 rounded-lg;
-    background: transparent !important;
+    @apply shrink-0 w-10 h-10 rounded-lg bg-transparent;
   }
 
   .search-toggle-button:hover {
-    background: transparent !important;
+    @apply bg-transparent;
   }
 
   /* Ensure search section is visible */
@@ -106,9 +105,6 @@
   @apply transition-colors duration-200 cursor-pointer;
 }
 
-.search-toggle-button:hover {
-  @apply bg-neutral-100;
-}
 
 .search-icon {
   /* Sizing & spacing */
@@ -239,7 +235,7 @@
   @apply flex items-center relative;
 
   /* Colors */
-  background: transparent !important;
+  @apply bg-transparent;
 }
 
 .search-container {
@@ -250,7 +246,7 @@
   @apply flex items-center justify-end relative;
 
   /* Colors */
-  background: transparent !important;
+  @apply bg-transparent;
 }
 
 .search-results {
@@ -291,7 +287,7 @@
    as these could truly be needed to override algolia's default styling */
 
 .ais-SearchBox {
-  background: transparent !important;
+  @apply bg-transparent;
 }
 
 .ais-SearchBox-form {
@@ -305,7 +301,7 @@
   @apply border-none outline-none;
 
   /* Colors */
-  background: transparent !important;
+  @apply bg-transparent;
 }
 
 .ais-SearchBox-input {
@@ -332,8 +328,7 @@
   @apply outline-none;
 
   /* Colors */
-  @apply text-sv-purple-400;
-  background: transparent !important;
+  @apply text-sv-purple-400 bg-transparent;
 
   /* Interactive & animation */
   @apply transition-colors duration-200 cursor-pointer;
