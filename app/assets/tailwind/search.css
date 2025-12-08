@@ -50,28 +50,21 @@
   }
 
   .search-toggle-button {
-    display: flex !important;
-    @apply shrink-0 w-10 h-10 rounded-lg bg-transparent;
+    @apply flex shrink-0 w-10 h-10 rounded-lg bg-transparent;
   }
 
   .search-toggle-button:hover {
     @apply bg-transparent;
   }
 
-  /* Ensure search section is visible */
-  .search-section {
-    visibility: visible !important;
-    opacity: 1 !important;
-  }
-
   .search-desktop {
-    display: none !important;
+    @apply hidden;
   }
 
   /* Ensure any desktop search elements are hidden */
   #searchbox-desktop,
   #hits-desktop {
-    display: none !important;
+    @apply hidden;
   }
 }
 
@@ -93,7 +86,7 @@
   @apply w-10 h-10 p-2;
 
   /* Layout & positioning */
-  @apply hidden items-center justify-center;
+  @apply flex items-center justify-center;
 
   /* Border & shape */
   @apply border-none rounded-lg;
@@ -105,6 +98,12 @@
   @apply transition-colors duration-200 cursor-pointer;
 }
 
+/* Hide toggle button on desktop - search bar is inline */
+@media (min-width: 640px) {
+  .search-toggle-button {
+    @apply hidden;
+  }
+}
 
 .search-icon {
   /* Sizing & spacing */
