@@ -7,8 +7,7 @@
 /* ===== MOBILE MENU BUTTON ===== */
 
 .mobile-menu-button {
-  display: inline-flex !important;
-  @apply items-center justify-center p-2 w-10 h-10 text-sm text-sv-purple-700 rounded-lg border-0 bg-transparent transition-colors duration-200 flex-shrink-0;
+  @apply inline-flex items-center justify-center p-2 w-10 h-10 text-sm text-sv-purple-700 rounded-lg border-0 bg-transparent transition-colors duration-200 flex-shrink-0;
 }
 
 .mobile-menu-button:hover {
@@ -21,13 +20,7 @@
 
 @media (min-width: 768px) {
   .mobile-menu-button {
-    display: none !important;
-  }
-}
-
-@media (max-width: 767px) {
-  .mobile-menu-button {
-    display: inline-flex !important;
+    @apply hidden;
   }
 }
 
