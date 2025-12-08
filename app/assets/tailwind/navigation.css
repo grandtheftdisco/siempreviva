@@ -1,8 +1,7 @@
 /* Navigation Stylesheet */
 /* Contains mobile menu button and navigation menu styles */
 
-/* NOTE: All !important declarations in this file will be addressed in Session 5 of the CSS refactor plan.
-   Session 5 focuses on specificity cleanup and removing !important hacks. */
+/* Navigation styles refactored to mobile-first in Session 5B (Dec 2025) */
 
 /* ===== MOBILE MENU BUTTON ===== */
 
@@ -47,12 +46,7 @@
 
   /* Mobile dropdown */
   .navbar-section:not(.hidden) {
-    display: block !important;
-    position: absolute !important;
-    top: 100% !important;
-    left: 0 !important;
-    right: 0 !important;
-    @apply bg-sv-purple-100 p-4 flex-col z-50 border-t border-red-900/15 shadow-purple-900/15;
+    @apply block absolute top-full left-0 right-0 bg-sv-purple-100 p-4 flex-col z-50 border-t border-red-900/15 shadow-purple-900/15;
   }
 
   .navbar-section:not(.hidden),
@@ -63,25 +57,19 @@
   }
 
   .navbar-section:not(.hidden) .navbar-list li {
-    @apply border-b border-sv-purple-300/10;
-    padding-bottom: 0.75rem !important;
-    padding-top: 0.75rem !important;
+    @apply border-b border-sv-purple-300/10 py-3;
   }
 
   .navbar-section:not(.hidden) .navbar-list li:first-child {
-    padding-top: 0 !important;
+    @apply pt-0;
   }
 
   .navbar-section:not(.hidden) .navbar-list li:last-child {
-    border-bottom: none !important;
-    padding-bottom: 0 !important;
+    @apply border-b-0 pb-0;
   }
 
   .navbar-section:not(.hidden) .navbar-list li a {
-    @apply p-0 block;
-    padding: 0 !important;
-    display: block !important;
-    transition: color 0.2s ease !important;
+    @apply p-0 block transition-colors duration-200;
   }
 
   .navbar-section:not(.hidden) .navbar-list li a:hover {
