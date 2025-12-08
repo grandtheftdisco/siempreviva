@@ -316,9 +316,7 @@
   @apply text-lg;
 
   /* Algolia default overrides */
-  @apply p-0 border-none rounded-none m-0 shadow-none no-underline;
-  font-family: inherit;
-  font-weight: inherit;
+  @apply p-0 border-none rounded-none m-0 shadow-none no-underline font-[family:inherit] font-[weight:inherit];
 }
 
 .ais-SearchBox-submitIcon {
