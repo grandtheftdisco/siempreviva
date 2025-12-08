@@ -101,7 +101,8 @@
 }
 
 .navbar-list {
-  @apply flex flex-col p-5 mt-4 font-medium text-2xl font-serif gap-5 border-0 rounded-lg bg-transparent;
+  /* Base = mobile dropdown defaults */
+  @apply flex flex-col p-0 m-0 font-medium text-lg font-serif gap-3 border-0 rounded-none bg-transparent;
 }
 
 @media (min-width: 768px) {
