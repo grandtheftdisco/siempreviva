@@ -30,13 +30,6 @@
 
 /* ===== NAVIGATION MENU ===== */
 
-/* Force transparent backgrounds for navigation elements (desktop/inline only) */
-@media (min-width: 768px) {
-  .navbar-section, .navbar-section *, .navbar-list, .navbar-list * {
-    background-color: transparent !important;
-  }
-}
-
 .navbar-section {
   @apply flex-none flex;
 }
