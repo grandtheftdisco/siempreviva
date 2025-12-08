@@ -62,17 +62,6 @@
     @apply bg-sv-purple-100;
   }
 
-  .navbar-section:not(.hidden) .navbar-list {
-    @apply flex-col p-0 gap-3 border-0 rounded-none m-0 text-lg;
-    flex-direction: column !important;
-    padding: 0 !important;
-    gap: 0.75rem !important;
-    border: none !important;
-    border-radius: 0 !important;
-    margin: 0 !important;
-    font-size: 1.125rem !important;
-  }
-
   .navbar-section:not(.hidden) .navbar-list li {
     @apply border-b border-sv-purple-300/10;
     padding-bottom: 0.75rem !important;
