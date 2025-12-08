@@ -159,68 +159,50 @@
 /* Ensure Algolia search input doesn't overflow on mobile */
 @media (max-width: 768px) {
   .search-dropdown {
-    padding: 0.75rem !important; /* Reduce padding to give more space */
+    @apply p-3;
   }
 
   .search-dropdown .search-container {
-    width: 100% !important;
-    max-width: 100% !important;
-    padding: 0 !important;
-    margin: 0 !important;
+    @apply w-full max-w-full p-0 m-0;
   }
 
   .search-dropdown .search-container input {
-    width: 100% !important;
-    max-width: 100% !important;
-    box-sizing: border-box !important;
+    @apply w-full max-w-full box-border;
   }
 
   .search-dropdown .ais-SearchBox {
-    width: 100% !important;
-    max-width: 100% !important;
+    @apply w-full max-w-full;
   }
 
   .search-dropdown .ais-SearchBox-form {
-    width: 100% !important;
-    max-width: 100% !important;
+    @apply w-full max-w-full;
   }
 
   .search-dropdown .ais-SearchBox-input {
-    width: 100% !important;
-    max-width: calc(100% - 1.5rem) !important; /* Account for padding and submit button */
-    box-sizing: border-box !important;
-    padding-right: 50px !important; /* Reduce right padding for submit button */
+    @apply w-full max-w-full box-border pr-10;
+  }
+
+  /* Hide submit button on mobile - instant search doesn't need it */
+  .search-dropdown .ais-SearchBox-submit {
+    @apply hidden;
   }
 }
 
 /* Additional constraints for very small mobile screens (iPhone SE, etc.) */
 @media (max-width: 480px) {
   .search-dropdown {
-    padding: 0.5rem !important;
+    @apply p-2;
   }
 
   .search-dropdown .ais-SearchBox-input {
-    max-width: calc(100% - 1rem) !important;
-    padding-right: 45px !important;
-    font-size: 0.875rem !important;
-  }
-
-  .search-dropdown .ais-SearchBox-submit {
-    right: 6px !important; /* Adjust submit button position */
-  }
-
-  .search-dropdown .ais-SearchBox-submitIcon {
-    width: 18px !important;
-    height: 18px !important;
+    @apply text-sm;
   }
 }
 
 /* Focus and interaction improvements for mobile */
 @media (max-width: 768px) {
   .search-dropdown .ais-SearchBox-input:focus {
-    border-color: #674174 !important;
-    outline: none !important;
-    @apply border-sv-purple-700 ring-2 ring-sv-purple-700/10;
+    @apply outline-none border-sv-purple-700 ring-2 ring-sv-purple-700/10;
   }
 }
 
@@ -348,9 +330,7 @@
 
 .ais-SearchBox-submitIcon {
   /* Sizing & spacing */
-  @apply mt-0 ml-1.5 p-0;
-  width: 20px !important;
-  height: 20px !important;
+  @apply mt-0 ml-1.5 p-0 w-5 h-5;
 }
 
 .ais-SearchBox-reset {
@@ -375,8 +355,7 @@
 }
 
 .ais-SearchBox-resetIcon {
-  width: 14px !important;
-  height: 14px !important;
+  @apply w-3.5 h-3.5;
 }
 
 /* ===== SEARCH RESULTS CONTAINER ===== */
