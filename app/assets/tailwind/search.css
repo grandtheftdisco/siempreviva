@@ -1,8 +1,7 @@
 /* Search Stylesheet */
 /* Contains all search-related styles including Algolia components and search dropdowns */
 
-/* NOTE: All !important declarations in this file will be addressed in Session 5 of the CSS refactor plan.
-   Session 5 focuses on specificity cleanup and removing !important hacks. */
+/* Search styles refactored to mobile-first in Session 5B (Dec 2025) */
 
 /* NOTE: Any comments in this file that seem superfluous are to keep record of design decisions
    so that when the time comes for legacy cleanup & refactor in Session 4, there is context for the
@@ -264,8 +263,7 @@
 }
 
 /* ===== ALGOLIA SEARCH COMPONENTS ===== */
-/* IMPORTANT - handle uses of !important carefully in session 5,
-   as these could truly be needed to override algolia's default styling */
+/* Algolia widget overrides - converted to @apply in Session 5B */
 
 .ais-SearchBox {
   @apply bg-transparent;
@@ -317,15 +315,10 @@
   /* Typography */
   @apply text-lg;
 
-  /* All !important overrides for Algolia defaults */
-  padding: 0px !important;
-  border: none !important;
-  border-radius: 0 !important;
-  margin: 0 !important;
-  box-shadow: none !important;
-  font-family: inherit !important;
-  font-weight: inherit !important;
-  text-decoration: none !important;
+  /* Algolia default overrides */
+  @apply p-0 border-none rounded-none m-0 shadow-none no-underline;
+  font-family: inherit;
+  font-weight: inherit;
 }
 
 .ais-SearchBox-submitIcon {
