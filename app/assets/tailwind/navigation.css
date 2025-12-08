@@ -101,9 +101,7 @@
 }
 
 .navbar-list {
-  @apply flex flex-col p-5 mt-4 font-medium text-2xl font-serif gap-5 border-0 rounded-lg;
-  border: none !important;
-  background-color: transparent !important;
+  @apply flex flex-col p-5 mt-4 font-medium text-2xl font-serif gap-5 border-0 rounded-lg bg-transparent;
 }
 
 @media (min-width: 768px) {
