@@ -81,22 +81,20 @@
 /* ===== CART PAGE ITEMS ===== */
 
 .cart-items {
-  /* Layout & spacing */
-  @apply flex flex-col gap-8;
+  /* Layout & spacing - mobile base */
+  @apply flex flex-col gap-3 p-4;
+
+  /* Shape */
+  @apply rounded-lg;
+
+  /* Colors */
+  @apply bg-sv-purple-200;
 }
 
-/* Mobile: Add purple background and reduce gap between cart items */
-@media (max-width: 768px) {
+/* Desktop: Remove background and increase gap */
+@media (min-width: 768px) {
   .cart-items {
-    /* Spacing */
-    gap: 0.75rem !important;
-    padding: 1rem !important;
-
-    /* Shape */
-    border-radius: 8px !important;
-
-    /* Colors */
-    @apply bg-sv-purple-200;
+    @apply gap-8 p-0 rounded-none bg-transparent;
   }
 }
 
