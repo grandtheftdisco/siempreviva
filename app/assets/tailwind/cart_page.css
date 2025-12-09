@@ -194,18 +194,6 @@
   }
 }
 
-/* Mobile-first: Hide quantity on mobile */
-.cart-items .cart-page-item .quantity-section {
-  @apply hidden;
-}
-
-/* Desktop: Show quantity controls */
-@media (min-width: 768px) {
-  .cart-items .cart-page-item .quantity-section {
-    @apply block;
-  }
-}
-
 /* Mobile-first: Remove button - small, absolute positioned */
 .cart-items .cart-page-item .remove-item-btn-soft {
   @apply absolute top-1 right-0 w-5 h-5 p-0.5 rounded-full z-10;
