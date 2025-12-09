@@ -410,8 +410,7 @@
   @apply rounded-full;
 
   /* Colors */
-  @apply bg-sv-green-600 border-2 border-sv-green-600;
-  color: #ffffff !important;
+  @apply bg-sv-green-600 border-2 border-sv-green-600 text-white;
 
   /* Typography */
   @apply font-medium text-center no-underline font-sans;
@@ -422,6 +421,5 @@
 
 .checkout-btn:hover {
   /* Colors */
-  @apply bg-sv-green-700 border-sv-green-700;
-  color: #ffffff !important;
+  @apply bg-sv-green-700 border-sv-green-700 text-white;
 }
