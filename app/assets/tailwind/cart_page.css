@@ -48,33 +48,34 @@
 }
 
 .cart-content {
-  /* Layout & spacing */
-  @apply grid gap-12 items-start;
-
-  /* Grid columns using fraction units - Tailwind doesn't support fr units in utilities */
-  grid-template-columns: 2fr 1fr;
+  /* Layout & spacing - mobile base */
+  @apply flex flex-col gap-8 items-center;
 }
 
-@media (max-width: 768px) {
+/* Order summary appears first on mobile */
+.cart-summary-section {
+  @apply order-1 w-full;
+}
+
+/* Cart items appear second on mobile */
+.cart-items-section {
+  @apply order-2 w-full;
+}
+
+/* Desktop: 2-column grid layout */
+@media (min-width: 768px) {
   .cart-content {
-    /* Layout & spacing */
-    display: flex !important;
-    flex-direction: column !important;
-    @apply gap-8;
-    align-items: center !important;
+    @apply grid gap-12 items-start;
+    grid-template-columns: 2fr 1fr;
   }
 
-  /* Order summary appears first on mobile */
+  /* Reset order and width for desktop grid */
   .cart-summary-section {
-    @apply order-1;
-    width: 100% !important;
-    max-width: none !important;
+    @apply order-none w-auto;
   }
 
-  /* Cart items appear second on mobile */
   .cart-items-section {
-    @apply order-2;
-    width: 100% !important;
+    @apply order-none w-auto;
   }
 }
 
