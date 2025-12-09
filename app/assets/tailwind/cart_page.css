@@ -5,7 +5,7 @@
 
 .cart-container {
   /* Sizing & spacing */
-  @apply max-w-screen-xl mx-auto px-4;
+  @apply max-w-screen-xl mx-auto px-4 py-8;
 
   /* Typography */
   @apply font-sans;
@@ -19,31 +19,9 @@
   @apply text-center font-serif;
 }
 
-/* Mobile: Reduce header spacing */
-@media (max-width: 768px) {
-  .cart-header {
-    margin-bottom: 1.5rem !important;
-    padding-top: 0 !important;
-    padding-bottom: 0 !important;
-  }
 
-  .cart-header .page-title {
-    margin-bottom: 0 !important;
-    padding-top: 0 !important;
-    padding-bottom: 0 !important;
-  }
-}
 
-.cart-header .page-title {
-  /* Sizing & spacing */
-  @apply mb-2;
 
-  /* Typography */
-  @apply text-4xl font-light tracking-wider;
-
-  /* Colors */
-  @apply text-neutral-900;
-}
 
 .cart-breadcrumb {
   /* Sizing & spacing */
