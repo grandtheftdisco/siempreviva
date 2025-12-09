@@ -99,108 +99,151 @@
   }
 }
 
-.cart-page-item {
-  /* Sizing & spacing */
-  @apply p-6 gap-6;
+/* Mobile-first: Cart page items inside .cart-items (purple container) */
+.cart-items .cart-page-item {
+  /* Layout - mobile base */
+  @apply flex justify-between items-start relative;
 
-  /* Layout & positioning */
-  @apply grid items-start;
+  /* Sizing & spacing - mobile compact */
+  @apply py-2 px-4 gap-0;
 
-  /* Shape */
-  @apply rounded-lg;
-
-  /* Colors */
-  @apply bg-white border border-gray-300;
-
-  /* Grid columns using fraction units - Tailwind doesn't support fr units in utilities */
-  grid-template-columns: 8rem 1fr;
+  /* Colors - mobile transparent */
+  @apply bg-transparent border-0;
 }
 
-/* Mobile: Make cart page items compact like dropdown */
-@media (max-width: 768px) {
+/* Desktop: Grid card layout for items in .cart-items */
+@media (min-width: 768px) {
   .cart-items .cart-page-item {
-    display: flex !important;
-    justify-content: space-between !important;
-    align-items: flex-start !important;
-    padding: 0.5rem 1rem !important;
-    gap: 0 !important;
-    grid-template-columns: none !important;
-    background-color: transparent !important;
-    border: none !important;
-    position: relative !important;
-  }
+    /* Sizing & spacing */
+    @apply p-6 gap-6;
 
+    /* Layout & positioning */
+    @apply grid items-start;
+
+    /* Shape */
+    @apply rounded-lg;
+
+    /* Colors */
+    @apply bg-white border border-gray-300;
+
+    /* Grid columns using fraction units */
+    grid-template-columns: 8rem 1fr;
+  }
+}
+
+/* Mobile-first: Hide images on mobile */
+.cart-items .cart-page-item .cart-item-image,
+.cart-items .cart-page-item .cart-item-image-container {
+  @apply hidden;
+}
+
+/* Desktop: Show images */
+@media (min-width: 768px) {
   .cart-items .cart-page-item .cart-item-image,
   .cart-items .cart-page-item .cart-item-image-container {
-    display: none !important;
-  }
-
-  .cart-items .cart-page-item .cart-item-details {
-    flex: 1 !important;
-    margin-right: 0 !important; /* No margin - button is absolutely positioned */
-    display: block !important; /* Change from flex to block for inline layout */
-    width: 100% !important; /* Full width - let header manage its own width */
-    padding-top: 0.25rem !important; /* Small top padding */
-    padding-right: 0 !important; /* No padding - header will handle spacing */
-  }
-
-  .cart-items .cart-page-item .cart-item-header {
-    width: calc(100% - 1.75rem) !important; /* Header takes full width minus button space */
-    display: flex !important; /* Use flex to spread name and price */
-    justify-content: space-between !important;
-    align-items: center !important;
-    margin-bottom: 0 !important;
-    padding-right: 0.5rem !important; /* Small padding to prevent text overlap with button */
-  }
-
-  .cart-items .cart-page-item .product-name {
-    font-size: 0.95rem !important;
-    margin: 0 !important;
-    display: inline !important; /* Inline for same-line layout */
-    margin-right: 0.75rem !important;
-  }
-
-  .cart-items .cart-page-item .product-price {
-    font-size: 0.85rem !important;
-    margin: 0 !important;
-    display: inline !important; /* Inline to appear on same line as name */
-    color: #6c757d !important; /* neutral-600 - preserved with !important for Session 5 */
-    font-weight: 500 !important;
-  }
-
-  .cart-items .cart-page-item .quantity-section {
-    display: none !important; /* Hide quantity controls on mobile for now */
-  }
-
-  /* Small 'x' button positioned in top-right corner */
-  .cart-items .cart-page-item .remove-item-btn-soft {
-    position: absolute !important;
-    top: 0.25rem !important;
-    right: 0 !important; /* Flush against right edge */
-    width: 1.25rem !important;
-    height: 1.25rem !important;
-    padding: 0.125rem 0.125rem !important;
-    margin: 0 0.45rem !important;
-    transform: none !important;
-    border-radius: 50% !important; /* Make it circular */
-    z-index: 10 !important; /* Ensure it's above content */
-  }
-
-  .cart-items .cart-page-item .inline-form {
-    position: absolute !important;
-    top: 0.25rem !important;
-    right: 0 !important; /* Flush against right edge */
-    margin: 0 !important;
-    width: 1.25rem !important;
-    height: 1.25rem !important;
-    z-index: 10 !important;
-  }
-
-  .cart-items .cart-page-item .remove-cart-item-btn {
-    width: 0.75rem !important;
-    height: 0.75rem !important;
+    @apply block;
   }
 }
+
+/* Mobile-first: Item details - compact layout */
+.cart-items .cart-page-item .cart-item-details {
+  @apply flex-1 block w-full pt-1 pr-0 mr-0;
+}
+
+/* Desktop: Item details - flex column */
+@media (min-width: 768px) {
+  .cart-items .cart-page-item .cart-item-details {
+    @apply flex flex-col;
+  }
+}
+
+/* Mobile-first: Item header - flex spread */
+.cart-items .cart-page-item .cart-item-header {
+  @apply flex justify-between items-center mb-0 pr-2;
+  width: calc(100% - 1.75rem);
+}
+
+/* Desktop: Item header - standard layout */
+@media (min-width: 768px) {
+  .cart-items .cart-page-item .cart-item-header {
+    @apply w-auto pr-0;
+  }
+}
+
+/* Mobile-first: Product name - compact inline */
+.cart-items .cart-page-item .product-name {
+  @apply text-base inline m-0 mr-3;
+}
+
+/* Desktop: Product name - larger block */
+@media (min-width: 768px) {
+  .cart-items .cart-page-item .product-name {
+    @apply text-lg block;
+  }
+}
+
+/* Mobile-first: Product price - compact inline */
+.cart-items .cart-page-item .product-price {
+  @apply text-sm inline m-0 font-medium text-neutral-600;
+}
+
+/* Desktop: Product price - block, standard size, left-aligned */
+@media (min-width: 768px) {
+  .cart-items .cart-page-item .product-price {
+    @apply text-base block text-left;
+  }
+}
+
+/* Mobile-first: Hide quantity on mobile */
+.cart-items .cart-page-item .quantity-section {
+  @apply hidden;
+}
+
+/* Desktop: Show quantity controls */
+@media (min-width: 768px) {
+  .cart-items .cart-page-item .quantity-section {
+    @apply block;
+  }
+}
+
+/* Mobile-first: Remove button - small, absolute positioned */
+.cart-items .cart-page-item .remove-item-btn-soft {
+  @apply absolute top-1 right-0 w-5 h-5 p-0.5 rounded-full z-10;
+  margin: 0 0.45rem;
+  transform: none;
+}
+
+/* Desktop: Remove button - larger, top-right corner */
+@media (min-width: 768px) {
+  .cart-items .cart-page-item .remove-item-btn-soft {
+    @apply top-4 right-4 w-6 h-6;
+  }
+}
+
+/* Mobile-first: Inline form wrapper */
+.cart-items .cart-page-item .inline-form {
+  @apply absolute top-1 right-0 w-5 h-5 m-0 z-10;
+}
+
+/* Desktop: Inline form - larger */
+@media (min-width: 768px) {
+  .cart-items .cart-page-item .inline-form {
+    @apply top-4 right-4 w-6 h-6;
+  }
+}
+
+/* Mobile-first: Remove button icon - small */
+.cart-items .cart-page-item .remove-cart-item-btn {
+  @apply w-3 h-3;
+}
+
+/* Desktop: Remove button icon - standard */
+@media (min-width: 768px) {
+  .cart-items .cart-page-item .remove-cart-item-btn {
+    @apply w-4 h-4;
+  }
+}
+
 
 @media (max-width: 640px) {
   .cart-page-item {
