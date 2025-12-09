@@ -186,8 +186,7 @@
   @apply gap-4 w-full m-0 p-0;
 
   /* Layout & positioning */
-  display: flex !important;
-  @apply items-center justify-end relative;
+  @apply flex items-center justify-end relative;
 }
 
 .quantity-controls-group {
