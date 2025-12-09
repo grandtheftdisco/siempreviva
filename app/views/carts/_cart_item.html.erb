@@ -32,7 +32,7 @@
     
     <!-- Quantity Controls - Mobile: collapsed by default, Desktop: always visible -->
     <div class="quantity-section" data-controller="quantity-toggle">
-      <%= form_with model: cart_item, url: cart_item_path(cart_item), method: :patch, local: true, class: 'quantity-form-improved' do |f| %>
+      <%= form_with model: cart_item, url: cart_item_path(cart_item), method: :patch, local: true, class: 'quantity-form' do |f| %>
 
         <!-- Mobile: Collapsed Badge (tap to expand) -->
         <div data-quantity-toggle-target="badge"

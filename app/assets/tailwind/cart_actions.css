@@ -97,20 +97,6 @@
   @apply flex-shrink-0;
 }
 
-.quantity-form {
-  /* Sizing & spacing */
-  @apply m-0 p-0;
-
-  /* Layout */
-  @apply flex items-center;
-
-  /* Colors */
-  @apply bg-transparent;
-
-  /* Border */
-  @apply border-none;
-}
-
 .quantity-input-group {
   /* Sizing & spacing */
   @apply gap-2;
@@ -181,20 +167,18 @@
   @apply clear-both;
 }
 
-.quantity-form-improved {
+.quantity-form {
   /* Sizing & spacing */
-  margin: 0 !important;
-  padding: 0 !important;
-  @apply w-full;
+  @apply m-0 p-0 w-full;
 
   /* Layout & positioning */
-  position: static !important;
+  @apply static;
 
   /* Colors */
-  background: none !important;
+  @apply bg-transparent;
 
   /* Border */
-  border: none !important;
+  @apply border-0;
 }
 
 .quantity-row {
@@ -215,7 +199,7 @@
 }
 
 /* Override any conflicting form styles */
-.cart-page-item .quantity-form-improved,
+.cart-page-item .quantity-form,
 .cart-page-item .quantity-section form {
   position: static !important;
   float: none !important;
