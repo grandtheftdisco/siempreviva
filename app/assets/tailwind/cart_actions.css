@@ -146,28 +146,24 @@
 
 .quantity-update-btn {
   /* Sizing & spacing */
-  padding: 0.25rem 0.5rem !important;
+  @apply px-2 py-1;
 
   /* Shape */
-  border-radius: 9999px !important;
+  @apply rounded-full;
 
   /* Colors */
-  background: #bdcea9 !important;
-  @apply text-sv-green-700;
-  @apply border-2 border-sv-green-200;
+  @apply bg-sv-green-200 text-sv-green-700 border-2 border-sv-green-200;
 
   /* Typography */
-  font-size: 0.65rem !important;
+  @apply text-[0.65rem];
 
   /* Interactive & animation */
   @apply cursor-pointer transition-all duration-200;
 }
 
 .quantity-update-btn:hover {
-  /* Colors - using sv-green-600 (or 400?) */
-  background: #8ba170 !important;
-  border-color: #8ba170 !important;
-  @apply text-white;
+  /* Colors */
+  @apply bg-sv-green-400 border-sv-green-400 text-white;
 }
 
 /* Improved quantity section layout */
