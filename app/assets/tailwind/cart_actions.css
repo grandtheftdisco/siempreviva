@@ -197,13 +197,10 @@
   @apply flex items-center relative;
 }
 
-/* Override any conflicting form styles */
-.cart-page-item .quantity-form,
-.cart-page-item .quantity-section form {
-  position: static !important;
-  float: none !important;
-  margin: 0 !important;
-  display: block !important;
+/* Override any conflicting form styles in cart page context */
+.cart-page-item .quantity-form {
+  @apply static m-0 block;
+  float: none;
 }
 
 @media (max-width: 640px) {
