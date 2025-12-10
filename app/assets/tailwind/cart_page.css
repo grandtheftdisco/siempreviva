@@ -19,10 +19,6 @@
   @apply text-center font-serif;
 }
 
-
-
-
-
 .cart-breadcrumb {
   /* Sizing & spacing */
   @apply mt-4;

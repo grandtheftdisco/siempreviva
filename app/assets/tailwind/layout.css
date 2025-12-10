@@ -1,7 +1,6 @@
 /* Layout Stylesheet */
 /* Contains global layout structure and link styles */
 
-/* TODO - session 5b - move these to components.css */
 /* ===== BODY & MAIN LAYOUT ===== */
 
 /* ===== GLOBAL LAYOUT ===== */
@@ -47,11 +46,19 @@ main {
 
 /* ===== GENERAL LINK STYLES ===== */
 
-a:not(.logo-link):not(.breadcrumb-link):not(.ais-Hits-item a):not(.remove-button-small):not(.btn-primary):not(.btn-purple):not(.btn-purple-secondary):not(.btn-purple-light):not(.btn-secondary):not(.btn-green):not(.btn-green-light):not(.btn-danger):not(.social-icon):not(.shop-products-btn):not(.cart-view-button) {
-  @apply text-neutral-800 no-underline transition-colors duration-200;
+.text-link {
+  /* Colors */
+  @apply text-neutral-800;
+
+  /* Link styling */
+  @apply no-underline;
+
+  /* Interactive & animation */
+  @apply transition-colors duration-200;
 }
 
-a:not(.logo-link):not(.breadcrumb-link):not(.ais-Hits-item a):not(.remove-button-small):not(.btn-primary):not(.btn-purple):not(.btn-purple-secondary):not(.btn-purple-light):not(.btn-secondary):not(.btn-green):not(.btn-green-light):not(.btn-danger):not(.social-icon):not(.shop-products-btn):not(.cart-view-button):hover {
+.text-link:hover {
+  /* Colors */
   @apply text-sv-purple-700 cursor-pointer;
 }
 
