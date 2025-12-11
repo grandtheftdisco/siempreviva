@@ -4,13 +4,25 @@
 /* ===== HEADER STRUCTURE ===== */
 
 header {
-  @apply fixed top-0 left-0 right-0 z-[1000] bg-sv-purple-100 border-b border-sv-purple-300/15;
+  /* Layout & positioning */
+  @apply fixed top-0 left-0 right-0 z-[1000];
+
+  /* Colors */
+  @apply bg-sv-purple-100;
+
+  /* Border & shape */
+  @apply border-b border-sv-purple-300/15;
+
+  /* Visual effects */
   @apply shadow-[0_1px_3px_0] shadow-purple-700/[0.08];
 }
 
 .header-container {
-  /* Mobile base */
-  @apply mx-auto flex items-center p-2 px-4 gap-0 flex-nowrap justify-between min-w-0;
+  /* Sizing & spacing */
+  @apply p-2 px-4 gap-0 min-w-0;
+
+  /* Layout & positioning */
+  @apply mx-auto flex items-center flex-nowrap justify-between;
 }
 
 @media (min-width: 768px) {
@@ -21,14 +33,17 @@ header {
 
 /* Mobile navigation container - only visible on mobile */
 .mobile-nav-items {
+  /* Layout & positioning */
   @apply order-2 flex-none flex items-center gap-3;
 }
 
 .mobile-nav-items .search-section {
+  /* Layout */
   @apply flex-none flex items-center;
 }
 
 .mobile-nav-items .right-icons {
+  /* Layout */
   @apply flex-none flex items-center gap-3;
 }
 
@@ -41,10 +56,15 @@ header {
 /* Desktop search and icons layout - visibility handled by view inline utilities */
 @media (min-width: 768px) {
   .search-section {
-    @apply flex-1 flex items-center justify-end mr-4;
+    /* Spacing */
+    @apply mr-4;
+
+    /* Layout */
+    @apply flex-1 flex items-center justify-end;
   }
 
   .right-icons {
+    /* Layout */
     @apply flex-none flex items-center gap-3;
   }
 }
@@ -52,23 +72,37 @@ header {
 /* ===== LOGO SECTION ===== */
 
 .logo-section {
-  /* Mobile base */
-  @apply pl-0 pt-1 flex-shrink-0 order-1 flex-none;
+  /* Spacing */
+  @apply pl-0 pt-1;
+
+  /* Layout & positioning */
+  @apply flex-shrink-0 order-1 flex-none;
 }
 
 @media (min-width: 768px) {
   .logo-section {
-    @apply pl-2 pt-2 order-[initial];
+    /* Spacing */
+    @apply pl-2 pt-2;
+
+    /* Layout & positioning */
+    @apply order-[initial];
   }
 }
 
 .logo-link {
-  @apply flex items-center gap-3 cursor-pointer;
+  /* Layout */
+  @apply flex items-center gap-3;
+
+  /* Interactive */
+  @apply cursor-pointer;
 }
 
 .logo-image {
-  /* Mobile base */
-  @apply h-20 w-auto flex-shrink-0;
+  /* Sizing */
+  @apply h-20 w-auto;
+
+  /* Layout */
+  @apply flex-shrink-0;
 }
 
 @media (min-width: 768px) {

@@ -4,39 +4,90 @@
 /* TODO - on Contact form branch, move these to their own stylesheet */
 
 .social-links {
-  @apply my-6 text-center pt-6 border-t border-sv-purple-300;
+  /* Spacing */
+  @apply my-6 pt-6;
+
+  /* Layout */
+  @apply text-center;
+
+  /* Border & shape */
+  @apply border-t border-sv-purple-300;
 }
 
 .social-links p {
-  @apply text-sv-purple-700 font-bold mb-4 text-[0.95rem];
+  /* Spacing */
+  @apply mb-4;
+
+  /* Colors */
+  @apply text-sv-purple-700;
+
+  /* Typography */
+  @apply font-bold text-[0.95rem];
 }
 
 .social-icons {
+  /* Layout */
   @apply flex justify-center gap-6;
 }
 
 .social-icon {
-  @apply flex items-center justify-center w-10 h-10 rounded-full bg-sv-purple-400 text-white no-underline cursor-pointer;
-  @apply transition-colors duration-300 ease-in-out;
+  /* Sizing & spacing */
+  @apply w-10 h-10;
+
+  /* Layout */
+  @apply flex items-center justify-center;
+
+  /* Shape */
+  @apply rounded-full;
+
+  /* Colors */
+  @apply bg-sv-purple-400 text-white;
+
+  /* Link styling */
+  @apply no-underline;
+
+  /* Interactive & animation */
+  @apply cursor-pointer transition-colors duration-300 ease-in-out;
 }
 
 .social-icon:hover {
-  @apply bg-sv-purple-700 cursor-pointer;
+  /* Colors */
+  @apply bg-sv-purple-700;
+
+  /* Interactive */
+  @apply cursor-pointer;
 }
 
 /* ===== SITE FOOTER ===== */
 
 .site-footer {
-  @apply bg-sv-purple-100 mt-16 py-12 pb-8 border-t border-sv-purple-300/15;
+  /* Spacing */
+  @apply mt-16 py-12 pb-8;
+
+  /* Colors */
+  @apply bg-sv-purple-100;
+
+  /* Border & shape */
+  @apply border-t border-sv-purple-300/15;
+
+  /* Visual effects */
   @apply shadow-[0_-1px_3px_0] shadow-purple-700/[0.08];
 }
 
 .footer-container {
-  @apply max-w-[1200px] mx-auto px-4;
+  /* Sizing & spacing */
+  @apply max-w-[1200px] px-4;
+
+  /* Layout */
+  @apply mx-auto;
 }
 
 .footer-content {
-  @apply grid grid-cols-1 gap-8 mb-8 pb-8;
+  /* Sizing & spacing */
+  @apply gap-8 mb-8 pb-8;
+
+  /* Layout */
+  @apply grid grid-cols-1;
 }
 
 @media (min-width: 768px) {
@@ -52,36 +103,73 @@
 }
 
 .footer-section {
+  /* Layout */
   @apply text-center;
 }
 
 .footer-section-title {
-  @apply font-sans font-semibold text-lg text-sv-purple-700 mb-4 uppercase tracking-wider;
+  /* Spacing */
+  @apply mb-4;
+
+  /* Colors */
+  @apply text-sv-purple-700;
+
+  /* Typography */
+  @apply font-sans font-semibold text-lg uppercase tracking-wider;
 }
 
 .footer-nav {
-  @apply list-none p-0 m-0 flex flex-col gap-2;
+  /* Spacing */
+  @apply p-0 m-0 gap-2;
+
+  /* Layout */
+  @apply list-none flex flex-col;
 }
 
 .footer-link {
-  @apply text-neutral-500 no-underline font-sans text-[0.95rem];
+  /* Colors */
+  @apply text-neutral-500;
+
+  /* Link styling */
+  @apply no-underline;
+
+  /* Typography */
+  @apply font-sans text-[0.95rem];
+
+  /* Interactive & animation */
   @apply transition-colors duration-200;
 }
 
 .footer-link:hover {
+  /* Colors */
   @apply text-sv-purple-700;
 }
 
 .footer-social-icons {
+  /* Layout */
   @apply flex justify-center gap-4;
 }
 
 .footer-bottom {
-  @apply text-center pt-6 border-t border-sv-purple-700/10;
+  /* Spacing */
+  @apply pt-6;
+
+  /* Layout */
+  @apply text-center;
+
+  /* Border & shape */
+  @apply border-t border-sv-purple-700/10;
 }
 
 .footer-copyright {
-  @apply text-neutral-500 text-sm font-sans m-0;
+  /* Spacing */
+  @apply m-0;
+
+  /* Colors */
+  @apply text-neutral-500;
+
+  /* Typography */
+  @apply text-sm font-sans;
 }
 
 @media (min-width: 768px) {
