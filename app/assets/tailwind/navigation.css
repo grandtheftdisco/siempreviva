@@ -49,13 +49,6 @@
     @apply block absolute top-full left-0 right-0 bg-sv-purple-100 p-4 flex-col z-50 border-t border-red-900/15 shadow-purple-900/15;
   }
 
-  .navbar-section:not(.hidden),
-  .navbar-section:not(.hidden) .navbar-list,
-  .navbar-section:not(.hidden) .navbar-list li,
-  .navbar-section:not(.hidden) .navbar-list li a {
-    @apply bg-sv-purple-100;
-  }
-
   .navbar-section:not(.hidden) .navbar-list li {
     @apply border-b border-sv-purple-300/10 py-3;
   }
