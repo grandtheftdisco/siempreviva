@@ -61,7 +61,11 @@
 /* Desktop: 2-column grid layout */
 @media (min-width: 768px) {
   .cart-content {
-    @apply grid gap-12 items-start;
+    /* Sizing & spacing */
+    @apply gap-12;
+
+    /* Layout & positioning */
+    @apply grid items-start;
     grid-template-columns: 2fr 1fr;
   }
 
@@ -91,7 +95,14 @@
 /* Desktop: Remove background and increase gap */
 @media (min-width: 768px) {
   .cart-items {
-    @apply gap-8 p-0 rounded-none bg-transparent;
+    /* Sizing & spacing */
+    @apply gap-8 p-0;
+
+    /* Shape */
+    @apply rounded-none;
+
+    /* Colors */
+    @apply bg-transparent;
   }
 }
 
@@ -143,7 +154,11 @@
 
 /* Mobile-first: Item details - compact layout */
 .cart-items .cart-page-item .cart-item-details {
-  @apply flex-1 block w-full pt-1 pr-0 mr-0;
+  /* Sizing & spacing */
+  @apply w-full pt-1 pr-0 mr-0;
+
+  /* Layout */
+  @apply flex-1 block;
 }
 
 /* Desktop: Item details - flex column */
@@ -155,8 +170,12 @@
 
 /* Mobile-first: Item header - flex spread */
 .cart-items .cart-page-item .cart-item-header {
-  @apply flex justify-between items-center mb-0 pr-2;
+  /* Sizing & spacing */
+  @apply mb-0 pr-2;
   width: calc(100% - 1.75rem);
+
+  /* Layout */
+  @apply flex justify-between items-center;
 }
 
 /* Desktop: Item header - standard layout */
@@ -168,34 +187,66 @@
 
 /* Mobile-first: Product name - compact inline */
 .cart-items .cart-page-item .product-name {
-  @apply text-base inline m-0 mr-3;
+  /* Sizing & spacing */
+  @apply m-0 mr-3;
+
+  /* Layout */
+  @apply inline;
+
+  /* Typography */
+  @apply text-base;
 }
 
 /* Desktop: Product name - larger block */
 @media (min-width: 768px) {
   .cart-items .cart-page-item .product-name {
-    @apply text-lg block;
+    /* Layout */
+    @apply block;
+
+    /* Typography */
+    @apply text-lg;
   }
 }
 
 /* Mobile-first: Product price - compact inline */
 .cart-items .cart-page-item .product-price {
-  @apply text-sm inline m-0 font-medium text-neutral-600;
+  /* Sizing & spacing */
+  @apply m-0;
+
+  /* Layout */
+  @apply inline;
+
+  /* Colors */
+  @apply text-neutral-600;
+
+  /* Typography */
+  @apply text-sm font-medium;
 }
 
 /* Desktop: Product price - block, standard size, left-aligned */
 @media (min-width: 768px) {
   .cart-items .cart-page-item .product-price {
-    @apply text-base block text-left;
+    /* Layout */
+    @apply block text-left;
+
+    /* Typography */
+    @apply text-base;
   }
 }
 
 /* AUDIT i would ask if all the chained selectors in this file are needed, but it looks like if we remove them, we could have a specificity issue on our hands re: generic naming */
 /* Mobile-first: Remove button - small, absolute positioned */
 .cart-items .cart-page-item .remove-item-btn-soft {
-  @apply absolute top-1 right-0 w-5 h-5 p-0.5 rounded-full z-10;
+  /* Sizing & spacing */
+  @apply w-5 h-5 p-0.5;
   margin: 0 0.45rem;
+
+  /* Layout & positioning */
+  @apply absolute top-1 right-0 z-10;
   transform: none;
+
+  /* Shape */
+  @apply rounded-full;
 }
 
 /* Desktop: Remove button - larger, top-right corner */
@@ -207,7 +258,11 @@
 
 /* Mobile-first: Inline form wrapper */
 .cart-items .cart-page-item .inline-form {
-  @apply absolute top-1 right-0 w-5 h-5 m-0 z-10;
+  /* Sizing & spacing */
+  @apply w-5 h-5 m-0;
+
+  /* Layout & positioning */
+  @apply absolute top-1 right-0 z-10;
 }
 
 /* Desktop: Inline form - larger */
@@ -219,6 +274,7 @@
 
 /* Mobile-first: Remove button icon - small */
 .cart-items .cart-page-item .remove-cart-item-btn {
+  /* Sizing */
   @apply w-3 h-3;
 }
 
@@ -232,12 +288,15 @@
 /* AUDIT is this mobile first, or maybe it's SE-specific? */
 @media (max-width: 640px) {
   .cart-page-item {
-    /* Grid columns using fraction units - Tailwind doesn't support fr units in utilities */
-    grid-template-columns: 1fr;
+    /* Sizing & spacing */
     @apply gap-4;
+
+    /* Layout & positioning */
+    grid-template-columns: 1fr;
   }
 
   .cart-item-image {
+    /* Layout */
     @apply justify-self-center;
   }
 }
@@ -316,7 +375,14 @@
 /* Disable sticky on mobile since layout becomes single column */
 @media (max-width: 768px) {
   .cart-summary-section {
-    @apply static overflow-y-visible max-h-none;
+    /* Sizing */
+    @apply max-h-none;
+
+    /* Layout & positioning */
+    @apply static;
+
+    /* Behavior */
+    @apply overflow-y-visible;
   }
 }
 

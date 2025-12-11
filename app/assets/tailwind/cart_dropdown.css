@@ -289,7 +289,11 @@
 /* Mobile spacing for responsive cart items */
 @media (max-width: 767px) {
   .cart-items-list > li:not(:last-child) {
-    @apply border-b border-neutral-300 mb-2 pb-2;
+    /* Spacing */
+    @apply mb-2 pb-2;
+
+    /* Border & shape */
+    @apply border-b border-neutral-300;
   }
 }
 
