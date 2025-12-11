@@ -29,44 +29,67 @@
 
 /* ===== NAVIGATION MENU ===== */
 
-.navbar-section {
-  @apply flex-none flex;
+/* Mobile dropdown - shown when .hidden class is removed by JS */
+.navbar-section:not(.hidden) {
+  /* Layout & positioning */
+  @apply block absolute top-full left-0 right-0 flex-col z-50;
+
+  /* Spacing */
+  @apply p-4;
+
+  /* Colors & shape */
+  @apply bg-sv-purple-100 border-t border-red-900/15;
+
+  /* Visual effects */
+  @apply shadow-purple-900/15;
 }
 
+.navbar-section:not(.hidden) .navbar-list li {
+  /* Spacing & shape */
+  @apply border-b border-sv-purple-300/10 py-3;
+}
+
+.navbar-section:not(.hidden) .navbar-list li:first-child {
+  /* Spacing */
+  @apply pt-0;
+}
+
+.navbar-section:not(.hidden) .navbar-list li:last-child {
+  /* Spacing & shape */
+  @apply border-b-0 pb-0;
+}
+
+.navbar-section:not(.hidden) .navbar-list li a {
+  /* Spacing & layout */
+  @apply p-0 block;
+
+  /* Interactive & animation */
+  @apply transition-colors duration-200;
+}
+
+.navbar-section:not(.hidden) .navbar-list li a:hover {
+  /* Colors */
+  @apply text-sv-purple-700;
+}
+
+/* Desktop - horizontal nav (overrides mobile dropdown) */
 @media (min-width: 768px) {
   .navbar-section {
-    @apply flex-none;
-  }
-}
+    /* Layout */
+    @apply flex flex-none;
 
-@media (max-width: 767px) {
-  .navbar-section {
-    @apply hidden;
+    /* Reset mobile dropdown positioning */
+    @apply static bg-transparent p-0 border-0 shadow-none;
   }
 
-  /* Mobile dropdown */
-  .navbar-section:not(.hidden) {
-    @apply block absolute top-full left-0 right-0 bg-sv-purple-100 p-4 flex-col z-50 border-t border-red-900/15 shadow-purple-900/15;
+  .navbar-section .navbar-list li {
+    /* Reset mobile dropdown spacing/borders */
+    @apply border-0 py-0;
   }
 
-  .navbar-section:not(.hidden) .navbar-list li {
-    @apply border-b border-sv-purple-300/10 py-3;
-  }
-
-  .navbar-section:not(.hidden) .navbar-list li:first-child {
-    @apply pt-0;
-  }
-
-  .navbar-section:not(.hidden) .navbar-list li:last-child {
-    @apply border-b-0 pb-0;
-  }
-
-  .navbar-section:not(.hidden) .navbar-list li a {
-    @apply p-0 block transition-colors duration-200;
-  }
-
-  .navbar-section:not(.hidden) .navbar-list li a:hover {
-    @apply text-sv-purple-700;
+  .navbar-section .navbar-list li a {
+    /* Desktop link styling */
+    @apply transition-colors duration-200;
   }
 }
 
