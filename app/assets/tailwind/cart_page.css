@@ -190,6 +190,7 @@
   }
 }
 
+/* AUDIT i would ask if all the chained selectors in this file are needed, but it looks like if we remove them, we could have a specificity issue on our hands re: generic naming */
 /* Mobile-first: Remove button - small, absolute positioned */
 .cart-items .cart-page-item .remove-item-btn-soft {
   @apply absolute top-1 right-0 w-5 h-5 p-0.5 rounded-full z-10;
@@ -228,7 +229,7 @@
   }
 }
 
-
+/* AUDIT is this mobile first, or maybe it's SE-specific? */
 @media (max-width: 640px) {
   .cart-page-item {
     /* Grid columns using fraction units - Tailwind doesn't support fr units in utilities */
@@ -311,6 +312,7 @@
   @apply overflow-y-auto max-h-[calc(100vh-10.5rem)];
 }
 
+/* AUDIT is this really mobile-first? */
 /* Disable sticky on mobile since layout becomes single column */
 @media (max-width: 768px) {
   .cart-summary-section {

@@ -44,30 +44,28 @@
   @apply shadow-purple-900/15;
 }
 
-.navbar-section:not(.hidden) .navbar-list li {
+.navbar-section:not(.hidden) .navbar-list a {
   /* Spacing & shape */
-  @apply border-b border-sv-purple-300/10 py-3;
-}
+  @apply py-3 border-b border-sv-purple-300/10;
 
-.navbar-section:not(.hidden) .navbar-list li:first-child {
-  /* Spacing */
-  @apply pt-0;
-}
-
-.navbar-section:not(.hidden) .navbar-list li:last-child {
-  /* Spacing & shape */
-  @apply border-b-0 pb-0;
-}
-
-.navbar-section:not(.hidden) .navbar-list li a {
-  /* Spacing & layout */
-  @apply p-0 block;
+  /* Layout */
+  @apply block;
 
   /* Interactive & animation */
   @apply transition-colors duration-200;
 }
 
-.navbar-section:not(.hidden) .navbar-list li a:hover {
+.navbar-section:not(.hidden) .navbar-list a:first-of-type {
+  /* Spacing */
+  @apply pt-0;
+}
+
+.navbar-section:not(.hidden) .navbar-list a:last-of-type {
+  /* Spacing & shape */
+  @apply pb-0 border-b-0;
+}
+
+.navbar-section:not(.hidden) .navbar-list a:hover {
   /* Colors */
   @apply text-sv-purple-700;
 }
@@ -123,3 +121,8 @@
     @apply text-sm gap-6;
   }
 }
+
+/* NOTES:
+- overlap and/or conflicts in media queries? 99-103 and 120-123. also 83-92??
+- any way to reduce the redundancy of all the 'not hidden's up top using inherit, or some other tailwind syntax?
+*/

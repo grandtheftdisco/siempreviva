@@ -1,5 +1,6 @@
 /* ===== PRODUCTS INDEX PAGE ===== */
 
+/* AUDIT are we really using mobile-first here? */
 .products-container {
   @apply max-w-300 mx-auto px-4 py-8;
 }
@@ -252,6 +253,7 @@
   @apply max-w-full h-auto max-h-[40vh] rounded-lg object-cover;
 }
 
+/* AUDIT another tiny breakpoint... SE? consider organizing all SE queries together because it may preclude 'mobile-first' in Tailwind */
 @media (max-width: 400px) {
   .product-image-mobile {
     @apply w-full h-48 object-cover;
@@ -262,6 +264,7 @@
   @apply max-w-full h-auto max-h-[40vh] rounded-lg object-cover;
 }
 
+/* AUDIT what is this tiny breakpoint query for? SE? */
 @media (max-width: 400px) {
   .product-image-desktop {
     @apply max-h-[30vh];
@@ -353,6 +356,7 @@
 
 /* ===== SCROLL BEHAVIOR (MOBILE) ===== */
 
+/* AUDIT - is this mobile-first? */
 /* Vanilla CSS intentionally used: better scroll behavior than @apply equivalent */
 @media (max-width: 767px) {
   html {

@@ -253,6 +253,7 @@ div.flash-warning {
 
 /* ===== FORM COMPONENT CLASSES ===== */
 
+/* AUDIT lets use rem instead of px here */
 /* Small input for quantity fields in cart */
 form input.form-input-small,
 .form-input-small {
@@ -283,6 +284,7 @@ form input.form-input-small,
   @apply mb-2 p-4 text-center;
 }
 
+/* AUDIT is this mobile firsT? */
 @media (max-width: 768px) {
   .page-title {
     /* Mobile typography & alignment */

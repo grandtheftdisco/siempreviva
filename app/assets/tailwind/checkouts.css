@@ -1,6 +1,6 @@
 /* ===== STRIPE CHECKOUT FORM OVERRIDES ===== */
 /*
- * WARNING: DO NOT MODIFY THIS SECTION (lines 1-46)
+ * WARNING: DO NOT MODIFY THIS SECTION
  *
  * These styles override Stripe's embedded checkout element to match our site design.
  * Stripe loads its checkout form in an iframe with its own styling. These overrides
@@ -45,6 +45,8 @@ div[style*="background-color: rgba(247, 242, 237"] {
 
 /* ===== END STRIPE CHECKOUT FORM OVERRIDES ===== */
 
+/* --------------------------------------------------- */
+
 /* ===== CHECKOUT SUCCESS PAGE STYLES ===== */
 
 /* Post checkout container */
@@ -70,6 +72,7 @@ div[style*="background-color: rgba(247, 242, 237"] {
   @apply text-center;
 }
 
+/* AUDIT is this really mobile first? */
 @media (max-height: 700px) {
   .post-checkout-info {
     /* Sizing & spacing */
@@ -89,6 +92,7 @@ div[style*="background-color: rgba(247, 242, 237"] {
   @apply font-serif text-4xl font-bold leading-tight;
 }
 
+/* AUDIT is this really mobile first? */
 @media (max-height: 700px) {
   .post-checkout-container h1 {
     /* Sizing & spacing */
@@ -96,6 +100,7 @@ div[style*="background-color: rgba(247, 242, 237"] {
   }
 }
 
+/* AUDIT for this and all following selectors prefaced by post-checkout-container: do we NEED this specific of a prefix? */
 .post-checkout-container .subtitle {
   /* Sizing & spacing */
   @apply mb-6 mt-0;

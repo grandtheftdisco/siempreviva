@@ -203,6 +203,7 @@
   float: none;
 }
 
+/* AUDIT is this mobile-first or SE-first? */
 @media (max-width: 640px) {
   .quantity-row {
     @apply flex-col items-stretch gap-2;

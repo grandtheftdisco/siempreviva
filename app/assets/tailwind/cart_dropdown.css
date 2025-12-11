@@ -11,6 +11,7 @@
   @apply flex-shrink-0;
 }
 
+/* AUDIT is this really mobile first? */
 /* Responsive right-icons */
 @media (max-width: 767px) {
   .right-icons {
@@ -284,6 +285,7 @@
   @apply absolute top-1/2 right-0 -translate-y-1/2;
 }
 
+/* AUDIT is this really mobile first? */
 /* Mobile spacing for responsive cart items */
 @media (max-width: 767px) {
   .cart-items-list > li:not(:last-child) {

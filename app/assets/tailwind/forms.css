@@ -103,6 +103,7 @@
   @apply font-sans;
 }
 
+/* AUDIT is this mobile first? */
 @media (max-width: 768px) {
   .form-container {
     /* Mobile spacing adjustments */
@@ -295,6 +296,7 @@
   @apply w-auto flex-1;
 }
 
+/* AUDIT is this mobile first? */
 @media (max-width: 768px) {
   .form-inline {
     /* Mobile layout - stack vertically */
