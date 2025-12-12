@@ -234,7 +234,6 @@
   }
 }
 
-/* AUDIT i would ask if all the chained selectors in this file are needed, but it looks like if we remove them, we could have a specificity issue on our hands re: generic naming */
 /* Mobile-first: Remove button - small, absolute positioned */
 .cart-items .cart-page-item .remove-item-btn-soft {
   /* Sizing & spacing */

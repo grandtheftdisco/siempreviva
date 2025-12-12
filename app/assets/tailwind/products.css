@@ -1,29 +1,25 @@
 /* ===== PRODUCTS INDEX PAGE ===== */
+/* Mobile-first: compact spacing base, increases with viewport size */
 
-/* AUDIT are we really using mobile-first here? */
 .products-container {
-  /* Sizing & spacing */
-  @apply max-w-300 px-4 py-8;
+  /* Sizing & spacing - mobile base */
+  @apply max-w-300 px-2 py-4;
 
   /* Layout */
   @apply mx-auto;
 }
 
-@media (max-width: 1024px) {
+@media (min-width: 640px) {
   .products-container {
-    @apply px-4 py-8;
-  }
-}
-
-@media (max-width: 768px) {
-  .products-container {
+    /* Tablet spacing */
     @apply px-4 py-6;
   }
 }
 
-@media (max-width: 640px) {
+@media (min-width: 768px) {
   .products-container {
-    @apply px-2 py-4;
+    /* Desktop spacing */
+    @apply px-4 py-8;
   }
 }
 
@@ -462,7 +458,6 @@
   @apply object-cover;
 }
 
-/* AUDIT another tiny breakpoint... SE? consider organizing all SE queries together because it may preclude 'mobile-first' in Tailwind */
 @media (max-width: 400px) {
   .product-image-mobile {
     /* Sizing */
@@ -484,7 +479,8 @@
   @apply object-cover;
 }
 
-/* AUDIT what is this tiny breakpoint query for? SE? */
+/* Extra-small screens (iPhone SE, etc.) - reduced image height */
+/* NOTE: Consider adding custom Tailwind breakpoint (xs: 400px) if SE-specific styles continue to grow */
 @media (max-width: 400px) {
   .product-image-desktop {
     /* Sizing */
@@ -696,7 +692,7 @@
 
 /* ===== SCROLL BEHAVIOR (MOBILE) ===== */
 
-/* AUDIT - is this mobile-first? */
+/* Mobile-only feature: scroll snapping disabled on desktop for free scrolling */
 /* Vanilla CSS intentionally used: better scroll behavior than @apply equivalent */
 @media (max-width: 767px) {
   html {
