@@ -45,9 +45,9 @@
   @apply text-sv-purple-700;
 }
 
-/* ===== NAVIGATION MENU ===== */
+/* ===== NAVIGATION SECTION ===== */
 
-/* Mobile dropdown - shown when .hidden class is removed by JS */
+/* Mobile/base styles - shown when `.hidden` class is removed by JS */
 .navbar-section:not(.hidden) {
   /* Layout & positioning */
   @apply block absolute top-full left-0 right-0 flex-col z-50;
@@ -85,11 +85,11 @@
   @apply text-sv-purple-700;
 }
 
-/* Desktop - horizontal nav (overrides mobile dropdown) */
-@media (min-width: 768px) {
+/* Tablet (768-1023px): horizontal nav, compact left padding */
+@media (min-width: 768px) and (max-width: 1023px) {
   .navbar-section {
     /* Sizing & spacing */
-    @apply p-0;
+    @apply p-0 pl-3;
 
     /* Layout & positioning */
     @apply flex flex-none static;
@@ -103,19 +103,29 @@
     /* Visual effects */
     @apply shadow-none;
   }
+}
 
-  .navbar-section .navbar-list li {
+/* Desktop (1024px+): horizontal nav, full left padding */
+@media (min-width: 1024px) {
+  .navbar-section {
     /* Sizing & spacing */
-    @apply py-0;
+    @apply p-0 pl-4;
 
-    /* Border */
+    /* Layout & positioning */
+    @apply flex flex-none static;
+
+    /* Border & shape */
     @apply border-0;
-  }
 
-  .navbar-section .navbar-list li a {
-    @apply transition-colors duration-200;
+    /* Colors */
+    @apply bg-transparent;
+
+    /* Visual effects */
+    @apply shadow-none;
   }
 }
+
+/* ===== NAVBAR LIST ===== */
 
 .navbar-list {
   /* Sizing & spacing */
@@ -134,8 +144,25 @@
   @apply font-medium text-lg font-serif;
 }
 
-/* Tablet */
-@media (min-width: 768px) {
+/* Tablet: horizontal layout, compact spacing */
+@media (min-width: 768px) and (max-width: 1023px) {
+  .navbar-list {
+    /* Sizing & spacing */
+    @apply p-0 mt-0 gap-6;
+
+    /* Layout */
+    @apply flex-row;
+
+    /* Border */
+    @apply border-0;
+
+    /* Typography */
+    @apply text-sm;
+  }
+}
+
+/* Desktop: horizontal layout, full spacing */
+@media (min-width: 1024px) {
   .navbar-list {
     /* Sizing & spacing */
     @apply p-0 mt-0 gap-8;
@@ -151,33 +178,28 @@
   }
 }
 
-/* Desktop */
-@media (min-width: 1024px) {
-  .navbar-section {
-    /* Sizing & spacing */
-    @apply pl-4;
-  }
+/* ===== NAVBAR <li> AND <a> - TABLET & DESKTOP ONLY ===== */
 
-  .navbar-list {
+/* List Items: reset li spacing */
+@media (min-width: 768px) {
+  .navbar-list li {
     /* Sizing & spacing */
-    @apply gap-8;
+    @apply py-0;
 
-    /* Typography */
-    @apply text-lg;
+    /* Border */
+    @apply border-0;
   }
 }
 
-/* Tablet */
-@media (min-width: 768px) and (max-width: 1023px) {
-  .navbar-section {
-    @apply pl-3;
+/* Link transitions */
+@media (min-width: 768px) {
+  .navbar-list li a {
+    /* Interactive & animation */
+    @apply transition-colors duration-200;
   }
 
-  .navbar-list {
-    /* Sizing & spacing */
-    @apply gap-6;
-
-    /* Typography */
-    @apply text-sm;
+  .navbar-list li a:hover {
+    /* Colors */
+    @apply text-sv-purple-700;
   }
 }

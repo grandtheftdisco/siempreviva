@@ -62,12 +62,3 @@ main {
   @apply text-sv-purple-700 cursor-pointer;
 }
 
-@media (min-width: 768px) {
-  .navbar-list li a {
-    @apply transition-colors duration-200;
-  }
-
-  .navbar-list li a:hover {
-    @apply text-sv-purple-700;
-  }
-}
