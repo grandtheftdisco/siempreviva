@@ -1,20 +1,24 @@
 /* Forms Stylesheet */
-/* Contains all form-related styles including inputs, labels, buttons, and form layouts */
+/* Contains all form-related styles including inputs, labels, and form layouts */
 
 /* ===== FORM COMPONENT CLASSES ===== */
 
-.btn-submit {
-  /* Spacing & shape */
-  @apply px-6 py-3 rounded-full;
+.form-container {
+  /* Sizing & positioning */
+  @apply max-w-[600px] mx-auto my-4;
 
-  /* Interactive & animation */
-  @apply cursor-pointer transition-colors duration-300;
-
-  /* Colors */
-  @apply bg-sv-purple-400 hover:bg-sv-purple-700 text-white;
+  /* Box styling */
+  @apply px-4 py-6 bg-white border border-gray-200 rounded-lg;
 
   /* Typography */
-  @apply font-bold font-sans;
+  @apply font-sans;
+}
+
+/* Desktop: increased spacing */
+@media (min-width: 768px) {
+  .form-container {
+    @apply my-8 p-8;
+  }
 }
 
 .input-text {
@@ -56,147 +60,6 @@
   @apply font-bold text-sv-purple-700 font-sans;
 }
 
-.input-error {
-  /* Sizing & spacing */
-  @apply w-full px-3 py-2 rounded border;
-
-  /* Colors */
-  @apply border-rose-400 bg-rose-50 text-neutral-800;
-
-  /* Focus states */
-  @apply focus:outline-none focus:border-rose-400 focus:ring-2 focus:ring-rose-400/20;
-
-  /* Animation & typography */
-  @apply transition-all duration-150 font-sans;
-}
-
-.input-success {
-  /* Sizing & spacing */
-  @apply w-full px-3 py-2 rounded border;
-
-  /* Colors */
-  @apply border-emerald-600 bg-emerald-50 text-neutral-800;
-
-  /* Focus states */
-  @apply focus:outline-none focus:border-emerald-600 focus:ring-2 focus:ring-emerald-600/20;
-
-  /* Animation & typography */
-  @apply transition-all duration-150 font-sans;
-}
-
-.form-container {
-  /* Sizing & positioning */
-  @apply max-w-[600px] mx-auto my-4;
-
-  /* Box styling */
-  @apply px-4 py-6 bg-white border border-gray-200 rounded-lg;
-
-  /* Typography */
-  @apply font-sans;
-}
-
-/* Desktop: increased spacing */
-@media (min-width: 768px) {
-  .form-container {
-    @apply my-8 p-8;
-  }
-}
-
-/* ===== FORM INPUT STATES ===== */
-
-.form-input-error {
-  @apply border-rose-400 bg-rose-200;
-}
-
-.form-input-error:focus {
-  @apply border-rose-400 ring-2 ring-rose-400/10;
-}
-
-.form-input-success {
-  @apply border-emerald-600 bg-sv-green-200;
-}
-
-.form-input-success:focus {
-  @apply border-emerald-600 ring-2 ring-emerald-600/10;
-}
-
-/* ===== FORM GROUPS ===== */
-
-.form-group {
-  @apply mb-6;
-}
-
-.form-group label {
-  /* Layout & spacing */
-  @apply block mb-2;
-
-  /* Typography */
-  @apply font-medium text-neutral-800 font-sans;
-}
-
-.form-group input,
-.form-group textarea,
-.form-group select {
-  /* Spacing */
-  @apply px-4 py-3;
-
-  /* Border & shape */
-  @apply border border-neutral-400 rounded;
-
-  /* Animation & typography */
-  @apply transition-all duration-150 font-sans;
-}
-
-.form-group input:focus,
-.form-group textarea:focus,
-.form-group select:focus {
-  @apply outline-none border-sv-purple-700 ring-2 ring-sv-purple-700/10;
-}
-
-/* ===== SELECT INPUTS ===== */
-
-.form-select {
-  /* Spacing */
-  @apply px-4 py-3 pr-10;
-
-  /* Border & shape */
-  @apply border border-neutral-400 rounded;
-
-  /* Interactive & animation */
-  @apply cursor-pointer transition-all duration-150;
-
-  /* Custom dropdown arrow (SVG must use data URI, positioning uses vanilla CSS) */
-  background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath fill='none' stroke='%23674174' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='m2 5 6 6 6-6'/%3E%3C/svg%3E");
-  background-repeat: no-repeat;
-  background-position: right 0.75rem center;
-  background-size: 1rem 0.75rem;
-
-  /* Typography */
-  @apply font-sans;
-}
-
-.form-select:focus {
-  @apply outline-none border-sv-purple-700 ring-2 ring-sv-purple-700/10;
-}
-
-/* ===== CHECKBOX AND RADIO INPUTS ===== */
-
-.form-checkbox {
-  @apply flex items-center mb-3;
-}
-
-.form-checkbox input {
-  /* Sizing & spacing */
-  @apply w-auto mr-2 mt-0;
-
-  /* Accent color */
-  @apply accent-sv-purple-700;
-}
-
-.form-checkbox label {
-  @apply mb-0 font-normal cursor-pointer;
-}
-
 /* ===== FORM VALIDATION MESSAGES ===== */
 
 /* Rails error_messages pattern */
@@ -218,66 +81,4 @@
 
 .form-errors-container li {
   @apply mb-1;
-}
-
-.form-error-message {
-  @apply text-sm mt-1 block text-rose-400;
-}
-
-.form-success-message {
-  @apply text-sm mt-1 block text-emerald-600;
-}
-
-.form-help-text {
-  @apply text-sm mt-1 block text-neutral-500;
-}
-
-/* ===== INLINE FORMS ===== */
-
-.form-inline {
-  /* Layout */
-  @apply flex flex-col items-stretch gap-3;
-
-  /* AUDIT - divide these into semantic groups */
-  /* Reset overrides */
-  @apply m-0 p-0 max-w-none bg-transparent border-0;
-}
-
-.form-inline .form-group {
-  @apply mb-0 flex-1;
-}
-
-.form-inline label {
-  @apply mr-0 mb-1 whitespace-nowrap;
-}
-
-.form-inline input,
-.form-inline select {
-  @apply w-full;
-}
-
-/* Desktop: horizontal inline layout */
-@media (min-width: 768px) {
-  .form-inline {
-    @apply flex-row items-center gap-4;
-  }
-
-  .form-inline label {
-    @apply mr-2 mb-0;
-  }
-
-  .form-inline input,
-  .form-inline select {
-    @apply w-auto flex-1;
-  }
-}
-
-/* ===== FIELDSET AND LEGEND ===== */
-
-fieldset {
-  @apply border border-neutral-400 rounded-lg p-6 mb-6;
-}
-
-legend {
-  @apply text-sv-purple-700 font-semibold px-2 text-lg;
 }
