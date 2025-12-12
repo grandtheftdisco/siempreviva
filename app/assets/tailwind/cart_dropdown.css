@@ -11,14 +11,6 @@
   @apply flex-shrink-0;
 }
 
-/* AUDIT is this really mobile first? */
-/* Responsive right-icons */
-@media (max-width: 767px) {
-  .right-icons {
-    @apply gap-3; /* Match mobile-nav-items gap for consistent spacing */
-  }
-}
-
 .cart-button {
   /* Layout & spacing */
   @apply relative inline-flex items-center p-2;
@@ -283,18 +275,6 @@
 .cart-dropdown .cart-item .cart-item-remove {
   /* Layout & positioning */
   @apply absolute top-1/2 right-0 -translate-y-1/2;
-}
-
-/* AUDIT is this really mobile first? */
-/* Mobile spacing for responsive cart items */
-@media (max-width: 767px) {
-  .cart-items-list > li:not(:last-child) {
-    /* Spacing */
-    @apply mb-2 pb-2;
-
-    /* Border & shape */
-    @apply border-b border-neutral-300;
-  }
 }
 
 /* ===== CART DROPDOWN SUMMARY ===== */
