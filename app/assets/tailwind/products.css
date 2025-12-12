@@ -1,29 +1,28 @@
 /* ===== PRODUCTS INDEX PAGE ===== */
-/* Mobile-first: compact spacing base, increases with viewport size */
 
 .products-container {
-  /* Sizing & spacing - mobile base */
+  /* Sizing & spacing */
   @apply max-w-300 px-2 py-4;
 
   /* Layout */
   @apply mx-auto;
 }
 
+/* Tablet */
 @media (min-width: 640px) {
   .products-container {
-    /* Tablet spacing */
     @apply px-4 py-6;
   }
 }
 
+/* Desktop */
 @media (min-width: 768px) {
   .products-container {
-    /* Desktop spacing */
     @apply px-4 py-8;
   }
 }
 
-/* Product Show Page - Image Containers */
+/* Product #Show Page - Image Containers */
 .product-image-wrapper {
   /* Layout */
   @apply flex items-center justify-center;
@@ -48,7 +47,6 @@
   @apply text-gray-500;
 }
 
-/* Product Features Section */
 .product-features-container {
   /* Sizing & spacing */
   @apply max-w-lg px-4 mb-6;
@@ -68,7 +66,6 @@
   @apply text-gray-600;
 }
 
-/* Additional Images Grid */
 .additional-images-grid {
   /* Sizing & spacing */
   @apply max-w-lg px-4 mb-6 lg:mb-8 gap-4;
@@ -99,7 +96,6 @@
   @apply text-sm;
 }
 
-/* Cross-Sells Section */
 .cross-sells-grid {
   /* Sizing & spacing */
   @apply gap-8;
@@ -108,7 +104,7 @@
   @apply flex flex-col justify-center items-center;
 }
 
-/* Responsive: row layout on xl screens (1280px+) */
+/* Desktop */
 @media (min-width: 1280px) {
   .cross-sells-grid {
     /* Sizing & spacing */
@@ -143,6 +139,7 @@
   @apply grid grid-cols-4 justify-items-center;
 }
 
+/* AUDIT - is this for tablets? */
 @media (max-width: 1024px) {
   .products-grid {
     /* Sizing & spacing */
@@ -153,6 +150,7 @@
   }
 }
 
+/* AUDIT - is this for mobile? */
 @media (max-width: 768px) {
   .products-grid {
     /* Sizing & spacing */
@@ -163,6 +161,7 @@
   }
 }
 
+/* XS Screens */
 @media (max-width: 640px) {
   .products-grid {
     /* Sizing & spacing */
@@ -194,20 +193,20 @@
 }
 
 .product-card:hover {
-  /* Interactive & animation */
   @apply -translate-y-2;
 }
 
+/* AUDIT - mobile-first? */
 @media (max-width: 768px) {
   .product-card {
-    /* Sizing */
     @apply h-84;
   }
 }
 
+/* XS Screens */
+/* AUDIT - convert px to rem? */
 @media (max-width: 640px) {
   .product-card {
-    /* Sizing */
     @apply max-w-[308px] h-80;
   }
 }
@@ -240,16 +239,16 @@
   @apply overflow-hidden;
 }
 
+/* AUDIT - mobile-first? */
 @media (max-width: 768px) {
   .product-image-container {
-    /* Sizing */
     @apply h-68;
   }
 }
 
+/* XS Screens */
 @media (max-width: 640px) {
   .product-image-container {
-    /* Sizing */
     @apply h-64;
   }
 }
@@ -272,7 +271,6 @@
 }
 
 .product-link:hover .product-image {
-  /* Visual effects */
   @apply saturate-100;
 }
 
@@ -319,24 +317,20 @@
   @apply mx-auto;
 }
 
-/* Product longform layout containers */
+/* Product longform partial layout container */
 .section-one-mobile-container {
-  /* Layout & positioning */
   @apply lg:hidden relative;
 }
 
 .add-to-bag-mobile-form {
-  /* Layout */
   @apply flex justify-center;
 }
 
 .product-content-grid {
-  /* Layout */
   @apply grid grid-cols-1 lg:grid-cols-2;
 }
 
 .product-add-to-cart-form {
-  /* Sizing & spacing */
   @apply w-auto m-0 p-0 max-w-none;
 }
 
@@ -357,17 +351,14 @@
 }
 
 .breadcrumb-link:hover {
-  /* Link styling */
   @apply underline;
 }
 
 .breadcrumb-separator {
-  /* Sizing & spacing */
   @apply mx-2;
 }
 
 .current-page {
-  /* Colors */
   @apply text-inherit;
 }
 
@@ -382,13 +373,14 @@
   @apply text-neutral-800;
 }
 
+/* AUDIT - mobile-first? */
 @media (max-width: 768px) {
   .product-show-title {
-    /* Typography */
     @apply text-left text-4xl;
   }
 }
 
+/* AUDIT - is this for XS screens...? */
 @media (max-width: 400px) {
   .product-show-title {
     /* Sizing & spacing */
@@ -407,23 +399,23 @@
   @apply text-neutral-800;
 }
 
+/* AUDIT - is this for XS Screens too? */
 @media (max-width: 400px) {
   .product-price-display {
-    /* Typography */
     @apply text-4xl;
   }
 }
 
+/* AUDIT - what's going on here? mobile? */
 @media (min-width: 401px) and (max-width: 1023px) {
   .product-price-display {
-    /* Typography */
     @apply text-3xl;
   }
 }
 
+/* Desktop */
 @media (min-width: 1024px) {
   .product-price-display {
-    /* Typography */
     @apply text-left;
   }
 }
@@ -458,6 +450,7 @@
   @apply object-cover;
 }
 
+/* AUDIT - XS Screens? */
 @media (max-width: 400px) {
   .product-image-mobile {
     /* Sizing */
@@ -479,18 +472,16 @@
   @apply object-cover;
 }
 
-/* Extra-small screens (iPhone SE, etc.) - reduced image height */
-/* NOTE: Consider adding custom Tailwind breakpoint (xs: 400px) if SE-specific styles continue to grow */
+/* XS Screens - reduced image height */
 @media (max-width: 400px) {
   .product-image-desktop {
-    /* Sizing */
     @apply max-h-[30vh];
   }
 }
 
+/* Desktop */
 @media (min-width: 1024px) {
   .product-image-desktop {
-    /* Sizing */
     @apply max-h-none;
   }
 }
@@ -510,7 +501,6 @@
 }
 
 .product-image-placeholder-text {
-  /* Colors */
   @apply text-neutral-500;
 }
 
@@ -586,6 +576,7 @@
   @apply flex flex-col justify-center items-center;
 }
 
+/* AUDIT - what is this breakpoint? Desktop? */
 @media (min-width: 1280px) {
   .cross-sells-grid {
     /* Sizing & spacing */
@@ -622,6 +613,7 @@
 }
 
 .cross-sell-card::after {
+  /* AUDIT - explain this line? */
   content: '';
 
   /* Sizing */
@@ -692,8 +684,9 @@
 
 /* ===== SCROLL BEHAVIOR (MOBILE) ===== */
 
-/* Mobile-only feature: scroll snapping disabled on desktop for free scrolling */
+/* Mobile-only feature: scroll snapping (disabled on desktop) */
 /* Vanilla CSS intentionally used: better scroll behavior than @apply equivalent */
+/* AUDIT - mobile-first? */
 @media (max-width: 767px) {
   html {
     scroll-snap-type: y proximity;

@@ -33,17 +33,14 @@ header {
 
 /* Mobile navigation container - only visible on mobile */
 .mobile-nav-items {
-  /* Layout & positioning */
   @apply order-2 flex-none flex items-center gap-3;
 }
 
 .mobile-nav-items .search-section {
-  /* Layout */
   @apply flex-none flex items-center;
 }
 
 .mobile-nav-items .right-icons {
-  /* Layout */
   @apply flex-none flex items-center gap-3;
 }
 
@@ -64,7 +61,6 @@ header {
   }
 
   .right-icons {
-    /* Layout */
     @apply flex-none flex items-center gap-3;
   }
 }

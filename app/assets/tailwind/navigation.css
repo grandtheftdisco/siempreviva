@@ -1,8 +1,6 @@
 /* Navigation Stylesheet */
 /* Contains mobile menu button and navigation menu styles */
 
-/* Navigation styles refactored to mobile-first in Session 5B (Dec 2025) */
-
 /* ===== MOBILE MENU BUTTON ===== */
 
 .mobile-menu-button {
@@ -26,18 +24,15 @@
 }
 
 .mobile-menu-button:hover {
-  /* Interactive */
   @apply cursor-pointer;
 }
 
 .mobile-menu-button:focus {
-  /* Border & shape */
   @apply outline-none;
 }
 
 @media (min-width: 768px) {
   .mobile-menu-button {
-    /* Layout */
     @apply hidden;
   }
 }
@@ -79,17 +74,14 @@
 }
 
 .navbar-section:not(.hidden) .navbar-list a:first-of-type {
-  /* Spacing */
   @apply pt-0;
 }
 
 .navbar-section:not(.hidden) .navbar-list a:last-of-type {
-  /* Spacing & shape */
   @apply pb-0 border-b-0;
 }
 
 .navbar-section:not(.hidden) .navbar-list a:hover {
-  /* Colors */
   @apply text-sv-purple-700;
 }
 
@@ -121,13 +113,11 @@
   }
 
   .navbar-section .navbar-list li a {
-    /* Interactive & animation */
     @apply transition-colors duration-200;
   }
 }
 
 .navbar-list {
-  /* Base = mobile dropdown defaults */
   /* Sizing & spacing */
   @apply p-0 m-0 gap-3;
 
@@ -144,6 +134,7 @@
   @apply font-medium text-lg font-serif;
 }
 
+/* Tablet */
 @media (min-width: 768px) {
   .navbar-list {
     /* Sizing & spacing */
@@ -160,6 +151,7 @@
   }
 }
 
+/* Desktop */
 @media (min-width: 1024px) {
   .navbar-section {
     /* Sizing & spacing */
@@ -175,9 +167,9 @@
   }
 }
 
+/* Tablet */
 @media (min-width: 768px) and (max-width: 1023px) {
   .navbar-section {
-    /* Sizing & spacing */
     @apply pl-3;
   }
 

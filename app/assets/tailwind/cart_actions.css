@@ -181,10 +181,10 @@
 }
 
 .quantity-row {
-  /* Sizing & spacing - mobile base */
+  /* Sizing & spacing */
   @apply gap-2 w-full m-0 p-0;
 
-  /* Layout & positioning - mobile base (vertical stack) */
+  /* Layout & positioning - vertical stack */
   @apply flex flex-col items-stretch relative;
 }
 
@@ -192,7 +192,7 @@
   /* Sizing & spacing */
   @apply gap-3;
 
-  /* Layout & positioning - mobile base */
+  /* Layout & positioning */
   @apply flex items-center justify-center relative;
 }
 
