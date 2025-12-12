@@ -7,7 +7,8 @@
    so that when the time comes for legacy cleanup & refactor in Session 4, there is context for the
    reasoning behind the vanilla code. */
 
-/* AUDIT: ensure this file is using a mobile-first approach! */
+/* NOTE: This file uses mixed max-width and min-width queries due to complex responsive requirements.
+   Some max-width queries remain for extra-small screen overrides (480px, 640px breakpoints). */
 
 /* ===== SEARCH SECTION LAYOUT ===== */
 
@@ -322,10 +323,9 @@
 
 /* Match search results width to search input width at different breakpoints */
 .search-results .ais-Hits {
-  /* Sizing */
-  @apply sm:w-[200px] md:w-64;
+  /* Sizing - using rem for responsive scaling */
+  @apply sm:w-[12.5rem] md:w-64;
 }
-/* AUDIT - use rem instead of px here - find a way to have this flex with screen size more naturally */
 
 /* ===== SEARCH HIT ITEMS ===== */
 
