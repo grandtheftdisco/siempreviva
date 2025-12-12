@@ -42,16 +42,8 @@ header {
   }
 }
 
-/* AUDIT - reconcile this with media query below - when you flatten this selector it renders a second cart icon on the left of the logo */
-.mobile-nav-items-container .right-icons {
+.mobile-nav-right-icons {
   @apply flex-none flex items-center gap-3;
-}
-
-/* Desktop search and icons layout - visibility handled by view inline utilities */
-@media (min-width: 768px) {
-  .mobile-nav-items-container .right-icons {
-    @apply flex-none flex items-center gap-3;
-  }
 }
 
 /* ===== LOGO ===== */
