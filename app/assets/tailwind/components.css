@@ -270,15 +270,14 @@ div.flash-warning {
 
 /* ===== FORM COMPONENT CLASSES ===== */
 
-/* AUDIT lets use rem instead of px here */
 /* Small input for quantity fields in cart */
 form input.form-input-small,
 .form-input-small {
-  /* Sizing */
-  @apply w-[50px] max-w-[60px] min-w-[50px];
+  /* Sizing - using rem for responsive scaling */
+  @apply w-[3.125rem] max-w-[3.75rem] min-w-[3.125rem];
 
-  /* Spacing */
-  @apply py-[0.5px] px-[1px];
+  /* Spacing - using rem */
+  @apply py-[0.03125rem] px-[0.0625rem];
 
   /* Shape */
   @apply rounded-full box-border;
@@ -292,20 +291,21 @@ form input.form-input-small,
 
 
 /* ===== TYPOGRAPHY COMPONENTS ===== */
+/* Mobile-first: smaller text and left-aligned base, larger centered on desktop */
 
 .page-title {
-  /* Typography */
-  @apply font-serif text-4xl font-light text-neutral-800 tracking-wider;
+  /* Typography - mobile base */
+  @apply font-serif text-2xl font-light text-neutral-800 tracking-wider;
 
-  /* Spacing & alignment */
-  @apply mb-2 p-4 text-center;
+  /* Spacing & alignment - mobile base */
+  @apply mb-2 p-4 text-left;
 }
 
-/* AUDIT is this mobile firsT? */
-@media (max-width: 768px) {
+/* Desktop: larger text, centered */
+@media (min-width: 768px) {
   .page-title {
-    /* Mobile typography & alignment */
-    @apply text-left text-2xl;
+    /* Desktop typography & alignment */
+    @apply text-center text-4xl;
   }
 }
 
