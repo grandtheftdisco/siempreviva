@@ -19,30 +19,6 @@
   @apply text-center font-serif;
 }
 
-.cart-breadcrumb {
-  /* Sizing & spacing */
-  @apply mt-4;
-
-  /* Typography */
-  @apply text-sm;
-
-  /* Colors */
-  @apply text-neutral-600;
-}
-
-.cart-breadcrumb .breadcrumb-link {
-  /* Colors */
-  @apply text-neutral-600 no-underline;
-}
-
-.cart-breadcrumb .breadcrumb-link:hover {
-  /* Colors */
-  @apply text-sv-purple-700;
-
-  /* Interactive */
-  @apply cursor-pointer;
-}
-
 .cart-content {
   /* Layout & spacing*/
   @apply flex flex-col gap-8 items-center;
@@ -139,15 +115,13 @@
 }
 
 /* Hide product images on mobile */
-.cart-items .cart-page-item .cart-item-image,
-.cart-items .cart-page-item .cart-item-image-container {
+.cart-items .cart-page-item .cart-item-image {
   @apply hidden;
 }
 
 /* Desktop: Show images */
 @media (min-width: 768px) {
-  .cart-items .cart-page-item .cart-item-image,
-  .cart-items .cart-page-item .cart-item-image-container {
+  .cart-items .cart-page-item .cart-item-image {
     @apply block;
   }
 }
@@ -230,27 +204,7 @@
   }
 }
 
-.cart-items .cart-page-item .remove-item-btn-soft {
-  /* Sizing & spacing */
-  @apply w-5 h-5 p-0.5;
-  margin: 0 0.45rem;
-
-  /* Layout & positioning */
-  @apply absolute top-1 right-0 z-10;
-  transform: none;
-
-  /* Shape */
-  @apply rounded-full;
-}
-
-/* Desktop: Remove button */
-@media (min-width: 768px) {
-  .cart-items .cart-page-item .remove-item-btn-soft {
-    @apply top-4 right-4 w-6 h-6;
-  }
-}
-
-.cart-items .cart-page-item .inline-form {
+.cart-item-remove-form {
   /* Sizing & spacing */
   @apply w-5 h-5 m-0;
 
@@ -260,23 +214,12 @@
 
 /* Desktop: Inline form */
 @media (min-width: 768px) {
-  .cart-items .cart-page-item .inline-form {
+  .cart-item-remove-form {
     @apply top-4 right-4 w-6 h-6;
   }
 }
 
-.cart-items .cart-page-item .remove-cart-item-btn {
-  /* Sizing */
-  @apply w-3 h-3;
-}
-
-/* Desktop: Remove button icon */
-@media (min-width: 768px) {
-  .cart-items .cart-page-item .remove-cart-item-btn {
-    @apply w-4 h-4;
-  }
-}
-
+/* AUDIT - separate these queries to pair with their base defs */
 /* Extra-small screens (iPhone SE, etc.) - single column layout */
 @media (max-width: 640px) {
   .cart-page-item {
@@ -304,12 +247,13 @@
   @apply rounded-lg;
 
   /* Colors */
-  @apply bg-gray-100;
+  @apply bg-transparent;
 
   /* Behavior */
   @apply overflow-hidden;
 }
 
+/* AUDIT - prefer renaming to chaining */
 .cart-item-image .product-image {
   /* Sizing */
   @apply w-full h-full;
@@ -318,6 +262,7 @@
   @apply object-cover;
 }
 
+/* AUDIT - specify this selector name more */
 .image-placeholder {
   /* Sizing */
   @apply w-full h-full;
@@ -345,10 +290,7 @@
   @apply flex justify-between items-start relative;
 }
 
-.cart-item-spacer {
-  /* Layout */
-  @apply flex-grow;
-}
+
 
 /* ===== CART SUMMARY SECTION ===== */
 
@@ -432,54 +374,11 @@
   @apply text-neutral-900;
 }
 
+/* AUDIT - this has overlap with cart-actions named in cart_dropdown.css */
 .cart-actions {
   /* Sizing & spacing */
   @apply mt-8 gap-4;
 
   /* Layout */
   @apply flex flex-col;
-}
-
-.continue-shopping-btn {
-  /* Sizing & spacing */
-  @apply py-3 px-6;
-
-  /* Shape */
-  @apply rounded-full;
-
-  /* Colors */
-  @apply bg-sv-purple-200 text-sv-purple-700 border-2 border-sv-purple-200;
-
-  /* Typography */
-  @apply font-medium text-center no-underline font-sans;
-
-  /* Interactive & animation */
-  @apply transition-all duration-200;
-}
-
-.continue-shopping-btn:hover {
-  /* Colors */
-  @apply bg-sv-purple-400 border-sv-purple-400;
-}
-
-.checkout-btn {
-  /* Sizing & spacing */
-  @apply py-3 px-6;
-
-  /* Shape */
-  @apply rounded-full;
-
-  /* Colors */
-  @apply bg-sv-green-600 border-2 border-sv-green-600 text-white;
-
-  /* Typography */
-  @apply font-medium text-center no-underline font-sans;
-
-  /* Interactive & animation */
-  @apply transition-all duration-200;
-}
-
-.checkout-btn:hover {
-  /* Colors */
-  @apply bg-sv-green-700 border-sv-green-700 text-white;
 }

@@ -16,12 +16,12 @@
       <!-- Remove Button - Top Right -->
       <%= button_to cart_item_path(cart_item),
           method: :delete,
-          class: 'cart-remove-button absolute top-1/2 right-0 -translate-y-1/2 z-10 inline-flex items-center justify-center',
+          class: 'cart-item-remove-button absolute top-1/2 right-0 -translate-y-1/2 z-10 inline-flex items-center justify-center',
           data: {
             confirm: 'Remove this item from your cart?'
           },
           title: 'Remove item',
-          form_class: 'inline-form' do %>
+          form_class: 'cart-item-remove-btn' do %>
         <svg class="w-4 h-4 stroke-current" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
           <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"></path>
         </svg>

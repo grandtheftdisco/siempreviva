@@ -200,7 +200,7 @@
 
 /* ===== CART REMOVE BUTTON ===== */
 
-.cart-remove-button {
+.cart-item-remove-button {
   /* Sizing */
   @apply w-6 h-6;
 
