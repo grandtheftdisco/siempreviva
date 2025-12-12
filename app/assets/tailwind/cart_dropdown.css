@@ -210,19 +210,6 @@
   @apply ml-2;
 }
 
-/* ===== CART ITEM: IMAGE ===== */
-
-.cart-item-image {
-  /* Sizing & spacing */
-  @apply w-12 h-12;
-
-  /* Shape */
-  @apply rounded-lg;
-
-  /* Behavior */
-  @apply object-cover flex-shrink-0;
-}
-
 /* ===== EMPTY CART STYLES: DROPDOWN-SPECIFIC ===== */
 .empty-cart-div {
   /* Sizing & spacing */

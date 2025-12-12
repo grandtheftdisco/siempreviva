@@ -107,17 +107,7 @@
   }
 }
 
-/* Hide product images on mobile */
-.cart-items .cart-page-item .cart-item-image {
-  @apply hidden;
-}
 
-/* Desktop: Show images */
-@media (min-width: 768px) {
-  .cart-items .cart-page-item .cart-item-image {
-    @apply block;
-  }
-}
 
 .cart-items .cart-page-item .cart-item-details {
   /* Sizing & spacing */
@@ -134,6 +124,21 @@
   }
 }
 
+.cart-items .cart-page-item .cart-item-header {
+  /* Sizing & spacing */
+  @apply mb-0 pr-2;
+  width: calc(100% - 1.75rem);
+
+  /* Layout */
+  @apply flex justify-between items-center;
+}
+
+/* Desktop: Item header */
+@media (min-width: 768px) {
+  .cart-items .cart-page-item .cart-item-header {
+    @apply w-auto pr-0;
+  }
+}
 
 .cart-items .cart-page-item .product-name {
   /* Sizing & spacing */
@@ -207,37 +212,39 @@
     /* Layout & positioning */
     grid-template-columns: 1fr;
   }
+}
 
+.cart-item-image {
+  @apply hidden;
+}
+
+/* XS Screens */
+@media (max-width: 640px) {
   .cart-item-image {
     /* Layout */
     @apply justify-self-center;
   }
 }
 
-.cart-item-image {
-  /* Sizing */
-  @apply w-32 h-32;
+/* Desktop: Show images */
+@media (min-width: 768px) {
+  .cart-item-image {
+    @apply block;
+    /* Sizing */
+    @apply w-32 h-32;
 
-  /* Layout */
-  @apply flex items-center justify-center;
+    /* Layout */
+    @apply flex items-center justify-center;
 
-  /* Shape */
-  @apply rounded-lg;
+    /* Shape */
+    @apply rounded-lg;
 
-  /* Colors */
-  @apply bg-transparent;
+    /* Colors */
+    @apply bg-transparent;
 
-  /* Behavior */
-  @apply overflow-hidden;
-}
-
-/* AUDIT - prefer renaming to chaining */
-.cart-item-image .product-image {
-  /* Sizing */
-  @apply w-full h-full;
-
-  /* Behavior */
-  @apply object-cover;
+    /* Behavior */
+    @apply overflow-hidden;
+  }
 }
 
 /* AUDIT - specify this selector name more */
@@ -261,23 +268,11 @@
 }
 
 .cart-item-header {
-  /* Sizing & spacing - mobile base */
-  @apply mb-0 pr-2;
-  width: calc(100% - 1.75rem);
+  /* Sizing & spacing */
+  @apply gap-4 mb-2;
 
   /* Layout & positioning */
-  @apply flex justify-between items-center relative;
-}
-
-/* Desktop: reset width and padding */
-@media (min-width: 768px) {
-  .cart-item-header {
-    /* Sizing & spacing */
-    @apply w-auto pr-0 mb-2 gap-4;
-
-    /* Layout & positioning */
-    @apply items-start;
-  }
+  @apply flex justify-between items-start relative;
 }
 
 
