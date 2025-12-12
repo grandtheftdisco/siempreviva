@@ -2,7 +2,6 @@
 /* Contains all form-related styles including inputs, labels, buttons, and form layouts */
 
 /* ===== NEW FORM COMPONENT CLASSES (Use in new views) ===== */
-/* Use these classes for product/marketing forms */
 
 /* Submit button using sv-colors */
 .btn-submit {
@@ -110,10 +109,6 @@
     @apply my-8 p-8;
   }
 }
-
-/* ===== LEGACY ELEMENT SELECTORS REMOVED ===== */
-/* All views now use explicit component classes (.form-container, .input-text, .label-text, etc.) */
-/* Element selectors (form, form label, form input[type="text"], etc.) removed as of Session 4A */
 
 /* ===== FORM BUTTONS ===== */
 /* Element selectors removed - use component classes (.btn-primary, .btn-submit, etc.) */

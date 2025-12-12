@@ -152,7 +152,6 @@
   @apply bg-sv-green-400 border-sv-green-400 text-white;
 }
 
-/* Improved quantity section layout */
 .quantity-section {
   /* Sizing & spacing */
   @apply mt-4 pt-3 w-full;

@@ -189,8 +189,3 @@
     @apply text-sm;
   }
 }
-
-/* NOTES:
-- overlap and/or conflicts in media queries? 99-103 and 120-123. also 83-92??
-- any way to reduce the redundancy of all the 'not hidden's up top using inherit, or some other tailwind syntax?
-*/

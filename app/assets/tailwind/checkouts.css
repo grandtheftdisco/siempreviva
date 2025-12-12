@@ -72,7 +72,7 @@ div[style*="background-color: rgba(247, 242, 237"] {
   @apply text-center;
 }
 
-/* Short viewport override (not width-based mobile-first concern) */
+/* Short viewport override */
 @media (max-height: 700px) {
   .post-checkout-info {
     /* Sizing & spacing */
@@ -92,7 +92,7 @@ div[style*="background-color: rgba(247, 242, 237"] {
   @apply font-serif text-4xl font-bold leading-tight;
 }
 
-/* Short viewport override (not width-based mobile-first concern) */
+/* Short viewport override) */
 @media (max-height: 700px) {
   .post-checkout-container h1 {
     /* Sizing & spacing */
@@ -100,8 +100,6 @@ div[style*="background-color: rgba(247, 242, 237"] {
   }
 }
 
-/* NOTE: .post-checkout-container prefix is necessary for scoping generic class names
-   like .subtitle, .order-details, etc. to prevent conflicts with other parts of the site */
 .post-checkout-container .subtitle {
   /* Sizing & spacing */
   @apply mb-6 mt-0;
@@ -120,7 +118,6 @@ div[style*="background-color: rgba(247, 242, 237"] {
   }
 }
 
-/* Image placeholder */
 .post-checkout-container .image-placeholder {
   /* Sizing & spacing */
   @apply h-48 w-full mb-6;
@@ -178,7 +175,6 @@ div[style*="background-color: rgba(247, 242, 237"] {
   @apply font-serif text-2xl font-bold;
 }
 
-/* Receipt notice */
 .post-checkout-container .receipt-notice {
   /* Sizing & spacing */
   @apply mt-0 mb-0;
@@ -190,7 +186,6 @@ div[style*="background-color: rgba(247, 242, 237"] {
   @apply font-serif text-sm italic;
 }
 
-/* Image formatting utility */
 .formatted-image {
   /* Border & shape */
   @apply rounded-3xl;

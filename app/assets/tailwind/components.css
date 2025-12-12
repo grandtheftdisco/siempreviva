@@ -1,11 +1,6 @@
 /* UI Components Stylesheet */
 
-/* NOTE: Any comments in this file that seem superfluous are to keep record of design decisions
-   so that when the time comes for legacy cleanup & refactor in Session 4, there is context for the
-   reasoning behind the vanilla code. */
-
 /* ===== NEW @APPLY BUTTON COMPONENT CLASSES ===== */
-/* Use these classes in new views (product/marketing) */
 
 /* Base button class */
 .btn-base {
@@ -174,10 +169,6 @@
   @apply px-8 py-4 text-lg;
 }
 
-/* ===== LEGACY BUTTON CLASSES REMOVED ===== */
-/* As of Session 4A, all views use new component classes (.btn-primary, .btn-green, etc.) */
-/* Legacy classes removed: .checkout-btn, .continue-shopping-btn, .cart-checkout-btn, .quantity-update-btn-visible, .remove-item-btn-red */
-
 /* ===== QUANTITY SELECTOR COMPONENTS ===== */
 
 /* Quantity selector input field */
@@ -220,7 +211,6 @@
 
 /* ===== CART REMOVE BUTTON ===== */
 /* Unified component for all cart item remove buttons */
-/* Positioning utilities should be applied inline in views */
 
 .cart-remove-button {
   /* Sizing */
@@ -289,9 +279,7 @@ form input.form-input-small,
   @apply bg-sv-purple-100;
 }
 
-
 /* ===== TYPOGRAPHY COMPONENTS ===== */
-/* Mobile-first: smaller text and left-aligned base, larger centered on desktop */
 
 .page-title {
   /* Typography - mobile base */
