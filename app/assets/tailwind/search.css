@@ -21,6 +21,22 @@
   }
 }
 
+/* AUDIT - reconcile this with mobile-first approach issue above  */
+.mobile-nav-items .search-section {
+  @apply flex-none flex items-center;
+}
+
+/* AUDIT - reconcile this with the media query below */
+@media (min-width: 768px) {
+  .search-section {
+    /* Spacing */
+    @apply mr-4;
+
+    /* Layout */
+    @apply flex-1 flex items-center justify-end;
+  }
+}
+
 /* Tablet: compact search */
 @media (min-width: 768px) and (max-width: 1023px) {
   .search-section {

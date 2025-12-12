@@ -1,7 +1,7 @@
 /* Header Stylesheet */
 /* Contains header structure and logo styles */
 
-/* ===== HEADER STRUCTURE ===== */
+/* ===== HEADER ===== */
 
 header {
   /* Layout & positioning */
@@ -31,41 +31,30 @@ header {
   }
 }
 
-/* Mobile navigation container - only visible on mobile */
-.mobile-nav-items {
+/* Navigation container - only visible on mobile */
+.mobile-nav-items-container {
   @apply order-2 flex-none flex items-center gap-3;
 }
 
-.mobile-nav-items .search-section {
-  @apply flex-none flex items-center;
-}
-
-.mobile-nav-items .right-icons {
-  @apply flex-none flex items-center gap-3;
-}
-
 @media (min-width: 768px) {
-  .mobile-nav-items {
+  .mobile-nav-items-container {
     @apply hidden;
   }
 }
 
+/* AUDIT - reconcile this with media query below - when you flatten this selector it renders a second cart icon on the left of the logo */
+.mobile-nav-items-container .right-icons {
+  @apply flex-none flex items-center gap-3;
+}
+
 /* Desktop search and icons layout - visibility handled by view inline utilities */
 @media (min-width: 768px) {
-  .search-section {
-    /* Spacing */
-    @apply mr-4;
-
-    /* Layout */
-    @apply flex-1 flex items-center justify-end;
-  }
-
-  .right-icons {
+  .mobile-nav-items-container .right-icons {
     @apply flex-none flex items-center gap-3;
   }
 }
 
-/* ===== LOGO SECTION ===== */
+/* ===== LOGO ===== */
 
 .logo-section {
   /* Spacing */
