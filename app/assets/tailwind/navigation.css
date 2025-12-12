@@ -6,25 +6,48 @@
 /* ===== MOBILE MENU BUTTON ===== */
 
 .mobile-menu-button {
-  @apply inline-flex items-center justify-center p-2 w-10 h-10 text-sm text-sv-purple-700 rounded-lg border-0 bg-transparent transition-colors duration-200 flex-shrink-0;
+  /* Sizing & spacing */
+  @apply p-2 w-10 h-10;
+
+  /* Layout */
+  @apply inline-flex items-center justify-center flex-shrink-0;
+
+  /* Border & shape */
+  @apply border-0 rounded-lg;
+
+  /* Colors */
+  @apply bg-transparent text-sv-purple-700;
+
+  /* Typography */
+  @apply text-sm;
+
+  /* Interactive & animation */
+  @apply transition-colors duration-200;
 }
 
 .mobile-menu-button:hover {
+  /* Interactive */
   @apply cursor-pointer;
 }
 
 .mobile-menu-button:focus {
+  /* Border & shape */
   @apply outline-none;
 }
 
 @media (min-width: 768px) {
   .mobile-menu-button {
+    /* Layout */
     @apply hidden;
   }
 }
 
 .mobile-menu-icon {
-  @apply w-6 h-6 text-sv-purple-700;
+  /* Sizing */
+  @apply w-6 h-6;
+
+  /* Colors */
+  @apply text-sv-purple-700;
 }
 
 /* ===== NAVIGATION MENU ===== */
@@ -73,52 +96,97 @@
 /* Desktop - horizontal nav (overrides mobile dropdown) */
 @media (min-width: 768px) {
   .navbar-section {
-    /* Layout */
-    @apply flex flex-none;
+    /* Sizing & spacing */
+    @apply p-0;
 
-    /* Reset mobile dropdown positioning */
-    @apply static bg-transparent p-0 border-0 shadow-none;
+    /* Layout & positioning */
+    @apply flex flex-none static;
+
+    /* Border & shape */
+    @apply border-0;
+
+    /* Colors */
+    @apply bg-transparent;
+
+    /* Visual effects */
+    @apply shadow-none;
   }
 
   .navbar-section .navbar-list li {
-    /* Reset mobile dropdown spacing/borders */
-    @apply border-0 py-0;
+    /* Sizing & spacing */
+    @apply py-0;
+
+    /* Border */
+    @apply border-0;
   }
 
   .navbar-section .navbar-list li a {
-    /* Desktop link styling */
+    /* Interactive & animation */
     @apply transition-colors duration-200;
   }
 }
 
 .navbar-list {
   /* Base = mobile dropdown defaults */
-  @apply flex flex-col p-0 m-0 font-medium text-lg font-serif gap-3 border-0 rounded-none bg-transparent;
+  /* Sizing & spacing */
+  @apply p-0 m-0 gap-3;
+
+  /* Layout */
+  @apply flex flex-col;
+
+  /* Border & shape */
+  @apply border-0 rounded-none;
+
+  /* Colors */
+  @apply bg-transparent;
+
+  /* Typography */
+  @apply font-medium text-lg font-serif;
 }
 
 @media (min-width: 768px) {
   .navbar-list {
-    @apply p-0 mt-0 gap-8 border-0 flex-row text-lg;
+    /* Sizing & spacing */
+    @apply p-0 mt-0 gap-8;
+
+    /* Layout */
+    @apply flex-row;
+
+    /* Border */
+    @apply border-0;
+
+    /* Typography */
+    @apply text-lg;
   }
 }
 
 @media (min-width: 1024px) {
   .navbar-section {
+    /* Sizing & spacing */
     @apply pl-4;
   }
 
   .navbar-list {
-    @apply text-lg gap-8;
+    /* Sizing & spacing */
+    @apply gap-8;
+
+    /* Typography */
+    @apply text-lg;
   }
 }
 
 @media (min-width: 768px) and (max-width: 1023px) {
   .navbar-section {
+    /* Sizing & spacing */
     @apply pl-3;
   }
 
   .navbar-list {
-    @apply text-sm gap-6;
+    /* Sizing & spacing */
+    @apply gap-6;
+
+    /* Typography */
+    @apply text-sm;
   }
 }
 
