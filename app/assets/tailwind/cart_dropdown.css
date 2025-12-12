@@ -54,7 +54,7 @@
 /* ===== CART DROPDOWN ===== */
 
 /* 'Continue Shopping' and 'Checkout' buttons: specific to dropdown */
-.cart-actions {
+.cart-dropdown-actions {
   /* Layout & spacing */
   @apply flex flex-col gap-2;
 }

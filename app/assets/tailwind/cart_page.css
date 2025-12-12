@@ -371,7 +371,7 @@
 }
 
 /* AUDIT - this has overlap with cart-actions named in cart_dropdown.css */
-.cart-actions {
+.cart-page-actions {
   /* Sizing & spacing */
   @apply mt-8 gap-4;
 
