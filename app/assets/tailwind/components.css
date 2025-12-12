@@ -198,23 +198,6 @@
   @apply rounded-r-2xl;
 }
 
-/* ===== CART REMOVE BUTTON ===== */
-
-.cart-item-remove-button {
-  /* Sizing */
-  @apply w-6 h-6;
-
-  /* Border & shape */
-  @apply border-none rounded-full;
-
-  /* Colors */
-  @apply bg-sv-purple-400 text-white;
-  @apply hover:bg-sv-purple-500;
-
-  /* Interactive & animation */
-  @apply transition-colors duration-200 cursor-pointer;
-}
-
 /* ===== FLASH NOTIFICATION STYLES ===== */
 
 .flash-notification {
