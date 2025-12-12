@@ -91,23 +91,23 @@
   @apply transition-all duration-150 font-sans;
 }
 
-/* Form container */
+/* Form container - mobile-first */
 .form-container {
-  /* Container sizing & positioning */
-  @apply max-w-[600px] mx-auto my-8;
+  /* Container sizing & positioning - mobile base */
+  @apply max-w-[600px] mx-auto my-4;
 
-  /* Box styling */
-  @apply p-8 bg-white border border-gray-200 rounded-lg;
+  /* Box styling - mobile base */
+  @apply px-4 py-6 bg-white border border-gray-200 rounded-lg;
 
   /* Typography */
   @apply font-sans;
 }
 
-/* AUDIT is this mobile first? */
-@media (max-width: 768px) {
+/* Desktop: increased spacing */
+@media (min-width: 768px) {
   .form-container {
-    /* Mobile spacing adjustments */
-    @apply mx-auto my-4 px-4 py-6;
+    /* Desktop spacing */
+    @apply my-8 p-8;
   }
 }
 
@@ -271,10 +271,11 @@
 }
 
 /* ===== INLINE FORMS ===== */
+/* Mobile-first: stacked layout base, horizontal on desktop */
 
 .form-inline {
-  /* Flexbox layout */
-  @apply flex items-center gap-4;
+  /* Flexbox layout - mobile base (vertical stack) */
+  @apply flex flex-col items-stretch gap-3;
 
   /* Reset overrides */
   @apply m-0 p-0 max-w-none bg-transparent border-0;
@@ -286,32 +287,32 @@
 }
 
 .form-inline label {
-  /* Layout & spacing */
-  @apply mr-2 mb-0 whitespace-nowrap;
+  /* Layout & spacing - mobile base */
+  @apply mr-0 mb-1 whitespace-nowrap;
 }
 
 .form-inline input,
 .form-inline select {
-  /* Sizing */
-  @apply w-auto flex-1;
+  /* Sizing - mobile base (full width) */
+  @apply w-full;
 }
 
-/* AUDIT is this mobile first? */
-@media (max-width: 768px) {
+/* Desktop: horizontal inline layout */
+@media (min-width: 768px) {
   .form-inline {
-    /* Mobile layout - stack vertically */
-    @apply flex-col items-stretch gap-3;
+    /* Desktop layout - horizontal */
+    @apply flex-row items-center gap-4;
   }
 
   .form-inline label {
-    /* Mobile spacing */
-    @apply mr-0 mb-1;
+    /* Desktop spacing */
+    @apply mr-2 mb-0;
   }
 
   .form-inline input,
   .form-inline select {
-    /* Mobile full width */
-    @apply w-full;
+    /* Desktop sizing */
+    @apply w-auto flex-1;
   }
 }
 
