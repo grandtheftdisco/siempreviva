@@ -285,7 +285,7 @@
   }
 }
 
-/* AUDIT is this mobile first, or maybe it's SE-specific? */
+/* Extra-small screens (iPhone SE, etc.) - single column layout */
 @media (max-width: 640px) {
   .cart-page-item {
     /* Sizing & spacing */
@@ -359,30 +359,27 @@
 }
 
 /* ===== CART SUMMARY SECTION ===== */
+/* Mobile-first: static layout base, sticky on desktop */
 
 .cart-summary-section {
-  /* Layout & positioning */
-  @apply sticky self-start top-44;
+  /* Layout & positioning - mobile base (static) */
+  @apply static self-start;
 
   /* Typography */
   @apply font-serif;
 
-  /* Behavior */
-  @apply overflow-y-auto max-h-[calc(100vh-10.5rem)];
+  /* Behavior - mobile base (no scroll limit) */
+  @apply overflow-y-visible max-h-none;
 }
 
-/* AUDIT is this really mobile-first? */
-/* Disable sticky on mobile since layout becomes single column */
-@media (max-width: 768px) {
+/* Desktop: sticky sidebar with scroll */
+@media (min-width: 768px) {
   .cart-summary-section {
-    /* Sizing */
-    @apply max-h-none;
-
     /* Layout & positioning */
-    @apply static;
+    @apply sticky top-44;
 
     /* Behavior */
-    @apply overflow-y-visible;
+    @apply overflow-y-auto max-h-[calc(100vh-10.5rem)];
   }
 }
 
