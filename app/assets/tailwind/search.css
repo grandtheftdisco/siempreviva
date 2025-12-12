@@ -25,6 +25,7 @@
 /* Remove horizontal padding on mobile for tighter icon spacing */
 @media (max-width: 767px) {
   .search-section:not(.hidden) {
+    /* Sizing & spacing */
     @apply p-0;
   }
 }
@@ -32,14 +33,20 @@
 /* Compact search for tablet range */
 @media (min-width: 768px) and (max-width: 1023px) {
   .search-section {
+    /* Sizing & spacing */
     @apply px-1 gap-1;
   }
 
   .search-desktop input {
-    @apply h-8 text-sm py-1.5 px-3 max-w-64;
+    /* Sizing & spacing */
+    @apply h-8 py-1.5 px-3 max-w-64;
+
+    /* Typography */
+    @apply text-sm;
   }
 
   .search-desktop button {
+    /* Sizing & spacing */
     @apply h-8 w-8 p-1;
   }
 }
@@ -47,24 +54,41 @@
 /* Tailwind sm and below (below 640px) - mobile search */
 @media (max-width: 639px) {
   .search-section {
-    @apply p-0 gap-0 flex-none min-w-10 w-auto;
+    /* Sizing & spacing */
+    @apply p-0 gap-0 min-w-10 w-auto;
+
+    /* Layout */
+    @apply flex-none;
   }
 
   .search-toggle-button {
-    @apply flex shrink-0 w-10 h-10 rounded-lg bg-transparent;
+    /* Sizing */
+    @apply w-10 h-10;
+
+    /* Layout */
+    @apply flex shrink-0;
+
+    /* Shape */
+    @apply rounded-lg;
+
+    /* Colors */
+    @apply bg-transparent;
   }
 
   .search-toggle-button:hover {
+    /* Colors */
     @apply bg-transparent;
   }
 
   .search-desktop {
+    /* Layout */
     @apply hidden;
   }
 
   /* Ensure any desktop search elements are hidden */
   #searchbox-desktop,
   #hits-desktop {
+    /* Layout */
     @apply hidden;
   }
 }
@@ -72,11 +96,19 @@
 /* Tailwind sm to md (640px-767px) - tablet range, compact search */
 @media (min-width: 640px) and (max-width: 767px) {
   .search-section {
-    @apply px-4 gap-1 flex-[0_1_50] min-w-[37.5];
+    /* Sizing & spacing */
+    @apply px-4 gap-1 min-w-[37.5];
+
+    /* Layout */
+    @apply flex-[0_1_50];
   }
 
   .search-desktop input {
-    @apply w-full text-sm max-w-50;
+    /* Sizing */
+    @apply w-full max-w-50;
+
+    /* Typography */
+    @apply text-sm;
   }
 }
 
@@ -102,6 +134,7 @@
 /* Hide toggle button on desktop - search bar is inline */
 @media (min-width: 640px) {
   .search-toggle-button {
+    /* Layout */
     @apply hidden;
   }
 }
@@ -237,10 +270,12 @@
 /* Additional constraints for very small mobile screens (iPhone SE, etc.) */
 @media (max-width: 480px) {
   .search-dropdown {
+    /* Sizing & spacing */
     @apply p-2;
   }
 
   .search-dropdown .ais-SearchBox-input {
+    /* Typography */
     @apply text-sm;
   }
 }
@@ -287,6 +322,7 @@
 
 /* Match search results width to search input width at different breakpoints */
 .search-results .ais-Hits {
+  /* Sizing */
   @apply sm:w-[200px] md:w-64;
 }
 /* AUDIT - use rem instead of px here - find a way to have this flex with screen size more naturally */
@@ -308,6 +344,7 @@
 }
 
 .search-hit-item:hover {
+  /* Colors */
   @apply bg-sv-purple-50;
 }
 
@@ -315,6 +352,7 @@
 /* Algolia widget overrides - converted to @apply in Session 5B */
 
 .ais-SearchBox {
+  /* Colors */
   @apply bg-transparent;
 }
 
@@ -391,10 +429,12 @@
 }
 
 .ais-SearchBox-reset:hover {
+  /* Colors */
   @apply text-neutral-700;
 }
 
 .ais-SearchBox-resetIcon {
+  /* Sizing */
   @apply w-3.5 h-3.5;
 }
 
