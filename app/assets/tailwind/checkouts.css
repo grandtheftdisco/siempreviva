@@ -98,7 +98,45 @@ div[style*="background-color: rgba(247, 242, 237"] {
   }
 }
 
-.post-checkout-container .subtitle {
+.pc-order-details {
+  /* Sizing & spacing */
+  @apply mb-3;
+}
+
+.pc-order-label {
+  /* Sizing & spacing */
+  @apply mb-1 mt-0;
+
+  /* Colors */
+  @apply text-black;
+
+  /* Typography */
+  @apply font-serif font-medium;
+}
+
+.pc-order-number {
+  /* Sizing & spacing */
+  @apply mb-3 mt-0;
+
+  /* Colors */
+  @apply text-black;
+
+  /* Typography */
+  @apply font-serif text-2xl font-bold;
+}
+
+.pc-receipt-notice {
+  /* Sizing & spacing */
+  @apply mt-0 mb-0;
+
+  /* Colors */
+  @apply text-black;
+
+  /* Typography */
+  @apply font-serif text-sm italic;
+}
+
+.pc-subtitle {
   /* Sizing & spacing */
   @apply mb-6 mt-0;
 
@@ -110,91 +148,8 @@ div[style*="background-color: rgba(247, 242, 237"] {
 }
 
 @media (max-height: 700px) {
-  .post-checkout-container .subtitle {
+  .pc-subtitle {
     /* Sizing & spacing */
     @apply mb-6;
   }
-}
-
-.post-checkout-container .image-placeholder {
-  /* Sizing & spacing */
-  @apply h-48 w-full mb-6;
-
-  /* Layout & positioning */
-  @apply flex items-center justify-center;
-
-  /* Border & shape */
-  @apply rounded-lg;
-
-  /* Colors */
-  @apply bg-neutral-300;
-}
-
-@media (max-height: 700px) {
-  .post-checkout-container .image-placeholder {
-    /* Sizing & spacing */
-    @apply h-40 mb-6;
-  }
-}
-
-.post-checkout-container .image-placeholder span {
-  /* Colors */
-  @apply text-neutral-500;
-
-  /* Typography */
-  @apply text-sm;
-}
-
-.post-checkout-container .order-details {
-  /* Sizing & spacing */
-  @apply mb-3;
-}
-
-.post-checkout-container .order-label {
-  /* Sizing & spacing */
-  @apply mb-1 mt-0;
-
-  /* Colors */
-  @apply text-black;
-
-  /* Typography */
-  @apply font-serif font-medium;
-}
-
-.post-checkout-container .order-number {
-  /* Sizing & spacing */
-  @apply mb-3 mt-0;
-
-  /* Colors */
-  @apply text-black;
-
-  /* Typography */
-  @apply font-serif text-2xl font-bold;
-}
-
-.post-checkout-container .receipt-notice {
-  /* Sizing & spacing */
-  @apply mt-0 mb-0;
-
-  /* Colors */
-  @apply text-black;
-
-  /* Typography */
-  @apply font-serif text-sm italic;
-}
-
-.formatted-image {
-  /* Border & shape */
-  @apply rounded-3xl;
-
-  /* Interactive & animation */
-  @apply transition-all duration-200;
-
-  /* Visual effects */
-  @apply saturate-[0.7];
-}
-
-.formatted-image:hover {
-  /* Visual effects */
-  @apply saturate-100;
 }
