@@ -182,19 +182,19 @@
 }
 
 .quantity-row {
-  /* Sizing & spacing */
-  @apply gap-4 w-full m-0 p-0;
+  /* Sizing & spacing - mobile base */
+  @apply gap-2 w-full m-0 p-0;
 
-  /* Layout & positioning */
-  @apply flex items-center justify-end relative;
+  /* Layout & positioning - mobile base (vertical stack) */
+  @apply flex flex-col items-stretch relative;
 }
 
 .quantity-controls-group {
   /* Sizing & spacing */
   @apply gap-3;
 
-  /* Layout & positioning */
-  @apply flex items-center relative;
+  /* Layout & positioning - mobile base */
+  @apply flex items-center justify-center relative;
 }
 
 /* Override any conflicting form styles in cart page context */
@@ -203,14 +203,19 @@
   float: none;
 }
 
-/* AUDIT is this mobile-first or SE-first? */
-@media (max-width: 640px) {
+/* Desktop: horizontal layout, right-aligned */
+@media (min-width: 640px) {
   .quantity-row {
-    @apply flex-col items-stretch gap-2;
+    /* Sizing & spacing */
+    @apply gap-4;
+
+    /* Layout & positioning */
+    @apply flex-row items-center justify-end;
   }
 
   .quantity-controls-group {
-    @apply justify-center;
+    /* Layout & positioning */
+    @apply justify-start;
   }
 }
 
