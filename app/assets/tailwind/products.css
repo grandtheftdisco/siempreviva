@@ -110,51 +110,42 @@
   @apply text-center;
 }
 
-/* AUDIT - make products-grid mobile-first */
 .products-grid {
   /* Sizing & spacing */
-  @apply gap-10;
+  @apply gap-8;
 
   /* Layout */
-  @apply grid grid-cols-4 justify-items-center;
+  @apply grid grid-cols-1 justify-items-center;
 }
 
-/* Desktop */
-@media (max-width: 1024px) {
+/* Small tablet (640px+): 2 columns */
+@media (min-width: 640px) {
   .products-grid {
-    /* Sizing & spacing */
-    @apply gap-8;
-
-    /* Layout */
-    @apply grid-cols-3;
-  }
-}
-
-@media (max-width: 768px) {
-  .products-grid {
-    /* Sizing & spacing */
-    @apply gap-8;
-
-    /* Layout */
     @apply grid-cols-2;
   }
 }
 
-/* XS Screens */
-@media (max-width: 640px) {
+/* Tablet (768px+): 3 columns */
+@media (min-width: 768px) {
   .products-grid {
-    /* Sizing & spacing */
-    @apply gap-8;
-
-    /* Layout */
-    @apply grid-cols-1;
+    @apply grid-cols-3;
   }
 }
 
-/* AUDIT - make product-card mobile-first */
+/* Desktop (1024px+): 4 columns with increased gap */
+@media (min-width: 1024px) {
+  .products-grid {
+    /* Sizing & spacing */
+    @apply gap-10;
+
+    /* Layout */
+    @apply grid-cols-4;
+  }
+}
+
 .product-card {
   /* Sizing */
-  @apply w-full max-w-84 h-96;
+  @apply w-full max-w-[19.25rem] h-80;
 
   /* Layout */
   @apply flex flex-col;
@@ -176,17 +167,18 @@
   @apply -translate-y-2;
 }
 
-@media (max-width: 768px) {
+/* Small tablet (640px+): taller card */
+@media (min-width: 640px) {
   .product-card {
-    @apply h-84;
+    /* Sizing */
+    @apply max-w-84 h-84;
   }
 }
 
-/* XS Screens */
-/* AUDIT - convert px to rem? */
-@media (max-width: 640px) {
+/* Desktop (768px+): standard height */
+@media (min-width: 768px) {
   .product-card {
-    @apply max-w-[308px] h-80;
+    @apply h-96;
   }
 }
 
@@ -206,7 +198,7 @@
 
 .product-image-container {
   /* Sizing */
-  @apply w-full h-80;
+  @apply w-full h-64;
 
   /* Layout & positioning */
   @apply flex items-center justify-center relative flex-shrink-0;
@@ -218,17 +210,17 @@
   @apply overflow-hidden;
 }
 
-/* AUDIT - mobile-first? */
-@media (max-width: 768px) {
+/* Small tablet (640px+): taller image */
+@media (min-width: 640px) {
   .product-image-container {
     @apply h-68;
   }
 }
 
-/* XS Screens */
-@media (max-width: 640px) {
+/* Desktop (768px+): full height */
+@media (min-width: 768px) {
   .product-image-container {
-    @apply h-64;
+    @apply h-80;
   }
 }
 
@@ -342,59 +334,54 @@
   @apply text-inherit;
 }
 
-/* AUDIT - make product-show-title mobile-first */
 .product-show-title {
   /* Sizing & spacing */
   @apply mb-4 p-0;
 
   /* Typography */
-  @apply font-serif text-5xl font-light tracking-wider text-left;
+  @apply font-serif text-3xl font-light tracking-wider text-left;
 
   /* Colors */
   @apply text-neutral-800;
 }
 
-@media (max-width: 768px) {
-  .product-show-title {
-    @apply text-left text-4xl;
-  }
-}
-
-/* AUDIT - is this for XS screens...? */
+/* Extra-small screens (iPhone SE, etc.): reduced margin */
 @media (max-width: 400px) {
   .product-show-title {
-    /* Sizing & spacing */
     @apply mb-1;
-
-    /* Typography */
-    @apply text-3xl;
   }
 }
 
-/* AUDIT - make product-price-display mobile first */
+/* Small tablet (640px+): larger text */
+@media (min-width: 640px) {
+  .product-show-title {
+    @apply text-4xl;
+  }
+}
+
+/* Desktop (768px+): largest text */
+@media (min-width: 768px) {
+  .product-show-title {
+    @apply text-5xl;
+  }
+}
+
 .product-price-display {
   /* Typography */
-  @apply font-serif text-2xl text-center;
+  @apply font-serif text-3xl text-center;
 
   /* Colors */
   @apply text-neutral-800;
 }
 
-/* AUDIT - is this for XS Screens too? */
+/* Extra-small screens (iPhone SE, etc.): larger text */
 @media (max-width: 400px) {
   .product-price-display {
     @apply text-4xl;
   }
 }
 
-/* AUDIT - what's going on here? mobile? */
-@media (min-width: 401px) and (max-width: 1023px) {
-  .product-price-display {
-    @apply text-3xl;
-  }
-}
-
-/* Desktop */
+/* Desktop (1024px+): left-aligned */
 @media (min-width: 1024px) {
   .product-price-display {
     @apply text-left;
@@ -518,7 +505,7 @@
 }
 
 .cross-sell-card::after {
-  /* AUDIT - explain this line? */
+  /* This `content` directive makes the gradient overlay visible */
   content: '';
 
   /* Sizing */
@@ -591,7 +578,6 @@
 
 /* Mobile-only feature: scroll snapping (disabled on desktop) */
 /* Vanilla CSS intentionally used: better scroll behavior than @apply equivalent */
-/* AUDIT - mobile-first? */
 @media (max-width: 767px) {
   html {
     scroll-snap-type: y proximity;
