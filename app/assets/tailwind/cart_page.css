@@ -179,7 +179,7 @@
   }
 }
 
-.cart-items .cart-page-item .product-price {
+.cart-items .cart-page-item .product-card-price {
   /* Sizing & spacing */
   @apply m-0;
 
@@ -195,7 +195,7 @@
 
 /* Desktop: Product price */
 @media (min-width: 768px) {
-  .cart-items .cart-page-item .product-price {
+  .cart-items .cart-page-item .product-card-price {
     /* Layout */
     @apply block text-left;
 

@@ -271,7 +271,7 @@
 }
 
 /* AUDIT - product-price vs product-price-display - why are there two and reconcile this */
-.product-price {
+.product-card-price {
   /* Typography */
   @apply text-sm font-light text-right whitespace-nowrap;
 
@@ -366,7 +366,7 @@
   }
 }
 
-.product-price-display {
+.product-show-price {
   /* Typography */
   @apply font-serif text-3xl text-center;
 
@@ -376,14 +376,14 @@
 
 /* Extra-small screens (iPhone SE, etc.): larger text */
 @media (max-width: 400px) {
-  .product-price-display {
+  .product-show-price {
     @apply text-4xl;
   }
 }
 
 /* Desktop (1024px+): left-aligned */
 @media (min-width: 1024px) {
-  .product-price-display {
+  .product-show-price {
     @apply text-left;
   }
 }
