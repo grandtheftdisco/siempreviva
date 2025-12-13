@@ -3,9 +3,9 @@
 
 /* ===== SEARCH SECTION LAYOUT ===== */
 
-/* Mobile base: no padding */
+/* Mobile base */
 .search-section:not(.hidden) {
-  /* Sizing & spacing - mobile base */
+  /* Sizing & spacing */
   @apply gap-2 p-0 shrink;
 
   /* Layout & positioning */
@@ -15,14 +15,16 @@
   @apply bg-transparent;
 }
 
+/* Mobile nav container variant */
+.mobile-nav-items .search-section {
+  @apply flex-none;
+}
+
 /* Extra-small screens (iPhone SE, etc.): most compact search */
 @media (max-width: 639px) {
   .search-section {
     /* Sizing & spacing */
-    @apply p-0 gap-0 min-w-10 w-auto;
-
-    /* Layout */
-    @apply flex-none;
+    @apply gap-0 min-w-10 w-auto;
   }
 }
 
@@ -45,32 +47,16 @@
   }
 }
 
-/* Desktop (768px+): add horizontal padding */
-/* AUDIT - does it matter to specify not hidden here? not done in other media queries... */
-@media (min-width: 768px) {
-  .search-section:not(.hidden) {
-    /* Sizing & spacing */
-    @apply px-4;
-  }
-}
-
-/* AUDIT - reconcile this with mobile-first approach issue above - do we need to rename this?  */
-.mobile-nav-items .search-section {
-  @apply flex-none flex items-center;
-}
-
-/* AUDIT - reconcile this with other search-section media queries above & below */
-@media (min-width: 768px) {
+/* Desktop (1024px+): expanded search with full layout */
+@media (min-width: 1024px) {
   .search-section {
-    /* Spacing */
-    @apply mr-4;
+    /* Sizing & spacing */
+    @apply px-4 mr-4;
 
     /* Layout */
-    @apply flex-1 flex items-center justify-end;
+    @apply flex-1 justify-end;
   }
 }
-
-/* ===== END SEARCH SECTION LAYOUT ===== */
 
 
 
