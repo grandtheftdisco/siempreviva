@@ -120,15 +120,6 @@
   }
 }
 
-
-
-
-
-
-
-
-
-
 /* ===== SEARCH TOGGLE BUTTON (MOBILE) ===== */
 
 .search-icon {
@@ -163,72 +154,57 @@
     @apply hidden;
   }
 }
-
+/* ✅ */
 
 
 /* ===== SEARCH DROPDOWN ===== */
 
+/* Mobile base: full-width centered dropdown */
 .search-dropdown {
   /* Sizing & spacing */
-  @apply p-4;
+  @apply p-3 w-screen max-w-full;
 
   /* Layout & positioning */
-  @apply absolute top-full left-0 right-0 z-50 hidden;
+  @apply absolute top-full left-1/2 -translate-x-1/2 right-0 z-50 hidden;
 
   /* Border & shape */
-  @apply border-t border-sv-purple-700/15 shadow-lg;
+  @apply rounded-none border-l-0 border-r-0 border-t border-sv-purple-700/15 shadow-lg;
 
   /* Colors */
   @apply bg-sv-purple-100;
+
+  /* Behavior */
+  @apply overflow-x-hidden;
 }
 
-/* XS Screens */
+.search-dropdown.show {
+  @apply block -translate-x-1/2;
+}
+
+/* Extra-small screens (iPhone SE, etc.): reduced padding */
 @media (max-width: 480px) {
   .search-dropdown {
     @apply p-2;
   }
 }
 
-/* Responsive search dropdown - full width on mobile */
-/* AUDIT - is this mobile firsT? */
-@media (max-width: 768px) {
-  .search-dropdown {
-    /* Sizing */
-    @apply w-screen max-w-full;
-
-    /* Layout & positioning */
-    @apply left-1/2 -translate-x-1/2 p-3;
-
-    /* Border & shape */
-    @apply rounded-none border-l-0 border-r-0 border-t border-sv-purple-700/15;
-
-    /* Colors */
-    @apply bg-sv-purple-100;
-
-    /* Behavior */
-    @apply overflow-x-hidden;
-  }
-
-  .search-dropdown.show {
-    @apply block -translate-x-1/2;
-  }
-}
-
-/* Tailwind md+ (768px+) - desktop search dropdown */
-/* AUDIT - does this include tablets too? */
+/* Desktop (768px+): positioned dropdown with min-width */
 @media (min-width: 768px) {
   .search-dropdown {
     /* Sizing & spacing */
-    @apply min-w-75 mt-2;
+    @apply min-w-75 mt-2 p-4 w-auto;
 
     /* Layout & positioning */
-    @apply left-auto right-0;
+    @apply left-auto right-0 translate-x-0;
 
     /* Border & shape */
-    @apply border border-sv-purple-700/15 rounded-lg;
+    @apply border rounded-lg;
+  }
+
+  .search-dropdown.show {
+    @apply translate-x-0;
   }
 }
-/* ===== END ===== */
 
 
 
