@@ -58,25 +58,6 @@
   }
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 /* ===== START ===== */
 
 @media (max-width: 639px) {
@@ -91,12 +72,10 @@
 
 
 
+/* ===== SEARCH INLINE ===== */
 
-
-/* ===== SEARCH DESKTOP ===== */
-
-/* AUDIT - this is not mobile first */
-.search-desktop {
+/* Mobile base: hidden on extra-small screens */
+.search-inline {
   /* Sizing & spacing */
   @apply gap-2;
 
@@ -107,25 +86,16 @@
   @apply bg-transparent;
 }
 
-/* AUDIT - define this breakpoint */
+/* Extra-small screens (iPhone SE, etc.): hide inline search */
 @media (max-width: 639px) {
-  .search-desktop {
-    /* Layout */
+  .search-inline {
     @apply hidden;
-  }
-} 
-
-/* Tablet (768-1023px): compact search with smaller inputs */
-@media (min-width: 768px) and (max-width: 1023px) {
-  .search-desktop button {
-    /* Sizing & spacing */
-    @apply h-8 w-8 p-1;
   }
 }
 
-/* Small tablet (640-767px): compact search with inline input */
+/* Small tablet (640-767px): compact search input */
 @media (min-width: 640px) and (max-width: 767px) {
-  .search-desktop input {
+  .search-inline input {
     /* Sizing */
     @apply w-full max-w-50;
 
@@ -134,17 +104,21 @@
   }
 }
 
-/* Tablet (768-1023px): compact search with smaller inputs */
+/* Tablet (768-1023px): smaller inputs and buttons */
 @media (min-width: 768px) and (max-width: 1023px) {
-  .search-desktop input {
+  .search-inline input {
     /* Sizing & spacing */
     @apply h-8 py-1.5 px-3 max-w-64;
 
     /* Typography */
     @apply text-sm;
   }
+
+  .search-inline button {
+    /* Sizing & spacing */
+    @apply h-8 w-8 p-1;
+  }
 }
-/* ===== END ===== */
 
 
 
