@@ -3,7 +3,6 @@
 
 /* ===== SEARCH SECTION LAYOUT ===== */
 
-/* Mobile base */
 .search-section:not(.hidden) {
   /* Sizing & spacing */
   @apply gap-2 p-0 shrink;
@@ -58,12 +57,8 @@
   }
 }
 
-
-
-
 /* ===== SEARCH INLINE ===== */
 
-/* Mobile base: hidden on extra-small screens */
 .search-inline {
   /* Sizing & spacing */
   @apply gap-2;
@@ -146,7 +141,32 @@
 
 /* ===== SEARCH DROPDOWN ===== */
 
-/* Mobile base: full-width centered dropdown */
+.search-container {
+  /* Sizing & spacing */
+  @apply p-0 m-0;
+
+  /* Layout & positioning */
+  @apply flex items-center justify-end relative;
+
+  /* Colors */
+  @apply bg-transparent;
+}
+
+.search-dropdown .search-container {
+  /* Sizing & spacing */
+  @apply w-full max-w-full p-0 m-0;
+
+  /* Layout */
+  @apply justify-start;
+
+  /* Behavior */
+  @apply overflow-hidden;
+}
+
+.search-dropdown .search-container input {
+  @apply w-full max-w-full box-border;
+}
+
 .search-dropdown {
   /* Sizing & spacing */
   @apply p-3 w-screen max-w-full;
@@ -193,44 +213,6 @@
   }
 }
 
-
-
-
-
-.search-container {
-  /* Sizing & spacing */
-  @apply p-0 m-0;
-
-  /* Layout & positioning */
-  @apply flex items-center justify-end relative;
-
-  /* Colors */
-  @apply bg-transparent;
-}
-
-.search-dropdown .search-container {
-  /* Sizing & spacing */
-  @apply w-full max-w-full p-0 m-0;
-
-  /* Layout */
-  @apply justify-start;
-
-  /* Behavior */
-  @apply overflow-hidden;
-}
-
-.search-dropdown .search-container input {
-  @apply w-full max-w-full box-border;
-}
-
-
-
-
-
-
-
-
-/* Base: inline search results (desktop) */
 .search-results {
   /* Sizing & spacing */
   @apply mt-2 w-full;
@@ -250,91 +232,6 @@
   /* Behavior */
   @apply overflow-x-hidden;
 }
-
-
-
-
-
-/* Ensure Algolia search input doesn't overflow on mobile */
-@media (max-width: 768px) {
-  /* Hide submit button on mobile - instant search doesn't need it */
-  .search-dropdown .ais-SearchBox-submit {
-    @apply hidden;
-  }
-}
-
-
-
-
-
-
-.search-dropdown .ais-SearchBox {
-  @apply w-full max-w-full;
-}
-
-.search-dropdown .ais-SearchBox-form {
-  @apply w-full max-w-full;
-}
-
-
-
-
-
-
-
-
-
-
-
-/* ✅ */
-
-/* ===== START ===== */
-
-/* AUDIT - should be mobile-first */
-@media (max-width: 768px) {
-  .search-dropdown .ais-SearchBox-input {
-    @apply w-full max-w-full pr-10;
-  }
-}
-
-/* AUDIT - is this mobile first? */
-@media (max-width: 768px) {
-  .search-dropdown .ais-SearchBox-input:focus {
-    @apply outline-none border-sv-purple-700 ring-2 ring-sv-purple-700/10;
-  }
-}
-
-/* XS Screens */
-@media (max-width: 480px) {
-  .search-dropdown .ais-SearchBox-input {
-    @apply text-sm;
-  }
-}
-/* ===== END ===== */
-
-
-
-
-
-
-
-
-/* ===== START ===== */
-
-/* Match search results width to search input width at different breakpoints */
-.search-results .ais-Hits {
-  @apply sm:w-[12.5rem] md:w-64;
-}
-/* ===== END ===== */
-
-
-
-
-
-
-
-/* ===== ✅ ===== */
-/* ===== everything below here is ok ===== */
 
 /* ===== SEARCH HIT ITEMS ===== */
 
@@ -363,6 +260,10 @@
   @apply bg-transparent;
 }
 
+.search-dropdown .ais-SearchBox {
+  @apply w-full max-w-full;
+}
+
 .ais-SearchBox-form {
   /* Sizing & spacing */
   @apply p-0 m-0;
@@ -377,9 +278,13 @@
   @apply bg-transparent;
 }
 
+.search-dropdown .ais-SearchBox-form {
+  @apply w-full max-w-full;
+}
+
 .ais-SearchBox-input {
   /* Sizing & spacing */
-  @apply p-2 pr-20 flex-1;
+  @apply p-2 pr-20 flex-1 w-full max-w-full;
 
   /* Border & shape */
   @apply border border-neutral-300 rounded-2xl;
@@ -390,6 +295,13 @@
 
 .ais-SearchBox-input:focus {
   @apply outline-none border-sv-purple-700 ring-2 ring-sv-purple-700/10;
+}
+
+/* XS Screens */
+@media (max-width: 480px) {
+  .search-dropdown .ais-SearchBox-input {
+    @apply text-sm;
+  }
 }
 
 .ais-SearchBox-submit {
@@ -410,6 +322,14 @@
 
   /* Algolia default overrides */
   @apply p-0 border-none rounded-none m-0 shadow-none no-underline font-[family:inherit] font-[weight:inherit];
+}
+
+/* Ensure Algolia search input doesn't overflow on mobile */
+@media (max-width: 768px) {
+  /* Hide submit button on mobile - instant search doesn't need it */
+  .search-dropdown .ais-SearchBox-submit {
+    @apply hidden;
+  }
 }
 
 .ais-SearchBox-submitIcon {
@@ -452,6 +372,11 @@
 
   /* Colors */
   @apply bg-sv-purple-200;
+}
+
+/* Match search results width to search input width at different breakpoints */
+.search-results .ais-Hits {
+  @apply sm:w-50 md:w-64;
 }
 
 .ais-Hits-item a {
