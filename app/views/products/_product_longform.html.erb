@@ -22,7 +22,7 @@
         <% if @product.images.any? %>
           <%= image_tag(@product.images.first,
               alt: @product.name.titleize,
-              class: "product-image-mobile") %>
+              class: "product-show-image") %>
         <% else %>
           <div class="product-image-placeholder">
             <span class="product-image-placeholder-text" data-product-image-placeholder>(product image coming soon!)</span>
@@ -62,7 +62,7 @@
           <% if @product.images.any? %>
             <%= image_tag(@product.images.first,
                           alt: @product.name.titleize,
-                          class: "product-image-desktop") %>
+                          class: "product-show-image") %>
           <% else %>
             <div class="product-image-placeholder">
               <span class="product-image-placeholder-text" data-product-image-placeholder>Product Image</span>

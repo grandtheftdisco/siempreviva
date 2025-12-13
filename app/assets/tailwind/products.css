@@ -1,77 +1,5 @@
 /* ===== PRODUCTS INDEX PAGE ===== */
 
-.products-container {
-  /* Sizing & spacing */
-  @apply max-w-300 px-2 py-4;
-
-  /* Layout */
-  @apply mx-auto;
-}
-
-/* Tablet */
-@media (min-width: 640px) {
-  .products-container {
-    @apply px-4 py-6;
-  }
-}
-
-/* Desktop */
-@media (min-width: 768px) {
-  .products-container {
-    @apply px-4 py-8;
-  }
-}
-
-/* Product #Show Page - Image Containers */
-.product-image-wrapper {
-  /* Layout */
-  @apply flex items-center justify-center;
-
-  /* Shape */
-  @apply rounded-lg;
-
-  /* Colors */
-  @apply bg-neutral-100;
-}
-
-.product-image-placeholder {
-  /* Sizing */
-  @apply w-full h-96;
-
-  /* Layout */
-  @apply flex items-center justify-center;
-
-  /* Shape */
-  @apply rounded-lg;
-
-  /* Colors */
-  @apply bg-neutral-200;
-}
-
-.product-image-placeholder-text {
-  /* Colors */
-  @apply text-neutral-500;
-}
-
-.product-features-container {
-  /* Sizing & spacing */
-  @apply max-w-lg px-4 mb-6;
-
-  /* Layout */
-  @apply mx-auto;
-}
-
-.product-features-list {
-  /* Sizing & spacing */
-  @apply space-y-1;
-
-  /* Typography */
-  @apply list-disc list-inside text-sm;
-
-  /* Colors */
-  @apply text-neutral-500;
-}
-
 .additional-images-grid {
   /* Sizing & spacing */
   @apply max-w-lg px-4 mb-6 lg:mb-8 gap-4;
@@ -100,47 +28,6 @@
 
   /* Typography */
   @apply text-sm;
-}
-
-.products-header {
-  /* Sizing & spacing */
-  @apply mb-12;
-
-  /* Typography */
-  @apply text-center;
-}
-
-.products-grid {
-  /* Sizing & spacing */
-  @apply gap-8;
-
-  /* Layout */
-  @apply grid grid-cols-1 justify-items-center;
-}
-
-/* Small tablet (640px+): 2 columns */
-@media (min-width: 640px) {
-  .products-grid {
-    @apply grid-cols-2;
-  }
-}
-
-/* Tablet (768px+): 3 columns */
-@media (min-width: 768px) {
-  .products-grid {
-    @apply grid-cols-3;
-  }
-}
-
-/* Desktop (1024px+): 4 columns with increased gap */
-@media (min-width: 1024px) {
-  .products-grid {
-    /* Sizing & spacing */
-    @apply gap-10;
-
-    /* Layout */
-    @apply grid-cols-4;
-  }
 }
 
 .product-card {
@@ -182,6 +69,136 @@
   }
 }
 
+.products-container {
+  /* Sizing & spacing */
+  @apply max-w-300 px-2 py-4;
+
+  /* Layout */
+  @apply mx-auto;
+}
+
+/* Tablet */
+@media (min-width: 640px) {
+  .products-container {
+    @apply px-4 py-6;
+  }
+}
+
+/* Desktop */
+@media (min-width: 768px) {
+  .products-container {
+    @apply px-4 py-8;
+  }
+}
+
+.product-features-container {
+  /* Sizing & spacing */
+  @apply max-w-lg px-4 mb-6;
+
+  /* Layout */
+  @apply mx-auto;
+}
+
+.product-features-list {
+  /* Sizing & spacing */
+  @apply space-y-1;
+
+  /* Typography */
+  @apply list-disc list-inside text-sm;
+
+  /* Colors */
+  @apply text-neutral-500;
+}
+
+.products-grid {
+  /* Sizing & spacing */
+  @apply gap-8;
+
+  /* Layout */
+  @apply grid grid-cols-1 justify-items-center;
+}
+
+/* Small tablet (640px+): 2 columns */
+@media (min-width: 640px) {
+  .products-grid {
+    @apply grid-cols-2;
+  }
+}
+
+/* Tablet (768px+): 3 columns */
+@media (min-width: 768px) {
+  .products-grid {
+    @apply grid-cols-3;
+  }
+}
+
+/* Desktop (1024px+): 4 columns with increased gap */
+@media (min-width: 1024px) {
+  .products-grid {
+    /* Sizing & spacing */
+    @apply gap-10;
+
+    /* Layout */
+    @apply grid-cols-4;
+  }
+}
+
+.products-header {
+  /* Sizing & spacing */
+  @apply mb-12;
+
+  /* Typography */
+  @apply text-center;
+}
+
+.product-image {
+  /* Sizing */
+  @apply w-full h-full;
+
+  /* Shape */
+  @apply rounded-3xl;
+
+  /* Behavior */
+  @apply object-cover;
+
+  /* Visual effects */
+  @apply saturate-[0.7];
+
+  /* Interactive & animation */
+  @apply transition-all duration-200 ease-in-out;
+}
+
+.product-image-placeholder {
+  /* Sizing */
+  @apply w-full h-96;
+
+  /* Layout */
+  @apply flex items-center justify-center;
+
+  /* Shape */
+  @apply rounded-lg;
+
+  /* Colors */
+  @apply bg-neutral-200;
+}
+
+.product-image-placeholder-text {
+  /* Colors */
+  @apply text-neutral-500;
+}
+
+/* Product #Show Page - Image Containers */
+.product-image-wrapper {
+  /* Layout */
+  @apply flex items-center justify-center;
+
+  /* Shape */
+  @apply rounded-lg;
+
+  /* Colors */
+  @apply bg-neutral-100;
+}
+
 .product-link {
   /* Layout */
   @apply block;
@@ -194,6 +211,10 @@
 
   /* Link styling */
   @apply no-underline;
+}
+
+.product-link:hover .product-image {
+  @apply saturate-100;
 }
 
 .product-image-container {
@@ -224,27 +245,6 @@
   }
 }
 
-.product-image {
-  /* Sizing */
-  @apply w-full h-full;
-
-  /* Shape */
-  @apply rounded-3xl;
-
-  /* Behavior */
-  @apply object-cover;
-
-  /* Visual effects */
-  @apply saturate-[0.7];
-
-  /* Interactive & animation */
-  @apply transition-all duration-200 ease-in-out;
-}
-
-.product-link:hover .product-image {
-  @apply saturate-100;
-}
-
 .product-info {
   /* Sizing & spacing */
   @apply p-3 h-16;
@@ -270,7 +270,6 @@
   @apply overflow-hidden text-ellipsis;
 }
 
-/* AUDIT - product-price vs product-price-display - why are there two and reconcile this */
 .product-card-price {
   /* Typography */
   @apply text-sm font-light text-right whitespace-nowrap;
@@ -281,37 +280,8 @@
 
 /* ===== PRODUCT SHOW PAGE ===== */
 
-.product-show-container {
-  /* Sizing & spacing */
-  @apply max-w-6xl px-4 pt-4 pb-8 lg:py-8;
-
-  /* Layout */
-  @apply mx-auto;
-}
-
-/* Product longform partial layout container */
-.section-one-mobile-container {
-  @apply lg:hidden relative;
-}
-
 .add-to-bag-mobile-form {
   @apply flex justify-center;
-}
-
-.product-content-grid {
-  @apply grid grid-cols-1 lg:grid-cols-2;
-}
-
-.product-add-to-cart-form {
-  @apply w-auto m-0 p-0 max-w-none;
-}
-
-.breadcrumb-nav {
-  /* Typography */
-  @apply font-serif text-sm;
-
-  /* Colors */
-  @apply text-neutral-500;
 }
 
 .breadcrumb-link {
@@ -326,12 +296,97 @@
   @apply underline;
 }
 
+.breadcrumb-nav {
+  /* Typography */
+  @apply font-serif text-sm;
+
+  /* Colors */
+  @apply text-neutral-500;
+}
+
 .breadcrumb-separator {
   @apply mx-2;
 }
 
 .current-page {
   @apply text-inherit;
+}
+
+.product-add-to-cart-form {
+  @apply w-auto m-0 p-0 max-w-none;
+}
+
+.product-content-grid {
+  @apply grid grid-cols-1 lg:grid-cols-2;
+}
+
+.product-description {
+  /* Typography */
+  @apply leading-relaxed;
+
+  /* Colors */
+  @apply text-neutral-500;
+}
+
+.product-section-divider {
+  /* Border */
+  @apply border-t border-neutral-500;
+}
+
+.product-show-container {
+  /* Sizing & spacing */
+  @apply max-w-6xl px-4 pt-4 pb-8 lg:py-8;
+
+  /* Layout */
+  @apply mx-auto;
+}
+
+.product-show-image {
+  /* Sizing */
+  @apply max-w-full h-auto max-h-[40vh];
+
+  /* Shape */
+  @apply rounded-lg;
+
+  /* Behavior */
+  @apply object-cover;
+}
+
+/* Extra-small screens (iPhone SE, etc.): fixed height */
+@media (max-width: 400px) {
+  .product-show-image {
+    /* Sizing */
+    @apply w-full h-48 max-h-none;
+  }
+}
+
+/* Desktop (1024px+): no max-height constraint */
+@media (min-width: 1024px) {
+  .product-show-image {
+    @apply max-h-none;
+  }
+}
+
+.product-show-price {
+  /* Typography */
+  @apply font-serif text-3xl text-center;
+
+  /* Colors */
+  @apply text-neutral-800;
+}
+
+/* Extra-small screens (iPhone SE, etc.): larger text */
+@media (max-width: 400px) {
+  .product-show-price {
+    @apply text-4xl;
+  }
+}
+
+/* Desktop (1024px+): left-aligned */
+@media (min-width: 1024px) {
+  .product-show-price {
+    @apply text-left;
+  }
 }
 
 .product-show-title {
@@ -366,85 +421,6 @@
   }
 }
 
-.product-show-price {
-  /* Typography */
-  @apply font-serif text-3xl text-center;
-
-  /* Colors */
-  @apply text-neutral-800;
-}
-
-/* Extra-small screens (iPhone SE, etc.): larger text */
-@media (max-width: 400px) {
-  .product-show-price {
-    @apply text-4xl;
-  }
-}
-
-/* Desktop (1024px+): left-aligned */
-@media (min-width: 1024px) {
-  .product-show-price {
-    @apply text-left;
-  }
-}
-
-.product-description {
-  /* Typography */
-  @apply leading-relaxed;
-
-  /* Colors */
-  @apply text-neutral-500;
-}
-
-
-/* AUDIT - why do we have one product-image class for mobile and one for desktop, and why does the desktop one have an XS screen breakpoint */
-.product-image-mobile {
-  /* Sizing */
-  @apply max-w-full h-auto max-h-[40vh];
-
-  /* Shape */
-  @apply rounded-lg;
-
-  /* Behavior */
-  @apply object-cover;
-}
-
-/* AUDIT - XS Screens? */
-@media (max-width: 400px) {
-  .product-image-mobile {
-    /* Sizing */
-    @apply w-full h-48;
-
-    /* Behavior */
-    @apply object-cover;
-  }
-}
-
-.product-image-desktop {
-  /* Sizing */
-  @apply max-w-full h-auto max-h-[40vh];
-
-  /* Shape */
-  @apply rounded-lg;
-
-  /* Behavior */
-  @apply object-cover;
-}
-
-/* XS Screens - reduced image height */
-@media (max-width: 400px) {
-  .product-image-desktop {
-    @apply max-h-[30vh];
-  }
-}
-
-/* Desktop */
-@media (min-width: 1024px) {
-  .product-image-desktop {
-    @apply max-h-none;
-  }
-}
-
 .section-heading {
   /* Sizing & spacing */
   @apply mb-8;
@@ -453,39 +429,12 @@
   @apply font-serif text-2xl font-light italic text-center;
 }
 
-.product-section-divider {
-  /* Border */
-  @apply border-t border-neutral-500;
+/* Product longform partial layout container */
+.section-one-mobile-container {
+  @apply lg:hidden relative;
 }
 
 /* ===== CROSS-SELLS SECTION ===== */
-
-.cross-sells-grid {
-  /* Sizing & spacing */
-  @apply gap-8;
-
-  /* Layout */
-  @apply flex flex-col justify-center items-center;
-}
-
-/* Desktop */
-@media (min-width: 1280px) {
-  .cross-sells-grid {
-    /* Sizing & spacing */
-    @apply gap-12;
-
-    /* Layout */
-    @apply flex-row items-start;
-  }
-}
-
-.cross-sell-link {
-  /* Layout */
-  @apply block flex-shrink-0;
-
-  /* Link styling */
-  @apply no-underline;
-}
 
 .cross-sell-card {
   /* Sizing */
@@ -538,6 +487,25 @@
   @apply overflow-hidden;
 }
 
+.cross-sells-grid {
+  /* Sizing & spacing */
+  @apply gap-8;
+
+  /* Layout */
+  @apply flex flex-col justify-center items-center;
+}
+
+/* Desktop */
+@media (min-width: 1280px) {
+  .cross-sells-grid {
+    /* Sizing & spacing */
+    @apply gap-12;
+
+    /* Layout */
+    @apply flex-row items-start;
+  }
+}
+
 .cross-sell-image {
   /* Sizing */
   @apply w-full h-full;
@@ -547,6 +515,14 @@
 
   /* Behavior */
   @apply object-cover;
+}
+
+.cross-sell-link {
+  /* Layout */
+  @apply block flex-shrink-0;
+
+  /* Link styling */
+  @apply no-underline;
 }
 
 .cross-sell-placeholder-text {
