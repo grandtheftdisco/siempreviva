@@ -3,9 +3,10 @@
 
 /* ===== SEARCH SECTION LAYOUT ===== */
 
+/* Mobile base: no padding */
 .search-section:not(.hidden) {
-  /* Sizing & spacing */
-  @apply gap-2 px-4 shrink;
+  /* Sizing & spacing - mobile base */
+  @apply gap-2 p-0 shrink;
 
   /* Layout & positioning */
   @apply flex items-center relative;
@@ -14,19 +15,51 @@
   @apply bg-transparent;
 }
 
-/* AUDIT - mobile first? */
-@media (max-width: 767px) {
-  .search-section:not(.hidden) {
-    @apply p-0;
+/* Extra-small screens (iPhone SE, etc.): most compact search */
+@media (max-width: 639px) {
+  .search-section {
+    /* Sizing & spacing */
+    @apply p-0 gap-0 min-w-10 w-auto;
+
+    /* Layout */
+    @apply flex-none;
   }
 }
 
-/* AUDIT - reconcile this with mobile-first approach issue above  */
+/* Small tablet (640-767px): compact search with inline input */
+@media (min-width: 640px) and (max-width: 767px) {
+  .search-section {
+    /* Sizing & spacing */
+    @apply px-4 gap-1 min-w-[37.5];
+
+    /* Layout */
+    @apply flex-[0_1_50];
+  }
+}
+
+/* Tablet (768-1023px): compact search with smaller inputs */
+@media (min-width: 768px) and (max-width: 1023px) {
+  .search-section {
+    /* Sizing & spacing */
+    @apply px-1 gap-1;
+  }
+}
+
+/* Desktop (768px+): add horizontal padding */
+/* AUDIT - does it matter to specify not hidden here? not done in other media queries... */
+@media (min-width: 768px) {
+  .search-section:not(.hidden) {
+    /* Sizing & spacing */
+    @apply px-4;
+  }
+}
+
+/* AUDIT - reconcile this with mobile-first approach issue above - do we need to rename this?  */
 .mobile-nav-items .search-section {
   @apply flex-none flex items-center;
 }
 
-/* AUDIT - reconcile this with the media query below */
+/* AUDIT - reconcile this with other search-section media queries above & below */
 @media (min-width: 768px) {
   .search-section {
     /* Spacing */
@@ -37,75 +70,75 @@
   }
 }
 
-/* Tablet: compact search */
+/* ===== END SEARCH SECTION LAYOUT ===== */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* ===== START ===== */
+
+@media (max-width: 639px) {
+  /* Ensure any desktop search elements are hidden */
+  #searchbox-desktop,
+  #hits-desktop {
+    /* Layout */
+    @apply hidden;
+  }
+} 
+/* ===== END ===== */
+
+
+
+
+
+/* ===== SEARCH DESKTOP ===== */
+
+/* AUDIT - this is not mobile first */
+.search-desktop {
+  /* Sizing & spacing */
+  @apply gap-2;
+
+  /* Layout & positioning */
+  @apply flex items-center relative;
+
+  /* Colors */
+  @apply bg-transparent;
+}
+
+/* AUDIT - define this breakpoint */
+@media (max-width: 639px) {
+  .search-desktop {
+    /* Layout */
+    @apply hidden;
+  }
+} 
+
+/* Tablet (768-1023px): compact search with smaller inputs */
 @media (min-width: 768px) and (max-width: 1023px) {
-  .search-section {
-    @apply px-1 gap-1;
-  }
-
-  .search-desktop input {
-    /* Sizing & spacing */
-    @apply h-8 py-1.5 px-3 max-w-64;
-
-    /* Typography */
-    @apply text-sm;
-  }
-
   .search-desktop button {
+    /* Sizing & spacing */
     @apply h-8 w-8 p-1;
   }
 }
 
-/* AUDIT - is this XS only or does it include standard mobile? */
-@media (max-width: 639px) {
-  .search-section {
-    /* Sizing & spacing */
-    @apply p-0 gap-0 min-w-10 w-auto;
-
-    /* Layout */
-    @apply flex-none;
-  }
-
-  .search-toggle-button {
-    /* Sizing */
-    @apply w-10 h-10;
-
-    /* Layout */
-    @apply flex shrink-0;
-
-    /* Shape */
-    @apply rounded-lg;
-
-    /* Colors */
-    @apply bg-transparent;
-  }
-
-  .search-toggle-button:hover {
-    @apply bg-transparent;
-  }
-
-  .search-desktop {
-    @apply hidden;
-  }
-
-  /* Ensure any desktop search elements are hidden */
-  #searchbox-desktop,
-  #hits-desktop {
-    @apply hidden;
-  }
-}
-
-/* Tablet range, compact search */
-/* AUDIT - duplicate with tablet range query above? */
+/* Small tablet (640-767px): compact search with inline input */
 @media (min-width: 640px) and (max-width: 767px) {
-  .search-section {
-    /* Sizing & spacing */
-    @apply px-4 gap-1 min-w-[37.5];
-
-    /* Layout */
-    @apply flex-[0_1_50];
-  }
-
   .search-desktop input {
     /* Sizing */
     @apply w-full max-w-50;
@@ -115,7 +148,36 @@
   }
 }
 
+/* Tablet (768-1023px): compact search with smaller inputs */
+@media (min-width: 768px) and (max-width: 1023px) {
+  .search-desktop input {
+    /* Sizing & spacing */
+    @apply h-8 py-1.5 px-3 max-w-64;
+
+    /* Typography */
+    @apply text-sm;
+  }
+}
+/* ===== END ===== */
+
+
+
+
+
+
+
+
+
+
 /* ===== SEARCH TOGGLE BUTTON (MOBILE) ===== */
+/* AUDIT - this section not mobile first */
+.search-icon {
+  /* Sizing & spacing */
+  @apply w-6 h-6;
+
+  /* Colors */
+  @apply text-sv-purple-700;
+}
 
 .search-toggle-button {
   /* Sizing & spacing */
@@ -134,20 +196,38 @@
   @apply transition-colors duration-200 cursor-pointer;
 }
 
+@media (max-width: 639px) {
+  .search-toggle-button {
+    /* Sizing */
+    @apply w-10 h-10;
+
+    /* Layout */
+    @apply flex shrink-0;
+
+    /* Shape */
+    @apply rounded-lg;
+
+    /* Colors */
+    @apply bg-transparent;
+  }
+} 
+
+@media (max-width: 639px) {
+  .search-toggle-button:hover {
+    /* Colors */
+    @apply bg-transparent;
+  }
+} 
+
 /* Desktop: Hide toggle button (search bar is inline) */
 @media (min-width: 640px) {
   .search-toggle-button {
     @apply hidden;
   }
 }
+/* ===== END ===== */
 
-.search-icon {
-  /* Sizing & spacing */
-  @apply w-6 h-6;
 
-  /* Colors */
-  @apply text-sv-purple-700;
-}
 
 /* ===== SEARCH DROPDOWN ===== */
 
@@ -165,6 +245,13 @@
   @apply bg-sv-purple-100;
 }
 
+/* XS Screens */
+@media (max-width: 480px) {
+  .search-dropdown {
+    @apply p-2;
+  }
+}
+
 /* Responsive search dropdown - full width on mobile */
 /* AUDIT - is this mobile firsT? */
 @media (max-width: 768px) {
@@ -173,7 +260,7 @@
     @apply w-screen max-w-full;
 
     /* Layout & positioning */
-    @apply left-1/2 -translate-x-1/2;
+    @apply left-1/2 -translate-x-1/2 p-3;
 
     /* Border & shape */
     @apply rounded-none border-l-0 border-r-0 border-t border-sv-purple-700/15;
@@ -204,94 +291,14 @@
     @apply border border-sv-purple-700/15 rounded-lg;
   }
 }
+/* ===== END ===== */
 
-.search-dropdown .search-container {
-  /* Sizing & spacing */
-  @apply w-full max-w-full p-0 m-0;
 
-  /* Layout */
-  @apply justify-start;
 
-  /* Behavior */
-  @apply overflow-hidden;
-}
 
-.search-dropdown .search-results {
-  /* Sizing & spacing */
-  @apply w-full max-w-full mt-2;
 
-  /* Layout & positioning */
-  @apply static right-auto;
 
-  /* Behavior */
-  @apply overflow-x-hidden;
-}
-
-/* Ensure Algolia search input doesn't overflow on mobile */
-/* AUDIT - is this mobile first? */
-@media (max-width: 768px) {
-  .search-dropdown {
-    @apply p-3;
-  }
-
-  .search-dropdown .search-container {
-    @apply w-full max-w-full p-0 m-0;
-  }
-
-  .search-dropdown .search-container input {
-    @apply w-full max-w-full box-border;
-  }
-
-  .search-dropdown .ais-SearchBox {
-    @apply w-full max-w-full;
-  }
-
-  .search-dropdown .ais-SearchBox-form {
-    @apply w-full max-w-full;
-  }
-
-  .search-dropdown .ais-SearchBox-input {
-    @apply w-full max-w-full pr-10;
-  }
-
-  /* Hide submit button on mobile - instant search doesn't need it */
-  .search-dropdown .ais-SearchBox-submit {
-    @apply hidden;
-  }
-}
-
-/* XS Screens */
-@media (max-width: 480px) {
-  .search-dropdown {
-    @apply p-2;
-  }
-
-  .search-dropdown .ais-SearchBox-input {
-    @apply text-sm;
-  }
-}
-
-/* Focus and interaction improvements for mobile */
-/* AUDIT - is this mobile first? */
-@media (max-width: 768px) {
-  .search-dropdown .ais-SearchBox-input:focus {
-    @apply outline-none border-sv-purple-700 ring-2 ring-sv-purple-700/10;
-  }
-}
-
-/* ===== DESKTOP SEARCH ===== */
-
-/* AUDIT - this is not mobile first */
-.search-desktop {
-  /* Sizing & spacing */
-  @apply gap-2;
-
-  /* Layout & positioning */
-  @apply flex items-center relative;
-
-  /* Colors */
-  @apply bg-transparent;
-}
+/* ===== START ===== */
 
 .search-container {
   /* Sizing & spacing */
@@ -304,6 +311,57 @@
   @apply bg-transparent;
 }
 
+.search-dropdown .search-container {
+  /* Sizing & spacing */
+  @apply w-full max-w-full p-0 m-0;
+
+  /* Layout */
+  @apply justify-start;
+
+  /* Behavior */
+  @apply overflow-hidden;
+}
+
+@media (max-width: 768px) {
+  .search-dropdown .search-container {
+    @apply w-full max-w-full p-0 m-0;
+  }
+}
+
+@media (max-width: 768px) {
+  .search-dropdown .search-container {
+    @apply w-full max-w-full p-0 m-0;
+  }
+}
+
+@media (max-width: 768px) {
+  .search-dropdown .search-container input {
+    @apply w-full max-w-full box-border;
+  }
+}
+/* ===== END ===== */
+
+
+
+
+
+
+
+/* ===== START ===== */
+
+/* AUDIT - these two conflict - is one meant for mobile and one for desktop? */
+
+.search-dropdown .search-results {
+  /* Sizing & spacing */
+  @apply w-full max-w-full mt-2;
+
+  /* Layout & positioning */
+  @apply static right-auto;
+
+  /* Behavior */
+  @apply overflow-x-hidden;
+}
+
 .search-results {
   /* Sizing & spacing */
   @apply mt-2 w-full;
@@ -311,11 +369,108 @@
   /* Layout & positioning */
   @apply absolute top-full left-0 z-50;
 }
+/* ===== END ===== */
+
+
+
+
+/* ===== START ===== */
+
+/* Ensure Algolia search input doesn't overflow on mobile */
+/* AUDIT - is this mobile first? */
+@media (max-width: 768px) {
+  /* Hide submit button on mobile - instant search doesn't need it */
+  .search-dropdown .ais-SearchBox-submit {
+    @apply hidden;
+  }
+}
+/* ===== END ===== */
+
+
+
+
+
+
+/* ===== START ===== */
+
+@media (max-width: 768px) {
+  .search-dropdown .ais-SearchBox-form {
+    @apply w-full max-w-full;
+  }
+}
+/* ===== END ===== */
+
+
+
+
+
+/* ===== START ===== */
+
+@media (max-width: 768px) {
+  .search-dropdown .ais-SearchBox {
+    @apply w-full max-w-full;
+  }
+}
+/* ===== END ===== */
+
+
+
+
+
+
+
+
+
+
+
+
+/* ===== START ===== */
+
+/* AUDIT - should be mobile-first */
+@media (max-width: 768px) {
+  .search-dropdown .ais-SearchBox-input {
+    @apply w-full max-w-full pr-10;
+  }
+}
+
+/* AUDIT - is this mobile first? */
+@media (max-width: 768px) {
+  .search-dropdown .ais-SearchBox-input:focus {
+    @apply outline-none border-sv-purple-700 ring-2 ring-sv-purple-700/10;
+  }
+}
+
+/* XS Screens */
+@media (max-width: 480px) {
+  .search-dropdown .ais-SearchBox-input {
+    @apply text-sm;
+  }
+}
+/* ===== END ===== */
+
+
+
+
+
+
+
+
+/* ===== START ===== */
 
 /* Match search results width to search input width at different breakpoints */
 .search-results .ais-Hits {
   @apply sm:w-[12.5rem] md:w-64;
 }
+/* ===== END ===== */
+
+
+
+
+
+
+
+/* ===== ✅ ===== */
+/* ===== everything below here is ok ===== */
 
 /* ===== SEARCH HIT ITEMS ===== */
 
@@ -422,7 +577,7 @@
   @apply w-3.5 h-3.5;
 }
 
-/* ===== SEARCH RESULTS CONTAINER ===== */
+/* ===== ALGOLIA SEARCH RESULTS CONTAINER ===== */
 
 .ais-Hits {
   /* Sizing & spacing */
