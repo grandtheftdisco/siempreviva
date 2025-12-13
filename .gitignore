@@ -39,3 +39,6 @@
 # Personal notes
 x_notes_x/
 work_logs/
+
+# Claude diagnostics
+.claude_trace/
