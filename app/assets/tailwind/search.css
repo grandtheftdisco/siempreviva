@@ -58,17 +58,6 @@
   }
 }
 
-/* ===== START ===== */
-
-@media (max-width: 639px) {
-  /* Ensure any desktop search elements are hidden */
-  #searchbox-desktop,
-  #hits-desktop {
-    /* Layout */
-    @apply hidden;
-  }
-} 
-/* ===== END ===== */
 
 
 
@@ -154,8 +143,6 @@
     @apply hidden;
   }
 }
-/* ✅ */
-
 
 /* ===== SEARCH DROPDOWN ===== */
 
@@ -210,9 +197,6 @@
 
 
 
-
-/* ===== START ===== */
-
 .search-container {
   /* Sizing & spacing */
   @apply p-0 m-0;
@@ -235,35 +219,27 @@
   @apply overflow-hidden;
 }
 
-@media (max-width: 768px) {
-  .search-dropdown .search-container {
-    @apply w-full max-w-full p-0 m-0;
-  }
+.search-dropdown .search-container input {
+  @apply w-full max-w-full box-border;
 }
 
-@media (max-width: 768px) {
-  .search-dropdown .search-container {
-    @apply w-full max-w-full p-0 m-0;
-  }
+
+
+
+
+
+
+
+/* Base: inline search results (desktop) */
+.search-results {
+  /* Sizing & spacing */
+  @apply mt-2 w-full;
+
+  /* Layout & positioning */
+  @apply absolute top-full left-0 z-50;
 }
 
-@media (max-width: 768px) {
-  .search-dropdown .search-container input {
-    @apply w-full max-w-full box-border;
-  }
-}
-/* ===== END ===== */
-
-
-
-
-
-
-
-/* ===== START ===== */
-
-/* AUDIT - these two conflict - is one meant for mobile and one for desktop? */
-
+/* Dropdown variant: mobile search results */
 .search-dropdown .search-results {
   /* Sizing & spacing */
   @apply w-full max-w-full mt-2;
@@ -275,56 +251,30 @@
   @apply overflow-x-hidden;
 }
 
-.search-results {
-  /* Sizing & spacing */
-  @apply mt-2 w-full;
-
-  /* Layout & positioning */
-  @apply absolute top-full left-0 z-50;
-}
-/* ===== END ===== */
 
 
 
-
-/* ===== START ===== */
 
 /* Ensure Algolia search input doesn't overflow on mobile */
-/* AUDIT - is this mobile first? */
 @media (max-width: 768px) {
   /* Hide submit button on mobile - instant search doesn't need it */
   .search-dropdown .ais-SearchBox-submit {
     @apply hidden;
   }
 }
-/* ===== END ===== */
 
 
 
 
 
 
-/* ===== START ===== */
-
-@media (max-width: 768px) {
-  .search-dropdown .ais-SearchBox-form {
-    @apply w-full max-w-full;
-  }
+.search-dropdown .ais-SearchBox {
+  @apply w-full max-w-full;
 }
-/* ===== END ===== */
 
-
-
-
-
-/* ===== START ===== */
-
-@media (max-width: 768px) {
-  .search-dropdown .ais-SearchBox {
-    @apply w-full max-w-full;
-  }
+.search-dropdown .ais-SearchBox-form {
+  @apply w-full max-w-full;
 }
-/* ===== END ===== */
 
 
 
@@ -336,6 +286,7 @@
 
 
 
+/* ✅ */
 
 /* ===== START ===== */
 
