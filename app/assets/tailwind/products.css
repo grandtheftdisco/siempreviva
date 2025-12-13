@@ -27,8 +27,11 @@
   /* Layout */
   @apply flex items-center justify-center;
 
-  /* Colors & shape */
-  @apply bg-gray-100 rounded-lg;
+  /* Shape */
+  @apply rounded-lg;
+
+  /* Colors */
+  @apply bg-neutral-100;
 }
 
 .product-image-placeholder {
@@ -38,13 +41,16 @@
   /* Layout */
   @apply flex items-center justify-center;
 
-  /* Colors & shape */
-  @apply bg-gray-200 rounded-lg;
+  /* Shape */
+  @apply rounded-lg;
+
+  /* Colors */
+  @apply bg-neutral-200;
 }
 
 .product-image-placeholder-text {
   /* Colors */
-  @apply text-gray-500;
+  @apply text-neutral-500;
 }
 
 .product-features-container {
@@ -63,7 +69,7 @@
   @apply list-disc list-inside text-sm;
 
   /* Colors */
-  @apply text-gray-600;
+  @apply text-neutral-500;
 }
 
 .additional-images-grid {
@@ -85,42 +91,15 @@
   @apply rounded-lg;
 
   /* Colors */
-  @apply bg-gray-200;
+  @apply bg-neutral-200;
 }
 
 .additional-image-placeholder-text {
   /* Colors */
-  @apply text-gray-500;
+  @apply text-neutral-500;
 
   /* Typography */
   @apply text-sm;
-}
-
-.cross-sells-grid {
-  /* Sizing & spacing */
-  @apply gap-8;
-
-  /* Layout */
-  @apply flex flex-col justify-center items-center;
-}
-
-/* Desktop */
-@media (min-width: 1280px) {
-  .cross-sells-grid {
-    /* Sizing & spacing */
-    @apply gap-12;
-
-    /* Layout */
-    @apply flex-row items-start;
-  }
-}
-
-.cross-sell-link {
-  /* Layout */
-  @apply block flex-shrink-0;
-
-  /* Link styling */
-  @apply no-underline;
 }
 
 .products-header {
@@ -131,6 +110,7 @@
   @apply text-center;
 }
 
+/* AUDIT - make products-grid mobile-first */
 .products-grid {
   /* Sizing & spacing */
   @apply gap-10;
@@ -139,7 +119,7 @@
   @apply grid grid-cols-4 justify-items-center;
 }
 
-/* AUDIT - is this for tablets? */
+/* Desktop */
 @media (max-width: 1024px) {
   .products-grid {
     /* Sizing & spacing */
@@ -150,7 +130,6 @@
   }
 }
 
-/* AUDIT - is this for mobile? */
 @media (max-width: 768px) {
   .products-grid {
     /* Sizing & spacing */
@@ -172,6 +151,7 @@
   }
 }
 
+/* AUDIT - make product-card mobile-first */
 .product-card {
   /* Sizing */
   @apply w-full max-w-84 h-96;
@@ -196,7 +176,6 @@
   @apply -translate-y-2;
 }
 
-/* AUDIT - mobile-first? */
 @media (max-width: 768px) {
   .product-card {
     @apply h-84;
@@ -299,6 +278,7 @@
   @apply overflow-hidden text-ellipsis;
 }
 
+/* AUDIT - product-price vs product-price-display - why are there two and reconcile this */
 .product-price {
   /* Typography */
   @apply text-sm font-light text-right whitespace-nowrap;
@@ -362,6 +342,7 @@
   @apply text-inherit;
 }
 
+/* AUDIT - make product-show-title mobile-first */
 .product-show-title {
   /* Sizing & spacing */
   @apply mb-4 p-0;
@@ -373,7 +354,6 @@
   @apply text-neutral-800;
 }
 
-/* AUDIT - mobile-first? */
 @media (max-width: 768px) {
   .product-show-title {
     @apply text-left text-4xl;
@@ -391,6 +371,7 @@
   }
 }
 
+/* AUDIT - make product-price-display mobile first */
 .product-price-display {
   /* Typography */
   @apply font-serif text-2xl text-center;
@@ -428,17 +409,8 @@
   @apply text-neutral-500;
 }
 
-.product-image-wrapper {
-  /* Layout */
-  @apply flex items-center justify-center;
 
-  /* Shape */
-  @apply rounded-lg;
-
-  /* Colors */
-  @apply bg-neutral-100;
-}
-
+/* AUDIT - why do we have one product-image class for mobile and one for desktop, and why does the desktop one have an XS screen breakpoint */
 .product-image-mobile {
   /* Sizing */
   @apply max-w-full h-auto max-h-[40vh];
@@ -486,73 +458,6 @@
   }
 }
 
-.product-image-placeholder {
-  /* Sizing */
-  @apply w-full h-96;
-
-  /* Layout */
-  @apply flex items-center justify-center;
-
-  /* Shape */
-  @apply rounded-lg;
-
-  /* Colors */
-  @apply bg-neutral-200;
-}
-
-.product-image-placeholder-text {
-  @apply text-neutral-500;
-}
-
-.product-features-container {
-  /* Sizing & spacing */
-  @apply max-w-lg px-4 mb-6;
-
-  /* Layout */
-  @apply mx-auto;
-}
-
-.product-features-list {
-  /* Sizing & spacing */
-  @apply space-y-1;
-
-  /* Typography */
-  @apply list-disc list-inside text-sm;
-
-  /* Colors */
-  @apply text-neutral-500;
-}
-
-.additional-images-grid {
-  /* Sizing & spacing */
-  @apply max-w-lg px-4 mb-6 lg:mb-8 gap-4;
-
-  /* Layout */
-  @apply grid grid-cols-2 mx-auto;
-}
-
-.additional-image-placeholder {
-  /* Sizing */
-  @apply h-40 lg:h-32;
-
-  /* Layout */
-  @apply flex items-center justify-center;
-
-  /* Shape */
-  @apply rounded-lg;
-
-  /* Colors */
-  @apply bg-neutral-200;
-}
-
-.additional-image-placeholder-text {
-  /* Colors */
-  @apply text-neutral-500;
-
-  /* Typography */
-  @apply text-sm;
-}
-
 .section-heading {
   /* Sizing & spacing */
   @apply mb-8;
@@ -576,7 +481,7 @@
   @apply flex flex-col justify-center items-center;
 }
 
-/* AUDIT - what is this breakpoint? Desktop? */
+/* Desktop */
 @media (min-width: 1280px) {
   .cross-sells-grid {
     /* Sizing & spacing */
