@@ -1,1 +1,52 @@
-<p>Marketing#home</p>
+<div>
+  <div class="flex justify-center pt-10 pb-20">
+    <div class="flex flex-col justify-end">
+      <h1 class="text-9xl text-neutral-600 text-right uppercase font-serif">siempreviva</h1>
+      <p class="text-2xl text-right text-neutral-600 px-4">essential oils</p>
+    </div>
+
+    <div>
+      <div class="bg-neutral-200 h-130 w-130 rounded-2xl"></div>
+    </div>
+  </div>
+
+  <div class="flex flex-col justify-center py-30">
+    <div class="flex justify-center">
+      <div>
+        <div class="bg-neutral-200 h-100 w-100 rounded-2xl"></div>
+      </div>
+
+      <div class="flex flex-col justify-end">
+        <h2 class="text-7xl text-neutral-600 text-left font-serif px-4">treat yourself.</h2>
+        <p class="text-left text-neutral-600 pl-6">learn how aromatherapy can melt your troubles away</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="flex flex-col justify-center py-30 ">
+    <div class="flex justify-center">
+      <div class="flex flex-col justify-end">
+        <h2 class="text-7xl text-neutral-600 text-right font-serif px-4">visit our farms.</h2>
+        <p class="text-right text-neutral-600 pr-5">(from the comfort of your home)</p>
+      </div>
+
+      <div>
+        <div class="bg-neutral-200 h-130 w-130 rounded-2xl"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="flex flex-col justify-center items-center gap-5 py-30">
+    <div class="mb-10">
+      <h2 class="text-7xl text-neutral-600 text-center italic font-serif px-4">
+        not sure where<br/>
+        to start?
+      </h2>
+    </div>
+
+    <p class="text-neutral-600">we got you.</p>
+    <%= link_to 'schedule a consult',
+        new_contact_form_path,
+        class: 'btn-purple' %>
+  </div>
+</div>
