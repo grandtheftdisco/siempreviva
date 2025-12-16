@@ -1,87 +1,89 @@
 /* Header Stylesheet */
 /* Contains header structure and logo styles */
 
-/* NOTE: All !important declarations in this file will be addressed in Session 5 of the CSS refactor plan.
-   Session 5 focuses on specificity cleanup and removing !important hacks. */
-
-/* ===== HEADER STRUCTURE ===== */
+/* ===== HEADER ===== */
 
 header {
-  @apply fixed top-0 left-0 right-0 z-[1000] bg-sv-purple-100 border-b border-sv-purple-300/15;
+  /* Layout & positioning */
+  @apply fixed top-0 left-0 right-0 z-[1000];
+
+  /* Colors */
+  @apply bg-sv-purple-100;
+
+  /* Border & shape */
+  @apply border-b border-sv-purple-300/15;
+
+  /* Visual effects */
   @apply shadow-[0_1px_3px_0] shadow-purple-700/[0.08];
 }
 
 .header-container {
-  @apply mx-auto flex items-center p-4 gap-8 min-w-0;
+  /* Sizing & spacing */
+  @apply p-2 px-4 gap-0 min-w-0;
+
+  /* Layout & positioning */
+  @apply mx-auto flex items-center flex-nowrap justify-between;
 }
 
 @media (min-width: 768px) {
   .header-container {
-    @apply gap-12 pr-8;
+    @apply p-4 gap-12 pr-8;
   }
 }
 
-@media (max-width: 768px) {
-  .header-container {
-    @apply p-2 px-4 gap-0 flex-nowrap justify-between items-center;
-  }
-
-  .logo-section {
-    @apply order-1 flex-none;
-  }
-
-  .mobile-nav-items {
-    @apply order-2 flex-none flex items-center gap-3;
-  }
-
-  .mobile-nav-items .search-section {
-    @apply flex-none flex items-center;
-  }
-
-  .mobile-nav-items .right-icons {
-    @apply flex-none flex items-center gap-3;
-  }
+/* Navigation container - only visible on mobile */
+.mobile-nav-items-container {
+  @apply order-2 flex-none flex items-center gap-3;
 }
 
 @media (min-width: 768px) {
-  .search-section.md\:flex {
-    @apply flex-1 flex items-center justify-end mr-4;
-  }
-
-  .right-icons.md\:flex {
-    @apply flex-none flex items-center gap-3;
+  .mobile-nav-items-container {
+    @apply hidden;
   }
 }
 
-/* ===== LOGO SECTION ===== */
+.mobile-nav-right-icons {
+  @apply flex-none flex items-center gap-3;
+}
+
+/* ===== LOGO ===== */
 
 .logo-section {
-  @apply pl-2 pt-2 flex-shrink-0;
+  /* Spacing */
+  @apply pl-0 pt-1;
+
+  /* Layout & positioning */
+  @apply flex-shrink-0 order-1 flex-none;
 }
 
 @media (min-width: 768px) {
   .logo-section {
-    @apply flex-none;
-  }
-}
+    /* Spacing */
+    @apply pl-2 pt-2;
 
-@media (max-width: 767px) {
-  .logo-section {
-    @apply pl-0 pt-1;
-    margin-right: 0 !important;
+    /* Layout & positioning */
+    @apply order-[initial];
   }
 }
 
 .logo-link {
-  @apply flex items-center gap-3 cursor-pointer;
+  /* Layout */
+  @apply flex items-center gap-3;
+
+  /* Interactive */
+  @apply cursor-pointer;
 }
 
 .logo-image {
-  @apply h-30 w-auto flex-shrink-0;
+  /* Sizing */
+  @apply h-20 w-auto;
+
+  /* Layout */
+  @apply flex-shrink-0;
 }
 
-@media (max-width: 767px) {
+@media (min-width: 768px) {
   .logo-image {
-    @apply h-20;
+    @apply h-30;
   }
 }

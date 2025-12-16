@@ -41,13 +41,13 @@
     <% if @page > 1 %>
       <%= link_to "<< Previous Page",
         archive_admins_orders_path(page: @page - 1),
-        class: 'font-bold' %>
+        class: 'text-link font-bold' %>
     <% end %>
     |
-    <% if (@page + 1) * @orders_per_page < @total_fulfilled_orders %> 
+    <% if (@page + 1) * @orders_per_page < @total_fulfilled_orders %>
     <%= link_to "Next Page >>",
       archive_admins_orders_path(page: @page + 1),
-      class: 'font-bold' %>
+      class: 'text-link font-bold' %>
     <% end %>
   </div>
 <% end %>

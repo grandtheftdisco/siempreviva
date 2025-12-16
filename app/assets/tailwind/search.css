@@ -1,100 +1,126 @@
 /* Search Stylesheet */
 /* Contains all search-related styles including Algolia components and search dropdowns */
 
-/* NOTE: All !important declarations in this file will be addressed in Session 5 of the CSS refactor plan.
-   Session 5 focuses on specificity cleanup and removing !important hacks. */
-
-/* NOTE: Any comments in this file that seem superfluous are to keep record of design decisions
-   so that when the time comes for legacy cleanup & refactor in Session 4, there is context for the
-   reasoning behind the vanilla code. */
-
 /* ===== SEARCH SECTION LAYOUT ===== */
 
 .search-section:not(.hidden) {
   /* Sizing & spacing */
-  @apply gap-2 px-4 shrink;
+  @apply gap-2 p-0 shrink;
 
   /* Layout & positioning */
   @apply flex items-center relative;
 
   /* Colors */
-  background: transparent !important;
+  @apply bg-transparent;
 }
 
-/* Remove horizontal padding on mobile for tighter icon spacing */
-@media (max-width: 767px) {
-  .search-section:not(.hidden) {
-    @apply p-0;
-  }
+/* Mobile nav container variant */
+.mobile-nav-items .search-section {
+  @apply flex-none;
 }
 
-/* Compact search for tablet range */
-@media (min-width: 768px) and (max-width: 1023px) {
-  .search-section {
-    @apply px-1 gap-1;
-  }
-
-  .search-desktop input {
-    @apply h-8 text-sm py-1.5 px-3 max-w-64;
-  }
-
-  .search-desktop button {
-    @apply h-8 w-8 p-1;
-  }
-}
-
-/* Tailwind sm and below (below 640px) - mobile search */
+/* Extra-small screens (iPhone SE, etc.): most compact search */
 @media (max-width: 639px) {
   .search-section {
-    @apply p-0 gap-0 flex-none min-w-10 w-auto;
-  }
-
-  .search-toggle-button {
-    display: flex !important;
-    @apply shrink-0 w-10 h-10 rounded-lg;
-    background: transparent !important;
-  }
-
-  .search-toggle-button:hover {
-    background: transparent !important;
-  }
-
-  /* Ensure search section is visible */
-  .search-section {
-    visibility: visible !important;
-    opacity: 1 !important;
-  }
-
-  .search-desktop {
-    display: none !important;
-  }
-
-  /* Ensure any desktop search elements are hidden */
-  #searchbox-desktop,
-  #hits-desktop {
-    display: none !important;
+    /* Sizing & spacing */
+    @apply gap-0 min-w-10 w-auto;
   }
 }
 
-/* Tailwind sm to md (640px-767px) - tablet range, compact search */
+/* Small tablet (640-767px): compact search with inline input */
 @media (min-width: 640px) and (max-width: 767px) {
   .search-section {
-    @apply px-4 gap-1 flex-[0_1_50] min-w-[37.5];
+    /* Sizing & spacing */
+    @apply px-4 gap-1 min-w-[37.5];
+
+    /* Layout */
+    @apply flex-[0_1_50];
+  }
+}
+
+/* Tablet (768-1023px): compact search with smaller inputs */
+@media (min-width: 768px) and (max-width: 1023px) {
+  .search-section {
+    /* Sizing & spacing */
+    @apply px-1 gap-1;
+  }
+}
+
+/* Desktop (1024px+): expanded search with full layout */
+@media (min-width: 1024px) {
+  .search-section {
+    /* Sizing & spacing */
+    @apply px-4 mr-4;
+
+    /* Layout */
+    @apply flex-1 justify-end;
+  }
+}
+
+/* ===== SEARCH INLINE ===== */
+
+.search-inline {
+  /* Sizing & spacing */
+  @apply gap-2;
+
+  /* Layout & positioning */
+  @apply flex items-center relative;
+
+  /* Colors */
+  @apply bg-transparent;
+}
+
+/* Extra-small screens (iPhone SE, etc.): hide inline search */
+@media (max-width: 639px) {
+  .search-inline {
+    @apply hidden;
+  }
+}
+
+/* Small tablet (640-767px): compact search input */
+@media (min-width: 640px) and (max-width: 767px) {
+  .search-inline input {
+    /* Sizing */
+    @apply w-full max-w-50;
+
+    /* Typography */
+    @apply text-sm;
+  }
+}
+
+/* Tablet (768-1023px): smaller inputs and buttons */
+@media (min-width: 768px) and (max-width: 1023px) {
+  .search-inline input {
+    /* Sizing & spacing */
+    @apply h-8 py-1.5 px-3 max-w-64;
+
+    /* Typography */
+    @apply text-sm;
   }
 
-  .search-desktop input {
-    @apply w-full text-sm max-w-50;
+  .search-inline button {
+    /* Sizing & spacing */
+    @apply h-8 w-8 p-1;
   }
 }
 
 /* ===== SEARCH TOGGLE BUTTON (MOBILE) ===== */
 
+.search-icon {
+  /* Sizing */
+  @apply w-6 h-6;
+
+  /* Colors */
+  @apply text-sv-purple-700;
+}
+
+/* Mobile base */
 .search-toggle-button {
   /* Sizing & spacing */
   @apply w-10 h-10 p-2;
 
   /* Layout & positioning */
-  @apply hidden items-center justify-center;
+  @apply flex items-center justify-center shrink-0;
 
   /* Border & shape */
   @apply border-none rounded-lg;
@@ -106,141 +132,14 @@
   @apply transition-colors duration-200 cursor-pointer;
 }
 
-.search-toggle-button:hover {
-  @apply bg-neutral-100;
-}
-
-.search-icon {
-  /* Sizing & spacing */
-  @apply w-6 h-6;
-
-  /* Colors */
-  @apply text-sv-purple-700;
+/* Desktop (640px+): hide toggle button (inline search is visible) */
+@media (min-width: 640px) {
+  .search-toggle-button {
+    @apply hidden;
+  }
 }
 
 /* ===== SEARCH DROPDOWN ===== */
-
-.search-dropdown {
-  /* Sizing & spacing */
-  @apply p-4;
-
-  /* Layout & positioning */
-  @apply absolute top-full left-0 right-0 z-50 hidden;
-
-  /* Border & shape */
-  @apply border-t border-sv-purple-700/15 shadow-lg;
-
-  /* Colors */
-  @apply bg-sv-purple-100;
-}
-
-/* Responsive search dropdown - full width on mobile */
-@media (max-width: 768px) {
-  .search-dropdown {
-    @apply rounded-none border-l-0 border-r-0 w-screen max-w-full overflow-x-hidden bg-sv-purple-100 border-t border-sv-purple-700/15 left-1/2 -translate-x-1/2;
-  }
-
-  .search-dropdown.show {
-    @apply block -translate-x-1/2;
-  }
-}
-
-/* Tailwind md+ (768px+) - desktop search dropdown */
-@media (min-width: 768px) {
-  .search-dropdown {
-    @apply left-auto right-0 border border-sv-purple-700/15 rounded-lg mt-2 min-w-75;
-  }
-}
-
-/* Mobile search dropdown specific styles */
-.search-dropdown .search-container {
-  @apply justify-start w-full max-w-full overflow-hidden p-0 m-0;
-}
-
-.search-dropdown .search-results {
-  @apply static mt-2 right-auto w-full max-w-full overflow-x-hidden;
-}
-
-/* Ensure Algolia search input doesn't overflow on mobile */
-@media (max-width: 768px) {
-  .search-dropdown {
-    padding: 0.75rem !important; /* Reduce padding to give more space */
-  }
-
-  .search-dropdown .search-container {
-    width: 100% !important;
-    max-width: 100% !important;
-    padding: 0 !important;
-    margin: 0 !important;
-  }
-
-  .search-dropdown .search-container input {
-    width: 100% !important;
-    max-width: 100% !important;
-    box-sizing: border-box !important;
-  }
-
-  .search-dropdown .ais-SearchBox {
-    width: 100% !important;
-    max-width: 100% !important;
-  }
-
-  .search-dropdown .ais-SearchBox-form {
-    width: 100% !important;
-    max-width: 100% !important;
-  }
-
-  .search-dropdown .ais-SearchBox-input {
-    width: 100% !important;
-    max-width: calc(100% - 1.5rem) !important; /* Account for padding and submit button */
-    box-sizing: border-box !important;
-    padding-right: 50px !important; /* Reduce right padding for submit button */
-  }
-}
-
-/* Additional constraints for very small mobile screens (iPhone SE, etc.) */
-@media (max-width: 480px) {
-  .search-dropdown {
-    padding: 0.5rem !important;
-  }
-
-  .search-dropdown .ais-SearchBox-input {
-    max-width: calc(100% - 1rem) !important;
-    padding-right: 45px !important;
-    font-size: 0.875rem !important;
-  }
-
-  .search-dropdown .ais-SearchBox-submit {
-    right: 6px !important; /* Adjust submit button position */
-  }
-
-  .search-dropdown .ais-SearchBox-submitIcon {
-    width: 18px !important;
-    height: 18px !important;
-  }
-}
-
-/* Focus and interaction improvements for mobile */
-@media (max-width: 768px) {
-  .search-dropdown .ais-SearchBox-input:focus {
-    border-color: #674174 !important;
-    outline: none !important;
-    @apply border-sv-purple-700 ring-2 ring-sv-purple-700/10;
-  }
-}
-
-/* ===== DESKTOP SEARCH ===== */
-
-.search-desktop {
-  /* Sizing & spacing */
-  @apply gap-2;
-
-  /* Layout & positioning */
-  @apply flex items-center relative;
-
-  /* Colors */
-  background: transparent !important;
-}
 
 .search-container {
   /* Sizing & spacing */
@@ -250,7 +149,68 @@
   @apply flex items-center justify-end relative;
 
   /* Colors */
-  background: transparent !important;
+  @apply bg-transparent;
+}
+
+.search-dropdown .search-container {
+  /* Sizing & spacing */
+  @apply w-full max-w-full p-0 m-0;
+
+  /* Layout */
+  @apply justify-start;
+
+  /* Behavior */
+  @apply overflow-hidden;
+}
+
+.search-dropdown .search-container input {
+  @apply w-full max-w-full box-border;
+}
+
+.search-dropdown {
+  /* Sizing & spacing */
+  @apply p-3 w-screen max-w-full;
+
+  /* Layout & positioning */
+  @apply absolute top-full left-1/2 -translate-x-1/2 right-0 z-50 hidden;
+
+  /* Border & shape */
+  @apply rounded-none border-l-0 border-r-0 border-t border-sv-purple-700/15 shadow-lg;
+
+  /* Colors */
+  @apply bg-sv-purple-100;
+
+  /* Behavior */
+  @apply overflow-x-hidden;
+}
+
+.search-dropdown.show {
+  @apply block -translate-x-1/2;
+}
+
+/* Extra-small screens (iPhone SE, etc.): reduced padding */
+@media (max-width: 480px) {
+  .search-dropdown {
+    @apply p-2;
+  }
+}
+
+/* Desktop (768px+): positioned dropdown with min-width */
+@media (min-width: 768px) {
+  .search-dropdown {
+    /* Sizing & spacing */
+    @apply min-w-75 mt-2 p-4 w-auto;
+
+    /* Layout & positioning */
+    @apply left-auto right-0 translate-x-0;
+
+    /* Border & shape */
+    @apply border rounded-lg;
+  }
+
+  .search-dropdown.show {
+    @apply translate-x-0;
+  }
 }
 
 .search-results {
@@ -261,9 +221,16 @@
   @apply absolute top-full left-0 z-50;
 }
 
-/* Match search results width to search input width at different breakpoints */
-.search-results .ais-Hits {
-  @apply sm:w-[200px] md:w-64;
+/* Dropdown variant: mobile search results */
+.search-dropdown .search-results {
+  /* Sizing & spacing */
+  @apply w-full max-w-full mt-2;
+
+  /* Layout & positioning */
+  @apply static right-auto;
+
+  /* Behavior */
+  @apply overflow-x-hidden;
 }
 
 /* ===== SEARCH HIT ITEMS ===== */
@@ -283,15 +250,18 @@
 }
 
 .search-hit-item:hover {
+  /* Colors */
   @apply bg-sv-purple-50;
 }
 
 /* ===== ALGOLIA SEARCH COMPONENTS ===== */
-/* IMPORTANT - handle uses of !important carefully in session 5,
-   as these could truly be needed to override algolia's default styling */
 
 .ais-SearchBox {
-  background: transparent !important;
+  @apply bg-transparent;
+}
+
+.search-dropdown .ais-SearchBox {
+  @apply w-full max-w-full;
 }
 
 .ais-SearchBox-form {
@@ -305,12 +275,16 @@
   @apply border-none outline-none;
 
   /* Colors */
-  background: transparent !important;
+  @apply bg-transparent;
+}
+
+.search-dropdown .ais-SearchBox-form {
+  @apply w-full max-w-full;
 }
 
 .ais-SearchBox-input {
   /* Sizing & spacing */
-  @apply p-2 pr-20 flex-1;
+  @apply p-2 pr-20 flex-1 w-full max-w-full;
 
   /* Border & shape */
   @apply border border-neutral-300 rounded-2xl;
@@ -320,8 +294,14 @@
 }
 
 .ais-SearchBox-input:focus {
-  /* Border & shape */
   @apply outline-none border-sv-purple-700 ring-2 ring-sv-purple-700/10;
+}
+
+/* XS Screens */
+@media (max-width: 480px) {
+  .search-dropdown .ais-SearchBox-input {
+    @apply text-sm;
+  }
 }
 
 .ais-SearchBox-submit {
@@ -332,8 +312,7 @@
   @apply outline-none;
 
   /* Colors */
-  @apply text-sv-purple-400;
-  background: transparent !important;
+  @apply text-sv-purple-400 bg-transparent;
 
   /* Interactive & animation */
   @apply transition-colors duration-200 cursor-pointer;
@@ -341,22 +320,20 @@
   /* Typography */
   @apply text-lg;
 
-  /* All !important overrides for Algolia defaults */
-  padding: 0px !important;
-  border: none !important;
-  border-radius: 0 !important;
-  margin: 0 !important;
-  box-shadow: none !important;
-  font-family: inherit !important;
-  font-weight: inherit !important;
-  text-decoration: none !important;
+  /* Algolia default overrides */
+  @apply p-0 border-none rounded-none m-0 shadow-none no-underline font-[family:inherit] font-[weight:inherit];
+}
+
+/* Ensure Algolia search input doesn't overflow on mobile */
+@media (max-width: 768px) {
+  /* Hide submit button on mobile - instant search doesn't need it */
+  .search-dropdown .ais-SearchBox-submit {
+    @apply hidden;
+  }
 }
 
 .ais-SearchBox-submitIcon {
-  /* Sizing & spacing */
-  @apply mt-0 ml-1.5 p-0;
-  width: 20px !important;
-  height: 20px !important;
+  @apply mt-0 ml-1.5 p-0 w-5 h-5;
 }
 
 .ais-SearchBox-reset {
@@ -381,11 +358,10 @@
 }
 
 .ais-SearchBox-resetIcon {
-  width: 14px !important;
-  height: 14px !important;
+  @apply w-3.5 h-3.5;
 }
 
-/* ===== SEARCH RESULTS CONTAINER ===== */
+/* ===== ALGOLIA SEARCH RESULTS CONTAINER ===== */
 
 .ais-Hits {
   /* Sizing & spacing */
@@ -396,6 +372,11 @@
 
   /* Colors */
   @apply bg-sv-purple-200;
+}
+
+/* Match search results width to search input width at different breakpoints */
+.search-results .ais-Hits {
+  @apply sm:w-50 md:w-64;
 }
 
 .ais-Hits-item a {

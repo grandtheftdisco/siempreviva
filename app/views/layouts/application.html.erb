@@ -17,16 +17,16 @@
         <!-- Navbar Links - Keep responsive utilities inline for proper mobile/desktop visibility toggle -->
         <div class="navbar-section hidden md:flex" id="navbar-default">
           <ul class="navbar-list">
-            <li><%= link_to 'products', products_path %></li>
-            <li><%= link_to 'our farms', our_farms_path %></li>
-            <li><%= link_to 'learn', learn_path %></li>
-            <li><%= link_to 'contact', contact_path %></li>
+            <li><%= link_to 'products', products_path, class: 'text-link' %></li>
+            <li><%= link_to 'our farms', our_farms_path, class: 'text-link' %></li>
+            <li><%= link_to 'learn', learn_path, class: 'text-link' %></li>
+            <li><%= link_to 'contact', contact_path, class: 'text-link' %></li>
           </ul>
         </div>
 
         <!-- Desktop Search Section - Keep responsive utilities inline for proper mobile/desktop visibility toggle -->
         <div class="search-section hidden md:flex">
-          <div class="search-desktop">
+          <div class="search-inline">
             <div id="searchbox-desktop" class="search-container"></div>
             <div id="hits-desktop" class="search-results"></div>
           </div>
@@ -48,7 +48,7 @@
         </div>
 
         <!-- Mobile Nav Items (Search + Right Icons) - Keep responsive utilities inline for proper mobile/desktop visibility toggle -->
-        <div class="mobile-nav-items md:hidden">
+        <div class="mobile-nav-items-container md:hidden">
           <!-- Search Icon -->
           <div class="search-section">
             <button id="searchToggleButton" class="search-toggle-button">
@@ -59,7 +59,7 @@
           </div>
 
           <!-- Bag & Hamburger Menu Icons -->
-          <div class="right-icons">
+          <div class="mobile-nav-right-icons">
             <!-- Hamburger Menu Button -->
             <button data-collapse-toggle="navbar-default" type="button" class="mobile-menu-button">
               <span class="sr-only">Open main menu</span>
@@ -93,7 +93,7 @@
     </main>
 
     <footer class="site-footer">
-      <div class="footer-container">
+      <div class="footer-inner-container">
         <div class="footer-content">
           <!-- Navigation Links -->
           <div class="footer-section">
@@ -110,7 +110,7 @@
           <!-- Social Links -->
           <div class="footer-section">
             <h3 class="footer-section-title">Follow Us</h3>
-            <div class="footer-social-icons">
+            <div class="footer-social-icons-container">
               <%= social_icon(:facebook, "https://facebook.com/siemprevivaoils") %>
               <%= social_icon(:instagram, "https://instagram.com/siemprevivaulja") %>
             </div>

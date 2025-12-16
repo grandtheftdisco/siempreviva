@@ -2,8 +2,10 @@
 
 **Status:** 🔮 Deferred until post-MVP
 **Branch:** TBD (when ready to begin)
-**Base:** `main` (after Session 5A, optionally 5B)
-**Estimated Time:** 5-6 hours
+**Base:** `main` (after Session 5B complete)
+**Estimated Time:** 10-13 hours (updated Dec 10, 2025)
+**Original Estimate:** 5-6 hours
+**Additional Work Added:** 4.5-7 hours from Session 5B deferral
 
 ---
 
@@ -32,6 +34,72 @@ Nice-to-have improvements and polish work that doesn't block development. This s
 - External library !important may be necessary
 - Complex selectors work, just not ideal
 - These are improvements, not fixes
+
+---
+
+## Newly Deferred from Session 5B (Dec 10, 2025)
+
+During Session 5B planning, additional code quality issues were identified and deferred to 5C:
+
+### 0. Duplicate Class Name Cleanup (1.5-2 hours) - NEW
+
+**Issue:** 9 class names appear in multiple CSS files, creating potential cascade conflicts.
+
+**Duplicates found:**
+- `.cart-actions` (cart_dropdown.css, cart_page.css)
+- `.cart-item-image` (cart_dropdown.css, cart_page.css)
+- `.cart-page-item` (cart_actions.css, cart_page.css)
+- `.formatted-image` (checkouts.css, components.css)
+- `.navbar-list` (layout.css, navigation.css)
+- `.product-name` (cart_actions.css, products.css)
+- `.product-price` (cart_actions.css, products.css)
+- `.right-icons` (cart_dropdown.css, header.css)
+- `.search-section` (header.css, search.css)
+
+**Actions:**
+1. Rename duplicates to include file/context prefix
+2. Update corresponding view files
+3. Test affected components
+
+**Example:** `.search-section` in header.css → `.header-search-section`
+
+---
+
+### 0a. Additional Selector Flattening (2-3 hours) - NEW
+
+**Issue:** Several files have descendant selectors that could be flattened to explicit class names.
+
+**Files identified:**
+- **forms.css (lines 164-182):** `.form-group input` → `.form-input`
+- **components.css (lines 257-273):** `form input.form-input-small` → `.form-input-small`
+- **checkouts.css (lines 99-185):** `.post-checkout-container .subtitle` → `.post-checkout-subtitle`
+- **cart_page.css (lines 37-48, 103-233):** Various descendant selectors
+- **cart_dropdown.css (lines 242-285):** `.cart-dropdown .cart-item .cart-item-name` → `.cart-dropdown-item-name`
+- **cart_actions.css (lines 14-26, 201-204):** `.quantity-controls-bottom .quantity-form-inline` → flatten
+
+**Actions:**
+1. Create flat, semantic class names
+2. Update CSS files
+3. Update view files
+4. Test all affected components
+
+**Rationale:** Flatter class names are easier to search, more explicit, and reduce reliance on DOM structure.
+
+---
+
+### 0b. Media Query Conversion (1-2 hours) - NEW
+
+**Issue:** CSS files use traditional `@media (min-width: 768px)` instead of Tailwind responsive prefixes.
+
+**Actions:**
+1. Investigate if Tailwind v4 supports responsive prefixes in CSS files
+2. If supported, convert media queries to Tailwind breakpoint syntax
+3. Test at all breakpoints
+4. Document approach for future reference
+
+**Files affected:** Most CSS files (header, navigation, search, cart files, etc.)
+
+**Note:** This may not be possible/advisable with Tailwind v4 - needs investigation first.
 
 ---
 

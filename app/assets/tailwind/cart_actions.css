@@ -3,112 +3,33 @@
 
 /* ===== QUANTITY CONTROLS ===== */
 
-.quantity-controls-bottom {
+.quantity-controls-group {
   /* Sizing & spacing */
-  @apply mt-3;
+  @apply gap-3;
 
-  /* Layout */
-  @apply flex justify-end;
+  /* Layout & positioning */
+  @apply flex items-center justify-center relative;
 }
 
-.quantity-controls-bottom .quantity-form-inline {
-  /* Sizing & spacing */
-  @apply m-0 p-0 gap-3;
-
-  /* Layout */
-  @apply flex items-center flex-nowrap;
-
-  /* Colors */
-  @apply bg-transparent;
-
-  /* Border */
-  @apply border-none;
-}
-
-.remove-form {
-  /* Sizing & spacing */
-  @apply m-0 p-0;
-
-  /* Layout */
-  @apply inline-block;
-
-  /* Colors */
-  @apply bg-transparent;
-
-  /* Border */
-  @apply border-none;
-}
-
-.product-name {
-  /* Sizing & spacing */
-  @apply m-0;
-
-  /* Layout */
-  @apply flex-1;
-
-  /* Typography */
-  @apply text-xl font-normal tracking-wide;
-
-  /* Colors */
-  @apply text-neutral-900;
-}
-
-.product-price {
-  /* Sizing & spacing */
-  @apply m-0;
-
-  /* Typography */
-  @apply text-lg;
-
-  /* Colors */
-  @apply text-neutral-600;
-}
-
-.quantity-controls {
-  /* Sizing & spacing */
-  @apply my-3;
-}
-
-.quantity-form-inline {
-  /* Sizing & spacing */
-  @apply m-0 p-0 gap-3;
-
-  /* Layout */
-  @apply flex items-center flex-nowrap;
-
-  /* Colors */
-  @apply bg-transparent;
-
-  /* Border */
-  @apply border-none;
-}
-
-.quantity-label {
-  /* Sizing & spacing */
-  @apply m-0;
-
-  /* Typography */
-  @apply text-sm font-medium;
-
-  /* Colors */
-  @apply text-neutral-600;
-
-  /* Behavior */
-  @apply flex-shrink-0;
+@media (min-width: 640px) {
+  .quantity-controls-group {
+    /* Layout & positioning */
+    @apply justify-start;
+  }
 }
 
 .quantity-form {
   /* Sizing & spacing */
-  @apply m-0 p-0;
+  @apply m-0 p-0 w-full;
 
-  /* Layout */
-  @apply flex items-center;
+  /* Layout & positioning */
+  @apply static;
 
   /* Colors */
   @apply bg-transparent;
 
   /* Border */
-  @apply border-none;
+  @apply border-0;
 }
 
 .quantity-input-group {
@@ -144,33 +65,40 @@
   @apply outline-none;
 }
 
-.quantity-update-btn {
+.quantity-label {
   /* Sizing & spacing */
-  padding: 0.25rem 0.5rem !important;
-
-  /* Shape */
-  border-radius: 9999px !important;
-
-  /* Colors */
-  background: #bdcea9 !important;
-  @apply text-sv-green-700;
-  @apply border-2 border-sv-green-200;
+  @apply m-0;
 
   /* Typography */
-  font-size: 0.65rem !important;
+  @apply text-sm font-medium;
 
-  /* Interactive & animation */
-  @apply cursor-pointer transition-all duration-200;
+  /* Colors */
+  @apply text-neutral-600;
+
+  /* Behavior */
+  @apply flex-shrink-0;
 }
 
-.quantity-update-btn:hover {
-  /* Colors - using sv-green-600 (or 400?) */
-  background: #8ba170 !important;
-  border-color: #8ba170 !important;
-  @apply text-white;
+.quantity-row {
+  /* Sizing & spacing */
+  @apply gap-2 w-full m-0 p-0;
+
+  /* Layout & positioning - vertical stack */
+  @apply flex flex-col items-stretch relative;
 }
 
-/* Improved quantity section layout */
+/* Desktop: horizontal layout, right-aligned */
+@media (min-width: 640px) {
+  .quantity-row {
+    /* Sizing & spacing */
+    @apply gap-4;
+
+    /* Layout & positioning */
+    @apply flex-row items-center justify-end;
+  }
+
+}
+
 .quantity-section {
   /* Sizing & spacing */
   @apply mt-4 pt-3 w-full;
@@ -185,154 +113,24 @@
   @apply clear-both;
 }
 
-.quantity-form-improved {
+.quantity-update-btn {
   /* Sizing & spacing */
-  margin: 0 !important;
-  padding: 0 !important;
-  @apply w-full;
-
-  /* Layout & positioning */
-  position: static !important;
-
-  /* Colors */
-  background: none !important;
-
-  /* Border */
-  border: none !important;
-}
-
-.quantity-row {
-  /* Sizing & spacing */
-  @apply gap-4 w-full m-0 p-0;
-
-  /* Layout & positioning */
-  display: flex !important;
-  @apply items-center justify-end relative;
-}
-
-.quantity-controls-group {
-  /* Sizing & spacing */
-  @apply gap-3;
-
-  /* Layout & positioning */
-  @apply flex items-center relative;
-}
-
-/* Override any conflicting form styles */
-.cart-page-item .quantity-form-improved,
-.cart-page-item .quantity-section form {
-  position: static !important;
-  float: none !important;
-  margin: 0 !important;
-  display: block !important;
-}
-
-@media (max-width: 640px) {
-  .quantity-row {
-    @apply flex-col items-stretch gap-2;
-  }
-
-  .quantity-controls-group {
-    @apply justify-center;
-  }
-}
-
-.item-subtotal {
-  /* Sizing & spacing */
-  @apply m-0;
-
-  /* Typography */
-  @apply text-sm font-medium;
-
-  /* Colors */
-  @apply text-neutral-900;
-}
-
-.item-bottom-row {
-  /* Sizing & spacing */
-  @apply mt-2 gap-4;
-
-  /* Layout */
-  @apply flex justify-between items-center;
-}
-
-.item-actions {
-  /* Sizing & spacing */
-  @apply mt-3;
-
-  /* Layout */
-  @apply flex justify-end;
-}
-
-/* ===== REMOVE BUTTONS ===== */
-/* Note: !important declarations preserved for Session 5 cleanup */
-
-.remove-item-btn-red {
-  /* Sizing & spacing */
-  @apply py-2 px-4;
+  @apply px-2 py-1;
 
   /* Shape */
-  border-radius: 9999px !important;
+  @apply rounded-full;
 
   /* Colors */
-  background: #dc3545 !important; /* Bootstrap danger red - could convert to tailwind rose-400 */
-  border: none !important;
-  color: #ffffff !important;
+  @apply bg-sv-green-200 text-sv-green-700 border-2 border-sv-green-200;
 
   /* Typography */
-  @apply text-sm font-medium;
+  @apply text-[0.65rem];
 
   /* Interactive & animation */
   @apply cursor-pointer transition-all duration-200;
-
-  /* Behavior */
-  @apply flex-shrink-0;
 }
 
-.remove-item-btn-red:hover {
+.quantity-update-btn:hover {
   /* Colors */
-  background: #c82333 !important; /* Darker Bootstrap danger red */
-  color: #ffffff !important;
-}
-
-.remove-item-btn-soft {
-  /* Sizing & spacing */
-  @apply p-1.5;
-
-  /* Layout & positioning */
-  @apply inline-flex items-center justify-center;
-
-  /* Shape */
-  border-radius: 9999px !important;
-
-  /* Colors */
-  background: #c5aace !important; /* sv-purple-400 */
-  border: 1px solid #c5aace !important; /* sv-purple-400 */
-  color: #ffffff !important;
-
-  /* Interactive & animation */
-  @apply cursor-pointer transition-colors duration-200;
-
-  /* Behavior */
-  @apply flex-shrink-0;
-}
-
-.remove-item-btn-soft:hover {
-  /* Colors */
-  background: #aa8bb5 !important; /* sv-purple-500 */
-  border-color: #aa8bb5 !important; /* sv-purple-500 */
-  color: #ffffff !important;
-}
-
-.remove-cart-item-btn {
-  /* Sizing */
-  @apply w-4 h-4;
-
-  /* Behavior */
-  @apply stroke-current;
-}
-
-.cart-item-actions {
-  /* Layout */
-  @apply flex justify-center items-start;
+  @apply bg-sv-green-400 border-sv-green-400 text-white;
 }

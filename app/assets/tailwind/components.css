@@ -1,16 +1,7 @@
 /* UI Components Stylesheet */
 
-/* NOTE: All !important declarations in this file will be addressed in Session 5 of the CSS refactor plan.
-   Session 5 focuses on specificity cleanup and removing !important hacks. */
-
-/* NOTE: Any comments in this file that seem superfluous are to keep record of design decisions
-   so that when the time comes for legacy cleanup & refactor in Session 4, there is context for the
-   reasoning behind the vanilla code. */
-
 /* ===== NEW @APPLY BUTTON COMPONENT CLASSES ===== */
-/* Use these classes in new views (product/marketing) */
 
-/* Base button class */
 .btn-base {
   /* Spacing & shape */
   @apply px-6 py-3 rounded-full;
@@ -28,7 +19,6 @@
   @apply font-medium font-sans;
 }
 
-/* Primary button - purple filled */
 .btn-purple {
   /* Spacing & shape */
   @apply px-6 py-3 rounded-full;
@@ -50,7 +40,6 @@
   @apply font-medium font-sans;
 }
 
-/* Secondary button - purple filled */
 .btn-purple-secondary {
   /* Spacing & shape */
   @apply px-6 py-3 rounded-full;
@@ -72,7 +61,6 @@
   @apply font-medium font-sans;
 }
 
-/* Green button - filled */
 .btn-green {
   /* Spacing & shape */
   @apply px-6 py-3 rounded-full;
@@ -94,7 +82,6 @@
   @apply font-medium font-sans;
 }
 
-/* Light green button */
 .btn-green-light {
   /* Spacing & shape */
   @apply px-6 py-3 rounded-full;
@@ -116,14 +103,29 @@
   @apply font-medium font-sans;
 }
 
-/* Light purple button */
 .btn-purple-light {
-  @apply px-6 py-3 rounded-full no-underline text-center font-medium cursor-pointer inline-block transition-all duration-200 border-2 hover:text-white;
-  @apply bg-sv-purple-200 text-sv-purple-700 border-sv-purple-200 hover:bg-sv-purple-500 hover:border-sv-purple-500;
-  @apply font-sans;
+  /* Spacing */
+  @apply px-6 py-3;
+
+  /* Layout */
+  @apply inline-block text-center;
+
+  /* Border & shape */
+  @apply border-2 rounded-full;
+
+  /* Colors */
+  @apply bg-sv-purple-200 text-sv-purple-700 border-sv-purple-200;
+
+  /* Link styling */
+  @apply no-underline;
+
+  /* Interactive & animation */
+  @apply cursor-pointer transition-all duration-200 hover:bg-sv-purple-500 hover:border-sv-purple-500 hover:text-white;
+
+  /* Typography */
+  @apply font-sans font-medium;
 }
 
-/* Danger button - red filled */
 .btn-danger {
   /* Spacing & shape */
   @apply px-6 py-3 rounded-full;
@@ -151,22 +153,15 @@
 }
 
 .btn-small {
-  /* Sizing & typography */
   @apply px-4 py-2 text-sm;
 }
 
 .btn-large {
-  /* Sizing & typography */
   @apply px-8 py-4 text-lg;
 }
 
-/* ===== LEGACY BUTTON CLASSES REMOVED ===== */
-/* As of Session 4A, all views use new component classes (.btn-primary, .btn-green, etc.) */
-/* Legacy classes removed: .checkout-btn, .continue-shopping-btn, .cart-checkout-btn, .quantity-update-btn-visible, .remove-item-btn-red */
-
 /* ===== QUANTITY SELECTOR COMPONENTS ===== */
 
-/* Quantity selector input field */
 .item-quantity-input {
   /* Sizing & spacing */
   @apply text-center text-sm block w-12 h-8;
@@ -179,7 +174,6 @@
   @apply [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none;
 }
 
-/* Base button for quantity selector */
 .item-quantity-select-btn {
   /* Sizing & layout */
   @apply w-8 h-8 flex items-center justify-center;
@@ -213,74 +207,59 @@
 
 main .flash-notice,
 div.flash-notice {
-  /* Colors (!important declarations will be addressed in Session 5) */
-  background-color: #bdcea9 !important; /* sv-green-200 */
-  border-color: #8ba170 !important; /* sv-green-400 */
-  color: #5e6b4d !important;
+  @apply bg-sv-green-200 border-sv-green-400 text-sv-green-700;
 }
 
 main .flash-alert,
 div.flash-alert {
-  /* Colors (!important declarations will be addressed in Session 5) */
-  background-color: #d4c2dc !important; /* sv-purple-200 */
-  border-color: #674174 !important; /* sv-purple-700 */
-  color: #3d2545 !important;
+  @apply bg-sv-purple-200 border-sv-purple-700 text-sv-purple-800;
 }
 
 main .flash-error,
 div.flash-error {
-  /* Colors (!important declarations will be addressed in Session 5) */
-  background-color: #f5c6cb !important;
-  border-color: #dc3545 !important;
-  color: #721c24 !important;
+  @apply bg-rose-100 border-rose-500 text-rose-900;
 }
 
 main .flash-warning,
 div.flash-warning {
-  /* Colors (!important declarations will be addressed in Session 5) */
-  background-color: #ffeaa7 !important;
-  border-color: #fd7e14 !important;
-  color: #7d3c06 !important;
+  @apply bg-yellow-100 border-orange-500 text-orange-900;
 }
 
 /* ===== FORM COMPONENT CLASSES ===== */
 
-/* Small input for quantity fields in cart */
 form input.form-input-small,
 .form-input-small {
-  /* Sizing (!important declarations will be addressed in Session 5) */
-  width: 50px !important;
-  max-width: 60px !important;
-  min-width: 50px !important;
-  padding: 0.5px 1px !important;
+  /* Sizing */
+  @apply w-[3.125rem] max-w-[3.75rem] min-w-[3.125rem];
 
-  /* Shape & spacing */
-  border-radius: 4500px !important;
-  box-sizing: border-box !important;
+  /* Spacing */
+  @apply py-[0.03125rem] px-[0.0625rem];
+
+  /* Shape */
+  @apply rounded-full box-border;
 
   /* Typography & alignment */
-  text-align: center !important;
-  font-size: 0.85rem !important;
+  @apply text-center text-[0.85rem];
 
   /* Colors */
-  background: #f0e8f5 !important; /* sv-purple-100 */
+  @apply bg-sv-purple-100;
 }
-
 
 /* ===== TYPOGRAPHY COMPONENTS ===== */
 
 .page-title {
   /* Typography */
-  @apply font-serif text-4xl font-light text-neutral-800 tracking-wider;
+  @apply font-serif text-2xl font-light text-neutral-800 tracking-wider;
 
   /* Spacing & alignment */
-  @apply mb-2 p-4 text-center;
+  @apply mb-2 p-4 text-left;
 }
 
-@media (max-width: 768px) {
+/* Desktop: larger text, centered */
+@media (min-width: 768px) {
   .page-title {
-    /* Mobile typography & alignment */
-    @apply text-left text-2xl;
+    /* Typography & alignment */
+    @apply text-center text-4xl;
   }
 }
 

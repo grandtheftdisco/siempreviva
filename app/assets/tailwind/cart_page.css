@@ -5,7 +5,7 @@
 
 .cart-container {
   /* Sizing & spacing */
-  @apply max-w-screen-xl mx-auto px-4;
+  @apply max-w-screen-xl mx-auto px-4 py-8;
 
   /* Typography */
   @apply font-sans;
@@ -19,247 +19,245 @@
   @apply text-center font-serif;
 }
 
-/* Mobile: Reduce header spacing */
-@media (max-width: 768px) {
-  .cart-header {
-    margin-bottom: 1.5rem !important;
-    padding-top: 0 !important;
-    padding-bottom: 0 !important;
-  }
+.cart-content {
+  /* Layout & spacing*/
+  @apply flex flex-col gap-8 items-center;
+}
 
-  .cart-header .page-title {
-    margin-bottom: 0 !important;
-    padding-top: 0 !important;
-    padding-bottom: 0 !important;
+@media (min-width: 768px) {
+  .cart-content {
+    /* Sizing & spacing */
+    @apply gap-12;
+
+    /* Layout & positioning */
+    @apply grid items-start;
+    grid-template-columns: 2fr 1fr;
   }
 }
 
-.cart-header .page-title {
+.cart-page-actions {
   /* Sizing & spacing */
-  @apply mb-2;
+  @apply mt-8 gap-4;
 
-  /* Typography */
-  @apply text-4xl font-light tracking-wider;
+  /* Layout */
+  @apply flex flex-col;
+}
+
+/* ===== CONTAINERS ===== */
+
+/* Cart items appear second on mobile */
+.cart-items-section {
+  @apply order-2 w-full;
+}
+
+/* Desktop: 2-column grid layout */
+@media (min-width: 768px) {
+  .cart-items-section {
+    @apply order-none w-auto;
+  }
+}
+
+.cart-items {
+  /* Layout & spacing*/
+  @apply flex flex-col gap-3 p-4;
+
+  /* Shape */
+  @apply rounded-lg;
 
   /* Colors */
-  @apply text-neutral-900;
+  @apply bg-sv-purple-200;
 }
 
-.cart-breadcrumb {
+/* Desktop: Remove background and increase gap */
+@media (min-width: 768px) {
+  .cart-items {
+    /* Sizing & spacing */
+    @apply gap-8 p-0;
+
+    /* Shape */
+    @apply rounded-none;
+
+    /* Colors */
+    @apply bg-transparent;
+  }
+}
+
+/* ===== CART LINE ITEMS ===== */
+
+.cart-item-details {
   /* Sizing & spacing */
-  @apply mt-4;
+  @apply h-full gap-3 w-full pt-1 pr-0 mr-0;
+
+  /* Layout */
+  @apply flex flex-col flex-1 block;
+}
+
+/* Desktop */
+@media (min-width: 768px) {
+  .cart-item-details {
+    @apply flex flex-col;
+  }
+}
+
+.cart-item-header {
+  /* Sizing & spacing */
+  @apply gap-4 mb-2 pr-2;
+
+  /* Layout & positioning */
+  @apply flex justify-between items-center relative;
+}
+
+/* Desktop */
+@media (min-width: 768px) {
+  .cart-item-header {
+    @apply w-auto pr-0;
+  }
+}
+
+/* Mobile: Cart page line items inside .cart-items container */
+.cart-page-item {
+  /* Layout */
+  @apply flex justify-between items-start relative;
+
+  /* Sizing & spacing */
+  @apply py-2 px-4 gap-0;
+
+  /* Colors */
+  @apply bg-transparent border-0;
+}
+
+/* XS Screens: single column layout */
+@media (max-width: 640px) {
+  .cart-page-item {
+    /* Sizing & spacing */
+    @apply gap-4;
+
+    /* Layout & positioning */
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Desktop: Grid card layout for line items in .cart-items container */
+@media (min-width: 768px) {
+  .cart-page-item {
+    /* Sizing & spacing */
+    @apply p-6 gap-6;
+
+    /* Layout & positioning */
+    @apply grid items-start;
+
+    /* Shape */
+    @apply rounded-lg;
+
+    /* Colors */
+    @apply bg-white border border-gray-300;
+
+    /* Grid columns using fraction units */
+    grid-template-columns: 8rem 1fr;
+  }
+}
+
+.cart-items .cart-page-item .product-name {
+  /* Sizing & spacing */
+  @apply m-0 mr-3;
+
+  /* Layout */
+  @apply inline;
 
   /* Typography */
-  @apply text-sm;
+  @apply text-base;
+}
+
+/* Desktop: Product name - larger block */
+@media (min-width: 768px) {
+  .cart-items .cart-page-item .product-name {
+    /* Layout */
+    @apply block;
+
+    /* Typography */
+    @apply text-lg;
+  }
+}
+
+.cart-items .cart-page-item .product-card-price {
+  /* Sizing & spacing */
+  @apply m-0;
+
+  /* Layout */
+  @apply inline;
 
   /* Colors */
   @apply text-neutral-600;
+
+  /* Typography */
+  @apply text-sm font-medium text-left;
 }
 
-.cart-breadcrumb .breadcrumb-link {
-  /* Colors */
-  @apply text-neutral-600 no-underline;
-}
+/* Desktop: Product price */
+@media (min-width: 768px) {
+  .cart-items .cart-page-item .product-card-price {
+    /* Layout */
+    @apply block text-left;
 
-.cart-breadcrumb .breadcrumb-link:hover {
-  /* Colors */
-  @apply text-sv-purple-700;
-
-  /* Interactive */
-  @apply cursor-pointer;
-}
-
-.cart-content {
-  /* Layout & spacing */
-  @apply grid gap-12 items-start;
-
-  /* Grid columns using fraction units - Tailwind doesn't support fr units in utilities */
-  grid-template-columns: 2fr 1fr;
-}
-
-@media (max-width: 768px) {
-  .cart-content {
-    /* Layout & spacing */
-    display: flex !important;
-    flex-direction: column !important;
-    @apply gap-8;
-    align-items: center !important;
-  }
-
-  /* Order summary appears first on mobile */
-  .cart-summary-section {
-    @apply order-1;
-    width: 100% !important;
-    max-width: none !important;
-  }
-
-  /* Cart items appear second on mobile */
-  .cart-items-section {
-    @apply order-2;
-    width: 100% !important;
+    /* Typography */
+    @apply text-base;
   }
 }
 
-/* ===== CART PAGE ITEMS ===== */
-
-.cart-items {
-  /* Layout & spacing */
-  @apply flex flex-col gap-8;
-}
-
-/* Mobile: Add purple background and reduce gap between cart items */
-@media (max-width: 768px) {
-  .cart-items {
-    /* Spacing */
-    gap: 0.75rem !important;
-    padding: 1rem !important;
-
-    /* Shape */
-    border-radius: 8px !important;
-
-    /* Colors */
-    @apply bg-sv-purple-200;
-  }
-}
-
-.cart-page-item {
+.cart-item-remove-form {
   /* Sizing & spacing */
-  @apply p-6 gap-6;
+  @apply w-5 h-5 m-0;
 
   /* Layout & positioning */
-  @apply grid items-start;
+  @apply absolute top-1 right-0 z-10;
+}
 
-  /* Shape */
-  @apply rounded-lg;
+/* Desktop */
+@media (min-width: 768px) {
+  .cart-item-remove-form {
+    @apply top-4 right-4 w-6 h-6;
+  }
+}
+
+.cart-item-remove-button {
+  /* Sizing */
+  @apply w-6 h-6;
+
+  /* Border & shape */
+  @apply border-none rounded-full;
 
   /* Colors */
-  @apply bg-white border border-gray-300;
+  @apply bg-sv-purple-400 text-white;
+  @apply hover:bg-sv-purple-500;
 
-  /* Grid columns using fraction units - Tailwind doesn't support fr units in utilities */
-  grid-template-columns: 8rem 1fr;
+  /* Interactive & animation */
+  @apply transition-colors duration-200 cursor-pointer;
 }
 
-/* Mobile: Make cart page items compact like dropdown */
-@media (max-width: 768px) {
-  .cart-items .cart-page-item {
-    display: flex !important;
-    justify-content: space-between !important;
-    align-items: flex-start !important;
-    padding: 0.5rem 1rem !important;
-    gap: 0 !important;
-    grid-template-columns: none !important;
-    background-color: transparent !important;
-    border: none !important;
-    position: relative !important;
-  }
-
-  .cart-items .cart-page-item .cart-item-image,
-  .cart-items .cart-page-item .cart-item-image-container {
-    display: none !important;
-  }
-
-  .cart-items .cart-page-item .cart-item-details {
-    flex: 1 !important;
-    margin-right: 0 !important; /* No margin - button is absolutely positioned */
-    display: block !important; /* Change from flex to block for inline layout */
-    width: 100% !important; /* Full width - let header manage its own width */
-    padding-top: 0.25rem !important; /* Small top padding */
-    padding-right: 0 !important; /* No padding - header will handle spacing */
-  }
-
-  .cart-items .cart-page-item .cart-item-header {
-    width: calc(100% - 1.75rem) !important; /* Header takes full width minus button space */
-    display: flex !important; /* Use flex to spread name and price */
-    justify-content: space-between !important;
-    align-items: center !important;
-    margin-bottom: 0 !important;
-    padding-right: 0.5rem !important; /* Small padding to prevent text overlap with button */
-  }
-
-  .cart-items .cart-page-item .product-name {
-    font-size: 0.95rem !important;
-    margin: 0 !important;
-    display: inline !important; /* Inline for same-line layout */
-    margin-right: 0.75rem !important;
-  }
-
-  .cart-items .cart-page-item .product-price {
-    font-size: 0.85rem !important;
-    margin: 0 !important;
-    display: inline !important; /* Inline to appear on same line as name */
-    color: #6c757d !important; /* neutral-600 - preserved with !important for Session 5 */
-    font-weight: 500 !important;
-  }
-
-  .cart-items .cart-page-item .quantity-section {
-    display: none !important; /* Hide quantity controls on mobile for now */
-  }
-
-  /* Small 'x' button positioned in top-right corner */
-  .cart-items .cart-page-item .remove-item-btn-soft {
-    position: absolute !important;
-    top: 0.25rem !important;
-    right: 0 !important; /* Flush against right edge */
-    width: 1.25rem !important;
-    height: 1.25rem !important;
-    padding: 0.125rem 0.125rem !important;
-    margin: 0 0.45rem !important;
-    transform: none !important;
-    border-radius: 50% !important; /* Make it circular */
-    z-index: 10 !important; /* Ensure it's above content */
-  }
-
-  .cart-items .cart-page-item .inline-form {
-    position: absolute !important;
-    top: 0.25rem !important;
-    right: 0 !important; /* Flush against right edge */
-    margin: 0 !important;
-    width: 1.25rem !important;
-    height: 1.25rem !important;
-    z-index: 10 !important;
-  }
-
-  .cart-items .cart-page-item .remove-cart-item-btn {
-    width: 0.75rem !important;
-    height: 0.75rem !important;
-  }
-}
-
-@media (max-width: 640px) {
-  .cart-page-item {
-    /* Grid columns using fraction units - Tailwind doesn't support fr units in utilities */
-    grid-template-columns: 1fr;
-    @apply gap-4;
-  }
-
-  .cart-item-image {
-    @apply justify-self-center;
-  }
-}
+/* ===== CART ITEM IMAGES ===== */
 
 .cart-item-image {
-  /* Sizing */
-  @apply w-32 h-32;
-
-  /* Layout */
-  @apply flex items-center justify-center;
-
-  /* Shape */
-  @apply rounded-lg;
-
-  /* Colors */
-  @apply bg-gray-100;
-
-  /* Behavior */
-  @apply overflow-hidden;
+  @apply hidden;
 }
 
-.cart-item-image .product-image {
-  /* Sizing */
-  @apply w-full h-full;
+/* Desktop: Show images */
+@media (min-width: 768px) {
+  .cart-item-image {
+    /* Sizing */
+    @apply w-32 h-32;
 
-  /* Behavior */
-  @apply object-cover;
+    /* Layout */
+    @apply flex items-center justify-center;
+
+    /* Shape */
+    @apply rounded-lg;
+
+    /* Colors */
+    @apply bg-transparent;
+
+    /* Behavior */
+    @apply overflow-hidden;
+  }
 }
 
 .image-placeholder {
@@ -273,44 +271,27 @@
   @apply bg-gray-200;
 }
 
-.cart-item-details {
-  /* Sizing & spacing */
-  @apply h-full gap-3;
-
-  /* Layout */
-  @apply flex flex-col;
-}
-
-.cart-item-header {
-  /* Sizing & spacing */
-  @apply gap-4 mb-2;
-
-  /* Layout & positioning */
-  @apply flex justify-between items-start relative;
-}
-
-.cart-item-spacer {
-  /* Layout */
-  @apply flex-grow;
-}
-
 /* ===== CART SUMMARY SECTION ===== */
 
 .cart-summary-section {
   /* Layout & positioning */
-  @apply sticky self-start top-44;
+  @apply static self-start order-1 w-full;
 
   /* Typography */
   @apply font-serif;
 
-  /* Behavior */
-  @apply overflow-y-auto max-h-[calc(100vh-10.5rem)];
+  /* Behavior - (no scroll limit) */
+  @apply overflow-y-visible max-h-none;
 }
 
-/* Disable sticky on mobile since layout becomes single column */
-@media (max-width: 768px) {
+/* Desktop: sticky sidebar with scroll */
+@media (min-width: 768px) {
   .cart-summary-section {
-    @apply static overflow-y-visible max-h-none;
+    /* Layout & positioning */
+    @apply sticky top-44 order-none w-auto;
+
+    /* Behavior */
+    @apply overflow-y-auto max-h-[calc(100vh-10.5rem)];
   }
 }
 
@@ -370,58 +351,4 @@
 
   /* Colors */
   @apply text-neutral-900;
-}
-
-.cart-actions {
-  /* Sizing & spacing */
-  @apply mt-8 gap-4;
-
-  /* Layout */
-  @apply flex flex-col;
-}
-
-.continue-shopping-btn {
-  /* Sizing & spacing */
-  @apply py-3 px-6;
-
-  /* Shape */
-  @apply rounded-full;
-
-  /* Colors */
-  @apply bg-sv-purple-200 text-sv-purple-700 border-2 border-sv-purple-200;
-
-  /* Typography */
-  @apply font-medium text-center no-underline font-sans;
-
-  /* Interactive & animation */
-  @apply transition-all duration-200;
-}
-
-.continue-shopping-btn:hover {
-  /* Colors */
-  @apply bg-sv-purple-400 border-sv-purple-400;
-}
-
-.checkout-btn {
-  /* Sizing & spacing */
-  @apply py-3 px-6;
-
-  /* Shape */
-  @apply rounded-full;
-
-  /* Colors */
-  @apply bg-sv-green-600 border-2 border-sv-green-600;
-  color: #ffffff !important;
-
-  /* Typography */
-  @apply font-medium text-center no-underline font-sans;
-
-  /* Interactive & animation */
-  @apply transition-all duration-200;
-}
-
-.checkout-btn:hover {
-  /* Colors */
-  @apply bg-sv-green-700 border-sv-green-700;
-  color: #ffffff !important;
 }

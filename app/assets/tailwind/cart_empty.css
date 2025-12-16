@@ -34,28 +34,3 @@
   /* Colors */
   @apply text-neutral-600;
 }
-
-.shop-products-btn {
-  /* Sizing & spacing */
-  @apply py-4 px-8;
-
-  /* Layout */
-  @apply inline-block;
-
-  /* Shape */
-  @apply rounded-full;
-
-  /* Colors */
-  @apply bg-sv-purple-500 text-white;
-
-  /* Typography */
-  @apply font-medium no-underline;
-
-  /* Interactive & animation */
-  @apply transition-colors duration-200;
-}
-
-.shop-products-btn:hover {
-  /* Colors */
-  @apply bg-sv-purple-700 text-white;
-}
