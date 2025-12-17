@@ -1,3 +1,5 @@
+const plugin = require('tailwindcss/plugin')
+
 module.exports = {
   content: [
     "./app/views/**/*.{erb,html,html.erb,haml,slim}",
@@ -15,6 +17,11 @@ module.exports = {
     },
   },
   plugins: [
-    require('flowbite/plugin')
+    require('flowbite/plugin'),
+    // Add orientation variants for portrait/landscape-specific styling
+    plugin(function({ addVariant }) {
+      addVariant('portrait', '@media (orientation: portrait)')
+      addVariant('landscape', '@media (orientation: landscape)')
+    })
   ],
 };

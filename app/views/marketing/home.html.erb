@@ -1,6 +1,6 @@
-<div data-controller="scroll-navigation" class="snap-y snap-proximity lg:snap-none">
+<div data-controller="scroll-navigation" class="snap-y snap-proximity xl:snap-none portrait:lg:snap-y portrait:lg:snap-proximity">
   <div class="hero-section" data-scroll-section>
-    <div class="flex flex-col lg:flex-row justify-center items-center lg:items-end gap-6 lg:gap-8">
+    <div class="flex flex-col xl:flex-row portrait:lg:flex-col justify-center items-center xl:items-end portrait:lg:items-center gap-6 xl:gap-8">
       <div class="flex flex-col justify-end">
         <h1 class="hero-title">siempreviva</h1>
         <p class="hero-subtitle">essential oils</p>
@@ -11,17 +11,17 @@
       </div>
     </div>
 
-    <!-- Scroll to next button (mobile & tablet) -->
+    <!-- Scroll to next button (mobile & tablet & portrait) -->
     <button
       data-action="click->scroll-navigation#scrollToNext"
-      class="scroll-next-button lg:hidden"
+      class="scroll-next-button xl:hidden portrait:lg:block"
       aria-label="Scroll to next section">
       <%= scroll_arrow(:down) %>
     </button>
   </div>
 
   <div class="content-section flex flex-col justify-center" data-scroll-section>
-    <div class="flex flex-col lg:flex-row justify-center items-center gap-6 lg:gap-8">
+    <div class="flex flex-col xl:flex-row portrait:lg:flex-col justify-center items-center gap-6 xl:gap-8">
       <div>
         <div class="image-placeholder"></div>
       </div>
@@ -32,17 +32,17 @@
       </div>
     </div>
 
-    <!-- Scroll to next button (mobile & tablet) -->
+    <!-- Scroll to next button (mobile & tablet & portrait) -->
     <button
       data-action="click->scroll-navigation#scrollToNext"
-      class="scroll-next-button lg:hidden"
+      class="scroll-next-button xl:hidden portrait:lg:block"
       aria-label="Scroll to next section">
       <%= scroll_arrow(:down) %>
     </button>
   </div>
 
   <div class="content-section flex flex-col justify-center" data-scroll-section>
-    <div class="flex flex-col-reverse lg:flex-row justify-center items-center gap-6 lg:gap-8">
+    <div class="flex flex-col-reverse xl:flex-row portrait:lg:flex-col-reverse justify-center items-center gap-6 xl:gap-8">
       <div class="flex flex-col justify-end">
         <h2 class="section-title-right">visit our farms.</h2>
         <p class="section-body-text-right">(from the comfort of your home)</p>
@@ -53,17 +53,17 @@
       </div>
     </div>
 
-    <!-- Scroll to next button (mobile & tablet) -->
+    <!-- Scroll to next button (mobile & tablet & portrait) -->
     <button
       data-action="click->scroll-navigation#scrollToNext"
-      class="scroll-next-button lg:hidden"
+      class="scroll-next-button xl:hidden portrait:lg:block"
       aria-label="Scroll to next section">
       <%= scroll_arrow(:down) %>
     </button>
   </div>
 
   <div class="cta-section justify-center" data-scroll-section>
-    <div class="flex flex-col items-center gap-5 -mt-12 lg:mt-0">
+    <div class="flex flex-col items-center gap-5 -mt-12 xl:mt-0">
       <div class="cta-heading-wrapper">
         <h2 class="section-title-center-italic">
           not sure where<br/>
@@ -74,13 +74,13 @@
       <p class="section-body-text">we got you.</p>
       <%= link_to 'schedule a consult',
           new_contact_form_path,
-          class: 'btn-purple' %>
+          class: 'btn-purple portrait:lg:btn-large' %>
     </div>
 
-    <!-- Back to top button (mobile & tablet) -->
+    <!-- Back to top button (mobile & tablet & portrait) -->
     <button
       data-action="click->scroll-navigation#scrollToTop"
-      class="scroll-top-button lg:hidden"
+      class="scroll-top-button xl:hidden portrait:lg:flex"
       aria-label="Back to top">
       <%= scroll_arrow(:up) %>
       <span class="scroll-top-text">BACK TO TOP</span>

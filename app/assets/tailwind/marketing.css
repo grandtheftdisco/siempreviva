@@ -6,7 +6,7 @@
 /* Hidden on desktop via lg:hidden in view */
 .scroll-next-button {
   /* Layout & positioning */
-  @apply absolute bottom-24 left-1/2 -translate-x-1/2;
+  @apply absolute bottom-24 portrait:lg:bottom-50 left-1/2 -translate-x-1/2;
 
   /* Sizing & spacing */
   @apply p-2;
@@ -23,7 +23,7 @@
 /* Hidden on desktop via lg:hidden in view */
 .scroll-top-button {
   /* Layout & positioning */
-  @apply absolute bottom-24 left-1/2 -translate-x-1/2;
+  @apply absolute bottom-30 left-1/2 -translate-x-1/2;
   @apply flex flex-col items-center gap-2;
 
   /* Sizing & spacing */
@@ -58,14 +58,14 @@
 .hero-section {
   /* Layout & positioning */
   @apply relative flex flex-col;
-  @apply justify-center lg:justify-center;
+  @apply justify-center portrait:lg:justify-start xl:justify-center;
 
   /* Sizing & spacing */
-  @apply py-10 md:py-12 lg:py-20 min-h-screen;
-  @apply -mt-12 md:-mt-30 lg:mt-0;
+  @apply py-10 md:py-12 xl:py-20 portrait:lg:py-50 min-h-screen;
+  @apply -mt-12 md:-mt-30 xl:mt-0 portrait:lg:mt-0;
 
-  /* Scroll snap behavior (mobile & tablet only) */
-  @apply snap-start scroll-mt-20 lg:snap-align-none;
+  /* Scroll snap behavior (mobile, tablet, and portrait) */
+  @apply snap-start scroll-mt-20 xl:snap-align-none portrait:lg:snap-start;
 }
 
 /* Hero title - main "SIEMPREVIVA" heading */
@@ -77,25 +77,29 @@
   @apply text-neutral-600;
 
   /* Typography */
-  @apply text-5xl md:text-7xl lg:text-9xl font-serif uppercase text-center lg:text-right;
+  @apply text-5xl md:text-7xl xl:text-9xl portrait:lg:text-8xl;
+  @apply font-serif uppercase;
+  @apply text-center xl:text-right portrait:lg:text-center;
 }
 
 /* Hero subtitle - "essential oils" text */
 .hero-subtitle {
   /* Sizing & spacing */
-  @apply px-4 mb-6 lg:mb-0;
+  @apply px-4 mb-6 xl:mb-0 portrait:lg:mb-6;
 
   /* Colors */
   @apply text-neutral-600;
 
   /* Typography */
-  @apply text-xl md:text-2xl lg:text-3xl text-center lg:text-right;
+  @apply text-xl md:text-2xl xl:text-3xl portrait:lg:text-3xl;
+  @apply text-center xl:text-right portrait:lg:text-center;
 }
 
 /* Image placeholder */
 .image-placeholder {
   /* Sizing & spacing */
-  @apply h-80 w-60 md:h-110 md:w-110 lg:h-130 lg:w-130;
+  @apply h-80 w-60 md:h-110 md:w-110 xl:h-130 xl:w-130;
+  @apply portrait:lg:h-130 portrait:lg:w-130;
 
   /* Border & shape */
   @apply rounded-2xl;
@@ -109,13 +113,14 @@
 /* Content section - reusable section container */
 .content-section {
   /* Layout & positioning */
-  @apply relative;
+  @apply relative flex flex-col;
+  @apply justify-center portrait:lg:justify-start items-center;
 
   /* Sizing & spacing */
-  @apply py-10 min-h-screen;
+  @apply py-10 portrait:lg:pt-70 portrait:lg:pb-30 min-h-screen;
 
-  /* Scroll snap behavior (mobile & tablet only) */
-  @apply snap-start scroll-mt-20 lg:snap-align-none;
+  /* Scroll snap behavior (mobile, tablet, and portrait) */
+  @apply snap-start scroll-mt-20 xl:snap-align-none portrait:lg:snap-start;
 }
 
 /* Section title - h2 headings in content sections */
@@ -127,31 +132,33 @@
   @apply text-neutral-600;
 
   /* Typography */
-  @apply text-4xl md:text-5xl lg:text-7xl font-serif;
+  @apply text-4xl md:text-5xl xl:text-7xl portrait:lg:text-7xl font-serif;
 }
 
 /* Section title left-aligned variant */
 .section-title-left {
   /* Sizing & spacing */
-  @apply px-4 mb-2 lg:mb-0;
+  @apply px-4 mb-2 xl:mb-0 portrait:lg:mb-2;
 
   /* Colors */
   @apply text-neutral-600;
 
   /* Typography */
-  @apply text-4xl md:text-5xl lg:text-7xl font-serif text-center lg:text-left;
+  @apply text-4xl md:text-5xl xl:text-7xl portrait:lg:text-7xl;
+  @apply font-serif text-center xl:text-left portrait:lg:text-center;
 }
 
 /* Section title right-aligned variant */
 .section-title-right {
   /* Sizing & spacing */
-  @apply px-4 mb-2 lg:mb-0;
+  @apply px-4 mb-2 xl:mb-0 portrait:lg:mb-2;
 
   /* Colors */
   @apply text-neutral-600;
 
   /* Typography */
-  @apply text-4xl md:text-5xl lg:text-7xl font-serif text-center lg:text-right;
+  @apply text-4xl md:text-5xl xl:text-7xl portrait:lg:text-7xl;
+  @apply font-serif text-center xl:text-right portrait:lg:text-center;
 }
 
 /* Section title centered italic variant (for CTA section) */
@@ -163,7 +170,8 @@
   @apply text-neutral-600;
 
   /* Typography */
-  @apply text-4xl md:text-5xl lg:text-7xl font-serif text-center italic;
+  @apply text-4xl md:text-5xl xl:text-7xl portrait:lg:text-7xl;
+  @apply font-serif text-center italic;
 }
 
 /* Section body text */
@@ -172,31 +180,31 @@
   @apply text-neutral-600;
 
   /* Typography */
-  @apply text-center;
+  @apply text-center portrait:lg:text-xl;
 }
 
 /* Section body text left-aligned */
 .section-body-text-left {
   /* Sizing & spacing */
-  @apply px-4 lg:pl-6 mb-6 lg:mb-0;
+  @apply px-4 xl:pl-6 mb-6 xl:mb-0 portrait:lg:mb-6;
 
   /* Colors */
   @apply text-neutral-600;
 
   /* Typography */
-  @apply text-center lg:text-left;
+  @apply text-center xl:text-left portrait:lg:text-center portrait:lg:text-xl;
 }
 
 /* Section body text right-aligned */
 .section-body-text-right {
   /* Sizing & spacing */
-  @apply px-4 lg:pr-5 mb-6 lg:mb-0;
+  @apply px-4 xl:pr-5 mb-6 xl:mb-0 portrait:lg:mb-6;
 
   /* Colors */
   @apply text-neutral-600;
 
   /* Typography */
-  @apply text-center lg:text-right;
+  @apply text-center xl:text-right portrait:lg:text-center portrait:lg:text-xl;
 }
 
 /* ===== CTA SECTION ===== */
@@ -209,12 +217,12 @@
   /* Sizing & spacing */
   @apply py-10 gap-5 min-h-screen;
 
-  /* Scroll snap behavior (mobile & tablet only) */
-  @apply snap-start scroll-mt-20 lg:snap-align-none;
+  /* Scroll snap behavior (mobile, tablet, and portrait) */
+  @apply snap-start scroll-mt-20 xl:snap-align-none portrait:lg:snap-start;
 }
 
 /* CTA heading wrapper */
 .cta-heading-wrapper {
   /* Sizing & spacing */
-  @apply mb-6 lg:mb-10;
+  @apply mb-6 xl:mb-10;
 }
