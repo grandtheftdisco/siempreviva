@@ -7,7 +7,7 @@
   /* Down arrow button (scroll to next section) */
   .scroll-next-button {
     /* Layout & positioning */
-    @apply absolute bottom-8 left-1/2 -translate-x-1/2;
+    @apply absolute bottom-24 left-1/2 -translate-x-1/2;
 
     /* Sizing & spacing */
     @apply p-2;
@@ -23,7 +23,7 @@
   /* Up arrow button (back to top) */
   .scroll-top-button {
     /* Layout & positioning */
-    @apply absolute bottom-8 left-1/2 -translate-x-1/2;
+    @apply absolute bottom-24 left-1/2 -translate-x-1/2;
     @apply flex flex-col items-center gap-2;
 
     /* Sizing & spacing */
@@ -83,7 +83,7 @@
 /* Hero section - first section with brand name and image */
 .hero-section {
   /* Sizing & spacing */
-  @apply pt-10 py-30 lg:py-20;
+  @apply py-10 lg:py-20 min-h-screen;
 }
 
 /* Hero title - main "SIEMPREVIVA" heading */
@@ -113,7 +113,7 @@
 /* Hero image placeholder */
 .hero-image-placeholder {
   /* Sizing & spacing */
-  @apply h-60 w-60 lg:h-130 lg:w-130;
+  @apply h-80 w-60 lg:h-130 lg:w-130;
 
   /* Border & shape */
   @apply rounded-2xl;
@@ -127,7 +127,7 @@
 /* Content section - reusable section container */
 .content-section {
   /* Sizing & spacing */
-  @apply py-30;
+  @apply py-10 min-h-screen;
 }
 
 /* Section title - h2 headings in content sections */
@@ -214,7 +214,7 @@
 /* Content image placeholder (smaller than hero) */
 .content-image-placeholder {
   /* Sizing & spacing */
-  @apply h-48 w-48 lg:h-100 lg:w-100;
+  @apply h-68 w-48 lg:h-100 lg:w-100;
 
   /* Border & shape */
   @apply rounded-2xl;
@@ -228,7 +228,7 @@
 /* CTA section wrapper - extra spacing for final section */
 .cta-section {
   /* Sizing & spacing */
-  @apply py-30 gap-5;
+  @apply py-10 gap-5 min-h-screen;
 
   /* Layout & positioning */
   @apply flex flex-col items-center;
