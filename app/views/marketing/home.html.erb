@@ -1,5 +1,5 @@
-<div>
-  <div class="hero-section flex flex-col lg:flex-row justify-center items-center lg:items-end gap-6 lg:gap-8">
+<div data-controller="scroll-navigation">
+  <div class="hero-section flex flex-col lg:flex-row justify-center items-center lg:items-end gap-6 lg:gap-8" data-scroll-section>
     <div class="flex flex-col justify-end">
       <h1 class="hero-title">siempreviva</h1>
       <p class="hero-subtitle">essential oils</p>
@@ -8,9 +8,19 @@
     <div class="flex flex-col justify-end">
       <div class="hero-image-placeholder"></div>
     </div>
+
+    <!-- Scroll to next button (mobile only) -->
+    <button
+      data-action="click->scroll-navigation#scrollToNext"
+      class="scroll-next-button lg:hidden"
+      aria-label="Scroll to next section">
+      <svg class="scroll-arrow-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M7 10l5 5 5-5"/>
+      </svg>
+    </button>
   </div>
 
-  <div class="content-section flex flex-col justify-center">
+  <div class="content-section flex flex-col justify-center" data-scroll-section>
     <div class="flex flex-col lg:flex-row justify-center items-center gap-6 lg:gap-8">
       <div>
         <div class="content-image-placeholder"></div>
@@ -21,9 +31,19 @@
         <p class="section-body-text-left">learn how aromatherapy can melt your troubles away</p>
       </div>
     </div>
+
+    <!-- Scroll to next button (mobile only) -->
+    <button
+      data-action="click->scroll-navigation#scrollToNext"
+      class="scroll-next-button lg:hidden"
+      aria-label="Scroll to next section">
+      <svg class="scroll-arrow-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M7 10l5 5 5-5"/>
+      </svg>
+    </button>
   </div>
 
-  <div class="content-section flex flex-col justify-center">
+  <div class="content-section flex flex-col justify-center" data-scroll-section>
     <div class="flex flex-col-reverse lg:flex-row justify-center items-center gap-6 lg:gap-8">
       <div class="flex flex-col justify-end">
         <h2 class="section-title-right">visit our farms.</h2>
@@ -34,9 +54,19 @@
         <div class="hero-image-placeholder"></div>
       </div>
     </div>
+
+    <!-- Scroll to next button (mobile only) -->
+    <button
+      data-action="click->scroll-navigation#scrollToNext"
+      class="scroll-next-button lg:hidden"
+      aria-label="Scroll to next section">
+      <svg class="scroll-arrow-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M7 10l5 5 5-5"/>
+      </svg>
+    </button>
   </div>
 
-  <div class="cta-section justify-center">
+  <div class="cta-section justify-center" data-scroll-section>
     <div class="cta-heading-wrapper">
       <h2 class="section-title-center-italic">
         not sure where<br/>
@@ -48,5 +78,16 @@
     <%= link_to 'schedule a consult',
         new_contact_form_path,
         class: 'btn-purple' %>
+
+    <!-- Back to top button (mobile only) -->
+    <button
+      data-action="click->scroll-navigation#scrollToTop"
+      class="scroll-top-button lg:hidden"
+      aria-label="Back to top">
+      <svg class="scroll-arrow-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M7 14l5-5 5 5"/>
+      </svg>
+      <span class="scroll-top-text">BACK TO TOP</span>
+    </button>
   </div>
 </div>

@@ -1,5 +1,65 @@
 /* Marketing Pages Stylesheet */
 
+/* ===== SCROLL NAVIGATION BUTTONS ===== */
+
+/* Mobile-only scroll navigation arrows */
+@media (max-width: 767px) {
+  /* Down arrow button (scroll to next section) */
+  .scroll-next-button {
+    /* Layout & positioning */
+    @apply absolute bottom-8 left-1/2 -translate-x-1/2;
+
+    /* Sizing & spacing */
+    @apply p-2;
+
+    /* Interactive & animation */
+    @apply cursor-pointer transition-opacity duration-200;
+    @apply opacity-60 hover:opacity-100;
+
+    /* Remove default button styles */
+    @apply bg-transparent border-0;
+  }
+
+  /* Up arrow button (back to top) */
+  .scroll-top-button {
+    /* Layout & positioning */
+    @apply absolute bottom-8 left-1/2 -translate-x-1/2;
+    @apply flex flex-col items-center gap-2;
+
+    /* Sizing & spacing */
+    @apply p-2;
+
+    /* Interactive & animation */
+    @apply cursor-pointer transition-opacity duration-200;
+    @apply opacity-60 hover:opacity-100;
+
+    /* Remove default button styles */
+    @apply bg-transparent border-0;
+  }
+
+  /* Arrow icon styling */
+  .scroll-arrow-icon {
+    /* Sizing */
+    @apply w-6 h-6;
+
+    /* Colors */
+    @apply text-neutral-600;
+  }
+
+  /* Back to top text */
+  .scroll-top-text {
+    /* Typography */
+    @apply text-xs text-neutral-600 tracking-wide;
+  }
+
+  /* Sections need relative positioning for absolute arrows */
+  .hero-section,
+  .content-section,
+  .cta-section {
+    @apply relative;
+  }
+}
+
 /* ===== SCROLL SNAP BEHAVIOR ===== */
 
 /* Mobile-only feature: scroll snapping (disabled on desktop) */
