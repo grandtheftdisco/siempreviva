@@ -16,9 +16,7 @@
       data-action="click->scroll-navigation#scrollToNext"
       class="scroll-next-button lg:hidden"
       aria-label="Scroll to next section">
-      <svg class="scroll-arrow-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-        <path d="M7 10l5 5 5-5"/>
-      </svg>
+      <%= scroll_arrow(:down) %>
     </button>
   </div>
 
@@ -39,9 +37,7 @@
       data-action="click->scroll-navigation#scrollToNext"
       class="scroll-next-button lg:hidden"
       aria-label="Scroll to next section">
-      <svg class="scroll-arrow-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-        <path d="M7 10l5 5 5-5"/>
-      </svg>
+      <%= scroll_arrow(:down) %>
     </button>
   </div>
 
@@ -62,9 +58,7 @@
       data-action="click->scroll-navigation#scrollToNext"
       class="scroll-next-button lg:hidden"
       aria-label="Scroll to next section">
-      <svg class="scroll-arrow-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-        <path d="M7 10l5 5 5-5"/>
-      </svg>
+      <%= scroll_arrow(:down) %>
     </button>
   </div>
 
@@ -88,9 +82,7 @@
       data-action="click->scroll-navigation#scrollToTop"
       class="scroll-top-button lg:hidden"
       aria-label="Back to top">
-      <svg class="scroll-arrow-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-        <path d="M7 14l5-5 5 5"/>
-      </svg>
+      <%= scroll_arrow(:up) %>
       <span class="scroll-top-text">BACK TO TOP</span>
     </button>
   </div>
