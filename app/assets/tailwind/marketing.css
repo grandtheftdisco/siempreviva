@@ -2,88 +2,70 @@
 
 /* ===== SCROLL NAVIGATION BUTTONS ===== */
 
-/* Mobile-only scroll navigation arrows */
-@media (max-width: 767px) {
-  /* Down arrow button (scroll to next section) */
-  .scroll-next-button {
-    /* Layout & positioning */
-    @apply absolute bottom-24 left-1/2 -translate-x-1/2;
+/* Down arrow button (scroll to next section) */
+/* Hidden on desktop via lg:hidden in view */
+.scroll-next-button {
+  /* Layout & positioning */
+  @apply absolute bottom-24 left-1/2 -translate-x-1/2;
 
-    /* Sizing & spacing */
-    @apply p-2;
+  /* Sizing & spacing */
+  @apply p-2;
 
-    /* Interactive & animation */
-    @apply cursor-pointer transition-opacity duration-200;
-    @apply opacity-60 hover:opacity-100;
+  /* Interactive & animation */
+  @apply cursor-pointer transition-opacity duration-200;
+  @apply opacity-60 hover:opacity-100;
 
-    /* Remove default button styles */
-    @apply bg-transparent border-0;
-  }
-
-  /* Up arrow button (back to top) */
-  .scroll-top-button {
-    /* Layout & positioning */
-    @apply absolute bottom-24 left-1/2 -translate-x-1/2;
-    @apply flex flex-col items-center gap-2;
-
-    /* Sizing & spacing */
-    @apply p-2;
-
-    /* Interactive & animation */
-    @apply cursor-pointer transition-opacity duration-200;
-    @apply opacity-60 hover:opacity-100;
-
-    /* Remove default button styles */
-    @apply bg-transparent border-0;
-  }
-
-  /* Arrow icon styling */
-  .scroll-arrow-icon {
-    /* Sizing */
-    @apply w-6 h-6;
-
-    /* Colors */
-    @apply text-neutral-600;
-  }
-
-  /* Back to top text */
-  .scroll-top-text {
-    /* Typography */
-    @apply text-xs text-neutral-600 tracking-wide;
-  }
-
-  /* Sections need relative positioning for absolute arrows */
-  .hero-section,
-  .content-section,
-  .cta-section {
-    @apply relative;
-  }
+  /* Remove default button styles */
+  @apply bg-transparent border-0;
 }
 
-/* ===== SCROLL SNAP BEHAVIOR ===== */
+/* Up arrow button (back to top) */
+/* Hidden on desktop via lg:hidden in view */
+.scroll-top-button {
+  /* Layout & positioning */
+  @apply absolute bottom-24 left-1/2 -translate-x-1/2;
+  @apply flex flex-col items-center gap-2;
 
-/* Mobile-only feature: scroll snapping (disabled on desktop) */
-/* Vanilla CSS intentionally used: better scroll behavior than @apply equivalent */
-@media (max-width: 767px) {
-  html {
-    scroll-snap-type: y proximity;
-  }
+  /* Sizing & spacing */
+  @apply p-2;
 
-  /* Each section is a snap point with offset for nav bar */
-  .hero-section,
-  .content-section,
-  .cta-section {
-    scroll-snap-align: start;
-    scroll-margin-top: 5rem; /* Account for fixed nav bar height */
-  }
+  /* Interactive & animation */
+  @apply cursor-pointer transition-opacity duration-200;
+  @apply opacity-60 hover:opacity-100;
+
+  /* Remove default button styles */
+  @apply bg-transparent border-0;
+}
+
+/* Arrow icon styling */
+.scroll-arrow-icon {
+  /* Sizing */
+  @apply w-6 h-6;
+
+  /* Colors */
+  @apply text-neutral-600;
+}
+
+/* Back to top text */
+.scroll-top-text {
+  /* Typography */
+  @apply text-xs text-neutral-600 tracking-wide;
 }
 
 /* ===== HERO/HOME PAGE COMPONENTS ===== */
 
 /* Hero section - first section with brand name and image */
 .hero-section {
+  /* Layout & positioning */
+  @apply relative flex flex-col;
+  @apply justify-center lg:justify-center;
+
   /* Sizing & spacing */
-  @apply py-10 lg:py-20 min-h-screen;
+  @apply py-10 md:py-12 lg:py-20 min-h-screen;
+  @apply -mt-12 md:-mt-30 lg:mt-0;
+
+  /* Scroll snap behavior (mobile & tablet only) */
+  @apply snap-start scroll-mt-20 lg:snap-align-none;
 }
 
 /* Hero title - main "SIEMPREVIVA" heading */
@@ -95,7 +77,7 @@
   @apply text-neutral-600;
 
   /* Typography */
-  @apply text-5xl lg:text-9xl font-serif uppercase text-center lg:text-right;
+  @apply text-5xl md:text-7xl lg:text-9xl font-serif uppercase text-center lg:text-right;
 }
 
 /* Hero subtitle - "essential oils" text */
@@ -107,13 +89,13 @@
   @apply text-neutral-600;
 
   /* Typography */
-  @apply text-xl lg:text-2xl text-center lg:text-right;
+  @apply text-xl md:text-2xl lg:text-3xl text-center lg:text-right;
 }
 
-/* Hero image placeholder */
-.hero-image-placeholder {
+/* Image placeholder */
+.image-placeholder {
   /* Sizing & spacing */
-  @apply h-80 w-60 lg:h-130 lg:w-130;
+  @apply h-80 w-60 md:h-110 md:w-110 lg:h-130 lg:w-130;
 
   /* Border & shape */
   @apply rounded-2xl;
@@ -126,8 +108,14 @@
 
 /* Content section - reusable section container */
 .content-section {
+  /* Layout & positioning */
+  @apply relative;
+
   /* Sizing & spacing */
   @apply py-10 min-h-screen;
+
+  /* Scroll snap behavior (mobile & tablet only) */
+  @apply snap-start scroll-mt-20 lg:snap-align-none;
 }
 
 /* Section title - h2 headings in content sections */
@@ -139,7 +127,7 @@
   @apply text-neutral-600;
 
   /* Typography */
-  @apply text-4xl lg:text-7xl font-serif;
+  @apply text-4xl md:text-5xl lg:text-7xl font-serif;
 }
 
 /* Section title left-aligned variant */
@@ -151,7 +139,7 @@
   @apply text-neutral-600;
 
   /* Typography */
-  @apply text-4xl lg:text-7xl font-serif text-center lg:text-left;
+  @apply text-4xl md:text-5xl lg:text-7xl font-serif text-center lg:text-left;
 }
 
 /* Section title right-aligned variant */
@@ -163,7 +151,7 @@
   @apply text-neutral-600;
 
   /* Typography */
-  @apply text-4xl lg:text-7xl font-serif text-center lg:text-right;
+  @apply text-4xl md:text-5xl lg:text-7xl font-serif text-center lg:text-right;
 }
 
 /* Section title centered italic variant (for CTA section) */
@@ -175,7 +163,7 @@
   @apply text-neutral-600;
 
   /* Typography */
-  @apply text-4xl lg:text-7xl font-serif text-center italic;
+  @apply text-4xl md:text-5xl lg:text-7xl font-serif text-center italic;
 }
 
 /* Section body text */
@@ -211,27 +199,18 @@
   @apply text-center lg:text-right;
 }
 
-/* Content image placeholder (smaller than hero) */
-.content-image-placeholder {
-  /* Sizing & spacing */
-  @apply h-68 w-48 lg:h-100 lg:w-100;
-
-  /* Border & shape */
-  @apply rounded-2xl;
-
-  /* Colors */
-  @apply bg-neutral-200;
-}
-
 /* ===== CTA SECTION ===== */
 
 /* CTA section wrapper - extra spacing for final section */
 .cta-section {
+  /* Layout & positioning */
+  @apply relative flex flex-col items-center;
+
   /* Sizing & spacing */
   @apply py-10 gap-5 min-h-screen;
 
-  /* Layout & positioning */
-  @apply flex flex-col items-center;
+  /* Scroll snap behavior (mobile & tablet only) */
+  @apply snap-start scroll-mt-20 lg:snap-align-none;
 }
 
 /* CTA heading wrapper */

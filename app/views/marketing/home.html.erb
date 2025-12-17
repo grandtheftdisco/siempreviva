@@ -1,17 +1,17 @@
-<div data-controller="scroll-navigation">
-  <div class="hero-section flex flex-col justify-center" data-scroll-section>
-    <div class="flex flex-col lg:flex-row justify-center items-center lg:items-end gap-6 lg:gap-8 -mt-12 lg:mt-0">
+<div data-controller="scroll-navigation" class="snap-y snap-proximity lg:snap-none">
+  <div class="hero-section" data-scroll-section>
+    <div class="flex flex-col lg:flex-row justify-center items-center lg:items-end gap-6 lg:gap-8">
       <div class="flex flex-col justify-end">
         <h1 class="hero-title">siempreviva</h1>
         <p class="hero-subtitle">essential oils</p>
       </div>
 
       <div class="flex flex-col justify-end">
-        <div class="hero-image-placeholder"></div>
+        <div class="image-placeholder"></div>
       </div>
     </div>
 
-    <!-- Scroll to next button (mobile only) -->
+    <!-- Scroll to next button (mobile & tablet) -->
     <button
       data-action="click->scroll-navigation#scrollToNext"
       class="scroll-next-button lg:hidden"
@@ -23,7 +23,7 @@
   <div class="content-section flex flex-col justify-center" data-scroll-section>
     <div class="flex flex-col lg:flex-row justify-center items-center gap-6 lg:gap-8">
       <div>
-        <div class="content-image-placeholder"></div>
+        <div class="image-placeholder"></div>
       </div>
 
       <div class="flex flex-col justify-end">
@@ -32,7 +32,7 @@
       </div>
     </div>
 
-    <!-- Scroll to next button (mobile only) -->
+    <!-- Scroll to next button (mobile & tablet) -->
     <button
       data-action="click->scroll-navigation#scrollToNext"
       class="scroll-next-button lg:hidden"
@@ -49,11 +49,11 @@
       </div>
 
       <div>
-        <div class="hero-image-placeholder"></div>
+        <div class="image-placeholder"></div>
       </div>
     </div>
 
-    <!-- Scroll to next button (mobile only) -->
+    <!-- Scroll to next button (mobile & tablet) -->
     <button
       data-action="click->scroll-navigation#scrollToNext"
       class="scroll-next-button lg:hidden"
@@ -77,7 +77,7 @@
           class: 'btn-purple' %>
     </div>
 
-    <!-- Back to top button (mobile only) -->
+    <!-- Back to top button (mobile & tablet) -->
     <button
       data-action="click->scroll-navigation#scrollToTop"
       class="scroll-top-button lg:hidden"
