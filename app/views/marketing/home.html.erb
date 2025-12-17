@@ -1,50 +1,50 @@
 <div>
-  <div class="flex justify-center pt-10 py-20">
+  <div class="hero-section flex justify-center">
     <div class="flex flex-col justify-end">
-      <h1 class="text-9xl text-neutral-600 text-right uppercase font-serif">siempreviva</h1>
-      <p class="text-2xl text-right text-neutral-600 px-4">essential oils</p>
+      <h1 class="hero-title">siempreviva</h1>
+      <p class="hero-subtitle">essential oils</p>
     </div>
 
     <div class="flex flex-col justify-end">
-      <div class="bg-neutral-200 h-130 w-130 rounded-2xl"></div>
+      <div class="hero-image-placeholder"></div>
     </div>
   </div>
 
-  <div class="flex flex-col justify-center py-30">
+  <div class="content-section flex flex-col justify-center">
     <div class="flex justify-center">
       <div>
-        <div class="bg-neutral-200 h-100 w-100 rounded-2xl"></div>
+        <div class="content-image-placeholder"></div>
       </div>
 
       <div class="flex flex-col justify-end">
-        <h2 class="text-7xl text-neutral-600 text-left font-serif px-4">treat yourself.</h2>
-        <p class="text-left text-neutral-600 pl-6">learn how aromatherapy can melt your troubles away</p>
+        <h2 class="section-title-left">treat yourself.</h2>
+        <p class="section-body-text-left">learn how aromatherapy can melt your troubles away</p>
       </div>
     </div>
   </div>
 
-  <div class="flex flex-col justify-center py-30">
+  <div class="content-section flex flex-col justify-center">
     <div class="flex justify-center">
       <div class="flex flex-col justify-end">
-        <h2 class="text-7xl text-neutral-600 text-right font-serif px-4">visit our farms.</h2>
-        <p class="text-right text-neutral-600 pr-5">(from the comfort of your home)</p>
+        <h2 class="section-title-right">visit our farms.</h2>
+        <p class="section-body-text-right">(from the comfort of your home)</p>
       </div>
 
       <div>
-        <div class="bg-neutral-200 h-130 w-130 rounded-2xl"></div>
+        <div class="hero-image-placeholder"></div>
       </div>
     </div>
   </div>
 
-  <div class="flex flex-col justify-center items-center gap-5 py-30">
-    <div class="mb-10">
-      <h2 class="text-7xl text-neutral-600 text-center italic font-serif px-4">
+  <div class="cta-section justify-center">
+    <div class="cta-heading-wrapper">
+      <h2 class="section-title-center-italic">
         not sure where<br/>
         to start?
       </h2>
     </div>
 
-    <p class="text-neutral-600">we got you.</p>
+    <p class="section-body-text">we got you.</p>
     <%= link_to 'schedule a consult',
         new_contact_form_path,
         class: 'btn-purple' %>

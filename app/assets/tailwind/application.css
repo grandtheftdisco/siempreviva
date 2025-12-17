@@ -42,3 +42,4 @@
 @import "./forms.css";         /* Form inputs, labels, validation styles */
 @import "./checkouts.css";     /* Checkout success page styles */
 @import "./products.css";      /* Product index & page styles */
+@import "./marketing.css";     /* Marketing pages (home/hero, learn, contact) styles */

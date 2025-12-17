@@ -1,0 +1,160 @@
+/* Marketing Pages Stylesheet */
+
+/* ===== HERO/HOME PAGE COMPONENTS ===== */
+
+/* Hero section - first section with brand name and image */
+.hero-section {
+  /* Sizing & spacing */
+  @apply pt-10 py-20;
+}
+
+/* Hero title - main "SIEMPREVIVA" heading */
+.hero-title {
+  /* Sizing & spacing */
+  @apply px-4;
+
+  /* Colors */
+  @apply text-neutral-600;
+
+  /* Typography */
+  @apply text-9xl font-serif uppercase text-right;
+}
+
+/* Hero subtitle - "essential oils" text */
+.hero-subtitle {
+  /* Sizing & spacing */
+  @apply px-4;
+
+  /* Colors */
+  @apply text-neutral-600;
+
+  /* Typography */
+  @apply text-2xl text-right;
+}
+
+/* Hero image placeholder */
+.hero-image-placeholder {
+  /* Sizing & spacing */
+  @apply h-130 w-130;
+
+  /* Border & shape */
+  @apply rounded-2xl;
+
+  /* Colors */
+  @apply bg-neutral-200;
+}
+
+/* ===== CONTENT SECTIONS ===== */
+
+/* Content section - reusable section container */
+.content-section {
+  /* Sizing & spacing */
+  @apply py-30;
+}
+
+/* Section title - h2 headings in content sections */
+.section-title {
+  /* Sizing & spacing */
+  @apply px-4;
+
+  /* Colors */
+  @apply text-neutral-600;
+
+  /* Typography */
+  @apply text-7xl font-serif;
+}
+
+/* Section title left-aligned variant */
+.section-title-left {
+  /* Sizing & spacing */
+  @apply px-4;
+
+  /* Colors */
+  @apply text-neutral-600;
+
+  /* Typography */
+  @apply text-7xl font-serif text-left;
+}
+
+/* Section title right-aligned variant */
+.section-title-right {
+  /* Sizing & spacing */
+  @apply px-4;
+
+  /* Colors */
+  @apply text-neutral-600;
+
+  /* Typography */
+  @apply text-7xl font-serif text-right;
+}
+
+/* Section title centered italic variant (for CTA section) */
+.section-title-center-italic {
+  /* Sizing & spacing */
+  @apply px-4;
+
+  /* Colors */
+  @apply text-neutral-600;
+
+  /* Typography */
+  @apply text-7xl font-serif text-center italic;
+}
+
+/* Section body text */
+.section-body-text {
+  /* Colors */
+  @apply text-neutral-600;
+}
+
+/* Section body text left-aligned */
+.section-body-text-left {
+  /* Sizing & spacing */
+  @apply pl-6;
+
+  /* Colors */
+  @apply text-neutral-600;
+
+  /* Typography */
+  @apply text-left;
+}
+
+/* Section body text right-aligned */
+.section-body-text-right {
+  /* Sizing & spacing */
+  @apply pr-5;
+
+  /* Colors */
+  @apply text-neutral-600;
+
+  /* Typography */
+  @apply text-right;
+}
+
+/* Content image placeholder (smaller than hero) */
+.content-image-placeholder {
+  /* Sizing & spacing */
+  @apply h-100 w-100;
+
+  /* Border & shape */
+  @apply rounded-2xl;
+
+  /* Colors */
+  @apply bg-neutral-200;
+}
+
+/* ===== CTA SECTION ===== */
+
+/* CTA section wrapper - extra spacing for final section */
+.cta-section {
+  /* Sizing & spacing */
+  @apply py-30 gap-5;
+
+  /* Layout & positioning */
+  @apply flex flex-col items-center;
+}
+
+/* CTA heading wrapper */
+.cta-heading-wrapper {
+  /* Sizing & spacing */
+  @apply mb-10;
+}
