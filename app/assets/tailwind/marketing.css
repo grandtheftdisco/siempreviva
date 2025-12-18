@@ -1,5 +1,21 @@
 /* Marketing Pages Stylesheet */
 
+/* ===== ORGANIZATION STRATEGY ===== */
+/*
+ * UTILITY ORGANIZATION:
+ * - Utilities grouped by semantic category (spacing, typography, colors, etc.)
+ * - Base styles first, then breakpoint overrides in ascending order
+ * - Within each category: base → md: → lg: → xl: → orientation variants
+ *
+ * CASCADE ORDER MATTERS:
+ * - Later @apply declarations override earlier ones due to CSS cascade
+ * - When mixing orientation (portrait:/landscape:) with breakpoints (lg:/xl:),
+ *   order carefully to avoid unintended overrides
+ * - Example: xl:mt-0 will override landscape:lg:-mt-30 if xl: comes after
+ *
+ * DO NOT reorder breakpoint utilities without testing all screen sizes/orientations
+ */
+
 /* ===== SCROLL NAVIGATION CONTAINER ===== */
 
 /* Scroll navigation wrapper - enables scroll snap behavior */
@@ -92,6 +108,7 @@
   @apply py-10 md:py-12 xl:py-20 portrait:lg:py-30 landscape:lg:py-10;
   @apply landscape:pt-0 landscape:md:pt-12;
   @apply min-h-screen;
+  /* Margin order: landscape:lg: MUST come after xl: to prevent xl:mt-0 from overriding */
   @apply -mt-12 md:-mt-30 xl:mt-0 portrait:lg:mt-0 landscape:lg:-mt-30;
 
   /* Scroll snap behavior (mobile, tablet, portrait, and landscape) */
