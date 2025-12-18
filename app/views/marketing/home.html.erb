@@ -1,6 +1,6 @@
-<div data-controller="scroll-navigation" class="snap-y snap-proximity xl:snap-none portrait:lg:snap-y portrait:lg:snap-proximity">
+<div data-controller="scroll-navigation" class="snap-y snap-proximity xl:snap-none portrait:lg:snap-y portrait:lg:snap-proximity landscape:lg:snap-y landscape:lg:snap-proximity">
   <div class="hero-section" data-scroll-section>
-    <div class="flex flex-col xl:flex-row portrait:lg:flex-col justify-center items-center xl:items-end portrait:lg:items-center gap-6 xl:gap-8">
+    <div class="flex flex-col xl:flex-row portrait:lg:flex-col justify-center items-center xl:items-end portrait:lg:items-center landscape:lg:pb-15 gap-6 xl:gap-8">
       <div class="flex flex-col justify-end">
         <h1 class="hero-title">siempreviva</h1>
         <p class="hero-subtitle">essential oils</p>
@@ -11,10 +11,10 @@
       </div>
     </div>
 
-    <!-- Scroll to next button (mobile & tablet & portrait) -->
+    <!-- Scroll to next button (mobile & tablet & portrait & landscape) -->
     <button
       data-action="click->scroll-navigation#scrollToNext"
-      class="scroll-next-button xl:hidden portrait:lg:block"
+      class="scroll-next-button xl:hidden portrait:lg:block landscape:lg:block"
       aria-label="Scroll to next section">
       <%= scroll_arrow(:down) %>
     </button>
@@ -32,10 +32,10 @@
       </div>
     </div>
 
-    <!-- Scroll to next button (mobile & tablet & portrait) -->
+    <!-- Scroll to next button (mobile & tablet & portrait & landscape) -->
     <button
       data-action="click->scroll-navigation#scrollToNext"
-      class="scroll-next-button xl:hidden portrait:lg:block"
+      class="scroll-next-button xl:hidden portrait:lg:block landscape:lg:block"
       aria-label="Scroll to next section">
       <%= scroll_arrow(:down) %>
     </button>
@@ -53,10 +53,10 @@
       </div>
     </div>
 
-    <!-- Scroll to next button (mobile & tablet & portrait) -->
+    <!-- Scroll to next button (mobile & tablet & portrait & landscape) -->
     <button
       data-action="click->scroll-navigation#scrollToNext"
-      class="scroll-next-button xl:hidden portrait:lg:block"
+      class="scroll-next-button xl:hidden portrait:lg:block landscape:lg:block"
       aria-label="Scroll to next section">
       <%= scroll_arrow(:down) %>
     </button>
@@ -77,10 +77,10 @@
           class: 'btn-purple portrait:lg:btn-large' %>
     </div>
 
-    <!-- Back to top button (mobile & tablet & portrait) -->
+    <!-- Back to top button (mobile & tablet & portrait & landscape) -->
     <button
       data-action="click->scroll-navigation#scrollToTop"
-      class="scroll-top-button xl:hidden portrait:lg:flex"
+      class="scroll-top-button xl:hidden portrait:lg:flex landscape:lg:flex"
       aria-label="Back to top">
       <%= scroll_arrow(:up) %>
       <span class="scroll-top-text">BACK TO TOP</span>

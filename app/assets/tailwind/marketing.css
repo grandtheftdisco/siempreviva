@@ -61,11 +61,12 @@
   @apply justify-center portrait:lg:justify-start xl:justify-center;
 
   /* Sizing & spacing */
-  @apply py-10 md:py-12 xl:py-20 portrait:lg:py-50 portrait:lg:min-h-screen landscape:lg:py-30;
-  @apply -mt-12 md:-mt-30 xl:mt-0 portrait:lg:mt-0;
+  @apply py-10 md:py-12 xl:py-20 portrait:lg:py-30 landscape:lg:py-10;
+  @apply min-h-screen;
+  @apply -mt-12 md:-mt-30 xl:mt-0 portrait:lg:mt-0 landscape:lg:-mt-30;
 
-  /* Scroll snap behavior (mobile, tablet, and portrait) */
-  @apply snap-start scroll-mt-20 xl:snap-align-none portrait:lg:snap-start;
+  /* Scroll snap behavior (mobile, tablet, portrait, and landscape) */
+  @apply snap-start scroll-mt-20 xl:snap-align-none portrait:lg:snap-start landscape:lg:snap-start;
 }
 
 /* Hero title - main "SIEMPREVIVA" heading */
@@ -119,8 +120,8 @@
   /* Sizing & spacing */
   @apply py-10 portrait:lg:pt-70 portrait:lg:pb-30 min-h-screen;
 
-  /* Scroll snap behavior (mobile, tablet, and portrait) */
-  @apply snap-start scroll-mt-20 xl:snap-align-none portrait:lg:snap-start;
+  /* Scroll snap behavior (mobile, tablet, portrait, and landscape) */
+  @apply snap-start scroll-mt-20 xl:snap-align-none portrait:lg:snap-start landscape:lg:snap-start;
 }
 
 /* Section title - h2 headings in content sections */
@@ -217,8 +218,8 @@
   /* Sizing & spacing */
   @apply py-10 gap-5 min-h-screen;
 
-  /* Scroll snap behavior (mobile, tablet, and portrait) */
-  @apply snap-start scroll-mt-20 xl:snap-align-none portrait:lg:snap-start;
+  /* Scroll snap behavior (mobile, tablet, portrait, and landscape) */
+  @apply snap-start scroll-mt-20 xl:snap-align-none portrait:lg:snap-start landscape:lg:snap-start;
 }
 
 /* CTA heading wrapper */
