@@ -61,7 +61,7 @@
   @apply justify-center portrait:lg:justify-start xl:justify-center;
 
   /* Sizing & spacing */
-  @apply py-10 md:py-12 xl:py-20 portrait:lg:py-50 min-h-screen;
+  @apply py-10 md:py-12 xl:py-20 portrait:lg:py-50 portrait:lg:min-h-screen landscape:lg:py-30;
   @apply -mt-12 md:-mt-30 xl:mt-0 portrait:lg:mt-0;
 
   /* Scroll snap behavior (mobile, tablet, and portrait) */
@@ -77,9 +77,9 @@
   @apply text-neutral-600;
 
   /* Typography */
-  @apply text-5xl md:text-7xl xl:text-9xl portrait:lg:text-8xl;
+  @apply text-5xl md:text-7xl portrait:lg:text-8xl landscape:lg:text-8xl xl:text-9xl;
   @apply font-serif uppercase;
-  @apply text-center xl:text-right portrait:lg:text-center;
+  @apply text-center portrait:lg:text-center xl:text-right;
 }
 
 /* Hero subtitle - "essential oils" text */
@@ -91,15 +91,15 @@
   @apply text-neutral-600;
 
   /* Typography */
-  @apply text-xl md:text-2xl xl:text-3xl portrait:lg:text-3xl;
-  @apply text-center xl:text-right portrait:lg:text-center;
+  @apply text-xl md:text-2xl portrait:lg:text-3xl landscape:lg:text-3xl xl:text-3xl;
+  @apply text-center portrait:lg:text-center xl:text-right;
 }
 
 /* Image placeholder */
 .image-placeholder {
   /* Sizing & spacing */
   @apply h-80 w-60 md:h-110 md:w-110 xl:h-130 xl:w-130;
-  @apply portrait:lg:h-130 portrait:lg:w-130;
+  @apply portrait:lg:h-150 portrait:lg:w-120 landscape:lg:h-150 landscape:lg:w-120;
 
   /* Border & shape */
   @apply rounded-2xl;
