@@ -85,6 +85,12 @@
 
 /* ===== HERO/HOME PAGE COMPONENTS ===== */
 
+/* Column wrapper with bottom alignment - used for aligning content to baseline */
+.column-end-wrapper {
+  /* Layout & positioning */
+  @apply flex flex-col justify-end;
+}
+
 /* Hero content wrapper - container for hero text and image */
 .hero-content-wrapper {
   /* Layout & positioning */
@@ -288,7 +294,7 @@
 /* CTA section wrapper - extra spacing for final section */
 .cta-section {
   /* Layout & positioning */
-  @apply relative flex flex-col items-center;
+  @apply relative flex flex-col items-center justify-center;
 
   /* Sizing & spacing */
   @apply py-10 gap-5 min-h-screen;
@@ -296,6 +302,16 @@
 
   /* Scroll snap behavior (mobile, tablet, portrait, and landscape) */
   @apply snap-start scroll-mt-20 xl:snap-align-none portrait:lg:snap-start landscape:lg:snap-start;
+}
+
+/* CTA content wrapper - contains heading, body text, and button */
+.cta-content-wrapper {
+  /* Layout & positioning */
+  @apply flex flex-col items-center;
+
+  /* Sizing & spacing */
+  @apply gap-5;
+  @apply -mt-30 xl:mt-0;
 }
 
 /* CTA heading wrapper */
