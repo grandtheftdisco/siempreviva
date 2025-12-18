@@ -30,8 +30,10 @@
 /* ===== SCROLL NAVIGATION BUTTONS ===== */
 
 /* Down arrow button (scroll to next section) */
-/* Hidden on desktop via lg:hidden in view */
 .scroll-next-button {
+  /* Display & visibility */
+  @apply xl:hidden portrait:lg:block landscape:lg:block;
+
   /* Layout & positioning */
   @apply absolute bottom-24 portrait:lg:bottom-50 left-1/2 -translate-x-1/2;
 
@@ -47,8 +49,10 @@
 }
 
 /* Up arrow button (back to top) */
-/* Hidden on desktop via lg:hidden in view */
 .scroll-top-button {
+  /* Display & visibility */
+  @apply xl:hidden portrait:lg:flex landscape:lg:flex;
+
   /* Layout & positioning */
   @apply absolute bottom-30 left-1/2 -translate-x-1/2;
   @apply flex flex-col items-center gap-2;
@@ -79,6 +83,9 @@
 
 /* Back to top text */
 .scroll-top-text {
+  /* Display & visibility */
+  @apply landscape:hidden;
+
   /* Typography */
   @apply text-xs text-neutral-600 tracking-wide;
 }
