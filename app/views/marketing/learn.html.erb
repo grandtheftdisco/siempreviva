@@ -1,4 +1,98 @@
-<div>
-  <h1 class="font-bold text-4xl">Marketing#learn</h1>
-  <p>Find me in app/views/marketing/learn.html.erb</p>
+<div data-controller="scroll-navigation" class="scroll-nav-container">
+  <div class="faq-content-section" data-scroll-section>
+    <div class="content-wrapper">
+      <h1 class="hero-title-downcase">learn</h1>
+      <div class="image-placeholder"></div>
+      <p class="question-text">Q: <i>what is aromatherapy?</i></p>
+    </div>
+    <button
+      data-action="click->scroll-navigation#scrollToNext"
+      class="scroll-next-button-lower"
+      aria-label="Scroll to next section">
+      <%= scroll_arrow(:down) %>
+    </button>
+  </div>
+
+  <div class="faq-content-section" data-scroll-section>
+    <hr/>
+    <div class="answer-wrapper">
+      <p class="answer-label">A:</p>
+      <p class="answer-text">
+        Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor.
+        Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur
+        ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla
+        consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu.
+        In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede
+        mollis pretium. Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi. Aenean
+        vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac,
+        enim. Aliquam lorem ante, dapibus in, viverra quis, feugiat a.
+      </p>
+    </div>
+    <hr/>
+    <button
+      data-action="click->scroll-navigation#scrollToNext"
+      class="scroll-next-button"
+      aria-label="Scroll to next section">
+      <%= scroll_arrow(:down) %>
+    </button>
+  </div>
+
+  <div class="faq-content-section" data-scroll-section>
+    <div class="content-wrapper">
+      <div class="image-placeholder"></div>
+      <p class="question-text">Q: <i>what is therapeutic grade essential oil?</i></p>
+    </div>
+    <button
+      data-action="click->scroll-navigation#scrollToNext"
+      class="scroll-next-button"
+      aria-label="Scroll to next section">
+      <%= scroll_arrow(:down) %>
+    </button>
+  </div>
+
+  <div class="faq-content-section" data-scroll-section>
+    <hr/>
+    <div class="answer-wrapper">
+      <p class="answer-label">A:</p>
+      <p class="answer-text">
+        Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor.
+        Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur
+        ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla
+        consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget,
+        arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis
+        eu pede mollis pretium. Integer tincidunt. Cras dapibus. 
+      </p>
+    </div>
+    <hr/>
+    <button
+      data-action="click->scroll-navigation#scrollToNext"
+      class="scroll-next-button"
+      aria-label="Scroll to next section">
+      <%= scroll_arrow(:down) %>
+    </button>
+  </div>
+
+  <div class="cta-section" data-scroll-section>
+    <div class="cta-content-wrapper">
+      <div class="cta-heading-wrapper">
+        <h2 class="section-title-center-italic">
+          still have<br/>
+          questions?
+        </h2>
+      </div>
+
+      <%= link_to 'we\'re glad to help!',
+          new_contact_form_path,
+          class: 'btn-purple' %>
+    </div>
+
+    <!-- Back to top button (mobile & tablet & portrait & landscape) -->
+    <button
+      data-action="click->scroll-navigation#scrollToTop"
+      class="scroll-top-button"
+      aria-label="Back to top">
+      <%= scroll_arrow(:up) %>
+      <span class="scroll-top-text">BACK TO TOP</span>
+    </button>
+  </div>
 </div>
