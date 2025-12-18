@@ -131,6 +131,7 @@
   @apply h-80 w-60 md:h-110 md:w-110 xl:h-130 xl:w-130;
   @apply portrait:lg:h-150 portrait:lg:w-120;
   @apply landscape:h-50 landscape:w-40;
+  @apply landscape:lg:h-100 landscape:lg:w-80;
 
   /* Border & shape */
   @apply rounded-2xl;
@@ -227,7 +228,7 @@
 
   /* Typography */
   @apply text-4xl md:text-5xl xl:text-7xl portrait:lg:text-7xl;
-  @apply landscape:md:text-3xl;
+  @apply landscape:md:text-3xl landscape:lg:text-5xl;
   @apply font-serif text-center italic;
 }
 
@@ -238,7 +239,7 @@
 
   /* Typography */
   @apply text-center portrait:lg:text-xl;
-  @apply landscape:md:text-sm;
+  @apply landscape:md:text-sm landscape:lg:text-base;
 }
 
 /* Section body text left-aligned */
