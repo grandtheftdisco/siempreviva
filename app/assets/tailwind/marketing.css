@@ -1,5 +1,16 @@
 /* Marketing Pages Stylesheet */
 
+/* ===== SCROLL NAVIGATION CONTAINER ===== */
+
+/* Scroll navigation wrapper - enables scroll snap behavior */
+.scroll-nav-container {
+  /* Behavior */
+  @apply snap-y snap-proximity;
+  @apply xl:snap-none;
+  @apply portrait:lg:snap-y portrait:lg:snap-proximity;
+  @apply landscape:lg:snap-y landscape:lg:snap-proximity;
+}
+
 /* ===== SCROLL NAVIGATION BUTTONS ===== */
 
 /* Down arrow button (scroll to next section) */
@@ -53,6 +64,18 @@
 }
 
 /* ===== HERO/HOME PAGE COMPONENTS ===== */
+
+/* Hero content wrapper - container for hero text and image */
+.hero-content-wrapper {
+  /* Layout & positioning */
+  @apply flex flex-col justify-center items-center;
+  @apply xl:flex-row xl:items-end;
+  @apply portrait:lg:flex-col portrait:lg:items-center;
+
+  /* Sizing & spacing */
+  @apply gap-6 xl:gap-8;
+  @apply landscape:lg:pb-15;
+}
 
 /* Hero section - first section with brand name and image */
 .hero-section {
@@ -110,6 +133,28 @@
 }
 
 /* ===== CONTENT SECTIONS ===== */
+
+/* Content wrapper - container for content text and image */
+.content-wrapper {
+  /* Layout & positioning */
+  @apply flex flex-col justify-center items-center;
+  @apply xl:flex-row;
+  @apply portrait:lg:flex-col;
+
+  /* Sizing & spacing */
+  @apply gap-6 xl:gap-8;
+}
+
+/* Content wrapper reverse - image/text order reversed on mobile/portrait */
+.content-wrapper-reverse {
+  /* Layout & positioning */
+  @apply flex flex-col-reverse justify-center items-center;
+  @apply xl:flex-row;
+  @apply portrait:lg:flex-col-reverse;
+
+  /* Sizing & spacing */
+  @apply gap-6 xl:gap-8;
+}
 
 /* Content section - reusable section container */
 .content-section {
