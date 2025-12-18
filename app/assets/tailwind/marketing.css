@@ -36,9 +36,13 @@
   /* Layout & positioning */
   @apply absolute bottom-30 left-1/2 -translate-x-1/2;
   @apply flex flex-col items-center gap-2;
+  @apply landscape:bottom-23;
 
   /* Sizing & spacing */
   @apply p-2;
+
+  /* Typography */
+  @apply landscape:text-xs;
 
   /* Interactive & animation */
   @apply cursor-pointer transition-opacity duration-200;
@@ -71,6 +75,7 @@
   @apply flex flex-col justify-center items-center;
   @apply xl:flex-row xl:items-end;
   @apply portrait:lg:flex-col portrait:lg:items-center;
+  @apply landscape:flex-row;
 
   /* Sizing & spacing */
   @apply gap-6 xl:gap-8;
@@ -85,6 +90,7 @@
 
   /* Sizing & spacing */
   @apply py-10 md:py-12 xl:py-20 portrait:lg:py-30 landscape:lg:py-10;
+  @apply landscape:pt-0;
   @apply min-h-screen;
   @apply -mt-12 md:-mt-30 xl:mt-0 portrait:lg:mt-0 landscape:lg:-mt-30;
 
@@ -123,7 +129,8 @@
 .image-placeholder {
   /* Sizing & spacing */
   @apply h-80 w-60 md:h-110 md:w-110 xl:h-130 xl:w-130;
-  @apply portrait:lg:h-150 portrait:lg:w-120 landscape:lg:h-150 landscape:lg:w-120;
+  @apply portrait:lg:h-150 portrait:lg:w-120;
+  @apply landscape:h-50 landscape:w-40;
 
   /* Border & shape */
   @apply rounded-2xl;
@@ -140,6 +147,7 @@
   @apply flex flex-col justify-center items-center;
   @apply xl:flex-row;
   @apply portrait:lg:flex-col;
+  @apply landscape:flex-row;
 
   /* Sizing & spacing */
   @apply gap-6 xl:gap-8;
@@ -151,6 +159,7 @@
   @apply flex flex-col-reverse justify-center items-center;
   @apply xl:flex-row;
   @apply portrait:lg:flex-col-reverse;
+  @apply landscape:flex-row;
 
   /* Sizing & spacing */
   @apply gap-6 xl:gap-8;
@@ -164,6 +173,7 @@
 
   /* Sizing & spacing */
   @apply py-10 portrait:lg:pt-70 portrait:lg:pb-30 min-h-screen;
+  @apply landscape:pt-0;
 
   /* Scroll snap behavior (mobile, tablet, portrait, and landscape) */
   @apply snap-start scroll-mt-20 xl:snap-align-none portrait:lg:snap-start landscape:lg:snap-start;
@@ -262,6 +272,7 @@
 
   /* Sizing & spacing */
   @apply py-10 gap-5 min-h-screen;
+  @apply landscape:py-0 landscape:gap-10;
 
   /* Scroll snap behavior (mobile, tablet, portrait, and landscape) */
   @apply snap-start scroll-mt-20 xl:snap-align-none portrait:lg:snap-start landscape:lg:snap-start;
@@ -270,5 +281,5 @@
 /* CTA heading wrapper */
 .cta-heading-wrapper {
   /* Sizing & spacing */
-  @apply mb-6 xl:mb-10;
+  @apply mb-6 xl:mb-10 landscape:py-0;
 }

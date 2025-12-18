@@ -38,6 +38,9 @@
 
   /* Typography */
   @apply font-medium font-sans;
+
+  /* TODO - move these after developing a breakpoint utility organization strategy */
+  @apply portrait:lg:px-8 portrait:lg:py-4 portrait:lg:text-lg landscape:px-3 landscape:py-2 landscape:text-xs;
 }
 
 .btn-purple-secondary {
