@@ -293,7 +293,7 @@
   @apply text-neutral-600;
 
   /* Typography */
-  @apply text-4xl md:text-6xl xl:text-7xl portrait:lg:text-7xl;
+  @apply text-4xl md:text-6xl xl:text-7xl portrait:lg:text-8xl;
   @apply landscape:md:text-3xl landscape:lg:text-5xl;
   @apply font-serif text-center italic;
 }
@@ -360,10 +360,10 @@
 /* CTA content wrapper - contains heading, body text, and button */
 .cta-content-wrapper {
   /* Layout & positioning */
-  @apply flex flex-col items-center;
+  @apply flex flex-col items-center ;
 
   /* Sizing & spacing */
-  @apply gap-5;
+  @apply gap-5 md:gap-10 lg:gap-15;
   @apply -mt-30 xl:mt-0;
 }
 
@@ -393,7 +393,7 @@
   @apply flex-shrink-0;
 
   /* Typography */
-  @apply text-neutral-600 font-serif text-3xl md:text-7xl;
+  @apply text-neutral-600 font-serif text-3xl md:pr-4 md:text-7xl lg:text-8xl lg:pr-5;
 }
 
 /* Answer text - main content area */
@@ -402,7 +402,7 @@
   @apply flex-1;
 
   /* Typography */
-  @apply text-neutral-600 font-serif text-base md:text-4xl;
+  @apply text-neutral-600 font-serif text-base md:text-4xl lg:text-5xl;
 }
 
 /* Content wrapper - container for content text and image */
