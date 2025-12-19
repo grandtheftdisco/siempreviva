@@ -36,6 +36,7 @@
 
   /* Layout & positioning */
   @apply absolute bottom-24 portrait:lg:bottom-50 left-1/2 -translate-x-1/2;
+  @apply z-10;
 
   /* Sizing & spacing */
   @apply p-2;
@@ -55,6 +56,7 @@
 
   /* Layout & positioning */
   @apply absolute bottom-10 portrait:lg:bottom-30 left-1/2 -translate-x-1/2;
+  @apply z-10;
 
   /* Sizing & spacing */
   @apply p-2;
@@ -382,7 +384,7 @@
   align-items: flex-start;
 
   /* Sizing & spacing */
-  @apply gap-4;
+  @apply gap-4 px-10;
 }
 
 /* Answer label - "A:" text aligned to top */
@@ -390,7 +392,7 @@
   /* Layout & positioning */
   @apply flex-shrink-0;
 
-  @apply font-serif;
+  @apply font-serif text-3xl;
 }
 
 /* Answer text - main content area */
@@ -413,8 +415,25 @@
   @apply gap-6 xl:gap-8;
 }
 
-/* Hero section - first section with brand name and image */
-/* TODO - rename this and/or the hero-section above */
+/* FAQ Hero section - first section with page title and initial question */
+.faq-hero-section {
+  /* Layout & positioning */
+  @apply relative flex flex-col;
+  @apply justify-center portrait:lg:justify-start xl:justify-center;
+
+  /* Sizing & spacing */
+  @apply py-0 md:py-12 xl:py-20 portrait:lg:py-30 landscape:lg:py-10;
+  @apply landscape:pt-0 landscape:md:pt-12;
+  @apply min-h-screen;
+  /* Margin order: landscape:lg: MUST come after xl: to prevent xl:mt-0 from overriding */
+  /* Negative margin pulls centered content up to account for header */
+  @apply -mt-26 md:-mt-30 xl:mt-0 portrait:lg:mt-0 landscape:lg:-mt-30;
+
+  /* Scroll snap behavior (mobile, tablet, portrait, and landscape) */
+  @apply snap-start scroll-mt-20 xl:snap-align-none portrait:lg:snap-start landscape:lg:snap-start;
+}
+
+/* FAQ Content section - answer and subsequent question frames */
 .faq-content-section {
   /* Layout & positioning */
   @apply relative flex flex-col;
@@ -425,8 +444,10 @@
   @apply landscape:pt-0 landscape:md:pt-12;
   @apply min-h-screen;
   /* Margin order: landscape:lg: MUST come after xl: to prevent xl:mt-0 from overriding */
-  @apply -mt-26 md:-mt-30 xl:mt-0 portrait:lg:mt-0 landscape:lg:-mt-30;
+  /* Larger negative margin to reduce top spacing on content frames */
+  @apply -mt-32 md:-mt-30 xl:mt-0 portrait:lg:mt-0 landscape:lg:-mt-30;
 
   /* Scroll snap behavior (mobile, tablet, portrait, and landscape) */
-  @apply snap-start scroll-mt-20 xl:snap-align-none portrait:lg:snap-start landscape:lg:snap-start;
+  /* Larger scroll-mt to account for negative margin offset */
+  @apply snap-start scroll-mt-5 xl:snap-align-none portrait:lg:snap-start landscape:lg:snap-start;
 }

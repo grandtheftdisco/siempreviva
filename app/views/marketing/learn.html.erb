@@ -1,5 +1,5 @@
 <div data-controller="scroll-navigation" class="scroll-nav-container">
-  <div class="faq-content-section" data-scroll-section>
+  <div class="faq-hero-section" data-scroll-section>
     <div class="content-wrapper">
       <h1 class="hero-title-downcase">learn</h1>
       <div class="image-placeholder"></div>
@@ -13,25 +13,22 @@
     </button>
   </div>
 
+  
   <div class="faq-content-section" data-scroll-section>
-    <hr/>
+    <hr class="my-11"/>
     <div class="answer-wrapper">
       <p class="answer-label">A:</p>
       <p class="answer-text">
         Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor.
-        Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur
-        ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla
+        Aenean massa. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem.<br/><br/>Nulla
         consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu.
-        In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede
-        mollis pretium. Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi. Aenean
-        vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac,
-        enim. Aliquam lorem ante, dapibus in, viverra quis, feugiat a.
+        In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Vivamus elementum semper nisi.
       </p>
     </div>
-    <hr/>
+    <hr class="my-11"/>
     <button
       data-action="click->scroll-navigation#scrollToNext"
-      class="scroll-next-button"
+      class="scroll-next-button-lower"
       aria-label="Scroll to next section">
       <%= scroll_arrow(:down) %>
     </button>
@@ -44,29 +41,28 @@
     </div>
     <button
       data-action="click->scroll-navigation#scrollToNext"
-      class="scroll-next-button"
+      class="scroll-next-button-lower"
       aria-label="Scroll to next section">
       <%= scroll_arrow(:down) %>
     </button>
   </div>
 
   <div class="faq-content-section" data-scroll-section>
-    <hr/>
+    <hr class="my-11"/>
     <div class="answer-wrapper">
       <p class="answer-label">A:</p>
       <p class="answer-text">
         Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor.
         Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur
-        ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla
-        consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget,
-        arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis
-        eu pede mollis pretium. Integer tincidunt. Cras dapibus. 
+        ridiculus mus. Donec quam.<br/><br/>
+        Nulla consequat massa quis enim. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis
+        eu pede mollis pretium.
       </p>
     </div>
-    <hr/>
+    <hr class="my-10"/>
     <button
       data-action="click->scroll-navigation#scrollToNext"
-      class="scroll-next-button"
+      class="scroll-next-button-lower"
       aria-label="Scroll to next section">
       <%= scroll_arrow(:down) %>
     </button>
