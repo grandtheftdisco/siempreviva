@@ -55,7 +55,7 @@
   @apply xl:hidden portrait:lg:block landscape:lg:block;
 
   /* Layout & positioning */
-  @apply absolute bottom-10 portrait:lg:bottom-30 left-1/2 -translate-x-1/2;
+  @apply absolute bottom-10 md:bottom-24 portrait:lg:bottom-30 left-1/2 -translate-x-1/2;
   @apply z-10;
 
   /* Sizing & spacing */
@@ -173,7 +173,7 @@
   @apply text-neutral-600;
 
   /* Typography */
-  @apply text-5xl md:text-7xl portrait:lg:text-8xl landscape:lg:text-8xl xl:text-9xl;
+  @apply text-5xl md:text-8xl portrait:lg:text-8xl landscape:lg:text-8xl xl:text-9xl;
   @apply font-serif;
   @apply text-center portrait:lg:text-center xl:text-right;
 }
@@ -194,7 +194,7 @@
 /* Image placeholder */
 .image-placeholder {
   /* Sizing & spacing */
-  @apply h-80 w-60 md:h-110 md:w-110 xl:h-130 xl:w-130;
+  @apply h-80 w-60 md:h-130 md:w-130 xl:h-130 xl:w-130;
   @apply portrait:lg:h-150 portrait:lg:w-120;
   @apply landscape:h-50 landscape:w-40;
   @apply landscape:lg:h-100 landscape:lg:w-80;
@@ -217,7 +217,7 @@
   @apply landscape:flex-row;
 
   /* Sizing & spacing */
-  @apply gap-6 xl:gap-8;
+  @apply gap-6 xl:gap-8 md:gap-15;
 }
 
 /* Content wrapper reverse - image/text order reversed on mobile/portrait */
@@ -293,7 +293,7 @@
   @apply text-neutral-600;
 
   /* Typography */
-  @apply text-4xl md:text-5xl xl:text-7xl portrait:lg:text-7xl;
+  @apply text-4xl md:text-6xl xl:text-7xl portrait:lg:text-7xl;
   @apply landscape:md:text-3xl landscape:lg:text-5xl;
   @apply font-serif text-center italic;
 }
@@ -314,7 +314,7 @@
   @apply text-neutral-600;
 
   /* Typography */
-  @apply text-2xl font-serif;
+  @apply text-2xl md:text-4xl font-serif;
   @apply text-center;
 }
 
@@ -392,7 +392,8 @@
   /* Layout & positioning */
   @apply flex-shrink-0;
 
-  @apply font-serif text-3xl;
+  /* Typography */
+  @apply text-neutral-600 font-serif text-3xl md:text-7xl;
 }
 
 /* Answer text - main content area */
@@ -400,7 +401,8 @@
   /* Layout & positioning */
   @apply flex-1;
 
-  @apply font-serif;
+  /* Typography */
+  @apply text-neutral-600 font-serif text-base md:text-4xl;
 }
 
 /* Content wrapper - container for content text and image */
@@ -450,4 +452,10 @@
   /* Scroll snap behavior (mobile, tablet, portrait, and landscape) */
   /* Larger scroll-mt to account for negative margin offset */
   @apply snap-start scroll-mt-5 xl:snap-align-none portrait:lg:snap-start landscape:lg:snap-start;
+}
+
+/* TODO - organize this stylesheet and consider modularizing - this one is def out of organizational/alphabetical order */
+
+.content-divider {
+  @apply my-10 md:my-30;
 }
