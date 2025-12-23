@@ -167,13 +167,13 @@
 /* TODO - can we make this a variant of the above class and/or find a way to reduce repetition of code? */
 .hero-title-downcase {
   /* Sizing & spacing */
-  @apply px-4;
+  @apply px-4 mx-auto mb-10;
 
   /* Colors */
   @apply text-neutral-600;
 
   /* Typography */
-  @apply text-5xl md:text-8xl portrait:lg:text-8xl landscape:lg:text-8xl xl:text-9xl;
+  @apply text-5xl md:text-6xl lg:text-6xl;
   @apply font-serif;
   @apply text-center portrait:lg:text-center xl:text-right;
 }
@@ -192,12 +192,13 @@
 }
 
 /* Image placeholder */
-.image-placeholder {
+.marketing-image {
   /* Sizing & spacing */
   @apply h-80 w-60 md:h-130 md:w-130 xl:h-130 xl:w-130;
   @apply portrait:lg:h-150 portrait:lg:w-120;
   @apply landscape:h-50 landscape:w-40;
   @apply landscape:lg:h-100 landscape:lg:w-80;
+  @apply landscape:xl:h-100 landscape:xl:w-150;
 
   /* Border & shape */
   @apply rounded-2xl;
@@ -311,13 +312,13 @@
 /* Question text - serif text for Q&A sections */
 .question-text {
   /* Colors */
-  @apply text-neutral-600;
+  @apply text-neutral-500;
 
   /* Typography */
-  @apply text-2xl md:text-4xl font-serif lg:text-5xl;
+  @apply italic text-2xl md:text-4xl font-serif lg:text-5xl;
   @apply text-center;
 
-  @apply lg:px-40;
+  @apply lg:px-40 landscape:px-0;
 }
 
 /* Section body text left-aligned */
@@ -389,13 +390,13 @@
   @apply gap-4 px-10 md:px-20;
 }
 
-/* Answer label - "A:" text aligned to top */
-.answer-label {
+/* Answer / Question label - "A:"/"Q:" text aligned to top */
+.faq-label {
   /* Layout & positioning */
   @apply flex-shrink-0;
 
   /* Typography */
-  @apply text-neutral-600 font-serif text-3xl md:pr-4 md:text-7xl lg:text-8xl lg:pr-5;
+  @apply text-neutral-500 font-serif text-3xl md:pr-4 md:text-7xl lg:text-8xl lg:pr-5;
 }
 
 /* Answer text - main content area */
@@ -404,16 +405,23 @@
   @apply flex-1;
 
   /* Typography */
-  @apply text-neutral-600 font-serif text-base md:text-4xl lg:text-5xl;
+  @apply text-neutral-500 font-serif text-base md:text-4xl lg:text-5xl;
 }
 
 /* Content wrapper - container for content text and image */
 .faq-content-wrapper {
   /* Layout & positioning */
   @apply flex flex-col justify-center items-center;
-  @apply xl:flex-row;
-  @apply portrait:lg:flex-col;
-  @apply landscape:flex-row;
+  @apply portrait:lg:flex-col landscape:flex-row landscape:inline-flex;
+
+  /* Sizing & spacing */
+  @apply gap-6 xl:gap-8;
+}
+
+.faq-content-wrapper-reverse {
+    /* Layout & positioning */
+  @apply flex flex-col-reverse justify-center items-center;
+  @apply portrait:lg:flex-col landscape:flex-row-reverse landscape:inline-flex;
 
   /* Sizing & spacing */
   @apply gap-6 xl:gap-8;
