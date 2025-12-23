@@ -318,7 +318,7 @@
   @apply italic text-2xl md:text-4xl font-serif lg:text-5xl;
   @apply text-center;
 
-  @apply lg:px-40 landscape:px-0 landscape:lg:w-100;
+  @apply px-20 md:px-40 lg:px-40 landscape:px-0 landscape:lg:w-100;
 }
 
 /* Section body text left-aligned */
