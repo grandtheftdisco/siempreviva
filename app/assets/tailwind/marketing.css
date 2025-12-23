@@ -167,13 +167,13 @@
 /* TODO - can we make this a variant of the above class and/or find a way to reduce repetition of code? */
 .hero-title-downcase {
   /* Sizing & spacing */
-  @apply px-4 mx-auto mb-20;
+  @apply lg:px-4 mx-auto mb-10 lg:mb-20;
 
   /* Colors */
   @apply text-neutral-600;
 
   /* Typography */
-  @apply text-5xl md:text-6xl lg:text-6xl;
+  @apply text-3xl md:text-6xl lg:text-6xl;
   @apply font-serif;
   @apply text-center portrait:lg:text-center xl:text-right;
 }
@@ -393,7 +393,7 @@
 /* Answer / Question label - "A:"/"Q:" text aligned to top */
 .faq-label {
   /* Layout & positioning */
-  @apply flex-shrink-0;
+  @apply flex-shrink-0 mx-auto;
 
   /* Typography */
   @apply text-neutral-500 font-serif text-3xl md:pr-4 md:text-7xl lg:text-8xl lg:pr-5;
@@ -434,12 +434,12 @@
   @apply justify-center portrait:lg:justify-start xl:justify-center;
 
   /* Sizing & spacing */
-  @apply py-0 md:py-12 xl:py-20 portrait:lg:py-30 landscape:lg:py-10;
+  @apply py-0 md:py-12 xl:py-20 portrait:lg:py-20 landscape:lg:py-10;
   @apply landscape:pt-0 landscape:md:pt-12;
   @apply min-h-screen;
   /* Margin order: landscape:lg: MUST come after xl: to prevent xl:mt-0 from overriding */
   /* Negative margin pulls centered content up to account for header */
-  @apply -mt-26 md:-mt-30 xl:mt-0 portrait:lg:mt-0 landscape:lg:-mt-30;
+  @apply -mt-20 md:-mt-30 xl:mt-0 portrait:lg:mt-0 landscape:lg:-mt-30;
 
   /* Scroll snap behavior (mobile, tablet, portrait, and landscape) */
   @apply snap-start scroll-mt-20 xl:snap-align-none portrait:lg:snap-start landscape:lg:snap-start;
