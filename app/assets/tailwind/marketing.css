@@ -72,7 +72,7 @@
 /* Up arrow button (back to top) */
 .scroll-top-button {
   /* Display & visibility */
-  @apply xl:hidden portrait:lg:flex landscape:lg:flex;
+  @apply landscape:xl:hidden portrait:lg:flex landscape:lg:flex;
 
   /* Layout & positioning */
   @apply absolute bottom-30 left-1/2 -translate-x-1/2;
@@ -318,7 +318,7 @@
   @apply italic text-2xl md:text-4xl font-serif lg:text-5xl;
   @apply text-center;
 
-  @apply lg:px-40 landscape:px-0;
+  @apply lg:px-40 landscape:px-0 landscape:lg:w-100;
 }
 
 /* Section body text left-aligned */
@@ -378,6 +378,14 @@
 
 /* FAQ/Learn Styles */
 
+.question-wrapper {
+  @apply flex flex-col gap-5 lg:gap-20;
+}
+
+.faq-content-wrapper-reverse .question-wrapper {
+  @apply md:mb-20;
+}
+
 /* Answer section wrapper - contains label and text in a row */
 .answer-wrapper {
   /* TODO convert to tailwind apply */
@@ -387,7 +395,7 @@
   align-items: flex-start;
 
   /* Sizing & spacing */
-  @apply gap-4 px-10 md:px-40 xl:px-100;
+  @apply gap-4 px-10 md:px-40 landscape:lg:px-50 xl:px-100;
 }
 
 /* Answer / Question label - "A:"/"Q:" text aligned to top */
@@ -405,7 +413,7 @@
   @apply flex-1;
 
   /* Typography */
-  @apply text-neutral-500 font-serif text-base md:text-4xl lg:text-5xl xl:text-4xl;
+  @apply text-neutral-500 font-serif text-base md:text-4xl lg:text-5xl landscape:lg:text-4xl xl:text-4xl;
 }
 
 /* Content wrapper - container for content text and image */
@@ -452,7 +460,7 @@
   @apply justify-center portrait:lg:justify-center xl:justify-center;
 
   /* Sizing & spacing */
-  @apply py-0 md:py-12 xl:py-20 portrait:lg:py-30 landscape:lg:py-10;
+  @apply py-0 md:py-12 xl:py-20 portrait:lg:py-30 landscape:lg:py-10 landscape:lg:px-0;
   @apply landscape:pt-0 landscape:md:pt-12;
   @apply min-h-screen;
   /* Margin order: landscape:lg: MUST come after xl: to prevent xl:mt-0 from overriding */
@@ -465,8 +473,9 @@
 }
 
 /* TODO - organize this stylesheet and consider modularizing - this one is def out of organizational/alphabetical order */
-
 .content-divider {
+  @apply border-sv-purple-300;
   @apply my-10 md:my-30;
+  @apply landscape:lg:my-25;
   @apply xl:hidden;
 }
