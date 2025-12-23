@@ -167,7 +167,7 @@
 /* TODO - can we make this a variant of the above class and/or find a way to reduce repetition of code? */
 .hero-title-downcase {
   /* Sizing & spacing */
-  @apply px-4 mx-auto mb-10;
+  @apply px-4 mx-auto mb-20;
 
   /* Colors */
   @apply text-neutral-600;
@@ -291,11 +291,11 @@
   @apply px-4;
 
   /* Colors */
-  @apply text-neutral-600;
+  @apply text-neutral-500;
 
   /* Typography */
-  @apply text-4xl md:text-6xl xl:text-7xl portrait:lg:text-8xl;
-  @apply landscape:md:text-3xl landscape:lg:text-5xl;
+  @apply text-4xl md:text-6xl portrait:lg:text-8xl;
+  @apply landscape:md:text-3xl landscape:lg:text-5xl landscape:xl:text-7xl;
   @apply font-serif text-center italic;
 }
 
@@ -387,7 +387,7 @@
   align-items: flex-start;
 
   /* Sizing & spacing */
-  @apply gap-4 px-10 md:px-20;
+  @apply gap-4 px-10 md:px-40 xl:px-100;
 }
 
 /* Answer / Question label - "A:"/"Q:" text aligned to top */
@@ -405,7 +405,7 @@
   @apply flex-1;
 
   /* Typography */
-  @apply text-neutral-500 font-serif text-base md:text-4xl lg:text-5xl;
+  @apply text-neutral-500 font-serif text-base md:text-4xl lg:text-5xl xl:text-4xl;
 }
 
 /* Content wrapper - container for content text and image */
@@ -468,4 +468,5 @@
 
 .content-divider {
   @apply my-10 md:my-30;
+  @apply xl:hidden;
 }
