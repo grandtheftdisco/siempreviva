@@ -35,7 +35,7 @@
   @apply landscape:xl:hidden portrait:lg:block landscape:lg:block;
 
   /* Layout & positioning */
-  @apply absolute bottom-20 left-1/2 -translate-x-1/2;
+  @apply absolute bottom-20 landscape:max-md:bottom-12 left-1/2 -translate-x-1/2;
   @apply z-10;
 
   /* Sizing & spacing */
@@ -55,7 +55,7 @@
   @apply landscape:xl:hidden portrait:lg:block landscape:lg:block;
 
   /* Layout & positioning */
-  @apply absolute bottom-20 left-1/2 -translate-x-1/2;
+  @apply absolute bottom-20 landscape:max-md:bottom-12 left-1/2 -translate-x-1/2;
   @apply z-10;
 
   /* Sizing & spacing */
@@ -167,7 +167,7 @@
 /* TODO - can we make this a variant of the above class and/or find a way to reduce repetition of code? */
 .hero-title-downcase {
   /* Sizing & spacing */
-  @apply lg:px-4 mx-auto mt-8 xs:mt-0 landscape:md:mt-5 mb-10 lg:mb-20;
+  @apply lg:px-4 mx-auto mt-8 xs:mt-0 landscape:max-md:mt-5 landscape:md:mt-5 mb-10 landscape:max-md:mb-2.5 lg:mb-20;
 
   /* Colors */
   @apply text-neutral-600;
@@ -197,6 +197,7 @@
   @apply h-80 w-60 xs:h-64 xs:w-48 md:h-130 md:w-130 xl:h-130 xl:w-130;
   @apply portrait:lg:h-150 portrait:lg:w-120;
   @apply landscape:h-50 landscape:w-40;
+  @apply landscape:max-md:h-40 landscape:max-md:w-32;
   @apply landscape:md:hidden;
   @apply landscape:lg:h-100 landscape:lg:w-80 landscape:lg:block;
   @apply landscape:xl:h-100 landscape:xl:w-150;
@@ -472,14 +473,15 @@
   /* Sizing & spacing */
   @apply py-0 md:py-12 xl:py-20 portrait:lg:py-30 landscape:lg:py-10 landscape:lg:px-0;
   @apply landscape:pt-0 landscape:md:pt-12;
+  @apply landscape:max-md:py-20;
   @apply min-h-screen;
   /* Margin order: landscape:lg: MUST come after xl: to prevent xl:mt-0 from overriding */
   /* Larger negative margin to reduce top spacing on content frames */
-  @apply -mt-32 md:-mt-30 xl:mt-0 portrait:lg:mt-0 landscape:md:mt-0 landscape:lg:-mt-30;
+  @apply -mt-32 md:-mt-30 xl:mt-0 portrait:lg:mt-0 landscape:max-md:mt-0 landscape:md:mt-0 landscape:lg:-mt-30;
 
   /* Scroll snap behavior (mobile, tablet, portrait, and landscape) */
   /* Larger scroll-mt to account for negative margin offset */
-  @apply snap-start scroll-mt-5 landscape:md:scroll-mt-20 xl:snap-align-none portrait:lg:snap-start landscape:lg:snap-start;
+  @apply snap-start scroll-mt-5 xs:scroll-mt-10 landscape:max-md:scroll-mt-12 landscape:md:scroll-mt-20 xl:snap-align-none portrait:lg:snap-start landscape:lg:snap-start;
 }
 
 /* TODO - organize this stylesheet and consider modularizing - this one is def out of organizational/alphabetical order */
