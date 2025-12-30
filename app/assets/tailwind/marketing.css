@@ -167,13 +167,13 @@
 /* TODO - can we make this a variant of the above class and/or find a way to reduce repetition of code? */
 .hero-title-downcase {
   /* Sizing & spacing */
-  @apply lg:px-4 mx-auto mt-8 xs:mt-0 mb-10 lg:mb-20;
+  @apply lg:px-4 mx-auto mt-8 xs:mt-0 landscape:md:mt-5 mb-10 lg:mb-20;
 
   /* Colors */
   @apply text-neutral-600;
 
   /* Typography */
-  @apply text-3xl md:text-6xl lg:text-6xl;
+  @apply text-3xl md:text-6xl landscape:md:text-4xl lg:text-6xl;
   @apply font-serif;
   @apply text-center portrait:lg:text-center xl:text-right;
 }
@@ -197,7 +197,8 @@
   @apply h-80 w-60 xs:h-64 xs:w-48 md:h-130 md:w-130 xl:h-130 xl:w-130;
   @apply portrait:lg:h-150 portrait:lg:w-120;
   @apply landscape:h-50 landscape:w-40;
-  @apply landscape:lg:h-100 landscape:lg:w-80;
+  @apply landscape:md:hidden;
+  @apply landscape:lg:h-100 landscape:lg:w-80 landscape:lg:block;
   @apply landscape:xl:h-100 landscape:xl:w-150;
 
   /* Border & shape */
@@ -315,7 +316,7 @@
   @apply text-neutral-500;
 
   /* Typography */
-  @apply italic text-2xl md:text-4xl font-serif lg:text-5xl;
+  @apply italic text-2xl md:text-4xl landscape:md:text-2xl font-serif lg:text-5xl;
   @apply text-center xs:text-left;
 
   /* Sizing & spacing */
@@ -386,6 +387,9 @@
   /* iPhone SE portrait and landscape inline layout */
   @apply xs:flex-row xs:gap-3;
   @apply landscape:max-md:flex-row landscape:max-md:gap-3;
+
+  /* iPhone 12 landscape inline layout */
+  @apply landscape:md:flex-row landscape:md:gap-3;
 }
 
 .faq-content-wrapper-reverse .question-wrapper {
@@ -401,7 +405,7 @@
   align-items: flex-start;
 
   /* Sizing & spacing */
-  @apply gap-4 px-10 md:px-40 landscape:lg:px-50 xl:px-100;
+  @apply gap-4 px-10 md:px-40 landscape:md:px-20 landscape:lg:px-50 xl:px-100;
 }
 
 /* Answer / Question label - "A:"/"Q:" text aligned to top */
@@ -410,7 +414,7 @@
   @apply flex-shrink-0 mx-auto;
 
   /* Typography */
-  @apply text-neutral-500 font-serif text-3xl md:pr-4 md:text-7xl lg:text-8xl lg:pr-5;
+  @apply text-neutral-500 font-serif text-3xl md:pr-4 md:text-7xl landscape:md:text-2xl lg:text-8xl lg:pr-5;
 }
 
 /* Answer text - main content area */
@@ -419,7 +423,7 @@
   @apply flex-1;
 
   /* Typography */
-  @apply text-neutral-500 font-serif text-lg md:text-4xl lg:text-5xl landscape:lg:text-4xl xl:text-4xl;
+  @apply text-neutral-500 font-serif text-lg md:text-4xl landscape:md:text-base lg:text-5xl landscape:lg:text-4xl xl:text-4xl;
 }
 
 /* Content wrapper - container for content text and image */
@@ -471,11 +475,11 @@
   @apply min-h-screen;
   /* Margin order: landscape:lg: MUST come after xl: to prevent xl:mt-0 from overriding */
   /* Larger negative margin to reduce top spacing on content frames */
-  @apply -mt-32 md:-mt-30 xl:mt-0 portrait:lg:mt-0 landscape:lg:-mt-30;
+  @apply -mt-32 md:-mt-30 xl:mt-0 portrait:lg:mt-0 landscape:md:mt-0 landscape:lg:-mt-30;
 
   /* Scroll snap behavior (mobile, tablet, portrait, and landscape) */
   /* Larger scroll-mt to account for negative margin offset */
-  @apply snap-start scroll-mt-5 xl:snap-align-none portrait:lg:snap-start landscape:lg:snap-start;
+  @apply snap-start scroll-mt-5 landscape:md:scroll-mt-20 xl:snap-align-none portrait:lg:snap-start landscape:lg:snap-start;
 }
 
 /* TODO - organize this stylesheet and consider modularizing - this one is def out of organizational/alphabetical order */
