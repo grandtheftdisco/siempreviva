@@ -35,7 +35,7 @@
   @apply landscape:xl:hidden portrait:lg:block landscape:lg:block;
 
   /* Layout & positioning */
-  @apply absolute bottom-20 landscape:max-md:bottom-12 left-1/2 -translate-x-1/2;
+  @apply absolute bottom-20 landscape:max-md:bottom-12 portrait:lg:bottom-32 left-1/2 -translate-x-1/2;
   @apply z-10;
 
   /* Sizing & spacing */
@@ -55,7 +55,7 @@
   @apply landscape:xl:hidden portrait:lg:block landscape:lg:block;
 
   /* Layout & positioning */
-  @apply absolute bottom-20 landscape:max-md:bottom-12 left-1/2 -translate-x-1/2;
+  @apply absolute bottom-20 landscape:max-md:bottom-12 portrait:lg:bottom-32 left-1/2 -translate-x-1/2;
   @apply z-10;
 
   /* Sizing & spacing */
@@ -458,7 +458,8 @@
   @apply min-h-screen;
   /* Margin order: landscape:lg: MUST come after xl: to prevent xl:mt-0 from overriding */
   /* Negative margin pulls centered content up to account for header */
-  @apply -mt-20 md:-mt-30 xl:mt-0 portrait:lg:mt-0 landscape:lg:-mt-30;
+  @apply -mt-20 md:-mt-30 xl:mt-0 landscape:lg:-mt-30;
+  @apply portrait:lg:-mt-20;
 
   /* Scroll snap behavior (mobile, tablet, portrait, and landscape) */
   @apply snap-start scroll-mt-20 xl:snap-align-none portrait:lg:snap-start landscape:lg:snap-start;
@@ -477,7 +478,8 @@
   @apply min-h-screen;
   /* Margin order: landscape:lg: MUST come after xl: to prevent xl:mt-0 from overriding */
   /* Larger negative margin to reduce top spacing on content frames */
-  @apply -mt-32 md:-mt-30 xl:mt-0 portrait:lg:mt-0 landscape:max-md:mt-0 landscape:md:mt-0 landscape:lg:-mt-30;
+  @apply -mt-32 md:-mt-30 xl:mt-0 landscape:max-md:mt-0 landscape:md:mt-0 landscape:lg:-mt-30;
+  @apply portrait:lg:-mt-40;
 
   /* Scroll snap behavior (mobile, tablet, portrait, and landscape) */
   /* Larger scroll-mt to account for negative margin offset */
