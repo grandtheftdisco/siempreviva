@@ -340,13 +340,13 @@
 /* Text overlaid on image */
 .image-overlay-text {
   /* Layout & positioning */
-  @apply absolute;
+  @apply absolute bottom-4 left-1/2 -translate-x-1/2;
 
   /* Colors */
   @apply text-neutral-600;
 
   /* Typography */
-  @apply text-3xl md:text-5xl font-serif italic text-center;
+  @apply text-3xl md:text-5xl font-serif italic text-center whitespace-nowrap;
 }
 
 /* ===== CTA SECTION STYLES ===== */
