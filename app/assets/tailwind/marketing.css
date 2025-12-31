@@ -121,7 +121,7 @@
   @apply min-h-screen;
 
   /* IMPORTANT re: margin order - landscape:lg: MUST come after xl: to prevent xl:mt-0 from overriding */
-  @apply -mt-30 xl:mt-0 portrait:lg:mt-0 landscape:lg:-mt-30;
+  @apply -mt-30 landscape:-mt-10 xl:mt-0 portrait:lg:mt-0 landscape:lg:-mt-30;
 
   /* Scroll snap behavior */
   @apply snap-start scroll-mt-20 xl:snap-align-none portrait:lg:snap-start landscape:lg:snap-start;
@@ -194,8 +194,8 @@
   /* Sizing & spacing - landscape aspect ratio */
   @apply h-60 w-80 xs:h-48 xs:w-64 md:h-90 md:w-130 xl:h-100 xl:w-150;
   @apply portrait:lg:h-120 portrait:lg:w-150;
-  @apply landscape:h-40 landscape:w-50;
-  @apply landscape:max-md:h-32 landscape:max-md:w-40;
+  @apply landscape:h-32 landscape:w-60;
+  @apply landscape:max-md:h-24 landscape:max-md:w-48;
   @apply landscape:lg:h-80 landscape:w-100;
   @apply mx-auto mb-10;
 
@@ -324,6 +324,9 @@
 
 /* Horizontal divider */
 .content-divider {
+  /* Display & visibility */
+  @apply landscape:hidden;
+
   /* Sizing & spacing */
   @apply w-full my-5 md:my-20;
 

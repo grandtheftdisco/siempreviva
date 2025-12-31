@@ -8,22 +8,31 @@
   %>
 
   <!-- Frame 1: Hero -->
-  <div class="hero-section px-4 py-8 -mt-30 scroll-mt-5" data-scroll-section>
+  <div class="hero-section px-4 py-8 -mt-30 scroll-mt-5 landscape:!-mt-20" data-scroll-section>
     <h1 class="hero-title-downcase">our farms</h1>
-    <picture>
-      <source media="(min-width: 1280px)" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7">
-      <source media="(min-width: 768px)" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7">
-      <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
-           alt="Farm landscape"
-           class="marketing-image-landscape"
-           loading="lazy">
-    </picture>
-    <h2 class="section-title-center-italic">lorem ipsum.</h2>
-    <p class="section-body-text">
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat.
-      In id cursus mi pretium tellus duis convallis. Tempus leo eu aenean sed diam urna tempor. Pulvinar vivamus fringilla
-      netus proin condimdm egestas.
-    </p>
+
+    <!-- Wrapper for image + text content (side-by-side in landscape) -->
+    <div class="flex flex-col landscape:flex-row landscape:items-center gap-6">
+      <picture>
+        <source media="(min-width: 1280px)" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7">
+        <source media="(min-width: 768px)" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7">
+        <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+             alt="Farm landscape"
+             class="marketing-image-square"
+             loading="lazy">
+      </picture>
+
+      <!-- Text content wrapper -->
+      <div class="flex flex-col gap-4 landscape:max-w-md">
+        <h2 class="section-title-center-italic">lorem ipsum.</h2>
+        <p class="section-body-text landscape:px-5">
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat.
+          In id cursus mi pretium tellus duis convallis. Tempus leo eu aenean sed diam urna tempor. Pulvinar vivamus fringilla
+          netus proin condimdm egestas.
+        </p>
+      </div>
+    </div>
+
     <button
       data-action="click->scroll-navigation#scrollToNext"
       class="scroll-next-button !bottom-10"
@@ -34,23 +43,27 @@
 
   <!-- Frame 2: Content -->
   <div class="content-section !pt-0 !-mt-17" data-scroll-section>
-    <picture>
-      <source media="(min-width: 1280px)" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7">
-      <source media="(min-width: 768px)" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7">
-      <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
-           alt="Farm landscape"
-           class="marketing-image-landscape"
-           loading="lazy">
-    </picture>
+    <div class="content-wrapper-reverse landscape:!flex-row-reverse">
+      <picture>
+        <source media="(min-width: 1280px)" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7">
+        <source media="(min-width: 768px)" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7">
+        <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+             alt="Farm landscape"
+             class="marketing-image-square"
+             loading="lazy">
+      </picture>
+      <p class="section-body-text landscape:px-5 landscape:max-w-md">
+        Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula, portitor eu, consequat vitae,
+        eleifend ac, enim. Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus. Phasellus viverra nulla ut metus
+        varius laoreet. Quisque rutrum. Aenean imperdiet. Etiam ultricies nisi vel augue. Curabitur ullamcorper ultricies nisi.
+      </p>
+    </div>
+
     <hr class="content-divider" />
-    <p class="section-body-text">
-      Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula, portitor eu, consequat vitae,
-      eleifend ac, enim. Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus. Phasellus viverra nulla ut metus
-      varius laoreet. Quisque rutrum. Aenean imperdiet. Etiam ultricies nisi vel augue. Curabitur ullamcorper ultricies nisi.
-    </p>
+
     <button
       data-action="click->scroll-navigation#scrollToNext"
-      class="scroll-next-button absolute-bottom-10"
+      class="scroll-next-button landscape:hidden"
       aria-label="Scroll to next section">
       <%= scroll_arrow(:down) %>
     </button>
