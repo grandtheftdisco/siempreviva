@@ -1,4 +1,85 @@
-<div>
-  <h1 class="font-bold text-4xl">Marketing#our_farms</h1>
-  <p>Find me in app/views/marketing/our_farms.html.erb</p>
+<div data-controller="scroll-navigation" class="scroll-nav-container">
+  <%# PLACEHOLDER IMAGE NOTE:
+      The data URI below is a 1x1 transparent GIF encoded as base64.
+      Format: data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7
+      This allows us to use proper <picture> element structure with media queries
+      while still rendering placeholder divs styled by CSS classes.
+      When connecting to CDN, replace data URIs with actual image paths/Cloudinary helpers.
+  %>
+
+  <!-- Frame 1: Hero -->
+  <div class="hero-section px-4 py-8 -mt-30 scroll-mt-5" data-scroll-section>
+    <h1 class="hero-title-downcase">our farms</h1>
+    <picture>
+      <source media="(min-width: 1280px)" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7">
+      <source media="(min-width: 768px)" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7">
+      <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+           alt="Farm landscape"
+           class="marketing-image-landscape"
+           loading="lazy">
+    </picture>
+    <h2 class="section-title-center-italic">lorem ipsum.</h2>
+    <p class="section-body-text">
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat.
+      In id cursus mi pretium tellus duis convallis. Tempus leo eu aenean sed diam urna tempor. Pulvinar vivamus fringilla
+      netus proin condimdm egestas.
+    </p>
+    <button
+      data-action="click->scroll-navigation#scrollToNext"
+      class="scroll-next-button !bottom-10"
+      aria-label="Scroll to next section">
+      <%= scroll_arrow(:down) %>
+    </button>
+  </div>
+
+  <!-- Frame 2: Content -->
+  <div class="content-section !pt-0 !-mt-17" data-scroll-section>
+    <picture>
+      <source media="(min-width: 1280px)" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7">
+      <source media="(min-width: 768px)" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7">
+      <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+           alt="Farm landscape"
+           class="marketing-image-landscape"
+           loading="lazy">
+    </picture>
+    <hr class="content-divider" />
+    <p class="section-body-text">
+      Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula, portitor eu, consequat vitae,
+      eleifend ac, enim. Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus. Phasellus viverra nulla ut metus
+      varius laoreet. Quisque rutrum. Aenean imperdiet. Etiam ultricies nisi vel augue. Curabitur ullamcorper ultricies nisi.
+    </p>
+    <button
+      data-action="click->scroll-navigation#scrollToNext"
+      class="scroll-next-button absolute-bottom-10"
+      aria-label="Scroll to next section">
+      <%= scroll_arrow(:down) %>
+    </button>
+  </div>
+
+  <!-- Frame 3: CTA with image overlay -->
+  <div class="content-section -mt-50" data-scroll-section>
+    <hr class="content-divider" />
+
+    <div class="image-overlay-wrapper">
+      <picture>
+        <source media="(min-width: 1280px)" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7">
+        <source media="(min-width: 768px)" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7">
+        <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+             alt="Farm landscape"
+             class="marketing-image-landscape"
+             loading="lazy">
+      </picture>
+      <span class="image-overlay-text">see us in action</span>
+    </div>
+
+    <hr class="content-divider" />
+
+    <button
+      data-action="click->scroll-navigation#scrollToTop"
+      class="scroll-top-button"
+      aria-label="Back to top">
+      <%= scroll_arrow(:up) %>
+      <span class="scroll-top-text">BACK TO TOP</span>
+    </button>
+  </div>
 </div>

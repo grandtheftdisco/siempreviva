@@ -115,12 +115,13 @@
   @apply justify-center portrait:lg:justify-start xl:justify-center;
 
   /* Sizing & spacing */
+  @apply px-4;
   @apply py-10 md:py-12 xl:py-20 portrait:lg:py-30 landscape:lg:py-10;
   @apply landscape:pt-0 landscape:md:pt-12;
   @apply min-h-screen;
 
   /* IMPORTANT re: margin order - landscape:lg: MUST come after xl: to prevent xl:mt-0 from overriding */
-  @apply -mt-12 md:-mt-30 xl:mt-0 portrait:lg:mt-0 landscape:lg:-mt-30;
+  @apply -mt-30 xl:mt-0 portrait:lg:mt-0 landscape:lg:-mt-30;
 
   /* Scroll snap behavior */
   @apply snap-start scroll-mt-20 xl:snap-align-none portrait:lg:snap-start landscape:lg:snap-start;
@@ -152,7 +153,7 @@
   @apply text-neutral-600;
 
   /* Typography */
-  @apply text-3xl md:text-6xl landscape:md:text-4xl lg:text-6xl;
+  @apply text-4xl md:text-6xl landscape:md:text-4xl lg:text-6xl;
   @apply landscape:lg:text-7xl;
   @apply font-serif;
   @apply text-center portrait:lg:text-center xl:text-right;
@@ -170,16 +171,49 @@
   @apply text-center portrait:lg:text-center xl:text-right;
 }
 
-/* Image placeholder until CDN is set up */
-.marketing-image {
-  /* Sizing & spacing */
-  @apply h-80 w-60 xs:h-64 xs:w-48 md:h-130 md:w-130 xl:h-130 xl:w-130;
+/* Image placeholders - split by orientation for responsive behavior */
+
+/* Portrait orientation (taller than wide) */
+.marketing-image-portrait {
+  /* Sizing & spacing - portrait aspect ratio */
+  @apply h-80 w-60 xs:h-64 xs:w-48 md:h-120 md:w-90 xl:h-130 xl:w-100;
   @apply portrait:lg:h-150 portrait:lg:w-120;
   @apply landscape:h-50 landscape:w-40;
   @apply landscape:max-md:h-40 landscape:max-md:w-32;
-  @apply landscape:md:hidden;
-  @apply landscape:lg:h-100 landscape:lg:w-80 landscape:lg:block;
-  @apply landscape:xl:h-100 landscape:xl:w-150;
+  @apply landscape:lg:h-100 landscape:lg:w-80;
+
+  /* Border & shape */
+  @apply rounded-2xl;
+
+  /* Colors */
+  @apply bg-neutral-200;
+}
+
+/* Landscape orientation (wider than tall) */
+.marketing-image-landscape {
+  /* Sizing & spacing - landscape aspect ratio */
+  @apply h-60 w-80 xs:h-48 xs:w-64 md:h-90 md:w-130 xl:h-100 xl:w-150;
+  @apply portrait:lg:h-120 portrait:lg:w-150;
+  @apply landscape:h-40 landscape:w-50;
+  @apply landscape:max-md:h-32 landscape:max-md:w-40;
+  @apply landscape:lg:h-80 landscape:w-100;
+  @apply mx-auto mb-10;
+
+  /* Border & shape */
+  @apply rounded-2xl;
+
+  /* Colors */
+  @apply bg-neutral-200;
+}
+
+/* Square orientation (equal width and height) */
+.marketing-image-square {
+  /* Sizing & spacing - square aspect ratio */
+  @apply h-60 w-60 xs:h-48 xs:w-48 md:h-130 md:w-130 xl:h-130 xl:w-130;
+  @apply portrait:lg:h-150 portrait:lg:w-150;
+  @apply landscape:h-40 landscape:w-40;
+  @apply landscape:max-md:h-32 landscape:max-md:w-32;
+  @apply landscape:lg:h-100 landscape:lg:w-100;
 
   /* Border & shape */
   @apply rounded-2xl;
@@ -259,8 +293,9 @@
   @apply text-neutral-600;
 
   /* Typography */
-  @apply text-center portrait:lg:text-xl;
+  @apply text-sm text-center portrait:lg:text-xl;
   @apply landscape:md:text-sm landscape:lg:text-base;
+  @apply font-serif;
 }
 
 /* Left-aligned variant */
@@ -287,6 +322,33 @@
   @apply text-center xl:text-right portrait:lg:text-center portrait:lg:text-xl;
 }
 
+/* Horizontal divider */
+.content-divider {
+  /* Sizing & spacing */
+  @apply w-full my-5 md:my-20;
+
+  /* Border & shape */
+  @apply border-t border-sv-purple-300;
+}
+
+/* Image with text overlay wrapper */
+.image-overlay-wrapper {
+  /* Layout & positioning */
+  @apply relative flex items-center justify-center;
+}
+
+/* Text overlaid on image */
+.image-overlay-text {
+  /* Layout & positioning */
+  @apply absolute;
+
+  /* Colors */
+  @apply text-neutral-600;
+
+  /* Typography */
+  @apply text-3xl md:text-5xl font-serif italic text-center;
+}
+
 /* ===== CTA SECTION STYLES ===== */
 
 .cta-section {
@@ -309,7 +371,7 @@
   @apply text-neutral-500;
 
   /* Typography */
-  @apply text-4xl md:text-6xl portrait:lg:text-8xl;
+  @apply text-2xl md:text-6xl portrait:lg:text-8xl;
   @apply landscape:md:text-3xl landscape:lg:text-5xl landscape:xl:text-7xl;
   @apply font-serif text-center italic;
 }
