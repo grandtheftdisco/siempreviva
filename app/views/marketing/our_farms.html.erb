@@ -57,22 +57,25 @@
   </div>
 
   <!-- Frame 3: CTA with image overlay -->
-  <div class="content-section -mt-50" data-scroll-section>
-    <hr class="content-divider" />
+  <div class="content-section" data-scroll-section>
+    <!-- Inner wrapper for divider-picture-divider group -->
+    <div class="flex flex-col items-center gap-10 -mt-20">
+      <hr class="content-divider" />
 
-    <div class="image-overlay-wrapper">
-      <picture>
-        <source media="(min-width: 1280px)" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7">
-        <source media="(min-width: 768px)" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7">
-        <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
-             alt="Farm landscape"
-             class="marketing-image-landscape"
-             loading="lazy">
-      </picture>
-      <span class="image-overlay-text">see us in action</span>
+      <div class="image-overlay-wrapper">
+        <picture>
+          <source media="(min-width: 1280px)" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7">
+          <source media="(min-width: 768px)" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7">
+          <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+               alt="Farm landscape"
+               class="marketing-image-landscape !mb-0"
+               loading="lazy">
+        </picture>
+        <span class="image-overlay-text">see us in action</span>
+      </div>
+
+      <hr class="content-divider" />
     </div>
-
-    <hr class="content-divider" />
 
     <button
       data-action="click->scroll-navigation#scrollToTop"
