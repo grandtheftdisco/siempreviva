@@ -251,20 +251,6 @@
   @apply font-serif text-center xl:text-right portrait:lg:text-center;
 }
 
-/* TODO - move to CTA section */
-.section-title-center-italic {
-  /* Sizing & spacing */
-  @apply px-4;
-
-  /* Colors */
-  @apply text-neutral-500;
-
-  /* Typography */
-  @apply text-4xl md:text-6xl portrait:lg:text-8xl;
-  @apply landscape:md:text-3xl landscape:lg:text-5xl landscape:xl:text-7xl;
-  @apply font-serif text-center italic;
-}
-
 .section-body-text {
   /* Colors */
   @apply text-neutral-600;
@@ -272,19 +258,6 @@
   /* Typography */
   @apply text-center portrait:lg:text-xl;
   @apply landscape:md:text-sm landscape:lg:text-base;
-}
-
-.question-text {
-  /* Colors */
-  @apply text-neutral-500;
-
-  /* Typography */
-  @apply italic text-2xl md:text-4xl landscape:md:text-2xl font-serif lg:text-5xl;
-  @apply text-center xs:text-left landscape:lg:text-left;
-  @apply landscape:lg:text-6xl;
-
-  /* Sizing & spacing */
-  @apply px-20 xs:px-0 md:px-40 lg:px-40 landscape:px-0 landscape:lg:w-100;
 }
 
 /* Left-aligned variant */
@@ -325,6 +298,19 @@
   @apply snap-start scroll-mt-20 xl:snap-align-none portrait:lg:snap-start landscape:lg:snap-start;
 }
 
+.section-title-center-italic {
+  /* Sizing & spacing */
+  @apply px-4;
+
+  /* Colors */
+  @apply text-neutral-500;
+
+  /* Typography */
+  @apply text-4xl md:text-6xl portrait:lg:text-8xl;
+  @apply landscape:md:text-3xl landscape:lg:text-5xl landscape:xl:text-7xl;
+  @apply font-serif text-center italic;
+}
+
 /* CTA content wrapper - contains heading, body text, and button */
 .cta-content-wrapper {
   /* Layout & positioning */
@@ -340,70 +326,9 @@
   @apply mb-6 xl:mb-10 landscape:py-0;
 }
 
-.question-wrapper {
-  /* Layout & positioning */
-  @apply flex flex-col gap-5 lg:gap-20;
+/* ===== FAQ/LEARN PAGE COMPONENTS ===== */
 
-  /* Small phone (iPhone SE, etc) portrait and landscape inline layout */
-  @apply xs:flex-row xs:gap-3;
-  @apply landscape:max-md:flex-row landscape:max-md:gap-3;
-
-  /* Standard phone landscape inline layout */
-  @apply landscape:md:flex-row landscape:md:gap-3;
-}
-
-.faq-content-wrapper-reverse .question-wrapper {
-  @apply md:mb-20;
-}
-
-/* Answer section wrapper - contains label and text in a row */
-.answer-wrapper {
-  /* Layout & positioning */
-  @apply flex flex-row items-start;
-
-  /* Sizing & spacing */
-  @apply gap-4 px-10 md:px-40 landscape:md:px-20 landscape:lg:px-50 xl:px-200 landscape:xl:px-100;
-}
-
-/* Answer / Question label - "A:"/"Q:" text aligned to top */
-.faq-label {
-  /* Layout & positioning */
-  @apply flex-shrink-0 mx-auto;
-  @apply xl:mx-0;
-
-  /* Typography */
-  @apply text-neutral-500 font-serif text-3xl md:pr-4 md:text-7xl landscape:md:text-2xl lg:text-8xl lg:pr-5;
-  @apply landscape:lg:text-7xl;
-}
-
-/* Answer text - main content area */
-.answer-text {
-  /* Layout & positioning */
-  @apply flex-1;
-
-  /* Typography */
-  @apply text-neutral-500 font-serif text-lg md:text-4xl landscape:md:text-base lg:text-5xl landscape:lg:text-4xl xl:text-4xl;
-}
-
-/* Content wrapper - container for content text and image */
-.faq-content-wrapper {
-  /* Layout & positioning */
-  @apply flex flex-col justify-center items-center;
-  @apply portrait:lg:flex-col landscape:flex-row landscape:inline-flex;
-
-  /* Sizing & spacing */
-  @apply gap-6 xl:gap-8;
-}
-
-.faq-content-wrapper-reverse {
-  /* Layout & positioning */
-  @apply flex flex-col-reverse justify-center items-center;
-  @apply portrait:lg:flex-col landscape:flex-row-reverse landscape:inline-flex;
-
-  /* Sizing & spacing */
-  @apply gap-6 xl:gap-8;
-  @apply landscape:lg:px-12;
-}
+/* --- Section Containers --- */
 
 /* FAQ Hero section - first section with page title and initial question */
 .faq-hero-section {
@@ -443,4 +368,82 @@
 
   /* Scroll snap behavior */
   @apply snap-start scroll-mt-5 xs:scroll-mt-10 landscape:max-md:scroll-mt-12 landscape:md:scroll-mt-20 xl:snap-align-none portrait:lg:snap-start landscape:lg:snap-start;
+}
+
+/* --- Layout Wrappers --- */
+
+.question-wrapper {
+  /* Layout & positioning */
+  @apply flex flex-col gap-5 lg:gap-20;
+
+  /* Small phone (iPhone SE, etc) portrait and landscape inline layout */
+  @apply xs:flex-row xs:gap-3;
+  @apply landscape:max-md:flex-row landscape:max-md:gap-3;
+
+  /* Standard phone landscape inline layout */
+  @apply landscape:md:flex-row landscape:md:gap-3;
+}
+
+.faq-content-wrapper-reverse .question-wrapper {
+  @apply md:mb-20;
+}
+
+.faq-content-wrapper {
+  /* Layout & positioning */
+  @apply flex flex-col justify-center items-center;
+  @apply portrait:lg:flex-col landscape:flex-row landscape:inline-flex;
+
+  /* Sizing & spacing */
+  @apply gap-6 xl:gap-8;
+}
+
+.faq-content-wrapper-reverse {
+  /* Layout & positioning */
+  @apply flex flex-col-reverse justify-center items-center;
+  @apply portrait:lg:flex-col landscape:flex-row-reverse landscape:inline-flex;
+
+  /* Sizing & spacing */
+  @apply gap-6 xl:gap-8;
+  @apply landscape:lg:px-12;
+}
+
+.answer-wrapper {
+  /* Layout & positioning */
+  @apply flex flex-row items-start;
+
+  /* Sizing & spacing */
+  @apply gap-4 px-10 md:px-40 landscape:md:px-20 landscape:lg:px-50 xl:px-200 landscape:xl:px-100;
+}
+
+/* --- Content Components --- */
+
+.question-text {
+  /* Colors */
+  @apply text-neutral-500;
+
+  /* Typography */
+  @apply italic text-2xl md:text-4xl landscape:md:text-2xl font-serif lg:text-5xl;
+  @apply text-center xs:text-left landscape:lg:text-left;
+  @apply landscape:lg:text-6xl;
+
+  /* Sizing & spacing */
+  @apply px-20 xs:px-0 md:px-40 lg:px-40 landscape:px-0 landscape:lg:w-100;
+}
+
+.faq-label {
+  /* Layout & positioning */
+  @apply flex-shrink-0 mx-auto;
+  @apply xl:mx-0;
+
+  /* Typography */
+  @apply text-neutral-500 font-serif text-3xl md:pr-4 md:text-7xl landscape:md:text-2xl lg:text-8xl lg:pr-5;
+  @apply landscape:lg:text-7xl;
+}
+
+.answer-text {
+  /* Layout & positioning */
+  @apply flex-1;
+
+  /* Typography */
+  @apply text-neutral-500 font-serif text-lg md:text-4xl landscape:md:text-base lg:text-5xl landscape:lg:text-4xl xl:text-4xl;
 }
