@@ -192,12 +192,12 @@
 /* Landscape orientation (wider than tall) */
 .marketing-image-landscape {
   /* Sizing & spacing - landscape aspect ratio */
-  @apply h-60 w-80 xs:h-48 xs:w-64 md:h-90 md:w-130 xl:h-100 xl:w-150;
+  @apply h-80 w-60 xs:h-64 xs:w-48 md:h-90 md:w-130 xl:h-100 xl:w-150;
   @apply portrait:lg:h-120 portrait:lg:w-150;
-  @apply landscape:h-32 landscape:w-60;
-  @apply landscape:max-md:h-24 landscape:max-md:w-48;
+  @apply landscape:h-40 landscape:w-60;
+  @apply landscape:max-md:h-32 landscape:max-md:w-48;
   @apply landscape:lg:h-80 landscape:w-100;
-  @apply mx-auto mb-10;
+  @apply mx-auto mb-10 landscape:mb-0;
 
   /* Border & shape */
   @apply rounded-2xl;

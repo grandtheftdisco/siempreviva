@@ -12,7 +12,7 @@
     <h1 class="hero-title-downcase">our farms</h1>
 
     <!-- Wrapper for image + text content (side-by-side in landscape) -->
-    <div class="flex flex-col landscape:flex-row landscape:items-center gap-6">
+    <div class="flex flex-col landscape:flex-row items-center gap-6">
       <picture>
         <source media="(min-width: 1280px)" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7">
         <source media="(min-width: 768px)" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7">
@@ -22,8 +22,8 @@
              loading="lazy">
       </picture>
 
-      <!-- Text content wrapper -->
-      <div class="flex flex-col gap-4 landscape:max-w-md">
+      <!-- Text content wrapper TODO - abstract into reusable class -->
+      <div class="flex flex-col gap-4 landscape:max-w-md landscape:gap-0">
         <h2 class="section-title-center-italic">lorem ipsum.</h2>
         <p class="section-body-text landscape:px-5">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat.
@@ -43,7 +43,7 @@
 
   <!-- Frame 2: Content -->
   <div class="content-section !pt-0 !-mt-17" data-scroll-section>
-    <div class="content-wrapper-reverse landscape:!flex-row-reverse">
+    <div class="content-wrapper landscape:flex-row-reverse">
       <picture>
         <source media="(min-width: 1280px)" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7">
         <source media="(min-width: 768px)" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7">
@@ -52,14 +52,14 @@
              class="marketing-image-square"
              loading="lazy">
       </picture>
-      <p class="section-body-text landscape:px-5 landscape:max-w-md">
+      <hr class="content-divider" />
+      <p class="section-body-text px-5 landscape:max-w-md">
         Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula, portitor eu, consequat vitae,
         eleifend ac, enim. Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus. Phasellus viverra nulla ut metus
         varius laoreet. Quisque rutrum. Aenean imperdiet. Etiam ultricies nisi vel augue. Curabitur ullamcorper ultricies nisi.
       </p>
     </div>
 
-    <hr class="content-divider" />
 
     <button
       data-action="click->scroll-navigation#scrollToNext"
@@ -70,24 +70,40 @@
   </div>
 
   <!-- Frame 3: CTA with image overlay -->
-  <div class="content-section" data-scroll-section>
-    <!-- Inner wrapper for divider-picture-divider group -->
-    <div class="flex flex-col items-center gap-10 -mt-20">
-      <hr class="content-divider" />
+  <div class="content-section !landscape:pb-10" data-scroll-section>
+    <h2 class="section-title-center-italic -mt-20 mb-6">see us in action</h2>
 
-      <div class="image-overlay-wrapper">
-        <picture>
-          <source media="(min-width: 1280px)" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7">
-          <source media="(min-width: 768px)" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7">
-          <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
-               alt="Farm landscape"
-               class="marketing-image-landscape !mb-0"
-               loading="lazy">
-        </picture>
-        <span class="image-overlay-text">see us in action</span>
-      </div>
+    <!-- Images wrapper - 3 images inline in landscape, only middle visible in portrait -->
+    <div class="flex flex-col landscape:flex-row items-center justify-center gap-6 landscape:gap-10">
+      <!-- Image 1 - hidden in portrait -->
+      <picture class="portrait:hidden">
+        <source media="(min-width: 1280px)" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7">
+        <source media="(min-width: 768px)" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7">
+        <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+             alt="Farm landscape"
+             class="marketing-image-landscape"
+             loading="lazy">
+      </picture>
 
-      <hr class="content-divider" />
+      <!-- Image 2 - visible in all orientations -->
+      <picture>
+        <source media="(min-width: 1280px)" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7">
+        <source media="(min-width: 768px)" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7">
+        <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+             alt="Farm landscape"
+             class="marketing-image-landscape"
+             loading="lazy">
+      </picture>
+
+      <!-- Image 3 - hidden in portrait -->
+      <picture class="portrait:hidden">
+        <source media="(min-width: 1280px)" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7">
+        <source media="(min-width: 768px)" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7">
+        <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+             alt="Farm landscape"
+             class="marketing-image-landscape"
+             loading="lazy">
+      </picture>
     </div>
 
     <button
