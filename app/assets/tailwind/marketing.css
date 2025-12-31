@@ -49,26 +49,6 @@
   @apply bg-transparent border-0;
 }
 
-/* Lower variant for FAQ/Learn pages - can now be consolidated with above */
-.scroll-next-button-lower {
-  /* Display & visibility */
-  @apply landscape:xl:hidden portrait:lg:block landscape:lg:block;
-
-  /* Layout & positioning */
-  @apply absolute bottom-20 landscape:max-md:bottom-12 portrait:lg:bottom-32 left-1/2 -translate-x-1/2;
-  @apply z-10;
-
-  /* Sizing & spacing */
-  @apply p-2;
-
-  /* Interactive & animation */
-  @apply cursor-pointer transition-opacity duration-200;
-  @apply opacity-60 hover:opacity-100;
-
-  /* Remove default button styles */
-  @apply bg-transparent border-0;
-}
-
 /* Up arrow button (back to top) */
 .scroll-top-button {
   /* Display & visibility */
@@ -221,7 +201,7 @@
   @apply landscape:flex-row;
 
   /* Sizing & spacing */
-  @apply gap-6 xl:gap-8 md:gap-15;
+  @apply gap-6 md:gap-15 xl:gap-8;
 }
 
 /* Content wrapper reverse - image/text order reversed on mobile/portrait */
@@ -401,11 +381,8 @@
 
 /* Answer section wrapper - contains label and text in a row */
 .answer-wrapper {
-  /* TODO convert to tailwind apply */
-  /* Display */
-  display: flex;
-  flex-direction: row;
-  align-items: flex-start;
+  /* Layout & positioning */
+  @apply flex flex-row items-start;
 
   /* Sizing & spacing */
   @apply gap-4 px-10 md:px-40 landscape:md:px-20 landscape:lg:px-50 xl:px-200 landscape:xl:px-100;
