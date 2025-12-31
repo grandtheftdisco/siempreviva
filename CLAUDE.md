@@ -12,7 +12,7 @@ Please refer to top-level `CLAUDE.md` file (found at `../CLAUDE.md`) for global 
 - **Database**: PostgreSQL  
 - **Frontend**: Turbo/Stimulus (Hotwire)
 - **Payments**: Stripe API
-- **Styling**: Tailwind CSS
+- **Styling**: Tailwind CSS v4 (@apply and @theme directives)
 - **Authentication**: Rails 8 `Authentication` module
 - **Background Jobs**: Solid Queue
 - **Caching**: Redis
