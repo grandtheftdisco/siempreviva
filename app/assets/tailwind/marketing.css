@@ -73,7 +73,6 @@
   @apply bg-transparent border-0;
 }
 
-/* Arrow icon styling */
 .scroll-arrow-icon {
   /* Sizing */
   @apply w-6 h-6;
@@ -93,13 +92,11 @@
 
 /* ===== HERO/HOME PAGE COMPONENTS ===== */
 
-/* Column wrapper with bottom alignment - used for aligning content to baseline */
 .column-end-wrapper {
   /* Layout & positioning */
   @apply flex flex-col justify-end;
 }
 
-/* Hero content wrapper - container for hero text and image */
 .hero-content-wrapper {
   /* Layout & positioning */
   @apply flex flex-col justify-center items-center;
@@ -112,7 +109,6 @@
   @apply landscape:lg:pb-15;
 }
 
-/* Hero section - first section with brand name and image */
 .hero-section {
   /* Layout & positioning */
   @apply relative flex flex-col;
@@ -122,14 +118,15 @@
   @apply py-10 md:py-12 xl:py-20 portrait:lg:py-30 landscape:lg:py-10;
   @apply landscape:pt-0 landscape:md:pt-12;
   @apply min-h-screen;
-  /* Margin order: landscape:lg: MUST come after xl: to prevent xl:mt-0 from overriding */
+
+  /* IMPORTANT re: margin order - landscape:lg: MUST come after xl: to prevent xl:mt-0 from overriding */
   @apply -mt-12 md:-mt-30 xl:mt-0 portrait:lg:mt-0 landscape:lg:-mt-30;
 
-  /* Scroll snap behavior (mobile, tablet, portrait, and landscape) */
+  /* Scroll snap behavior */
   @apply snap-start scroll-mt-20 xl:snap-align-none portrait:lg:snap-start landscape:lg:snap-start;
 }
 
-/* Hero title - main "SIEMPREVIVA" heading */
+/* Hero/homepage title */
 .hero-title {
   /* Sizing & spacing */
   @apply px-4;
@@ -143,8 +140,7 @@
   @apply text-center portrait:lg:text-center xl:text-right;
 }
 
-/* Hero title - main "SIEMPREVIVA" heading */
-/* TODO - can we make this a variant of the above class and/or find a way to reduce repetition of code? */
+/* Variant for Learn, Our Farms, Gallery views to contrast with upcase homepage style */
 .hero-title-downcase {
   /* Sizing & spacing */
   @apply lg:px-4 mx-auto mt-8 xs:mt-0 landscape:max-md:mt-5 landscape:md:mt-5 mb-10 landscape:max-md:mb-2.5 lg:mb-20;
@@ -159,7 +155,6 @@
   @apply text-center portrait:lg:text-center xl:text-right;
 }
 
-/* Hero subtitle - "essential oils" text */
 .hero-subtitle {
   /* Sizing & spacing */
   @apply px-4 mb-6 xl:mb-0 portrait:lg:mb-6;
@@ -172,7 +167,7 @@
   @apply text-center portrait:lg:text-center xl:text-right;
 }
 
-/* Image placeholder */
+/* Image placeholder until CDN is set up */
 .marketing-image {
   /* Sizing & spacing */
   @apply h-80 w-60 xs:h-64 xs:w-48 md:h-130 md:w-130 xl:h-130 xl:w-130;
@@ -192,7 +187,7 @@
 
 /* ===== CONTENT SECTIONS ===== */
 
-/* Content wrapper - container for content text and image */
+/* Container for content text and image */
 .content-wrapper {
   /* Layout & positioning */
   @apply flex flex-col justify-center items-center;
@@ -204,7 +199,7 @@
   @apply gap-6 md:gap-15 xl:gap-8;
 }
 
-/* Content wrapper reverse - image/text order reversed on mobile/portrait */
+/* Image/text order reversed on mobile/portrait */
 .content-wrapper-reverse {
   /* Layout & positioning */
   @apply flex flex-col-reverse justify-center items-center;
@@ -216,7 +211,7 @@
   @apply gap-6 xl:gap-8;
 }
 
-/* Content section - reusable section container */
+/* Reusable section container */
 .content-section {
   /* Layout & positioning */
   @apply relative flex flex-col;
@@ -226,11 +221,11 @@
   @apply py-10 portrait:lg:pt-70 portrait:lg:pb-30 min-h-screen;
   @apply landscape:pt-0 landscape:md:pt-12;
 
-  /* Scroll snap behavior (mobile, tablet, portrait, and landscape) */
+  /* Scroll snap behavior */
   @apply snap-start scroll-mt-20 xl:snap-align-none portrait:lg:snap-start landscape:lg:snap-start;
 }
 
-/* Section title - h2 headings in content sections */
+/* H2 headings in content sections */
 .section-title {
   /* Sizing & spacing */
   @apply px-4;
@@ -242,7 +237,7 @@
   @apply text-4xl md:text-5xl xl:text-7xl portrait:lg:text-7xl font-serif;
 }
 
-/* Section title left-aligned variant */
+/* Left-aligned variant */
 .section-title-left {
   /* Sizing & spacing */
   @apply px-4 mb-2 xl:mb-0 portrait:lg:mb-2;
@@ -255,7 +250,7 @@
   @apply font-serif text-center xl:text-left portrait:lg:text-center;
 }
 
-/* Section title right-aligned variant */
+/* Right-aligned variant */
 .section-title-right {
   /* Sizing & spacing */
   @apply px-4 mb-2 xl:mb-0 portrait:lg:mb-2;
@@ -268,7 +263,7 @@
   @apply font-serif text-center xl:text-right portrait:lg:text-center;
 }
 
-/* Section title centered italic variant (for CTA section) */
+/* TODO - move to CTA section */
 .section-title-center-italic {
   /* Sizing & spacing */
   @apply px-4;
@@ -282,7 +277,6 @@
   @apply font-serif text-center italic;
 }
 
-/* Section body text */
 .section-body-text {
   /* Colors */
   @apply text-neutral-600;
@@ -292,7 +286,6 @@
   @apply landscape:md:text-sm landscape:lg:text-base;
 }
 
-/* Question text - serif text for Q&A sections */
 .question-text {
   /* Colors */
   @apply text-neutral-500;
@@ -306,7 +299,7 @@
   @apply px-20 xs:px-0 md:px-40 lg:px-40 landscape:px-0 landscape:lg:w-100;
 }
 
-/* Section body text left-aligned */
+/* Left-aligned variant */
 .section-body-text-left {
   /* Sizing & spacing */
   @apply px-4 xl:pl-6 mb-6 xl:mb-0 portrait:lg:mb-6;
@@ -318,7 +311,7 @@
   @apply text-center xl:text-left portrait:lg:text-center portrait:lg:text-xl;
 }
 
-/* Section body text right-aligned */
+/* Right-aligned variant */
 .section-body-text-right {
   /* Sizing & spacing */
   @apply px-4 xl:pr-5 mb-6 xl:mb-0 portrait:lg:mb-6;
@@ -330,9 +323,8 @@
   @apply text-center xl:text-right portrait:lg:text-center portrait:lg:text-xl;
 }
 
-/* ===== CTA SECTION ===== */
+/* ===== CTA SECTION STYLES ===== */
 
-/* CTA section wrapper - extra spacing for final section */
 .cta-section {
   /* Layout & positioning */
   @apply relative flex flex-col items-center justify-center;
@@ -355,23 +347,20 @@
   @apply -mt-30 xl:mt-0;
 }
 
-/* CTA heading wrapper */
 .cta-heading-wrapper {
   /* Sizing & spacing */
   @apply mb-6 xl:mb-10 landscape:py-0;
 }
 
-/* FAQ/Learn Styles */
-
 .question-wrapper {
   /* Layout & positioning */
   @apply flex flex-col gap-5 lg:gap-20;
 
-  /* iPhone SE portrait and landscape inline layout */
+  /* Small phone (iPhone SE, etc) portrait and landscape inline layout */
   @apply xs:flex-row xs:gap-3;
   @apply landscape:max-md:flex-row landscape:max-md:gap-3;
 
-  /* iPhone 12 landscape inline layout */
+  /* Standard phone landscape inline layout */
   @apply landscape:md:flex-row landscape:md:gap-3;
 }
 
@@ -419,7 +408,7 @@
 }
 
 .faq-content-wrapper-reverse {
-    /* Layout & positioning */
+  /* Layout & positioning */
   @apply flex flex-col-reverse justify-center items-center;
   @apply portrait:lg:flex-col landscape:flex-row-reverse landscape:inline-flex;
 
@@ -438,12 +427,13 @@
   @apply py-0 md:py-12 xl:py-20 portrait:lg:py-20 landscape:lg:py-10;
   @apply landscape:pt-0 landscape:md:pt-12;
   @apply min-h-screen;
-  /* Margin order: landscape:lg: MUST come after xl: to prevent xl:mt-0 from overriding */
+
+  /* IMPORTANT re: margin order - landscape:lg: MUST come after xl: to prevent xl:mt-0 from overriding */
   /* Negative margin pulls centered content up to account for header */
   @apply -mt-20 md:-mt-30 xl:mt-0 landscape:lg:-mt-30;
   @apply portrait:lg:-mt-20;
 
-  /* Scroll snap behavior (mobile, tablet, portrait, and landscape) */
+  /* Scroll snap behavior */
   @apply snap-start scroll-mt-20 xl:snap-align-none portrait:lg:snap-start landscape:lg:snap-start;
 }
 
@@ -458,17 +448,15 @@
   @apply landscape:pt-0 landscape:md:pt-12;
   @apply landscape:max-md:py-20;
   @apply min-h-screen;
+
   /* Margin order: landscape:lg: MUST come after xl: to prevent xl:mt-0 from overriding */
-  /* Larger negative margin to reduce top spacing on content frames */
   @apply -mt-32 md:-mt-30 xl:mt-0 landscape:max-md:mt-0 landscape:md:mt-0 landscape:lg:-mt-30;
   @apply portrait:lg:-mt-40;
 
-  /* Scroll snap behavior (mobile, tablet, portrait, and landscape) */
-  /* Larger scroll-mt to account for negative margin offset */
+  /* Scroll snap behavior */
   @apply snap-start scroll-mt-5 xs:scroll-mt-10 landscape:max-md:scroll-mt-12 landscape:md:scroll-mt-20 xl:snap-align-none portrait:lg:snap-start landscape:lg:snap-start;
 }
 
-/* TODO - organize this stylesheet and consider modularizing - this one is def out of organizational/alphabetical order */
 .content-divider {
   @apply border-sv-purple-300;
   @apply my-10 md:my-30;
