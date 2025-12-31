@@ -87,7 +87,7 @@
   @apply landscape:hidden landscape:lg:inline;
 
   /* Typography */
-  @apply text-xs text-neutral-600 tracking-wide;
+  @apply text-xs text-neutral-600 tracking-wide uppercase;
 }
 
 /* ===== HERO/HOME PAGE COMPONENTS ===== */
