@@ -143,7 +143,10 @@
 /* Variant for Learn, Our Farms, Gallery views to contrast with upcase homepage style */
 .hero-title-downcase {
   /* Sizing & spacing */
-  @apply lg:px-4 mx-auto mt-8 xs:mt-0 landscape:max-md:mt-5 landscape:md:mt-5 mb-10 landscape:max-md:mb-2.5 lg:mb-20;
+  @apply lg:px-4;
+  @apply mx-auto;
+  @apply mt-8 xs:mt-0 landscape:max-md:mt-5 landscape:md:mt-5;
+  @apply mb-10 landscape:max-md:mb-2.5 lg:mb-20;
 
   /* Colors */
   @apply text-neutral-600;
@@ -422,9 +425,9 @@
   @apply text-neutral-500;
 
   /* Typography */
-  @apply italic text-2xl md:text-4xl landscape:md:text-2xl font-serif lg:text-5xl;
+  @apply font-serif italic;
+  @apply text-2xl md:text-4xl landscape:md:text-2xl lg:text-5xl landscape:lg:text-6xl;
   @apply text-center xs:text-left landscape:lg:text-left;
-  @apply landscape:lg:text-6xl;
 
   /* Sizing & spacing */
   @apply px-20 xs:px-0 md:px-40 lg:px-40 landscape:px-0 landscape:lg:w-100;
@@ -436,8 +439,12 @@
   @apply xl:mx-0;
 
   /* Typography */
-  @apply text-neutral-500 font-serif text-3xl md:pr-4 md:text-7xl landscape:md:text-2xl lg:text-8xl lg:pr-5;
+  @apply text-neutral-500 font-serif;
+  @apply text-3xl md:text-7xl landscape:md:text-2xl lg:text-8xl;
   @apply landscape:lg:text-7xl;
+
+  /* Sizing & spacing */
+  @apply md:pr-4 lg:pr-5;
 }
 
 .answer-text {
