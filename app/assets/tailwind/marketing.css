@@ -225,18 +225,6 @@
   @apply snap-start scroll-mt-20 xl:snap-align-none portrait:lg:snap-start landscape:lg:snap-start;
 }
 
-/* H2 headings in content sections */
-.section-title {
-  /* Sizing & spacing */
-  @apply px-4;
-
-  /* Colors */
-  @apply text-neutral-600;
-
-  /* Typography */
-  @apply text-4xl md:text-5xl xl:text-7xl portrait:lg:text-7xl font-serif;
-}
-
 /* Left-aligned variant */
 .section-title-left {
   /* Sizing & spacing */
@@ -455,11 +443,4 @@
 
   /* Scroll snap behavior */
   @apply snap-start scroll-mt-5 xs:scroll-mt-10 landscape:max-md:scroll-mt-12 landscape:md:scroll-mt-20 xl:snap-align-none portrait:lg:snap-start landscape:lg:snap-start;
-}
-
-.content-divider {
-  @apply border-sv-purple-300;
-  @apply my-10 md:my-30;
-  @apply landscape:lg:my-25;
-  @apply xl:hidden;
 }
