@@ -174,6 +174,7 @@
 
   /* Typography */
   @apply text-3xl md:text-6xl landscape:md:text-4xl lg:text-6xl;
+  @apply landscape:lg:text-7xl;
   @apply font-serif;
   @apply text-center portrait:lg:text-center xl:text-right;
 }
@@ -318,7 +319,8 @@
 
   /* Typography */
   @apply italic text-2xl md:text-4xl landscape:md:text-2xl font-serif lg:text-5xl;
-  @apply text-center xs:text-left;
+  @apply text-center xs:text-left landscape:lg:text-left;
+  @apply landscape:lg:text-6xl;
 
   /* Sizing & spacing */
   @apply px-20 xs:px-0 md:px-40 lg:px-40 landscape:px-0 landscape:lg:w-100;
@@ -394,7 +396,7 @@
 }
 
 .faq-content-wrapper-reverse .question-wrapper {
-  @apply mx-auto md:mb-20;
+  @apply md:mb-20;
 }
 
 /* Answer section wrapper - contains label and text in a row */
@@ -406,16 +408,18 @@
   align-items: flex-start;
 
   /* Sizing & spacing */
-  @apply gap-4 px-10 md:px-40 landscape:md:px-20 landscape:lg:px-50 xl:px-100;
+  @apply gap-4 px-10 md:px-40 landscape:md:px-20 landscape:lg:px-50 xl:px-200 landscape:xl:px-100;
 }
 
 /* Answer / Question label - "A:"/"Q:" text aligned to top */
 .faq-label {
   /* Layout & positioning */
   @apply flex-shrink-0 mx-auto;
+  @apply xl:mx-0;
 
   /* Typography */
   @apply text-neutral-500 font-serif text-3xl md:pr-4 md:text-7xl landscape:md:text-2xl lg:text-8xl lg:pr-5;
+  @apply landscape:lg:text-7xl;
 }
 
 /* Answer text - main content area */
@@ -444,6 +448,7 @@
 
   /* Sizing & spacing */
   @apply gap-6 xl:gap-8;
+  @apply landscape:lg:px-12;
 }
 
 /* FAQ Hero section - first section with page title and initial question */
