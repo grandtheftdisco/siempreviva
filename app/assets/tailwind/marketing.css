@@ -175,6 +175,9 @@
 
 /* Portrait orientation (taller than wide) */
 .marketing-image-portrait {
+  /* Display & visibility */
+  @apply landscape:md:hidden landscape:xl:block;
+
   /* Sizing & spacing - portrait aspect ratio */
   @apply h-80 w-60 xs:h-64 xs:w-48 md:h-120 md:w-90 xl:h-130 xl:w-100;
   @apply portrait:lg:h-150 portrait:lg:w-120;
@@ -191,6 +194,9 @@
 
 /* Landscape orientation (wider than tall) */
 .marketing-image-landscape {
+  /* Display & visibility */
+  @apply landscape:md:hidden landscape:xl:block;
+
   /* Sizing & spacing - landscape aspect ratio */
   @apply h-80 w-60 xs:h-64 xs:w-48 md:h-90 md:w-130 xl:h-100 xl:w-150;
   @apply portrait:lg:h-120 portrait:lg:w-150;
@@ -208,6 +214,9 @@
 
 /* Square orientation (equal width and height) */
 .marketing-image-square {
+  /* Display & visibility */
+  @apply landscape:md:hidden landscape:xl:block;
+
   /* Sizing & spacing - square aspect ratio */
   @apply h-60 w-60 xs:h-48 xs:w-48 md:h-130 md:w-130 xl:h-130 xl:w-130;
   @apply portrait:lg:h-150 portrait:lg:w-150;
