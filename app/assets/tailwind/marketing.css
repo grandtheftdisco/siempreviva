@@ -193,7 +193,7 @@
   @apply landscape:xl:h-130 landscape:xl:w-130;
 
   /* Spacing */
-  @apply mx-auto mb-10 landscape:mb-0;
+  @apply mx-auto mb-10 xs:portrait:mb-0 landscape:mb-0;
 
   /* Border & shape */
   @apply rounded-2xl;
