@@ -13,12 +13,16 @@
   <div class="container">
     <div>
       <%= f.label :name, class: 'label-text' %>
-      <%= f.text_field :name, required: true, class: 'input-text' %>
+      <%= f.text_field :name,
+          required: true,
+          class: 'input-text' %>
     </div>
 
     <div>
       <%= f.label :email, class: 'label-text' %>
-      <%= f.email_field :email, required: true, class: 'input-text' %>
+      <%= f.email_field :email,
+          required: true,
+          class: 'input-text' %>
     </div>
 
     <%= f.label :message, class: 'label-text' %>
@@ -30,9 +34,11 @@
 
     <div class= "hidden">
       <%= f.label :nickname, class: 'label-text' %>
-      <%= f.text_field :nickname, :hint => 'Leave this field blank!', class: 'input-text' %>
+      <%= f.text_field :nickname,
+          :hint => 'Leave this field blank!',
+          class: 'input-text' %>
     </div>
 
-    <%= f.submit 'Send Message', class: 'btn-primary submit-btn' %>
+    <%= f.submit 'Send Message', class: 'btn-purple submit-btn' %>
   </div>
 <% end %>

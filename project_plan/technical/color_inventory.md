@@ -24,28 +24,6 @@
 | `sv-green-600` | #698b3f | Primary green buttons |
 | `sv-green-700` | #4f5e3c | Hover states, dark green |
 
-### Pink Shades
-| Color | Hex | Use Case |
-|-------|-----|----------|
-| `sv-pink-200` | #f7c8d8 | Light pink accents |
-| `sv-pink-400` | #f4a5c2 | Medium pink accents |
-
-### Gray/Neutral Shades
-| Color | Hex | Use Case |
-|-------|-----|----------|
-| `sv-gray-100` | #f8f9fa | Light backgrounds |
-| `sv-gray-400` | #adb5bd | Borders, dividers |
-| `sv-gray-500` | #6c757d | Muted text |
-| `sv-gray-800` | #2c3e50 | Body text, headings |
-
-### Semantic Colors
-| Color | Hex | Use Case |
-|-------|-----|----------|
-| `sv-success` | #5a8664 | Success messages, states |
-| `sv-warning` | #c19550 | Warning messages |
-| `sv-danger` | #b9626b | Error messages, delete actions |
-| `sv-info` | #6b9fa8 | Informational messages |
-
 ---
 
 ## Usage Examples

@@ -8,15 +8,14 @@
   --font-serif: 'Playfair Display', serif;
 
   /* Purple shades */
-  --color-sv-purple-25: #f8f2fb; /* TODO - find a home for this since this was originally named -50 */
+  --color-sv-purple-25: #f8f2fb;
   --color-sv-purple-50: #faf9fb;
   --color-sv-purple-100: #f0e8f5;
   --color-sv-purple-200: #e6d3ec;
   --color-sv-purple-300: #d9cee0;
   --color-sv-purple-400: #c5aace;
-  --color-sv-purple-600: #9c27b0;
   --color-sv-purple-500: #a687b0;
-  --color-sv-purple-600: #866492; /* TODO conflicting value 9c27b0 - saving until we can figure it out in dev */
+  --color-sv-purple-600: #9c27b0;
   --color-sv-purple-700: #674174;
   --color-sv-purple-800: #6a1b9a;
 
@@ -25,27 +24,6 @@
   --color-sv-green-400: #8ba170;
   --color-sv-green-600: #698b3f;
   --color-sv-green-700: #4f5e3c;
-
-  /* Pink shades */
-  --color-sv-pink-200: #f7c8d8;
-  --color-sv-pink-400: #f4a5c2;
-
-  /* Gray/Neutral shades */
-  --color-sv-gray-100: #f8f9fa;
-  --color-sv-gray-200: #dfe2e6;
-  --color-sv-gray-300: #c6ccd1;
-  --color-sv-gray-400: #adb5bd;
-  --color-sv-gray-500: #6c757d;
-  --color-sv-gray-600: #57636e;
-  --color-sv-gray-700: #415060;
-  --color-sv-gray-800: #2c3e50;
-  --color-sv-gray-900: #161f28;
-
-  /* Semantic/Action colors */
-  --color-sv-success: #5a8664;
-  --color-sv-warning: #c19550;
-  --color-sv-danger: #b9626b;
-  --color-sv-info: #6b9fa8;
 }
 
 /* Import components file (pure CSS with Tailwind @apply) */
@@ -63,4 +41,4 @@
 @import "./cart_empty.css";    /* Empty cart state (shared) */
 @import "./forms.css";         /* Form inputs, labels, validation styles */
 @import "./checkouts.css";     /* Checkout success page styles */
-@import "./products.css";
+@import "./products.css";      /* Product index & page styles */

@@ -7,8 +7,6 @@
    so that when the time comes for legacy cleanup & refactor in Session 4, there is context for the
    reasoning behind the vanilla code. */
 
-/* SESSION 4 TODO: reorganize this file when converting legacy vanilla classes to Tailwind */
-
 /* ===== NEW @APPLY BUTTON COMPONENT CLASSES ===== */
 /* Use these classes in new views (product/marketing) */
 
@@ -31,7 +29,7 @@
 }
 
 /* Primary button - purple filled */
-.btn-primary {
+.btn-purple {
   /* Spacing & shape */
   @apply px-6 py-3 rounded-full;
 
@@ -45,7 +43,7 @@
   @apply no-underline text-center;
 
   /* Colors */
-  @apply bg-sv-purple-400 border-sv-purple-400 text-white;
+  @apply bg-sv-purple-500 border-sv-purple-500 text-white;
   @apply hover:bg-sv-purple-700 hover:border-sv-purple-700;
 
   /* Typography */
@@ -53,7 +51,7 @@
 }
 
 /* Secondary button - purple filled */
-.btn-secondary {
+.btn-purple-secondary {
   /* Spacing & shape */
   @apply px-6 py-3 rounded-full;
 
@@ -67,8 +65,8 @@
   @apply no-underline text-center;
 
   /* Colors */
-  @apply bg-transparent text-sv-purple-400 border-sv-green-600;
-  @apply hover:bg-sv-green-700 hover:text-white hover:border-sv-green-700;
+  @apply bg-sv-purple-500 text-white border-sv-purple-500;
+  @apply hover:bg-sv-purple-400 hover:text-white hover:border-sv-purple-400;
 
   /* Typography */
   @apply font-medium font-sans;
@@ -89,8 +87,8 @@
   @apply no-underline text-center;
 
   /* Colors */
-  @apply bg-sv-green-700 border-sv-green-700 text-white;
-  @apply hover:bg-sv-green-600 hover:border-sv-green-600;
+  @apply bg-sv-green-600 border-sv-green-600 text-white;
+  @apply hover:bg-sv-green-400 hover:border-sv-green-400;
 
   /* Typography */
   @apply font-medium font-sans;
@@ -112,7 +110,7 @@
 
   /* Colors */
   @apply bg-sv-green-200 text-sv-green-700 border-sv-green-200;
-  @apply hover:bg-sv-green-400 hover:border-sv-green-400;
+  @apply hover:bg-sv-green-400 hover:border-sv-green-400 hover:text-white;
 
   /* Typography */
   @apply font-medium font-sans;
@@ -120,8 +118,8 @@
 
 /* Light purple button */
 .btn-purple-light {
-  @apply px-6 py-3 rounded-full no-underline text-center font-medium cursor-pointer inline-block transition-all duration-200 border-2;
-  @apply bg-sv-purple-200 text-sv-purple-700 border-sv-purple-200 hover:bg-sv-purple-400 hover:border-sv-purple-400;
+  @apply px-6 py-3 rounded-full no-underline text-center font-medium cursor-pointer inline-block transition-all duration-200 border-2 hover:text-white;
+  @apply bg-sv-purple-200 text-sv-purple-700 border-sv-purple-200 hover:bg-sv-purple-500 hover:border-sv-purple-500;
   @apply font-sans;
 }
 
@@ -140,8 +138,8 @@
   @apply no-underline text-center;
 
   /* Colors */
-  @apply bg-sv-danger border-sv-danger text-white;
-  @apply hover:bg-sv-danger/90 hover:border-sv-danger/90;
+  @apply bg-rose-400 border-rose-400 text-white;
+  @apply hover:bg-rose-400/90 hover:border-rose-400/90;
 
   /* Typography */
   @apply font-medium font-sans;
@@ -165,6 +163,46 @@
 /* ===== LEGACY BUTTON CLASSES REMOVED ===== */
 /* As of Session 4A, all views use new component classes (.btn-primary, .btn-green, etc.) */
 /* Legacy classes removed: .checkout-btn, .continue-shopping-btn, .cart-checkout-btn, .quantity-update-btn-visible, .remove-item-btn-red */
+
+/* ===== QUANTITY SELECTOR COMPONENTS ===== */
+
+/* Quantity selector input field */
+.item-quantity-input {
+  /* Sizing & spacing */
+  @apply text-center text-sm block w-12 h-8;
+
+  /* Border & shape */
+  @apply bg-neutral-100 rounded-none;
+  @apply border border-neutral-200;
+
+  /* Remove number input spinners */
+  @apply [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none;
+}
+
+/* Base button for quantity selector */
+.item-quantity-select-btn {
+  /* Sizing & layout */
+  @apply w-8 h-8 flex items-center justify-center;
+
+  /* Border & shape */
+  @apply border border-neutral-200;
+
+  /* Colors */
+  @apply bg-neutral-200 hover:bg-neutral-300;
+  @apply text-neutral-700;
+
+  /* Interactive & animation */
+  @apply transition-colors duration-200 cursor-pointer;
+}
+
+/* Rounding variants */
+.round-left {
+  @apply rounded-l-2xl;
+}
+
+.round-right {
+  @apply rounded-r-2xl;
+}
 
 /* ===== FLASH NOTIFICATION STYLES ===== */
 
@@ -233,9 +271,7 @@ form input.form-input-small,
 
 .page-title {
   /* Typography */
-  font-family: 'Playfair Display', serif;
-  @apply text-4xl font-light text-sv-gray-800;
-  letter-spacing: 0.05em;
+  @apply font-serif text-4xl font-light text-neutral-800 tracking-wider;
 
   /* Spacing & alignment */
   @apply mb-2 p-4 text-center;
@@ -255,10 +291,10 @@ form input.form-input-small,
   @apply rounded-3xl transition-all duration-200 ease-in-out;
 
   /* Visual effects */
-  filter: saturate(0.5);
+  @apply saturate-50;
 }
 
 .formatted-image:hover {
   /* Visual effects */
-  filter: saturate(0.7);
+  @apply saturate-[0.7];
 }

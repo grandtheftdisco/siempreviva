@@ -25,7 +25,7 @@
   @apply w-full px-3 py-2 rounded border;
 
   /* Colors */
-  @apply bg-sv-purple-100 border-sv-purple-200 text-sv-gray-800;
+  @apply bg-sv-purple-100 border-sv-purple-200 text-neutral-800;
 
   /* Focus states */
   @apply focus:outline-none focus:border-sv-purple-400 focus:ring-2 focus:ring-sv-purple-400/20;
@@ -43,7 +43,7 @@
   @apply resize-y;
 
   /* Colors */
-  @apply bg-sv-purple-100 border-sv-purple-200 text-sv-gray-800;
+  @apply bg-sv-purple-100 border-sv-purple-200 text-neutral-800;
 
   /* Focus states */
   @apply focus:outline-none focus:border-sv-purple-400 focus:ring-2 focus:ring-sv-purple-400/20;
@@ -67,10 +67,10 @@
   @apply w-full px-3 py-2 rounded border;
 
   /* Colors */
-  @apply border-sv-danger bg-red-50 text-sv-gray-800;
+  @apply border-rose-400 bg-rose-50 text-neutral-800;
 
   /* Focus states */
-  @apply focus:outline-none focus:border-sv-danger focus:ring-2 focus:ring-sv-danger/20;
+  @apply focus:outline-none focus:border-rose-400 focus:ring-2 focus:ring-rose-400/20;
 
   /* Animation & typography */
   @apply transition-all duration-150 font-sans;
@@ -82,10 +82,10 @@
   @apply w-full px-3 py-2 rounded border;
 
   /* Colors */
-  @apply border-sv-success bg-green-50 text-sv-gray-800;
+  @apply border-emerald-600 bg-emerald-50 text-neutral-800;
 
   /* Focus states */
-  @apply focus:outline-none focus:border-sv-success focus:ring-2 focus:ring-sv-success/20;
+  @apply focus:outline-none focus:border-emerald-600 focus:ring-2 focus:ring-emerald-600/20;
 
   /* Animation & typography */
   @apply transition-all duration-150 font-sans;
@@ -127,23 +127,23 @@
 /* Error state */
 .form-input-error {
   /* Colors */
-  @apply border-sv-danger bg-sv-pink-200;
+  @apply border-rose-400 bg-rose-200;
 }
 
 .form-input-error:focus {
   /* Focus states */
-  @apply border-sv-danger ring-2 ring-sv-danger/10;
+  @apply border-rose-400 ring-2 ring-rose-400/10;
 }
 
 /* Success state */
 .form-input-success {
   /* Colors */
-  @apply border-sv-success bg-sv-green-200;
+  @apply border-emerald-600 bg-sv-green-200;
 }
 
 .form-input-success:focus {
   /* Focus states */
-  @apply border-sv-success ring-2 ring-sv-success/10;
+  @apply border-emerald-600 ring-2 ring-emerald-600/10;
 }
 
 /* ===== FORM GROUPS ===== */
@@ -158,7 +158,7 @@
   @apply block mb-2;
 
   /* Typography */
-  @apply font-medium text-sv-gray-800 font-sans;
+  @apply font-medium text-neutral-800 font-sans;
 }
 
 .form-group input,
@@ -168,7 +168,7 @@
   @apply px-4 py-3;
 
   /* Border & shape */
-  @apply border border-sv-gray-400 rounded;
+  @apply border border-neutral-400 rounded;
 
   /* Animation & typography */
   @apply transition-all duration-150 font-sans;
@@ -188,7 +188,7 @@
   @apply px-4 py-3 pr-10;
 
   /* Border & shape */
-  @apply border border-sv-gray-400 rounded;
+  @apply border border-neutral-400 rounded;
 
   /* Interactive & animation */
   @apply cursor-pointer transition-all duration-150;
@@ -197,7 +197,7 @@
   background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath fill='none' stroke='%23674174' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='m2 5 6 6 6-6'/%3E%3C/svg%3E");
   background-repeat: no-repeat;
   background-position: right 0.75rem center;
-  background-size: 16px 12px;
+  background-size: 1rem 0.75rem;
 
   /* Typography */
   @apply font-sans;
@@ -236,7 +236,7 @@
   @apply mb-6 p-4 border rounded;
 
   /* Colors */
-  @apply text-sv-danger bg-sv-pink-200 border-sv-danger;
+  @apply text-rose-400 bg-rose-200 border-rose-400;
 }
 
 .form-errors-container h2 {
@@ -256,17 +256,17 @@
 
 .form-error-message {
   /* Typography & layout */
-  @apply text-sm mt-1 block text-sv-danger;
+  @apply text-sm mt-1 block text-rose-400;
 }
 
 .form-success-message {
   /* Typography & layout */
-  @apply text-sm mt-1 block text-sv-success;
+  @apply text-sm mt-1 block text-emerald-600;
 }
 
 .form-help-text {
   /* Typography & layout */
-  @apply text-sm mt-1 block text-sv-gray-500;
+  @apply text-sm mt-1 block text-neutral-500;
 }
 
 /* ===== INLINE FORMS ===== */
@@ -317,7 +317,7 @@
 
 fieldset {
   /* Border & spacing */
-  @apply border border-sv-gray-400 rounded-lg p-6 mb-6;
+  @apply border border-neutral-400 rounded-lg p-6 mb-6;
 }
 
 legend {
