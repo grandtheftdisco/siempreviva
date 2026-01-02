@@ -127,6 +127,19 @@
   @apply snap-start scroll-mt-20 xl:snap-align-none portrait:lg:snap-start landscape:lg:snap-start;
 }
 
+/* Wrapper for hero image and text content */
+.hero-content-wrapper {
+  /* Layout & positioning */
+  @apply flex flex-col items-center;
+  @apply landscape:flex-row landscape:justify-center;
+
+  /* Sizing & spacing */
+  @apply gap-6;
+  @apply landscape:md:gap-0;
+  @apply portrait:md:px-10;
+  @apply portrait:lg:px-15;
+}
+
 /* Hero/homepage title */
 .hero-title {
   /* Sizing & spacing */
@@ -174,14 +187,14 @@
 /* Image placeholder - responsive based on orientation and screen size */
 .marketing-image {
   /* Display & visibility */
-  @apply landscape:md:hidden landscape:xl:block;
+  @apply landscape:md:hidden landscape:lg:block;
 
   /* Base sizing (portrait mobile - square aspect) */
   @apply h-60 w-60 xs:h-48 xs:w-48;
 
-  /* Portrait medium/large screens */
-  @apply portrait:md:h-130 portrait:md:w-130;
-  @apply portrait:lg:h-150 portrait:lg:w-150;
+  /* Portrait medium/large screens (landscape aspect ratio for tablets) */
+  @apply portrait:md:h-90 portrait:md:w-130;
+  @apply portrait:lg:h-100 portrait:lg:w-150;
   @apply portrait:xl:h-130 portrait:xl:w-130;
 
   /* Landscape small screens (phones) */
@@ -190,7 +203,7 @@
 
   /* Landscape large screens (tablets/desktop) */
   @apply landscape:lg:h-100 landscape:lg:w-100;
-  @apply landscape:xl:h-130 landscape:xl:w-130;
+  @apply landscape:xl:h-100 landscape:xl:w-130;
 
   /* Spacing */
   @apply mx-auto mb-10 xs:portrait:mb-0 landscape:mb-0;
@@ -214,6 +227,9 @@
 
   /* Sizing & spacing */
   @apply gap-6 md:gap-15 xl:gap-8;
+  @apply portrait:md:gap-5;
+  @apply portrait:md:px-10;
+  @apply portrait:lg:px-15;
 }
 
 /* Image/text order reversed on mobile/portrait */
@@ -274,6 +290,8 @@
 
   /* Typography */
   @apply text-sm text-center portrait:lg:text-xl;
+  @apply md:text-2xl;
+  @apply portrait:lg:text-3xl;
   @apply landscape:md:text-sm landscape:lg:text-base;
   @apply font-serif;
 }
@@ -309,6 +327,7 @@
 
   /* Sizing & spacing */
   @apply w-full my-5 md:my-20;
+  @apply portrait:md:my-10;
 
   /* Border & shape */
   @apply border-t border-sv-purple-300;
@@ -355,6 +374,7 @@
 
   /* Typography */
   @apply text-2xl md:text-6xl portrait:lg:text-8xl;
+  @apply portrait:md:text-5xl;
   @apply landscape:md:text-3xl landscape:lg:text-5xl landscape:xl:text-7xl;
   @apply font-serif text-center italic;
 }
