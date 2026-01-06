@@ -8,7 +8,7 @@
   @apply max-w-[600px] mx-auto my-4;
 
   /* Box styling */
-  @apply px-4 py-6 bg-white border border-gray-200 rounded-lg;
+  @apply px-4 py-6 rounded-3xl;
 
   /* Typography */
   @apply font-sans;
@@ -23,10 +23,13 @@
 
 .input-text {
   /* Sizing & spacing */
-  @apply w-full px-3 py-2 rounded border;
+  @apply w-full px-3 py-2 rounded-3xl border;
 
   /* Colors */
-  @apply bg-sv-purple-100 border-sv-purple-200 text-neutral-800;
+  @apply bg-white border-sv-purple-300 text-neutral-800;
+
+  /* Visual depth */
+  @apply shadow-sm;
 
   /* Focus states */
   @apply focus:outline-none focus:border-sv-purple-400 focus:ring-2 focus:ring-sv-purple-400/20;
@@ -37,13 +40,16 @@
 
 .input-textarea {
   /* Sizing & spacing */
-  @apply w-full px-3 py-2 rounded border min-h-[150px];
+  @apply w-full px-3 py-2 rounded-3xl border min-h-[150px];
 
   /* Behavior */
   @apply resize-y;
 
   /* Colors */
-  @apply bg-sv-purple-100 border-sv-purple-200 text-neutral-800;
+  @apply bg-white border-sv-purple-300 text-neutral-800;
+
+  /* Visual depth */
+  @apply shadow-sm;
 
   /* Focus states */
   @apply focus:outline-none focus:border-sv-purple-400 focus:ring-2 focus:ring-sv-purple-400/20;
