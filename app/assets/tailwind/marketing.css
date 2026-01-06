@@ -140,6 +140,16 @@
   @apply portrait:lg:px-15;
 }
 
+/* Wrapper for hero text content */
+.hero-text-wrapper {
+  /* Layout & positioning */
+  @apply flex flex-col;
+
+  /* Sizing & spacing */
+  @apply gap-4;
+  @apply landscape:max-w-md landscape:gap-0;
+}
+
 /* Hero/homepage title */
 .hero-title {
   /* Sizing & spacing */
@@ -377,6 +387,17 @@
   @apply portrait:md:text-5xl;
   @apply landscape:md:text-3xl landscape:lg:text-5xl landscape:xl:text-7xl;
   @apply font-serif text-center italic;
+}
+
+/* Wrapper for multiple CTA images displayed inline */
+.cta-image-group-wrapper {
+  /* Layout & positioning */
+  @apply flex flex-col items-center justify-center;
+  @apply landscape:flex-row;
+
+  /* Sizing & spacing */
+  @apply gap-6;
+  @apply landscape:gap-10;
 }
 
 /* CTA content wrapper - contains heading, body text, and button */
