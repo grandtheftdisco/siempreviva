@@ -97,7 +97,8 @@
   @apply flex flex-col justify-end;
 }
 
-.hero-content-wrapper {
+/* Wrapper for home page hero content */
+.home-hero-content-wrapper {
   /* Layout & positioning */
   @apply flex flex-col justify-center items-center;
   @apply xl:flex-row xl:items-end;
@@ -127,8 +128,8 @@
   @apply snap-start scroll-mt-20 xl:snap-align-none portrait:lg:snap-start landscape:lg:snap-start;
 }
 
-/* Wrapper for hero image and text content */
-.hero-content-wrapper {
+/* Wrapper for our farms hero image and text content */
+.farms-hero-content-wrapper {
   /* Layout & positioning */
   @apply flex flex-col items-center;
   @apply landscape:flex-row landscape:justify-center;
