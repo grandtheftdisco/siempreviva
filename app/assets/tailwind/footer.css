@@ -35,28 +35,6 @@
   @apply flex justify-center gap-6;
 }
 
-.social-links-container {
-  /* Spacing */
-  @apply my-6 pt-6;
-
-  /* Layout */
-  @apply text-center;
-
-  /* Border & shape */
-  @apply border-t border-sv-purple-300;
-}
-
-.social-links-text {
-  /* Spacing */
-  @apply mb-4;
-
-  /* Colors */
-  @apply text-sv-purple-700;
-
-  /* Typography */
-  @apply font-bold text-[0.95rem];
-}
-
 /* ===== SITE FOOTER: MAIN CONTAINER ===== */
 
 .site-footer {
