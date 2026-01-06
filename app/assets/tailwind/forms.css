@@ -6,19 +6,16 @@
 .form-container {
   /* Sizing & positioning */
   @apply max-w-[600px] mx-auto my-4;
+  @apply md:my-8;
+  @apply landscape:mt-0 landscape:md:mt-0;
 
   /* Box styling */
   @apply px-4 pb-6 rounded-3xl;
+  @apply md:p-8;
+  @apply landscape:md:pt-0;
 
   /* Typography */
   @apply font-sans;
-}
-
-/* Desktop: increased spacing */
-@media (min-width: 768px) {
-  .form-container {
-    @apply my-8 p-8;
-  }
 }
 
 .input-text {
