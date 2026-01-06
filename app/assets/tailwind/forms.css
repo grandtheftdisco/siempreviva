@@ -8,11 +8,13 @@
   @apply max-w-[600px] mx-auto my-4;
   @apply md:my-8;
   @apply landscape:mt-0 landscape:md:mt-0;
+  @apply portrait:md:mt-0;
 
   /* Box styling */
   @apply px-4 pb-6 rounded-3xl;
   @apply md:p-8;
   @apply landscape:md:pt-0;
+  @apply portrait:md:pt-0;
 
   /* Typography */
   @apply font-sans;
