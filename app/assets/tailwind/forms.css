@@ -8,7 +8,7 @@
   @apply max-w-[600px] mx-auto my-4;
 
   /* Box styling */
-  @apply px-4 py-6 rounded-3xl;
+  @apply px-4 pb-6 rounded-3xl;
 
   /* Typography */
   @apply font-sans;
