@@ -74,3 +74,4 @@ gem "mail_form"
 gem "algolia", "~> 3.23"
 gem "premailer-rails"
 gem "rubocop-airbnb", require: false
+gem "cloudinary"
