@@ -29,12 +29,12 @@
 .gallery-grid {
   /* Layout - CSS Grid with responsive columns */
   @apply grid;
-  @apply grid-cols-2;           /* Mobile: 2 columns */
-  @apply md:grid-cols-3;         /* Tablet: 3 columns */
-  @apply lg:grid-cols-4;         /* Desktop: 4 columns */
+  @apply grid-cols-2;
+  @apply md:grid-cols-3;
+  @apply lg:grid-cols-4;
 
   /* Grid behavior */
-  @apply auto-rows-auto;         /* Auto-sizing rows based on content */
+  @apply auto-rows-auto;
 
   /* Spacing */
   @apply gap-3 md:gap-4 lg:gap-6;
