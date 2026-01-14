@@ -26,7 +26,8 @@ Rails.application.routes.draw do
   resources :checkouts, only: [ :new, :create, :show ]
   post '/checkout_sessions', to: 'checkout_sessions#create'
 
-  post 'webhooks', to: 'webhooks#create'
+  # Webhook endpoints
+  post 'stripe/webhooks', to: 'stripe/webhooks#create'
 
   namespace :admins do 
     resources :orders, only: [ :create, :show, :edit, :update, :index ] do
