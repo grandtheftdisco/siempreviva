@@ -28,6 +28,7 @@ Rails.application.routes.draw do
 
   # Webhook endpoints
   post 'stripe/webhooks', to: 'stripe/webhooks#create'
+  post 'cloudinary/webhooks', to: 'cloudinary/webhooks#create'
 
   namespace :admins do 
     resources :orders, only: [ :create, :show, :edit, :update, :index ] do
