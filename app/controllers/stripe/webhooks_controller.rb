@@ -18,7 +18,7 @@ module Stripe
       event = ::Stripe::Webhook.construct_event(
         payload,
         sig_header,
-        Rails.application.credentials.dig(:stripe, :webhook_secret)
+        webhook_signing_secret
       )
 
       handle_stripe_event(event)
@@ -34,6 +34,11 @@ module Stripe
     end
 
     private
+
+    def webhook_signing_secret
+      # ENV for local dev (Stripe CLI), credentials for production
+      ENV.fetch('STRIPE_WEBHOOK_SECRET') { Rails.application.credentials.dig(:stripe, :webhook_secret) }
+    end
 
     ### Stripe Event Router ###
     def handle_stripe_event(event)
