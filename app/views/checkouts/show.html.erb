@@ -1,3 +1,8 @@
+<% post_checkout_image_url = Cloudinary::Utils.cloudinary_url(
+  'helichrysum-landscape-01',
+  transformation: { width: 800, crop: 'limit', fetch_format: 'auto', quality: 'auto' }
+) %>
+
 <div class="post-checkout-container">
   <div class="post-checkout-info">
     <% if @order.present? %>
@@ -10,7 +15,7 @@
       </div>
 
       <div>
-        <%= image_tag 'helichrysum-landscape.jpg', alt: 'field of flowers', class: 'formatted-image' %>
+        <%= image_tag post_checkout_image_url, alt: 'field of flowers', class: 'formatted-image' %>
       </div>
 
       <div class="pc-order-details pt-5">
@@ -38,7 +43,7 @@
         </p>
 
         <div>
-          <%= image_tag 'helichrysum-landscape.jpg', alt: 'field of flowers', class: 'formatted-image' %>
+          <%= image_tag post_checkout_image_url, alt: 'field of flowers', class: 'formatted-image' %>
         </div>
       </div>
     <% end %>
