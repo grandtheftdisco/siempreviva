@@ -1,4 +1,6 @@
-<div class="gallery-container">
+<%= stylesheet_link_tag "https://cdn.jsdelivr.net/npm/glightbox/dist/css/glightbox.min.css" %>
+
+<div class="gallery-container" data-controller="lightbox">
   <h1 class="gallery-title">gallery</h1>
 
   <% if @images.present? %>
@@ -24,7 +26,7 @@
           alt_text = image.dig('context', 'custom', 'alt') || image['public_id'].split('/').last.humanize
         %>
 
-        <a href="<%= full_size_url %>" class="gallery-item <%= span_class %>" data-lightbox="gallery">
+        <a href="<%= full_size_url %>" class="gallery-item glightbox <%= span_class %>" data-gallery="gallery" data-type="image" data-alt="<%= alt_text %>">
           <img src="<%= thumbnail_url %>" alt="<%= alt_text %>" loading="lazy">
         </a>
       <% end %>
