@@ -17,5 +17,12 @@ class MarketingController < ApplicationController
   end
 
   def our_farms
+    gallery_images = Rails.cache.fetch('gallery_images', expires_in: 1.hour) do
+      Cloudinary::Api.resources_by_tag('gallery', context: true, max_results: 50)['resources']
+    end
+    @cta_images = gallery_images.sample(3)
+  rescue Cloudinary::Api::Error => e
+    Rails.logger.error "Cloudinary API Error: #{e.message}"
+    @cta_images = []
   end
 end

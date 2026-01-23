@@ -74,35 +74,23 @@
 
     <!-- Images wrapper - 3 images inline in landscape, only middle visible in portrait -->
     <div class="cta-image-group-wrapper">
-      <!-- Image 1 - hidden in portrait -->
-      <picture class="portrait:hidden">
-        <source media="(min-width: 1280px)" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7">
-        <source media="(min-width: 768px)" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7">
-        <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
-             alt="Farm landscape"
-             class="marketing-image landscape:md:!block landscape:md:!h-24 landscape:md:!w-36 landscape:lg:!h-48 landscape:lg:!w-72"
-             loading="lazy">
-      </picture>
-
-      <!-- Image 2 - visible in all orientations -->
-      <picture>
-        <source media="(min-width: 1280px)" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7">
-        <source media="(min-width: 768px)" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7">
-        <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
-             alt="Farm landscape"
-             class="marketing-image landscape:md:!block landscape:md:!h-24 landscape:md:!w-36 landscape:lg:!h-48 landscape:lg:!w-72"
-             loading="lazy">
-      </picture>
-
-      <!-- Image 3 - hidden in portrait -->
-      <picture class="portrait:hidden">
-        <source media="(min-width: 1280px)" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7">
-        <source media="(min-width: 768px)" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7">
-        <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
-             alt="Farm landscape"
-             class="marketing-image landscape:md:!block landscape:md:!h-24 landscape:md:!w-36 landscape:lg:!h-48 landscape:lg:!w-72"
-             loading="lazy">
-      </picture>
+      <% @cta_images.each_with_index do |image, index| %>
+        <%
+          image_url = Cloudinary::Utils.cloudinary_url(
+            image['public_id'],
+            transformation: { width: 800, crop: 'limit', fetch_format: 'auto', quality: 'auto' }
+          )
+          alt_text = image.dig('context', 'custom', 'alt') || image['public_id'].split('/').last.humanize
+          # Images 1 and 3 (index 0 and 2) hidden in portrait
+          wrapper_class = (index == 0 || index == 2) ? 'portrait:hidden' : ''
+        %>
+        <div class="<%= wrapper_class %>">
+          <%= image_tag image_url,
+            alt: alt_text,
+            class: 'marketing-image formatted-image landscape:md:!block landscape:md:!h-24 landscape:md:!w-36 landscape:lg:!h-48 landscape:lg:!w-72',
+            loading: 'lazy' %>
+        </div>
+      <% end %>
     </div>
 
     <button
