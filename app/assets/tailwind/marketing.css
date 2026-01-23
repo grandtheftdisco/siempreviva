@@ -200,10 +200,16 @@
   /* Display & visibility */
   @apply landscape:md:hidden landscape:lg:block;
 
-  /* Base sizing (portrait mobile - square aspect) */
-  @apply h-60 w-60 xs:h-48 xs:w-48;
+  /* Base sizing - square */
+  @apply h-48 w-48;
 
-  /* Portrait medium/large screens (landscape aspect ratio for tablets) */
+  /* Portrait phones - portrait aspect (taller than wide) */
+  @apply portrait:h-72 portrait:w-56;
+
+  /* Portrait xs - keep square (override above) */
+  @apply xs:portrait:h-48 xs:portrait:w-48;
+
+  /* Portrait tablets - landscape aspect (wider than tall) */
   @apply portrait:md:h-90 portrait:md:w-130;
   @apply portrait:lg:h-100 portrait:lg:w-150;
   @apply portrait:xl:h-130 portrait:xl:w-130;
