@@ -197,8 +197,7 @@
 
 /* Marketing image - responsive based on orientation and screen size */
 .marketing-image {
-  /* Display & visibility */
-  @apply landscape:md:hidden landscape:lg:block;
+  /* Display & visibility - show on all orientations/sizes */
 
   /* Base sizing - square */
   @apply h-48 w-48;
@@ -218,7 +217,10 @@
   @apply landscape:h-40 landscape:w-40;
   @apply landscape:max-md:h-32 landscape:max-md:w-32;
 
-  /* Landscape large screens (tablets/desktop) */
+  /* Landscape medium screens (tablets) - square */
+  @apply landscape:md:h-48 landscape:md:w-48;
+
+  /* Landscape large screens (desktop) */
   @apply landscape:lg:h-100 landscape:lg:w-100;
   @apply landscape:xl:h-100 landscape:xl:w-130;
 
