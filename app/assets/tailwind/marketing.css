@@ -195,7 +195,7 @@
   @apply text-center portrait:lg:text-center xl:text-right;
 }
 
-/* Image placeholder - responsive based on orientation and screen size */
+/* Marketing image - responsive based on orientation and screen size */
 .marketing-image {
   /* Display & visibility */
   @apply landscape:md:hidden landscape:lg:block;
@@ -222,8 +222,8 @@
   /* Border & shape */
   @apply rounded-2xl;
 
-  /* Colors */
-  @apply bg-neutral-200;
+  /* Image handling */
+  @apply object-cover;
 }
 
 /* ===== CONTENT SECTIONS ===== */
