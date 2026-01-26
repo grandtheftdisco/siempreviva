@@ -23,18 +23,20 @@
   </div>
 
   <div class="content-section" data-scroll-section>
-    <div class="content-wrapper">
-      <div>
-        <%= image_tag Cloudinary::Utils.cloudinary_url('helichrysum-spread',
-          transformation: { width: 800, crop: 'limit', fetch_format: 'auto', quality: 'auto' }),
-          alt: cloudinary_alt_text('helichrysum-spread'), class: 'marketing-image' %>
-      </div>
+    <%= link_to learn_path do %>
+      <div class="content-wrapper">
+        <div>
+          <%= image_tag Cloudinary::Utils.cloudinary_url('helichrysum-spread',
+            transformation: { width: 800, crop: 'limit', fetch_format: 'auto', quality: 'auto' }),
+            alt: cloudinary_alt_text('helichrysum-spread'), class: 'marketing-image' %>
+        </div>
 
-      <div class="column-end-wrapper">
-        <h2 class="section-title-left">treat yourself.</h2>
-        <p class="section-body-text-left">learn how aromatherapy can melt your troubles away</p>
+        <div class="column-end-wrapper">
+          <h2 class="section-title-left">treat yourself.</h2>
+          <p class="section-body-text-left">learn how aromatherapy can melt your troubles away</p>
+        </div>
       </div>
-    </div>
+    <% end %>
 
     <!-- Scroll to next button (mobile & tablet & portrait & landscape) -->
     <button
@@ -46,18 +48,20 @@
   </div>
 
   <div class="content-section" data-scroll-section>
-    <div class="content-wrapper-reverse">
-      <div class="column-end-wrapper">
-        <h2 class="section-title-right">visit our farms.</h2>
-        <p class="section-body-text-right">(from the comfort of your home)</p>
-      </div>
+    <%= link_to our_farms_path do %>
+      <div class="content-wrapper-reverse">
+        <div class="column-end-wrapper">
+          <h2 class="section-title-right">visit our farms.</h2>
+          <p class="section-body-text-right">(from the comfort of your home)</p>
+        </div>
 
-      <div>
-        <%= image_tag Cloudinary::Utils.cloudinary_url('lavender-fields-06',
-          transformation: { width: 800, crop: 'limit', fetch_format: 'auto', quality: 'auto' }),
-          alt: cloudinary_alt_text('lavender-fields-06'), class: 'marketing-image' %>
+        <div>
+          <%= image_tag Cloudinary::Utils.cloudinary_url('lavender-fields-06',
+            transformation: { width: 800, crop: 'limit', fetch_format: 'auto', quality: 'auto' }),
+            alt: cloudinary_alt_text('lavender-fields-06'), class: 'marketing-image' %>
+        </div>
       </div>
-    </div>
+    <% end %>
 
     <!-- Scroll to next button (mobile & tablet & portrait & landscape) -->
     <button
