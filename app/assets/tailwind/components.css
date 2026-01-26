@@ -261,21 +261,3 @@ form input.form-input-small,
   /* Colors */
   @apply bg-sv-purple-100;
 }
-
-/* ===== TYPOGRAPHY COMPONENTS ===== */
-
-.page-title {
-  /* Typography */
-  @apply font-serif text-2xl font-light text-neutral-800 tracking-wider;
-
-  /* Spacing & alignment */
-  @apply mb-2 p-4 text-left;
-}
-
-/* Desktop: larger text, centered */
-@media (min-width: 768px) {
-  .page-title {
-    /* Typography & alignment */
-    @apply text-center text-4xl;
-  }
-}
