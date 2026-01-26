@@ -180,7 +180,7 @@
   @apply text-4xl md:text-6xl landscape:md:text-4xl lg:text-6xl;
   @apply landscape:lg:text-7xl;
   @apply font-serif;
-  @apply text-center portrait:lg:text-center xl:text-right;
+  @apply text-center;
 }
 
 .hero-subtitle {
