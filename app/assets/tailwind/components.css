@@ -279,18 +279,3 @@ form input.form-input-small,
     @apply text-center text-4xl;
   }
 }
-
-/* ===== IMAGE UTILITIES ===== */
-
-.formatted-image {
-  /* Shape & animation */
-  @apply rounded-3xl transition-all duration-200 ease-in-out;
-
-  /* Visual effects */
-  @apply saturate-50;
-}
-
-.formatted-image:hover {
-  /* Visual effects */
-  @apply saturate-[0.7];
-}
