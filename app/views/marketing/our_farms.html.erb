@@ -1,26 +1,16 @@
 <div data-controller="scroll-navigation" class="scroll-nav-container">
-  <%# PLACEHOLDER IMAGE NOTE:
-      The data URI below is a 1x1 transparent GIF encoded as base64.
-      Format: data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7
-      This allows us to use proper <picture> element structure with media queries
-      while still rendering placeholder divs styled by CSS classes.
-      When connecting to CDN, replace data URIs with actual image paths/Cloudinary helpers.
-  %>
-
   <!-- Frame 1: Hero -->
   <div class="hero-section px-4 py-8 -mt-30 scroll-mt-5 portrait:md:!-mt-40 portrait:lg:!-mt-30 landscape:!-mt-20 landscape:md:!-mt-30" data-scroll-section>
     <h1 class="hero-title-downcase">our farms</h1>
 
     <!-- Wrapper for image + text content (side-by-side in landscape) -->
     <div class="farms-hero-content-wrapper">
-      <picture>
-        <source media="(min-width: 1280px)" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7">
-        <source media="(min-width: 768px)" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7">
-        <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
-             alt="Farm landscape"
-             class="marketing-image"
-             loading="lazy">
-      </picture>
+      <%= cl_image_tag 'floral-dress-harvesting-03',
+           transformation: { width: 800, crop: 'limit', fetch_format: 'auto', quality: 'auto' },
+           alt: cloudinary_alt_text('floral-dress-harvesting-03'),
+           class: 'marketing-image',
+           style: 'object-position: 50% 70%',
+           loading: 'lazy' %>
 
       <!-- Text content wrapper -->
       <div class="hero-text-wrapper">
@@ -44,14 +34,11 @@
   <!-- Frame 2: Content -->
   <div class="content-section" data-scroll-section>
     <div class="content-wrapper landscape:flex-row-reverse landscape:justify-center landscape:md:!gap-0">
-      <picture>
-        <source media="(min-width: 1280px)" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7">
-        <source media="(min-width: 768px)" srcset="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7">
-        <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
-             alt="Farm landscape"
-             class="marketing-image"
-             loading="lazy">
-      </picture>
+      <%= cl_image_tag 'tractor-in-fields',
+           transformation: { width: 800, crop: 'limit', fetch_format: 'auto', quality: 'auto' },
+           alt: cloudinary_alt_text('tractor-in-fields'),
+           class: 'marketing-image',
+           loading: 'lazy' %>
       <hr class="content-divider" />
       <p class="section-body-text px-5 landscape:max-w-md">
         Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula, portitor eu, consequat vitae,
@@ -87,7 +74,7 @@
         <div class="<%= wrapper_class %>">
           <%= image_tag image_url,
             alt: alt_text,
-            class: 'marketing-image formatted-image landscape:md:!block landscape:md:!h-24 landscape:md:!w-36 landscape:lg:!h-48 landscape:lg:!w-72',
+            class: 'marketing-image landscape:md:!block landscape:md:!h-24 landscape:md:!w-36 landscape:lg:!h-48 landscape:lg:!w-72',
             loading: 'lazy' %>
         </div>
       <% end %>
