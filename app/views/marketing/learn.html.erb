@@ -2,7 +2,12 @@
   <div class="faq-hero-section" data-scroll-section>
     <h1 class="hero-title-downcase">learn about essential oils</h1>
     <div class="faq-content-wrapper">
-      <div class="marketing-image"></div>
+      <%= cl_image_tag 'green-field-03',
+           transformation: { width: 800, crop: 'limit', fetch_format: 'auto', quality: 'auto' },
+           alt: cloudinary_alt_text('green-field-03'),
+           class: 'marketing-image',
+           style: 'object-position: 50% 30%',
+           loading: 'lazy' %>
       <%= render 'faq_question',
           text: 'what is aromatherapy?'
       %>
@@ -33,7 +38,11 @@
 
   <div class="faq-content-section" data-scroll-section>
     <div class="faq-content-wrapper-reverse">
-      <div class="marketing-image"></div>
+      <%= cl_image_tag 'distillation-process-02',
+           transformation: { width: 800, crop: 'limit', fetch_format: 'auto', quality: 'auto' },
+           alt: cloudinary_alt_text('distillation-process-02'),
+           class: 'marketing-image',
+           loading: 'lazy' %>
       <%= render 'faq_question',
           text: 'what is therapeutic grade essential oil?'
         %>
