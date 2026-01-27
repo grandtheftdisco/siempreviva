@@ -7,9 +7,7 @@
       </div>
 
       <div class="column-end-wrapper">
-        <%= image_tag Cloudinary::Utils.cloudinary_url('harvesting-lavender',
-          transformation: { width: 800, crop: 'limit', fetch_format: 'auto', quality: 'auto' }),
-          alt: cloudinary_alt_text('harvesting-lavender'), class: 'marketing-image' %>
+        <%= marketing_image_tag 'harvesting-lavender' %>
       </div>
     </div>
 
@@ -26,9 +24,7 @@
     <%= link_to learn_path do %>
       <div class="content-wrapper">
         <div>
-          <%= image_tag Cloudinary::Utils.cloudinary_url('helichrysum-spread',
-            transformation: { width: 800, crop: 'limit', fetch_format: 'auto', quality: 'auto' }),
-            alt: cloudinary_alt_text('helichrysum-spread'), class: 'marketing-image' %>
+          <%= marketing_image_tag 'helichrysum-spread' %>
         </div>
 
         <div class="column-end-wrapper">
@@ -56,9 +52,7 @@
         </div>
 
         <div>
-          <%= image_tag Cloudinary::Utils.cloudinary_url('lavender-fields-06',
-            transformation: { width: 800, crop: 'limit', fetch_format: 'auto', quality: 'auto' }),
-            alt: cloudinary_alt_text('lavender-fields-06'), class: 'marketing-image' %>
+          <%= marketing_image_tag 'lavender-fields-06' %>
         </div>
       </div>
     <% end %>

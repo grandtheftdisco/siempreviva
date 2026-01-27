@@ -5,12 +5,7 @@
 
     <!-- Wrapper for image + text content (side-by-side in landscape) -->
     <div class="farms-hero-content-wrapper">
-      <%= cl_image_tag 'floral-dress-harvesting-03',
-           transformation: { width: 800, crop: 'limit', fetch_format: 'auto', quality: 'auto' },
-           alt: cloudinary_alt_text('floral-dress-harvesting-03'),
-           class: 'marketing-image',
-           style: 'object-position: 50% 70%',
-           loading: 'lazy' %>
+      <%= marketing_image_tag 'floral-dress-harvesting-03', style: 'object-position: 50% 70%' %>
 
       <!-- Text content wrapper -->
       <div class="hero-text-wrapper">
@@ -34,11 +29,7 @@
   <!-- Frame 2: Content -->
   <div class="content-section" data-scroll-section>
     <div class="content-wrapper landscape:flex-row-reverse landscape:justify-center landscape:md:!gap-0">
-      <%= cl_image_tag 'tractor-in-fields',
-           transformation: { width: 800, crop: 'limit', fetch_format: 'auto', quality: 'auto' },
-           alt: cloudinary_alt_text('tractor-in-fields'),
-           class: 'marketing-image',
-           loading: 'lazy' %>
+      <%= marketing_image_tag 'tractor-in-fields' %>
       <hr class="content-divider" />
       <p class="section-body-text px-5 landscape:max-w-md">
         Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula, portitor eu, consequat vitae,
