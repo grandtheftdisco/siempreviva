@@ -68,7 +68,7 @@ module Stripe
         AlgoliaService::PostProductUpdate.call(product:, previous_attributes:)
       ###########################################################################
       # -------------------------------------------
-      ### THE EVENTS BELOW SHOULD BE HANDLED AD HOC BY DEV/PRODUCT OWNER ###
+      ### THE EVENTS BELOW SHOULD BE HANDLED AD HOC BY WEBMASTER/PRODUCT OWNER ###
       # -------------------------------------------
       # If any patterns emerge over time (ie, if you have a lot of failed
       # refunds), it will be worth your time to develop a more sophisticated

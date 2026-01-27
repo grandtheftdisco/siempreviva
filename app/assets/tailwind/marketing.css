@@ -199,9 +199,6 @@
 .marketing-image {
   /* Display & visibility - show on all orientations/sizes */
 
-  /* Base sizing - square */
-  @apply h-48 w-48;
-
   /* Portrait phones - portrait aspect (taller than wide) */
   @apply portrait:h-72 portrait:w-56;
 

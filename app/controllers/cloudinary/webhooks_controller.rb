@@ -33,6 +33,8 @@ module Cloudinary
       ActiveSupport::SecurityUtils.secure_compare(signature, expected_signature)
     end
 
+    # Production keys will be stored in Rails creds in the future for portability.
+    # Here: in the absence of a development key in .env, search Rails creds for prod key
     def cloudinary_api_secret
       ENV.fetch('CLOUDINARY_API_SECRET') { Rails.application.credentials.dig(:cloudinary, :api_secret) }
     end
