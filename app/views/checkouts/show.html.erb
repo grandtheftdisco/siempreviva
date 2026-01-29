@@ -4,7 +4,7 @@
       <div>
         <h1>Thanks for shopping with Siempreviva!</h1>
 
-        <p class="subtitle">
+        <p class="pc-subtitle">
           we'll get started on your order right away.
         </p>
       </div>
@@ -13,17 +13,17 @@
         <%= image_tag 'helichrysum-landscape.jpg', alt: 'field of flowers', class: 'formatted-image' %>
       </div>
 
-      <div class="order-details pt-5">
-        <p class="order-label">
+      <div class="pc-order-details pt-5">
+        <p class="pc-order-label">
           your order number is
         </p>
 
-        <p class="order-number">
+        <p class="pc-order-number">
             #<%= @order.id %>
         </p>
       </div>
 
-      <p class="receipt-notice">
+      <p class="pc-receipt-notice">
         (please check your email for your receipt)
       </p>
     <% else %>
@@ -33,7 +33,7 @@
           being processed!
         </h1>
 
-        <p class="subtitle">
+        <p class="pc-subtitle">
           we'll email you when it's complete.
         </p>
 

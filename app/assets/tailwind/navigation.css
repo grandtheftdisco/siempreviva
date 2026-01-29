@@ -1,14 +1,26 @@
 /* Navigation Stylesheet */
 /* Contains mobile menu button and navigation menu styles */
 
-/* NOTE: All !important declarations in this file will be addressed in Session 5 of the CSS refactor plan.
-   Session 5 focuses on specificity cleanup and removing !important hacks. */
-
 /* ===== MOBILE MENU BUTTON ===== */
 
 .mobile-menu-button {
-  display: inline-flex !important;
-  @apply items-center justify-center p-2 w-10 h-10 text-sm text-sv-purple-700 rounded-lg border-0 bg-transparent transition-colors duration-200 flex-shrink-0;
+  /* Sizing & spacing */
+  @apply p-2 w-10 h-10;
+
+  /* Layout */
+  @apply inline-flex items-center justify-center flex-shrink-0;
+
+  /* Border & shape */
+  @apply border-0 rounded-lg;
+
+  /* Colors */
+  @apply bg-transparent text-sv-purple-700;
+
+  /* Typography */
+  @apply text-sm;
+
+  /* Interactive & animation */
+  @apply transition-colors duration-200;
 }
 
 .mobile-menu-button:hover {
@@ -21,127 +33,173 @@
 
 @media (min-width: 768px) {
   .mobile-menu-button {
-    display: none !important;
-  }
-}
-
-@media (max-width: 767px) {
-  .mobile-menu-button {
-    display: inline-flex !important;
+    @apply hidden;
   }
 }
 
 .mobile-menu-icon {
-  @apply w-6 h-6 text-sv-purple-700;
+  /* Sizing */
+  @apply w-6 h-6;
+
+  /* Colors */
+  @apply text-sv-purple-700;
 }
 
-/* ===== NAVIGATION MENU ===== */
+/* ===== NAVIGATION SECTION ===== */
 
-/* Force transparent backgrounds for navigation elements (desktop/inline only) */
-@media (min-width: 768px) {
-  .navbar-section, .navbar-section *, .navbar-list, .navbar-list * {
-    background-color: transparent !important;
-  }
+/* Mobile/base styles - shown when `.hidden` class is removed by JS */
+.navbar-section:not(.hidden) {
+  /* Layout & positioning */
+  @apply block absolute top-full left-0 right-0 flex-col z-50;
+
+  /* Spacing */
+  @apply p-4;
+
+  /* Colors & shape */
+  @apply bg-sv-purple-100 border-t border-red-900/15;
+
+  /* Visual effects */
+  @apply shadow-purple-900/15;
 }
 
-.navbar-section {
-  @apply flex-none flex;
+.navbar-section:not(.hidden) .navbar-list a {
+  /* Spacing & shape */
+  @apply py-3 border-b border-sv-purple-300/10;
+
+  /* Layout */
+  @apply block;
+
+  /* Interactive & animation */
+  @apply transition-colors duration-200;
 }
 
-@media (min-width: 768px) {
-  .navbar-section {
-    @apply flex-none;
-  }
+.navbar-section:not(.hidden) .navbar-list a:first-of-type {
+  @apply pt-0;
 }
 
-@media (max-width: 767px) {
-  .navbar-section {
-    @apply hidden;
-  }
-
-  /* Mobile dropdown */
-  .navbar-section:not(.hidden) {
-    display: block !important;
-    position: absolute !important;
-    top: 100% !important;
-    left: 0 !important;
-    right: 0 !important;
-    @apply bg-sv-purple-100 p-4 flex-col z-50 border-t border-red-900/15 shadow-purple-900/15;
-  }
-
-  .navbar-section:not(.hidden),
-  .navbar-section:not(.hidden) .navbar-list,
-  .navbar-section:not(.hidden) .navbar-list li,
-  .navbar-section:not(.hidden) .navbar-list li a {
-    @apply bg-sv-purple-100;
-  }
-
-  .navbar-section:not(.hidden) .navbar-list {
-    @apply flex-col p-0 gap-3 border-0 rounded-none m-0 text-lg;
-    flex-direction: column !important;
-    padding: 0 !important;
-    gap: 0.75rem !important;
-    border: none !important;
-    border-radius: 0 !important;
-    margin: 0 !important;
-    font-size: 1.125rem !important;
-  }
-
-  .navbar-section:not(.hidden) .navbar-list li {
-    @apply border-b border-sv-purple-300/10;
-    padding-bottom: 0.75rem !important;
-    padding-top: 0.75rem !important;
-  }
-
-  .navbar-section:not(.hidden) .navbar-list li:first-child {
-    padding-top: 0 !important;
-  }
-
-  .navbar-section:not(.hidden) .navbar-list li:last-child {
-    border-bottom: none !important;
-    padding-bottom: 0 !important;
-  }
-
-  .navbar-section:not(.hidden) .navbar-list li a {
-    @apply p-0 block;
-    padding: 0 !important;
-    display: block !important;
-    transition: color 0.2s ease !important;
-  }
-
-  .navbar-section:not(.hidden) .navbar-list li a:hover {
-    @apply text-sv-purple-700;
-  }
+.navbar-section:not(.hidden) .navbar-list a:last-of-type {
+  @apply pb-0 border-b-0;
 }
 
-.navbar-list {
-  @apply flex flex-col p-5 mt-4 font-medium text-2xl font-serif gap-5 border-0 rounded-lg;
-  border: none !important;
-  background-color: transparent !important;
+.navbar-section:not(.hidden) .navbar-list a:hover {
+  @apply text-sv-purple-700;
 }
 
-@media (min-width: 768px) {
-  .navbar-list {
-    @apply p-0 mt-0 gap-8 border-0 flex-row text-lg;
-  }
-}
-
-@media (min-width: 1024px) {
-  .navbar-section {
-    @apply pl-4;
-  }
-
-  .navbar-list {
-    @apply text-lg gap-8;
-  }
-}
-
+/* Tablet (768-1023px): horizontal nav, compact left padding */
 @media (min-width: 768px) and (max-width: 1023px) {
   .navbar-section {
-    @apply pl-3;
+    /* Sizing & spacing */
+    @apply p-0 pl-3;
+
+    /* Layout & positioning */
+    @apply flex flex-none static;
+
+    /* Border & shape */
+    @apply border-0;
+
+    /* Colors */
+    @apply bg-transparent;
+
+    /* Visual effects */
+    @apply shadow-none;
+  }
+}
+
+/* Desktop (1024px+): horizontal nav, full left padding */
+@media (min-width: 1024px) {
+  .navbar-section {
+    /* Sizing & spacing */
+    @apply p-0 pl-4;
+
+    /* Layout & positioning */
+    @apply flex flex-none static;
+
+    /* Border & shape */
+    @apply border-0;
+
+    /* Colors */
+    @apply bg-transparent;
+
+    /* Visual effects */
+    @apply shadow-none;
+  }
+}
+
+/* ===== NAVBAR LIST ===== */
+
+.navbar-list {
+  /* Sizing & spacing */
+  @apply p-0 m-0 gap-3;
+
+  /* Layout */
+  @apply flex flex-col;
+
+  /* Border & shape */
+  @apply border-0 rounded-none;
+
+  /* Colors */
+  @apply bg-transparent;
+
+  /* Typography */
+  @apply font-medium text-lg font-serif;
+}
+
+/* Tablet: horizontal layout, compact spacing */
+@media (min-width: 768px) and (max-width: 1023px) {
+  .navbar-list {
+    /* Sizing & spacing */
+    @apply p-0 mt-0 gap-6;
+
+    /* Layout */
+    @apply flex-row;
+
+    /* Border */
+    @apply border-0;
+
+    /* Typography */
+    @apply text-sm;
+  }
+}
+
+/* Desktop: horizontal layout, full spacing */
+@media (min-width: 1024px) {
+  .navbar-list {
+    /* Sizing & spacing */
+    @apply p-0 mt-0 gap-8;
+
+    /* Layout */
+    @apply flex-row;
+
+    /* Border */
+    @apply border-0;
+
+    /* Typography */
+    @apply text-lg;
+  }
+}
+
+/* ===== NAVBAR <li> AND <a> - TABLET & DESKTOP ONLY ===== */
+
+/* List Items: reset li spacing */
+@media (min-width: 768px) {
+  .navbar-list li {
+    /* Sizing & spacing */
+    @apply py-0;
+
+    /* Border */
+    @apply border-0;
+  }
+}
+
+/* Link transitions */
+@media (min-width: 768px) {
+  .navbar-list li a {
+    /* Interactive & animation */
+    @apply transition-colors duration-200;
   }
 
-  .navbar-list {
-    @apply text-sm gap-6;
+  .navbar-list li a:hover {
+    /* Colors */
+    @apply text-sv-purple-700;
   }
 }

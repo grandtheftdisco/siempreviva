@@ -12,7 +12,7 @@
       <ul class="cart-items-list">
       <% @cart.cart_items.each do |item| %>
           <li class="cart-item">
-            <div class="cart-item-details">
+            <div class="cart-item-details-dropdown">
               <p class="cart-item-name"><%= item.name %> × <%= item.quantity %></p>
               <p class="cart-item-price">
                 <%= to_dollars(item.price * item.quantity) %>
@@ -24,7 +24,7 @@
             <%= button_to '×',
                 item,
                 method: :delete,
-                class: 'remove-button-small' %>
+                class: 'cart-item-remove-button absolute top-1/2 right-0 -translate-y-1/2 z-10 inline-flex items-center justify-center' %>
           </li>
       <% end %>
       </ul>
@@ -44,7 +44,7 @@
             <span><%= to_dollars(@cart.total) %></span>
           </div>
         </div>
-        <div class="cart-actions">
+        <div class="cart-dropdown-actions">
           <a href="<%= cart_path %>" class="btn-purple-secondary">view cart</a>
           <a href="<%= new_checkout_path %>" class="btn-green">checkout</a>
         </div>

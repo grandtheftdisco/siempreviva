@@ -1,7 +1,6 @@
 /* Cart Dropdown Stylesheet */
-/* Contains cart button, dropdown container, and all dropdown-specific styles */
 
-/* ===== CART BUTTON & DROPDOWN CONTAINER ===== */
+/* ===== CART BUTTON & ICON ===== */
 
 .right-icons:not(.hidden) {
   /* Layout & spacing */
@@ -11,11 +10,21 @@
   @apply flex-shrink-0;
 }
 
-/* Responsive right-icons */
-@media (max-width: 767px) {
-  .right-icons {
-    @apply gap-3; /* Match mobile-nav-items gap for consistent spacing */
-  }
+.cart-badge {
+  /* Sizing & spacing */
+  @apply h-5 w-5;
+
+  /* Layout & positioning */
+  @apply absolute -top-1 -right-1 flex items-center justify-center;
+
+  /* Shape */
+  @apply rounded-full;
+
+  /* Colors */
+  @apply bg-sv-purple-700 text-white;
+
+  /* Typography */
+  @apply text-xs font-bold;
 }
 
 .cart-button {
@@ -42,24 +51,13 @@
   @apply w-6 h-6;
 }
 
-.cart-badge {
-  /* Sizing & spacing */
-  @apply h-5 w-5;
-
-  /* Layout & positioning */
-  @apply absolute -top-1 -right-1 flex items-center justify-center;
-
-  /* Shape */
-  @apply rounded-full;
-
-  /* Colors */
-  @apply bg-sv-purple-700 text-white;
-
-  /* Typography */
-  @apply text-xs font-bold;
-}
-
 /* ===== CART DROPDOWN ===== */
+
+/* 'Continue Shopping' and 'Checkout' buttons: specific to dropdown */
+.cart-dropdown-actions {
+  /* Layout & spacing */
+  @apply flex flex-col gap-2;
+}
 
 .cart-dropdown {
   /* Sizing & spacing */
@@ -84,31 +82,6 @@
 .cart-dropdown.show {
   /* Layout */
   @apply flex flex-col;
-}
-
-.cart-dropdown-header {
-  /* Sizing & spacing */
-  @apply pt-4 px-4 pb-2 mb-0;
-
-  /* Layout & positioning */
-  @apply sticky top-0 z-10;
-
-  /* Shape */
-  @apply rounded-t-lg;
-
-  /* Colors */
-  @apply bg-sv-purple-100;
-}
-
-.cart-dropdown-title {
-  /* Sizing & spacing */
-  @apply m-0;
-
-  /* Typography */
-  @apply text-lg font-semibold lowercase font-serif;
-
-  /* Colors */
-  @apply text-neutral-900;
 }
 
 .cart-dropdown-content {
@@ -139,7 +112,51 @@
   @apply bg-sv-purple-100;
 }
 
-/* ===== BASE CART ITEM STYLES FOR DROPDOWN ===== */
+.cart-dropdown-header {
+  /* Sizing & spacing */
+  @apply pt-4 px-4 pb-2 mb-0;
+
+  /* Layout & positioning */
+  @apply sticky top-0 z-10;
+
+  /* Shape */
+  @apply rounded-t-lg;
+
+  /* Colors */
+  @apply bg-sv-purple-100;
+}
+
+.cart-dropdown-title {
+  /* Sizing & spacing */
+  @apply m-0;
+
+  /* Typography */
+  @apply text-lg font-semibold lowercase font-serif;
+
+  /* Colors */
+  @apply text-neutral-900;
+}
+
+/* ===== CART ITEM: BASE ===== */
+
+.cart-item {
+  /* Sizing & spacing */
+  @apply p-2;
+
+  /* Layout & positioning */
+  @apply flex justify-between items-center relative;
+
+  /* Shape */
+  @apply rounded;
+
+  /* Colors */
+  @apply bg-transparent;
+}
+
+.cart-item-details-dropdown {
+  /* Layout & spacing */
+  @apply flex-1 mr-4;
+}
 
 .cart-items-list {
   /* Sizing & spacing */
@@ -160,6 +177,40 @@
   @apply border-b border-neutral-300;
 }
 
+/* ===== CART ITEM: NAME ===== */
+.cart-item-name {
+  /* Sizing & spacing */
+  @apply mb-0.5;
+
+  /* Typography */
+  @apply text-xs font-normal leading-tight;
+
+  /* Colors */
+  @apply text-neutral-900;
+}
+
+/* ===== CART ITEM: PRICE ===== */
+.cart-item-price {
+  /* Sizing & spacing */
+  @apply m-0;
+
+  /* Typography */
+  @apply text-xs;
+
+  /* Colors */
+  @apply text-neutral-600;
+}
+
+/* This is the "$xx.xx each" text for line items with quantity > 1 */
+.cart-item-price-detail {
+  /* Colors */
+  @apply text-neutral-500;
+
+  /* Spacing */
+  @apply ml-2;
+}
+
+/* ===== EMPTY CART STYLES: DROPDOWN-SPECIFIC ===== */
 .empty-cart-div {
   /* Sizing & spacing */
   @apply mb-4 py-8 px-4;
@@ -185,240 +236,7 @@
   @apply text-neutral-600;
 }
 
-.cart-item-image {
-  /* Sizing & spacing */
-  @apply w-12 h-12;
-
-  /* Shape */
-  @apply rounded-lg;
-
-  /* Behavior */
-  @apply object-cover flex-shrink-0;
-}
-
-.cart-item-name {
-  /* Typography */
-  @apply font-normal leading-tight;
-
-  /* Colors */
-  @apply text-neutral-900;
-}
-
-.cart-item-price {
-  /* Sizing & spacing */
-  @apply m-0;
-
-  /* Colors */
-  @apply text-neutral-600;
-}
-
-.cart-item-remove {
-  /* Sizing & spacing */
-  @apply w-6 h-6;
-
-  /* Layout & positioning */
-  @apply absolute top-0 right-0 flex items-center justify-center;
-
-  /* Border */
-  @apply border-none;
-
-  /* Colors */
-  @apply bg-transparent text-neutral-600;
-
-  /* Typography */
-  @apply text-xl;
-
-  /* Interactive */
-  @apply cursor-pointer;
-}
-
-.cart-item-remove:hover {
-  /* Colors */
-  @apply text-neutral-700;
-}
-
-/* ===== CART DROPDOWN OVERRIDES (compact styling) ===== */
-
-.cart-dropdown .cart-item {
-  /* Sizing & spacing */
-  @apply p-2;
-
-  /* Layout & positioning */
-  @apply flex justify-between items-center relative;
-
-  /* Shape */
-  @apply rounded;
-
-  /* Colors */
-  @apply bg-transparent;
-}
-
-.cart-dropdown .cart-item .cart-item-details {
-  /* Layout & spacing */
-  @apply flex-1 mr-4;
-}
-
-.cart-item-price-detail {
-  /* Colors */
-  @apply text-neutral-500;
-
-  /* Spacing */
-  @apply ml-2;
-}
-
-.cart-dropdown .cart-item .cart-item-name {
-  /* Sizing & spacing */
-  @apply mb-0.5;
-
-  /* Typography */
-  @apply text-xs;
-}
-
-.cart-dropdown .cart-item .cart-item-price {
-  /* Typography */
-  @apply text-xs;
-}
-
-.cart-dropdown .cart-item .cart-item-remove {
-  /* Layout & positioning */
-  @apply absolute top-1/2 right-0 -translate-y-1/2;
-}
-
-/* Mobile spacing for responsive cart items */
-@media (max-width: 767px) {
-  .cart-items-list > li:not(:last-child) {
-    @apply border-b border-neutral-300 mb-2 pb-2;
-  }
-}/* Override button_to styling for cart dropdown remove buttons */
-/* Note: !important declarations preserved for Session 5 cleanup */
-.cart-dropdown input[type="submit"].remove-button-small {
-  /* Sizing & spacing */
-  width: 1.5rem !important;
-  height: 1.5rem !important;
-  padding: 0 !important;
-  margin: 0 !important;
-
-  /* Layout & positioning */
-  position: absolute !important;
-  top: 50% !important;
-  right: 0 !important;
-  display: inline-flex !important;
-  align-items: center !important;
-  justify-content: center !important;
-  z-index: 10 !important;
-
-  /* Shape */
-  border-radius: 50% !important;
-
-  /* Colors - using sv-purple-400 and white */
-  background: #c5aace !important;
-  border: 1px solid #c5aace !important;
-  color: #ffffff !important;
-
-  /* Typography */
-  font-size: 1rem !important;
-  font-weight: normal !important;
-
-  /* Interactive & animation */
-  cursor: pointer !important;
-  transition: background-color 0.2s !important;
-
-  /* Behavior */
-  flex-shrink: 0 !important;
-  transform: translateY(-50%) !important;
-}
-
-.cart-dropdown input[type="submit"].remove-button-small:hover {
-  /* Colors - using sv-purple-500 */
-  background: #aa8bb5 !important;
-  border-color: #aa8bb5 !important;
-  color: #ffffff !important;
-}
-
-/* Ensure the form wrapper for remove buttons is minimal */
-.cart-dropdown .cart-item form {
-  /* Sizing & spacing */
-  width: 1.5rem !important;
-  height: 1.5rem !important;
-  padding: 0 !important;
-  margin: 0 !important;
-
-  /* Layout & positioning */
-  @apply absolute top-1/2 right-0;
-
-  /* Colors */
-  background: transparent !important;
-
-  /* Border */
-  border: none !important;
-
-  /* Transform */
-  @apply -translate-y-1/2;
-}
-
-/* Cart page remove button styling to match dropdown */
-.cart-item-header form.inline-form {
-  /* Sizing & spacing */
-  width: 1.5rem !important;
-  height: 1.5rem !important;
-  padding: 0 !important;
-  margin: 0 !important;
-
-  /* Layout & positioning */
-  @apply absolute top-1/2 right-0;
-
-  /* Colors */
-  background: transparent !important;
-
-  /* Border */
-  border: none !important;
-
-  /* Transform */
-  @apply -translate-y-1/2;
-}
-
-.cart-item-header input[type="submit"].remove-button-small {
-  /* Sizing & spacing */
-  width: 1.5rem !important;
-  height: 1.5rem !important;
-  padding: 0 !important;
-  margin: 0 !important;
-
-  /* Layout & positioning */
-  position: relative !important;
-  display: inline-flex !important;
-  align-items: center !important;
-  justify-content: center !important;
-  z-index: 10 !important;
-
-  /* Shape */
-  border-radius: 50% !important;
-
-  /* Colors - using sv-purple-400 and white */
-  background: #c5aace !important;
-  border: 1px solid #c5aace !important;
-  color: #ffffff !important;
-
-  /* Typography */
-  font-size: 1rem !important;
-  font-weight: normal !important;
-
-  /* Interactive & animation */
-  cursor: pointer !important;
-  transition: background-color 0.2s !important;
-
-  /* Behavior */
-  flex-shrink: 0 !important;
-}
-
-.cart-item-header input[type="submit"].remove-button-small:hover {
-  /* Colors - using sv-purple-500 */
-  background: #aa8bb5 !important;
-  border-color: #aa8bb5 !important;
-  color: #ffffff !important;
-}
-
-/* ===== CART DROPDOWN SUMMARY ===== */
+/* ===== CART SUMMARY ===== */
 
 .cart-summary {
   /* Sizing & spacing */
@@ -442,7 +260,7 @@
   @apply text-neutral-600;
 }
 
-.cart-summary-line.cart-total {
+.cart-total {
   /* Sizing & spacing */
   @apply mt-2 pt-2;
 
@@ -454,36 +272,4 @@
 
   /* Colors */
   @apply text-neutral-900;
-}
-
-/* ===== CART DROPDOWN ACTIONS ===== */
-
-.cart-actions {
-  /* Layout & spacing */
-  @apply flex flex-col gap-2;
-}
-
-.cart-view-button {
-  /* Sizing & spacing */
-  @apply w-full py-3 px-4;
-
-  /* Layout */
-  @apply block;
-
-  /* Shape */
-  @apply rounded-full;
-
-  /* Colors */
-  @apply bg-sv-purple-200 text-neutral-700;
-
-  /* Typography */
-  @apply text-sm font-medium text-center no-underline;
-
-  /* Interactive & animation */
-  @apply transition-colors duration-200;
-}
-
-.cart-view-button:hover {
-  /* Colors */
-  @apply bg-sv-purple-400;
 }

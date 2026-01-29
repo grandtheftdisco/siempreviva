@@ -1,25 +1,26 @@
 /* Forms Stylesheet */
-/* Contains all form-related styles including inputs, labels, buttons, and form layouts */
+/* Contains all form-related styles including inputs, labels, and form layouts */
 
-/* ===== NEW FORM COMPONENT CLASSES (Use in new views) ===== */
-/* Use these classes for product/marketing forms */
+/* ===== FORM COMPONENT CLASSES ===== */
 
-/* Submit button using sv-colors */
-.btn-submit {
-  /* Spacing & shape */
-  @apply px-6 py-3 rounded-full;
+.form-container {
+  /* Sizing & positioning */
+  @apply max-w-[600px] mx-auto my-4;
 
-  /* Interactive & animation */
-  @apply cursor-pointer transition-colors duration-300;
-
-  /* Colors */
-  @apply bg-sv-purple-400 hover:bg-sv-purple-700 text-white;
+  /* Box styling */
+  @apply px-4 py-6 bg-white border border-gray-200 rounded-lg;
 
   /* Typography */
-  @apply font-bold font-sans;
+  @apply font-sans;
 }
 
-/* Text input using sv-colors */
+/* Desktop: increased spacing */
+@media (min-width: 768px) {
+  .form-container {
+    @apply my-8 p-8;
+  }
+}
+
 .input-text {
   /* Sizing & spacing */
   @apply w-full px-3 py-2 rounded border;
@@ -34,7 +35,6 @@
   @apply transition-all duration-150 font-sans;
 }
 
-/* Textarea using sv-colors */
 .input-textarea {
   /* Sizing & spacing */
   @apply w-full px-3 py-2 rounded border min-h-[150px];
@@ -52,7 +52,6 @@
   @apply transition-all duration-150 font-sans;
 }
 
-/* Form label using sv-colors */
 .label-text {
   /* Layout & spacing */
   @apply block mb-2;
@@ -61,176 +60,9 @@
   @apply font-bold text-sv-purple-700 font-sans;
 }
 
-/* Error input state */
-.input-error {
-  /* Sizing & spacing */
-  @apply w-full px-3 py-2 rounded border;
-
-  /* Colors */
-  @apply border-rose-400 bg-rose-50 text-neutral-800;
-
-  /* Focus states */
-  @apply focus:outline-none focus:border-rose-400 focus:ring-2 focus:ring-rose-400/20;
-
-  /* Animation & typography */
-  @apply transition-all duration-150 font-sans;
-}
-
-/* Success input state */
-.input-success {
-  /* Sizing & spacing */
-  @apply w-full px-3 py-2 rounded border;
-
-  /* Colors */
-  @apply border-emerald-600 bg-emerald-50 text-neutral-800;
-
-  /* Focus states */
-  @apply focus:outline-none focus:border-emerald-600 focus:ring-2 focus:ring-emerald-600/20;
-
-  /* Animation & typography */
-  @apply transition-all duration-150 font-sans;
-}
-
-/* Form container */
-.form-container {
-  /* Container sizing & positioning */
-  @apply max-w-[600px] mx-auto my-8;
-
-  /* Box styling */
-  @apply p-8 bg-white border border-gray-200 rounded-lg;
-
-  /* Typography */
-  @apply font-sans;
-}
-
-@media (max-width: 768px) {
-  .form-container {
-    /* Mobile spacing adjustments */
-    @apply mx-auto my-4 px-4 py-6;
-  }
-}
-
-/* ===== LEGACY ELEMENT SELECTORS REMOVED ===== */
-/* All views now use explicit component classes (.form-container, .input-text, .label-text, etc.) */
-/* Element selectors (form, form label, form input[type="text"], etc.) removed as of Session 4A */
-
-/* ===== FORM BUTTONS ===== */
-/* Element selectors removed - use component classes (.btn-primary, .btn-submit, etc.) */
-
-.submit-btn {
-  /* Spacing */
-  @apply my-3;
-}
-
-/* ===== FORM INPUT STATES ===== */
-
-/* Error state */
-.form-input-error {
-  /* Colors */
-  @apply border-rose-400 bg-rose-200;
-}
-
-.form-input-error:focus {
-  /* Focus states */
-  @apply border-rose-400 ring-2 ring-rose-400/10;
-}
-
-/* Success state */
-.form-input-success {
-  /* Colors */
-  @apply border-emerald-600 bg-sv-green-200;
-}
-
-.form-input-success:focus {
-  /* Focus states */
-  @apply border-emerald-600 ring-2 ring-emerald-600/10;
-}
-
-/* ===== FORM GROUPS ===== */
-
-.form-group {
-  /* Spacing */
-  @apply mb-6;
-}
-
-.form-group label {
-  /* Layout & spacing */
-  @apply block mb-2;
-
-  /* Typography */
-  @apply font-medium text-neutral-800 font-sans;
-}
-
-.form-group input,
-.form-group textarea,
-.form-group select {
-  /* Spacing */
-  @apply px-4 py-3;
-
-  /* Border & shape */
-  @apply border border-neutral-400 rounded;
-
-  /* Animation & typography */
-  @apply transition-all duration-150 font-sans;
-}
-
-.form-group input:focus,
-.form-group textarea:focus,
-.form-group select:focus {
-  /* Focus states */
-  @apply outline-none border-sv-purple-700 ring-2 ring-sv-purple-700/10;
-}
-
-/* ===== SELECT INPUTS ===== */
-
-.form-select {
-  /* Spacing */
-  @apply px-4 py-3 pr-10;
-
-  /* Border & shape */
-  @apply border border-neutral-400 rounded;
-
-  /* Interactive & animation */
-  @apply cursor-pointer transition-all duration-150;
-
-  /* Custom dropdown arrow (SVG must use data URI, positioning uses vanilla CSS) */
-  background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath fill='none' stroke='%23674174' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='m2 5 6 6 6-6'/%3E%3C/svg%3E");
-  background-repeat: no-repeat;
-  background-position: right 0.75rem center;
-  background-size: 1rem 0.75rem;
-
-  /* Typography */
-  @apply font-sans;
-}
-
-.form-select:focus {
-  /* Focus states */
-  @apply outline-none border-sv-purple-700 ring-2 ring-sv-purple-700/10;
-}
-
-/* ===== CHECKBOX AND RADIO INPUTS ===== */
-
-.form-checkbox {
-  /* Layout & spacing */
-  @apply flex items-center mb-3;
-}
-
-.form-checkbox input {
-  /* Sizing & spacing */
-  @apply w-auto mr-2 mt-0;
-
-  /* Accent color */
-  @apply accent-sv-purple-700;
-}
-
-.form-checkbox label {
-  /* Typography & interaction */
-  @apply mb-0 font-normal cursor-pointer;
-}
-
 /* ===== FORM VALIDATION MESSAGES ===== */
 
-/* Container for form error messages (Rails error_messages pattern) */
+/* Rails error_messages pattern */
 .form-errors-container {
   /* Spacing & shape */
   @apply mb-6 p-4 border rounded;
@@ -240,87 +72,13 @@
 }
 
 .form-errors-container h2 {
-  /* Typography & spacing */
   @apply text-lg font-semibold mb-2 mt-0;
 }
 
 .form-errors-container ul {
-  /* Spacing */
   @apply m-0 pl-6;
 }
 
 .form-errors-container li {
-  /* Spacing */
   @apply mb-1;
-}
-
-.form-error-message {
-  /* Typography & layout */
-  @apply text-sm mt-1 block text-rose-400;
-}
-
-.form-success-message {
-  /* Typography & layout */
-  @apply text-sm mt-1 block text-emerald-600;
-}
-
-.form-help-text {
-  /* Typography & layout */
-  @apply text-sm mt-1 block text-neutral-500;
-}
-
-/* ===== INLINE FORMS ===== */
-
-.form-inline {
-  /* Flexbox layout */
-  @apply flex items-center gap-4;
-
-  /* Reset overrides */
-  @apply m-0 p-0 max-w-none bg-transparent border-0;
-}
-
-.form-inline .form-group {
-  /* Layout */
-  @apply mb-0 flex-1;
-}
-
-.form-inline label {
-  /* Layout & spacing */
-  @apply mr-2 mb-0 whitespace-nowrap;
-}
-
-.form-inline input,
-.form-inline select {
-  /* Sizing */
-  @apply w-auto flex-1;
-}
-
-@media (max-width: 768px) {
-  .form-inline {
-    /* Mobile layout - stack vertically */
-    @apply flex-col items-stretch gap-3;
-  }
-
-  .form-inline label {
-    /* Mobile spacing */
-    @apply mr-0 mb-1;
-  }
-
-  .form-inline input,
-  .form-inline select {
-    /* Mobile full width */
-    @apply w-full;
-  }
-}
-
-/* ===== FIELDSET AND LEGEND ===== */
-
-fieldset {
-  /* Border & spacing */
-  @apply border border-neutral-400 rounded-lg p-6 mb-6;
-}
-
-legend {
-  /* Typography & spacing */
-  @apply text-sv-purple-700 font-semibold px-2 text-lg;
 }
