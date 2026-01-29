@@ -1,1 +1,89 @@
-<p>Marketing#home</p>
+<div data-controller="scroll-navigation" class="scroll-nav-container">
+  <div class="hero-section" data-scroll-section>
+    <div class="home-hero-content-wrapper">
+      <div class="column-end-wrapper">
+        <h1 class="hero-title">siempreviva</h1>
+        <p class="hero-subtitle">essential oils</p>
+      </div>
+
+      <div class="column-end-wrapper">
+        <div class="marketing-image"></div>
+      </div>
+    </div>
+
+    <!-- Scroll to next button (mobile & tablet & portrait & landscape) -->
+    <button
+      data-action="click->scroll-navigation#scrollToNext"
+      class="scroll-next-button"
+      aria-label="Scroll to next section">
+      <%= scroll_arrow(:down) %>
+    </button>
+  </div>
+
+  <div class="content-section" data-scroll-section>
+    <div class="content-wrapper">
+      <div>
+        <div class="marketing-image"></div>
+      </div>
+
+      <div class="column-end-wrapper">
+        <h2 class="section-title-left">treat yourself.</h2>
+        <p class="section-body-text-left">learn how aromatherapy can melt your troubles away</p>
+      </div>
+    </div>
+
+    <!-- Scroll to next button (mobile & tablet & portrait & landscape) -->
+    <button
+      data-action="click->scroll-navigation#scrollToNext"
+      class="scroll-next-button"
+      aria-label="Scroll to next section">
+      <%= scroll_arrow(:down) %>
+    </button>
+  </div>
+
+  <div class="content-section" data-scroll-section>
+    <div class="content-wrapper-reverse">
+      <div class="column-end-wrapper">
+        <h2 class="section-title-right">visit our farms.</h2>
+        <p class="section-body-text-right">(from the comfort of your home)</p>
+      </div>
+
+      <div>
+        <div class="marketing-image"></div>
+      </div>
+    </div>
+
+    <!-- Scroll to next button (mobile & tablet & portrait & landscape) -->
+    <button
+      data-action="click->scroll-navigation#scrollToNext"
+      class="scroll-next-button"
+      aria-label="Scroll to next section">
+      <%= scroll_arrow(:down) %>
+    </button>
+  </div>
+
+  <div class="cta-section" data-scroll-section>
+    <div class="cta-content-wrapper">
+      <div class="cta-heading-wrapper">
+        <h2 class="section-title-center-italic">
+          not sure where<br/>
+          to start?
+        </h2>
+      </div>
+
+      <p class="section-body-text">we got you.</p>
+      <%= link_to 'schedule a consult',
+          new_contact_form_path,
+          class: 'btn-purple' %>
+    </div>
+
+    <!-- Back to top button (mobile & tablet & portrait & landscape) -->
+    <button
+      data-action="click->scroll-navigation#scrollToTop"
+      class="scroll-top-button"
+      aria-label="Back to top">
+      <%= scroll_arrow(:up) %>
+      <span class="scroll-top-text">back to top</span>
+    </button>
+  </div>
+</div>

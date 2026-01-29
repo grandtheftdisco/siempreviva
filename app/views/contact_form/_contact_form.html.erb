@@ -11,26 +11,28 @@
   <% end %>
 
   <div class="container">
-    <div>
+    <div class="my-8">
       <%= f.label :name, class: 'label-text' %>
       <%= f.text_field :name,
           required: true,
           class: 'input-text' %>
     </div>
 
-    <div>
+    <div class="my-8">
       <%= f.label :email, class: 'label-text' %>
       <%= f.email_field :email,
           required: true,
           class: 'input-text' %>
     </div>
 
-    <%= f.label :message, class: 'label-text' %>
-    <%= f.text_area :message, rows: 8,
-                              cols: 40,
-                              required: true,
-                              placeholder: "Send us a message!",
-                              class: 'input-textarea' %>
+    <div class="my-8">
+      <%= f.label :message, class: 'label-text' %>
+      <%= f.text_area :message, rows: 8,
+                                cols: 40,
+                                required: true,
+                                placeholder: "Send us a message!",
+                                class: 'input-textarea' %>
+    </div>
 
     <div class= "hidden">
       <%= f.label :nickname, class: 'label-text' %>
@@ -39,6 +41,8 @@
           class: 'input-text' %>
     </div>
 
-    <%= f.submit 'Send Message', class: 'btn-purple' %>
+    <div class="flex justify-center">
+      <%= f.submit 'Send Message', class: 'btn-purple' %>
+    </div>
   </div>
 <% end %>

@@ -1,5 +1,19 @@
 /* UI Components Stylesheet */
 
+/* ===== ORGANIZATION STRATEGY ===== */
+/*
+ * UTILITY ORGANIZATION:
+ * - Utilities grouped by semantic category (spacing, typography, colors, etc.)
+ * - Base styles first, then breakpoint overrides in ascending order
+ * - Within each category: base → orientation/breakpoint variants
+ *
+ * CASCADE ORDER MATTERS:
+ * - Later @apply declarations override earlier ones due to CSS cascade
+ * - When defining orientation variants (portrait:/landscape:), ensure proper ordering
+ *
+ * DO NOT reorder breakpoint utilities without testing all screen sizes/orientations
+ */
+
 /* ===== NEW @APPLY BUTTON COMPONENT CLASSES ===== */
 
 .btn-base {
@@ -22,6 +36,8 @@
 .btn-purple {
   /* Spacing & shape */
   @apply px-6 py-3 rounded-full;
+  @apply portrait:lg:px-8 portrait:lg:py-4;
+  @apply landscape:px-3 landscape:py-2 landscape:lg:px-6 landscape:lg:py-3;
 
   /* Border & layout */
   @apply border-2 inline-block;
@@ -38,6 +54,7 @@
 
   /* Typography */
   @apply font-medium font-sans;
+  @apply portrait:lg:text-lg landscape:text-xs landscape:lg:text-base;
 }
 
 .btn-purple-secondary {

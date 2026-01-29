@@ -9,3 +9,6 @@ application.register("hello", HelloController)
 
 import QuantityToggleController from "controllers/quantity_toggle_controller"
 application.register("quantity-toggle", QuantityToggleController)
+
+import ScrollNavigationController from "controllers/scroll_navigation_controller"
+application.register("scroll-navigation", ScrollNavigationController)

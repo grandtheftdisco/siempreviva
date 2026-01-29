@@ -1,6 +1,9 @@
 /* ===== TAILWIND AND MODULAR IMPORTS ===== */
 @import "tailwindcss";
 
+/* ===== CUSTOM VARIANTS ===== */
+@variant xs (@media (max-width: 389px));
+
 /* ===== TAILWIND V4 CUSTOM THEME ===== */
 @theme {
   /* Fonts */
@@ -42,3 +45,4 @@
 @import "./forms.css";         /* Form inputs, labels, validation styles */
 @import "./checkouts.css";     /* Checkout success page styles */
 @import "./products.css";      /* Product index & page styles */
+@import "./marketing.css";     /* Marketing pages (home/hero, learn, contact) styles */

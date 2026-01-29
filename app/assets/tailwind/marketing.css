@@ -1,0 +1,543 @@
+/* Marketing Pages Stylesheet */
+
+/* ===== ORGANIZATION STRATEGY ===== */
+/*
+ * UTILITY ORGANIZATION:
+ * - Utilities grouped by semantic category (spacing, typography, colors, etc.)
+ * - Base styles first, then breakpoint overrides in ascending order
+ * - Within each category: base → md: → lg: → xl: → orientation variants
+ *
+ * CASCADE ORDER MATTERS:
+ * - Later @apply declarations override earlier ones due to CSS cascade
+ * - When mixing orientation (portrait:/landscape:) with breakpoints (lg:/xl:),
+ *   order carefully to avoid unintended overrides
+ * - Example: xl:mt-0 will override landscape:lg:-mt-30 if xl: comes after
+ *
+ * DO NOT reorder breakpoint utilities without testing all screen sizes/orientations
+ */
+
+/* ===== SCROLL NAVIGATION CONTAINER ===== */
+
+/* Scroll navigation wrapper - enables scroll snap behavior */
+.scroll-nav-container {
+  /* Behavior */
+  @apply snap-y snap-proximity;
+  @apply xl:snap-none;
+  @apply portrait:lg:snap-y portrait:lg:snap-proximity;
+  @apply landscape:lg:snap-y landscape:lg:snap-proximity;
+}
+
+/* ===== SCROLL NAVIGATION BUTTONS ===== */
+
+/* Down arrow button (scroll to next section) */
+.scroll-next-button {
+  /* Display & visibility */
+  @apply landscape:xl:hidden portrait:lg:block landscape:lg:block;
+
+  /* Layout & positioning */
+  @apply absolute bottom-20 landscape:max-md:bottom-12 portrait:lg:bottom-32 left-1/2 -translate-x-1/2;
+  @apply z-10;
+
+  /* Sizing & spacing */
+  @apply p-2;
+
+  /* Interactive & animation */
+  @apply cursor-pointer transition-opacity duration-200;
+  @apply opacity-60 hover:opacity-100;
+
+  /* Remove default button styles */
+  @apply bg-transparent border-0;
+}
+
+/* Up arrow button (back to top) */
+.scroll-top-button {
+  /* Display & visibility */
+  @apply landscape:xl:hidden portrait:lg:flex landscape:lg:flex;
+
+  /* Layout & positioning */
+  @apply absolute bottom-30 left-1/2 -translate-x-1/2;
+  @apply flex flex-col items-center gap-2;
+  @apply landscape:bottom-23;
+
+  /* Sizing & spacing */
+  @apply p-2;
+
+  /* Typography */
+  @apply landscape:text-xs;
+
+  /* Interactive & animation */
+  @apply cursor-pointer transition-opacity duration-200;
+  @apply opacity-60 hover:opacity-100;
+
+  /* Remove default button styles */
+  @apply bg-transparent border-0;
+}
+
+.scroll-arrow-icon {
+  /* Sizing */
+  @apply w-6 h-6;
+
+  /* Colors */
+  @apply text-neutral-600;
+}
+
+/* Back to top text */
+.scroll-top-text {
+  /* Display & visibility */
+  @apply landscape:hidden landscape:lg:inline;
+
+  /* Typography */
+  @apply text-xs text-neutral-600 tracking-wide uppercase;
+}
+
+/* ===== HERO/HOME PAGE COMPONENTS ===== */
+
+.column-end-wrapper {
+  /* Layout & positioning */
+  @apply flex flex-col justify-end;
+}
+
+/* Wrapper for home page hero content */
+.home-hero-content-wrapper {
+  /* Layout & positioning */
+  @apply flex flex-col justify-center items-center;
+  @apply xl:flex-row xl:items-end;
+  @apply portrait:lg:flex-col portrait:lg:items-center;
+  @apply landscape:flex-row;
+
+  /* Sizing & spacing */
+  @apply gap-6 xl:gap-8;
+  @apply landscape:lg:pb-15;
+}
+
+.hero-section {
+  /* Layout & positioning */
+  @apply relative flex flex-col;
+  @apply justify-center portrait:lg:justify-start xl:justify-center;
+
+  /* Sizing & spacing */
+  @apply px-4;
+  @apply py-10 md:py-12 xl:py-20 portrait:lg:py-30 landscape:lg:py-10;
+  @apply landscape:pt-0 landscape:md:pt-12;
+  @apply min-h-screen;
+
+  /* IMPORTANT re: margin order - landscape:lg: MUST come after xl: to prevent xl:mt-0 from overriding */
+  @apply -mt-30 landscape:-mt-10 xl:mt-0 portrait:lg:mt-0 landscape:lg:-mt-30;
+
+  /* Scroll snap behavior */
+  @apply snap-start scroll-mt-20 xl:snap-align-none portrait:lg:snap-start landscape:lg:snap-start;
+}
+
+/* Wrapper for our farms hero image and text content */
+.farms-hero-content-wrapper {
+  /* Layout & positioning */
+  @apply flex flex-col items-center;
+  @apply landscape:flex-row landscape:justify-center;
+
+  /* Sizing & spacing */
+  @apply gap-6;
+  @apply landscape:md:gap-0;
+  @apply portrait:md:px-10;
+  @apply portrait:lg:px-15;
+}
+
+/* Wrapper for hero text content */
+.hero-text-wrapper {
+  /* Layout & positioning */
+  @apply flex flex-col;
+
+  /* Sizing & spacing */
+  @apply gap-4;
+  @apply landscape:max-w-md landscape:gap-0;
+}
+
+/* Hero/homepage title */
+.hero-title {
+  /* Sizing & spacing */
+  @apply px-4;
+
+  /* Colors */
+  @apply text-neutral-600;
+
+  /* Typography */
+  @apply text-5xl md:text-7xl portrait:lg:text-8xl landscape:lg:text-8xl xl:text-9xl;
+  @apply font-serif uppercase;
+  @apply text-center portrait:lg:text-center xl:text-right;
+}
+
+/* Variant for Learn, Our Farms, Gallery views to contrast with upcase homepage style */
+.hero-title-downcase {
+  /* Sizing & spacing */
+  @apply lg:px-4;
+  @apply mx-auto;
+  @apply mt-8 xs:mt-0 landscape:max-md:mt-5 landscape:md:mt-5;
+  @apply mb-10 landscape:max-md:mb-2.5 lg:mb-20;
+
+  /* Colors */
+  @apply text-neutral-600;
+
+  /* Typography */
+  @apply text-4xl md:text-6xl landscape:md:text-4xl lg:text-6xl;
+  @apply landscape:lg:text-7xl;
+  @apply font-serif;
+  @apply text-center portrait:lg:text-center xl:text-right;
+}
+
+.hero-subtitle {
+  /* Sizing & spacing */
+  @apply px-4 mb-6 xl:mb-0 portrait:lg:mb-6;
+
+  /* Colors */
+  @apply text-neutral-600;
+
+  /* Typography */
+  @apply text-xl md:text-2xl portrait:lg:text-3xl landscape:lg:text-3xl xl:text-3xl;
+  @apply text-center portrait:lg:text-center xl:text-right;
+}
+
+/* Image placeholder - responsive based on orientation and screen size */
+.marketing-image {
+  /* Display & visibility */
+  @apply landscape:md:hidden landscape:lg:block;
+
+  /* Base sizing (portrait mobile - square aspect) */
+  @apply h-60 w-60 xs:h-48 xs:w-48;
+
+  /* Portrait medium/large screens (landscape aspect ratio for tablets) */
+  @apply portrait:md:h-90 portrait:md:w-130;
+  @apply portrait:lg:h-100 portrait:lg:w-150;
+  @apply portrait:xl:h-130 portrait:xl:w-130;
+
+  /* Landscape small screens (phones) */
+  @apply landscape:h-40 landscape:w-40;
+  @apply landscape:max-md:h-32 landscape:max-md:w-32;
+
+  /* Landscape large screens (tablets/desktop) */
+  @apply landscape:lg:h-100 landscape:lg:w-100;
+  @apply landscape:xl:h-100 landscape:xl:w-130;
+
+  /* Spacing */
+  @apply mx-auto mb-10 xs:portrait:mb-0 landscape:mb-0;
+
+  /* Border & shape */
+  @apply rounded-2xl;
+
+  /* Colors */
+  @apply bg-neutral-200;
+}
+
+/* ===== CONTENT SECTIONS ===== */
+
+/* Container for content text and image */
+.content-wrapper {
+  /* Layout & positioning */
+  @apply flex flex-col justify-center items-center;
+  @apply xl:flex-row;
+  @apply portrait:lg:flex-col;
+  @apply landscape:flex-row;
+
+  /* Sizing & spacing */
+  @apply gap-6 md:gap-15 xl:gap-8;
+  @apply portrait:md:gap-5;
+  @apply portrait:md:px-10;
+  @apply portrait:lg:px-15;
+}
+
+/* Image/text order reversed on mobile/portrait */
+.content-wrapper-reverse {
+  /* Layout & positioning */
+  @apply flex flex-col-reverse justify-center items-center;
+  @apply xl:flex-row;
+  @apply portrait:lg:flex-col-reverse;
+  @apply landscape:flex-row;
+
+  /* Sizing & spacing */
+  @apply gap-6 xl:gap-8;
+}
+
+/* Reusable section container */
+.content-section {
+  /* Layout & positioning */
+  @apply relative flex flex-col;
+  @apply justify-center portrait:lg:justify-start items-center;
+
+  /* Sizing & spacing */
+  @apply py-10 portrait:lg:pt-70 portrait:lg:pb-30 min-h-screen;
+  @apply landscape:pt-0 landscape:md:pt-12;
+
+  /* Scroll snap behavior */
+  @apply snap-start scroll-mt-20 xl:snap-align-none portrait:lg:snap-start landscape:lg:snap-start;
+}
+
+/* Left-aligned variant */
+.section-title-left {
+  /* Sizing & spacing */
+  @apply px-4 mb-2 xl:mb-0 portrait:lg:mb-2;
+
+  /* Colors */
+  @apply text-neutral-600;
+
+  /* Typography */
+  @apply text-4xl md:text-5xl xl:text-7xl portrait:lg:text-7xl;
+  @apply font-serif text-center xl:text-left portrait:lg:text-center;
+}
+
+/* Right-aligned variant */
+.section-title-right {
+  /* Sizing & spacing */
+  @apply px-4 mb-2 xl:mb-0 portrait:lg:mb-2;
+
+  /* Colors */
+  @apply text-neutral-600;
+
+  /* Typography */
+  @apply text-4xl md:text-5xl xl:text-7xl portrait:lg:text-7xl;
+  @apply font-serif text-center xl:text-right portrait:lg:text-center;
+}
+
+.section-body-text {
+  /* Colors */
+  @apply text-neutral-600;
+
+  /* Typography */
+  @apply text-sm text-center portrait:lg:text-xl;
+  @apply md:text-2xl;
+  @apply portrait:lg:text-3xl;
+  @apply landscape:md:text-sm landscape:lg:text-base;
+  @apply font-serif;
+}
+
+/* Left-aligned variant */
+.section-body-text-left {
+  /* Sizing & spacing */
+  @apply px-4 xl:pl-6 mb-6 xl:mb-0 portrait:lg:mb-6;
+
+  /* Colors */
+  @apply text-neutral-600;
+
+  /* Typography */
+  @apply text-center xl:text-left portrait:lg:text-center portrait:lg:text-xl;
+}
+
+/* Right-aligned variant */
+.section-body-text-right {
+  /* Sizing & spacing */
+  @apply px-4 xl:pr-5 mb-6 xl:mb-0 portrait:lg:mb-6;
+
+  /* Colors */
+  @apply text-neutral-600;
+
+  /* Typography */
+  @apply text-center xl:text-right portrait:lg:text-center portrait:lg:text-xl;
+}
+
+/* Horizontal divider */
+.content-divider {
+  /* Display & visibility */
+  @apply landscape:hidden;
+
+  /* Sizing & spacing */
+  @apply w-full my-5 md:my-20;
+  @apply portrait:md:my-10;
+
+  /* Border & shape */
+  @apply border-t border-sv-purple-300;
+}
+
+/* Image with text overlay wrapper */
+.image-overlay-wrapper {
+  /* Layout & positioning */
+  @apply relative flex items-center justify-center;
+}
+
+/* Text overlaid on image */
+.image-overlay-text {
+  /* Layout & positioning */
+  @apply absolute bottom-4 left-1/2 -translate-x-1/2;
+
+  /* Colors */
+  @apply text-neutral-600;
+
+  /* Typography */
+  @apply text-3xl md:text-5xl font-serif italic text-center whitespace-nowrap;
+}
+
+/* ===== CTA SECTION STYLES ===== */
+
+.cta-section {
+  /* Layout & positioning */
+  @apply relative flex flex-col items-center justify-center;
+
+  /* Sizing & spacing */
+  @apply py-10 gap-5 min-h-screen;
+  @apply landscape:py-0 landscape:md:pt-12 landscape:gap-10;
+
+  /* Scroll snap behavior (mobile, tablet, portrait, and landscape) */
+  @apply snap-start scroll-mt-20 xl:snap-align-none portrait:lg:snap-start landscape:lg:snap-start;
+}
+
+.section-title-center-italic {
+  /* Sizing & spacing */
+  @apply px-4;
+
+  /* Colors */
+  @apply text-neutral-500;
+
+  /* Typography */
+  @apply text-2xl md:text-6xl portrait:lg:text-8xl;
+  @apply portrait:md:text-5xl;
+  @apply landscape:md:text-3xl landscape:lg:text-5xl landscape:xl:text-7xl;
+  @apply font-serif text-center italic;
+}
+
+/* Wrapper for multiple CTA images displayed inline */
+.cta-image-group-wrapper {
+  /* Layout & positioning */
+  @apply flex flex-col items-center justify-center;
+  @apply landscape:flex-row;
+
+  /* Sizing & spacing */
+  @apply gap-6;
+  @apply landscape:gap-10;
+}
+
+/* CTA content wrapper - contains heading, body text, and button */
+.cta-content-wrapper {
+  /* Layout & positioning */
+  @apply flex flex-col items-center ;
+
+  /* Sizing & spacing */
+  @apply gap-5 md:gap-10 lg:gap-15;
+  @apply -mt-30 xl:mt-0;
+}
+
+.cta-heading-wrapper {
+  /* Sizing & spacing */
+  @apply mb-6 xl:mb-10 landscape:py-0;
+}
+
+/* ===== FAQ/LEARN PAGE COMPONENTS ===== */
+
+/* --- Section Containers --- */
+
+/* FAQ Hero section - first section with page title and initial question */
+.faq-hero-section {
+  /* Layout & positioning */
+  @apply relative flex flex-col;
+  @apply justify-center portrait:lg:justify-start xl:justify-center;
+
+  /* Sizing & spacing */
+  @apply py-0 md:py-12 xl:py-20 portrait:lg:py-20 landscape:lg:py-10;
+  @apply landscape:pt-0 landscape:md:pt-12;
+  @apply min-h-screen;
+
+  /* IMPORTANT re: margin order - landscape:lg: MUST come after xl: to prevent xl:mt-0 from overriding */
+  /* Negative margin pulls centered content up to account for header */
+  @apply -mt-20 md:-mt-30 xl:mt-0 landscape:lg:-mt-30;
+  @apply portrait:lg:-mt-20;
+
+  /* Scroll snap behavior */
+  @apply snap-start scroll-mt-20 xl:snap-align-none portrait:lg:snap-start landscape:lg:snap-start;
+}
+
+/* FAQ Content section - answer and subsequent question frames */
+.faq-content-section {
+  /* Layout & positioning */
+  @apply relative flex flex-col;
+  @apply justify-center portrait:lg:justify-center xl:justify-center;
+
+  /* Sizing & spacing */
+  @apply py-0 md:py-12 xl:py-20 portrait:lg:py-30 landscape:lg:py-10 landscape:lg:px-0;
+  @apply landscape:pt-0 landscape:md:pt-12;
+  @apply landscape:max-md:py-20;
+  @apply min-h-screen;
+
+  /* Margin order: landscape:lg: MUST come after xl: to prevent xl:mt-0 from overriding */
+  @apply -mt-32 md:-mt-30 xl:mt-0 landscape:max-md:mt-0 landscape:md:mt-0 landscape:lg:-mt-30;
+  @apply portrait:lg:-mt-40;
+
+  /* Scroll snap behavior */
+  @apply snap-start scroll-mt-5 xs:scroll-mt-10 landscape:max-md:scroll-mt-12 landscape:md:scroll-mt-20 xl:snap-align-none portrait:lg:snap-start landscape:lg:snap-start;
+}
+
+/* --- Layout Wrappers --- */
+
+.question-wrapper {
+  /* Layout & positioning */
+  @apply flex flex-col gap-5 lg:gap-20;
+
+  /* Small phone (iPhone SE, etc) portrait and landscape inline layout */
+  @apply xs:flex-row xs:gap-3;
+  @apply landscape:max-md:flex-row landscape:max-md:gap-3;
+
+  /* Standard phone landscape inline layout */
+  @apply landscape:md:flex-row landscape:md:gap-3;
+}
+
+.faq-content-wrapper-reverse .question-wrapper {
+  @apply md:mb-20;
+}
+
+.faq-content-wrapper {
+  /* Layout & positioning */
+  @apply flex flex-col justify-center items-center;
+  @apply portrait:lg:flex-col landscape:flex-row landscape:inline-flex;
+
+  /* Sizing & spacing */
+  @apply gap-6 xl:gap-8;
+}
+
+.faq-content-wrapper-reverse {
+  /* Layout & positioning */
+  @apply flex flex-col-reverse justify-center items-center;
+  @apply portrait:lg:flex-col landscape:flex-row-reverse landscape:inline-flex;
+
+  /* Sizing & spacing */
+  @apply gap-6 xl:gap-8;
+  @apply landscape:lg:px-12;
+}
+
+.answer-wrapper {
+  /* Layout & positioning */
+  @apply flex flex-row items-start;
+
+  /* Sizing & spacing */
+  @apply gap-4 px-10 md:px-40 landscape:md:px-20 landscape:lg:px-50 xl:px-200 landscape:xl:px-100;
+}
+
+/* --- Content Components --- */
+
+.question-text {
+  /* Colors */
+  @apply text-neutral-500;
+
+  /* Typography */
+  @apply font-serif italic;
+  @apply text-2xl md:text-4xl landscape:md:text-2xl lg:text-5xl landscape:lg:text-6xl;
+  @apply text-center xs:text-left landscape:lg:text-left;
+
+  /* Sizing & spacing */
+  @apply px-20 xs:px-0 md:px-40 lg:px-40 landscape:px-0 landscape:lg:w-100;
+}
+
+.faq-label {
+  /* Layout & positioning */
+  @apply flex-shrink-0 mx-auto;
+  @apply xl:mx-0;
+
+  /* Typography */
+  @apply text-neutral-500 font-serif;
+  @apply text-3xl md:text-7xl landscape:md:text-2xl lg:text-8xl;
+  @apply landscape:lg:text-7xl;
+
+  /* Sizing & spacing */
+  @apply md:pr-4 lg:pr-5;
+}
+
+.answer-text {
+  /* Layout & positioning */
+  @apply flex-1;
+
+  /* Typography */
+  @apply text-neutral-500 font-serif text-lg md:text-4xl landscape:md:text-base lg:text-5xl landscape:lg:text-4xl xl:text-4xl;
+}
