@@ -7,7 +7,7 @@
       </div>
 
       <div class="column-end-wrapper">
-        <div class="marketing-image"></div>
+        <%= marketing_image_tag 'harvesting-lavender' %>
       </div>
     </div>
 
@@ -21,16 +21,18 @@
   </div>
 
   <div class="content-section" data-scroll-section>
-    <div class="content-wrapper">
-      <div>
-        <div class="marketing-image"></div>
-      </div>
+    <%= link_to learn_path do %>
+      <div class="content-wrapper">
+        <div>
+          <%= marketing_image_tag 'helichrysum-spread' %>
+        </div>
 
-      <div class="column-end-wrapper">
-        <h2 class="section-title-left">treat yourself.</h2>
-        <p class="section-body-text-left">learn how aromatherapy can melt your troubles away</p>
+        <div class="column-end-wrapper">
+          <h2 class="section-title-left">treat yourself.</h2>
+          <p class="section-body-text-left">learn how aromatherapy can melt your troubles away</p>
+        </div>
       </div>
-    </div>
+    <% end %>
 
     <!-- Scroll to next button (mobile & tablet & portrait & landscape) -->
     <button
@@ -42,16 +44,18 @@
   </div>
 
   <div class="content-section" data-scroll-section>
-    <div class="content-wrapper-reverse">
-      <div class="column-end-wrapper">
-        <h2 class="section-title-right">visit our farms.</h2>
-        <p class="section-body-text-right">(from the comfort of your home)</p>
-      </div>
+    <%= link_to our_farms_path do %>
+      <div class="content-wrapper-reverse">
+        <div class="column-end-wrapper">
+          <h2 class="section-title-right">visit our farms.</h2>
+          <p class="section-body-text-right">(from the comfort of your home)</p>
+        </div>
 
-      <div>
-        <div class="marketing-image"></div>
+        <div>
+          <%= marketing_image_tag 'lavender-fields-06' %>
+        </div>
       </div>
-    </div>
+    <% end %>
 
     <!-- Scroll to next button (mobile & tablet & portrait & landscape) -->
     <button

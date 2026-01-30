@@ -161,9 +161,6 @@
   /* Behavior */
   @apply object-cover;
 
-  /* Visual effects */
-  @apply saturate-[0.7];
-
   /* Interactive & animation */
   @apply transition-all duration-200 ease-in-out;
 }
@@ -211,10 +208,6 @@
 
   /* Link styling */
   @apply no-underline;
-}
-
-.product-link:hover .product-image {
-  @apply saturate-100;
 }
 
 .product-image-container {

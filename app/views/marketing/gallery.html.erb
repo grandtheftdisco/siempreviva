@@ -1,4 +1,40 @@
-<div>
-  <h1 class="font-bold text-4xl">Marketing#gallery</h1>
-  <p>Find me in app/views/marketing/gallery.html.erb</p>
+<%= stylesheet_link_tag "https://cdn.jsdelivr.net/npm/glightbox/dist/css/glightbox.min.css" %>
+
+<div class="gallery-container" data-controller="lightbox">
+  <h1 class="gallery-title">gallery</h1>
+
+  <% if @images.present? %>
+    <div class="gallery-grid">
+      <% @images.each do |image| %>
+        <%
+          aspect_ratio = image['width'].to_f / image['height'].to_f
+          span_class = aspect_ratio > 1.3 ? "col-span-2" : "col-span-1"
+
+          thumbnail_url = Cloudinary::Utils.cloudinary_url(
+            image['public_id'],
+            transformation: { width: 800, crop: 'limit', fetch_format: 'auto', quality: 'auto' }
+          )
+
+          full_size_url = Cloudinary::Utils.cloudinary_url(
+            image['public_id'],
+            transformation: { width: 2000, crop: 'limit', fetch_format: 'auto', quality: 'auto' }
+          )
+
+          alt_text = image.dig('context', 'custom', 'alt') || image['public_id'].split('/').last.humanize
+        %>
+
+        <a href="<%= full_size_url %>"
+          class="gallery-item glightbox <%= span_class %>"
+          data-gallery="gallery"
+          data-type="image"
+          data-alt="<%= alt_text %>">
+          <img src="<%= thumbnail_url %>"
+          alt="<%= alt_text %>"
+          loading="lazy">
+        </a>
+      <% end %>
+    </div>
+  <% else %>
+    <p class="gallery-empty-state">No gallery images found. Please check back soon!</p>
+  <% end %>
 </div>
