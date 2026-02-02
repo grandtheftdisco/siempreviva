@@ -4,7 +4,7 @@
 
   <body>
     <!-- Keep relative inline - breaks header layout if moved to CSS -->
-    <header class="relative">
+    <header class="relative" data-controller="algolia-search">
       <div class="header-container">
           
         <!-- Logo -->
@@ -27,8 +27,8 @@
         <!-- Desktop Search Section - Keep responsive utilities inline for proper mobile/desktop visibility toggle -->
         <div class="search-section hidden md:flex">
           <div class="search-inline">
-            <div id="searchbox-desktop" class="search-container"></div>
-            <div id="hits-desktop" class="search-results"></div>
+            <div id="searchbox-desktop" class="search-container" data-algolia-search-target="searchboxDesktop"></div>
+            <div id="hits-desktop" class="search-results" data-algolia-search-target="hitsDesktop"></div>
           </div>
         </div>
 
@@ -82,8 +82,8 @@
         
         <!-- Search Dropdown (Mobile) - Moved outside search-section -->
         <div id="searchDropdown" class="search-dropdown">
-          <div id="searchbox" class="search-container"></div>
-          <div id="hits" class="search-results"></div>
+          <div id="searchbox" class="search-container" data-algolia-search-target="searchbox"></div>
+          <div id="hits" class="search-results" data-algolia-search-target="hits"></div>
         </div>
       </div> <!-- End header-container -->
     </header>
@@ -127,152 +127,3 @@
     </footer>
   </body>
 </html>
-
-<script>
-  // Initialize the search client
-
-  const { liteClient: algoliasearch } = window['algoliasearch/lite'];
-  const searchClient = algoliasearch('<%= Rails.application.credentials.algolia[:application_id] %>',
-                                     '<%= Rails.application.credentials.algolia[:search_api_key] %>');
-
-  // Render the InstantSearch.js wrapper
-  const search = instantsearch({
-    indexName: 'products_index',
-    searchClient,
-    searchFunction(helper) {
-      // Only search if the query is not empty
-      if (helper.state.query.trim() === '') {
-        // Hide hits container if query is empty
-        document.querySelector('#hits').style.display = 'none';
-        document.querySelector('#hits-desktop').style.display = 'none';
-        return;
-      }
-      // Show hits container and search
-      document.querySelector('#hits').style.display = '';
-      document.querySelector('#hits-desktop').style.display = '';
-      helper.search();
-    }
-  });
-
-  search.addWidgets([
-    // Mobile searchbox
-    instantsearch.widgets.searchBox({
-      container: '#searchbox'
-    }),
-    // Desktop searchbox
-    instantsearch.widgets.searchBox({
-      container: '#searchbox-desktop'
-    }),
-
-    // Mobile hits
-    instantsearch.widgets.hits({
-      container: '#hits',
-      templates: {
-        item(hit, { html, components }) {
-
-          const url = `/products/${hit.objectId}`;
-
-          return html`
-            <a href="${url}" class="search-hit-item">
-              <h2>
-                ${components.Highlight({ attribute: 'name', hit })}
-              </h2>
-            </a>
-          `;
-        },
-      },
-    }),
-    
-    // Desktop hits
-    instantsearch.widgets.hits({
-      container: '#hits-desktop',
-      templates: {
-        item(hit, { html, components }) {
-
-          const url = `/products/${hit.objectId}`;
-
-          return html`
-            <a href="${url}" class="search-hit-item">
-              <h2>
-                ${components.Highlight({ attribute: 'name', hit })}
-              </h2>
-            </a>
-          `;
-        },
-      },
-    })
-  ]);
-
-  // Hide hits on initial load
-  document.addEventListener('DOMContentLoaded', function() {
-    document.querySelector('#hits').style.display = 'none';
-    document.querySelector('#hits-desktop').style.display = 'none';
-
-    // Search dropdown functionality
-    const searchButton = document.getElementById('searchToggleButton');
-    const searchDropdown = document.getElementById('searchDropdown');
-
-    if (searchButton && searchDropdown) {
-      searchButton.addEventListener('click', function(e) {
-        e.preventDefault();
-        searchDropdown.classList.toggle('show');
-
-        // Auto-focus the search input on mobile for better UX
-        if (searchDropdown.classList.contains('show')) {
-          setTimeout(() => {
-            const searchInput = searchDropdown.querySelector('.ais-SearchBox-input');
-            if (searchInput && window.innerWidth <= 768) {
-              searchInput.focus();
-            }
-          }, 100);
-        }
-      });
-
-      // Close dropdown when clicking outside
-      document.addEventListener('click', function(e) {
-        if (!searchButton.contains(e.target) && !searchDropdown.contains(e.target)) {
-          searchDropdown.classList.remove('show');
-        }
-      });
-    }
-
-    // Desktop Cart dropdown functionality
-    const cartButton = document.getElementById('cartDropdownButton');
-    const cartDropdown = document.getElementById('cartDropdown');
-
-    if (cartButton && cartDropdown) {
-      cartButton.addEventListener('click', function(e) {
-        e.preventDefault();
-        cartDropdown.classList.toggle('show');
-      });
-
-      // Close dropdown when clicking outside
-      document.addEventListener('click', function(e) {
-        if (!cartButton.contains(e.target) && !cartDropdown.contains(e.target)) {
-          cartDropdown.classList.remove('show');
-        }
-      });
-    }
-
-    // Mobile Cart dropdown functionality
-    const cartButtonMobile = document.getElementById('cartDropdownButtonMobile');
-    const cartDropdownMobile = document.getElementById('cartDropdownMobile');
-
-    if (cartButtonMobile && cartDropdownMobile) {
-      cartButtonMobile.addEventListener('click', function(e) {
-        e.preventDefault();
-        cartDropdownMobile.classList.toggle('show');
-      });
-
-      // Close dropdown when clicking outside
-      document.addEventListener('click', function(e) {
-        if (!cartButtonMobile.contains(e.target) && !cartDropdownMobile.contains(e.target)) {
-          cartDropdownMobile.classList.remove('show');
-        }
-      });
-    }
-  });
-
-  search.start();
-
-</script>

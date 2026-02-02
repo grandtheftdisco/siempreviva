@@ -12,3 +12,6 @@ application.register("quantity-toggle", QuantityToggleController)
 
 import ScrollNavigationController from "controllers/scroll_navigation_controller"
 application.register("scroll-navigation", ScrollNavigationController)
+
+import AlgoliaSearchController from "controllers/algolia_search_controller"
+application.register("algolia-search", AlgoliaSearchController)
