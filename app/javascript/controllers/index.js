@@ -15,3 +15,6 @@ application.register("scroll-navigation", ScrollNavigationController)
 
 import AlgoliaSearchController from "controllers/algolia_search_controller"
 application.register("algolia-search", AlgoliaSearchController)
+
+import DropdownController from "controllers/dropdown_controller"
+application.register("dropdown", DropdownController)
