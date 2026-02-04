@@ -78,7 +78,10 @@
           <!-- Bag & Hamburger Menu Icons -->
           <div class="mobile-nav-right-icons">
             <!-- Hamburger Menu Button -->
-            <button data-collapse-toggle="navbar-default" type="button" class="mobile-menu-button">
+            <button data-controller="collapse"
+                    data-collapse-target-id-value="navbar-default"
+                    data-action="click->collapse#toggle"
+                    type="button" class="mobile-menu-button">
               <span class="sr-only">Open main menu</span>
               <svg class="mobile-menu-icon" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"></path>

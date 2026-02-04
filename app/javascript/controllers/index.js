@@ -18,3 +18,6 @@ application.register("algolia-search", AlgoliaSearchController)
 
 import DropdownController from "controllers/dropdown_controller"
 application.register("dropdown", DropdownController)
+
+import CollapseController from "controllers/collapse_controller"
+application.register("collapse", CollapseController)
