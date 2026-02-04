@@ -21,3 +21,6 @@ application.register("dropdown", DropdownController)
 
 import CollapseController from "controllers/collapse_controller"
 application.register("collapse", CollapseController)
+
+import InputCounterController from "controllers/input_counter_controller"
+application.register("input-counter", InputCounterController)

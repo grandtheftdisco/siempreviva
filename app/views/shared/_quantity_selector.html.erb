@@ -1,4 +1,4 @@
-<%# Quantity Selector Component - Flowbite Style %>
+<%# Quantity Selector Component %>
 <%# Usage: <%= render 'shared/quantity_selector',
 #            input_id: 'quantity-input',
 #            initial_value: 1,
@@ -10,9 +10,9 @@
 <% min_value ||= 1 %>
 <% field_name ||= nil %>
 
-<div class="relative flex items-center max-w-[8rem]">
+<div class="relative flex items-center max-w-[8rem]" data-controller="input-counter">
   <button type="button"
-          data-input-counter-decrement="<%= input_id %>"
+          data-action="click->input-counter#decrement"
           class="item-quantity-select-btn round-left">
     <svg class="w-2 h-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 2">
       <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 1h16"/>
@@ -24,11 +24,11 @@
          <% if field_name.present? %>name="<%= field_name %>"<% end %>
          value="<%= initial_value %>"
          min="<%= min_value %>"
-         data-input-counter
+         data-input-counter-target="input"
          class="item-quantity-input" />
 
   <button type="button"
-          data-input-counter-increment="<%= input_id %>"
+          data-action="click->input-counter#increment"
           class="item-quantity-select-btn round-right">
     <svg class="w-2 h-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 18">
       <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 1v16M1 9h16"/>
