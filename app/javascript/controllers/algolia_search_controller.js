@@ -58,13 +58,11 @@ export default class extends Controller {
     ]);
 
     this.search.start();
-    console.log("Algolia search started")
   }
 
   disconnect() {
     if (this.search) {
       this.search.dispose();
     }
-    console.log("Algolia search controller disconnected")
   }
 }
