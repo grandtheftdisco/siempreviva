@@ -11,8 +11,10 @@
 - Created comprehensive service object architecture with TDD approach
 - Integrated Redis caching and background job processing for production scalability
 
-🛠️ **Stack:** Ruby on Rails, PostgreSQL, Stripe API, Tailwind CSS, Redis 
-⏱️ **Timeline:** March 2025 - Present (10+ months of active development)  
+🛠️ **Stack:** Ruby on Rails, PostgreSQL, Stripe API, Tailwind CSS, Redis
+
+⏱️ **Timeline:** March 2025 - Present (10+ months of active development)
+
 🏢 **Client:** Real small business (Siempreviva): not a tutorial project  
 
 ## 📈 Latest Progress Update (January 30, 2026)
