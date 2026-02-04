@@ -24,3 +24,6 @@ application.register("collapse", CollapseController)
 
 import InputCounterController from "controllers/input_counter_controller"
 application.register("input-counter", InputCounterController)
+
+import StripeCheckoutController from "controllers/stripe_checkout_controller"
+application.register("stripe-checkout", StripeCheckoutController)
