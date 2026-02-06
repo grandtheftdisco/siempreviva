@@ -7,6 +7,9 @@ import { application } from "controllers/application"
 import HelloController from "controllers/hello_controller"
 application.register("hello", HelloController)
 
+import LightboxController from "controllers/lightbox_controller"
+application.register("lightbox", LightboxController)
+
 import QuantityToggleController from "controllers/quantity_toggle_controller"
 application.register("quantity-toggle", QuantityToggleController)
 

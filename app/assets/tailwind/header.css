@@ -49,18 +49,12 @@ header {
 /* ===== LOGO ===== */
 
 .logo-section {
-  /* Spacing */
-  @apply pl-0 pt-1;
-
   /* Layout & positioning */
-  @apply flex-shrink-0 order-1 flex-none;
+  @apply flex-shrink-0 order-1 flex-none flex items-center justify-center;
 }
 
 @media (min-width: 768px) {
   .logo-section {
-    /* Spacing */
-    @apply pl-2 pt-2;
-
     /* Layout & positioning */
     @apply order-[initial];
   }
