@@ -19,11 +19,13 @@
     </svg>
   </button>
 
+<%# TODO - convert this to rails form tag (if possible with Stimulus) %>
   <input type="number"
          id="<%= input_id %>"
          <% if field_name.present? %>name="<%= field_name %>"<% end %>
          value="<%= initial_value %>"
          min="<%= min_value %>"
+         max="10"
          data-input-counter
          class="item-quantity-input" />
 
