@@ -47,6 +47,7 @@
       <!-- Add to Bag (mobile only, non-floating) -->
       <%= form_for :cart_item, url: cart_items_path, method: :post, class: "add-to-bag-mobile-form mx-auto" do |f| %>
         <%= hidden_field_tag 'cart_item[stripe_product_id]', @product.id %>
+        <%= hidden_field_tag 'cart_item[quantity]', 1 %>
         <%= f.submit "Add to Bag", class: "btn-purple btn-large w-full max-w-md" %>
       <% end %>
     </div>
