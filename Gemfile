@@ -54,7 +54,6 @@ end
 group :development do
   # Use console on exceptions pages [https://github.com/rails/web-console]
   gem "web-console"
-  gem "log_bench"
 end
 
 group :test do
@@ -74,3 +73,4 @@ gem "mail_form"
 gem "algolia", "~> 3.23"
 gem "premailer-rails"
 gem "rubocop-airbnb", require: false
+gem "cloudinary"

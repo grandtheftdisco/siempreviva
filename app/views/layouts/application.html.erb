@@ -10,7 +10,11 @@
         <!-- Logo -->
         <div class="logo-section">
           <a href="<%= root_path %>" class="logo-link">
-            <%= image_tag 'logo.png', class: 'logo-image', alt: 'Logo' %>
+            <% logo_url = Cloudinary::Utils.cloudinary_url(
+              'sv-logo',
+              transformation: { width: 200, crop: 'limit', quality: 'auto', format: 'png' }
+            ) %>
+            <%= image_tag logo_url, class: 'logo-image', alt: 'Siempreviva Logo' %>
           </a>
         </div>
       
@@ -20,6 +24,7 @@
             <li><%= link_to 'products', products_path, class: 'text-link' %></li>
             <li><%= link_to 'our farms', our_farms_path, class: 'text-link' %></li>
             <li><%= link_to 'learn', learn_path, class: 'text-link' %></li>
+            <li><%= link_to 'gallery', gallery_path, class: 'text-link' %></li>
             <li><%= link_to 'contact', contact_path, class: 'text-link' %></li>
           </ul>
         </div>
@@ -102,8 +107,8 @@
               <li><%= link_to 'Products', products_path, class: 'footer-link' %></li>
               <li><%= link_to 'Our Farms', our_farms_path, class: 'footer-link' %></li>
               <li><%= link_to 'Learn', learn_path, class: 'footer-link' %></li>
-              <li><%= link_to 'Contact', contact_path, class: 'footer-link' %></li>
               <li><%= link_to 'Gallery', gallery_path, class: 'footer-link' %></li>
+              <li><%= link_to 'Contact', contact_path, class: 'footer-link' %></li>
             </ul>
           </div>
 

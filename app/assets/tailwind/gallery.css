@@ -1,0 +1,106 @@
+/* Gallery Page Stylesheet */
+
+/* ===== GALLERY CONTAINER ===== */
+
+.gallery-container {
+  /* Layout & positioning */
+  @apply flex flex-col;
+
+  /* Sizing & spacing */
+  @apply px-2 py-4;
+  @apply min-h-screen;
+}
+
+.gallery-title {
+  /* Sizing & spacing */
+  @apply px-4 mb-10 lg:mb-20;
+  @apply mx-auto;
+
+  /* Colors */
+  @apply text-neutral-600;
+
+  /* Typography */
+  @apply text-4xl md:text-6xl lg:text-7xl;
+  @apply font-serif text-center;
+}
+
+/* ===== RESPONSIVE GRID SYSTEM ===== */
+
+.gallery-grid {
+  /* Layout - CSS Grid with responsive columns */
+  @apply grid;
+  @apply grid-cols-2;
+  @apply md:grid-cols-3;
+  @apply lg:grid-cols-4;
+
+  /* Grid behavior */
+  @apply auto-rows-auto;
+
+  /* Spacing */
+  @apply gap-3 md:gap-4 lg:gap-6;
+
+  /* Sizing */
+  @apply w-full max-w-screen-2xl mx-auto;
+}
+
+/* ===== GALLERY ITEM ===== */
+
+.gallery-item {
+  /* Display & overflow */
+  @apply block overflow-hidden;
+
+  /* Border & shape */
+  @apply rounded-lg;
+
+  /* Aspect ratio & sizing - maintain natural image proportions */
+  @apply relative;
+
+  /* Interactive */
+  @apply cursor-pointer;
+  @apply transition-transform duration-300 ease-in-out;
+
+  /* Hover effect */
+  @apply hover:scale-105 hover:z-10;
+}
+
+.gallery-item img {
+  /* Display & sizing */
+  @apply w-full h-full;
+
+  /* Object fit - cover to fill container while maintaining aspect ratio */
+  @apply object-cover;
+
+  /* Border & shape */
+  @apply rounded-lg;
+
+  /* Visual quality */
+  @apply bg-neutral-200;
+}
+
+/* ===== COLUMN SPAN UTILITIES ===== */
+
+/* Single column width (default) */
+.col-span-1 {
+  @apply col-span-1;
+}
+
+/* Double column width (for landscape images) */
+.col-span-2 {
+  @apply col-span-2;
+}
+
+/* ===== EMPTY STATE ===== */
+
+.gallery-empty-state {
+  /* Layout & positioning */
+  @apply text-center;
+
+  /* Sizing & spacing */
+  @apply py-20;
+
+  /* Colors */
+  @apply text-neutral-500;
+
+  /* Typography */
+  @apply text-xl font-serif italic;
+}
