@@ -5,7 +5,6 @@ class CartItemsController < ApplicationController
   def create
     product_setup
     quantity = params[:cart_item][:quantity].to_i
-
     @new_cart_item = CartService::AddToCart.call(
       product: @product,
       cart: @cart,
