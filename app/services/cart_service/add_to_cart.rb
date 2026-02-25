@@ -6,6 +6,7 @@ module CartService
 
     private
 
+    # TODO - inspect this method for our loophole doc'd in ticket B117
     def self.check_for_duplicate_cart_items(product:, cart:, quantity:)
       begin
         cart_items = cart.cart_items.to_a
@@ -24,7 +25,7 @@ module CartService
           cart.cart_items.reload
           new_cart_item
         end
-      rescue Stripe::StripeError => edit
+      rescue Stripe::StripeError => e
         Rails.logger.error("Stripe error: #{e.message}")
         raise
       rescue StandardError => e
