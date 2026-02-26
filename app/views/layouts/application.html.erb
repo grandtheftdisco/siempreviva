@@ -6,8 +6,8 @@
     <!-- Keep relative inline - breaks header layout if moved to CSS -->
     <header class="relative"
             data-controller="algolia-search"
-            data-algolia-search-app-id-value="<%= Rails.application.credentials.algolia[:application_id] %>"
-            data-algolia-search-search-key-value="<%= Rails.application.credentials.algolia[:search_api_key] %>">
+            data-algolia-search-app-id-value="<%= Rails.application.credentials.algolia.fetch(:application_id) %>"
+            data-algolia-search-search-key-value="<%= Rails.application.credentials.algolia.fetch(:search_api_key) %>">
       <div class="header-container">
 
         <!-- Logo -->
