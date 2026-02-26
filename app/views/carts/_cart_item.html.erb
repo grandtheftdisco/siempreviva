@@ -52,7 +52,7 @@
               <%= render 'shared/quantity_selector',
                         input_id: "cart-item-#{cart_item.id}-quantity",
                         initial_value: cart_item.quantity,
-                        min_value: 1,
+                        min_value: 0,
                         field_name: 'cart_item[quantity]' %>
               <%= f.submit 'update', class: 'quantity-update-btn' %>
             </div>
