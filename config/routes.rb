@@ -24,6 +24,10 @@ Rails.application.routes.draw do
   # Checkouts
   resources :checkouts, only: [ :new, :create, :show ]
 
+  # Webhook endpoints
+  post 'stripe/webhooks', to: 'stripe/webhooks#create'
+  post 'cloudinary/webhooks', to: 'cloudinary/webhooks#create'
+  
   # Checkout Sessions (Stripe)
   resources :checkout_sessions, only: [ :create ]
 

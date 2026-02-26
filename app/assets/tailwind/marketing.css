@@ -180,7 +180,7 @@
   @apply text-4xl md:text-6xl landscape:md:text-4xl lg:text-6xl;
   @apply landscape:lg:text-7xl;
   @apply font-serif;
-  @apply text-center portrait:lg:text-center xl:text-right;
+  @apply text-center;
 }
 
 .hero-subtitle {
@@ -195,15 +195,17 @@
   @apply text-center portrait:lg:text-center xl:text-right;
 }
 
-/* Image placeholder - responsive based on orientation and screen size */
+/* Marketing image - responsive based on orientation and screen size */
 .marketing-image {
-  /* Display & visibility */
-  @apply landscape:md:hidden landscape:lg:block;
+  /* Display & visibility - show on all orientations/sizes */
 
-  /* Base sizing (portrait mobile - square aspect) */
-  @apply h-60 w-60 xs:h-48 xs:w-48;
+  /* Portrait phones - portrait aspect (taller than wide) */
+  @apply portrait:h-72 portrait:w-56;
 
-  /* Portrait medium/large screens (landscape aspect ratio for tablets) */
+  /* Portrait xs - keep square (override above) */
+  @apply xs:portrait:h-48 xs:portrait:w-48;
+
+  /* Portrait tablets - landscape aspect (wider than tall) */
   @apply portrait:md:h-90 portrait:md:w-130;
   @apply portrait:lg:h-100 portrait:lg:w-150;
   @apply portrait:xl:h-130 portrait:xl:w-130;
@@ -212,18 +214,21 @@
   @apply landscape:h-40 landscape:w-40;
   @apply landscape:max-md:h-32 landscape:max-md:w-32;
 
-  /* Landscape large screens (tablets/desktop) */
+  /* Landscape medium screens (tablets) - square */
+  @apply landscape:md:h-48 landscape:md:w-48;
+
+  /* Landscape large screens (desktop) */
   @apply landscape:lg:h-100 landscape:lg:w-100;
   @apply landscape:xl:h-100 landscape:xl:w-130;
 
   /* Spacing */
-  @apply mx-auto mb-10 xs:portrait:mb-0 landscape:mb-0;
+  @apply mb-10 xs:portrait:mb-0 landscape:mb-0;
 
   /* Border & shape */
   @apply rounded-2xl;
 
-  /* Colors */
-  @apply bg-neutral-200;
+  /* Image handling */
+  @apply object-cover;
 }
 
 /* ===== CONTENT SECTIONS ===== */
