@@ -19,13 +19,12 @@
     </svg>
   </button>
 
-  <input type="number"
-         id="<%= input_id %>"
-         <% if field_name.present? %>name="<%= field_name %>"<% end %>
-         value="<%= initial_value %>"
-         min="<%= min_value %>"
-         data-input-counter
-         class="item-quantity-input" />
+  <%= number_field_tag field_name, initial_value,
+        id: input_id,
+        min: min_value,
+        max: 10,
+        data: { input_counter: true },
+        class: 'item-quantity-input' %>
 
   <button type="button"
           data-input-counter-increment="<%= input_id %>"

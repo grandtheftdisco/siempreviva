@@ -8,8 +8,6 @@ class CartItem < ApplicationRecord
   private
 
   def set_quantity
-    if self.quantity == 0 || !self.quantity
-      self.quantity = 1
-    end
+    self.quantity ||= 1
   end
 end

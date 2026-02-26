@@ -5,7 +5,6 @@ class CartItemsController < ApplicationController
   def create
     product_setup
     quantity = params[:cart_item][:quantity].to_i
-
     @new_cart_item = CartService::AddToCart.call(
       product: @product,
       cart: @cart,
@@ -41,6 +40,11 @@ class CartItemsController < ApplicationController
   end
 
   def update
+    if params[:cart_item][:quantity].to_i == 0
+      remove_cart_item
+      return
+    end
+
     ActiveRecord::Base.transaction do
       @cart_item.update!(cart_item_params)
       @cart.update!(total_amount: CartService::CalculateCart.call(cart: @cart))
@@ -60,6 +64,21 @@ class CartItemsController < ApplicationController
   end
 
   def destroy
+    remove_cart_item
+  end
+
+  private
+
+  def set_cart_item
+    @cart_item = CartItem.find(params[:id])
+  end
+
+  def product_setup
+    @products = StripeService::FetchProductInventory.call
+    @product = @products.find { |item| item.id == params[:cart_item][:stripe_product_id] }
+  end
+
+  def remove_cart_item
     @cart_item.destroy!
     @cart.update(total_amount: CartService::CalculateCart.call(cart: @cart))
 
@@ -72,17 +91,6 @@ class CartItemsController < ApplicationController
       format.json { head :no_content }
     end
   end
-
-  private
-
-  def set_cart_item
-    @cart_item = CartItem.find(params[:id])
-  end
-
-    def product_setup
-      @products = StripeService::FetchProductInventory.call
-      @product = @products.find { |item| item.id == params[:cart_item][:stripe_product_id] }
-    end
 
   def cart_item_params
     params.require(:cart_item)
