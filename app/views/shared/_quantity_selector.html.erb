@@ -1,37 +1,57 @@
-<%# Quantity Selector Component - Flowbite Style %>
-<%# Usage: <%= render 'shared/quantity_selector',
-#            input_id: 'quantity-input',
-#            initial_value: 1,
-#            min_value: 1,
-#            field_name: 'cart_item[quantity]' (optional, defaults to nil for use with form builders) %>
+<%#
+  Usage: render 'shared/quantity_selector',
+           input_id: 'quantity-input',
+           initial_value: 1,
+           min_value: 1,
+           field_name: 'cart_item[quantity]' (optional, defaults to nil)
+%>
 
 <% input_id ||= "quantity-input-#{SecureRandom.uuid}" %>
 <% initial_value ||= 1 %>
 <% min_value ||= 1 %>
 <% field_name ||= nil %>
 
-<div class="relative flex items-center max-w-[8rem]">
-  <button type="button"
-          data-input-counter-decrement="<%= input_id %>"
-          class="item-quantity-select-btn round-left">
-    <svg class="w-2 h-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 2">
-      <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 1h16"/>
+<div class="relative flex items-center max-w-[8rem]"
+     data-controller="input-counter">
+  <button class="item-quantity-select-btn round-left"
+          type="button"
+          data-action="click->input-counter#decrement">
+    <svg class="w-2 h-2"
+         aria-hidden="true"
+         xmlns="http://www.w3.org/2000/svg"
+         fill="none"
+         viewBox="0 0 18 2">
+      <path stroke="currentColor"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M1 1h16"/>
     </svg>
   </button>
 
-  <input type="number"
-         id="<%= input_id %>"
-         <% if field_name.present? %>name="<%= field_name %>"<% end %>
+  <input id="<%= input_id %>"
+         class="item-quantity-input"
+         type="number"
+         <% if field_name.present? %>
+           name="<%= field_name %>"
+         <% end %>
          value="<%= initial_value %>"
          min="<%= min_value %>"
-         data-input-counter
-         class="item-quantity-input" />
+         data-input-counter-target="input"/>
 
-  <button type="button"
-          data-input-counter-increment="<%= input_id %>"
-          class="item-quantity-select-btn round-right">
-    <svg class="w-2 h-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 18">
-      <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 1v16M1 9h16"/>
+  <button class="item-quantity-select-btn round-right"
+          type="button"
+          data-action="click->input-counter#increment">
+    <svg class="w-2 h-2"
+         aria-hidden="true"
+         xmlns="http://www.w3.org/2000/svg"
+         fill="none"
+         viewBox="0 0 18 18">
+      <path stroke="currentColor"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M9 1v16M1 9h16"/>
     </svg>
   </button>
 </div>

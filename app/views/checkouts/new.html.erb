@@ -2,9 +2,12 @@
   <div>
     <h1 class="hero-title-downcase">checkout</h1>
   </div>
-  <div id="stripe-key" data-publishable-key="<%= Rails.application.credentials.dig(:stripe, :publishable_key) %>"></div>
+  <div data-controller="stripe-checkout"
+       data-stripe-checkout-key-value="<%= Rails.application.credentials.dig(:stripe, :publishable_key) %>">
 
-  <div id="checkout-element"></div>
+    <div id="checkout-element"
+         data-stripe-checkout-target="element">
+    </div>
 
-  <script src="<%= asset_path 'checkout.js' %>"></script>
+  </div>
 </div>

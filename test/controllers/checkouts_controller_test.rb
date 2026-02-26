@@ -99,7 +99,7 @@ class CheckoutsControllerTest < ActionDispatch::IntegrationTest
     
     # Verify the content for error state
     assert_select "h1", text: /Something.*went wrong./m
-    assert_select ".subtitle a[href=?]", contact_path
+    assert_select ".subtitle a[href=?]", new_contact_form_path
     assert_select ".image-placeholder", text: "Error State Image"
   end
 

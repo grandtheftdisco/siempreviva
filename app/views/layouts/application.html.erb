@@ -4,9 +4,12 @@
 
   <body>
     <!-- Keep relative inline - breaks header layout if moved to CSS -->
-    <header class="relative">
+    <header class="relative"
+            data-controller="algolia-search"
+            data-algolia-search-app-id-value="<%= Rails.application.credentials.algolia.fetch(:application_id) %>"
+            data-algolia-search-search-key-value="<%= Rails.application.credentials.algolia.fetch(:search_api_key) %>">
       <div class="header-container">
-          
+
         <!-- Logo -->
         <div class="logo-section">
           <a href="<%= root_path %>" class="logo-link">
@@ -17,33 +20,49 @@
             <%= image_tag logo_url, class: 'logo-image', alt: 'Siempreviva Logo' %>
           </a>
         </div>
-      
+
         <!-- Navbar Links - Keep responsive utilities inline for proper mobile/desktop visibility toggle -->
-        <div class="navbar-section hidden md:flex" id="navbar-default">
+        <div id="navbar-default"
+             class="navbar-section hidden md:flex">
           <ul class="navbar-list">
             <li><%= link_to 'products', products_path, class: 'text-link' %></li>
             <li><%= link_to 'our farms', our_farms_path, class: 'text-link' %></li>
             <li><%= link_to 'learn', learn_path, class: 'text-link' %></li>
             <li><%= link_to 'gallery', gallery_path, class: 'text-link' %></li>
-            <li><%= link_to 'contact', contact_path, class: 'text-link' %></li>
+            <li><%= link_to 'contact', new_contact_form_path, class: 'text-link' %></li>
           </ul>
         </div>
 
         <!-- Desktop Search Section - Keep responsive utilities inline for proper mobile/desktop visibility toggle -->
         <div class="search-section hidden md:flex">
           <div class="search-inline">
-            <div id="searchbox-desktop" class="search-container"></div>
-            <div id="hits-desktop" class="search-results"></div>
+            <div id="searchbox-desktop"
+                 class="search-container"
+                 data-algolia-search-target="searchboxDesktop">
+            </div>
+            <div id="hits-desktop"
+                 class="search-results"
+                 data-algolia-search-target="hitsDesktop">
+            </div>
           </div>
         </div>
 
         <!-- Desktop Cart Section - Keep responsive utilities inline for proper mobile/desktop visibility toggle -->
-        <div class="right-icons hidden md:flex">
+        <div class="right-icons hidden md:flex"
+             data-controller="dropdown">
           <!-- Cart Dropdown -->
-          <button id="cartDropdownButton" class="cart-button">
+          <button id="cartDropdownButton"
+                  class="cart-button"
+                  data-action="click->dropdown#toggle">
             <!-- Shopping Cart Icon -->
-            <svg class="cart-icon" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 10.5V6a3.75 3.75 0 10-7.5 0v4.5m11.356-1.993l1.263 12c.07.665-.45 1.243-1.119 1.243H4.25a1.125 1.125 0 01-1.12-1.243l1.264-12A1.125 1.125 0 015.513 7.5h12.974c.576 0 1.059.435 1.119.993zM8.625 10.5a.375.375 0 11-.75 0 .375.375 0 01.75 0zm7.5 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z"></path>
+            <svg class="cart-icon"
+                 fill="none"
+                 stroke="currentColor"
+                 stroke-width="2"
+                 viewBox="0 0 24 24">
+              <path stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M15.75 10.5V6a3.75 3.75 0 10-7.5 0v4.5m11.356-1.993l1.263 12c.07.665-.45 1.243-1.119 1.243H4.25a1.125 1.125 0 01-1.12-1.243l1.264-12A1.125 1.125 0 015.513 7.5h12.974c.576 0 1.059.435 1.119.993zM8.625 10.5a.375.375 0 11-.75 0 .375.375 0 01.75 0zm7.5 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z"/>
             </svg>
             <!-- Cart Badge -->
             <span class="cart-badge"><%= @cart.cart_items.count %></span>
@@ -54,42 +73,83 @@
 
         <!-- Mobile Nav Items (Search + Right Icons) - Keep responsive utilities inline for proper mobile/desktop visibility toggle -->
         <div class="mobile-nav-items-container md:hidden">
-          <!-- Search Icon -->
-          <div class="search-section">
-            <button id="searchToggleButton" class="search-toggle-button">
-              <svg class="search-icon" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z"></path>
-              </svg>
-            </button>
+          <!-- Search Icon + Dropdown wrapped for Stimulus (contents preserves flex layout) -->
+          <div class="contents"
+               data-controller="dropdown">
+            <div class="search-section">
+              <button id="searchToggleButton"
+                      class="search-toggle-button"
+                      data-action="click->dropdown#toggle">
+                <svg class="search-icon"
+                     fill="none"
+                     stroke="currentColor"
+                     stroke-width="2"
+                     viewBox="0 0 24 24">
+                  <path stroke-linecap="round"
+                        stroke-linejoin="round"
+                        d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z"/>
+                </svg>
+              </button>
+            </div>
+            <!-- Search Dropdown (Mobile) -->
+            <div id="searchDropdown"
+                 class="search-dropdown"
+                 data-dropdown-target="menu">
+              <div id="searchbox"
+                   class="search-container"
+                   data-algolia-search-target="searchbox">
+              </div>
+              <div id="hits"
+                   class="search-results"
+                   data-algolia-search-target="hits">
+              </div>
+            </div>
           </div>
 
           <!-- Bag & Hamburger Menu Icons -->
           <div class="mobile-nav-right-icons">
             <!-- Hamburger Menu Button -->
-            <button data-collapse-toggle="navbar-default" type="button" class="mobile-menu-button">
+            <button class="mobile-menu-button"
+                    data-controller="collapse"
+                    data-collapse-target-id-value="navbar-default"
+                    data-action="click->collapse#toggle">
               <span class="sr-only">Open main menu</span>
-              <svg class="mobile-menu-icon" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"></path>
+              <svg class="mobile-menu-icon"
+                   aria-hidden="true"
+                   fill="none"
+                   stroke="currentColor"
+                   stroke-width="2"
+                   viewBox="0 0 24 24">
+                <path stroke-linecap="round"
+                      stroke-linejoin="round"
+                      d="M4 6h16M4 12h16M4 18h16"/>
               </svg>
-            </button>
-            <!-- Mobile Cart Dropdown Button-->
-            <button id="cartDropdownButtonMobile" class="cart-button">
-              <!-- Shopping Cart Icon -->
-              <svg class="cart-icon" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 10.5V6a3.75 3.75 0 10-7.5 0v4.5m11.356-1.993l1.263 12c.07.665-.45 1.243-1.119 1.243H4.25a1.125 1.125 0 01-1.12-1.243l1.264-12A1.125 1.125 0 015.513 7.5h12.974c.576 0 1.059.435 1.119.993zM8.625 10.5a.375.375 0 11-.75 0 .375.375 0 01.75 0zm7.5 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z"></path>
-              </svg>
-              <!-- Cart Badge -->
-              <span class="cart-badge"><%= @cart.cart_items.count %></span>
             </button>
 
-          <%= render 'shared/cart_dropdown', dropdown_id: 'cartDropdownMobile' %>
+            <!-- Wrapper for DropdownController's toggle of Cart Dropdown -->
+            <div data-controller="dropdown">
+              <!-- Mobile Cart Dropdown Button -->
+              <button id="cartDropdownButtonMobile"
+                      class="cart-button"
+                      data-action="click->dropdown#toggle">
+                <!-- Shopping Cart Icon -->
+                <svg class="cart-icon"
+                     fill="none"
+                     stroke="currentColor"
+                     stroke-width="2"
+                     viewBox="0 0 24 24">
+                  <path stroke-linecap="round"
+                        stroke-linejoin="round"
+                        d="M15.75 10.5V6a3.75 3.75 0 10-7.5 0v4.5m11.356-1.993l1.263 12c.07.665-.45 1.243-1.119 1.243H4.25a1.125 1.125 0 01-1.12-1.243l1.264-12A1.125 1.125 0 015.513 7.5h12.974c.576 0 1.059.435 1.119.993zM8.625 10.5a.375.375 0 11-.75 0 .375.375 0 01.75 0zm7.5 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z"/>
+                </svg>
+                <!-- Cart Badge -->
+                <span class="cart-badge"><%= @cart.cart_items.count %></span>
+              </button>
+
+              <%= render 'shared/cart_dropdown', dropdown_id: 'cartDropdownMobile' %>
+            </div>
+          </div>
         </div> <!-- End mobile-nav-items -->
-        
-        <!-- Search Dropdown (Mobile) - Moved outside search-section -->
-        <div id="searchDropdown" class="search-dropdown">
-          <div id="searchbox" class="search-container"></div>
-          <div id="hits" class="search-results"></div>
-        </div>
       </div> <!-- End header-container -->
     </header>
     <main<%= ' class="has-flash-messages"'.html_safe if flash.any? %>>
@@ -133,152 +193,3 @@
     </footer>
   </body>
 </html>
-
-<script>
-  // Initialize the search client
-
-  const { liteClient: algoliasearch } = window['algoliasearch/lite'];
-  const searchClient = algoliasearch('<%= Rails.application.credentials.algolia[:application_id] %>',
-                                     '<%= Rails.application.credentials.algolia[:search_api_key] %>');
-
-  // Render the InstantSearch.js wrapper
-  const search = instantsearch({
-    indexName: 'products_index',
-    searchClient,
-    searchFunction(helper) {
-      // Only search if the query is not empty
-      if (helper.state.query.trim() === '') {
-        // Hide hits container if query is empty
-        document.querySelector('#hits').style.display = 'none';
-        document.querySelector('#hits-desktop').style.display = 'none';
-        return;
-      }
-      // Show hits container and search
-      document.querySelector('#hits').style.display = '';
-      document.querySelector('#hits-desktop').style.display = '';
-      helper.search();
-    }
-  });
-
-  search.addWidgets([
-    // Mobile searchbox
-    instantsearch.widgets.searchBox({
-      container: '#searchbox'
-    }),
-    // Desktop searchbox
-    instantsearch.widgets.searchBox({
-      container: '#searchbox-desktop'
-    }),
-
-    // Mobile hits
-    instantsearch.widgets.hits({
-      container: '#hits',
-      templates: {
-        item(hit, { html, components }) {
-
-          const url = `/products/${hit.objectId}`;
-
-          return html`
-            <a href="${url}" class="search-hit-item">
-              <h2>
-                ${components.Highlight({ attribute: 'name', hit })}
-              </h2>
-            </a>
-          `;
-        },
-      },
-    }),
-    
-    // Desktop hits
-    instantsearch.widgets.hits({
-      container: '#hits-desktop',
-      templates: {
-        item(hit, { html, components }) {
-
-          const url = `/products/${hit.objectId}`;
-
-          return html`
-            <a href="${url}" class="search-hit-item">
-              <h2>
-                ${components.Highlight({ attribute: 'name', hit })}
-              </h2>
-            </a>
-          `;
-        },
-      },
-    })
-  ]);
-
-  // Hide hits on initial load
-  document.addEventListener('DOMContentLoaded', function() {
-    document.querySelector('#hits').style.display = 'none';
-    document.querySelector('#hits-desktop').style.display = 'none';
-
-    // Search dropdown functionality
-    const searchButton = document.getElementById('searchToggleButton');
-    const searchDropdown = document.getElementById('searchDropdown');
-
-    if (searchButton && searchDropdown) {
-      searchButton.addEventListener('click', function(e) {
-        e.preventDefault();
-        searchDropdown.classList.toggle('show');
-
-        // Auto-focus the search input on mobile for better UX
-        if (searchDropdown.classList.contains('show')) {
-          setTimeout(() => {
-            const searchInput = searchDropdown.querySelector('.ais-SearchBox-input');
-            if (searchInput && window.innerWidth <= 768) {
-              searchInput.focus();
-            }
-          }, 100);
-        }
-      });
-
-      // Close dropdown when clicking outside
-      document.addEventListener('click', function(e) {
-        if (!searchButton.contains(e.target) && !searchDropdown.contains(e.target)) {
-          searchDropdown.classList.remove('show');
-        }
-      });
-    }
-
-    // Desktop Cart dropdown functionality
-    const cartButton = document.getElementById('cartDropdownButton');
-    const cartDropdown = document.getElementById('cartDropdown');
-
-    if (cartButton && cartDropdown) {
-      cartButton.addEventListener('click', function(e) {
-        e.preventDefault();
-        cartDropdown.classList.toggle('show');
-      });
-
-      // Close dropdown when clicking outside
-      document.addEventListener('click', function(e) {
-        if (!cartButton.contains(e.target) && !cartDropdown.contains(e.target)) {
-          cartDropdown.classList.remove('show');
-        }
-      });
-    }
-
-    // Mobile Cart dropdown functionality
-    const cartButtonMobile = document.getElementById('cartDropdownButtonMobile');
-    const cartDropdownMobile = document.getElementById('cartDropdownMobile');
-
-    if (cartButtonMobile && cartDropdownMobile) {
-      cartButtonMobile.addEventListener('click', function(e) {
-        e.preventDefault();
-        cartDropdownMobile.classList.toggle('show');
-      });
-
-      // Close dropdown when clicking outside
-      document.addEventListener('click', function(e) {
-        if (!cartButtonMobile.contains(e.target) && !cartDropdownMobile.contains(e.target)) {
-          cartDropdownMobile.classList.remove('show');
-        }
-      });
-    }
-  });
-
-  search.start();
-
-</script>
