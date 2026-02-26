@@ -6,7 +6,6 @@ module CartService
 
     private
 
-    # TODO - inspect this method for our loophole doc'd in ticket B117
     def self.check_for_duplicate_cart_items(product:, cart:, quantity:)
       begin
         cart_items = cart.cart_items.to_a
