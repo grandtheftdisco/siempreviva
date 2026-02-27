@@ -16,6 +16,11 @@ module ApplicationHelper
     product_name.downcase
   end
 
+  # Returns the total quantity of items in the cart for badge display
+  def cart_total_quantity(cart)
+    cart.cart_items.sum(&:quantity)
+  end
+
   # Renders scroll navigation arrow SVGs
   def scroll_arrow(direction)
     arrow_configs = {
