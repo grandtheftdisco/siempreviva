@@ -104,15 +104,14 @@ module Stripe
     end
 
     def check_for_async_payment_type(checkout_session)
-      payment_intent = ::Stripe::PaymentIntent.retrieve(checkout_session.payment_intent)
+      payment_intent, local_checkout_record, cart = set_up_transaction_info(checkout_session)
 
       case payment_intent.status
       when 'processing'
         # FEATURE-FLAG: soft delete cart
         Rails.logger.info "SOFT DELETE CART"
 
-        # FEATURE-FLAG: write cart status in local db as 'pending'
-        Rails.logger.info "CART MARKED AS PENDING"
+        cart.update(status: 'pending')
 
         Rails.logger.info "Async payment type detected: Payment Intent ##{payment_intent.id} is #{payment_intent.status}"
       when 'succeeded'
@@ -186,7 +185,7 @@ module Stripe
 
     def set_up_transaction_info(checkout_session)
       payment_intent = ::Stripe::PaymentIntent.retrieve(checkout_session.payment_intent)
-      local_checkout_record = Checkout.find_by(stripe_checkout_session_id: checkout_session.id)
+      local_checkout_record = ::Checkout.find_by(stripe_checkout_session_id: checkout_session.id)
       cart = Cart.find(local_checkout_record.cart_id)
 
       [payment_intent, local_checkout_record, cart]
