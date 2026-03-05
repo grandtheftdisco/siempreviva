@@ -35,8 +35,16 @@ module WebhookSynchronizationService
     end
 
     def self.payment_complete?(checkout_session)
-      checkout_session.payment_status == 'paid' || 
-      checkout_session.payment_status == 'no_payment_required'
+      # A payment is only complete if payment_status is 'paid' or 'no_payment_required'.
+      case checkout_session.payment_status
+      when 'paid', 'no_payment_required'
+        true
+      when 'unpaid', 'pending', 'requires_action', 'requires_payment_method', 'requires_confirmation', 'requires_capture', 'canceled'
+        false
+      else
+        # Treat unknown statuses as incomplete.
+        false
+      end
     end
   end
 end

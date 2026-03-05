@@ -46,6 +46,9 @@ module Stripe
       checkout_session = event.data.object
 
       case event.type
+      when 'checkout.session.completed'
+        return if action_required_for_transaction?(checkout_session)
+        check_for_async_payment_type(checkout_session)
       when 'checkout.session.async_payment_succeeded'
         handle_async_payment_succeeded(checkout_session)
       when 'checkout.session.async_payment_failed'
@@ -86,6 +89,35 @@ module Stripe
         Rails.logger.info "---Unhandled event type: #{event.type}---"
       end
       # -------------------------------------------
+    end
+
+    def action_required_for_transaction?(checkout_session)
+      payment_intent = ::Stripe::PaymentIntent.retrieve(checkout_session.payment_intent)
+      if payment_intent.status == /requires\..*/
+        # FEATURE-FLAG: send emails to PO & Webmaster, respectively
+        Rails.logger.warn ""
+        return true
+      end
+
+      Rails.logger.info "No action required for Payment Intent ##{checkout_session.payment_intent}"
+      return false
+    end
+
+    def check_for_async_payment_type(checkout_session)
+      payment_intent = ::Stripe::PaymentIntent.retrieve(checkout_session.payment_intent)
+
+      case payment_intent.status
+      when 'processing'
+        # FEATURE-FLAG: soft delete cart
+        Rails.logger.info "SOFT DELETE CART"
+
+        # FEATURE-FLAG: write cart status in local db as 'pending'
+        Rails.logger.info "CART MARKED AS PENDING"
+
+        Rails.logger.info "Async payment type detected: Payment Intent ##{payment_intent.id} is #{payment_intent.status}"
+      when 'succeeded'
+        Rails.logger.info "Checkout Session ##{checkout_session.id} has passed check_for_async_payment_type: no further action taken."
+      end
     end
 
     def check_for_duplicate_events(event)
