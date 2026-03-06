@@ -10,6 +10,8 @@ class AdminMailer < ApplicationMailer
     @checkout_session = checkout_session
     @payment_intent = payment_intent
 
+    # TODO: missing defintion of admin_email in this scope
+    # Maybe just add a constant `ADMIN_EMAIL` to the class
     mail to: admin_email, subject: "Unexpected Issue with Payment Intent #{@payment_intent.id}"
   end
 

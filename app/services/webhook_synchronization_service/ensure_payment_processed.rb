@@ -1,5 +1,7 @@
 module WebhookSynchronizationService
   class EnsurePaymentProcessed < ApplicationService
+    # self.call(checkout_session:, checkout:)
+    # This could just re-use the objects created at the call site rather than re-finding
     def self.call(stripe_checkout_session_id:)
       checkout_session = Stripe::Checkout::Session.retrieve(stripe_checkout_session_id)
       local_checkout_record = Checkout.find_by(stripe_checkout_session_id: stripe_checkout_session_id)

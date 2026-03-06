@@ -46,7 +46,6 @@ ActiveRecord::Schema[8.0].define(version: 2025_08_19_184641) do
   end
 
   create_table "checkouts", force: :cascade do |t|
-    # TODO: can this be null? If not add a migration to make this null: false
     t.text "payment_intent_id"
     t.integer "cart_id", null: false
     t.text "status", null: false
@@ -58,6 +57,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_08_19_184641) do
   end
 
   create_table "orders", force: :cascade do |t|
+    # TODO: can these be null? If not add a migration to make all of these null: false
     t.text "payment_intent_id"
     t.text "stripe_customer_id"
     t.text "customer_email_address"

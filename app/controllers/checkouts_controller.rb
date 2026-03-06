@@ -28,6 +28,7 @@ class CheckoutsController < ApplicationController
 
       # Process payment synchronously if webhook hasn't arrived yet
       # This blocks until payment processing is complete, preventing race conditions
+      # TODO: since you're not using the return value, it might make sense to not return anything 
       WebhookSynchronizationService::EnsurePaymentProcessed.call(stripe_checkout_session_id: session_id)
 
       # Now that payment is guaranteed to be processed, fetch the order

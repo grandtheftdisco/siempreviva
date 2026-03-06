@@ -19,11 +19,14 @@ module PaymentHandlingService
         amount: checkout_session.amount_total,
         status: checkout_session.status
       )
+      # TODO: move the email to after the transaction
       OrderMailer.received(@order).deliver_now
     end
 
     def self.update_checkout_in_database(checkout_session)
       local_checkout_record = Checkout.find_by(stripe_checkout_session_id: checkout_session.id)
+      # TODO: Do an udpate! here mostly because you are with Order on line 15
+      # If .transaction doesn't raise if this fails you will get unexpected results
       local_checkout_record.update(status: "awaiting shipment",
                                    payment_intent_id: checkout_session.payment_intent)
     end
