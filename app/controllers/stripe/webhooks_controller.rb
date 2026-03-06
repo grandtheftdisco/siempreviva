@@ -109,8 +109,10 @@ module Stripe
       case payment_intent.status
       when 'processing'
         # FEATURE-FLAG: soft delete cart
-        Rails.logger.info "SOFT DELETE CART"
+        Rails.logger.info "...SOFT DELETING CART..."
+        SoftDeletePendingCartJob.perform_now(cart)
 
+        # working as of 2:52:17pm 3.5.26
         cart.update(status: 'pending')
 
         Rails.logger.info "Async payment type detected: Payment Intent ##{payment_intent.id} is #{payment_intent.status}"
