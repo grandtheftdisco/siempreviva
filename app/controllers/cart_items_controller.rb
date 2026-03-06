@@ -40,11 +40,6 @@ class CartItemsController < ApplicationController
   end
 
   def update
-    if params[:cart_item][:quantity].to_i == 0
-      remove_cart_item
-      return
-    end
-
     ActiveRecord::Base.transaction do
       @cart_item.update!(cart_item_params)
       @cart.update!(total_amount: CartService::CalculateCart.call(cart: @cart))
@@ -54,6 +49,14 @@ class CartItemsController < ApplicationController
       format.html { redirect_to cart_path, notice: 'Quantity updated!' }
       format.json { render :show, status: :ok, location: @cart_item }
     end
+  rescue CartItem::CartItemRemoved
+    # Destruction happens here rather than in the model callback.
+    # See CartItem::CartItemRemoved for rationale.
+    @cart_item.destroy!
+    @cart.update(total_amount: CartService::CalculateCart.call(cart: @cart))
+    redirect_to cart_path,
+                status: :see_other,
+                notice: "#{@cart_item.name} was removed from your cart."
   rescue ActiveRecord::RecordInvalid
     respond_to do |format|
       format.html do
@@ -64,21 +67,6 @@ class CartItemsController < ApplicationController
   end
 
   def destroy
-    remove_cart_item
-  end
-
-  private
-
-  def set_cart_item
-    @cart_item = CartItem.find(params[:id])
-  end
-
-  def product_setup
-    @products = StripeService::FetchProductInventory.call
-    @product = @products.find { |item| item.id == params[:cart_item][:stripe_product_id] }
-  end
-
-  def remove_cart_item
     @cart_item.destroy!
     @cart.update(total_amount: CartService::CalculateCart.call(cart: @cart))
 
@@ -90,6 +78,17 @@ class CartItemsController < ApplicationController
       end
       format.json { head :no_content }
     end
+  end
+
+  private
+
+  def set_cart_item
+    @cart_item = CartItem.find(params[:id])
+  end
+
+  def product_setup
+    @products = StripeService::FetchProductInventory.call
+    @product = @products.find { |item| item.id == params[:cart_item][:stripe_product_id] }
   end
 
   def cart_item_params
