@@ -29,8 +29,8 @@ class UpdateAlgoliaIndexJob < ApplicationJob
   def push_data_to_algolia(algolia_records)
     client = Algolia::SearchClient.create(Rails.application.credentials.algolia[:application_id],
                                           Rails.application.credentials.algolia[:write_api_key])
-    client.save_objects("products_index", algolia_records)
-    
+    client.replace_all_objects("products_index", algolia_records)
+
     algolia_records
   end
 end
