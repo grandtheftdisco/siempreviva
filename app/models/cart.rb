@@ -12,4 +12,8 @@ class Cart < ApplicationRecord
     super
     soft_delete_records
   end
+
+  def total_quantity_of_line_items
+    self.cart_items.sum(&:quantity)
+  end
 end
