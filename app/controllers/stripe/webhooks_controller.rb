@@ -61,11 +61,7 @@ module Stripe
         Rails.logger.info "--------> PRICE CHANGED: #{event.inspect}"
       when /product\..*/
         Rails.cache.delete('stripe_products')
-
-        product = event.data.object
-        previous_attributes = event.data.previous_attributes
-
-        AlgoliaService::PostProductUpdate.call(product:, previous_attributes:)
+        UpdateAlgoliaIndexJob.perform_later
       ###########################################################################
       # -------------------------------------------
       ### THE EVENTS BELOW SHOULD BE HANDLED AD HOC BY WEBMASTER/PRODUCT OWNER ###
