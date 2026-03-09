@@ -160,6 +160,9 @@ module Stripe
 
       local_checkout_record.update(status: 'payment failed')
 
+      cart.restore
+      cart.update(status: "open")
+
       Rails.logger.error "\e[101;1m -----x----- Payment Failed for Checkout Session # #{checkout_session.id}\e[0m"
       Rails.logger.error "\e[101;1m #{checkout_session.inspect}\e[0m"
 
@@ -188,7 +191,7 @@ module Stripe
     def set_up_transaction_info(checkout_session)
       payment_intent = ::Stripe::PaymentIntent.retrieve(checkout_session.payment_intent)
       local_checkout_record = ::Checkout.find_by(stripe_checkout_session_id: checkout_session.id)
-      cart = Cart.find(local_checkout_record.cart_id)
+      cart = Cart.with_deleted.find(local_checkout_record.cart_id)
 
       [payment_intent, local_checkout_record, cart]
     end
