@@ -4,6 +4,13 @@ module Stripe
     skip_before_action :require_authentication
     skip_before_action :set_current_cart
 
+    STATUSES_REQUIRING_ACTION = %w[
+      requires_payment_method
+      requires_confirmation
+      requires_action
+      requires_capture
+    ].freeze
+
     def create
       # From debugging some gnarly issues with request parsing
       # >> Keep this in case it happens again!
@@ -88,25 +95,17 @@ module Stripe
       else
         Rails.logger.info "---Unhandled event type: #{event.type}---"
       end
-      # -------------------------------------------
+      # -------------------------------------------------------------------------
     end
-
-    STATUSES_REQUIRING_ACTION = %w[
-      requires_payment_method
-      requires_confirmation
-      requires_action
-      requires_capture
-    ].freeze
 
     def action_required_for_transaction?(checkout_session)
       payment_intent = ::Stripe::PaymentIntent.retrieve(checkout_session.payment_intent)
-      if STATUSES_REQUIRING_ACTION.include?(payment_intent.status)
+      if payment_intent.status.in?(STATUSES_REQUIRING_ACTION)
         # FEATURE-FLAG: send emails to PO & Webmaster, respectively
         Rails.logger.warn "payment requires action: #{payment_intent.id}, status: #{payment_intent.status}"
         return true
       end
 
-      Rails.logger.debug "action_required_for_transaction? passed for PI ##{checkout_session.payment_intent}, status: #{payment_intent.status}"
       return false
     end
 
@@ -115,13 +114,8 @@ module Stripe
 
       case payment_intent.status
       when 'processing'
-        # FEATURE-FLAG: soft delete cart
-        Rails.logger.info "...SOFT DELETING CART..."
         SoftDeletePendingCartJob.perform_now(cart)
-
-        # working as of 2:52:17pm 3.5.26
         cart.update(status: 'pending')
-
         Rails.logger.info "Async payment type detected: Payment Intent ##{payment_intent.id} is #{payment_intent.status}"
       when 'succeeded'
         Rails.logger.info "Checkout Session ##{checkout_session.id} has passed check_for_async_payment_type: no further action taken."
