@@ -91,15 +91,22 @@ module Stripe
       # -------------------------------------------
     end
 
+    STATUSES_REQUIRING_ACTION = %w[
+      requires_payment_method
+      requires_confirmation
+      requires_action
+      requires_capture
+    ].freeze
+
     def action_required_for_transaction?(checkout_session)
       payment_intent = ::Stripe::PaymentIntent.retrieve(checkout_session.payment_intent)
-      if payment_intent.status == /requires\..*/
+      if STATUSES_REQUIRING_ACTION.include?(payment_intent.status)
         # FEATURE-FLAG: send emails to PO & Webmaster, respectively
-        Rails.logger.warn ""
+        Rails.logger.warn "payment requires action: #{payment_intent.id}, status: #{payment_intent.status}"
         return true
       end
 
-      Rails.logger.info "No action required for Payment Intent ##{checkout_session.payment_intent}"
+      Rails.logger.debug "action_required_for_transaction? passed for PI ##{checkout_session.payment_intent}, status: #{payment_intent.status}"
       return false
     end
 
