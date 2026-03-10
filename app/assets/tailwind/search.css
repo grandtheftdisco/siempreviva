@@ -140,8 +140,8 @@
   @apply transition-colors duration-200 cursor-pointer;
 }
 
-/* Desktop (640px+): hide toggle button (inline search is visible) */
-@media (min-width: 640px) {
+/* Tablet/Desktop (768px+): hide toggle button (inline search is visible) */
+@media (min-width: 768px) {
   .search-toggle-button {
     @apply hidden;
   }
