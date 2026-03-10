@@ -45,7 +45,7 @@
     @apply px-1 gap-1 min-w-40;
 
     /* Layout */
-    @apply flex-1;
+    @apply flex-1 justify-center;
   }
 }
 
@@ -93,14 +93,9 @@
 
 /* Tablet (768-1023px): smaller inputs and buttons */
 @media (min-width: 768px) and (max-width: 1023px) {
-  .search-inline {
-    /* Layout */
-    @apply flex-1;
-  }
-
   .search-inline input {
     /* Sizing & spacing */
-    @apply h-8 py-1.5 px-3 w-full;
+    @apply h-8 py-1.5 px-3;
 
     /* Typography */
     @apply text-sm;
