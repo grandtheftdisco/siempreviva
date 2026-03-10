@@ -5,6 +5,20 @@ class CheckoutsControllerTest < ActionDispatch::IntegrationTest
     @checkout = checkouts(:one)
   end
 
+  test "should redirect to products when cart is empty" do
+    cart = carts(:empty)
+
+    session_mock = mock('session')
+    session_mock.stubs(:id).returns(cart.session_id)
+    session_mock.stubs(:to_s).returns(cart.session_id)
+
+    ApplicationController.any_instance.stubs(:session).returns(session_mock)
+
+    get new_checkout_url
+    assert_redirected_to products_path
+    assert_equal "Your cart is empty — let's find something you'll love!", flash[:alert]
+  end
+
   test "should get new" do
     # Use existing cart fixture
     cart = carts(:mary)
