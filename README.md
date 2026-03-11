@@ -15,31 +15,25 @@
 
 ⏱️ **Timeline:** March 2025 - Present (10+ months of active development)
 
-🏢 **Client:** Real small business (Siempreviva): not a tutorial project  
+🏢 **Client:** Real small business (Siempreviva): not a tutorial project 
 
-## 📈 Latest Progress Update (January 30, 2026)
-**A Heads-down Winter**
-- I've spent the past few months preparing to present the MVP of the site to my clients!
-- My technical mentor has helped me get my devops ducks in a row as I prepare for 2 stages of deployment:
-  - what I'm calling a 'toy deploy', to give my clients a private preview of their site to play around with. This will give them more time & bandwidth to provide feedback, instead of compressing the feedback cycle into a single meeting.
-  - the final production site
-- I spent a lot of time on the front end, building all static & marketing pages to spec, including a photo gallery with a lightbox feature.
-- I had a great experience integrating Cloudinary into the repo. Their dev-friendly documentation made it a breeze to rely on their CDN for performant asset management.
-- Last but not least, I finally finished the CSS refactor project! Here are the relevant PRs grouped together:
-  - [PR #24 - Phase 1](https://github.com/grandtheftdisco/siempreviva/pull/24)
-  - [PR #25 - Project Docs](https://github.com/grandtheftdisco/siempreviva/pull/24)
-  - [PR #27 - CSS for Product Pages](https://github.com/grandtheftdisco/siempreviva/pull/27)
-  - [PR #28 - CSS for Layout Elements](https://github.com/grandtheftdisco/siempreviva/pull/28)
-  - [PR #29 - Updating Plan for Phase 4](https://github.com/grandtheftdisco/siempreviva/pull/29)
-  - [PR #31 - View Migrations & Legacy Code Deprecation](https://github.com/grandtheftdisco/siempreviva/pull/31)
-  - [PR #32 - Project Plan Update](https://github.com/grandtheftdisco/siempreviva/pull/32)
-  - [PR #35 - CSS for Cart Flow](https://github.com/grandtheftdisco/siempreviva/pull/35)
-  - [PR #36 - CSS for Checkout Flow](https://github.com/grandtheftdisco/siempreviva/pull/36)
-  - [PR #37 - CSS for Email & Search Flow](https://github.com/grandtheftdisco/siempreviva/pull/37)
-  - [PR #38 - Project Plan Update](https://github.com/grandtheftdisco/siempreviva/pull/38)
-  - [PR #39 - Post-Merge Fixes (incl UI bugs, component definition, color conflicts, & legacy code deprecation)](https://github.com/grandtheftdisco/siempreviva/pull/39)
-  - [PR #40 - Project Plan Update](https://github.com/grandtheftdisco/siempreviva/pull/40)
-  - [PR #42 - Specificity Adjustments & Semantic Grouping](https://github.com/grandtheftdisco/siempreviva/pull/42)
+____________________________________
+
+## 📈 Latest Progress Update (March 11, 2026)
+
+Welp, I'm finally nearing the end of the 'green' part of 'greenfield'!
+
+Since January, I've been focusing on building out a photo gallery and beefing up my service layer; that 2nd one has shown me how incredible the world of architecture is. New long-term career goal, anyone?
+
+An in-depth bug bash showed me a lot of areas of opportunity: race conditions, edge cases in payment handling, and UXUI considerations for smaller screens during business-critical flows.
+
+As of today, I've solved all of my high-priority bugs that were blocking to the end user! 🎉
+
+In the weeks ahead, my goal is to get the 'toy deploy' in prod and set up a time to meet with my clients for their feedback on the public-facing areas of the site.
+
+After that, I'll kick off spring by polishing up the admin-only areas of the site and collaborating with POs on getting their Stripe account ready to accept real payments & process real orders.
+
+Hard to believe it's almost been a year since I started this journey... 🥲
 
 ______________________________________
 
@@ -71,6 +65,30 @@ ______________________________________
 
 # 📚 DEVELOPMENT DIARY ARCHIVE
 *Complete development journey from March 2025 - for those interested in the full story*
+
+## 📆 **January 2026** *(CSS Refactor, Asset Management, MVP presentation prep)*
+**A Heads-down Winter**
+- I've spent the past few months preparing to present the MVP of the site to my clients!
+- My technical mentor has helped me get my devops ducks in a row as I prepare for 2 stages of deployment:
+  - what I'm calling a 'toy deploy', to give my clients a private preview of their site to play around with. This will give them more time & bandwidth to provide feedback, instead of compressing the feedback cycle into a single meeting.
+  - the final production site
+- I spent a lot of time on the front end, building all static & marketing pages to spec, including a photo gallery with a lightbox feature.
+- I had a great experience integrating Cloudinary into the repo. Their dev-friendly documentation made it a breeze to rely on their CDN for performant asset management.
+- Last but not least, I finally finished the CSS refactor project! Here are the relevant PRs grouped together:
+  - [PR #24 - Phase 1](https://github.com/grandtheftdisco/siempreviva/pull/24)
+  - [PR #25 - Project Docs](https://github.com/grandtheftdisco/siempreviva/pull/24)
+  - [PR #27 - CSS for Product Pages](https://github.com/grandtheftdisco/siempreviva/pull/27)
+  - [PR #28 - CSS for Layout Elements](https://github.com/grandtheftdisco/siempreviva/pull/28)
+  - [PR #29 - Updating Plan for Phase 4](https://github.com/grandtheftdisco/siempreviva/pull/29)
+  - [PR #31 - View Migrations & Legacy Code Deprecation](https://github.com/grandtheftdisco/siempreviva/pull/31)
+  - [PR #32 - Project Plan Update](https://github.com/grandtheftdisco/siempreviva/pull/32)
+  - [PR #35 - CSS for Cart Flow](https://github.com/grandtheftdisco/siempreviva/pull/35)
+  - [PR #36 - CSS for Checkout Flow](https://github.com/grandtheftdisco/siempreviva/pull/36)
+  - [PR #37 - CSS for Email & Search Flow](https://github.com/grandtheftdisco/siempreviva/pull/37)
+  - [PR #38 - Project Plan Update](https://github.com/grandtheftdisco/siempreviva/pull/38)
+  - [PR #39 - Post-Merge Fixes (incl UI bugs, component definition, color conflicts, & legacy code deprecation)](https://github.com/grandtheftdisco/siempreviva/pull/39)
+  - [PR #40 - Project Plan Update](https://github.com/grandtheftdisco/siempreviva/pull/40)
+  - [PR #42 - Specificity Adjustments & Semantic Grouping](https://github.com/grandtheftdisco/siempreviva/pull/42)
 
 ## 📆 **November 2025** *(Cart & Checkout Polish, CSS Refactor)*
 **Cart & Checkout System Overhaul** ([PR #21](https://github.com/grandtheftdisco/siempreviva/pull/21), [#22](https://github.com/grandtheftdisco/siempreviva/pull/22), [#23](https://github.com/grandtheftdisco/siempreviva/pull/23)):
