@@ -11,9 +11,9 @@
 - Created comprehensive service object architecture with TDD approach
 - Integrated Redis caching and background job processing for production scalability
 
-🛠️ **Stack:** Ruby on Rails, PostgreSQL, Stripe API, Tailwind CSS, Redis
+🛠️ **Stack:** Ruby on Rails, PostgreSQL, Stripe API, Tailwind CSS, Redis, Cloudinary
 
-⏱️ **Timeline:** March 2025 - Present (10+ months of active development)
+⏱️ **Timeline:** March 2025 - Present (1 year of active development)
 
 🏢 **Client:** Real small business (Siempreviva): not a tutorial project 
 
@@ -52,10 +52,10 @@ ______________________________________
 ## 🛠️ Tech Stack
 - **Backend**: Ruby on Rails, PostgreSQL  
 - **Payments**: Stripe API, Stripe.js with full webhook integration  
-- **Frontend**: Tailwind CSS, Flowbite components  
-- **Infrastructure**: Redis caching, service layer, background jobs, Linux development environment  
+- **Frontend**: Tailwind CSS, Stimulus 
+- **Infrastructure**: Redis caching, Cloudinary asset management, service layer, background jobs, Linux development environment  
 - **Code Quality**: RuboCop-enforced Airbnb style guide, comprehensive testing with TDD  
-- **Deployment**: Heroku (projected)
+- **Deployment**: Render
 
 ## 📬 Connect
 - 💼 **Portfolio Discussion**: [Drop me a line!](mailto:grandtheftdisco@gmail.com)  
