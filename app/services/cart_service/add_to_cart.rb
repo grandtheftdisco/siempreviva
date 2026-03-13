@@ -10,7 +10,6 @@ module CartService
       begin
         cart_items = cart.cart_items.to_a
         existing_item = cart_items.find { |i| i.stripe_product_id == product.id }
-        
         if existing_item
           existing_item.quantity += quantity
           existing_item.tap(&:save!)
@@ -25,7 +24,7 @@ module CartService
           cart.cart_items.reload
           new_cart_item
         end
-      rescue Stripe::StripeError => edit
+      rescue Stripe::StripeError => e
         Rails.logger.error("Stripe error: #{e.message}")
         raise
       rescue StandardError => e

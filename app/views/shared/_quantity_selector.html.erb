@@ -29,15 +29,12 @@
     </svg>
   </button>
 
-  <input id="<%= input_id %>"
-         class="item-quantity-input"
-         type="number"
-         <% if field_name.present? %>
-           name="<%= field_name %>"
-         <% end %>
-         value="<%= initial_value %>"
-         min="<%= min_value %>"
-         data-input-counter-target="input"/>
+  <%= number_field_tag field_name, initial_value,
+        id: input_id,
+        min: min_value,
+        max: 10,
+        data: { input_counter: true },
+        class: 'item-quantity-input' %>
 
   <button class="item-quantity-select-btn round-right"
           type="button"

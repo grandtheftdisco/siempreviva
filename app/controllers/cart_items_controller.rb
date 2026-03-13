@@ -5,7 +5,6 @@ class CartItemsController < ApplicationController
   def create
     product_setup
     quantity = params[:cart_item][:quantity].to_i
-
     @new_cart_item = CartService::AddToCart.call(
       product: @product,
       cart: @cart,
@@ -17,9 +16,10 @@ class CartItemsController < ApplicationController
       format.html { redirect_to products_path, notice: 'Item added to bag!' }
       format.json { render :show, status: :created, location: @new_cart_item }
     end
-  rescue ActiveRecord::RecordInvalid
+  rescue ActiveRecord::RecordInvalid => e
     respond_to do |format|
       format.html do
+        Rails.logger.warn e.message
         redirect_to cart_path, alert: 'Could not add item to cart. Please try again later.'
       end
       format.json { render json: @new_cart_item.errors, status: :unprocessable_entity }
@@ -50,6 +50,14 @@ class CartItemsController < ApplicationController
       format.html { redirect_to cart_path, notice: 'Quantity updated!' }
       format.json { render :show, status: :ok, location: @cart_item }
     end
+  rescue CartItem::CartItemRemoved
+    # Destruction happens here rather than in the model callback.
+    # See CartItem::CartItemRemoved for rationale.
+    @cart_item.destroy!
+    @cart.update(total_amount: CartService::CalculateCart.call(cart: @cart))
+    redirect_to cart_path,
+                status: :see_other,
+                notice: "#{@cart_item.name} was removed from your cart."
   rescue ActiveRecord::RecordInvalid
     respond_to do |format|
       format.html do
@@ -79,10 +87,10 @@ class CartItemsController < ApplicationController
     @cart_item = CartItem.find(params[:id])
   end
 
-    def product_setup
-      @products = StripeService::FetchProductInventory.call
-      @product = @products.find { |item| item.id == params[:cart_item][:stripe_product_id] }
-    end
+  def product_setup
+    @products = StripeService::FetchProductInventory.call
+    @product = @products.find { |item| item.id == params[:cart_item][:stripe_product_id] }
+  end
 
   def cart_item_params
     params.require(:cart_item)
