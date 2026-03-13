@@ -7,7 +7,6 @@ module.exports = {
     './app/javascript/**/*.js',
     './app/components/**/*.rb', // If using ViewComponents
     "./app/assets/stylesheets/**/*.css",
-    "./node_modules/flowbite/**/*.js"
   ],
   theme: {
     extend: {
@@ -17,7 +16,6 @@ module.exports = {
     },
   },
   plugins: [
-    require('flowbite/plugin'),
     // Add orientation variants for portrait/landscape-specific styling
     plugin(function({ addVariant }) {
       addVariant('portrait', '@media (orientation: portrait)')

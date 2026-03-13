@@ -169,10 +169,10 @@
 
 .search-dropdown {
   /* Sizing & spacing */
-  @apply p-3 w-screen max-w-full;
+  @apply p-3 w-screen max-w-screen;
 
   /* Layout & positioning */
-  @apply absolute top-full left-1/2 -translate-x-1/2 right-0 z-50 hidden;
+  @apply absolute top-full left-0 right-0 z-50 hidden;
 
   /* Border & shape */
   @apply rounded-none border-l-0 border-r-0 border-t border-sv-purple-700/15 shadow-lg;
@@ -185,13 +185,13 @@
 }
 
 .search-dropdown.show {
-  @apply block -translate-x-1/2;
+  @apply block translate-x-0;
 }
 
 /* Extra-small screens (iPhone SE, etc.): reduced padding */
 @media (max-width: 480px) {
   .search-dropdown {
-    @apply p-2;
+    @apply p-2 max-w-screen;
   }
 }
 

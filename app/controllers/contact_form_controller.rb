@@ -12,7 +12,7 @@ class ContactFormController < ApplicationController
     respond_to do |format|
       if @contact_form.deliver
         format.html do
-          redirect_to contact_path, notice: 'Message sent successfully!'
+          redirect_to new_contact_form_path, notice: 'Message sent successfully!'
         end
         format.json { render json: 'Message sent successfully!' }
       else

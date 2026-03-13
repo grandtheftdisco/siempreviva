@@ -11,12 +11,12 @@ class SessionsController < ApplicationController
       start_new_session_for admin
       redirect_to admins_orders_url
     else
-      redirect_to new_session_path, alert: 'Try another email address or password.'
+      redirect_to new_sessions_path, alert: 'Try another email address or password.'
     end
   end
 
   def destroy
     terminate_session
-    redirect_to admin_login_path
+    redirect_to admin_login_sessions_path
   end
 end

@@ -15,3 +15,18 @@ application.register("quantity-toggle", QuantityToggleController)
 
 import ScrollNavigationController from "controllers/scroll_navigation_controller"
 application.register("scroll-navigation", ScrollNavigationController)
+
+import AlgoliaSearchController from "controllers/algolia_search_controller"
+application.register("algolia-search", AlgoliaSearchController)
+
+import DropdownController from "controllers/dropdown_controller"
+application.register("dropdown", DropdownController)
+
+import CollapseController from "controllers/collapse_controller"
+application.register("collapse", CollapseController)
+
+import InputCounterController from "controllers/input_counter_controller"
+application.register("input-counter", InputCounterController)
+
+import StripeCheckoutController from "controllers/stripe_checkout_controller"
+application.register("stripe-checkout", StripeCheckoutController)

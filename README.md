@@ -4,20 +4,93 @@
 **Production-ready ecommerce application built with Ruby on Rails for a real client**
 
 ✨ **Key Accomplishments:**
+- Integrated Cloudinary API for optimized & responsive asset management
 - Built complete Stripe payment integration with webhooks, order management, and refund handling
 - Developed admin dashboard with authentication, order fulfillment workflow, and inventory management  
 - Implemented responsive cart system with real-time updates and mobile-optimized UI
 - Created comprehensive service object architecture with TDD approach
 - Integrated Redis caching and background job processing for production scalability
 
-🛠️ **Stack:** Ruby on Rails, PostgreSQL, Stripe API, Tailwind CSS, Redis 
-⏱️ **Timeline:** March 2025 - Present (8+ months of active development)  
-🏢 **Client:** Real small business (Siempreviva): not a tutorial project  
+🛠️ **Stack:** Ruby on Rails, PostgreSQL, Stripe API, Tailwind CSS, Redis, Cloudinary
 
-## 📈 Latest Progress Update (November 2025)
+⏱️ **Timeline:** March 2025 - Present (1 year of active development)
 
-The past month has been intense! I shipped a complete cart/checkout overhaul, then dove headfirst into a massive CSS refactoring project.
+🏢 **Client:** Real small business (Siempreviva): not a tutorial project 
 
+____________________________________
+
+## 📈 Latest Progress Update (March 11, 2026)
+
+Welp, I'm finally nearing the end of the 'green' part of 'greenfield'!
+
+Since January, I've been focusing on building out a photo gallery and beefing up my service layer; that 2nd one has shown me how incredible the world of architecture is. New long-term career goal, anyone?
+
+An in-depth bug bash showed me a lot of areas of opportunity: race conditions, edge cases in payment handling, and UXUI considerations for smaller screens during business-critical flows.
+
+As of today, I've solved all of my high-priority bugs that were blocking to the end user! 🎉
+
+In the weeks ahead, my goal is to get the 'toy deploy' in prod and set up a time to meet with my clients for their feedback on the public-facing areas of the site.
+
+After that, I'll kick off spring by polishing up the admin-only areas of the site and collaborating with POs on getting their Stripe account ready to accept real payments & process real orders.
+
+Hard to believe it's almost been a year since I started this journey... 🥲
+
+______________________________________
+
+# 🏗️ PROJECT DETAILS
+
+## 🎯 Project Goals & Approach
+**Challenge Level**: This is my second webdev project: a significant step up from [Henventory](https://www.github.com/grandtheftdisco/henventory) to tackle real-world ecommerce complexity.
+
+**Real Client Work**: Built for actual business owners (not a tutorial project), giving me valuable experience working with stakeholder requirements and real-world constraints.
+
+## 👥 Team & Mentorship  
+**Technical Mentor**: Bookis - indispensable guidance throughout the process  
+**Client Collaboration**: Direct feedback from Siempreviva business owners during design and development phases  
+**AI Usage Transparency**: 🤖 Strategic AI assistance for frontend work where I can effectively supervise, while building all backend architecture and business logic myself to strengthen those skills.
+
+## 🛠️ Tech Stack
+- **Backend**: Ruby on Rails, PostgreSQL  
+- **Payments**: Stripe API, Stripe.js with full webhook integration  
+- **Frontend**: Tailwind CSS, Stimulus 
+- **Infrastructure**: Redis caching, Cloudinary asset management, service layer, background jobs, Linux development environment  
+- **Code Quality**: RuboCop-enforced Airbnb style guide, comprehensive testing with TDD  
+- **Deployment**: Render
+
+## 📬 Connect
+- 💼 **Portfolio Discussion**: [Drop me a line!](mailto:grandtheftdisco@gmail.com)  
+- 🚀 **Status**: Actively building - watch this repo for updates!
+
+______________________________________
+
+# 📚 DEVELOPMENT DIARY ARCHIVE
+*Complete development journey from March 2025 - for those interested in the full story*
+
+## 📆 **January 2026** *(CSS Refactor, Asset Management, MVP presentation prep)*
+**A Heads-down Winter**
+- I've spent the past few months preparing to present the MVP of the site to my clients!
+- My technical mentor has helped me get my devops ducks in a row as I prepare for 2 stages of deployment:
+  - what I'm calling a 'toy deploy', to give my clients a private preview of their site to play around with. This will give them more time & bandwidth to provide feedback, instead of compressing the feedback cycle into a single meeting.
+  - the final production site
+- I spent a lot of time on the front end, building all static & marketing pages to spec, including a photo gallery with a lightbox feature.
+- I had a great experience integrating Cloudinary into the repo. Their dev-friendly documentation made it a breeze to rely on their CDN for performant asset management.
+- Last but not least, I finally finished the CSS refactor project! Here are the relevant PRs grouped together:
+  - [PR #24 - Phase 1](https://github.com/grandtheftdisco/siempreviva/pull/24)
+  - [PR #25 - Project Docs](https://github.com/grandtheftdisco/siempreviva/pull/24)
+  - [PR #27 - CSS for Product Pages](https://github.com/grandtheftdisco/siempreviva/pull/27)
+  - [PR #28 - CSS for Layout Elements](https://github.com/grandtheftdisco/siempreviva/pull/28)
+  - [PR #29 - Updating Plan for Phase 4](https://github.com/grandtheftdisco/siempreviva/pull/29)
+  - [PR #31 - View Migrations & Legacy Code Deprecation](https://github.com/grandtheftdisco/siempreviva/pull/31)
+  - [PR #32 - Project Plan Update](https://github.com/grandtheftdisco/siempreviva/pull/32)
+  - [PR #35 - CSS for Cart Flow](https://github.com/grandtheftdisco/siempreviva/pull/35)
+  - [PR #36 - CSS for Checkout Flow](https://github.com/grandtheftdisco/siempreviva/pull/36)
+  - [PR #37 - CSS for Email & Search Flow](https://github.com/grandtheftdisco/siempreviva/pull/37)
+  - [PR #38 - Project Plan Update](https://github.com/grandtheftdisco/siempreviva/pull/38)
+  - [PR #39 - Post-Merge Fixes (incl UI bugs, component definition, color conflicts, & legacy code deprecation)](https://github.com/grandtheftdisco/siempreviva/pull/39)
+  - [PR #40 - Project Plan Update](https://github.com/grandtheftdisco/siempreviva/pull/40)
+  - [PR #42 - Specificity Adjustments & Semantic Grouping](https://github.com/grandtheftdisco/siempreviva/pull/42)
+
+## 📆 **November 2025** *(Cart & Checkout Polish, CSS Refactor)*
 **Cart & Checkout System Overhaul** ([PR #21](https://github.com/grandtheftdisco/siempreviva/pull/21), [#22](https://github.com/grandtheftdisco/siempreviva/pull/22), [#23](https://github.com/grandtheftdisco/siempreviva/pull/23)):
 - Built comprehensive checkout flow with post-payment success states and robust error handling
 - Styled cart view & cart preview dropdown with full responsive design across all screen sizes
@@ -51,37 +124,6 @@ Now I'm methodically working through each area of the site to convert everything
 
 **What I'm Learning**:
 This CSS refactor has been humbling but incredibly valuable. I'm learning about proper component architecture, the importance of maintainable code organization, and how to effectively supervise AI assistance. The session-by-session approach is keeping the work manageable while steadily improving code quality. Plus, I'm getting much better at debugging CSS issues!
-
-______________________________________
-
-# 🏗️ PROJECT DETAILS
-
-## 🎯 Project Goals & Approach
-**Challenge Level**: This is my second webdev project: a significant step up from [Henventory](https://www.github.com/grandtheftdisco/henventory) to tackle real-world ecommerce complexity.
-
-**Real Client Work**: Built for actual business owners (not a tutorial project), giving me valuable experience working with stakeholder requirements and real-world constraints.
-
-## 👥 Team & Mentorship  
-**Technical Mentor**: Bookis - indispensable guidance throughout the process  
-**Client Collaboration**: Direct feedback from Siempreviva business owners during design and development phases  
-**AI Usage Transparency**: 🤖 Strategic AI assistance for frontend work where I can effectively supervise, while building all backend architecture and business logic myself to strengthen those skills.
-
-## 🛠️ Tech Stack
-- **Backend**: Ruby on Rails, PostgreSQL  
-- **Payments**: Stripe API, Stripe.js with full webhook integration  
-- **Frontend**: Tailwind CSS, Flowbite components  
-- **Infrastructure**: Redis caching, service layer, background jobs, Linux development environment  
-- **Code Quality**: RuboCop-enforced Airbnb style guide, comprehensive testing with TDD  
-- **Deployment**: Heroku (projected)
-
-## 📬 Connect
-- 💼 **Portfolio Discussion**: [Drop me a line!](mailto:grandtheftdisco@gmail.com)  
-- 🚀 **Status**: Actively building - watch this repo for updates!
-
-______________________________________
-
-# 📚 DEVELOPMENT DIARY ARCHIVE
-*Complete development journey from March 2025 - for those interested in the full story*
 
 ## 📆 **10/1/25 - 10/31/25** *(Admin Dashboard Polish & Initial Cart Work)*
 - **Admin Dashboard Refinement**:
