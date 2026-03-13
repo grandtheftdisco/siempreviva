@@ -21,4 +21,21 @@ class CartItemTest < ActiveSupport::TestCase
     assert_not cart_item.update(quantity: 11)
     assert_not cart_item.update(quantity: -1)
   end
+
+  test "cart total reflects decremented quantity" do
+    cart_item = cart_items(:lavender)
+    cart = cart_item.cart
+    cart_item.update!(quantity: 3)
+    assert_equal 300, cart.reload.total
+
+    cart_item.update!(quantity: 2)
+    assert_equal 200, cart.reload.total
+  end
+
+  test "cart total reflects destroyed cart item" do
+    cart_item = cart_items(:lavender)
+    cart = cart_item.cart
+    cart_item.destroy
+    assert_equal 0, cart.reload.total
+  end
 end
