@@ -25,7 +25,15 @@ header {
   @apply mx-auto flex items-center flex-nowrap justify-between;
 }
 
-@media (min-width: 768px) {
+/* Tablet (768-1023px): tighter gap to leave room for search */
+@media (min-width: 768px) and (max-width: 1023px) {
+  .header-container {
+    @apply p-4 gap-4 pr-8;
+  }
+}
+
+/* Desktop (1024px+): full gap */
+@media (min-width: 1024px) {
   .header-container {
     @apply p-4 gap-12 pr-8;
   }

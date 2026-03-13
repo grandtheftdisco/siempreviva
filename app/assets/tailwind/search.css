@@ -42,7 +42,10 @@
 @media (min-width: 768px) and (max-width: 1023px) {
   .search-section {
     /* Sizing & spacing */
-    @apply px-1 gap-1;
+    @apply px-1 gap-1 min-w-40;
+
+    /* Layout */
+    @apply flex-1 justify-center;
   }
 }
 
@@ -92,7 +95,7 @@
 @media (min-width: 768px) and (max-width: 1023px) {
   .search-inline input {
     /* Sizing & spacing */
-    @apply h-8 py-1.5 px-3 max-w-64;
+    @apply h-8 py-1.5 px-3;
 
     /* Typography */
     @apply text-sm;
@@ -132,8 +135,8 @@
   @apply transition-colors duration-200 cursor-pointer;
 }
 
-/* Desktop (640px+): hide toggle button (inline search is visible) */
-@media (min-width: 640px) {
+/* Tablet/Desktop (768px+): hide toggle button (inline search is visible) */
+@media (min-width: 768px) {
   .search-toggle-button {
     @apply hidden;
   }
@@ -376,7 +379,7 @@
 
 /* Match search results width to search input width at different breakpoints */
 .search-results .ais-Hits {
-  @apply sm:w-50 md:w-64;
+  @apply sm:w-50 md:w-full;
 }
 
 .ais-Hits-item a {
