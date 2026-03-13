@@ -2,6 +2,11 @@ class CheckoutsController < ApplicationController
   skip_before_action :require_authentication
 
   def new
+    if @cart.cart_items.empty?
+      redirect_to products_path, alert: "Your cart is empty — let's find something you'll love!"
+      return
+    end
+
     @cart = validate_cart_and_handle_removals
     @total = CartService::CalculateCart.call(cart: @cart)
   end

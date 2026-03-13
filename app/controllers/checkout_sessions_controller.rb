@@ -2,6 +2,10 @@ class CheckoutSessionsController < ApplicationController
   skip_before_action :require_authentication
 
   def create
+    if @cart.cart_items.empty?
+      return render json: { error: "Cart is empty" }, status: :unprocessable_entity
+    end
+
     line_items = @cart.cart_items.map do |item|
       product = Stripe::Product.retrieve(
         { id: item.stripe_product_id, 
