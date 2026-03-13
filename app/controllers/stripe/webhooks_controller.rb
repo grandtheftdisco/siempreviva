@@ -4,6 +4,13 @@ module Stripe
     skip_before_action :require_authentication
     skip_before_action :set_current_cart
 
+    STATUSES_REQUIRING_ACTION = %w[
+      requires_payment_method
+      requires_confirmation
+      requires_action
+      requires_capture
+    ].freeze
+
     def create
       # From debugging some gnarly issues with request parsing
       # >> Keep this in case it happens again!
@@ -46,6 +53,9 @@ module Stripe
       checkout_session = event.data.object
 
       case event.type
+      when 'checkout.session.completed'
+        return if action_required_for_transaction?(checkout_session)
+        check_for_async_payment_type(checkout_session)
       when 'checkout.session.async_payment_succeeded'
         handle_async_payment_succeeded(checkout_session)
       when 'checkout.session.async_payment_failed'
@@ -81,7 +91,31 @@ module Stripe
       else
         Rails.logger.info "---Unhandled event type: #{event.type}---"
       end
-      # -------------------------------------------
+      # -------------------------------------------------------------------------
+    end
+
+    def action_required_for_transaction?(checkout_session)
+      payment_intent = ::Stripe::PaymentIntent.retrieve(checkout_session.payment_intent)
+      if payment_intent.status.in?(STATUSES_REQUIRING_ACTION)
+        # FEATURE-FLAG: send emails to PO & Webmaster, respectively
+        Rails.logger.warn "payment requires action: #{payment_intent.id}, status: #{payment_intent.status}"
+        return true
+      end
+
+      return false
+    end
+
+    def check_for_async_payment_type(checkout_session)
+      payment_intent, local_checkout_record, cart = set_up_transaction_info(checkout_session)
+
+      case payment_intent.status
+      when 'processing'
+        SoftDeletePendingCartJob.perform_now(cart)
+        cart.update(status: 'pending')
+        Rails.logger.info "Async payment type detected: Payment Intent ##{payment_intent.id} is #{payment_intent.status}"
+      when 'succeeded'
+        Rails.logger.info "Checkout Session ##{checkout_session.id} has passed check_for_async_payment_type: no further action taken."
+      end
     end
 
     def check_for_duplicate_events(event)
@@ -123,6 +157,9 @@ module Stripe
 
       local_checkout_record.update(status: 'payment failed')
 
+      cart.restore
+      cart.update(status: "open")
+
       Rails.logger.error "\e[101;1m -----x----- Payment Failed for Checkout Session # #{checkout_session.id}\e[0m"
       Rails.logger.error "\e[101;1m #{checkout_session.inspect}\e[0m"
 
@@ -150,8 +187,8 @@ module Stripe
 
     def set_up_transaction_info(checkout_session)
       payment_intent = ::Stripe::PaymentIntent.retrieve(checkout_session.payment_intent)
-      local_checkout_record = Checkout.find_by(stripe_checkout_session_id: checkout_session.id)
-      cart = Cart.find(local_checkout_record.cart_id)
+      local_checkout_record = ::Checkout.find_by(stripe_checkout_session_id: checkout_session.id)
+      cart = Cart.with_deleted.find(local_checkout_record.cart_id)
 
       [payment_intent, local_checkout_record, cart]
     end

@@ -30,6 +30,10 @@ class CheckoutsController < ApplicationController
       # This blocks until payment processing is complete, preventing race conditions
       WebhookSynchronizationService::EnsurePaymentProcessed.call(stripe_checkout_session_id: session_id)
 
+      # If async payment is in flight, clear the cart so the UI reflects it
+      # See ApplicationController for set_current_cart definition
+      set_current_cart if WebhookSynchronizationService::HandlePendingAsyncPayment.call(checkout_session: @session, cart: @cart)
+
       # Now that payment is guaranteed to be processed, fetch the order
       @order = Order.find_by(payment_intent_id: @session.payment_intent)
 
