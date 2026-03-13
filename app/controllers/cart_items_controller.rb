@@ -19,7 +19,8 @@ class CartItemsController < ApplicationController
   rescue ActiveRecord::RecordInvalid => e
     respond_to do |format|
       format.html do
-        redirect_to cart_path, alert: e.message ||= 'Could not add item to cart. Please try again later.'
+        Rails.logger.warn e.message
+        redirect_to cart_path, alert: 'Could not add item to cart. Please try again later.'
       end
       format.json { render json: @new_cart_item.errors, status: :unprocessable_entity }
     end
